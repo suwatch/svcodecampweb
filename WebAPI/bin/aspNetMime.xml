@@ -1,0 +1,3045 @@
+﻿<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>aspNetMime</name>
+    </assembly>
+    <members>
+        <member name="T:aspNetMime.ReportAddingRowEventHandler">
+            <summary>
+            The delegate used for event handling BeforeAddNDRRow
+            </summary>
+            
+        </member>
+        <member name="T:aspNetMime.ReportAddingRowEventArgs">
+            <summary>
+            The event args used when a MimeMessage is added to a MimeReport.
+            </summary>
+            
+        </member>
+        <member name="M:aspNetMime.ReportAddingRowEventArgs.#ctor">
+            <summary>
+            Creates an instance of the ReportAddingRowEventArgs
+            </summary>
+            
+        </member>
+        <member name="M:aspNetMime.ReportAddingRowEventArgs.#ctor(aspNetMime.MimeMessage,System.Data.DataRow,System.Boolean)">
+            <summary>
+            Creates an instance of the ReportAddingRowEventArgs
+            </summary>
+            
+            <param name="cancel">Cancel's adding the row to the report</param>
+            <param name="dataRow">DataRow added to the report</param>
+            <param name="message">MimeMessage added to the report.</param>
+        </member>
+        <member name="P:aspNetMime.ReportAddingRowEventArgs.MimeMessage">
+            <summary>
+            The MimeMessage about to be added to the MimeReport
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.ReportAddingRowEventArgs.DataRow">
+            <summary>
+            The DataRow added to the Report
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.ReportAddingRowEventArgs.Cancel">
+            <summary>
+            Cancel's adding the row to the report.
+            </summary>
+        </member>
+        <member name="T:aspNetMime.LookupEventHandler">
+            <summary>
+            The delegate used for Lookup event handling.
+            </summary>
+            
+        </member>
+        <member name="T:aspNetMime.BeforeLookupEventHandler">
+            <summary>
+            The delegate used for BeforeLookup event handling.
+            </summary>
+            
+        </member>
+        <member name="T:aspNetMime.BeforeLookupEventArgs">
+            <summary>
+            The event args raised during the BeforeLookup event just before the BlackListChecker performs a DNSbl query.
+            </summary>
+            
+        </member>
+        <member name="M:aspNetMime.BeforeLookupEventArgs.#ctor">
+            <summary>
+            Creats an instance of the Lookup Event Arguments.
+            </summary>
+            
+        </member>
+        <member name="M:aspNetMime.BeforeLookupEventArgs.Next">
+            <summary>
+            Moves to the next DNSbl in the BlackListChecker.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.BeforeLookupEventArgs.Cancel">
+            <summary>
+            If set to True, cancels any DNSBlackList checking.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.BeforeLookupEventArgs.DNSBlackList">
+            <summary>
+            The DNSBlackList that was checked.
+            </summary>
+            
+        </member>
+        <member name="T:aspNetMime.LookupEventArgs">
+            <summary>
+            The event args raised during the Lookup event when the BlackListChecker performs a DNSbl query.
+            </summary>
+            
+        </member>
+        <member name="M:aspNetMime.LookupEventArgs.#ctor">
+            <summary>
+            Creats an instance of the Lookup Event Arguments.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.LookupEventArgs.Cancel">
+            <summary>
+            If set to True, cancels any DNSBlackList checking.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.LookupEventArgs.DNSBlackList">
+            <summary>
+            The DNSBlackList that was checked.
+            </summary>
+            
+        </member>
+        <member name="T:aspNetMime.HeaderCollection">
+            <summary>
+              Basic collection class Headers.
+            </summary>
+        </member>
+        <member name="M:aspNetMime.HeaderCollection.#ctor">
+            <summary>
+              Empty constructor. 
+              This will initialize the collection to 5 items.
+            </summary>
+        </member>
+        <member name="M:aspNetMime.HeaderCollection.#ctor(System.Int32)">
+            <summary>
+              Initializes the container to hold the specified number of items.
+            </summary>
+            <param name="initialCount">
+              The initial size of the collection. 
+            </param>
+        </member>
+        <member name="M:aspNetMime.HeaderCollection.Contains(aspNetMime.Header)">
+            <summary>
+              Attempts to locate the Header within the collection.
+            </summary>
+            <param name="header">
+              Header to locate.
+            </param>
+            <returns>
+              True if the Header exists in the collection.
+            </returns>
+        </member>
+        <member name="M:aspNetMime.HeaderCollection.System#Collections#IList#Contains(System.Object)">
+            <summary>
+              For IList implementation only. Do not use.
+            </summary>
+        </member>
+        <member name="M:aspNetMime.HeaderCollection.Contains(System.String)">
+            <summary>
+              Returns true if the specified header is contained within the collection.
+            </summary>
+            <param name="name">
+              Name of the header to look for in the collection.
+            </param>
+            <returns>
+              True if the header is contained in the collection.
+            </returns>
+        </member>
+        <member name="M:aspNetMime.HeaderCollection.CopyTo(System.Array,System.Int32)">
+            <summary>
+              Copies the items from this collection into the array at the specified index.
+            </summary>
+            <param name="array">
+              Array to copy the items to.
+            </param>
+            <param name="index">
+              Index of position within the array to being copying at.
+            </param>
+        </member>
+        <member name="M:aspNetMime.HeaderCollection.CopyTo(aspNetMime.HeaderCollection)">
+            <summary>
+              Copies all the Headers from this collection to another Header Collection.
+            </summary>
+            <param name="headers">
+              Collection to copy to.
+            </param>
+        </member>
+        <member name="M:aspNetMime.HeaderCollection.Add(aspNetMime.Header)">
+            <summary>
+              Adds a header to the collection.
+            </summary>
+            <param name="header">
+              Header to add to the collection.
+            </param>
+            <returns>
+              Index at which the Header was added.
+            </returns>
+        </member>
+        <member name="M:aspNetMime.HeaderCollection.System#Collections#IList#Add(System.Object)">
+            <summary>
+              For IList implementation only. Do Not Use.
+            </summary>
+        </member>
+        <member name="M:aspNetMime.HeaderCollection.Add(System.String,System.String)">
+            <summary>
+              Adds a new Header with the Name and Value specified.
+            </summary>
+            <param name="headerName">
+              Name of the new Header.
+            </param>
+            <param name="headerValue">
+              Value of the new Header.
+            </param>
+            <returns>
+              Index within the collection fo the new Header.
+            </returns>
+        </member>
+        <member name="M:aspNetMime.HeaderCollection.Clear">
+            <summary>
+              Clears the collection.
+            </summary>
+        </member>
+        <member name="M:aspNetMime.HeaderCollection.IndexOf(aspNetMime.Header)">
+            <summary>
+              Returns the index for the Header within the collection.
+            </summary>
+            <param name="header">
+              Header to locate within the collection.
+            </param>
+            <returns>
+              Index of the Header.
+            </returns>
+        </member>
+        <member name="M:aspNetMime.HeaderCollection.System#Collections#IList#IndexOf(System.Object)">
+            <summary>
+              For IList implementation only. Do not use.
+            </summary>
+        </member>
+        <member name="M:aspNetMime.HeaderCollection.IndexOf(System.String)">
+            <summary>
+              Returns the index for the Header with the given name within the collection.
+            </summary>
+            <param name="name">
+              Name of the Header to locate within the collection.
+            </param>
+            <returns>
+              Index of the Header with the given Name.
+            </returns>
+        </member>
+        <member name="M:aspNetMime.HeaderCollection.Insert(System.Int32,aspNetMime.Header)">
+            <summary>
+              Inserts the Header into the collection at the specified position.
+            </summary>
+            <param name="index">
+              Position at which to insert the Header.
+            </param>
+            <param name="header">
+              Header to insert.
+            </param>
+        </member>
+        <member name="M:aspNetMime.HeaderCollection.System#Collections#IList#Insert(System.Int32,System.Object)">
+            <summary>
+              For IList implementation only. Do not use.
+            </summary>
+        </member>
+        <member name="M:aspNetMime.HeaderCollection.Remove(aspNetMime.Header)">
+            <summary>
+              Removes the first occurrence of a specific Header from the Collection.
+            </summary>
+            <param name="header">
+              The Header to remove.
+            </param>
+        </member>
+        <member name="M:aspNetMime.HeaderCollection.System#Collections#IList#Remove(System.Object)">
+            <summary>
+              For IList implementation only. Do not use.
+            </summary>
+        </member>
+        <member name="M:aspNetMime.HeaderCollection.Remove(System.String)">
+            <summary>
+              Removes all Headers with the specified Name.
+            </summary>
+            <param name="name">
+              Name of the Header to remove.
+            </param>
+        </member>
+        <member name="M:aspNetMime.HeaderCollection.RemoveAt(System.Int32)">
+            <summary>
+              Removes the element at the specified index of the Collection.
+            </summary>
+            <param name="index">
+              Index of the element to remove.
+            </param>
+        </member>
+        <member name="M:aspNetMime.HeaderCollection.GetEnumerator">
+            <summary>
+              Returns an enumerator that can iterate through the Collection.
+            </summary>
+            <returns>
+              An IEnumerator for the entire Collection.
+            </returns>
+        </member>
+        <member name="M:aspNetMime.HeaderCollection.GetEnumerator(System.Int32,System.Int32)">
+            <summary>
+              Returns an enumerator that can iterate through the Collection.
+            </summary>
+            <param name="index">
+              The zero-based starting index of the Collection section that the enumerator should refer to. 
+            </param>
+            <param name="count">
+              The number of elements in the Collection section that the enumerator should refer to. 
+            </param>
+            <returns>
+              An IEnumerator for the specified section of the Collection.
+            </returns>
+        </member>
+        <member name="M:aspNetMime.HeaderCollection.ToString">
+            <summary>
+            Returns the raw headers.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:aspNetMime.HeaderCollection.Matching(System.String)">
+            <summary>
+            Returns a list of Headers that have the same name.
+            </summary>
+            <param name="headerName">Name of the header.</param>
+            <returns>List of headers</returns>
+        </member>
+        <member name="P:aspNetMime.HeaderCollection.Item(System.Int32)">
+            <summary>
+              Gets or Sets items in this collection.
+            </summary>
+        </member>
+        <member name="P:aspNetMime.HeaderCollection.System#Collections#IList#$Item$(System.Int32)">
+            <summary>
+              For IList implementation purposes only.
+            </summary>
+        </member>
+        <member name="P:aspNetMime.HeaderCollection.Item(System.String)">
+            <summary>
+              Returns the header with the specified name.
+            </summary>
+        </member>
+        <member name="P:aspNetMime.HeaderCollection.Count">
+            <summary>
+              Returns the number of items contained in the collection.
+            </summary>
+        </member>
+        <member name="P:aspNetMime.HeaderCollection.IsSynchronized">
+            <summary>
+              Gets a value indicating whether access to the Collection is synchronized (thread safe).
+            </summary>
+        </member>
+        <member name="P:aspNetMime.HeaderCollection.SyncRoot">
+            <summary>
+              Gets an object that can be used to synchronize access to the Collection.
+            </summary>
+        </member>
+        <member name="P:aspNetMime.HeaderCollection.IsFixedSize">
+            <summary>
+              Gets a value indicating whether the collection is a fixed size.
+            </summary>
+        </member>
+        <member name="P:aspNetMime.HeaderCollection.IsReadOnly">
+            <summary>
+              Gets a value indicating whether the Collection is read-only.
+            </summary>
+        </member>
+        <member name="T:aspNetMime.MimeException">
+            <summary>
+            MimeException raised during parsing.
+            </summary>
+        </member>
+        <member name="M:aspNetMime.MimeException.#ctor(System.String)">
+            <summary>
+            Creates an instance of a MimeException
+            </summary>
+            <param name="errorMessage">Exception error message</param>
+        </member>
+        <member name="M:aspNetMime.MimeException.#ctor">
+            <summary>
+            Creates an instance of a MimeException
+            </summary>
+        </member>
+        <member name="M:aspNetMime.MimeException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Creates an instance of a MimeException
+            </summary>
+            <param name="info">The object that holds the serialized object data</param>
+            <param name="context">The contextual information about the source or destination</param>
+        </member>
+        <member name="T:aspNetMime.MimePartCollection">
+            <summary>
+              Implements a collection of aspNetMime Mime Parts.
+            </summary>
+        </member>
+        <member name="M:aspNetMime.MimePartCollection.Add(aspNetMime.MimePart)">
+            <summary>
+              Adds a Mime Part to the collection.
+            </summary>
+            <param name="mimePart">
+              Mime Part to add to the collection.
+            </param>
+            <returns>
+              Position within the collection where the new Mime Part was placed.
+            </returns>
+        </member>
+        <member name="M:aspNetMime.MimePartCollection.Insert(System.Int32,aspNetMime.MimePart)">
+            <summary>
+              Inserts the Mime Part at the specified Index within the collection.
+            </summary>
+            <param name="index">
+              Index at which to place the Mime Part.
+            </param>
+            <param name="mimePart">
+              Mime Part to insert.
+            </param>
+        </member>
+        <member name="M:aspNetMime.MimePartCollection.Remove(System.String)">
+            <summary>Removes a MimePart from the MimePart collection.</summary>
+            
+            <param name="name">Name of the MimePart to remove.</param>
+        </member>
+        <member name="P:aspNetMime.MimePartCollection.Item(System.Int32)">
+            <summary>
+              Retrieves the Mime Part at the given index within the collection.
+            </summary>
+        </member>
+        <member name="T:aspNetMime.ParseMessageEventHandler">
+            <summary>
+            The delegate used for event handling.
+            </summary>
+            
+        </member>
+        <member name="T:aspNetMime.ParseMessageEventArgs">
+            <summary>These event args are raised when a message is parsed.</summary>
+            
+        </member>
+        <member name="M:aspNetMime.ParseMessageEventArgs.#ctor">
+            <summary>Creates an instance of the ParseMessageEventArgs</summary>
+            
+        </member>
+        <member name="M:aspNetMime.ParseMessageEventArgs.#ctor(System.String,aspNetMime.MimeMessage)">
+            <summary>Creates an instance of the ParseMessageEventArgs</summary>
+            
+            <param name="filename">Path to the MimeMessage being parsed.</param>
+            <param name="message">The MimeMessage.</param>
+        </member>
+        <member name="M:aspNetMime.ParseMessageEventArgs.Copy(System.String,System.String,System.Boolean)">
+            <summary>Copy a file based message to a new location.</summary>
+            
+            <param name="destinationDirectory">Desitnation Directory</param>
+            <param name="destinationFilename">Destination filename.</param>
+            <param name="overwrite">Overwrite any existing file with that name.</param>
+        </member>
+        <member name="M:aspNetMime.ParseMessageEventArgs.Delete">
+            <summary>Delete the file.</summary>
+            
+        </member>
+        <member name="M:aspNetMime.ParseMessageEventArgs.Move(System.String,System.String,System.Boolean)">
+            <summary>Moves the file.</summary>
+            <param name="destinationDirectory">Destination Directory</param>
+            <param name="destinationFilename">Destination filename</param>
+            <param name="overwrite">Overwrite any existing file.</param>
+            
+        </member>
+        <member name="M:aspNetMime.ParseMessageEventArgs.Move(System.String,System.Boolean)">
+            <summary>Moves the file.</summary>
+            <param name="destinationDirectory">Destination directory.</param>
+            <param name="overwrite">Overwrite any existing file.</param>
+            
+        </member>
+        <member name="M:aspNetMime.ParseMessageEventArgs.SaveToFile(System.String)">
+            <summary>Saves the MimeMessage to a file.</summary>
+            <param name="path">Path to the file.</param>
+            
+        </member>
+        <member name="P:aspNetMime.ParseMessageEventArgs.Cancel">
+            <summary>Cancels message processing</summary>
+            
+        </member>
+        <member name="P:aspNetMime.ParseMessageEventArgs.Data">
+            <summary>
+            Data of the MimeMessage as a binary array.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.ParseMessageEventArgs.Filename">
+            <summary>Filename (and path) of the message being processed.</summary>
+            
+        </member>
+        <member name="P:aspNetMime.ParseMessageEventArgs.MimeMessage">
+            <summary>MimeMessage being processed.</summary>
+            
+        </member>
+        <member name="P:aspNetMime.ParseMessageEventArgs.ProcessingException">
+            <summary>Any exception raised while the messaged was parsed.</summary>
+            
+        </member>
+        <member name="P:aspNetMime.ParseMessageEventArgs.ThrowException">
+            <summary>Throw any ProcessingException.</summary>
+            
+        </member>
+        <member name="T:aspNetMime.BlackListChecker">
+            <summary>
+            Checks the Received IP addresses of a message and determines if the sender is on a BlackList
+            </summary>
+            
+        </member>
+        <member name="M:aspNetMime.BlackListChecker.OnBeforeLookup(aspNetMime.BeforeLookupEventArgs)">
+            <summary>
+            Raises the BeforeLookup event.
+            </summary>
+            <param name="e"></param>
+            
+        </member>
+        <member name="M:aspNetMime.BlackListChecker.OnLookup(aspNetMime.LookupEventArgs)">
+            <summary>
+            Raises the Lookup event.
+            </summary>
+            
+        </member>
+        <member name="M:aspNetMime.BlackListChecker.#ctor">
+            <summary>
+            Creates an instance of a BlackListChecker
+            </summary>
+            
+        </member>
+        <member name="M:aspNetMime.BlackListChecker.AddDNSBlackList(aspNetMime.DNSBlackList)">
+            <summary>
+            Adds a DNSBlackList server to the internal DNSBlackList collection.
+            </summary>
+            
+        </member>
+        <member name="M:aspNetMime.BlackListChecker.AddDNSBlackList(System.String,System.String)">
+            <summary>
+            Adds a DNSBlackList server to the internal DNSBlackList collection.
+            </summary>
+            
+        </member>
+        <member name="M:aspNetMime.BlackListChecker.ClearBlackLists">
+            <summary>
+            Clears all internal BlackLists
+            </summary>
+            
+        </member>
+        <member name="M:aspNetMime.BlackListChecker.LoadText(System.String)">
+            <summary>Loads and parses the received IPs from message headers.</summary>
+            
+            <param name="messageText">The headers or text of the message.</param>
+        </member>
+        <member name="M:aspNetMime.BlackListChecker.LoadFile(System.String)">
+            <summary>
+            Loads the contents of an email message from a text file.
+            </summary>
+            
+            <param name="path">Filesystem path to the text file.</param>
+        </member>
+        <member name="M:aspNetMime.BlackListChecker.LoadMessage(aspNetMime.MimePart)">
+            <summary>
+            Loads a MimeMessage for spam checking.
+            </summary>
+            
+            <param name="message">MimeMessage to be checked for spam.</param>
+        </member>
+        <member name="M:aspNetMime.BlackListChecker.IsBlackListed(System.String)">
+            <summary>
+            Checks to see if the IPs, found in the message headers are black listed
+            </summary>
+            <returns>True if any one of the IPs found in the message headers were black listed.</returns>
+            
+            <param name="messageText">Email message text or headers</param>
+        </member>
+        <member name="M:aspNetMime.BlackListChecker.IsBlackListedIPs(System.String)">
+            <summary>Checks a comma delimited string of IP addresses.</summary>
+            
+        </member>
+        <member name="M:aspNetMime.BlackListChecker.IsBlackListed">
+            <summary>Checks to see if the SuspectIPs are black listed.</summary>
+            
+        </member>
+        <member name="M:aspNetMime.BlackListChecker.BeginIsBlackListed(System.AsyncCallback,System.Object)">
+            <summary>
+            Used for asynchronous IsBlackListed completion.
+            </summary>
+            <returns>An IAsyncResult instance that references the asynchronous request.</returns>
+            
+            <param name="callback">The async callback.</param>
+            <param name="blackListChecker">The BlackListChecker object</param>
+        </member>
+        <member name="M:aspNetMime.BlackListChecker.EndIsBlackListed(System.IAsyncResult)">
+            <summary>
+            Ends an asynchronous IsBlackListed.
+            </summary>
+            <returns>
+            True or False, if the IP Addresses has been blacklisted by the specified DNSbl
+            servers.
+            </returns>
+            
+            <param name="result">The pending IsBlackListed result object.</param>
+        </member>
+        <member name="M:aspNetMime.BlackListChecker.ExtractIPsFromMessage(System.String)">
+            <summary>
+            Extracts a comma delimited string of IP addresses from a string of text.
+            </summary>
+            <returns>Comma delimited string of IP addresses </returns>
+            
+            
+            <param name="messageText">Email message headers or message text</param>
+        </member>
+        <member name="E:aspNetMime.BlackListChecker.BeforeLookup">
+            <summary>
+            The event raised just before the BlackListChecker performs a lookup.
+            </summary>
+            
+        </member>
+        <member name="E:aspNetMime.BlackListChecker.Lookup">
+            <summary>
+             A Lookup event has occurred.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.BlackListChecker.LookupBehavior">
+            <summary>Checks the DNSbl databases synchronously, or asynchronously.</summary>
+            
+            
+        </member>
+        <member name="P:aspNetMime.BlackListChecker.SuspectIPs">
+            <summary>
+            A comma delimited string of IP addresses to check
+            </summary>
+            
+            
+        </member>
+        <member name="P:aspNetMime.BlackListChecker.DNSBlackLists">
+            <summary>A DNSBlackListCollection of DNSBlackList servers</summary>
+            
+        </member>
+        <member name="P:aspNetMime.BlackListChecker.SynchronizingObject">
+            <summary>
+            Gets or sets the object used to marshal the event handler calls issued as a result of events.
+            </summary>
+        </member>
+        <member name="T:aspNetMime.DNSBlackList">
+            <summary>A class for communicating with DNSbl Spam Databases</summary>
+            
+            
+        </member>
+        <member name="M:aspNetMime.DNSBlackList.#ctor">
+            <summary>Creates an instance a class for communicating with DNSbl Spam Databases</summary>
+            
+        </member>
+        <member name="M:aspNetMime.DNSBlackList.#ctor(System.String,System.String)">
+            <summary>Creates an instance a class for communicating with DNSbl Spam Databases</summary>
+            <param name="domain">The Spam Database lookup domain</param>
+            <param name="responses">A comma delimited list of possible responses.</param>
+            
+            
+        </member>
+        <member name="M:aspNetMime.DNSBlackList.#ctor(System.String,System.String[])">
+            <summary>Creates an instance a class for communicating with DNSbl Spam Databases</summary>
+            <param name="domain">The Spam Database lookup domain</param>
+            <param name="responseCodes">A string array of possible response codes.</param>
+        </member>
+        <member name="M:aspNetMime.DNSBlackList.#ctor(System.String,System.String,System.String)">
+            <summary>Creates an instance a class for communicating with DNSbl Spam Databases</summary>
+            <param name="domain">The Spam Database lookup domain</param>
+            <param name="responses">A comma delimited list of possible responses.</param>
+            <param name="name">The label of this DNSBlackList</param>
+        </member>
+        <member name="M:aspNetMime.DNSBlackList.IsListed(System.String)">
+            <summary>
+            Checks to see if any of the suspect IP Addresses are listed with the DNSbl.
+            </summary>
+            
+            <param name="suspectIPAddresses">IP Addresses suspected of being a source of spam.</param>
+        </member>
+        <member name="M:aspNetMime.DNSBlackList.BeginIsListed(System.String,System.AsyncCallback,System.Object)">
+            <summary>
+            Used for asynchronous IsListed completion.
+            </summary>
+            <returns>An IAsyncResult instance that references the asynchronous request.</returns>
+            
+            <param name="suspectIPAddresses">IP Addresses suspected of being a source of spam.</param>
+            <param name="callback">The async callback.</param>
+            <param name="dnsBlackList">The current DNSBlackList object</param>
+        </member>
+        <member name="M:aspNetMime.DNSBlackList.EndIsListed(System.IAsyncResult)">
+            <summary>
+            Ends an asynchronous IsListed.
+            </summary>
+            <returns>The results</returns>
+            
+            <param name="result">The pending IsListed result object.</param>
+        </member>
+        <member name="P:aspNetMime.DNSBlackList.Name">
+            <summary>
+            This name of this DNSBlackList instance. This value is not used to query the DNS server, but rather to just label this instance of the DNSBlackList class.
+            To set the DNS Domain name, use the Domain property.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.DNSBlackList.ResponseCodes">
+            <summary>
+            The possible response codes from the DNSbl service.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.DNSBlackList.Domain">
+            <summary>The DNSBlackList domain lookup zone.</summary>
+            
+        </member>
+        <member name="P:aspNetMime.DNSBlackList.FoundListed">
+            <summary>
+            The result of IsListed() as a property.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.DNSBlackList.LookupException">
+            <summary>
+            If any exception occurs during DNS resolution of DNSbl lookup, it is populated here for reference.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.DNSBlackList.Response">
+            <summary>
+            The response recieved from the DNSbl service.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.DNSBlackList.Tag">
+            <summary>
+            A custom object that can be used to differentiate  instances in a multi-threaded application. This property is not used internally.
+            </summary>
+        </member>
+        <member name="P:aspNetMime.DNSBlackList.DNSblResults">
+            <summary>
+            A DataSet of DNSbl results, cached for future lookups.
+            </summary>
+        </member>
+        <member name="P:aspNetMime.DNSBlackList.RecordExpiration">
+            <summary>
+            The amount of time to keep the records from expiring in the DNSblResults DataSet.
+            </summary>
+        </member>
+        <member name="T:aspNetMime.DNSblLookupBehavior">
+            <summary>
+            Behavior used for blacklist checking.
+            </summary>
+            
+        </member>
+        <member name="F:aspNetMime.DNSblLookupBehavior.CheckAll">
+            <summary>
+            Check all DNSbl servers.
+            </summary>
+            
+        </member>
+        <member name="F:aspNetMime.DNSblLookupBehavior.FirstLocated">
+            <summary>
+            Stops checking DNSbl servers when the first DNSbl server marks a message as spam.
+            </summary>
+            
+        </member>
+        <member name="T:aspNetMime.DNSBlackListCollection">
+            <summary>
+            A Collection for managing multiple DNSBlackList objects.
+            </summary>
+        </member>
+        <member name="M:aspNetMime.DNSBlackListCollection.#ctor">
+            <summary>
+              Empty constructor. 
+              This will initialize the collection to 5 items.
+            </summary>		
+        </member>
+        <member name="M:aspNetMime.DNSBlackListCollection.#ctor(System.Int32)">
+            <summary>
+              Initializes the container to hold the specified number of items.
+            </summary>
+            <param name="initialCount">
+              The initial size of the collection. 
+            </param>
+        </member>
+        <member name="M:aspNetMime.DNSBlackListCollection.Contains(aspNetMime.DNSBlackList)">
+            <summary>
+              Attempts to locate the DNSBlackList within the collection.
+            </summary>
+            <param name="dnsBlackList">
+              DNSBlackList to locate.
+            </param>
+            <returns>
+              True if the DNSBlackList exists in the collection.
+            </returns>
+        </member>
+        <member name="M:aspNetMime.DNSBlackListCollection.System#Collections#IList#Contains(System.Object)">
+            <summary>
+              For IList implementation only. Do not use.
+            </summary>
+        </member>
+        <member name="M:aspNetMime.DNSBlackListCollection.CopyTo(System.Array,System.Int32)">
+            <summary>
+              Copies the items from this collection into the array at the specified index.
+            </summary>
+            <param name="array">
+              Array to copy the items to.
+            </param>
+            <param name="index">
+              Index of position within the array to being copying at.
+            </param>
+        </member>
+        <member name="M:aspNetMime.DNSBlackListCollection.CopyTo(aspNetMime.DNSBlackListCollection)">
+            <summary>
+              Copies all the DNSBlackLists from this collection to another DNSBlackList Collection.
+            </summary>
+            <param name="dnsBlackLists">
+              Collection to copy to.
+            </param>
+        </member>
+        <member name="M:aspNetMime.DNSBlackListCollection.Add(aspNetMime.DNSBlackList)">
+            <summary>
+              Adds a dnsBlackList to the collection.
+            </summary>
+            <param name="dnsBlackList">
+              DNSBlackList to add to the collection.
+            </param>
+            <returns>
+              Index at which the DNSBlackList was added.
+            </returns>
+        </member>
+        <member name="M:aspNetMime.DNSBlackListCollection.System#Collections#IList#Add(System.Object)">
+            <summary>
+              For IList implementation only. Do Not Use.
+            </summary>
+        </member>
+        <member name="M:aspNetMime.DNSBlackListCollection.Clear">
+            <summary>
+              Clears the collection.
+            </summary>
+        </member>
+        <member name="M:aspNetMime.DNSBlackListCollection.IndexOf(aspNetMime.DNSBlackList)">
+            <summary>
+              Returns the index for the DNSBlackList within the collection.
+            </summary>
+            <param name="dnsBlackList">
+              DNSBlackList to locate within the collection.
+            </param>
+            <returns>
+              Index of the DNSBlackList.
+            </returns>
+        </member>
+        <member name="M:aspNetMime.DNSBlackListCollection.System#Collections#IList#IndexOf(System.Object)">
+            <summary>
+              For IList implementation only. Do not use.
+            </summary>
+        </member>
+        <member name="M:aspNetMime.DNSBlackListCollection.Insert(System.Int32,aspNetMime.DNSBlackList)">
+            <summary>
+              Inserts the DNSBlackList into the collection at the specified position.
+            </summary>
+            <param name="index">
+              Position at which to insert the dnsBlackList.
+            </param>
+            <param name="dnsBlackList">
+              DNSBlackList to insert.
+            </param>
+        </member>
+        <member name="M:aspNetMime.DNSBlackListCollection.System#Collections#IList#Insert(System.Int32,System.Object)">
+            <summary>
+              For IList implementation only. Do not use.
+            </summary>
+        </member>
+        <member name="M:aspNetMime.DNSBlackListCollection.Remove(aspNetMime.DNSBlackList)">
+            <summary>
+              Removes the first occurrence of a specific DNSBlackList from the Collection.
+            </summary>
+            <param name="dnsBlackList">
+              The DNSBlackList to remove.
+            </param>
+        </member>
+        <member name="M:aspNetMime.DNSBlackListCollection.System#Collections#IList#Remove(System.Object)">
+            <summary>
+              For IList implementation only. Do not use.
+            </summary>
+        </member>
+        <member name="M:aspNetMime.DNSBlackListCollection.RemoveAt(System.Int32)">
+            <summary>
+              Removes the element at the specified index of the Collection.
+            </summary>
+            <param name="index">
+              Index of the element to remove.
+            </param>
+        </member>
+        <member name="M:aspNetMime.DNSBlackListCollection.GetEnumerator">
+            <summary>
+              Returns an enumerator that can iterate through the Collection.
+            </summary>
+            <returns>
+              An IEnumerator for the entire Collection.
+            </returns>
+        </member>
+        <member name="M:aspNetMime.DNSBlackListCollection.GetEnumerator(System.Int32,System.Int32)">
+            <summary>
+              Returns an enumerator that can iterate through the Collection.
+            </summary>
+            <param name="index">
+              The zero-based starting index of the Collection section that the enumerator should refer to. 
+            </param>
+            <param name="count">
+              The number of elements in the Collection section that the enumerator should refer to. 
+            </param>
+            <returns>
+              An IEnumerator for the specified section of the Collection.
+            </returns>
+        </member>
+        <member name="M:aspNetMime.DNSBlackListCollection.Remove(System.String)">
+            <summary>
+              Removes all DNSBlackLists with the specified Name.
+            </summary>
+            <param name="domain">
+              domain of the DNSBlackList to remove.
+            </param>
+        </member>
+        <member name="M:aspNetMime.DNSBlackListCollection.Contains(System.String)">
+            <summary>
+              Returns true if the specified dnsBlackList is contained within the collection.
+            </summary>
+            <param name="domain">
+              Domain of the dnsBlackList to look for in the collection.
+            </param>
+            <returns>
+              True if the dnsBlackList is contained in the collection.
+            </returns>
+        </member>
+        <member name="M:aspNetMime.DNSBlackListCollection.IndexOf(System.String)">
+            <summary>
+              Returns the index for the DNSBlackList with the given name within the collection.
+            </summary>
+            <param name="domain">
+              Domain  of the DNSBlackList to locate within the collection.
+            </param>
+            <returns>
+              Index of the DNSBlackList with the given Name.
+            </returns>
+        </member>
+        <member name="M:aspNetMime.DNSBlackListCollection.ToArray">
+            <summary>
+            Converts the collection to an array of DNSBlackList objects.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:aspNetMime.DNSBlackListCollection.Item(System.Int32)">
+            <summary>
+              Gets or Sets items in this collection.
+            </summary>
+        </member>
+        <member name="P:aspNetMime.DNSBlackListCollection.System#Collections#IList#$Item$(System.Int32)">
+            <summary>
+              For IList implementation purposes only.
+            </summary>
+        </member>
+        <member name="P:aspNetMime.DNSBlackListCollection.Count">
+            <summary>
+              Returns the number of items contained in the collection.
+            </summary>
+        </member>
+        <member name="P:aspNetMime.DNSBlackListCollection.IsSynchronized">
+            <summary>
+              Gets a value indicating whether access to the Collection is synchronized (thread safe).
+            </summary>
+        </member>
+        <member name="P:aspNetMime.DNSBlackListCollection.SyncRoot">
+            <summary>
+              Gets an object that can be used to synchronize access to the Collection.
+            </summary>
+        </member>
+        <member name="P:aspNetMime.DNSBlackListCollection.IsFixedSize">
+            <summary>
+              Gets a value indicating whether the collection is a fixed size.
+            </summary>
+        </member>
+        <member name="P:aspNetMime.DNSBlackListCollection.IsReadOnly">
+            <summary>
+              Gets a value indicating whether the Collection is read-only.
+            </summary>
+        </member>
+        <member name="P:aspNetMime.DNSBlackListCollection.Item(System.String)">
+            <summary>
+              Returns the dnsBlackList with the specified name.
+            </summary>
+        </member>
+        <member name="T:aspNetMime.MessageProcessor">
+            <summary>Processes a directory or set of messages.</summary>
+            
+        </member>
+        <member name="M:aspNetMime.MessageProcessor.OnParseMessage(aspNetMime.ParseMessageEventArgs)">
+            <summary>
+            Used for the ParseMessage event.
+            </summary>
+            <param name="e">ParseMessageEventArgs raised when a message is parsed</param>
+            
+        </member>
+        <member name="M:aspNetMime.MessageProcessor.#ctor">
+            <summary>Creates an instance of the MessageProcessor class</summary>
+            
+        </member>
+        <member name="M:aspNetMime.MessageProcessor.AddToReport(aspNetMime.MimeMessage)">
+            <summary>Adds a MimeMessage to the report.</summary>
+            <param name="message">Message to be added to the report.</param>
+        </member>
+        <member name="M:aspNetMime.MessageProcessor.ProcessDirectory(System.String)">
+            <summary>Processes a directory of Mime formatted messages.</summary>
+            
+            <param name="path">Path to the directory.</param>
+        </member>
+        <member name="M:aspNetMime.MessageProcessor.ProcessDirectory(System.String,System.Boolean)">
+            <summary>Processes a directory of Mime formatted messages.</summary>
+            
+            <param name="path">Path to the directory</param>
+            <param name="recurseDirectory">Recurse any subdirectories.</param>
+        </member>
+        <member name="M:aspNetMime.MessageProcessor.ProcessDirectory(System.String,System.String)">
+            <summary>Processes a directory of Mime formatted messages.</summary>
+            
+            <param name="path">Path to the directory.</param>
+            <param name="searchPattern">Search pattern to find files.</param>
+        </member>
+        <member name="M:aspNetMime.MessageProcessor.ProcessDirectory(System.String,System.String,System.Boolean)">
+            <summary>Processes a directory of Mime formatted messages.</summary>
+            
+            <param name="path">Path to the directory.</param>
+            <param name="searchPattern">Search pattern to select files.</param>
+            <param name="recurseDirectory">Recurse any subdirectories</param>
+        </member>
+        <member name="M:aspNetMime.MessageProcessor.ProcessFiles(System.String[])">
+            <summary>
+            Process an array of MimeMessage files.
+            </summary>
+            <param name="files">Array of files.</param>
+            
+        </member>
+        <member name="M:aspNetMime.MessageProcessor.ProcessMBXFile(System.String)">
+            <summary>
+            Processes a MBX (mailbox) file of messages.
+            </summary>
+            <param name="mailboxPath">Path to the mbx file.</param>
+            
+        </member>
+        <member name="M:aspNetMime.MessageProcessor.ProcessMBXFile(System.String,System.Text.Encoding)">
+            <summary>
+            Processes a MBX (mailbox) file of messages.
+            </summary>
+            <param name="encoding">Encoding used to read the file.</param>
+            <param name="mailboxPath">Path to the mbx file.</param>
+            
+        </member>
+        <member name="P:aspNetMime.MessageProcessor.SynchronizingObject">
+            <summary>
+            Gets or sets the object used to marshal the event handler calls issued as a result of events.
+            </summary>
+        </member>
+        <member name="P:aspNetMime.MessageProcessor.Report">
+            <summary>Report generated from processing the directory.</summary>
+            
+            
+        </member>
+        <member name="P:aspNetMime.MessageProcessor.MBXDelimiter">
+            <summary>
+            The text that seperates messages.
+            </summary>
+            
+        </member>
+        <member name="E:aspNetMime.MessageProcessor.ParseMessage">
+            <summary>This event is raised every time an image is parsed.</summary>
+            
+        </member>
+        <member name="T:aspNetMime.MimeReport">
+            <summary>A report object used to keep track of all the messages parsed.</summary>
+            
+            
+        </member>
+        <member name="M:aspNetMime.MimeReport.OnReportAddingRow(aspNetMime.ReportAddingRowEventArgs)">
+            <summary>
+            Used in conjuction with the ReportAddingRow event handler.
+            </summary>
+            <param name="e">ReportAddingRowEventArgs</param>
+            
+        </member>
+        <member name="M:aspNetMime.MimeReport.#ctor">
+            <summary>Creates an instance of the MimeReport</summary>
+            
+        </member>
+        <member name="M:aspNetMime.MimeReport.#ctor(System.Boolean)">
+            <summary>Creates an instance of the MimeReport</summary>
+            
+            <param name="createBaseDataSet">Creates the underlying DataSet used by the MimeReport</param>
+        </member>
+        <member name="M:aspNetMime.MimeReport.#ctor(System.Boolean,System.Boolean)">
+            <summary>Creates an instance of the MimeReport</summary>
+            
+            <param name="createBaseDataSet">Create the underlying DataSet used by the MimeReport</param>
+            <param name="inMemoryReport">Keep the report InMemory</param>
+        </member>
+        <member name="M:aspNetMime.MimeReport.AddToReport(aspNetMime.MimeMessage)">
+            <summary>
+            Adds a MimeMessage to the report.
+            </summary>
+            <param name="message">Message to get added to the report</param>
+            
+        </member>
+        <member name="M:aspNetMime.MimeReport.BuildDataSetSchema">
+            <summary>
+            Builds the schema for the first DataTable of the BaseDataSet.
+            </summary>
+        </member>
+        <member name="M:aspNetMime.MimeReport.InitializeReportStream">
+            <summary>Initializes the report stream.</summary>
+            
+        </member>
+        <member name="M:aspNetMime.MimeReport.InitializeReportStream(System.Text.Encoding)">
+            <summary>Initializes the report stream.</summary>
+            
+            <param name="encoding">Encoding used to write text.</param>
+        </member>
+        <member name="M:aspNetMime.MimeReport.InitializeReportStream(System.String)">
+            <summary>Initializes the report stream.</summary>
+            
+            <param name="path">Path to the report.</param>
+        </member>
+        <member name="M:aspNetMime.MimeReport.InitializeReportStream(System.String,System.Text.Encoding)">
+            <summary>Initializes the report stream.</summary>
+            
+            <param name="path">Path to the report.</param>
+            <param name="encoding">Encoding used for writing text to the report.</param>
+        </member>
+        <member name="M:aspNetMime.MimeReport.FlushReportStream">
+            <summary>Flushes any remaining data in the ReportStream to the report.</summary>
+            
+        </member>
+        <member name="M:aspNetMime.MimeReport.CloseReportStream">
+            <summary>Closes the report stream.</summary>
+            
+        </member>
+        <member name="M:aspNetMime.MimeReport.SaveToFile(System.String)">
+            <summary>Saves the InMemory report to a file.</summary>
+            
+            
+            <param name="path">Report path.</param>
+        </member>
+        <member name="M:aspNetMime.MimeReport.SaveToFile(System.String,aspNetMime.MimeReportType)">
+            <summary>Saves the InMemory report to a file.</summary>
+            
+            
+            <param name="path">Path to the report.</param>
+            <param name="type">Type of report to save.</param>
+        </member>
+        <member name="M:aspNetMime.MimeReport.ToString">
+            <summary>Converts the report to a string.</summary>
+            
+        </member>
+        <member name="M:aspNetMime.MimeReport.ToString(aspNetMime.MimeReportType)">
+            <summary>Converts the report to a string.</summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimeReport.MimeMessageDataTableName">
+            <summary>
+            The name of the DataTable for the in-memory report.
+            </summary>
+        </member>
+        <member name="P:aspNetMime.MimeReport.BaseDataSet">
+            <summary>
+            The base DataSet used for the in-memory report storage.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimeReport.SynchronizingObject">
+            <summary>
+            Gets or sets the object used to marshal the event handler calls issued as a result of events.
+            </summary>
+        </member>
+        <member name="P:aspNetMime.MimeReport.IncludeColumnNames">
+            <summary>Includes the column names in the report.</summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimeReport.InMemoryReport">
+            <summary>Keeps the report in memory.</summary>
+            
+            
+        </member>
+        <member name="P:aspNetMime.MimeReport.ValueRowDelimiter">
+            <summary>The delimiter used to separate rows in the report.</summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimeReport.ValueDelimiter">
+            <summary>The delimiter used to separate values in the report.</summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimeReport.ValueQualifier">
+            <summary>The qualifier used for surrounding values.</summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimeReport.Type">
+            <summary>The type of report to generate.</summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimeReport.ReportStream">
+            <summary>
+            The underlying stream used by the report.
+            </summary>
+        </member>
+        <member name="E:aspNetMime.MimeReport.ReportAddingRow">
+            <summary>
+            This event is raised everytime a MimeMessage is added to the Report
+            </summary>
+            
+        </member>
+        <member name="T:aspNetMime.MimeReportType">
+            <summary>Deterimes the type of MimeReport to be generated.</summary>
+            
+        </member>
+        <member name="F:aspNetMime.MimeReportType.ValueSeparated">
+            <summary>Creates a value separated report.</summary>
+        </member>
+        <member name="F:aspNetMime.MimeReportType.Xml">
+            <summary>Creates a Xml report</summary>
+        </member>
+        <member name="T:aspNetMime.Address">
+            <summary>
+            A class representing an EmailAddress.  Mostly used with the aspNetMime MimeMessage class To and CC properties.
+            </summary>
+            
+        </member>
+        <member name="M:aspNetMime.Address.#ctor">
+            <summary>
+            Creates an instance of an Address 
+            </summary>
+            
+        </member>
+        <member name="M:aspNetMime.Address.#ctor(System.String)">
+            <summary>
+            Creates an instance of an Address object, and parses rawAddress into its Name and EmailAddress parts.
+            </summary>
+            <param name="rawAddress">The Name and EmailAddress </param>
+            
+        </member>
+        <member name="M:aspNetMime.Address.Alias">
+            <summary>
+            The text of the email address before the '@' symbol.
+            </summary>
+            <returns>The alias part of the email address.</returns>
+            
+        </member>
+        <member name="M:aspNetMime.Address.Domain">
+            <summary>
+            The domain name part of the email address (text after the '@' symbol).
+            </summary>
+            <returns>Domain part</returns>
+            
+        </member>
+        <member name="M:aspNetMime.Address.Parse">
+            <summary>
+            Parses the RawAddress into its Name and EmailAddress parts.
+            </summary>
+            
+            
+        </member>
+        <member name="M:aspNetMime.Address.ToString">
+            <summary>
+            Returns the Address in the format "Name" &lt;EmailAddress&gt;
+            </summary>
+            <returns>Complete email address</returns>
+            
+        </member>
+        <member name="P:aspNetMime.Address.CharSet">
+            <summary>Encoded characterset of the address name.</summary>
+        </member>
+        <member name="P:aspNetMime.Address.EmailAddress">
+            <summary>
+            The EmailAddress part of the Address.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.Address.Name">
+            <summary>
+            The Name part of the Address.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.Address.NameEncoding">
+            <summary>Encoding used to encode the name</summary>
+            
+            
+        </member>
+        <member name="P:aspNetMime.Address.Pattern">
+            <summary>
+            The Regex pattern, used internally, for parsing email addresses.
+            </summary>
+        </member>
+        <member name="P:aspNetMime.Address.RawAddress">
+            <summary>
+            The complete Name and Email Address.
+            </summary>
+            
+        </member>
+        <member name="T:aspNetMime.AddressCollection">
+            <summary>
+              Basic collection class Headers.
+            </summary>
+        </member>
+        <member name="M:aspNetMime.AddressCollection.#ctor">
+            <summary>
+              Empty constructor. 
+            </summary>
+        </member>
+        <member name="M:aspNetMime.AddressCollection.#ctor(System.Int32)">
+            <summary>
+              Initializes the container to hold the specified number of items.
+            </summary>
+            <param name="initialCount">
+              The initial size of the collection. 
+            </param>
+        </member>
+        <member name="M:aspNetMime.AddressCollection.Contains(aspNetMime.Address)">
+            <summary>
+              Attempts to locate the Address within the collection.
+            </summary>
+            <param name="address">
+              Address to locate.
+            </param>
+            <returns>
+              True if the Address exists in the collection.
+            </returns>
+        </member>
+        <member name="M:aspNetMime.AddressCollection.System#Collections#IList#Contains(System.Object)">
+            <summary>
+              For IList implementation only. Do not use.
+            </summary>
+        </member>
+        <member name="M:aspNetMime.AddressCollection.Contains(System.String)">
+            <summary>
+              Returns true if the specified address is contained within the collection.
+            </summary>
+            <param name="emailAddress">
+              EmailAddress of the address to look for in the collection.
+            </param>
+            <returns>
+              True if the address is contained in the collection.
+            </returns>
+        </member>
+        <member name="M:aspNetMime.AddressCollection.Contains(System.String,System.Boolean)">
+            <summary>
+            Checks the AddressCollection for an email address.
+            </summary>
+            <param name="emailAddress">The email address to find.</param>
+            <param name="ignoreCase">Ignoe case sensitivity during the search. </param>
+            <returns></returns>
+        </member>
+        <member name="M:aspNetMime.AddressCollection.CopyTo(System.Array,System.Int32)">
+            <summary>
+              Copies the items from this collection into the array at the specified index.
+            </summary>
+            <param name="array">
+              Array to copy the items to.
+            </param>
+            <param name="index">
+              Index of position within the array to being copying at.
+            </param>
+        </member>
+        <member name="M:aspNetMime.AddressCollection.CopyTo(aspNetMime.AddressCollection)">
+            <summary>
+              Copies all the Addresses from this collection to another Address Collection.
+            </summary>
+            <param name="addresses">
+              Collection to copy to.
+            </param>
+        </member>
+        <member name="M:aspNetMime.AddressCollection.Add(aspNetMime.Address)">
+            <summary>
+              Adds a Address to the collection.
+            </summary>
+            <param name="address">
+              Address to add to the collection.
+            </param>
+            <returns>
+              Index at which the Address was added.
+            </returns>
+        </member>
+        <member name="M:aspNetMime.AddressCollection.System#Collections#IList#Add(System.Object)">
+            <summary>
+              For IList implementation only. Do Not Use.
+            </summary>
+        </member>
+        <member name="M:aspNetMime.AddressCollection.Add(System.String,System.String)">
+            <summary>
+              Adds a new Address with the EmailAddress and Namespecified.
+            </summary>
+            <param name="emailAddress">
+              EmailAddress of the new Address.
+            </param>
+            <param name="name">
+              Name of the new Address.
+            </param>
+            <returns>
+              Index within the collection fo the new Header.
+            </returns>
+        </member>
+        <member name="M:aspNetMime.AddressCollection.Clear">
+            <summary>
+              Clears the collection.
+            </summary>
+        </member>
+        <member name="M:aspNetMime.AddressCollection.IndexOf(aspNetMime.Address)">
+            <summary>
+              Returns the index for the Address within the collection.
+            </summary>
+            <param name="address">
+              Address to locate within the collection.
+            </param>
+            <returns>
+              Index of the Address.
+            </returns>
+        </member>
+        <member name="M:aspNetMime.AddressCollection.System#Collections#IList#IndexOf(System.Object)">
+            <summary>
+              For IList implementation only. Do not use.
+            </summary>
+        </member>
+        <member name="M:aspNetMime.AddressCollection.IndexOf(System.String)">
+            <summary>
+              Returns the index for the Address with the given EmailAddress within the collection.
+            </summary>
+            <param name="emailAddress">
+              EmailAddress of the Address to locate within the collection.
+            </param>
+            <returns>
+              Index of the Address with the given Name.
+            </returns>
+        </member>
+        <member name="M:aspNetMime.AddressCollection.Insert(System.Int32,aspNetMime.Address)">
+            <summary>
+              Inserts the Address into the collection at the specified position.
+            </summary>
+            <param name="index">
+              Position at which to insert the Address.
+            </param>
+            <param name="address">
+              Address to insert.
+            </param>
+        </member>
+        <member name="M:aspNetMime.AddressCollection.System#Collections#IList#Insert(System.Int32,System.Object)">
+            <summary>
+              For IList implementation only. Do not use.
+            </summary>
+        </member>
+        <member name="M:aspNetMime.AddressCollection.Remove(aspNetMime.Address)">
+            <summary>
+              Removes the first occurrence of a specific Address from the Collection.
+            </summary>
+            <param name="address">
+              The Address to remove.
+            </param>
+        </member>
+        <member name="M:aspNetMime.AddressCollection.System#Collections#IList#Remove(System.Object)">
+            <summary>
+              For IList implementation only. Do not use.
+            </summary>
+        </member>
+        <member name="M:aspNetMime.AddressCollection.Remove(System.String)">
+            <summary>
+              Removes all Addresses with the specified EmailAddress.
+            </summary>
+            <param name="emailAddress">
+              EmailAddress of the Address to remove.
+            </param>
+        </member>
+        <member name="M:aspNetMime.AddressCollection.RemoveAt(System.Int32)">
+            <summary>
+              Removes the element at the specified index of the Collection.
+            </summary>
+            <param name="index">
+              Index of the element to remove.
+            </param>
+        </member>
+        <member name="M:aspNetMime.AddressCollection.GetEnumerator">
+            <summary>
+              Returns an enumerator that can iterate through the Collection.
+            </summary>
+            <returns>
+              An IEnumerator for the entire Collection.
+            </returns>
+        </member>
+        <member name="M:aspNetMime.AddressCollection.GetEnumerator(System.Int32,System.Int32)">
+            <summary>
+              Returns an enumerator that can iterate through the Collection.
+            </summary>
+            <param name="index">
+              The zero-based starting index of the Collection section that the enumerator should refer to. 
+            </param>
+            <param name="count">
+              The number of elements in the Collection section that the enumerator should refer to. 
+            </param>
+            <returns>
+              An IEnumerator for the specified section of the Collection.
+            </returns>
+        </member>
+        <member name="M:aspNetMime.AddressCollection.ToString">
+            <summary>
+            Returns the Email Addresses.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:aspNetMime.AddressCollection.ToString(System.Boolean)">
+            <summary>Formats the AdressCollection for use in a Header</summary>
+            <param name="formatForHeaderUse">If True, formats the AddressCollection for use in a MimeMessage header.</param>
+        </member>
+        <member name="M:aspNetMime.AddressCollection.Parse(System.String)">
+            <summary>
+            A string containing mutliple email addresses.
+            </summary>
+            <param name="emailAddresses">String of email addresses</param>
+            <returns>An AddressCollection of addresses</returns>
+        </member>
+        <member name="P:aspNetMime.AddressCollection.Item(System.Int32)">
+            <summary>
+              Gets or Sets items in this collection.
+            </summary>
+        </member>
+        <member name="P:aspNetMime.AddressCollection.System#Collections#IList#$Item$(System.Int32)">
+            <summary>
+              For IList implementation purposes only.
+            </summary>
+        </member>
+        <member name="P:aspNetMime.AddressCollection.Item(System.String)">
+            <summary>
+              Returns the address with the specified EmailAddress.
+            </summary>
+        </member>
+        <member name="P:aspNetMime.AddressCollection.Count">
+            <summary>
+              Returns the number of items contained in the collection.
+            </summary>
+        </member>
+        <member name="P:aspNetMime.AddressCollection.IsSynchronized">
+            <summary>
+              Gets a value indicating whether access to the Collection is synchronized (thread safe).
+            </summary>
+        </member>
+        <member name="P:aspNetMime.AddressCollection.SyncRoot">
+            <summary>
+              Gets an object that can be used to synchronize access to the Collection.
+            </summary>
+        </member>
+        <member name="P:aspNetMime.AddressCollection.IsFixedSize">
+            <summary>
+              Gets a value indicating whether the collection is a fixed size.
+            </summary>
+        </member>
+        <member name="P:aspNetMime.AddressCollection.IsReadOnly">
+            <summary>
+              Gets a value indicating whether the Collection is read-only.
+            </summary>
+        </member>
+        <member name="T:aspNetMime.MimeEncoding">
+            <summary>Content Transfer Encodings used in MimeMessages</summary>
+        </member>
+        <member name="F:aspNetMime.MimeEncoding.None">
+            <summary>No MimeEncoding is applied.</summary>
+        </member>
+        <member name="F:aspNetMime.MimeEncoding.Base64">
+            <summary>Base64 formatting is used.</summary>
+        </member>
+        <member name="F:aspNetMime.MimeEncoding.QuotedPrintable">
+            <summary>QuotedPrintable formatting is used.</summary>
+        </member>
+        <member name="T:aspNetMime.Header">
+            <summary>
+              Basic SMTP / MIME Header class. 
+              Includes a parameters collection for MIME headers.
+            </summary>
+            
+        </member>
+        <member name="F:aspNetMime.Header.headerName">
+            <summary>
+              Name field for the Header.
+            </summary>
+        </member>
+        <member name="F:aspNetMime.Header.headerValue">
+            <summary>
+             Value field for the Header.
+            </summary>
+        </member>
+        <member name="F:aspNetMime.Header.parameters">
+            <summary>
+              Parameters collection for the Header
+            </summary>
+        </member>
+        <member name="M:aspNetMime.Header.#ctor">
+            <summary>
+              Creates a header and initializes the Parameters collection.
+            </summary>
+            
+        </member>
+        <member name="M:aspNetMime.Header.#ctor(System.String,System.String)">
+            <summary>
+            Creates an instance of a header.
+            </summary>
+            <param name="name">Name of the header.</param>
+            <param name="value">Value of the header.</param>
+        </member>
+        <member name="M:aspNetMime.Header.#ctor(System.String)">
+            <summary>
+              Parses the input for the elements of a SMTP/MIME Header.
+            </summary>
+            <param name="completeHeader">
+              Must be in the proper format for a SMTP or MIME header.
+            </param>
+            
+        </member>
+        <member name="M:aspNetMime.Header.Parse(System.String)">
+            <summary>
+              Parses the header content out of the given string. 
+              This will remove any information previously stored in the Header before parsing.
+            </summary>
+            <param name="completeHeader">
+              Complete text of the Header to parse.
+            </param>
+            
+        </member>
+        <member name="M:aspNetMime.Header.SetHeaderValue(System.String,aspNetMime.MimeEncoding,System.String)">
+            <summary>
+            Sets the HeaderValue property using a specific MimeEncoding and character set.
+            </summary>
+            <param name="value">Unencoded value of the header.</param>
+            <param name="mimeEncoding">MimeEncoding to apply to the header.</param>
+            <param name="charSet">Character set of value.</param>
+            
+        </member>
+        <member name="M:aspNetMime.Header.ToString">
+            <summary>
+              Returns the Header formatted for proper sending.
+            </summary>
+            <returns>
+              Header formatted for sending.
+            </returns>
+        </member>
+        <member name="M:aspNetMime.Header.DeocodeHeaderValue(System.String)">
+            <summary>
+            Decodes a Q or B encoded header value.
+            </summary>
+            <param name="headerValue">Value of the header.</param>
+            <returns>Decoded header value.</returns>
+            
+            
+        </member>
+        <member name="M:aspNetMime.Header.DeocodeHeaderValue(System.String,aspNetMime.MimeEncoding@,System.String@)">
+            <summary>Decodes a header</summary>
+            <summary>Decodes a Q or B encoded header value.</summary>
+            <returns>Decoded header value.</returns>
+            
+            <param name="headerValue">Encoded header.</param>
+            <param name="encoding">MimeEncoding found on the header</param>
+            <param name="charset">Characterset found on the encoded header.</param>
+        </member>
+        <member name="M:aspNetMime.Header.DecodeHeader(aspNetMime.Header)">
+            <summary>
+            Deocodes a B or Q encoded header.
+            </summary>
+            
+            <param name="header">The encoded Header</param>
+            <returns>The complete decoded Header as a string.</returns>
+            
+        </member>
+        <member name="M:aspNetMime.Header.DecodeHeader(System.String)">
+            <summary>
+            Deocodes a B or Q encoded header.
+            </summary>
+            
+            <param name="completeHeader">The compete header as a string.</param>
+            <returns>A decoded header</returns>
+            
+        </member>
+        <member name="M:aspNetMime.Header.IsEncodedHeader(System.String)">
+            <summary>
+            Checks if the header is Q or B encoded.
+            </summary>
+            <param name="headerValue">Value of the header.</param>
+            <returns>True if the headerValue is encoded.</returns>
+            
+        </member>
+        <member name="M:aspNetMime.Header.EmptyHeader(aspNetMime.Header)">
+            <summary>
+            Checks to see if the Header is null. If the header is found to be null, a new empty header is created.
+            </summary>
+            <param name="header">Header to Check</param>
+            <returns>Empty Header if Null</returns>
+            
+            
+        </member>
+        <member name="M:aspNetMime.Header.EncodeHeaderValue(System.String,System.String,aspNetMime.MimeEncoding)">
+            <summary>Encodes a header using a specific MimeEncoding and a characterset.</summary>
+            <param name="headerValue">Unencoded header value.</param>
+            <param name="charSet">Characterset used for encoding the header.</param>
+            <param name="headerEncoding">Encoding applied to the header.</param>
+            
+        </member>
+        <member name="M:aspNetMime.Header.ContentType(System.String)">
+            <summary>Creates a Content-Type header</summary>
+        </member>
+        <member name="M:aspNetMime.Header.ContentDescription(System.String)">
+            <summary>Creates a Content-Description header.</summary>
+            <param name="value">Value of the header.</param>
+        </member>
+        <member name="M:aspNetMime.Header.ContentDisposition(System.String)">
+            <summary>Creates a Content-Disposition header.</summary>
+            <param name="value">Value of the header.</param>
+        </member>
+        <member name="M:aspNetMime.Header.ContentLocation(System.String)">
+            <summary>Creates a Content-Location header.</summary>
+            <param name="value">Value of the header.</param>
+        </member>
+        <member name="M:aspNetMime.Header.ContentID(System.String)">
+            <summary>Creates a Content-ID header.</summary>
+            <param name="value">Value of the header.</param>
+        </member>
+        <member name="M:aspNetMime.Header.ContentTransferEncoding(System.String)">
+            <summary>Creates a Content-Transfer-Encoding header.</summary>
+            <param name="value">Value of the header.</param>
+        </member>
+        <member name="M:aspNetMime.Header.MimeVersion(System.String)">
+            <summary>Creates a MIME-Version header.</summary>
+            <param name="value">Value of the header.</param>
+        </member>
+        <member name="M:aspNetMime.Header.MessageId(System.String)">
+            <summary>Creates a Message-Id header.</summary>
+            <param name="value">Value of the header.</param>
+        </member>
+        <member name="M:aspNetMime.Header.Priority(System.String)">
+            <summary>Creates a X-Priority header.</summary>
+            <param name="value">Value of the header.</param>
+        </member>
+        <member name="M:aspNetMime.Header.ReplyTo(System.String)">
+            <summary>Creates a Reply-To header.</summary>
+            <param name="value">Value of the header.</param>
+        </member>
+        <member name="M:aspNetMime.Header.ReturnPath(System.String)">
+            <summary>Creates a Return-Path header.</summary>
+            <param name="value">Value of the header.</param>
+        </member>
+        <member name="M:aspNetMime.Header.Subject(System.String)">
+            <summary>Creates a Subject header.</summary>
+            <param name="value">Value of the header.</param>
+        </member>
+        <member name="M:aspNetMime.Header.XMailer(System.String)">
+            <summary>Creates a X-Mailer header.</summary>
+            <param name="value">Value of the header.</param>
+        </member>
+        <member name="P:aspNetMime.Header.Addresses">
+            <summary>AddressCollection of addresses used in the Header.</summary>
+        </member>
+        <member name="P:aspNetMime.Header.CharSet">
+            <summary>Characterset used for encoding the header.</summary>
+            
+        </member>
+        <member name="P:aspNetMime.Header.HeaderParameters">
+            <summary>
+              Returns a Name / Value collection of parameters for this header.
+            </summary>
+            
+            
+        </member>
+        <member name="P:aspNetMime.Header.HeaderEncoding">
+            <summary>MimeEncoding used for encoding the Header</summary>
+            
+        </member>
+        <member name="P:aspNetMime.Header.Name">
+            <summary>
+              Gets and Sets the Header's name.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.Header.RawValue">
+            <summary>
+            The header, read when the MimeMessage was parsed.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.Header.Value">
+            <summary>
+              Gets and Sets the Header's value.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.Header.ValueComplete">
+            <summary>
+              Returns the Value of the Header along with any Parameters.
+            </summary>
+            
+        </member>
+        <member name="T:aspNetMime.MimeMessage">
+            <summary>
+              Implements a aspNetMime Mime Part with common header values exposed as properties.
+            </summary>
+            
+        </member>
+        <member name="T:aspNetMime.MimePart">
+            <summary>
+              Implements a class for handling MIME message Body Parts.
+            </summary>
+        </member>
+        <member name="M:aspNetMime.MimePart.#ctor">
+            <summary>Initializes the Body Parts collection and the Headers collection.</summary>
+        </member>
+        <member name="M:aspNetMime.MimePart.#ctor(System.String)">
+            <summary>
+              Initializes a Body Part by parsing the content from the Text provided.
+            </summary>
+            <param name="text">
+              String containing the Body Part's text value.
+            </param>
+        </member>
+        <member name="M:aspNetMime.MimePart.#ctor(System.String,aspNetMime.MimePart)">
+            <summary>
+              Initializes a Body Part by parsing the content from the Text provided.
+            </summary>
+            <param name="text">
+              String containing the Body Part's text value.
+            </param>
+            <param name="parent">Parent of this Mime Part</param>
+        </member>
+        <member name="M:aspNetMime.MimePart.#ctor(System.String,aspNetMime.MimePart,System.Text.Encoding)">
+            <summary>
+              Initializes a Body Part by parsing the content from the Text provided.
+            </summary>
+            <param name="text">String containing the Body Part's text value.</param>
+            <param name="parent">Parent of this Mime Part</param>
+            <param name="encoding">Encoding used to decode the text</param>
+        </member>
+        <member name="M:aspNetMime.MimePart.#ctor(System.IO.Stream)">
+            <summary>
+              Initializes a Body Part by parsing the content from the Stream provided.
+            </summary>
+            <param name="stream">
+              Stream object containing the data to parse.
+            </param>
+        </member>
+        <member name="M:aspNetMime.MimePart.#ctor(System.IO.Stream,aspNetMime.MimePart)">
+            <summary>
+              Initializes a Body Part by parsing the content from the Stream provided.
+            </summary>
+            <param name="stream">
+              Stream object containing the data to parse.
+            </param>
+            <param name="parent">Parent MimePart of this Mime Part.</param>
+        </member>
+        <member name="M:aspNetMime.MimePart.#ctor(System.Byte[],System.Text.Encoding)">
+            <summary>Initializes a MimePart object from a byte array of data.</summary>
+            <param name="data">The byte array containing the MimePart object.</param>
+            <param name="encoding">The encoding used to convert the byte array into textual information.</param>
+        </member>
+        <member name="M:aspNetMime.MimePart.#ctor(System.Byte[],System.Text.Encoding,aspNetMime.MimePart)">
+            <summary>Initializes a MimePart object from a byte array of data.</summary>
+            <param name="data">The byte array containing the MimePart object.</param>
+            <param name="encoding">The encoding used to convert the byte array into textual information.</param>
+            <param name="parent">The parent MimePart object.</param>
+        </member>
+        <member name="M:aspNetMime.MimePart.AttachmentName">
+            <summary>
+            If the MimePart is an attachment, the Filename or Name is returned.
+            </summary>
+            
+            <returns>Returns the name of the attachment.</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.Data">
+            <summary>
+            Returns the body of the MimePart as a byte array.
+            </summary>
+            <returns>body as a byte array</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.Data(System.Text.Encoding)">
+            <summary>
+            Retrieves the data of the Mime Part using a specific encoding.
+            </summary>
+            <param name="encoding"></param>
+            <returns></returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.DataStream">
+            <summary>
+            Retrieves the body of the MimePart as a stream.
+            </summary>
+            <returns>Body as a stream.</returns>
+        </member>
+        <member name="M:aspNetMime.MimePart.DecodedText">
+            <summary>
+            Checks to see if the bodypart is encoded with base64 or quoted-printable format, and returns the decoded version. 
+            Also removes SMTP transport escape sequences.
+            </summary>
+            <returns>decoded body text</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.DecodedText(System.Boolean)">
+            <summary>
+            Checks to see if the bodypart is encoded with base64 or quoted-printable format, and returns the decoded version. 
+            Also removes SMTP transport escape sequences.
+            </summary>
+            <param name="qpIgnoreCase">Ignores the case of any Quoted-Printable sequences.</param>
+            <returns>decoded body text</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.EmbeddedName">
+            <summary>
+            If the Mime Part is an embedded object, retrieves the name, first by checking
+            the Content-ID value. If the Content-ID is null, then the Content-Location value is returned.
+            </summary>
+            <returns></returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.GetCharSet">
+             <summary>
+             Returns the CharSet for this MimePart. If the CharSet property is not populated, Parent MimeParts are checked. If none of the Parent MimeParts have a CharSet property set, then the DefaultCharSet is returned.
+             </summary>
+             <returns>CharSet or DefaultCharSet as string</returns>
+             
+        </member>
+        <member name="M:aspNetMime.MimePart.InlineName">
+            <summary>
+            The Inline name of the Mime Part.
+            </summary>
+            <returns>Returns the file name of the Inline part, if it exists. 
+            If a file name doesn't exist, it returns the name of the inline part. 
+            If the name doesn't exist, it returns an empty string. If the part is not Inline, null is returned. </returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.IsAttachment">
+            <summary>
+            Determines if this MimePart is an attachment.
+            </summary>
+            <returns>True or False</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.IsEmbedded">
+            <summary>
+            Determines if the MimePart is an embedded object, such as an image.
+            </summary>
+            <returns>True if the Part is an embedded MimePart</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.IsInline">
+            <summary>
+            Determines if this MimePart is an inline part.
+            </summary>
+            <returns></returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.IsImage">
+            <summary>
+            Checks to see if the part is an image.
+            </summary>
+            <returns>True if the Content-Type is image.</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.IsImage(System.String)">
+            <summary>
+            Checks to see if the part is an image with a specific subtype.
+            </summary>
+            <param name="subtype">The subtype of the image; for example: jpeg, gif, bmp, etc...</param>
+            <returns>True if the image has the specified subtype</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.IsMessage">
+            <summary>
+            Determines if this MimePart is a RFC Message.
+            </summary>
+            <returns>True or False</returns>
+            
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.IsMultiPart">
+            <summary>
+            Checks to see if the Part has a Multipart content-type.
+            </summary>
+            <returns>True if the part has a multipart content-type.</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.LoadData(System.Byte[])">
+            <summary>
+            Loads an array of binary data into the body.
+            </summary>
+            <param name="data">Binary array of data.</param>
+        </member>
+        <member name="M:aspNetMime.MimePart.MarkAsAttachment">
+            <summary>
+            Marks the MimePart as an attachment.
+            </summary>
+            
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.MarkAsInLine">
+            <summary>
+            Marks the MimePart as an inline part.
+            </summary>
+            
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.ParentMessage">
+            <summary>
+            Retrieves the parent MimeMessage of this Mime Part. If this Mime Part is the Parent, an instance to itself is returned;
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:aspNetMime.MimePart.PreviewText">
+            <summary>
+            Returns the first 512 characters of the MimePart. If the MimePart is of type text/html, the HTML is first stripped.
+            </summary>
+            <returns>First 512 characters of text</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.PreviewText(System.Int32)">
+            <summary>
+            Returns the first characterCount characters of the MimePart. If the MimePart is of type text/html, the HTML is first stripped.
+            </summary>
+            <param name="characterCount">The number of characters to return.</param>
+            <returns>First characterCount of characters of text</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.Save(System.String)">
+            <summary>
+            Saves the MimePart contents (excluding headers) to a Directory
+            </summary>
+            <param name="directoryPath">Director for saving</param>
+            <returns>True if the Save was successful.</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.Save(System.String,System.Boolean)">
+            <summary>
+            Saves the MimePart (excluding headers) to a Directory
+            </summary>
+            <param name="directoryPath">Directory for saving.</param>
+            <param name="overwriteFile">Overwrite any existing file with the same filename.</param>
+            <returns>True if the save was successful.</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.Save(System.String,System.Boolean,System.String)">
+            <summary>
+            Saves the MimePart (excluding headers) to a file.
+            </summary>
+            <param name="directoryPath">Directory the MimePart is saved</param>
+            <param name="overwriteFile">Overwrite any existing file with the same name.</param>
+            <param name="filename">Use this filename, instead of any name associated with this MimePart</param>
+            <returns>True if the save was successful</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.Save(System.String,System.Boolean,System.String,System.String)">
+            <summary>
+            Saves the MimePart (excluding headers) to a file.
+            </summary>
+            <param name="directoryPath">Directory the MimePart is saved</param>
+            <param name="overwriteFile">Overwrite any existing file with the same name.</param>
+            <param name="filename">Use this filename, instead of any name associated with this MimePart</param>
+            <param name="suggestedName">The name to use if filename is null or contains invalid chars.</param>
+            <returns>True if the save was successful</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.SaveAs(System.String)">
+            <summary>
+            Path for saving this MimePart body (excluding headers).
+            </summary>
+            <param name="path">Filesystem path.</param>
+            <returns>True if the SaveAs was successful.</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.SetRawText(System.String,aspNetMime.MimeEncoding)">
+            <summary>Sets the RawText property using a MimeEncoding</summary>
+            <param name="text">Text to be applied to RawText with a specific MimeEncoding.</param>
+            <param name="encoding">The MimeEncoding to apply.</param>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.SetRawText(System.Byte[],aspNetMime.MimeEncoding)">
+            <summary>Sets the RawText property using a MimeEncoding</summary>
+            <param name="data">Binary data used to set the RawText property.</param>
+            <param name="encoding">Encoding to be applied to the data.</param>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.ToString">
+            <summary>A string representation of the MimePart</summary>
+        </member>
+        <member name="M:aspNetMime.MimePart.WriteToStream(System.IO.Stream)">
+            <summary>
+            Writes the body of the part to a stream.
+            </summary>
+            <param name="stream">Stream for writing.</param>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.WriteToStream(System.IO.Stream,System.Text.Encoding)">
+            <summary>
+            Writes the Data to the stream using a specific encoding.
+            </summary>
+            <param name="stream">Stream for writing.</param>
+            <param name="encoding">Encoding to use to write to the stream.</param>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.Parse(System.String)">
+            <summary>
+              Parses the data for a Body Part from a Text string.
+            </summary>
+            <param name="text">
+              String containing the data to use for this Body Part.
+            </param>
+        </member>
+        <member name="M:aspNetMime.MimePart.Parse(System.String,System.Text.Encoding)">
+            <summary>
+              Parses the data for a Body Part from a Text string.
+            </summary>
+            <param name="text">
+              String containing the data to use for this Body Part.
+            </param>
+            <param name="encoding">The encoding used for parsing the individual bytes of text.</param>
+        </member>
+        <member name="M:aspNetMime.MimePart.Parse(System.IO.Stream)">
+            <summary>
+              Parses the data for a Body Part from a Text string.
+            </summary>
+            <param name="stream">
+              Stream containing the data to parse.
+            </param>
+        </member>
+        <member name="M:aspNetMime.MimePart.Parse(System.IO.Stream,System.Text.Encoding)">
+            <summary>
+              Parses the data for a Body Part from a Text string.
+            </summary>
+            <param name="stream">
+              Stream containing the data to parse.
+            </param>
+            <param name="encoding">
+            The encoding used for reading the stream.
+            </param>
+        </member>
+        <member name="M:aspNetMime.MimePart.Parse(System.Byte[])">
+            <summary>
+            Parses the bye array of data into various MimePart properties and
+            information.
+            </summary>
+            
+            <param name="data">The byte array containing the MimePart data.</param>
+        </member>
+        <member name="M:aspNetMime.MimePart.Parse(System.Byte[],System.Text.Encoding)">
+            
+            <param name="data">The byte array containing the MimePart data.</param>
+            <param name="encoding">
+            The encoding used to convert binary data to strings. If encoding is null or
+            nothing, a UTF8 encoding is used.
+            </param>
+        </member>
+        <member name="M:aspNetMime.MimePart.CreateFromBinary(System.Byte[])">
+            <summary>
+            Creates a mime part from a byte array of data.
+            </summary>
+            <param name="data">byte array of data.</param>
+            <returns>Mime Part</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.CreateFromBinary(System.Byte[],aspNetMime.MimeEncoding)">
+            <summary>
+            Creates a mime part from a byte array of data.
+            </summary>
+            <param name="data">byte array of data.</param>
+            <param name="mimeEncoding">MimeEncoding to apply to the byte array of data.</param>
+            <returns>Mime Part</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.CreateFromFile(System.String)">
+            <summary>
+            Creates a mime part from a file.
+            </summary>
+            <param name="path">path to the file.</param>
+            <returns>Mime Part</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.CreateFromFile(System.String,aspNetMime.MimeEncoding)">
+            <summary>
+            Creates a mime part from a file.
+            </summary>
+            <param name="path">path to the file.</param>
+            <param name="mimeEncoding">The MimeEncoding to use against the data found in the file.</param>
+            <returns>Mime Part</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.CreateFromStream(System.IO.Stream)">
+            <summary>
+            Creates a mime part from a System.IO.Stream.
+            </summary>
+            <param name="stream">Stream of data</param>
+            <returns>Mime Part</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.CreateFromStream(System.IO.Stream,aspNetMime.MimeEncoding)">
+            <summary>
+            Creates a mime part from a System.IO.Stream.
+            </summary>
+            <param name="stream">Stream of data</param>
+            <param name="mimeEncoding">MimeEncoding to apply against the data found in the stream.</param>
+            <returns>Mime Part</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.CreateFromString(System.String)">
+            <summary>
+            Creates a mime part from a string of data.
+            </summary>
+            <param name="contents">String of data</param>
+            <returns>Mime Part</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimePart.CreateFromString(System.String,System.String,aspNetMime.MimeEncoding)">
+            <summary>
+            Creates a mime part from a string of data.
+            </summary>
+            <param name="contents">String of data</param>
+            <param name="characterSet">Characterset of the string</param>
+            <param name="mimeEncoding">MimeEncoding to apply to the contents.</param>
+            <returns>Mime Part</returns>
+            
+        </member>
+        <member name="P:aspNetMime.MimePart.Boundary">
+            <summary>
+            The Boundary string for the Mime Part.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimePart.CharSet">
+            <summary>
+            Character set of the Mime Part.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimePart.ContentDescription">
+            <summary>
+            Content description header.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimePart.ContentDisposition">
+            <summary>
+            Retreives the Content-Disposition header.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimePart.ContentLocation">
+            <summary>
+            The Content-Location header of the Mime Part.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimePart.ContentID">
+            <summary>
+            Retrieves the Content-ID header.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimePart.ContentTransferEncoding">
+            <summary>
+            Retreives the Content-Transfer-Encoding header.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimePart.ContentType">
+            <summary>
+            The Content-Type header for this body part.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimePart.ContentSubType">
+            <summary>
+            Sub-type of the Content-Type.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimePart.ContentTypeString">
+            <summary>
+            Content-Type as a string.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimePart.DefaultCharSet">
+            <summary>
+            If the Mime Part does not have a Character set, and the Mime Part needs to be decoded, this Character set is used.
+            By default, DefaultCharSet = "utf-8"
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimePart.Headers">
+            <summary>
+              Gets a reference to the aspNetMime.HeaderCollection containing
+              the headers for this Body Part.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimePart.Filename">
+            <summary>
+            File name of the Mime Part, as specified by the Content-Disposition header. 
+            </summary>
+            
+            
+        </member>
+        <member name="P:aspNetMime.MimePart.MimeParts">
+            <summary>
+              Gets a reference to the Body Part Collection containing the child Body Parts for this
+              Body Part.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimePart.Name">
+            <summary>
+            Name of the Mime Part, as specified by the Content-Type header.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimePart.Parent">
+            <summary>
+            The Parent Mime Part of this part.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimePart.Preamble">
+            <summary>
+            Returns the Preamble for the mime part. This is only useful if the mime part being referenced is the MimeMessage itself.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimePart.RawText">
+            <summary>
+              Returns the text of the Body Part. 
+              This is either 
+                a) the unparsed MIME body part collection
+                b) The ASCII value of a MIME body part
+            </summary>
+            
+        </member>
+        <member name="M:aspNetMime.MimeMessage.#ctor">
+            <summary>
+            Creates an Instance of the MimeMessage class
+            </summary>
+            
+        </member>
+        <member name="M:aspNetMime.MimeMessage.#ctor(System.String)">
+            <summary>
+              Initializes a MimeMessage by parsing the content from the Text provided.
+            </summary>
+            <param name="text">
+              String containing the MimeMessage's text value.
+            </param>
+            
+        </member>
+        <member name="M:aspNetMime.MimeMessage.#ctor(System.String,System.Text.Encoding)">
+            <summary>
+              Initializes a MimeMessage by parsing the content from the Text provided.
+            </summary>
+            <param name="text">
+              String containing the MimeMessage's text value.
+            </param>
+            <param name="encoding">
+            The Encoding used for building the MimeMessage
+            </param>
+            
+        </member>
+        <member name="M:aspNetMime.MimeMessage.#ctor(System.IO.Stream)">
+            <summary>
+              Initializes a MimeMessage by parsing the content from the Stream provided.
+            </summary>
+            <param name="stream">
+              Stream object containing the data to parse.
+            </param>
+            
+        </member>
+        <member name="M:aspNetMime.MimeMessage.#ctor(System.IO.Stream,System.Text.Encoding)">
+            <summary>
+              Initializes a MimeMessage by parsing the content from the Stream provided.
+            </summary>
+            <param name="stream">
+              Stream object containing the data to parse.
+            </param>
+            <param name="encoding">
+            Encoding used to read the Stream
+            </param>
+            
+        </member>
+        <member name="M:aspNetMime.MimeMessage.#ctor(System.Byte[],System.Text.Encoding)">
+            <summary>Creates an instance of a MimeMessage object from a byte array of data.</summary>
+            <param name="data">The byte array of MimeMessage information.</param>
+            <param name="encoding">The encoding used to read and convert the binary data to text.</param>
+        </member>
+        <member name="M:aspNetMime.MimeMessage.AttachmentInLineParts">
+            <summary>
+            Returns all Attachments and InLine parts as a MimePartCollection
+            </summary>
+            <returns></returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimeMessage.CalculateSize">
+            <summary>
+            Calculates the Mime encoded size (in bytes) of the message.
+            </summary>
+            <returns></returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimeMessage.DateTime">
+            <summary>
+            Returns the Date of the MimeMessage as a .NET DateTime object.
+            </summary>
+            <returns>DateTime object.</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimeMessage.ExpirationDate">
+            <summary>
+            If this is an evaluation version, it retrieves the expiration date. If this is a full version, it 
+            returns a 'Full Version' message.
+            </summary>
+            <returns>The expiration date as a string.</returns>
+        </member>
+        <member name="M:aspNetMime.MimeMessage.GetEmbeddedPart(System.String)">
+            <summary>
+            Retrieves an embedded part by its Content-ID or Content-Location
+            </summary>
+            <param name="embeddedName">The Content-ID or Content-Location</param>
+            <returns>Embedded Part</returns>
+            
+            
+        </member>
+        <member name="M:aspNetMime.MimeMessage.GetEmbeddedPartByCID(System.String)">
+            <summary>
+            Retrieves an embedded MimePart by it's Content-ID.
+            </summary>
+            <param name="ContentID">The Conent-ID of the embedded MimePart</param>
+            <returns>Embedded object as a MimePart</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimeMessage.GetEmbeddedPartByCL(System.String)">
+            <summary>
+            Retrieves an embedded MimePart by it's Content-Location.
+            </summary>
+            <param name="ContentLocation">Content-Location of the embedded object.</param>
+            <returns>Embedded object as a MimePart</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimeMessage.GetHeader(System.String)">
+            <summary>
+            Retrieves a header of the MimeMessage, by the Header name.
+            </summary>
+            <param name="headerName">Name of the Header.</param>
+            <returns>Header</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimeMessage.GetXHeader(System.String)">
+            <summary>
+            Retrieves a X- header.
+            </summary>
+            <param name="headerName">Name of the Header.</param>
+            <returns>Found Header</returns>
+            
+            
+        </member>
+        <member name="M:aspNetMime.MimeMessage.GetAttachment(System.Int32)">
+            <summary>
+            Retrieves the attachement, spcecified by the index in the array of attachmnets.
+            </summary>
+            <param name="index">Index of the attachment.</param>
+            <returns>Attachment as MimePart</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimeMessage.GetAttachment(System.String)">
+            <summary>
+            Retrieves an attachment by it's Name
+            </summary>
+            <param name="name">Name of the attachment</param>
+            <returns>Attachment as a MimePart</returns>
+            
+            
+        </member>
+        <member name="M:aspNetMime.MimeMessage.GetAttachmentStream(System.Int32)">
+            <summary>
+            Retreives the specified attachment as a stream.
+            </summary>
+            <param name="index">Index of the attachment in the array of attachments.</param>
+            <returns>attachment data as as stream.</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimeMessage.GetAttachmentStream(System.String)">
+            <summary>
+            Retreives an attachment by name, as a stream.
+            </summary>
+            <param name="name">The name of the attachment.</param>
+            <returns>attachment data as a stream.</returns>
+            
+            
+        </member>
+        <member name="M:aspNetMime.MimeMessage.IsBlackListedSpam">
+            <summary>
+            Uses the current BLChecker to determine if the message is spam
+            </summary>
+            <returns>
+            True if the message has been sent from a black listed IP, according to the DNSbl
+            servers added to the <see cref="P:aspNetMime.MimeMessage.BLChecker">BLChecker</see>
+            </returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimeMessage.LoadFromFile(System.String)">
+            <summary>
+            Loads a MimeMessage from the FileSystem
+            </summary>
+            <returns>True if the load was successful</returns>
+            
+            <param name="path">File system path to the message text.</param>
+        </member>
+        <member name="M:aspNetMime.MimeMessage.LoadFromStream(System.IO.Stream)">
+            <summary>
+            Loads the Mime Message object from a System.IO.Stream
+            </summary>
+            
+            <param name="stream">Stream of data containing the Mime Message</param>
+        </member>
+        <member name="M:aspNetMime.MimeMessage.LoadFromStream(System.IO.Stream,System.Text.Encoding)">
+            <summary>
+            Loads the Mime Message object from a System.IO.Stream
+            </summary>
+            
+            <param name="stream">Stream of data containing the Mime Message</param>
+            <param name="encoding">Encoding used to parse the stream.</param>
+        </member>
+        <member name="M:aspNetMime.MimeMessage.LoadFromText(System.String)">
+            <summary>
+            Loads the MimeMessage object from text.
+            </summary>
+            
+            <param name="text">string text of the Mime Message</param>
+        </member>
+        <member name="M:aspNetMime.MimeMessage.LoadFromText(System.String,System.Text.Encoding)">
+            <summary>
+            Loads the MimeMessage object from text.
+            </summary>
+            
+            <param name="text">string text of the Mime Message</param>
+            <param name="encoding">Encoding used for parsing the text</param>
+        </member>
+        <member name="M:aspNetMime.MimeMessage.RetrieveAllParts">
+            <summary>
+            Retrieves all parts of the MimeMessage, including the message itself
+            </summary>
+            <returns>MimeCollection of MimeParts</returns>
+            
+            
+        </member>
+        <member name="M:aspNetMime.MimeMessage.RetrieveMessages">
+            <summary>Retrieves attached messages as a MimePartCollection</summary>
+            <returns>A MimePart collection of messages</returns>
+            
+            
+        </member>
+        <member name="M:aspNetMime.MimeMessage.SaveToFile(System.String)">
+            <summary>
+            Saves the MimeMessage to a file.
+            </summary>
+            <param name="path">Path to save the mime MimeMessage</param>
+            <returns>True if the save was successful.</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimeMessage.SaveToFile(System.String,System.Boolean)">
+            <summary>
+            Saves the MimeMessage to a file.
+            </summary>
+            <param name="path">Path to save the mime MimeMessage</param>
+            <param name="overwriteFile">Overwrites any existing files with the same name.</param>
+            <returns>True if the save was successful.</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimeMessage.SaveToFile(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Saves the MimeMessage to a file.
+            </summary>
+            <param name="path">Path to save the mime MimeMessage</param>
+            <param name="overwriteFile">Overwrites any existing files with the same name.</param>
+            <param name="reassemble">Reassembles the MimeMessage.</param>
+            <returns>True if the save was successful.</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimeMessage.SaveAttachments(System.String,System.Boolean)">
+            <summary>
+            Saves any attachments to the specified folder path.
+            </summary>
+            <param name="directoryPath">Directory path to save attachments.</param>
+            <param name="overwriteFiles">If an File is found with the same name, True will overwrite the previous attachment.</param>
+            
+        </member>
+        <member name="M:aspNetMime.MimeMessage.SaveInlineParts(System.String,System.Boolean)">
+            <summary>
+            Saves any inline parts to the specified folder path.
+            </summary>
+            <param name="directoryPath">Directory path to save parts.</param>
+            <param name="overwriteFiles">If an File is found with the same name, True will overwrite the file.</param>
+            
+        </member>
+        <member name="M:aspNetMime.MimeMessage.ToString">
+            <summary>
+            Converts the MimeMessage to a string representation.
+            </summary>
+            <returns>A string representation of the MimeMessage</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimeMessage.ToString(System.Boolean)">
+            <summary>A string representation of the MimeMessage.</summary>
+            <param name="reassemble">
+            If reassemble is true, the MimeMessage is reassembled using the parts found in
+            the AlternativeBodies, Attachments, EmbeddedParts, and InLineParts MimePart
+            Collections.
+            </param>
+            
+        </member>
+        <member name="M:aspNetMime.MimeMessage.VersionNumber">
+            <summary>
+            Retrieves the version number of aspNetMime
+            </summary>
+            <returns>The version number</returns>
+            
+        </member>
+        <member name="M:aspNetMime.MimeMessage.ParseString(System.String)">
+            <summary>
+            Creates an instance of a MimeMessage object from a string.
+            </summary>
+            <returns>A new MimeMessage</returns>
+            
+            
+            <param name="text">Text of Mime contents</param>
+        </member>
+        <member name="M:aspNetMime.MimeMessage.ParseString(System.String,System.Text.Encoding)">
+            <summary>Creates an instance of a MimeMessage object from a string.</summary>
+            <returns>A new MimeMessage</returns>
+            
+            <param name="text">Text of Mime contents</param>
+            <param name="encoding">Encoding used to read the string.</param>
+        </member>
+        <member name="M:aspNetMime.MimeMessage.ParseFile(System.String)">
+            <summary>
+            Creates an instance of a MimeMessage object from a file.
+            </summary>
+            <returns>A new MimeMessage</returns>
+            
+            
+            <param name="path">Path to the file.</param>
+        </member>
+        <member name="M:aspNetMime.MimeMessage.ParseFile(System.String,System.Text.Encoding)">
+            <summary>
+            Creates an instance of a MimeMessage object from a file.
+            </summary>
+            <returns>A new MimeMessage</returns>
+            
+            
+            <param name="path">Path to the file.</param>
+            <param name="encoding">Encoding used to read the file.</param>
+        </member>
+        <member name="M:aspNetMime.MimeMessage.ParseBinary(System.Byte[])">
+            <returns>A MimeMessage object</returns>
+            
+            <summary>Parses a byte array of data into a MimeMessage object</summary>
+            
+            <param name="buffer">The byte array containing the MimeMessage information.</param>
+        </member>
+        <member name="M:aspNetMime.MimeMessage.ParseBinary(System.Byte[],System.Text.Encoding)">
+            <returns>A MimeMessage object</returns>
+            
+            <returns>A MimeMessage object</returns>
+            
+            <summary>Parses a byte array of data into a MimeMessage object</summary>
+            
+            <param name="buffer">A byte array containing the MimeMessage data.</param>
+            <param name="encoding">The encoding used to convert the binary data into text.</param>
+        </member>
+        <member name="M:aspNetMime.MimeMessage.ParseBinary(System.Byte[],System.Int32,System.Int32,System.Text.Encoding)">
+            <returns>A MimeMessage object</returns>
+            
+            <summary>Parses a byte array of data into a MimeMessage object</summary>
+            
+            <param name="buffer">A byte array containing the MimeMessage data.</param>
+            <param name="index">
+            The index in which to start converting the buffer data into the MimeMessage
+            object.
+            </param>
+            <param name="count">The number of bytes containing the MimeMessage information.</param>
+            <param name="encoding">The encoding used to convert the binary data into text.</param>
+        </member>
+        <member name="M:aspNetMime.MimeMessage.ParseStream(System.IO.Stream)">
+            <returns>A MimeMessage object</returns>
+            
+            <returns>A MimeMessage object</returns>
+            <summary>Parses a stream of data into a MimeMessage object</summary>
+            
+            <param name="stream">A stream containing the MimeMessage data.</param>
+        </member>
+        <member name="M:aspNetMime.MimeMessage.ParseStream(System.IO.Stream,System.Text.Encoding)">
+            
+            <returns>A MimeMessage object</returns>
+            <summary>Parses a stream data into a MimeMessage object</summary>
+            
+            <param name="stream">A stream containing the MimeMessage data.</param>
+            <param name="encoding">The encoding used to convert the stream into text.</param>
+        </member>
+        <member name="M:aspNetMime.MimeMessage.LoadLicenseFile(System.String)">
+            <summary>Loads a license file, based upon a fileystem path.</summary>
+            
+            
+            <param name="path">File system path to the license file.</param>
+        </member>
+        <member name="M:aspNetMime.MimeMessage.LoadLicenseString(System.String)">
+            <summary>Loads a license file, from a properly formatted Xml license string.</summary>
+            
+            
+            <param name="xmlString">A string containing the Xml license contents.</param>
+        </member>
+        <member name="M:aspNetMime.MimeMessage.LoadLicenseStream(System.IO.Stream)">
+            <summary>
+            Loads the license from a System.IO.Stream
+            </summary>
+            <param name="stream"></param>
+        </member>
+        <member name="M:aspNetMime.MimeMessage.LoadLicenseResource">
+            <summary>
+            Loads a license that was embedded as a resource.
+            </summary>
+            
+        </member>
+        <member name="M:aspNetMime.MimeMessage.LoadLicenseResource(System.String)">
+            <summary>
+            Loads the license contents from a specific resource name.
+            </summary>
+            <param name="resourceName">The name of the embedded resource</param>
+            
+        </member>
+        <member name="P:aspNetMime.MimeMessage.AlternativeBodies">
+            <summary>A collection of Alternative body parts.</summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimeMessage.Attachments">
+            <summary>
+            Retrieves any attachments as a MimePartCollection.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimeMessage.BLChecker">
+            <summary>
+            The Black List Checker used to check if the message is spam.	
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimeMessage.CC">
+            <summary>
+            Retrieves the CC email addresses as an AddressCollection
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimeMessage.Date">
+            <summary>
+              Retrieves the value of the Date header.
+            </summary>
+            
+            
+        </member>
+        <member name="P:aspNetMime.MimeMessage.EmbeddedParts">
+            <summary>
+            Returnes a MimePartCollectdion of MimeParts that are embedded objects of the message.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimeMessage.From">
+            <summary>
+              Retrieves the Address of the From header.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimeMessage.HtmlMimePart">
+            <summary>
+            If a Html formatted body part is available, it is returned. Typically this part
+            is what is viewable in an email client or reader.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimeMessage.InLineParts">
+            <summary>
+            Any inline parts in the email.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimeMessage.MainBody">
+            <summary>
+            Gets the text of the highest probable body part. 
+            </summary>
+            
+            
+        </member>
+        <member name="P:aspNetMime.MimeMessage.MainBodyPart">
+            <summary>
+            The main MimePart of the MimeMessage. 
+            </summary>
+            
+            
+        </member>
+        <member name="P:aspNetMime.MimeMessage.MimeVersion">
+            <summary>
+            Returns the Mime Version of the email.
+            </summary>
+            
+            
+        </member>
+        <member name="P:aspNetMime.MimeMessage.MessageId">
+            <summary>
+            Returns the MimeMessage-Id of the MimeMessage.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimeMessage.Priority">
+            <summary>
+            Retrieves the X-Priority header of the email.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimeMessage.ReplyTo">
+            <summary>
+              Retrieves the value of the Reply To header.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimeMessage.ReturnPath">
+            <summary>
+            Retrieves the Return-Path header.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimeMessage.Subject">
+            <summary>
+              Retrieves the value of the Subject header.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimeMessage.To">
+            <summary>
+            Retrieves the email address found on the To line of the email, as an AddressCollection
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimeMessage.TextMimePart">
+            <summary>
+            If a text formatted body part is available, it is returned.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetMime.MimeMessage.XMailer">
+            <summary>
+            X-Mailer header for the MimeMessage.
+            </summary>
+            
+        </member>
+        <member name="T:aspNetMime.MimeReader">
+            <summary>Reads a Mime formatted message in a forward manner.</summary>
+            
+            
+        </member>
+        <member name="M:aspNetMime.MimeReader.#ctor">
+            <summary>Creates an instance of the MimeReader class</summary>
+            
+        </member>
+        <member name="M:aspNetMime.MimeReader.#ctor(System.String)">
+            <summary>Creates an instance of the MimeReader class, and loading a file.</summary>
+            
+            <param name="path">Filesystem path to the file.</param>
+        </member>
+        <member name="M:aspNetMime.MimeReader.#ctor(System.IO.Stream)">
+            <summary>Creates an instance of the MimeReader class, and loading a stream.</summary>
+            
+            <param name="stream">Stream containing the Mime contents</param>
+        </member>
+        <member name="M:aspNetMime.MimeReader.#ctor(System.Byte[])">
+            <summary>Creates an instance of the MimeReader class, and loading a byte array.</summary>
+            
+            <param name="data">Byte array containing the Mime data.</param>
+        </member>
+        <member name="M:aspNetMime.MimeReader.LoadFile(System.String)">
+            
+            <summary>Loads a MimeReader from a file.</summary>
+        </member>
+        <member name="M:aspNetMime.MimeReader.LoadStream(System.IO.Stream)">
+            
+            <summary>Loads a MimeReader from a stream.</summary>
+            <param name="stream">Stream containing the Mime contents.</param>
+        </member>
+        <member name="M:aspNetMime.MimeReader.LoadBinary(System.Byte[])">
+            
+            <summary>Loads a MimeReader from a byte array.</summary>
+            <param name="data">Byte array containing the contents</param>
+        </member>
+        <member name="M:aspNetMime.MimeReader.ReadPart">
+            <summary>
+            Reads the next MimePart.
+            </summary>
+            <returns></returns>
+            
+        </member>
+        <member name="P:aspNetMime.MimeReader.Encoding">
+            <summary>The Encoding used to read the message.</summary>
+            
+        </member>
+        <member name="T:aspNetMime.Utility">
+            <summary>
+            Utility class of methods for Encoding and Decoding Quoted-Printable and base64 text.
+            </summary>
+        </member>
+        <member name="M:aspNetMime.Utility.DecodeQP(System.String,System.String)">
+            <summary>
+            Deocodes a quoted-printable encoded string.
+            </summary>
+            <param name="stringToDecode">The quoted printable string to decode.</param>
+            <param name="charSet">The character set of the email.</param>
+            <returns>A decoded string</returns>
+        </member>
+        <member name="M:aspNetMime.Utility.DecodeQP(System.String,System.String,System.Boolean)">
+            <summary>
+            Deocodes a quoted-printable encoded string.
+            </summary>
+            <param name="stringToDecode">The quoted printable string to decode.</param>
+            <param name="charSet">The character set of the email.</param>
+            <param name="ignoreCase">Ignores the case of the quoted-printed characters.</param>
+            <returns>A decoded string</returns>
+        </member>
+        <member name="M:aspNetMime.Utility.DecodeQP(System.String,System.Text.Encoding)">
+            <summary>
+            Decodes a quoted-printable encoded string
+            </summary>
+            <param name="stringToDecode">The quoted-printable string to decode</param>
+            <param name="encoding">The Encoding Type</param>
+            <returns>Decoded String</returns>
+        </member>
+        <member name="M:aspNetMime.Utility.DecodeQP(System.String,System.Text.Encoding,System.Boolean)">
+            <summary>
+            Decodes a quoted-printable encoded string
+            </summary>
+            <param name="stringToDecode">The quoted-printable string to decode</param>
+            <param name="encoding">The Encoding Type</param>
+            <param name="ignoreCase">Ignores the case of the quoted-printed characters.</param>
+            <returns>Decoded String</returns>
+        </member>
+        <member name="M:aspNetMime.Utility.DecodeQP(System.String)">
+            <summary>
+            Deocodes a quoted-printable encoded string.
+            </summary>
+            <param name="stringToDecode">The quoted printable string to decode.</param>
+            <returns>A decoded string</returns>
+        </member>
+        <member name="M:aspNetMime.Utility.DecodeQP(System.String,System.Boolean)">
+            <summary>
+            Deocodes a quoted-printable encoded string.
+            </summary>
+            <param name="stringToDecode">The quoted printable string to decode.</param>
+            <param name="ignoreCase">Ignores the case of the quoted-printed characters.</param>
+            <returns>A decoded string</returns>
+        </member>
+        <member name="M:aspNetMime.Utility.DecodeBase64(System.String)">
+            <summary>
+            Converts a base64 encoded string to an array of bytes.
+            </summary>
+            <param name="stringToDecode">base64 encoded string</param>
+            <returns>byte array</returns>
+        </member>
+        <member name="M:aspNetMime.Utility.FromBase64String(System.String)">
+            <summary>
+            Decodes a base64 encoded string using a given CharSet
+            </summary>
+            <param name="stringToDecode">base64 encoded string.</param>
+            <returns>Decoded string</returns>
+        </member>
+        <member name="M:aspNetMime.Utility.FromBase64String(System.String,System.String)">
+            <summary>
+            Decodes a base64 encoded string using a given CharSet
+            </summary>
+            <param name="stringToDecode">base64 encoded string.</param>
+            <param name="charSet">Character Set used for decoding.</param>
+            <returns>Decoded string</returns>
+        </member>
+        <member name="M:aspNetMime.Utility.FromBase64String(System.String,System.Text.Encoding)">
+            <summary>
+            Converts a base64 encoded string to a human readable string.
+            </summary>
+            <param name="stringToDecode">base64 encoded string.</param>
+            <param name="encoding">Encoding used for decoding.</param>
+            <returns>Decoded string</returns>
+        </member>
+        <member name="M:aspNetMime.Utility.FromEmailDate(System.String)">
+            <summary>
+            Returns a DateTime from an RFC822 formatted date.
+            </summary>
+            <param name="emailDate">RFC822 Date as a string.</param>
+            <returns>RFC822 date as a DateTime</returns>
+        </member>
+        <member name="M:aspNetMime.Utility.FromEmailDate(System.String,System.TimeSpan)">
+            <summary>
+            Returns a DateTime from an RFC822 formatted date.
+            </summary>
+            <param name="emailDate">RFC822 Date as a string.</param>
+            <param name="dateTimeOffset">A Timespan offset, useful in web applications.</param>
+            <returns>RFC822 date as a DateTime</returns>
+        </member>
+        <member name="M:aspNetMime.Utility.GetEncoding(System.String)">
+            <summary>
+            Converts a CharSet to an Encoding.
+            </summary>
+            <param name="charSet">The Character Set</param>
+            <returns>Respective Character Set's encoding.</returns>
+            
+        </member>
+        <member name="M:aspNetMime.Utility.ConvertHtmlToText(System.String)">
+            <summary>
+            Converts HTML content to its TEXT equivalent
+            </summary>
+            <returns>Plain Text Content</returns>
+            
+            
+            <param name="htmlContent">HTML Content to Convert</param>
+        </member>
+        <member name="M:aspNetMime.Utility.EncodeBase64(System.Byte[])">
+            <summary>Base64 encodes a byte array of data.</summary>
+            <returns>A Mime compatible Base64 encoded string.</returns>
+            <param name="data">Binary data.</param>
+        </member>
+        <member name="M:aspNetMime.Utility.EncodeBase64(System.String,System.String)">
+            <summary>Base64 encodes a string.</summary>
+            <param name="text">String to be encoded.</param>
+            <param name="charSet">Characterset to apply.</param>
+        </member>
+        <member name="M:aspNetMime.Utility.EncodeBase64(System.String,System.Text.Encoding)">
+            <returns>A Mime compatible Base64 encoded string.</returns>
+            <summary>Base64 encodes a string.</summary>
+            <param name="text">text to be encoded.</param>
+            <param name="encoding">System.Text.Encoding applied to the string.</param>
+        </member>
+        <member name="M:aspNetMime.Utility.EncodeQP(System.String,System.String)">
+            <summary>Applies the Quoted-Printable format to a string.</summary>
+            <param name="text">string to be encoded</param>
+            <param name="charSet">character set used for the encoding.</param>
+        </member>
+        <member name="M:aspNetMime.Utility.EncodeQP(System.String,System.Text.Encoding)">
+            <summary>Applies the Quoted-Printable format to a string.</summary>
+            <param name="text">string to be encoded</param>
+            <param name="encoding">System.Text.Encoding to be used against the string.</param>
+        </member>
+    </members>
+</doc>

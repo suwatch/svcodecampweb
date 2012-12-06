@@ -1,0 +1,1255 @@
+
+.JobImageOnSession 
+{
+    margin-top: 7px;
+    width: 84px;
+    height: 23px;
+}
+
+.scheduleLine, .scheduleLine a 
+{
+	text-decoration: none; color: #666666;
+}
+
+.scheduleTime
+{
+	color: #333333;
+}
+
+
+.scheduleLine:hover .scheduleTitle { color: #cc3300 }
+.scheduleLine:hover .scheduleSpeaker { background-color: #ffe5bf }
+.scheduleLine:hover .scheduleRoom { 
+	background-image: url("Images/scheduleArrow.gif");
+	background-position: right center;
+	background-repeat: no-repeat;
+	padding-right: 20px;
+}
+
+
+
+
+/* Body and general layout styles */
+
+body, div, td, form { margin: 0px; padding: 0px; }
+
+.pad { color: #333333; padding: 0px 13px 20px 13px }
+.margin { margin: 20px; }
+
+
+
+
+
+/* Common link styles */
+
+.pad a, .pad a:active, .pad a:visited,
+.slashBullet a, .slashBullet a:active, .slashBullet a:visited,
+.headLogin a, .headLogin a:active, .headLogin a:visited,
+.noWrap a, .noWrap a:active, .noWrap a:visited
+{
+	text-decoration: none; color: #333;
+	background-image: url("Images/dotted.gif");
+	background-position: bottom left;
+	background-repeat: repeat-x;
+}
+
+
+
+
+
+
+/* Styles used in the header of the design */
+
+.headBar  
+{
+	font-family: Calibri, Arial, sans-serif;
+	font-size: smaller;	color: #b4b4b4;
+	background-color: #313131; 
+	background-image: url("Images/headBackground.jpg");
+	background-position: top right;	background-repeat: no-repeat;
+	width: 100%; border: 0px 
+}
+
+.headLogin
+{
+	padding: 10px; margin: 0px;
+	font-family: Calibri, Arial, sans-serif;
+	font-size: small; color: #cccccc;
+}
+
+.headLogin a, .headLogin a:active, .headLogin a:visited
+{
+	text-decoration: none; color: #cccccc;
+	background-image: url("Images/dotted.gif");
+	background-position: bottom left;
+	background-repeat: repeat-x;
+}
+
+.headLogin a.headLoginButton
+{
+	margin-right: 10px;
+	border: none;
+	background: none;
+}
+a.headLoginButton img 
+{
+    margin-bottom:-7px;
+}
+.headLogo {
+	padding-left: 10px;
+}
+
+.headDate 
+{
+	font-size: large; font-family: Cambria, Georgia, serif; padding-left: 30px;
+}
+
+.headLinksBar  
+{
+	margin: 0px 10px 0px 10px; padding: 0px;
+}
+
+.headSubLinksBar  
+{
+	font-family: Calibri, Arial, sans-serif;
+	font-size: medium; font-weight: bold; color: #cccccc;
+	background-color: #333;
+	width: 100%; padding-left: 10px;
+	height: 28px;
+}
+
+.headerRegisteredLine  
+{
+	font-family: Calibri, Arial, sans-serif;
+	font-size: medium; font-weight: bold; color: Orange;
+	background-color: #7d7d7d;
+	width: 100%; padding-left: 10px;
+	height: 28px;
+}
+
+.slogan  	
+{
+	font-family: Cambria, Georgia, serif;
+	font-size: 16px; font-weight: normal; color: White;
+}
+
+
+
+
+
+
+/* Styles used for main content, shared styles and page specific styles */
+
+.contentTable, div, td, span, body 
+{
+	font: normal 14px Calibri, Arial, sans-serif;
+}
+
+.contentTable
+{
+	font-size: small; color: Black;
+	width: 100%;
+	padding: 0px, 0px, 0px, 0px;
+	margin: 0px, 0px, 0px, 0px;
+}
+
+.contentMain
+{
+	height: 800px;
+}
+
+.contentWrap 
+{
+    padding-left: 8px;
+}
+
+.mainHeading
+{
+	font-family: Cambria, Georgia, serif;
+	font-size: large; 
+	font-weight: bold; 
+	color: #333333;
+	margin: 20px 0px; 
+	padding-left: 10px;
+	border-left: solid 3px #cc3300;
+}
+
+.mainHeading span 
+{
+    font-weight: bold;
+}
+
+.contentRightBottom .mainHeading
+{
+    margin: 5px 0;
+}
+
+.subHeading 
+{
+	font-family: Calibri, Arial, sans-serif;
+	font-size: large; font-weight: bold; color: #333333;
+}
+
+.subHeading2
+{
+	font-family: Cambria, Georgia, serif;
+	font-size: small; font-weight: bold; color: #999999;
+	padding-bottom: 15px; padding-top: 15px;
+}
+
+.bold16 
+{
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.contentBullet 
+{
+	padding-left: 15px; margin-bottom: 15px;
+	background-image: url("Images/contentBullet.gif");
+	background-repeat: no-repeat;
+}
+
+.slashBullet
+{
+        padding-left: 20px; text-align: left;
+        background-image: url("Images/slashBullet.gif");
+        background-repeat: no-repeat;
+        font-size: 12px;
+}
+
+
+
+
+.required 
+{
+	font-family: Calibri, Arial, sans-serif;
+	font-size: small; color: Red;
+}
+
+.registerTable
+{
+	border-top: solid 1px #f0f0f0;
+	margin-bottom: 20px;
+	width: 670px;
+}
+
+.registerLeft 
+{
+	padding-right: 8px;
+}
+
+.grayBackground { background-color: #f0f0f0; padding: 5px; }
+
+.sessionsPanel
+{
+	width: 100%; height: 116px; padding-bottom: 10px;
+	background-image: url("Images/sessionsLine.gif");
+}
+
+.sessionsButton { margin: 0px 0px 0px 20px; }
+
+.sessionsContainer { }
+
+.sessionContent { padding-right: 10px; }
+
+.sessionTags { width: 140px; border-left: 1px solid #cccccc; padding: 10px; }
+
+.sessionLevel { font-family: Cambria, Georgia, serif; color: #666666; }
+
+.sessionDetails
+{
+	white-space: nowrap;
+}
+
+ .sessionButtons
+ {
+    width: 94%;
+    display: block;
+    padding-left: 10px;
+    line-height: 32px;
+ }
+.sessionButtons input
+{
+    margin-left: 6px;
+}
+
+.sessionName { }
+
+.sessionTime { }
+
+.sessionRoom { }
+
+.sessionDescription { padding: 15px 15px 0px 0px; }
+
+.sessionEvaluation { padding: 7px 0px 7px 7px; text-align: left; }
+
+.sessionRoomPhoto { padding-top: 15px; }
+
+.tagBullet  
+{
+	font-family: Cambria, Georgia, serif;
+	padding-left: 25px; 
+	height: 17px; 
+	margin-bottom: 3px;
+	background-image: url("Images/tag.gif"); 
+	background-repeat: no-repeat; 
+	background-position: top-left; 
+}
+
+.tagBullet a, .tagBullet a:active, .tagBullet a:visited
+{
+	background-image: none;
+	white-space: nowrap;
+}
+
+.scheduleTime { font-weight: bold; }
+
+.scheduleSessions { padding-left: 10px; padding-bottom: 10px; }
+
+.scheduleLine { padding-bottom: 7px; }
+
+.speakerContainer { }
+
+.newsContainer { }
+
+.newsPad { padding: 0px 13px 0px 13px; }
+
+.newsPosted { font-family: Cambria, Georgia, serif; padding-right: 15px; color: #666666; }
+
+.padLeft { padding: 0px 30px 5px 13px }
+
+.marginLeft { margin: 0px 30px 5px 13px }
+
+.cloudControl a, .cloudControl a:active, .cloudControl a:visited
+{
+	text-decoration: none; color: #003399;
+	background-image: none;
+}
+
+.cloudControl { color: #999999; }
+
+.cloudItem { white-space: nowrap; display: inline; }
+
+.noWrap { white-space: nowrap; }
+
+
+
+
+
+
+/* Styles used in the left column */
+
+.contentLeft {
+	font-family: Calibri, Arial, sans-serif;
+	font-size: small; color: #666666;
+	width: 150px;
+	border-right: 1px solid #d2d2d2;
+	padding: 20px 10px 10px 0;
+}
+
+.contentLeft .slashBullet 
+{
+    padding-bottom: 5px;
+}
+
+.contentLeft h3 
+{
+    border-left: 3px solid #CC3300;
+    font: bold 16px Cambria,Georgia,serif;
+    padding: 3px 3px 3px 6px;
+    margin: 5px 0px;
+}
+
+.contentSmallGray 
+{
+	font-family: Cambria, Georgia, serif;
+	font-size: small; color: #999999;
+	padding-left: 30px; margin-bottom: 30px;
+	width: 200px;
+}
+
+
+
+
+
+
+/* Styles used in the right column */
+
+.contentRight
+{
+	font-family: Calibri, Arial, sans-serif;
+	font-size: medium; color: #cccccc;
+	border-bottom: solid 3px black;
+	background-color: #313131; 
+	background-image: url("Images/rightBackground.jpg");
+	background-position: top left; background-repeat: no-repeat;
+	width: 100%; height: 180px; margin-bottom: 20px;
+}
+
+.rightNote 
+{
+	font-size: 15px; font-weight: bold; color: White;
+	padding: 15px;
+}
+
+.rightRegister 
+{
+	color: #cccccc;
+	padding-left: 15px;
+}
+
+.contentRightBottom
+{
+	font-family: Calibri, Arial, sans-serif;
+	font-size: small; color: #333333;
+	border-left: 1px solid #d2d2d2;
+	background-color: #f0f0f0; 
+	width: 300px;
+}
+
+.contentRight a, .contentRight a:visited, .contentRight a:active
+{
+	text-decoration: none;
+}
+
+.mainHeadingBlack
+{
+	font-family: Calibri, Arial, sans-serif;
+	font-size: large; font-weight: bold; color: White;
+	background-color: Black;
+	padding-bottom: 5px; padding-left: 10px; 
+	border-left: solid 3px #cc3300;	
+	background-image: url("Images/daysLeftArrow.gif");
+	background-position: top right;
+	background-repeat: no-repeat;
+	max-width: 100%; 
+}
+
+.mainHeadingBlack a:visited, .mainHeadingBlack a:active, .mainHeadingBlack a {
+	text-decoration: none;
+	color: white;
+}
+
+.headingLink 
+{
+	float: right;
+
+}
+
+.daysLeft
+{
+	font-family: Calibri, Arial, sans-serif;
+	font-size: small; font-weight: bold; color: #999999;
+	padding-left: 10px;
+}
+
+.rightBullet 
+{
+	margin: 0 10px 10px 5px;
+	padding-left: 35px;
+	background-image: url("Images/rightBullet.gif");
+	background-repeat: no-repeat;
+}
+
+.rightButton1 { padding: 10px 10px 10px 0px; }
+.rightButton2 { padding: 10px 0px 10px 0px; }
+
+
+.socialMediaIconWrap {
+    height:38px;
+    width:200px;
+    padding-left: 8px;
+}
+.socialMediaIcon {
+    float:left;
+    height:34px;
+    margin:0 4px;
+    width:32px;
+}
+.socialMediaIconWrap img 
+{
+    border: none;
+}
+
+
+/* Styles used in the footer */
+
+.footLeft 
+{
+	padding-left: 10px;
+	color: #383838;
+	background-color: #7d7d7d; 
+}
+
+.footMiddle
+{
+	padding-left: 10px;
+	color: #383838;
+	background-color: #7d7d7d; 
+}
+
+.footMiddle a, .footMiddle a:active, .footMiddle a:visited
+{
+	text-decoration: underline;
+	color: #383838;
+}
+.footMiddle1
+{
+	padding-left: 10px;
+	color: #383838;
+	background-color: #7d7d7d; 
+}
+
+.footMiddle1 a, .footMiddle a:active, .footMiddle a:visited
+{
+	text-decoration: underline;
+	color: White;
+}
+
+
+
+
+
+.footRight
+{
+	padding: 5px 0px 5px 10px;
+	color: #7d7d7d; 
+	background-color: #383838;
+}
+
+
+
+
+
+
+
+
+
+.AspNet-Menu
+{
+	margin: 0px;	
+	padding: 0px;
+	border-collapse: collapse;
+}
+
+.headLinksBar .AspNet-Menu-Horizontal .AspNet-Menu
+{
+	border-right: 1px solid #666666;
+}
+
+.AspNet-Menu-TopLevel-register:hover, .AspNet-Menu-TopLevel-register:hover a { background-color: #254b32; color: White; }
+.AspNet-Menu-TopLevel-program:hover, .AspNet-Menu-TopLevel-program:hover a { background-color: #583225; color: White; }
+.AspNet-Menu-TopLevel-news:hover,.AspNet-Menu-TopLevel-news:hover a { background-color: #254b65; color: White; }
+.AspNet-Menu-TopLevel-about:hover, .AspNet-Menu-TopLevel-about:hover a { background-color: #3e3e58; color: White; }
+.AspNet-Menu-TopLevel-wiki:hover, .AspNet-Menu-TopLevel-wiki:hover a { background-color: #4b4b4b; color: White; }
+.AspNet-Menu-TopLevel-jobs:hover, .AspNet-Menu-TopLevel-jobs:hover a { background-color: #4b4b4b; color: White; }
+
+.AspNet-Menu a, AspNet-Menu a:visited, AspNet-Menu a:active
+{
+	margin: 5px 20px 5px 0px;
+	text-decoration: none;
+	color: #b4b4b4;
+}
+
+.headLinksBar .AspNet-Menu a, .headLinksBar AspNet-Menu a:visited, .headLinksBar AspNet-Menu a:active
+{
+	color: #cccccc;
+	margin: 0px;
+	text-decoration: none;
+	color: #b4b4b4;
+	width: 115px; height: 40px;
+	display: block;
+	padding-left: 5px;
+	line-height: 50px;
+}
+
+.AspNet-Menu-Selected a, .AspNet-Menu-Selected a:visited, .AspNet-Menu-Selected a:active, 
+.AspNet-Menu-TopLevel-about-Selected a, .AspNet-Menu-TopLevel-about-Selected a:visited, .AspNet-Menu-TopLevel-about-Selected a:active,
+.AspNet-Menu-TopLevel-wiki-Selected a, .AspNet-Menu-TopLevel-wiki-Selected a:visited, .AspNet-Menu-TopLevel-wiki-Selected a:active,
+.AspNet-Menu-TopLevel-jobs-Selected a, .AspNet-Menu-TopLevel-jobs-Selected a:visited, .AspNet-Menu-TopLevel-jobs-Selected a:active,
+.AspNet-Menu-TopLevel-news-Selected a, .AspNet-Menu-TopLevel-news-Selected a:visited, .AspNet-Menu-TopLevel-news-Selected a:active,
+.AspNet-Menu-TopLevel-program-Selected a, .AspNet-Menu-TopLevel-program-Selected a:visited, .AspNet-Menu-TopLevel-program-Selected a:active,
+.AspNet-Menu-TopLevel-register-Selected a, .AspNet-Menu-TopLevel-register-Selected a:visited, .AspNet-Menu-TopLevel-register-Selected a:active, 
+.headLinksBar .AspNet-Menu td.AspNet-Menu-TopLevel-register-Selected a, .headLinksBar .AspNet-Menu td.AspNet-Menu-TopLevel-program-Selected a,
+.headLinksBar .AspNet-Menu td.AspNet-Menu-TopLevel-news-Selected a, .headLinksBar .AspNet-Menu td.AspNet-Menu-TopLevel-about-Selected a,
+.headLinksBar .AspNet-Menu td.AspNet-Menu-TopLevel-wiki-Selected a,
+.headLinksBar .AspNet-Menu td.AspNet-Menu-TopLevel-jobs-Selected a
+{
+	color: white;
+}
+
+.AspNet-Menu-TopLevel-about-Selected, .AspNet-Menu-TopLevel-about,
+.AspNet-Menu-TopLevel-register, .AspNet-Menu-TopLevel-register-Selected,
+.AspNet-Menu-TopLevel-program, .AspNet-Menu-TopLevel-program-Selected,
+.AspNet-Menu-TopLevel-news, .AspNet-Menu-TopLevel-news-Selected,
+.AspNet-Menu-TopLevel-wiki, .AspNet-Menu-TopLevel-wiki-Selected,
+.AspNet-Menu-TopLevel-jobs, .AspNet-Menu-TopLevel-jobs-Selected
+{
+	border-left: 1px solid #666666;
+	font-size: 15px; font-weight: bold;	
+	margin: 0px;
+}
+
+.AspNet-Menu-TopLevel-about-Selected, .AspNet-Menu-TopLevel-about
+{
+	border-bottom: 5px solid #9966cc;	
+}	
+.AspNet-Menu-TopLevel-about-Selected
+{
+	background-color: #6666cc;
+}
+
+.AspNet-Menu-TopLevel-register, .AspNet-Menu-TopLevel-register-Selected
+{
+	border-bottom: 5px solid #00ff00;
+}
+
+.AspNet-Menu-TopLevel-register-Selected, .AspNet-Menu-TopLevel-register-Selected
+{
+	background-color: #009933;
+}
+
+.AspNet-Menu-TopLevel-program, .AspNet-Menu-TopLevel-program-Selected
+{
+	border-bottom: 5px solid #ff9900;
+}
+
+.AspNet-Menu-TopLevel-program-Selected, .AspNet-Menu-TopLevel-program-Selected
+{
+	background-color: #cc3300;
+}
+
+.AspNet-Menu-TopLevel-news, .AspNet-Menu-TopLevel-news-Selected
+{
+	border-bottom: 5px solid #33ccff;
+}
+
+.AspNet-Menu-TopLevel-news-Selected, .AspNet-Menu-TopLevel-news-Selected
+{
+	background-color: #0099ff;
+}
+
+.AspNet-Menu-TopLevel-wiki, .AspNet-Menu-TopLevel-wiki-Selected
+{
+	border-bottom: 5px solid #ffffff;
+}
+
+.AspNet-Menu-TopLevel-wiki-Selected, .AspNet-Menu-TopLevel-wiki-Selected
+{
+	background-color: #999999;
+}
+
+.AspNet-Menu-TopLevel-jobs, .AspNet-Menu-TopLevel-jobs-Selected
+{
+	border-bottom: 5px solid #ffffff;
+}
+
+.AspNet-Menu-TopLevel-jobs-Selected, .AspNet-Menu-TopLevel-jobs-Selected
+{
+	background-color: #999999;
+}
+
+
+/* Common settings for controls */
+
+select, label { font-family: Calibri, Arial, sans-serif; font-size: small; }
+label { padding-right: 30px; }
+
+
+
+
+
+.AspNet-Menu-Item:hover a
+{
+	text-decoration: none;
+	background-image: url("Images/dottedLight.gif");
+	background-position: bottom left;
+	background-repeat: repeat-x;
+}
+
+/* Registration */
+
+h3.regHeader 
+{
+    font: bold 16px Calibri, Georgia, Helvetica, Arial, Verdana;
+}
+.regNumber1 div, .regNumber2 div, .regNumber3 div
+{
+    display: block;
+    width: 27px;
+    height: 27px;
+    float: left;
+    margin-right: 8px;
+    margin-top: -5px;
+    background: transparent url("Images/Registration/numbers.gif") no-repeat left top;
+}
+.regNumber2 div {
+    background: transparent url("Images/Registration/numbers.gif") no-repeat -27px 0;
+}
+.regNumber3 div {
+    background: transparent url("Images/Registration/numbers.gif") no-repeat -54px 0;
+}
+
+.subHeading3
+{ 
+    font: small bold Cambria, Georgia, serif;
+    color: #000000;
+	padding: 5px 0;
+}
+.regCaptcha {
+    border: solid 1px #d3d3d3;
+    background-color: #f9f9f9;
+    width: 190px;
+    margin-left: 15px;
+    padding: 4px 8px;
+}
+.regCaptcha input
+{
+    margin: 4px 0;
+}
+
+.ValidationErrorClass {
+     border: 2px solid red;
+     color: red;
+     margin: 5px 0px;
+     padding: 5px 15px 10px 70px;
+     background: #FFFECB url(Images/ExclamationPoint_small1.jpg) no-repeat 7px 50%;
+     font-weight: bold;
+}
+.ValidationErrorClass ul {
+     margin: 0;
+     padding: 0;
+     margin-left: 25px;
+     list-style: square;
+     font-weight: normal;
+}
+/* Code Camp Attendance */
+.tablePreviousAttendance 
+{
+    font: normal 13px Verdana, Arial, Tahoma;
+}
+.tablePreviousAttendance thead td
+{
+    font-weight: bold;
+    padding: 4px 5px;
+    border-left: solid 1px #CFCFCF;
+    border-bottom: solid 3px #3F3F3F;
+}
+
+.tablePreviousAttendance td 
+{
+    border-bottom: solid 1px #3F3F3F;
+    padding: 2px 5px;
+}
+.tablePreviousAttendance td.year 
+{
+    font-weight: bold;
+}
+/* Sponsors */
+.sponsorBar 
+{
+    clear: both;
+    height: 29px;
+    background: transparent url("Images/sponsor-bar-center.gif") repeat-x 0 0;
+    margin-top: 5px;
+}
+.sponsorBar .left
+{
+    float: left;
+    width: 5px;
+    height: 29px;
+    background: transparent url("Images/sponsor-bar-left.gif") no-repeat 0 0;
+}
+.sponsorBar .right
+{
+    float: right;
+    width: 5px;
+    height: 29px;
+    background: transparent url("Images/sponsor-bar-right.gif") no-repeat 0 0;
+}
+.sponsorBar h3 
+{
+    padding: 3px 0 0 10px;
+    font: bold 18px Tahoma, Arial, Verdana;
+}
+.sponsors a 
+{
+    padding-top: 5px;
+    font-weight: bold;
+    display: block;
+}
+.sponsors a + a 
+{
+    padding-top: 10px;
+    display: inline-block;
+}
+.sponsors img 
+{
+    width: 160px;
+    height: 160px;
+}
+.sponsors a.imgLink:visited, .sponsors a.imgLink
+{
+    background: none;
+}
+.sponsors ul
+{
+    padding: 0 10px;
+}
+.sponsors li
+{
+    float: left;
+    text-align: center;
+    list-style: none;
+    margin: 0 8px 8px 8px;
+}
+.sponsorSide 
+{
+    padding: 0 3px;
+}
+.sponsorSide ul 
+{
+    margin-top: 0;
+}
+.sponsorSide li 
+{
+    text-align: left;
+    float: none;
+    margin: 0;
+    padding: 0;
+}
+.sponsorSide a
+{
+    color: #3B4DB9;
+    text-decoration: none;
+    padding: 0;
+    margin: 8px 0 0 0;
+}
+.sponsorSide a:hover 
+{
+    text-decoration: underline;
+}
+.imgSmall img 
+{
+    width: 130px;
+    height: 130px;
+}
+
+/* Sessions Page */
+
+#MainHeadingDivSatOrSunday
+{
+    padding: 0 0 4px 15px;
+}
+#MainHeadingDivSatOrSunday table + table
+{
+    padding-top: 6px;
+}
+#MainHeadingDivSatOrSunday label 
+{
+    font: bold 14px Verdana, Arial;
+    cursor: pointer;
+    color: #FFF;
+    background-color: #7F7F7F;
+    padding: 5px 12px 5px 10px;
+    margin-left: -20px;
+}
+#MainHeadingDivSatOrSunday input[checked="checked"] + label 
+{
+    background-color: #AF1D00;
+}
+
+.sessionsList .title h2 
+{
+    margin: 0;
+    font: bold 18px Cambria, Georgia, Arial, Verdana, Tahoma;
+    color: #AF1D00;
+}
+.sessionsList .itemTitle {
+    font: normal 12px Arial, Verdanan, Tahoma;
+}
+
+.sessionsList .sessionButtons {
+    padding: 8px 0 0 0;
+}
+
+.sessionsList .tagBullet 
+{
+	font-family: Cambria, Georgia, serif;
+	padding-left: 25px;  
+	width: 130px;
+	height: auto;
+	margin-bottom: 3px;
+	background: transparent url("Images/tag.gif") no-repeat top-left;
+}
+
+.sessionsList .tagBullet a 
+{
+	white-space: normal;
+}
+
+.sessionsList .attendBottom
+{
+	background-color: #F3F3F3;
+	padding: 5px;
+}
+.sessionsList .attendBottom label
+{
+	font-weight: bold;
+	color: #000000;
+}
+
+.sessionsList .sessionDescription span 
+{
+	font-size: 14px;
+	padding: 5px 5px 5px 14px;
+	color: #000000;
+}
+
+.sessionsList .pad 
+{
+	padding: 0 0 8px 0;
+	margin: 0 10px 12px 10px;
+	border-bottom: solid 1px #DFDFDF;
+}
+
+.sessionOverview ul 
+{
+    padding-left: 30px;
+}
+.sessionOverview li 
+{
+    padding: 1px 0;
+    color: #222;
+}
+.sessionOverview a.sessionTitle 
+{
+    font: normal 13px Arial, Verdana;
+    color: #3B4D94;
+    padding-right: 10px;
+    background: none;
+}
+.SessionInterestText, .SessionPlanOnAttendText, SessionSuggestedText
+{
+    font: normal 12px Verdana, Arial;
+    color: #008F06;
+    padding-left: 4px;
+}
+.SessionPlanOnAttendText 
+{
+    font-weight: bold;
+    color: #AF1D00;
+}
+.SessionSuggestedText 
+{
+    font-weight: bold;
+    color: #FFFF00;
+}
+.sessionOverview a.sessionTitle:hover 
+{
+    text-decoration: underline;
+}
+
+.sessionOverview a 
+{
+    text-decoration: none; 
+    font-weight: bold;
+    color: #333;
+	background: transparent url("Images/dotted.gif") repeat-x bottom left ;
+	padding-right: 4px;
+}
+
+.sessionOverview a:hover
+{
+    text-decoration: none;
+}
+
+/* Recent Posts
+--------------------------- */
+.recentPosts 
+{
+    list-style: none;
+    padding-left: 0;
+}
+.recentPosts li 
+{
+    background: transparent url(Images/bullet_orange.png) no-repeat top left;
+    padding-left: 16px;
+    margin: 4px 2px;
+}
+.recentPosts li a 
+{
+    text-decoration: none;
+    font-size: 14px;
+    color: #1E3695;
+}
+.recentPosts li a:hover
+{
+    text-decoration: underline;
+}
+
+/* Search Sessions */
+
+.searchSessions
+{
+    float: right;
+    width: 350;
+    height: 22px;
+    text-align: left;
+    margin: -26px 0 0 0;
+}
+.searchSessions span 
+{
+    font: bold 18px Cambria,Georgia,serif;
+    color: #333;
+    padding-right: 5px;
+}
+.searchSessions input[type="text"] 
+{
+    border: solid 1px #333333;
+    height: 22px;
+    width: 200px;
+    padding: 1px;
+    vertical-align: top;
+}
+.searchSessions input[type="submit"] 
+{
+    color: #fff;
+    background: transparent url(Images/session-search-btn.gif) no-repeat left 1px;
+    border: none;
+    width: 27px;
+    height: 25px;
+    vertical-align: top;
+    margin-left: -4px;
+    cursor: pointer;
+}
+.ext-ie .searchSessions input[type="text"] 
+{
+    line-height: 18px;
+}
+/*
+.searchSessions input[type="submit"]:hover 
+{
+    background: transparent url(Images/session-search-btn.gif) no-repeat top -123px;
+}
+*/
+
+.dataGrid table 
+{ 
+    padding: 0 10px;
+    width: 100%;
+}
+
+.dataGrid th 
+{
+    padding: 2px 4px;
+    background-color: #F7F7F7;
+    border-bottom: solid 1px #999;
+} 
+.dataGrid td 
+{
+    padding: 2px 5px;
+}
+.dataGrid td.Description 
+{
+    width: 35%;
+    white-space: normal;
+}
+.dataGrid td + td + td + td + td
+{
+    text-align: right;
+}
+.dataGrid tr:hover 
+{
+    background-color: #EFEFEF;
+}
+.dataGrid a 
+{
+    color: #1E3695;
+    font-weight: bold;
+}
+.dataGrid a:hover
+{
+    text-decoration: none;
+}
+
+/* Jobs
+-------------------- */
+.jobListWrap 
+{
+    padding-left: 12px;
+}
+.jobListWrap .listItem 
+{
+    border-bottom: 1px solid #E9E9E9;
+    clear: both; 
+    float: left; 
+    font: normal 12px Helvetica,Arial,sans-serif;
+    padding: 10px;
+    width: 95%;
+}
+.jobListWrap .listItem .jobTitleLink 
+{
+    margin: 0 5px 0 0; 
+    padding: 0 5px 0 0; 
+    font-size: 15px; 
+    color: #07c; 
+    text-decoration: none; 
+    font-weight: bold; 
+    display: inline-block;
+}
+.jobListWrap .listItem .jobTitleLink:hover 
+{
+    color: #1E3695;
+    text-decoration: underline;
+}
+.listItem .company 
+{
+    color: #444; 
+    font-weight: bold;
+}
+.listItem .location 
+{
+    margin: 0; 
+    padding: 0; 
+    color: #444;
+    margin-bottom: 4px;
+    font: italic 11px Arial, Verdana;
+}
+.listItem .description 
+{
+    margin: 0; 
+    padding: 0; 
+    font-size: 100%; 
+    background: transparent;
+    clear: both;
+    color: #333;
+}
+.listItem .postTime 
+{
+    float: right;
+    text-align: right; 
+    font-size: 11px;
+}
+.listItem .postTime p 
+{
+    margin: 0; 
+    padding: 0; 
+}
+
+/* Speakers Page
+-------------------------------------------- */
+
+.speakersList 
+{
+    margin: 0 20px;
+}
+
+.speakersList td 
+{
+    padding: 15px 0 5px 0;
+    border-bottom: 1px solid #E9E9E9;
+}
+
+.speakersList a 
+{
+    color:#1E3695;
+    font-size:14px;
+    text-decoration:none;
+}
+.speakersList p 
+{
+    padding: 5px 0;
+}
+.speakersList a:hover
+{
+    text-decoration: underline;
+}
+
+.speakersList td.speakerPic 
+{
+    vertical-align: top;
+    text-align: center;
+    width: 115px;
+}
+
+.speakersList td.speakerPic image 
+{
+    vertical-align: top;
+}
+
+.speakersList h4 
+{
+    background-color: #F3F3F3;
+    padding: 4px 10px;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.speakersList h4 a.speakerUrl 
+{
+    float: right;
+    font-weight: normal;
+    display: block;
+    font-size: 12px;
+    margin: 4px 5px;
+}
+
+.speakersList .contentWrap 
+{
+    padding-left: 10px;
+}
+
+.speakersList .videoWrap 
+{
+    padding: 5px 0;
+}
+
+.speakersList td div.videoWrap a 
+{
+    background-image:url("Images/dotted.gif");
+    background-position:left bottom;
+    background-repeat:repeat-x;
+    color: #333333;
+    text-decoration:none;
+}
+.speakersList td div a:hover 
+{
+    text-decoration:none;
+}
+
+@media print 
+{
+    body 
+    {
+        font-size: 12pt;
+    }
+    .hidePrint 
+    {
+        display: none;
+    }
+    .contentLeft, .footLeft
+    {
+        width: 0px;
+        display: none;
+    }
+    .contentRightBottom
+    {
+        width: 130px;
+    }
+    .contentRightBottom .sponsorSide a 
+    {
+        text-decoration: none;
+        margin-top: 2px;
+        display: block;
+        color: #07366F;
+    }
+    .contentRightBottom .sponsorSide .sponsors .sponsorBar h3 
+    {
+        font-size: 10pt;
+        color: #333;
+        font-weight: bold;
+        margin: 0 0 10px 0;
+    }
+}

@@ -1,0 +1,26 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="RightRegister.master.cs" Inherits="WebAPI.RightRegister" %>
+
+<asp:Content ContentPlaceHolderID="defaultSublinks" ID="rightSublinks" runat="server">
+    <asp:ContentPlaceHolder ID="Sublinks" runat="server">
+        <span class="slogan">By and For the Developer Community</span>
+    </asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="RegisterContent" ContentPlaceHolderID="parentContent" runat="server">
+    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="RegisterRightContent" ContentPlaceHolderID="SidebarRight" runat="server">
+    <div class="mainHeadingBlack"><asp:HyperLink CssClass="daysLeft"  runat="server" ID="RegisterNowID" NavigateUrl="~/Register.aspx"></asp:HyperLink>  <span class="daysLeft">
+    <asp:Label runat="server" ID="LabelDaysLeft"></asp:Label></span></div>
+       
+    <div class="rightRegister">
+    <asp:Label runat="server" ID="LabelDaysLeftID"></asp:Label><br />
+    <asp:Image ID="R1" SkinID="RightDay1" runat="server"/>
+    <asp:Image ID="R2" SkinID="RightDay2" runat="server"/><br />
+    @ Foothill College, Los Altos CA
+    </div>             
+    
+</asp:Content>
+

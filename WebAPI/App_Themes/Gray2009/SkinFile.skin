@@ -1,0 +1,36 @@
+﻿<%--
+Default skin template. The following skins are provided as examples only.
+
+1. Named control skin. The SkinId should be uniquely defined because
+   duplicate SkinId's per control type are not allowed in the same theme.
+
+<asp:GridView runat="server" SkinId="gridviewSkin" BackColor="White" >
+   <AlternatingRowStyle BackColor="Blue" />
+</asp:GridView>
+
+2. Default skin. The SkinId is not defined. Only one default 
+   control skin per control type is allowed in the same theme.
+
+<asp:Image runat="server" ImageUrl="~/images/image1.jpg" />
+--%>
+
+<asp:Menu SkinID="subMenu" Orientation="Horizontal" runat="server"></asp:Menu>
+
+<asp:ImageButton SkinID="ButtonLogin" ImageUrl="Images/buttonLogin.gif" ImageAlign="AbsMiddle" CssClass="headLoginButton" runat="server" />
+
+<asp:Image SkinId="ImageLogo" ImageUrl="Images/headCodeCamp.png" BorderStyle="None" runat="server" />
+<asp:Image SkinId="ImageFree" ImageUrl="Images/headCodeCampFree.gif" BorderStyle="None" runat="server" />
+
+<asp:Image SkinID="ImageFootCurves" ImageUrl="Images/footerCurves.gif" ImageAlign="middle" runat="server" /> 
+
+<asp:ImageButton SkinID="ButtonEditSession"  ImageUrl="Images/buttonEditSession.gif" ImageAlign="AbsMiddle" runat="server" />
+<asp:ImageButton SkinID="ButtonDeleteSession"  ImageUrl="Images/buttonDeleteSession.gif" ImageAlign="AbsMiddle" runat="server" />
+<asp:ImageButton SkinID="ButtonReviewSession"  ImageUrl="Images/buttonReview.gif" ImageAlign="AbsMiddle" runat="server" />
+<asp:ImageButton SkinID="ButtonEmailSpeaker"  ImageUrl="Images/buttonEmailSpeaker.gif" ImageAlign="AbsMiddle" runat="server" />
+
+<asp:ImageButton SkinID="ButtonSubmit"  ImageUrl="Images/buttonSubmit.gif" ImageAlign="AbsMiddle" runat="server" />
+<asp:ImageButton SkinID="ButtonClear"  ImageUrl="Images/buttonClear.gif" ImageAlign="AbsMiddle" runat="server" />
+
+
+<asp:Image SkinID="RightDay1" ImageUrl="Images/Oct3rd_img.png" ImageAlign="middle" AlternateText="Oct 3: Annual CodeCamp" CssClass="rightButton1" runat="server" />
+<asp:Image SkinID="RightDay2" ImageUrl="Images/Oct4th_img.png" ImageAlign="middle" AlternateText="Oct 4: Annual CodeCamp" CssClass="rightButton2" runat="server" />

@@ -1,0 +1,1275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{82F54305-7B43-42D2-A1A1-DD0F52243570}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebAPI</RootNamespace>
+    <AssemblyName>WebAPI</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AdvancedIntellect.Ssl, Version=2.0.0.5, Culture=neutral, PublicKeyToken=bc571e8da1c1f543, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dlls\AdvancedIntellect.Ssl.dll</HintPath>
+    </Reference>
+    <Reference Include="aspNetEmail, Version=3.6.0.77, Culture=neutral, PublicKeyToken=bc571e8da1c1f543">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dlls\aspNetEmail.dll</HintPath>
+    </Reference>
+    <Reference Include="aspNetMime, Version=2.5.2.0, Culture=neutral, PublicKeyToken=bc571e8da1c1f543">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dlls\aspNetMime.DLL</HintPath>
+    </Reference>
+    <Reference Include="aspNetPOP3, Version=2.5.2.0, Culture=neutral, PublicKeyToken=bc571e8da1c1f543">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dlls\aspNetPOP3.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v7.3, Version=7.3.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dlls\DevExpress.Data.v7.3.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v7.3, Version=7.3.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dlls\DevExpress.Utils.v7.3.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Web.v7.3, Version=7.3.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dlls\DevExpress.Web.v7.3.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v7.3, Version=7.3.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dlls\DevExpress.XtraCharts.v7.3.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v7.3.Design, Version=7.3.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dlls\DevExpress.XtraCharts.v7.3.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v7.3.UI, Version=7.3.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dlls\DevExpress.XtraCharts.v7.3.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v7.3.Web, Version=7.3.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dlls\DevExpress.XtraCharts.v7.3.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v7.3, Version=7.3.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dlls\DevExpress.XtraEditors.v7.3.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v7.3.Design, Version=7.3.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dlls\DevExpress.XtraEditors.v7.3.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageResizer, Version=3.2.4.698, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dlls\ImageResizer.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageResizer.Mvc, Version=3.2.4.698, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dlls\ImageResizer.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageResizer.Plugins.DiskCache, Version=3.2.4.698, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dlls\ImageResizer.Plugins.DiskCache.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageResizer.Plugins.Logging, Version=3.2.4.698, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dlls\ImageResizer.Plugins.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageResizer.Plugins.PsdReader, Version=3.2.4.698, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dlls\ImageResizer.Plugins.PsdReader.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageResizer.Plugins.SqlReader, Version=3.2.4.698, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dlls\ImageResizer.Plugins.SqlReader.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqToTwitter, Version=2.0.20.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dlls\LinqToTwitter.dll</HintPath>
+    </Reference>
+    <Reference Include="ListNanny">
+      <HintPath>dlls\ListNanny.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.1\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="CloudControl.ascx.cs">
+      <DependentUpon>CloudControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CloudControl.ascx.designer.cs">
+      <DependentUpon>CloudControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Code\RSSFeed.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="DefaultNoColumns.Master.cs">
+      <DependentUpon>DefaultNoColumns.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DefaultNoColumns.Master.designer.cs">
+      <DependentUpon>DefaultNoColumns.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="ListNanny.aspx.cs">
+      <DependentUpon>ListNanny.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListNanny.aspx.designer.cs">
+      <DependentUpon>ListNanny.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage.master.cs">
+      <DependentUpon>MasterPage.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage.master.designer.cs">
+      <DependentUpon>MasterPage.master</DependentUpon>
+    </Compile>
+    <Compile Include="MiscPages\Membership1.aspx.cs">
+      <DependentUpon>Membership1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MiscPages\Membership1.aspx.designer.cs">
+      <DependentUpon>Membership1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RightRegister.master.cs">
+      <DependentUpon>RightRegister.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RightRegister.master.designer.cs">
+      <DependentUpon>RightRegister.master</DependentUpon>
+    </Compile>
+    <Compile Include="Sponsors.aspx.cs">
+      <DependentUpon>Sponsors.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sponsors.aspx.designer.cs">
+      <DependentUpon>Sponsors.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SponsorsList.ascx.cs">
+      <DependentUpon>SponsorsList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SponsorsList.ascx.designer.cs">
+      <DependentUpon>SponsorsList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="_test\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_test\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="About.aspx" />
+    <Content Include="App_Sprites\adobe-flash.jpg" />
+    <Content Include="App_Sprites\alumwire-logo.jpg" />
+    <Content Include="App_Sprites\BAADD.jpg" />
+    <Content Include="App_Sprites\google.gif" />
+    <Content Include="App_Sprites\Sponsors\10gen-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\accu-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\adobe-flash.jpg" />
+    <Content Include="App_Sprites\Sponsors\adobe-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\aipmm-72dpi.jpg" />
+    <Content Include="App_Sprites\Sponsors\alumwire-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\appcelerator-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\apprenda-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\artima.gif" />
+    <Content Include="App_Sprites\Sponsors\artima_150.gif" />
+    <Content Include="App_Sprites\Sponsors\assia-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\att-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\awslogo.gif" />
+    <Content Include="App_Sprites\Sponsors\BAADD.jpg" />
+    <Content Include="App_Sprites\Sponsors\baadd.org.jpg" />
+    <Content Include="App_Sprites\Sponsors\bay-area-scala-enthusiasts-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\baydug.org.jpg" />
+    <Content Include="App_Sprites\Sponsors\baynet-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\BayNetUG.jpg" />
+    <Content Include="App_Sprites\Sponsors\bitbucket-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\biug-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\box-net-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\cacheonix-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\CarnegieMellonWest.gif" />
+    <Content Include="App_Sprites\Sponsors\cloud-foundry-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\cloud-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\cmu-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\componentone-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\cozyroc-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\devexpress-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\dice-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\DiceLogo_160x80.jpg" />
+    <Content Include="App_Sprites\Sponsors\Digipede-Logo-150x75.gif" />
+    <Content Include="App_Sprites\Sponsors\discountasp.net-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\DotNetRoadShow150.jpg" />
+    <Content Include="App_Sprites\Sponsors\drdobbs-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\egnyte-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\embarcadero-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\emeter-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\esri-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\ExactSoftware.gif" />
+    <Content Include="App_Sprites\Sponsors\ExactSoftware150.gif" />
+    <Content Include="App_Sprites\Sponsors\facebook-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\falafel-software-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\falafel_logo_url_150px.png" />
+    <Content Include="App_Sprites\Sponsors\finalbuilder-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\foothill-college-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\FootHill_150.jpg" />
+    <Content Include="App_Sprites\Sponsors\google-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\google.gif" />
+    <Content Include="App_Sprites\Sponsors\grapecity-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\grapecity-powertools-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\guidewire-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\guidewire.jpg" />
+    <Content Include="App_Sprites\Sponsors\hp-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\idesign.jpg" />
+    <Content Include="App_Sprites\Sponsors\idesign1.jpg" />
+    <Content Include="App_Sprites\Sponsors\infragistics-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\intertech-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\intuit-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\jetbrains-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\json.org-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\jug-logo-24pt.jpg" />
+    <Content Include="App_Sprites\Sponsors\k2-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\leadtools-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\linkedin-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\logoNirvanix.gif" />
+    <Content Include="App_Sprites\Sponsors\logo_mindsource.png" />
+    <Content Include="App_Sprites\Sponsors\lumosity-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\magenic-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\meetuplogo100x100.png" />
+    <Content Include="App_Sprites\Sponsors\meetuplogo160x160.jpg" />
+    <Content Include="App_Sprites\Sponsors\microsoft-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\mosso_power.jpg" />
+    <Content Include="App_Sprites\Sponsors\mosso_power2.jpg" />
+    <Content Include="App_Sprites\Sponsors\mosso_power2a.jpg" />
+    <Content Include="App_Sprites\Sponsors\MSLogo.jpg" />
+    <Content Include="App_Sprites\Sponsors\neotechnology-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\Netflix_4C_White_Logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\nopic.gif" />
+    <Content Include="App_Sprites\Sponsors\nsoftware-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\opalsoft-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\oracle-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\orcsweb-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\OSA_logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\OSA_logo150.jpg" />
+    <Content Include="App_Sprites\Sponsors\overactdev-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\pacitpros-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\palm-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\paypal-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\pbwiki.gif" />
+    <Content Include="App_Sprites\Sponsors\pbworks-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\pluralsight-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\PowerBuilder_DevConference_206x175.gif" />
+    <Content Include="App_Sprites\Sponsors\red-gate-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\rssbus-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\SacDnug.gif" />
+    <Content Include="App_Sprites\Sponsors\scalr-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\SDForum.gif" />
+    <Content Include="App_Sprites\Sponsors\sencha-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\sfslug.org.jpg" />
+    <Content Include="App_Sprites\Sponsors\SFWin.jpg" />
+    <Content Include="App_Sprites\Sponsors\silicon-valley-gtug.jpg" />
+    <Content Include="App_Sprites\Sponsors\silicon-valley-web-jug.jpg" />
+    <Content Include="App_Sprites\Sponsors\slo.jpg" />
+    <Content Include="App_Sprites\Sponsors\slo.net-usergroup-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\softshores-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\SoftShores.jpg" />
+    <Content Include="App_Sprites\Sponsors\SpineButton150.jpg" />
+    <Content Include="App_Sprites\Sponsors\SpineButtonCloud.jpg" />
+    <Content Include="App_Sprites\Sponsors\sprint-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\Strikeiron_Community_Logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\sun_logo_rgb.jpg" />
+    <Content Include="App_Sprites\Sponsors\svcs-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\SVWB_150x150.jpg" />
+    <Content Include="App_Sprites\Sponsors\syncfusion-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\syncfusion.png" />
+    <Content Include="App_Sprites\Sponsors\techsmith-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\telerik-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\telerik.jpg" />
+    <Content Include="App_Sprites\Sponsors\text-control-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\ThankThis-logo-160x160.jpg" />
+    <Content Include="App_Sprites\Sponsors\tivo-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\tropo-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\twilio-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\Ultima.jpg" />
+    <Content Include="App_Sprites\Sponsors\Ultima_150.jpg" />
+    <Content Include="App_Sprites\Sponsors\vertigo-logo.jpg" />
+    <Content Include="App_Sprites\Sponsors\vertigologo.gif" />
+    <Content Include="App_Sprites\Sponsors\WebSig.jpg" />
+    <Content Include="App_Sprites\Sponsors\whitehat-130x130.jpg" />
+    <Content Include="App_Sprites\Sponsors\yahoo-logo.jpg" />
+    <Content Include="App_Themes\default\Ad-NoLogos150.jpg" />
+    <Content Include="App_Themes\default\Ad-NoLogos150extraline.jpg" />
+    <Content Include="App_Themes\default\Ad-NoLogos175.jpg" />
+    <Content Include="App_Themes\default\Ad-NoLogos225.jpg" />
+    <Content Include="App_Themes\default\Ad-WithBrightLogos.jpg" />
+    <Content Include="App_Themes\default\Ad-WithBrightLogos450.jpg" />
+    <Content Include="App_Themes\default\Ad-WithBrightLogos450extraline.jpg" />
+    <Content Include="App_Themes\default\Ad-WithBrightLogos4x50extraline.jpg" />
+    <Content Include="App_Themes\default\bg-main.gif" />
+    <Content Include="App_Themes\default\block-content-bottom-left.gif" />
+    <Content Include="App_Themes\default\block-content-bottom-right.gif" />
+    <Content Include="App_Themes\default\block-content-middle-right.gif" />
+    <Content Include="App_Themes\default\block-content-top-left.gif" />
+    <Content Include="App_Themes\default\block-content-top-right.gif" />
+    <Content Include="App_Themes\default\block-content-top-rightx.gif" />
+    <Content Include="App_Themes\default\block-side-bottom-left.gif" />
+    <Content Include="App_Themes\default\block-side-bottom-right.gif" />
+    <Content Include="App_Themes\default\block-side-top-left.gif" />
+    <Content Include="App_Themes\default\block-side-top-right.gif" />
+    <Content Include="App_Themes\default\bullet-link.gif" />
+    <Content Include="App_Themes\default\bullet.gif" />
+    <Content Include="App_Themes\default\favicon.ico" />
+    <Content Include="App_Themes\default\feed.PNG" />
+    <Content Include="App_Themes\default\icon_post.gif" />
+    <Content Include="App_Themes\default\logo-graphic.gif" />
+    <Content Include="App_Themes\default\msvs_template_fun_divs.css" />
+    <Content Include="App_Themes\default\photo-big.jpg" />
+    <Content Include="App_Themes\default\photo-small.jpg" />
+    <Content Include="App_Themes\default\svcc_badge_150.png" />
+    <Content Include="App_Themes\default\svcc_badge_150_spacer.png" />
+    <Content Include="App_Themes\default\svcc_badge_450.png" />
+    <Content Include="App_Themes\default\svcc_badge_450_spacer.png" />
+    <Content Include="App_Themes\default\tag2.png" />
+    <Content Include="App_Themes\Gray2008\Images\buttonAbout.gif" />
+    <Content Include="App_Themes\Gray2008\Images\buttonClear.gif" />
+    <Content Include="App_Themes\Gray2008\Images\buttonDeleteSession.gif" />
+    <Content Include="App_Themes\Gray2008\Images\buttonEditSession.gif" />
+    <Content Include="App_Themes\Gray2008\Images\buttonEmailSpeaker.gif" />
+    <Content Include="App_Themes\Gray2008\Images\buttonLogin.gif" />
+    <Content Include="App_Themes\Gray2008\Images\buttonNews.gif" />
+    <Content Include="App_Themes\Gray2008\Images\buttonProgram.gif" />
+    <Content Include="App_Themes\Gray2008\Images\buttonRegister.gif" />
+    <Content Include="App_Themes\Gray2008\Images\buttonReview.gif" />
+    <Content Include="App_Themes\Gray2008\Images\buttonSubmit.gif" />
+    <Content Include="App_Themes\Gray2008\Images\buttonWiki.gif" />
+    <Content Include="App_Themes\Gray2008\Images\cc09logo_img.png" />
+    <Content Include="App_Themes\Gray2008\Images\contentBullet.gif" />
+    <Content Include="App_Themes\Gray2008\Images\daysLeftArrow.gif" />
+    <Content Include="App_Themes\Gray2008\Images\dotted.gif" />
+    <Content Include="App_Themes\Gray2008\Images\dottedLight.gif" />
+    <Content Include="App_Themes\Gray2008\Images\footerCurves.gif" />
+    <Content Include="App_Themes\Gray2008\Images\headBackground.jpg" />
+    <Content Include="App_Themes\Gray2008\Images\headCodeCamp.gif" />
+    <Content Include="App_Themes\Gray2008\Images\headCodeCampFree.gif" />
+    <Content Include="App_Themes\Gray2008\Images\leftBullet.gif" />
+    <Content Include="App_Themes\Gray2008\Images\login.gif" />
+    <Content Include="App_Themes\Gray2008\Images\nov8CodeCampOff.gif" />
+    <Content Include="App_Themes\Gray2008\Images\nov8CodeCampOn.gif" />
+    <Content Include="App_Themes\Gray2008\Images\nov9BarCampOff.gif" />
+    <Content Include="App_Themes\Gray2008\Images\nov9BarCampOn.gif" />
+    <Content Include="App_Themes\Gray2008\Images\Oct3rd_img.png" />
+    <Content Include="App_Themes\Gray2008\Images\Oct4th_img.png" />
+    <Content Include="App_Themes\Gray2008\Images\rightBackground.jpg" />
+    <Content Include="App_Themes\Gray2008\Images\rightBullet.gif" />
+    <Content Include="App_Themes\Gray2008\Images\rightNov8CodeCamp.gif" />
+    <Content Include="App_Themes\Gray2008\Images\rightNov9BarCamp.gif" />
+    <Content Include="App_Themes\Gray2008\Images\rightNov9CodeCamp.gif" />
+    <Content Include="App_Themes\Gray2008\Images\scheduleArrow.gif" />
+    <Content Include="App_Themes\Gray2008\Images\sessionsLine.gif" />
+    <Content Include="App_Themes\Gray2008\Images\sessionsNov8CodeCamp.gif" />
+    <Content Include="App_Themes\Gray2008\Images\sessionsNov9BarCamp.gif" />
+    <Content Include="App_Themes\Gray2008\Images\slashBullet.gif" />
+    <Content Include="App_Themes\Gray2008\Images\tag.gif" />
+    <Content Include="App_Themes\Gray2008\Style.css" />
+    <Content Include="App_Themes\Gray2009\Images\buttonAbout.gif" />
+    <Content Include="App_Themes\Gray2009\Images\buttonClear.gif" />
+    <Content Include="App_Themes\Gray2009\Images\buttonDeleteSession.gif" />
+    <Content Include="App_Themes\Gray2009\Images\buttonEditSession.gif" />
+    <Content Include="App_Themes\Gray2009\Images\buttonEmailSpeaker.gif" />
+    <Content Include="App_Themes\Gray2009\Images\buttonLogin.gif" />
+    <Content Include="App_Themes\Gray2009\Images\buttonNews.gif" />
+    <Content Include="App_Themes\Gray2009\Images\buttonProgram.gif" />
+    <Content Include="App_Themes\Gray2009\Images\buttonRegister.gif" />
+    <Content Include="App_Themes\Gray2009\Images\buttonReview.gif" />
+    <Content Include="App_Themes\Gray2009\Images\buttonSubmit.gif" />
+    <Content Include="App_Themes\Gray2009\Images\buttonWiki.gif" />
+    <Content Include="App_Themes\Gray2009\Images\contentBullet.gif" />
+    <Content Include="App_Themes\Gray2009\Images\daysLeftArrow.gif" />
+    <Content Include="App_Themes\Gray2009\Images\dotted.gif" />
+    <Content Include="App_Themes\Gray2009\Images\dottedLight.gif" />
+    <Content Include="App_Themes\Gray2009\Images\footerCurves.gif" />
+    <Content Include="App_Themes\Gray2009\Images\headBackground.jpg" />
+    <Content Include="App_Themes\Gray2009\Images\headCodeCamp.png" />
+    <Content Include="App_Themes\Gray2009\Images\headCodeCampFree.gif" />
+    <Content Include="App_Themes\Gray2009\Images\headCodeCamp_from08.gif" />
+    <Content Include="App_Themes\Gray2009\Images\leftBullet.gif" />
+    <Content Include="App_Themes\Gray2009\Images\login.gif" />
+    <Content Include="App_Themes\Gray2009\Images\nov8CodeCampOff.gif" />
+    <Content Include="App_Themes\Gray2009\Images\nov8CodeCampOn.gif" />
+    <Content Include="App_Themes\Gray2009\Images\nov9BarCampOff.gif" />
+    <Content Include="App_Themes\Gray2009\Images\nov9BarCampOn.gif" />
+    <Content Include="App_Themes\Gray2009\Images\Oct3rd_img.png" />
+    <Content Include="App_Themes\Gray2009\Images\Oct4th_img.png" />
+    <Content Include="App_Themes\Gray2009\Images\rightBackground.jpg" />
+    <Content Include="App_Themes\Gray2009\Images\rightBullet.gif" />
+    <Content Include="App_Themes\Gray2009\Images\rightNov8CodeCamp.gif" />
+    <Content Include="App_Themes\Gray2009\Images\rightNov9BarCamp.gif" />
+    <Content Include="App_Themes\Gray2009\Images\rightNov9CodeCamp.gif" />
+    <Content Include="App_Themes\Gray2009\Images\scheduleArrow.gif" />
+    <Content Include="App_Themes\Gray2009\Images\sessionsLine.gif" />
+    <Content Include="App_Themes\Gray2009\Images\sessionsNov8CodeCamp.gif" />
+    <Content Include="App_Themes\Gray2009\Images\sessionsNov9BarCamp.gif" />
+    <Content Include="App_Themes\Gray2009\Images\slashBullet.gif" />
+    <Content Include="App_Themes\Gray2009\Images\tag.gif" />
+    <Content Include="App_Themes\Gray2009\Style.css" />
+    <Content Include="App_Themes\Gray2010\Images\attendBottom.gif" />
+    <Content Include="App_Themes\Gray2010\Images\bullet_orange.png" />
+    <Content Include="App_Themes\Gray2010\Images\bullet_yellow.png" />
+    <Content Include="App_Themes\Gray2010\Images\buttonAbout.gif" />
+    <Content Include="App_Themes\Gray2010\Images\buttonAssignVideo.gif" />
+    <Content Include="App_Themes\Gray2010\Images\buttonClear.gif" />
+    <Content Include="App_Themes\Gray2010\Images\buttonDeleteSession.gif" />
+    <Content Include="App_Themes\Gray2010\Images\buttonEditSession.gif" />
+    <Content Include="App_Themes\Gray2010\Images\buttonEmailAttendees.gif" />
+    <Content Include="App_Themes\Gray2010\Images\buttonEmailSpeaker.gif" />
+    <Content Include="App_Themes\Gray2010\Images\buttonLogin.gif" />
+    <Content Include="App_Themes\Gray2010\Images\buttonNews.gif" />
+    <Content Include="App_Themes\Gray2010\Images\buttonProgram.gif" />
+    <Content Include="App_Themes\Gray2010\Images\buttonRegister.gif" />
+    <Content Include="App_Themes\Gray2010\Images\buttonReview.gif" />
+    <Content Include="App_Themes\Gray2010\Images\buttonSubmit.gif" />
+    <Content Include="App_Themes\Gray2010\Images\buttonWiki.gif" />
+    <Content Include="App_Themes\Gray2010\Images\contentBullet.gif" />
+    <Content Include="App_Themes\Gray2010\Images\daysLeftArrow.gif" />
+    <Content Include="App_Themes\Gray2010\Images\dotted.gif" />
+    <Content Include="App_Themes\Gray2010\Images\dottedLight.gif" />
+    <Content Include="App_Themes\Gray2010\Images\ExclamationPoint_small1.jpg" />
+    <Content Include="App_Themes\Gray2010\Images\ExclamationPoint_small2.jpg" />
+    <Content Include="App_Themes\Gray2010\Images\facebook.png" />
+    <Content Include="App_Themes\Gray2010\Images\feed.png" />
+    <Content Include="App_Themes\Gray2010\Images\footerCurves.gif" />
+    <Content Include="App_Themes\Gray2010\Images\google-plus.png" />
+    <Content Include="App_Themes\Gray2010\Images\headBackground.jpg" />
+    <Content Include="App_Themes\Gray2010\Images\headCodeCamp.png" />
+    <Content Include="App_Themes\Gray2010\Images\headCodeCampFree.gif" />
+    <Content Include="App_Themes\Gray2010\Images\headCodeCamp_from08.gif" />
+    <Content Include="App_Themes\Gray2010\Images\leftBullet.gif" />
+    <Content Include="App_Themes\Gray2010\Images\linkedin.png" />
+    <Content Include="App_Themes\Gray2010\Images\login.gif" />
+    <Content Include="App_Themes\Gray2010\Images\nov8CodeCampOff.gif" />
+    <Content Include="App_Themes\Gray2010\Images\nov8CodeCampOn.gif" />
+    <Content Include="App_Themes\Gray2010\Images\nov9BarCampOff.gif" />
+    <Content Include="App_Themes\Gray2010\Images\nov9BarCampOn.gif" />
+    <Content Include="App_Themes\Gray2010\Images\Oct10th_img.png" />
+    <Content Include="App_Themes\Gray2010\Images\Oct3rd_img.png" />
+    <Content Include="App_Themes\Gray2010\Images\Oct4th_img.png" />
+    <Content Include="App_Themes\Gray2010\Images\Oct9th_img.png" />
+    <Content Include="App_Themes\Gray2010\Images\Registration\numbers.gif" />
+    <Content Include="App_Themes\Gray2010\Images\rightBackground.jpg" />
+    <Content Include="App_Themes\Gray2010\Images\rightBullet.gif" />
+    <Content Include="App_Themes\Gray2010\Images\rightNov8CodeCamp.gif" />
+    <Content Include="App_Themes\Gray2010\Images\rightNov9BarCamp.gif" />
+    <Content Include="App_Themes\Gray2010\Images\rightNov9CodeCamp.gif" />
+    <Content Include="App_Themes\Gray2010\Images\scheduleArrow.gif" />
+    <Content Include="App_Themes\Gray2010\Images\session-search-btn.gif" />
+    <Content Include="App_Themes\Gray2010\Images\sessionsLine.gif" />
+    <Content Include="App_Themes\Gray2010\Images\sessionsNov8CodeCamp.gif" />
+    <Content Include="App_Themes\Gray2010\Images\sessionsNov9BarCamp.gif" />
+    <Content Include="App_Themes\Gray2010\Images\slashBullet.gif" />
+    <Content Include="App_Themes\Gray2010\Images\sponsor-bar-center.gif" />
+    <Content Include="App_Themes\Gray2010\Images\sponsor-bar-left.gif" />
+    <Content Include="App_Themes\Gray2010\Images\sponsor-bar-right.gif" />
+    <Content Include="App_Themes\Gray2010\Images\tag.gif" />
+    <Content Include="App_Themes\Gray2010\Images\twitter.png" />
+    <Content Include="App_Themes\Gray2010\Style.css" />
+    <Content Include="App_Themes\Gray2010\svcc-style.css" />
+    <Content Include="App_Themes\Gray2011\Images\attendBottom.gif" />
+    <Content Include="App_Themes\Gray2011\Images\bullet_orange.png" />
+    <Content Include="App_Themes\Gray2011\Images\bullet_yellow.png" />
+    <Content Include="App_Themes\Gray2011\Images\buttonAbout.gif" />
+    <Content Include="App_Themes\Gray2011\Images\buttonAssignVideo.gif" />
+    <Content Include="App_Themes\Gray2011\Images\buttonClear.gif" />
+    <Content Include="App_Themes\Gray2011\Images\buttonDeleteSession.gif" />
+    <Content Include="App_Themes\Gray2011\Images\buttonEditSession.gif" />
+    <Content Include="App_Themes\Gray2011\Images\buttonEmailAttendees.gif" />
+    <Content Include="App_Themes\Gray2011\Images\buttonEmailSpeaker.gif" />
+    <Content Include="App_Themes\Gray2011\Images\buttonLogin.gif" />
+    <Content Include="App_Themes\Gray2011\Images\buttonNews.gif" />
+    <Content Include="App_Themes\Gray2011\Images\buttonProgram.gif" />
+    <Content Include="App_Themes\Gray2011\Images\buttonRegister.gif" />
+    <Content Include="App_Themes\Gray2011\Images\buttonReview.gif" />
+    <Content Include="App_Themes\Gray2011\Images\buttonSubmit.gif" />
+    <Content Include="App_Themes\Gray2011\Images\buttonWiki.gif" />
+    <Content Include="App_Themes\Gray2011\Images\content-divider.png" />
+    <Content Include="App_Themes\Gray2011\Images\contentBullet.gif" />
+    <Content Include="App_Themes\Gray2011\Images\daysLeftArrow.gif" />
+    <Content Include="App_Themes\Gray2011\Images\dotted.gif" />
+    <Content Include="App_Themes\Gray2011\Images\dottedLight.gif" />
+    <Content Include="App_Themes\Gray2011\Images\ExclamationPoint_small1.jpg" />
+    <Content Include="App_Themes\Gray2011\Images\ExclamationPoint_small2.jpg" />
+    <Content Include="App_Themes\Gray2011\Images\facebook.png" />
+    <Content Include="App_Themes\Gray2011\Images\feed.png" />
+    <Content Include="App_Themes\Gray2011\Images\footerCurves.gif" />
+    <Content Include="App_Themes\Gray2011\Images\green-dot.png" />
+    <Content Include="App_Themes\Gray2011\Images\headBackground.jpg" />
+    <Content Include="App_Themes\Gray2011\Images\headCodeCamp.png" />
+    <Content Include="App_Themes\Gray2011\Images\headCodeCampFree.gif" />
+    <Content Include="App_Themes\Gray2011\Images\headCodeCamp_from08.gif" />
+    <Content Include="App_Themes\Gray2011\Images\hr-background.jpg" />
+    <Content Include="App_Themes\Gray2011\Images\hr-background.png" />
+    <Content Include="App_Themes\Gray2011\Images\leftBullet.gif" />
+    <Content Include="App_Themes\Gray2011\Images\linkedin.png" />
+    <Content Include="App_Themes\Gray2011\Images\login.gif" />
+    <Content Include="App_Themes\Gray2011\Images\Oct8th_img.png" />
+    <Content Include="App_Themes\Gray2011\Images\Oct9th_img.png" />
+    <Content Include="App_Themes\Gray2011\Images\Registration\numbers.gif" />
+    <Content Include="App_Themes\Gray2011\Images\rightBackground.jpg" />
+    <Content Include="App_Themes\Gray2011\Images\rightBullet.gif" />
+    <Content Include="App_Themes\Gray2011\Images\scheduleArrow.gif" />
+    <Content Include="App_Themes\Gray2011\Images\session-search-btn.gif" />
+    <Content Include="App_Themes\Gray2011\Images\sessionsLine.gif" />
+    <Content Include="App_Themes\Gray2011\Images\slashBullet.gif" />
+    <Content Include="App_Themes\Gray2011\Images\sponsor-bar-center.gif" />
+    <Content Include="App_Themes\Gray2011\Images\sponsor-bar-left.gif" />
+    <Content Include="App_Themes\Gray2011\Images\sponsor-bar-right.gif" />
+    <Content Include="App_Themes\Gray2011\Images\SpreadTheWord\svcc_badge_150.png.png" />
+    <Content Include="App_Themes\Gray2011\Images\SpreadTheWord\svcc_badge_150_spacer.png" />
+    <Content Include="App_Themes\Gray2011\Images\SpreadTheWord\svcc_badge_450.png" />
+    <Content Include="App_Themes\Gray2011\Images\SpreadTheWord\svcc_badge_450_spacer.png" />
+    <Content Include="App_Themes\Gray2011\Images\tag.gif" />
+    <Content Include="App_Themes\Gray2011\Images\twitter-feed-left.png" />
+    <Content Include="App_Themes\Gray2011\Images\twitter-logo-small.png" />
+    <Content Include="App_Themes\Gray2011\Images\twitter.png" />
+    <Content Include="App_Themes\Gray2011\Style.css" />
+    <Content Include="App_Themes\Gray2011\svcc-style.css" />
+    <Content Include="App_Themes\Gray2012\Images\attendBottom.gif" />
+    <Content Include="App_Themes\Gray2012\Images\bullet_orange.png" />
+    <Content Include="App_Themes\Gray2012\Images\bullet_yellow.png" />
+    <Content Include="App_Themes\Gray2012\Images\buttonAbout.gif" />
+    <Content Include="App_Themes\Gray2012\Images\buttonAssignVideo.gif" />
+    <Content Include="App_Themes\Gray2012\Images\buttonClear.gif" />
+    <Content Include="App_Themes\Gray2012\Images\buttonDeleteSession.gif" />
+    <Content Include="App_Themes\Gray2012\Images\buttonEditSession.gif" />
+    <Content Include="App_Themes\Gray2012\Images\buttonEmailAttendees.gif" />
+    <Content Include="App_Themes\Gray2012\Images\buttonEmailSpeaker.gif" />
+    <Content Include="App_Themes\Gray2012\Images\buttonLogin.gif" />
+    <Content Include="App_Themes\Gray2012\Images\buttonNews.gif" />
+    <Content Include="App_Themes\Gray2012\Images\buttonProgram.gif" />
+    <Content Include="App_Themes\Gray2012\Images\buttonRegister.gif" />
+    <Content Include="App_Themes\Gray2012\Images\buttonReview.gif" />
+    <Content Include="App_Themes\Gray2012\Images\buttonSubmit.gif" />
+    <Content Include="App_Themes\Gray2012\Images\buttonWiki.gif" />
+    <Content Include="App_Themes\Gray2012\Images\content-divider.png" />
+    <Content Include="App_Themes\Gray2012\Images\contentBullet.gif" />
+    <Content Include="App_Themes\Gray2012\Images\daysLeftArrow.gif" />
+    <Content Include="App_Themes\Gray2012\Images\dotted.gif" />
+    <Content Include="App_Themes\Gray2012\Images\dottedLight.gif" />
+    <Content Include="App_Themes\Gray2012\Images\ExclamationPoint_small1.jpg" />
+    <Content Include="App_Themes\Gray2012\Images\ExclamationPoint_small2.jpg" />
+    <Content Include="App_Themes\Gray2012\Images\facebook.png" />
+    <Content Include="App_Themes\Gray2012\Images\feed.png" />
+    <Content Include="App_Themes\Gray2012\Images\footerCurves.gif" />
+    <Content Include="App_Themes\Gray2012\Images\green-dot.png" />
+    <Content Include="App_Themes\Gray2012\Images\headBackground.jpg" />
+    <Content Include="App_Themes\Gray2012\Images\headCodeCamp.png" />
+    <Content Include="App_Themes\Gray2012\Images\headCodeCampFree.gif" />
+    <Content Include="App_Themes\Gray2012\Images\headCodeCamp_from08.gif" />
+    <Content Include="App_Themes\Gray2012\Images\hr-background.jpg" />
+    <Content Include="App_Themes\Gray2012\Images\hr-background.png" />
+    <Content Include="App_Themes\Gray2012\Images\leftBullet.gif" />
+    <Content Include="App_Themes\Gray2012\Images\linkedin.png" />
+    <Content Include="App_Themes\Gray2012\Images\login.gif" />
+    <Content Include="App_Themes\Gray2012\Images\Oct6th_img.png" />
+    <Content Include="App_Themes\Gray2012\Images\Oct7th_img.png" />
+    <Content Include="App_Themes\Gray2012\Images\Registration\numbers.gif" />
+    <Content Include="App_Themes\Gray2012\Images\Retweet\panel-title-bg.png" />
+    <Content Include="App_Themes\Gray2012\Images\Retweet\retweet-icon.png" />
+    <Content Include="App_Themes\Gray2012\Images\rightBackground.jpg" />
+    <Content Include="App_Themes\Gray2012\Images\rightBullet.gif" />
+    <Content Include="App_Themes\Gray2012\Images\scheduleArrow.gif" />
+    <Content Include="App_Themes\Gray2012\Images\session-search-btn.gif" />
+    <Content Include="App_Themes\Gray2012\Images\sessionsLine.gif" />
+    <Content Include="App_Themes\Gray2012\Images\slashBullet.gif" />
+    <Content Include="App_Themes\Gray2012\Images\sponsor-bar-center.gif" />
+    <Content Include="App_Themes\Gray2012\Images\sponsor-bar-left.gif" />
+    <Content Include="App_Themes\Gray2012\Images\sponsor-bar-right.gif" />
+    <Content Include="App_Themes\Gray2012\Images\SpreadTheWord\svcc_badge_150.png" />
+    <Content Include="App_Themes\Gray2012\Images\SpreadTheWord\svcc_badge_150_spacer.png" />
+    <Content Include="App_Themes\Gray2012\Images\SpreadTheWord\svcc_badge_450.png" />
+    <Content Include="App_Themes\Gray2012\Images\SpreadTheWord\svcc_badge_450_spacer.png" />
+    <Content Include="App_Themes\Gray2012\Images\tag.gif" />
+    <Content Include="App_Themes\Gray2012\Images\twitter-feed-left.png" />
+    <Content Include="App_Themes\Gray2012\Images\twitter-logo-small.png" />
+    <Content Include="App_Themes\Gray2012\Images\twitter.png" />
+    <Content Include="App_Themes\Gray2012\Style.css" />
+    <Content Include="App_Themes\Gray2012\svcc-style.css" />
+    <Content Include="App_Themes\Gray\Images\buttonClear.gif" />
+    <Content Include="App_Themes\Gray\Images\buttonDeleteSession.gif" />
+    <Content Include="App_Themes\Gray\Images\buttonEditSession.gif" />
+    <Content Include="App_Themes\Gray\Images\buttonEmailSpeaker.gif" />
+    <Content Include="App_Themes\Gray\Images\buttonLogin.gif" />
+    <Content Include="App_Themes\Gray\Images\buttonReview.gif" />
+    <Content Include="App_Themes\Gray\Images\buttonSubmit.gif" />
+    <Content Include="App_Themes\Gray\Images\contentBullet.gif" />
+    <Content Include="App_Themes\Gray\Images\daysLeftArrow.gif" />
+    <Content Include="App_Themes\Gray\Images\dotted.gif" />
+    <Content Include="App_Themes\Gray\Images\dottedLight.gif" />
+    <Content Include="App_Themes\Gray\Images\footerCurves.gif" />
+    <Content Include="App_Themes\Gray\Images\headBackground.jpg" />
+    <Content Include="App_Themes\Gray\Images\headCodeCamp.gif" />
+    <Content Include="App_Themes\Gray\Images\headCodeCampFree.gif" />
+    <Content Include="App_Themes\Gray\Images\nov8CodeCampOff.gif" />
+    <Content Include="App_Themes\Gray\Images\nov8CodeCampOn.gif" />
+    <Content Include="App_Themes\Gray\Images\nov9BarCampOff.gif" />
+    <Content Include="App_Themes\Gray\Images\nov9BarCampOn.gif" />
+    <Content Include="App_Themes\Gray\Images\rightBackground.jpg" />
+    <Content Include="App_Themes\Gray\Images\rightBullet.gif" />
+    <Content Include="App_Themes\Gray\Images\rightNov8CodeCamp.gif" />
+    <Content Include="App_Themes\Gray\Images\rightNov9BarCamp.gif" />
+    <Content Include="App_Themes\Gray\Images\rightNov9CodeCamp.gif" />
+    <Content Include="App_Themes\Gray\Images\scheduleArrow.gif" />
+    <Content Include="App_Themes\Gray\Images\sessionsLine.gif" />
+    <Content Include="App_Themes\Gray\Images\sessionsNov8CodeCamp.gif" />
+    <Content Include="App_Themes\Gray\Images\sessionsNov9BarCamp.gif" />
+    <Content Include="App_Themes\Gray\Images\slashBullet.gif" />
+    <Content Include="App_Themes\Gray\Images\tag.gif" />
+    <Content Include="App_Themes\Gray\Style.css" />
+    <Content Include="CloudControl.ascx" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="dlls\AdvancedIntellect.Ssl.dll" />
+    <Content Include="dlls\aspNetEmail.dll" />
+    <Content Include="dlls\aspNetMime.DLL" />
+    <Content Include="dlls\aspNetMime.xml" />
+    <Content Include="dlls\aspNetPOP3.dll" />
+    <Content Include="dlls\aspNetPOP3.xml" />
+    <Content Include="dlls\DevExpress.Data.v7.3.dll" />
+    <Content Include="dlls\DevExpress.Data.v7.3.xml" />
+    <Content Include="dlls\DevExpress.Utils.v7.3.dll" />
+    <Content Include="dlls\DevExpress.Utils.v7.3.xml" />
+    <Content Include="dlls\DevExpress.Web.v7.3.dll" />
+    <Content Include="dlls\DevExpress.Web.v7.3.xml" />
+    <Content Include="dlls\DevExpress.XtraCharts.v7.3.Design.dll" />
+    <Content Include="dlls\DevExpress.XtraCharts.v7.3.dll" />
+    <Content Include="dlls\DevExpress.XtraCharts.v7.3.UI.dll" />
+    <Content Include="dlls\DevExpress.XtraCharts.v7.3.UI.xml" />
+    <Content Include="dlls\DevExpress.XtraCharts.v7.3.Web.dll" />
+    <Content Include="dlls\DevExpress.XtraCharts.v7.3.Web.xml" />
+    <Content Include="dlls\DevExpress.XtraCharts.v7.3.xml" />
+    <Content Include="dlls\DevExpress.XtraEditors.v7.3.Design.dll" />
+    <Content Include="dlls\DevExpress.XtraEditors.v7.3.dll" />
+    <Content Include="dlls\DevExpress.XtraEditors.v7.3.xml" />
+    <Content Include="dlls\ImageResizer.dll" />
+    <Content Include="dlls\ImageResizer.Mvc.dll" />
+    <Content Include="dlls\ImageResizer.Plugins.DiskCache.dll" />
+    <Content Include="dlls\ImageResizer.Plugins.Logging.dll" />
+    <Content Include="dlls\ImageResizer.Plugins.PsdReader.dll" />
+    <Content Include="dlls\ImageResizer.Plugins.PsdReader.xml" />
+    <Content Include="dlls\ImageResizer.Plugins.SqlReader.dll" />
+    <Content Include="dlls\Newtonsoft.Json.dll" />
+    <Content Include="dlls\Newtonsoft.Json.pdb" />
+    <Content Include="dlls\Newtonsoft.Json.xml" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="DefaultNoColumns.Master" />
+    <Content Include="Images\404-not-found-error.jpg" />
+    <Content Include="Images\ArrowLeft.png" />
+    <Content Include="Images\ArrowLeftOver.png" />
+    <Content Include="Images\ArrowRight.png" />
+    <Content Include="Images\ArrowRightOver.png" />
+    <Content Include="Images\aspnetPRO_200x40.jpg" />
+    <Content Include="Images\blue.bmp" />
+    <Content Include="Images\BlueCircle.gif" />
+    <Content Include="Images\cal.jpg" />
+    <Content Include="Images\ExclamationPoint.gif" />
+    <Content Include="Images\ExclamationPoint.jpg" />
+    <Content Include="Images\ExclamationPoint_small1.jpg" />
+    <Content Include="Images\ExclamationPoint_small2.jpg" />
+    <Content Include="Images\foothillstaff2007.jpg" />
+    <Content Include="Images\foothillstaff2007a.jpg" />
+    <Content Include="Images\GreenishBg.jpg" />
+    <Content Include="Images\homepage.png" />
+    <Content Include="Images\ignore.bmp" />
+    <Content Include="Images\IMGP1065.jpg" />
+    <Content Include="Images\IMGP1066.jpg" />
+    <Content Include="Images\IMGP1068.jpg" />
+    <Content Include="Images\IMGP1069.jpg" />
+    <Content Include="Images\IMGP1071.jpg" />
+    <Content Include="Images\IMGP1073.jpg" />
+    <Content Include="Images\IMGP1074.jpg" />
+    <Content Include="Images\IMGP1075.jpg" />
+    <Content Include="Images\IMGP1079.jpg" />
+    <Content Include="Images\IMGP1081.jpg" />
+    <Content Include="Images\jobs-button.jpg" />
+    <Content Include="Images\Jobs.jpg" />
+    <Content Include="Images\logo-2008 - Copy.jpg" />
+    <Content Include="Images\logo-2008.jpg" />
+    <Content Include="Images\logo-raw.png" />
+    <Content Include="Images\LunchLine.jpg" />
+    <Content Include="Images\LunchLine_thumb.jpg" />
+    <Content Include="Images\map-layout-update-2.jpg" />
+    <Content Include="Images\NavyBg.jpg" />
+    <Content Include="Images\nopic.gif" />
+    <Content Include="Images\nopic.jpg" />
+    <Content Include="Images\OrangeCircle.gif" />
+    <Content Include="Images\orcsweb.gif" />
+    <Content Include="Images\orcsweb1.gif" />
+    <Content Include="Images\orcsweb1x.gif" />
+    <Content Include="Images\Original Files\IMGP1065.jpg" />
+    <Content Include="Images\Original Files\IMGP1066.jpg" />
+    <Content Include="Images\Original Files\IMGP1068.jpg" />
+    <Content Include="Images\Original Files\IMGP1069.jpg" />
+    <Content Include="Images\Original Files\IMGP1071.jpg" />
+    <Content Include="Images\Original Files\IMGP1073.jpg" />
+    <Content Include="Images\Original Files\IMGP1074.jpg" />
+    <Content Include="Images\Original Files\IMGP1075.jpg" />
+    <Content Include="Images\Original Files\IMGP1079.jpg" />
+    <Content Include="Images\Original Files\IMGP1081.jpg" />
+    <Content Include="Images\PayPalStuff\SVCC00010.png" />
+    <Content Include="Images\PayPalStuff\SVCC00025.png" />
+    <Content Include="Images\PayPalStuff\SVCC00050.png" />
+    <Content Include="Images\PayPalStuff\SVCC00100.png" />
+    <Content Include="Images\PayPalStuff\SVCC00250.png" />
+    <Content Include="Images\PayPalStuff\SVCC00500.png" />
+    <Content Include="Images\PayPalStuff\SVCC01000.png" />
+    <Content Include="Images\PayPalStuff\SVCC01500.png" />
+    <Content Include="Images\PayPalStuff\SVCC02500.png" />
+    <Content Include="Images\PayPalStuff\SVCC04000.png" />
+    <Content Include="Images\PayPalStuff\SVCC05000.png" />
+    <Content Include="Images\PayPalStuff\SVCC10000.png" />
+    <Content Include="Images\pleasewait.gif" />
+    <Content Include="Images\pow_by_orcsweb.gif" />
+    <Content Include="Images\QRDemo1.jpg" />
+    <Content Include="Images\rssfeed.png" />
+    <Content Include="Images\rssfeed_10x10.png" />
+    <Content Include="Images\SessionsOverViewPlugin.jpg" />
+    <Content Include="Images\SessionsOverViewPluginSmall.jpg" />
+    <Content Include="Images\Sponsors\10gen-logo.jpg" />
+    <Content Include="Images\Sponsors\adobe-flash.jpg" />
+    <Content Include="Images\Sponsors\adobe-logo.jpg" />
+    <Content Include="Images\Sponsors\alumwire-logo.jpg" />
+    <Content Include="Images\Sponsors\appcelerator-logo.jpg" />
+    <Content Include="Images\Sponsors\apprenda-logo.jpg" />
+    <Content Include="Images\Sponsors\artima.gif" />
+    <Content Include="Images\Sponsors\artima_150.gif" />
+    <Content Include="Images\Sponsors\assia-logo.jpg" />
+    <Content Include="Images\Sponsors\att-logo.jpg" />
+    <Content Include="Images\Sponsors\awslogo.gif" />
+    <Content Include="Images\Sponsors\BAADD.jpg" />
+    <Content Include="Images\Sponsors\baadd.org.jpg" />
+    <Content Include="Images\Sponsors\bay-area-scala-enthusiasts-logo.jpg" />
+    <Content Include="Images\Sponsors\baydug.org.jpg" />
+    <Content Include="Images\Sponsors\baynet-logo.jpg" />
+    <Content Include="Images\Sponsors\BayNetUG.jpg" />
+    <Content Include="Images\Sponsors\bitbucket-logo.jpg" />
+    <Content Include="Images\Sponsors\biug-logo.jpg" />
+    <Content Include="Images\Sponsors\box-net-logo.jpg" />
+    <Content Include="Images\Sponsors\cacheonix-logo.jpg" />
+    <Content Include="Images\Sponsors\CarnegieMellonWest.gif" />
+    <Content Include="Images\Sponsors\cloud-foundry-logo.jpg" />
+    <Content Include="Images\Sponsors\cloud-logo.jpg" />
+    <Content Include="Images\Sponsors\cmu-logo.jpg" />
+    <Content Include="Images\Sponsors\componentone-logo.jpg" />
+    <Content Include="Images\Sponsors\cozyroc-logo.jpg" />
+    <Content Include="Images\Sponsors\devexpress-logo.jpg" />
+    <Content Include="Images\Sponsors\dice-logo.jpg" />
+    <Content Include="Images\Sponsors\DiceLogo_160x80.jpg" />
+    <Content Include="Images\Sponsors\Digipede-Logo-150x75.gif" />
+    <Content Include="Images\Sponsors\discountasp.net-logo.jpg" />
+    <Content Include="Images\Sponsors\DotNetRoadShow150.jpg" />
+    <Content Include="Images\Sponsors\drdobbs-logo.jpg" />
+    <Content Include="Images\Sponsors\egnyte-logo.jpg" />
+    <Content Include="Images\Sponsors\embarcadero-logo.jpg" />
+    <Content Include="Images\Sponsors\emeter-logo.jpg" />
+    <Content Include="Images\Sponsors\esri-logo.jpg" />
+    <Content Include="Images\Sponsors\ExactSoftware.gif" />
+    <Content Include="Images\Sponsors\ExactSoftware150.gif" />
+    <Content Include="Images\Sponsors\facebook-logo.jpg" />
+    <Content Include="Images\Sponsors\falafel-software-logo.jpg" />
+    <Content Include="Images\Sponsors\falafel_logo_url_150px.png" />
+    <Content Include="Images\Sponsors\finalbuilder-logo.jpg" />
+    <Content Include="Images\Sponsors\foothill-college-logo.jpg" />
+    <Content Include="Images\Sponsors\FootHill_150.jpg" />
+    <Content Include="Images\Sponsors\GlobalProductManagementtalk.gif" />
+    <Content Include="Images\Sponsors\google-logo.jpg" />
+    <Content Include="Images\Sponsors\google.gif" />
+    <Content Include="Images\Sponsors\grapecity-logo.jpg" />
+    <Content Include="Images\Sponsors\grapecity-powertools-logo.jpg" />
+    <Content Include="Images\Sponsors\guidewire-logo.jpg" />
+    <Content Include="Images\Sponsors\guidewire.jpg" />
+    <Content Include="Images\Sponsors\hp-logo.jpg" />
+    <Content Include="Images\Sponsors\idesign.jpg" />
+    <Content Include="Images\Sponsors\idesign1.jpg" />
+    <Content Include="Images\Sponsors\image_source\adobe_logo.png" />
+    <Content Include="Images\Sponsors\image_source\appcelerator-logo.png" />
+    <Content Include="Images\Sponsors\image_source\apprendasaasgrid150x150.JPG" />
+    <Content Include="Images\Sponsors\image_source\assia_logo_vertical.jpg" />
+    <Content Include="Images\Sponsors\image_source\att-logo.png" />
+    <Content Include="Images\Sponsors\image_source\bay-area-scala-enthusiasts-logo.jpeg" />
+    <Content Include="Images\Sponsors\image_source\BayNetLogo.jpg" />
+    <Content Include="Images\Sponsors\image_source\box.net-logo.jpg" />
+    <Content Include="Images\Sponsors\image_source\cacheonix_productlogo_large_distributed_variation2.jpg" />
+    <Content Include="Images\Sponsors\image_source\carnegie-mellon-university-logo.jpg" />
+    <Content Include="Images\Sponsors\image_source\cloudfoundry-logo.png" />
+    <Content Include="Images\Sponsors\image_source\ComponentOne\componentone_gc_logo_horizonal_black.png" />
+    <Content Include="Images\Sponsors\image_source\ComponentOne\componentone_gc_logo_vertical_black.png" />
+    <Content Include="Images\Sponsors\image_source\cozyroc-logo.jpg" />
+    <Content Include="Images\Sponsors\image_source\devexpress.gif" />
+    <Content Include="Images\Sponsors\image_source\dice-logo.jpg" />
+    <Content Include="Images\Sponsors\image_source\DotNetNuke.gif" />
+    <Content Include="Images\Sponsors\image_source\drdobbs-logo.png" />
+    <Content Include="Images\Sponsors\image_source\egnyte-logo.jpg" />
+    <Content Include="Images\Sponsors\image_source\embarcader-logo.jpg" />
+    <Content Include="Images\Sponsors\image_source\esri-logo.gif" />
+    <Content Include="Images\Sponsors\image_source\facebook.JPG" />
+    <Content Include="Images\Sponsors\image_source\falafel.jpg" />
+    <Content Include="Images\Sponsors\image_source\FinalBuilder-Logo.png" />
+    <Content Include="Images\Sponsors\image_source\finalbuilder.JPG" />
+    <Content Include="Images\Sponsors\image_source\finalbuilder.png" />
+    <Content Include="Images\Sponsors\image_source\foothill-college-logo.jpg" />
+    <Content Include="Images\Sponsors\image_source\foothill-college.jpg" />
+    <Content Include="Images\Sponsors\image_source\google-logo.png" />
+    <Content Include="Images\Sponsors\image_source\google.JPG" />
+    <Content Include="Images\Sponsors\image_source\GrapeCity_PowerTools.png" />
+    <Content Include="Images\Sponsors\image_source\guidewire.gif" />
+    <Content Include="Images\Sponsors\image_source\guidewire.jpg" />
+    <Content Include="Images\Sponsors\image_source\hp-logo.png" />
+    <Content Include="Images\Sponsors\image_source\infragistics.png" />
+    <Content Include="Images\Sponsors\image_source\intuit-logo.gif" />
+    <Content Include="Images\Sponsors\image_source\jetbrains-logo.png" />
+    <Content Include="Images\Sponsors\image_source\json.org.gif" />
+    <Content Include="Images\Sponsors\image_source\linkedin.jpg" />
+    <Content Include="Images\Sponsors\image_source\magenic-logo.png" />
+    <Content Include="Images\Sponsors\image_source\microsoft-logo.jpg" />
+    <Content Include="Images\Sponsors\image_source\nsoftware-logo.jpg" />
+    <Content Include="Images\Sponsors\image_source\oracle-logo.png" />
+    <Content Include="Images\Sponsors\image_source\orcsweb-logo.jpg" />
+    <Content Include="Images\Sponsors\image_source\palm-logo.jpg" />
+    <Content Include="Images\Sponsors\image_source\paypal.JPG" />
+    <Content Include="Images\Sponsors\image_source\PBWorks.png" />
+    <Content Include="Images\Sponsors\image_source\pluralsight.png" />
+    <Content Include="Images\Sponsors\image_source\red-gate-logo.jpg" />
+    <Content Include="Images\Sponsors\image_source\rssbus-logo.png" />
+    <Content Include="Images\Sponsors\image_source\sencha-logo-small.png" />
+    <Content Include="Images\Sponsors\image_source\sencha_logo.png" />
+    <Content Include="Images\Sponsors\image_source\silicon-valley-web-jug.jpg" />
+    <Content Include="Images\Sponsors\image_source\silverlight.jpg" />
+    <Content Include="Images\Sponsors\image_source\sprint-logo.gif" />
+    <Content Include="Images\Sponsors\image_source\sprint.jpg" />
+    <Content Include="Images\Sponsors\image_source\syncfusion.png" />
+    <Content Include="Images\Sponsors\image_source\telerik.jpg" />
+    <Content Include="Images\Sponsors\image_source\tivo.jpg" />
+    <Content Include="Images\Sponsors\image_source\tsc-black-mark-lg.png" />
+    <Content Include="Images\Sponsors\image_source\tsc-gray-mark-lg.png" />
+    <Content Include="Images\Sponsors\image_source\tsc-white-mark-smallest.png" />
+    <Content Include="Images\Sponsors\image_source\vertigo.jpg" />
+    <Content Include="Images\Sponsors\image_source\Wakanda + character.jpg" />
+    <Content Include="Images\Sponsors\image_source\yahoo.png" />
+    <Content Include="Images\Sponsors\image_source\YDNLogo-Stacked.jpg" />
+    <Content Include="Images\Sponsors\infragistics-logo.jpg" />
+    <Content Include="Images\Sponsors\intertech-logo.jpg" />
+    <Content Include="Images\Sponsors\intuit-logo.jpg" />
+    <Content Include="Images\Sponsors\jetbrains-logo.jpg" />
+    <Content Include="Images\Sponsors\json.org-logo.jpg" />
+    <Content Include="Images\Sponsors\jug-logo-24pt.jpg" />
+    <Content Include="Images\Sponsors\k2-logo.jpg" />
+    <Content Include="Images\Sponsors\linkedin-logo.jpg" />
+    <Content Include="Images\Sponsors\logoNirvanix.gif" />
+    <Content Include="Images\Sponsors\lumosity-logo.jpg" />
+    <Content Include="Images\Sponsors\magenic-logo.jpg" />
+    <Content Include="Images\Sponsors\meetuplogo100x100.png" />
+    <Content Include="Images\Sponsors\meetuplogo160x160.jpg" />
+    <Content Include="Images\Sponsors\microsoft-logo.jpg" />
+    <Content Include="Images\Sponsors\mosso_power.jpg" />
+    <Content Include="Images\Sponsors\mosso_power2.jpg" />
+    <Content Include="Images\Sponsors\mosso_power2a.jpg" />
+    <Content Include="Images\Sponsors\MSLogo.jpg" />
+    <Content Include="Images\Sponsors\neotechnology-logo.jpg" />
+    <Content Include="Images\Sponsors\Netflix_4C_White_Logo.jpg" />
+    <Content Include="Images\Sponsors\nopic.gif" />
+    <Content Include="Images\Sponsors\nsoftware-logo.jpg" />
+    <Content Include="Images\Sponsors\opalsoft-logo.jpg" />
+    <Content Include="Images\Sponsors\oracle-logo.jpg" />
+    <Content Include="Images\Sponsors\orcsweb-logo.jpg" />
+    <Content Include="Images\Sponsors\OSA_logo.jpg" />
+    <Content Include="Images\Sponsors\OSA_logo150.jpg" />
+    <Content Include="Images\Sponsors\overactdev-logo.jpg" />
+    <Content Include="Images\Sponsors\pacitpros-logo.jpg" />
+    <Content Include="Images\Sponsors\palm-logo.jpg" />
+    <Content Include="Images\Sponsors\paypal-logo.jpg" />
+    <Content Include="Images\Sponsors\pbwiki.gif" />
+    <Content Include="Images\Sponsors\pbworks-logo.jpg" />
+    <Content Include="Images\Sponsors\pluralsight-logo.jpg" />
+    <Content Include="Images\Sponsors\Previous Logo\finalbuilder-logo.jpg" />
+    <Content Include="Images\Sponsors\red-gate-logo.jpg" />
+    <Content Include="Images\Sponsors\rssbus-logo.jpg" />
+    <Content Include="Images\Sponsors\SacDnug.gif" />
+    <Content Include="Images\Sponsors\scalr-logo.jpg" />
+    <Content Include="Images\Sponsors\SDForum.gif" />
+    <Content Include="Images\Sponsors\sencha-logo.jpg" />
+    <Content Include="Images\Sponsors\sfslug.org.jpg" />
+    <Content Include="Images\Sponsors\SFWin.jpg" />
+    <Content Include="Images\Sponsors\silicon-valley-gtug.jpg" />
+    <Content Include="Images\Sponsors\silicon-valley-web-jug.jpg" />
+    <Content Include="Images\Sponsors\slo.jpg" />
+    <Content Include="Images\Sponsors\slo.net-usergroup-logo.jpg" />
+    <Content Include="Images\Sponsors\softshores-logo.jpg" />
+    <Content Include="Images\Sponsors\SoftShores.jpg" />
+    <Content Include="Images\Sponsors\SpineButton150.jpg" />
+    <Content Include="Images\Sponsors\SpineButtonCloud.jpg" />
+    <Content Include="Images\Sponsors\sprint-logo.jpg" />
+    <Content Include="Images\Sponsors\StartupProductTalks.jpg" />
+    <Content Include="Images\Sponsors\Strikeiron_Community_Logo.jpg" />
+    <Content Include="Images\Sponsors\sun_logo_rgb.jpg" />
+    <Content Include="Images\Sponsors\svcs-logo.jpg" />
+    <Content Include="Images\Sponsors\SVWB_150x150.jpg" />
+    <Content Include="Images\Sponsors\syncfusion-logo.jpg" />
+    <Content Include="Images\Sponsors\syncfusion.png" />
+    <Content Include="Images\Sponsors\techsmith-logo.jpg" />
+    <Content Include="Images\Sponsors\telerik-logo.jpg" />
+    <Content Include="Images\Sponsors\telerik.jpg" />
+    <Content Include="Images\Sponsors\text-control-logo.jpg" />
+    <Content Include="Images\Sponsors\ThankThis-logo-160x160.jpg" />
+    <Content Include="Images\Sponsors\tivo-logo.jpg" />
+    <Content Include="Images\Sponsors\tropo-logo.jpg" />
+    <Content Include="Images\Sponsors\twilio-logo.jpg" />
+    <Content Include="Images\Sponsors\Ultima.jpg" />
+    <Content Include="Images\Sponsors\Ultima_150.jpg" />
+    <Content Include="Images\Sponsors\vertigo-logo.jpg" />
+    <Content Include="Images\Sponsors\vertigologo.gif" />
+    <Content Include="Images\Sponsors\WebSig.jpg" />
+    <Content Include="Images\Sponsors\whitehat-130x130.jpg" />
+    <Content Include="Images\Sponsors\yahoo-logo.jpg" />
+    <Content Include="Images\stevejobs-tribute.jpg" />
+    <Content Include="Images\stevejobs.jpg" />
+    <Content Include="Images\valid-atom.png" />
+    <Content Include="Images\valid-rss.png" />
+    <Content Include="Images\Video\WhatMakesYouATrueGeek.jpg" />
+    <Content Include="Images\VistaInstall.jpg" />
+    <Content Include="Sponsors.aspx" />
+    <Content Include="_test\WebForm1.aspx" />
+    <Content Include="MasterPage.master" />
+    <Content Include="RightRegister.master" />
+    <Content Include="App_Themes\Gray2008\SkinFile.skin" />
+    <Content Include="App_Themes\Gray2009\SkinFile.skin" />
+    <Content Include="App_Themes\Gray2010\SkinFile.skin" />
+    <Content Include="App_Themes\Gray2011\SkinFile.skin" />
+    <Content Include="App_Themes\Gray2012\config.rb" />
+    <Content Include="App_Themes\Gray2012\SkinFile.skin" />
+    <Content Include="App_Themes\Gray2012\Style.scss" />
+    <Content Include="App_Themes\Gray2012\svcc-style.scss" />
+    <Content Include="App_Themes\Gray\SkinFile.skin" />
+    <Content Include="App_Sprites\Sponsors\mindsourcelogo 04.eps" />
+    <Content Include="App_Sprites\Sponsors\Netflix_4C_White_Logo.eps" />
+    <Content Include="App_Browsers\CSSFriendlyAdapters.browser" />
+    <Content Include="App_Browsers\CSSFriendlyAdapters.browser.ori" />
+    <Content Include="App_Browsers\firefox.browser" />
+    <Content Include="App_Browsers\ie.browser" />
+    <Content Include="Images\ArrowLeft.psd" />
+    <Content Include="Images\ArrowRight.psd" />
+    <Content Include="Images\Sponsors\image_source\10gen-combo-onblue.eps" />
+    <Content Include="Images\Sponsors\image_source\accu.zip" />
+    <Content Include="Images\Sponsors\image_source\cacheonix.productlogo.zip" />
+    <Content Include="Images\Sponsors\image_source\cacheonix.productlogo\cacheonix.productlogo.psd" />
+    <Content Include="Images\Sponsors\image_source\cacheonix.productlogo\KABELN.TTF" />
+    <Content Include="Images\Sponsors\image_source\CloudFoundry-no-background.pdf" />
+    <Content Include="Images\Sponsors\image_source\ComponentOne\K onlycomponentone_gc_logo_horizonal_black.psd" />
+    <Content Include="Images\Sponsors\image_source\discountasp.net.eps" />
+    <Content Include="Images\Sponsors\image_source\egnyte-corp-logo-with-tagline.eps" />
+    <Content Include="Images\Sponsors\image_source\LeadTools.psd" />
+    <Content Include="Images\Sponsors\image_source\LOGO_Bitbucket.eps" />
+    <Content Include="Images\Sponsors\image_source\Magenic.zip" />
+    <Content Include="Images\Sponsors\image_source\neotechnology-logo.psd" />
+    <Content Include="Images\Sponsors\image_source\OpalSoft.zip" />
+    <Content Include="Images\Sponsors\image_source\overactdev.psd" />
+    <Content Include="Images\Sponsors\image_source\pluralsight-color-logo.eps" />
+    <Content Include="Images\Sponsors\image_source\Wakanda + character.eps" />
+    <Content Include="Images\Sponsors\Netflix_4C_White_Logo.eps" />
+    <Content Include="Images\Sponsors\WS_FTP.LOG" />
+    <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="ListNanny.aspx" />
+    <Content Include="MiscPages\Membership1.aspx" />
+    <Content Include="Scripts\jquery-1.7.1.js" />
+    <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.1.0.debug.js" />
+    <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="SponsorsList.ascx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Images\accent.png" />
+    <Content Include="Images\bullet.png" />
+    <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\orderedList0.png" />
+    <Content Include="Images\orderedList1.png" />
+    <Content Include="Images\orderedList2.png" />
+    <Content Include="Images\orderedList3.png" />
+    <Content Include="Images\orderedList4.png" />
+    <Content Include="Images\orderedList5.png" />
+    <Content Include="Images\orderedList6.png" />
+    <Content Include="Images\orderedList7.png" />
+    <Content Include="Images\orderedList8.png" />
+    <Content Include="Images\orderedList9.png" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="WebConnectionStrings.config" />
+    <Content Include="Web.sitemap" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\SVCodeCampNonWeb\ClassLib\ClassLib.csproj">
+      <Project>{41cfb413-4909-41e4-a7c7-07e652deee16}</Project>
+      <Name>ClassLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SVCodeCampNonWeb\CSSFriendly\CSSFriendly.csproj">
+      <Project>{1439911b-be4e-48a0-9208-927321992c67}</Project>
+      <Name>CSSFriendly</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SVCodeCampNonWeb\DataAccess\DataAccess.csproj">
+      <Project>{24eb0137-eca0-43ea-8143-245917d6cdac}</Project>
+      <Name>DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SVCodeCampNonWeb\LINQToSQL\LINQToSQL.csproj">
+      <Project>{32a3f1a8-9a71-45b7-aec2-026fd4bf37e9}</Project>
+      <Name>LINQToSQL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:17138/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

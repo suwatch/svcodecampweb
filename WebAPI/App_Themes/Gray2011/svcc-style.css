@@ -1,0 +1,195 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
+    margin:0;
+    padding:0;
+}
+body {
+    font-family: Calibri,Arial,sans-serif;
+}
+
+/* Column Layout */
+#colMask {
+        clear: both;
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        background-color: #F0F0F0;
+}
+#colMid {
+        float: left;
+        margin-left: -285px;
+        position: relative;
+        right: 100%;
+        width: 200%;
+        border-right: 1px solid #D2D2D2;
+        background-color: white;
+}
+#colLeft {
+        float: left;
+        left: 440px;
+        position: relative;
+        padding-left: 0;
+        width: 100%;
+        border-right: 1px solid #D2D2D2;
+        margin-left: -50%;
+}
+#col1Wrap {
+        float: left;
+        position: relative;
+        right: 150px;
+        width: 50%;
+}
+#col1   {
+        left: 200%;
+        margin: 0 290px 0 150px;
+        overflow: hidden;
+        position: relative;
+}
+#col2   {
+        overflow: hidden;
+        float: right;
+        position: relative;
+        padding-top: 16px;
+        width: 155px;
+}
+#col3   {
+        font-family: Calibri,Arial,sans-serif;
+        float: right;
+        left: 50%;
+        position: relative;
+        padding-bottom: 5px;
+        width: 284px;
+
+}
+/* End of Column Layout */
+
+#content {
+        left: 150px;
+        top: 0px;
+	    padding-right: 60px;
+        float: left;
+        position: relative;
+}
+
+/* Header */
+#header {
+        background: #2E2E2E url("images/headBackground.jpg") no-repeat top right;
+}
+#headerTop {
+        height: 45px;
+        width: 100%;
+        overflow: hidden;
+}
+.campLogo 
+{
+    float: left;
+    height: 25px;
+    padding-left: 10px;
+    width: 361px;
+}
+.campDatesHeader {
+    float: left;
+    font: normal large Cambria,Georgia,serif;
+    padding: 12px 0 0 30px;
+    color: #B4B4B4;
+}
+#headerMenu 
+{
+    clear: both;
+    height: 43px;
+    width: 100%;
+    overflow: hidden;
+}
+#headerTitle {
+	font: italic normal 230% 'Times New Roman', Times, serif;
+	letter-spacing: 0.2em;
+}
+.headLogin 
+{
+    float: right;
+    text-align: right;
+    height: 24px;
+    font-size: 14px;
+}
+/* SubHeaderMenu */
+#subHeaderMenu {
+    padding: 3px 0 0 8px;
+    height: 25px;
+    color: white;
+    font: normal 16px Cambria,Georgia,serif;
+    background-color: #333333;
+}
+/* End SubMenu */
+
+/* Left Sidebar */
+.sibebarLeft {
+    padding-left: 4px;
+}
+ul.slashBullet {
+    list-style-type: none;
+    background:none;
+    padding-left: 0px;
+}
+.slashBullet li {
+    list-style-type: none;
+    padding-left: 20px;
+    text-align: left;
+    background-image: url("images/slashBullet.gif");
+    background-repeat: no-repeat;
+    font-size: 12px;
+    margin: 6px 0px;
+}
+.slashBullet a:link, .slashBullet a:visited {
+    background:url("images/dotted.gif") repeat-x left bottom;
+    color:#666666;
+    text-decoration:none;
+}
+#col2 h3 {
+    border-left:3px solid #CC3300;
+    color: #666666;
+    font:bold 16px Cambria,Georgia,serif;
+    margin:5px 0;
+    padding:3px 3px 3px 6px;
+}
+/* End of Left Sidebar */
+
+/* Footer */
+.credit {
+    display: block;
+    position: relative;
+	background: #7D7D7D;
+	color: #383838;
+    height: 30px;
+	font-size: 13px;
+	margin: 0;
+}
+.credit div.centerText {
+        background: url("images/footerCurves.gif") no-repeat left top;
+        float: left;
+        padding: 8px 0 0 165px;
+}
+.credit a, .credit a:hover {
+	color: #fff;
+}
+
+.bottomRss {
+        float: right;
+        width: 270px;
+        height: 22px;
+        color: #7D7D7D;
+        padding: 8px 0 0 15px;
+        background-color: #383838;
+        text-align: left;
+}
+/* Social Media Icons from paulrobertlloyd.com */
+.socialMediaIconWrap {
+    width: 200px;
+    height: 38px;
+    padding-left: 8px;
+}
+.socialMediaIcon {
+    float: left;
+    width: 32px;
+    height: 34px;
+    margin: 0 4px;
+}
+/* End of Footer */

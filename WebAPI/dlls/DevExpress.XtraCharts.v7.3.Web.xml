@@ -1,0 +1,817 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DevExpress.XtraCharts.v7.3.Web</name>
+    </assembly>
+    <members>
+        <member name="T:DevExpress.XtraCharts.CustomCallbackEventHandler">
+
+            <summary>
+                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraCharts.WebChartControl.CustomCallback"/> event.
+
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.CustomCallbackEventHandler.Invoke(System.Object,DevExpress.XtraCharts.CustomCallbackEventArgs)">
+            <summary>
+                <para>Represents a method that will handle the <see cref="E:DevExpress.XtraCharts.WebChartControl.CustomCallback"/> event.
+
+</para>
+            </summary>
+            <param name="sender">
+		The event source. This parameter identifies the <see cref="T:DevExpress.XtraCharts.WebChartControl"/> which raised the event.
+
+            </param>
+            <param name="e">
+		A <see cref="T:DevExpress.XtraCharts.CustomCallbackEventArgs"/> object which contains event data.
+
+            </param>
+
+
+        </member>
+        <member name="T:DevExpress.XtraCharts.CustomCallbackEventArgs">
+
+            <summary>
+                <para>Provides data for the <see cref="E:DevExpress.XtraCharts.WebChartControl.CustomCallback"/> event.
+</para>
+            </summary>
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.CustomCallbackEventArgs.Parameter">
+            <summary>
+                <para>Gets a string that contains specific information (if any) passed from the client side.
+</para>
+            </summary>
+            <value>A string value that contains specific information collected on the client side and passed to the event for further server-side processing.
+</value>
+
+
+        </member>
+        <member name="T:DevExpress.XtraCharts.ChartClientSideEvents">
+
+            <summary>
+                <para>Contains a client-side Web Chart's event list.
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.ChartClientSideEvents.#ctor">
+            <summary>
+                <para>Initializes a new instance of the ChartClientSideEvents class with default settings.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartClientSideEvents.ObjectHotTracked">
+            <summary>
+                <para>Gets or sets the name of the JavaScript function or the entire code which will handle a client chart control's <see cref="E:DevExpress.XtraCharts.Web.Scripts.ASPxClientWebChartControl.ObjectHotTracked"/> event.
+</para>
+            </summary>
+            <value>A string that represents either the name of a JavaScript function or the entire JavaScript function code used to handle an event.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.ChartClientSideEvents.ObjectSelected">
+            <summary>
+                <para>Gets or sets the name of the JavaScript function or the entire code which will handle a client chart control's <see cref="E:DevExpress.XtraCharts.Web.Scripts.ASPxClientWebChartControl.ObjectSelected"/> event.
+</para>
+            </summary>
+            <value>A string that represents either the name of a JavaScript function or the entire JavaScript function code used to handle an event.
+</value>
+
+
+        </member>
+        <member name="T:DevExpress.XtraCharts.WebChartControl">
+
+            <summary>
+                <para>Represents the <b>XtraCharts</b> control for ASP.NET applications.
+</para>
+            </summary>
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.WebChartControl.#ctor">
+            <summary>
+                <para>Initializes a new instance of the WebChartControl class with default settings.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.AppearanceName">
+            <summary>
+                <para>Gets or sets the name of the appearance which is currently being used to draw the chart's elements.
+
+</para>
+            </summary>
+            <value>A <see cref="T:System.String"/> value which represents the appearance name.
+</value>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.WebChartControl.IsCallBacksEnabled">
+            <summary>
+                <para>For internal use only.
+</para>
+            </summary>
+            <returns> 
+</returns>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.WebChartControl.IsServerSideEventsAssigned">
+            <summary>
+                <para>For internal use only.
+</para>
+            </summary>
+            <returns>@nbsp;
+</returns>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.Legend">
+            <summary>
+                <para>Gets the web chart control's <i>legend</i> and provides access to its settings.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.Legend"/> object that represents the chart control's legend.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.LoadingPanelImage">
+            <summary>
+                <para>Gets the settings of an image to be displayed within a specific <b>loading panel</b> while waiting for a callback response.
+
+</para>
+            </summary>
+            <value>An <see cref="T:DevExpress.Web.ASPxClasses.ImageProperties"/> object that contains the image's settings.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.LoadingPanelImagePosition">
+            <summary>
+                <para>Gets or sets the position of an image displayed within a Loading Panel with respect to the panel's text content.
+</para>
+            </summary>
+            <value>One of the <see cref="T:DevExpress.Web.ASPxClasses.ImagePosition"/> enumeration values.
+</value>
+
+
+        </member>
+        <member name="F:DevExpress.XtraCharts.WebChartControl.LoadingPanelImageResourcePath">
+            <summary>
+                <para>For internal use only.
+</para>
+            </summary>
+            <returns>@nbsp;
+</returns>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.LoadingPanelStyle">
+            <summary>
+                <para>Gets the style settings used to paint the Loading Panel.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.Web.ASPxClasses.LoadingPanelStyle"/> object that contains style settings.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.LoadingPanelText">
+            <summary>
+                <para>Gets or sets the text to be displayed within a loading panel while waiting for a callback response.
+</para>
+            </summary>
+            <value>A <see cref="T:System.String"/> that specifies the descriptive text displayed within a loading panel.
+</value>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.WebChartControl.ObjectSelected">
+            <summary>
+                <para>Occurs when an end-user clicks on any chart element.
+
+
+</para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.PaletteBaseColorNumber">
+            <summary>
+                <para>Gets or sets the number of the color within the selected palette used as a base color to paint a chart.
+
+</para>
+            </summary>
+            <value>An integer value representing a color number.
+
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.PaletteName">
+            <summary>
+                <para>Gets or sets the name of the palette currently used to draw the chart's elements.
+</para>
+            </summary>
+            <value>A <see cref="T:System.String"/> value which represents the palette name.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.PaletteRepository">
+            <summary>
+                <para>Gets the palette repository of the chart.
+
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.PaletteRepository"/> object which represents the palette repository of the chart.
+
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.PaletteWrappers">
+            <summary>
+                <para>Gets the collection which wraps the palette collection to support its serialization in web applications.
+
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.PaletteWrapperCollection"/> object.
+</value>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.WebChartControl.PieSeriesPointExploded">
+            <summary>
+                <para>Fires when a pie slice, representing a series point, is moved to or from the pie center.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.WebChartControl.ProcessImageRequest(System.Web.UI.Page)">
+            <summary>
+                <para>Processes a request for a chart image from the client side to the server.
+</para>
+            </summary>
+            <param name="page">
+		A Page object.
+
+            </param>
+            <returns>A Boolean value.
+</returns>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.WebChartControl.ResetLegendPointOptions">
+            <summary>
+                <para>Cancels the changes applied to the <see cref="P:DevExpress.XtraCharts.SeriesBase.LegendPointOptions"/> for each series and makes it equal to the <see cref="P:DevExpress.XtraCharts.SeriesBase.PointOptions"/>. 
+
+</para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.SaveStateOnCallbacks">
+            <summary>
+                <para>Gets or sets a value indicating whether a chart's view state should be saved between multiple callbacks.
+</para>
+            </summary>
+            <value><b>true</b> to state a chart's view state between callbacks; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.Series">
+            <summary>
+                <para>Provides access to the chart control's collection of <b>series</b> objects.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.SeriesCollection"/> object that represents the collection of all series.
+
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.SeriesDataMember">
+            <summary>
+                <para>Gets or sets the name of the data field whose values are used to automatically generate and populate series.
+
+</para>
+            </summary>
+            <value>A <see cref="T:System.String"/> value that specifies the data field's name.
+
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.SeriesNameTemplate">
+            <summary>
+                <para>Gets the settings used to name data bound series.
+
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.SeriesNameTemplate"/> object that contains naming settings.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.SeriesSerializable">
+            <summary>
+                <para>Gets or sets the value used to support serialization of the <see cref="P:DevExpress.XtraCharts.WebChartControl.Series"/> property.
+
+</para>
+            </summary>
+            <value>A <b>List@#60;Series@#62;</b> object.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.SeriesSorting">
+            <summary>
+                <para>Gets or sets a value that specifies how <b>series</b> are sorted within the chart control based upon the series names.
+
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.SortingMode"/> enumeration value.
+
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.SeriesTemplate">
+            <summary>
+                <para>Gets the template settings for bound series.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.SeriesBase"/> object that contains the template settings for bound series.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.ShowLoadingPanelImage">
+            <summary>
+                <para>Gets or sets whether the image can be displayed within a Loading Panel.
+</para>
+            </summary>
+            <value><b>true</b> if the image is allowed to be displayed within a Loading Panel; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.SideBySideBarDistanceFixed">
+            <summary>
+                <para>Gets or sets the fixed distance value between bars in the <b>Side-by-side Bars</b> series view.
+
+</para>
+            </summary>
+            <value>An integer value which represents the fixed bar distance between bars.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.SideBySideBarDistanceVariable">
+            <summary>
+                <para>Gets or sets the variable distance value between bars in the <b>Side-by-side Bars</b> series view.
+
+</para>
+            </summary>
+            <value>A <see cref="T:System.Double"/> value which represents the variable bar distance between bars.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.SkinID">
+            <summary>
+                <para>Overrides the <see cref="P:System.Web.UI.Control.SkinID"/> property to hide it.
+</para>
+            </summary>
+            <value>Always <b>null</b> (<b>Nothing</b> in Visual Basic).
+
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.Titles">
+            <summary>
+                <para>Gets the collection of <b>chart titles</b>.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.ChartTitleCollection"/> object that represents the collection of chart titles.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.BackColor">
+            <summary>
+                <para>Gets or sets the web chart control's background color.
+</para>
+            </summary>
+            <value>A <see cref="T:System.Drawing.Color"/> value which specifies the web chart control's background color.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.BackgroundImage">
+            <summary>
+                <para>Overrides the <see cref="P:DevExpress.Web.ASPxClasses.ASPxWebControl.BackgroundImage"/> property to hide it.
+</para>
+            </summary>
+            <value>Always <b>null</b> (<b>Nothing</b> in Visual Basic).
+
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.BackImage">
+            <summary>
+                <para>Gets the background image settings of the web chart control.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.BackgroundImage"/> object which provides settings that specify the web chart control's background image.
+
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.Border">
+            <summary>
+                <para>Overrides the <see cref="P:DevExpress.Web.ASPxClasses.ASPxWebControl.Border"/> property to hide it.
+</para>
+            </summary>
+            <value>Alway <b>null</b> (<b>Nothing</b> in Visual Basic).
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.BorderBottom">
+            <summary>
+                <para>Overrides the <see cref="P:DevExpress.Web.ASPxClasses.ASPxWebControl.BorderBottom"/> property to hide it.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.Web.ASPxClasses.Border"/> object.
+
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.BorderLeft">
+            <summary>
+                <para>Overrides the <see cref="P:DevExpress.Web.ASPxClasses.ASPxWebControl.BorderLeft"/> property to hide it.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.Web.ASPxClasses.Border"/> object.
+
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.BorderOptions">
+            <summary>
+                <para>Gets the chart control's border style.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.RectangularBorder"/> object which specifies the border style.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.BorderRight">
+            <summary>
+                <para>Overrides the <see cref="P:DevExpress.Web.ASPxClasses.ASPxWebControl.BorderRight"/> property to hide it.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.Web.ASPxClasses.Border"/> object.
+
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.BorderTop">
+            <summary>
+                <para>Overrides the <see cref="P:DevExpress.Web.ASPxClasses.ASPxWebControl.BorderTop"/> property to hide it.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.Web.ASPxClasses.Border"/> object.
+
+</value>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.WebChartControl.BoundDataChanged">
+            <summary>
+                <para>Fires when the chart control initiates a renewal of its data for bound points or series.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.WebChartControl.CallbackStateLoad">
+            <summary>
+                <para>Occurs when a chart loads its view state between multiple callbacks.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.WebChartControl.CallbackStateSave">
+            <summary>
+                <para>Occurs when a chart saves its view state between multiple callbacks.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.ClientInstanceName">
+            <summary>
+                <para>Gets or sets the WebChartControl's client programmatic identifier.
+</para>
+            </summary>
+            <value>A <see cref="T:System.String"/> value that specifies the WebChartControl's client identifier.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.ClientSideEvents">
+            <summary>
+                <para>Gets an object that lists the client-side events specific to the WebChartControl.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.ChartClientSideEvents"/> object which allows assigning handlers to the client-side events available to the WebChartControl.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.CssFilePath">
+            <summary>
+                <para>Overrides the <see cref="P:DevExpress.Web.ASPxClasses.ASPxWebControl.CssFilePath"/> property to hide it.
+</para>
+            </summary>
+            <value>A <see cref="T:System.String"/> value.
+
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.CssPostfix">
+            <summary>
+                <para>Overrides the <see cref="P:DevExpress.Web.ASPxClasses.ASPxWebControl.CssPostfix"/> property to hide it.
+</para>
+            </summary>
+            <value>A <see cref="T:System.String"/> value.
+
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.Cursor">
+            <summary>
+                <para>Overrides the <see cref="P:DevExpress.Web.ASPxClasses.ASPxWebControl.Cursor"/> property to hide it.
+</para>
+            </summary>
+            <value>A <see cref="T:System.String"/> value.
+
+</value>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.WebChartControl.CustomCallback">
+            <summary>
+                <para>Fires when a round trip to the server has been initiated by a call to the client <see cref="M:DevExpress.XtraCharts.Web.Scripts.ASPxClientWebChartControl.PerformCallback"/> method.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.WebChartControl.CustomDrawSeries">
+            <summary>
+                <para>Occurs before a <b>series</b> is drawn when the chart's contents are being drawn.
+
+</para>
+            </summary>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.WebChartControl.CustomDrawSeriesPoint">
+            <summary>
+                <para>Occurs before a <b>series point</b> is drawn when the chart's contents are being drawn.
+
+
+</para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.DataAdapter">
+            <summary>
+                <para>Gets or sets the data adapter used to populate the web chart control's data source.
+</para>
+            </summary>
+            <value>A <see cref="T:System.Object"/> which represents the chart's data adapter.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.DateTimeOptions">
+            <summary>
+                <para>Gets an object containing settings that define the representation of date-time values to be displayed within a chart control.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.DateTimeOptions"/> object that contains specific date-time settings.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.Diagram">
+            <summary>
+                <para>Gets the web chart control's <i>diagram</i> and provides access to its settings.
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.Diagram"/> object that represents the chart control's <i>diagram</i>.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.DiagramTypeName">
+            <summary>
+                <para>Gets or sets the string value used to support serialization of the diagram's type in web applications.
+</para>
+            </summary>
+            <value>A <see cref="T:System.String"/> value.
+</value>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.WebChartControl.Dispose">
+            <summary>
+                <para>Enables a server control to perform final clean up before it is released from memory.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.EnableCallBacks">
+            <summary>
+                <para>Gets or sets a value that specifies whether the callback or postback technology is used to manage round trips to the server.
+</para>
+            </summary>
+            <value><b>true</b> if round trips to the server are performed using callbacks; <b>false</b> if postbacks are used.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.EnableClientSideAPI">
+            <summary>
+                <para>Gets or sets a value that specifies whether the Chart can be manipulated on the client side via code.
+</para>
+            </summary>
+            <value><b>true</b> if the Chart's client object model is fully available; <b>false</b> if no programmatic interface is available for the Chart on the client side.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.EnableClientSidePointToDiagram">
+            <summary>
+                <para>Gets or sets a value indicating whether it should be possible to convert screen coordinates into internal chart coordinates on the client side.
+
+</para>
+            </summary>
+            <value><b>true</b> if this conversion is allowed; otherwise, <b>false</b>.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.EnableDefaultAppearance">
+            <summary>
+                <para>Overrides the <see cref="P:DevExpress.Web.ASPxClasses.ASPxWebControl.EnableDefaultAppearance"/> property to hide it.
+</para>
+            </summary>
+            <value>Always <b>false</b>.
+
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.EnableTheming">
+            <summary>
+                <para>Overrides the <see cref="P:System.Web.UI.Control.EnableTheming"/> property to hide it.
+</para>
+            </summary>
+            <value>Always <b>false</b>.
+
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.EncodeHtml">
+            <summary>
+                <para>Overrides the <see cref="P:DevExpress.Web.ASPxClasses.ASPxWebControl.EncodeHtml"/> property to hide it.
+</para>
+            </summary>
+            <value>Always <b>false</b>.
+
+
+</value>
+
+
+        </member>
+        <member name="E:DevExpress.XtraCharts.WebChartControl.EndLoading">
+            <summary>
+                <para>Occurs when the Web Chart Control's object model has been completely initialized.
+</para>
+            </summary>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.FakeObject">
+            <summary>
+                <para>This property is intended for internal use only. Normally, you won't need to use it.
+</para>
+            </summary>
+            <value> 
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.FillStyle">
+            <summary>
+                <para>Gets the web chart control's background fill style.
+
+</para>
+            </summary>
+            <value>A <see cref="T:DevExpress.XtraCharts.RectangleFillStyle"/> object which specifies the background fill style.
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.Font">
+            <summary>
+                <para>Overrides the <see cref="P:System.Web.UI.WebControls.WebControl.Font"/> property to hide it.
+</para>
+            </summary>
+            <value>Always <b>null</b> (<b>Nothing</b> in Visual Basic).
+
+
+</value>
+
+
+        </member>
+        <member name="P:DevExpress.XtraCharts.WebChartControl.ForeColor">
+            <summary>
+                <para>For internal use only.
+
+</para>
+            </summary>
+            <value> 
+
+</value>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.WebChartControl.GetAppearanceNames">
+            <summary>
+                <para>Returns an array of strings that represent the names of all the appearances in the Chart.
+
+
+</para>
+            </summary>
+            <returns>An array of <see cref="T:System.String"/> values which represent the appearances' names.
+
+</returns>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.WebChartControl.GetPaletteNames">
+            <summary>
+                <para>Returns an array of strings that represent the names of all the palettes in the Chart.
+</para>
+            </summary>
+            <returns>An array of <see cref="T:System.String"/> values that represent the palette names.
+
+</returns>
+
+
+        </member>
+        <member name="M:DevExpress.XtraCharts.WebChartControl.GetSeriesByName(System.String)">
+            <summary>
+                <para>Gets a series within the web chart's series collection by its name.
+
+</para>
+            </summary>
+            <param name="seriesName">
+		A <see cref="T:System.String"/> which specifies the name of the series to find.
+
+            </param>
+            <returns>A <see cref="T:DevExpress.XtraCharts.Series"/> object that represents the series with the specified name.
+</returns>
+
+
+        </member>
+    </members>
+</doc>

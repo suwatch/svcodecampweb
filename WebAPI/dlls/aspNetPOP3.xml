@@ -1,0 +1,1334 @@
+﻿<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>aspNetPOP3</name>
+    </assembly>
+    <members>
+        <member name="T:aspNetPOP3.LogEventHandler">
+            <summary>
+            Delegate used for wiring up the LogEvent.
+            </summary>
+            
+        </member>
+        <member name="T:aspNetPOP3.DownloadHeadersEventHandler">
+            <summary>
+            Delegate used for wiring up the DownloadHeaders event.
+            </summary>
+            
+        </member>
+        <member name="T:aspNetPOP3.DownloadMessageEventHandler">
+            <summary>
+            The delegate used for the DownloadMessage event.
+            </summary>
+            
+        </member>
+        <member name="T:aspNetPOP3.DownloadMessageRowEventHandler">
+            <summary>
+            The delegate used for the DownloadMessageRow event.
+            </summary>
+            
+        </member>
+        <member name="T:aspNetPOP3.DownloadHeadersRowEventHandler">
+            <summary>
+            The delegate used for wiring up the DownloadHeaderRow event.
+            </summary>
+            
+        </member>
+        <member name="T:aspNetPOP3.POP3LogEventArgs">
+            <summary>
+            EventArgs for the Log Event.
+            </summary>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3LogEventArgs.#ctor">
+            <summary>Creates an instance of the POP3LogEventArgs</summary>
+            
+        </member>
+        <member name="P:aspNetPOP3.POP3LogEventArgs.LogEntry">
+            <summary>
+            The log entry, either written to the In-Memory log, or log file.
+            </summary>
+            
+        </member>
+        <member name="T:aspNetPOP3.DownloadHeadersEventArgs">
+            <summary>
+            Event args used everytime a POP3 headers are downloaded.
+            </summary>
+            
+            
+        </member>
+        <member name="M:aspNetPOP3.DownloadHeadersEventArgs.#ctor">
+            <summary>
+            Creats an instance of the DownloadHeaders Event Arguments.
+            </summary>
+            
+            
+        </member>
+        <member name="M:aspNetPOP3.DownloadHeadersEventArgs.#ctor(System.String)">
+            <summary>Creates an instance of the DownloadHeaders Event Arguments.</summary>
+            
+            
+        </member>
+        <member name="P:aspNetPOP3.DownloadHeadersEventArgs.Text">
+            <summary>
+            The headers as text
+            </summary>
+            
+            
+        </member>
+        <member name="T:aspNetPOP3.DownloadHeadersRowEventArgs">
+            <summary>
+            Event args used when a new data row is compiled for POP3.HeaderTable()
+            </summary>
+            
+            
+        </member>
+        <member name="M:aspNetPOP3.DownloadHeadersRowEventArgs.#ctor">
+            <summary>
+            Creats an instance of the DownloadHeadersRow Event Arguments.
+            </summary>
+            
+            
+        </member>
+        <member name="M:aspNetPOP3.DownloadHeadersRowEventArgs.#ctor(System.String,System.Data.DataRow)">
+            <summary>
+            Creats an instance of the DownloadHeadersRow Event Arguments.
+            </summary>
+            <param name="text">Raw text of the POP3 headers</param>
+            <param name="headerRow">DataRow of header data</param>
+            
+            
+        </member>
+        <member name="P:aspNetPOP3.DownloadHeadersRowEventArgs.HeaderRow">
+            <summary>
+            A DataRow of header information.
+            </summary>
+            
+            
+        </member>
+        <member name="P:aspNetPOP3.DownloadHeadersRowEventArgs.Text">
+            <summary>
+            The raw text of the headers
+            </summary>
+            
+            
+        </member>
+        <member name="T:aspNetPOP3.DownloadMessageEventArgs">
+            <summary>
+            Summary description for EventArgs.
+            </summary>
+            
+        </member>
+        <member name="M:aspNetPOP3.DownloadMessageEventArgs.#ctor">
+            <summary>
+            Creats an instance of the DownloadMessage Event Arguments.
+            </summary>
+            
+        </member>
+        <member name="M:aspNetPOP3.DownloadMessageEventArgs.#ctor(aspNetMime.MimeMessage,System.String)">
+            <summary>
+            Creats an instance of the DownloadMessage Event Arguments.
+            </summary>
+            <param name="message">The MimeMessage</param>
+            <param name="text">The raw text of the message.</param>
+            
+        </member>
+        <member name="P:aspNetPOP3.DownloadMessageEventArgs.Message">
+            <summary>
+            The MimeMessage
+            </summary>
+            <summary>
+            Summary description for EventArgs.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetPOP3.DownloadMessageEventArgs.Text">
+            <summary>
+            Raw text of the message
+            </summary>
+            <summary>
+            Summary description for EventArgs.
+            </summary>
+            
+        </member>
+        <member name="T:aspNetPOP3.DownloadMessageRowEventArgs">
+            <summary>
+            Event args used when download a message and adding it to the POP3.MessageTable()
+            </summary>
+            
+        </member>
+        <member name="M:aspNetPOP3.DownloadMessageRowEventArgs.#ctor">
+            <summary>
+            Creats an instance of the DownloadMessageRow Event Arguments.
+            </summary>
+            
+        </member>
+        <member name="M:aspNetPOP3.DownloadMessageRowEventArgs.#ctor(aspNetMime.MimeMessage,System.Data.DataRow,System.String)">
+            <summary>
+            Creats an instance of the DownloadMessageRow Event Arguments.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetPOP3.DownloadMessageRowEventArgs.Message">
+            <summary>
+            The MimeMessage
+            </summary>
+            
+        </member>
+        <member name="P:aspNetPOP3.DownloadMessageRowEventArgs.MessageRow">
+            <summary>
+            The DataRow added to the DataTable
+            </summary>
+            
+        </member>
+        <member name="P:aspNetPOP3.DownloadMessageRowEventArgs.Text">
+            <summary>
+            Raw text of the message.
+            </summary>
+            
+        </member>
+        <member name="T:aspNetPOP3.ServerResponseEventHandler">
+            <summary>
+            The delegate used for handling the ServerResponse Event.
+            </summary>
+            
+            <param name="sender">The sender object, typically the IMAP4 object.</param>
+            <param name="e">The ServerResponseEventArgs arguments.</param>
+        </member>
+        <member name="T:aspNetPOP3.ServerResponseEventArgs">
+            <summary>
+            Event args used when downloading data from the POP3 server
+            </summary>
+            
+        </member>
+        <member name="M:aspNetPOP3.ServerResponseEventArgs.#ctor">
+            <summary>
+            Creates an instance of the ServerResponseArgs class
+            </summary>
+            
+        </member>
+        <member name="P:aspNetPOP3.ServerResponseEventArgs.Command">
+            <summary>
+            The last POP3 command issued against the server.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetPOP3.ServerResponseEventArgs.Data">
+            <summary>
+            The byte array of data.
+            </summary>
+            
+            
+        </member>
+        <member name="P:aspNetPOP3.ServerResponseEventArgs.DataCount">
+            <summary>
+            The number of bytes returned from the last server response.
+            </summary>
+            
+        </member>
+        <member name="T:aspNetPOP3.POP3Exception">
+            <summary>
+            Generic POP3Exception exception.
+            </summary>
+        </member>
+        <member name="M:aspNetPOP3.POP3Exception.#ctor">
+            <summary>
+            Creates an instance of a POP3Exception object.
+            </summary>
+        </member>
+        <member name="M:aspNetPOP3.POP3Exception.#ctor(System.String)">
+            <summary>
+            Creates an instance of a POP3Exception object.
+            </summary>
+        </member>
+        <member name="M:aspNetPOP3.POP3Exception.#ctor(System.String,System.Exception)">
+            <summary>
+            Creates an instance of a POP3Exception object.
+            </summary>
+        </member>
+        <member name="M:aspNetPOP3.POP3Exception.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Creates an instance of a POP3Exception object.
+            </summary>
+        </member>
+        <member name="T:aspNetPOP3.POP3AuthenticationException">
+            <summary>
+            The exception raised during POP3 Server authentication.
+            </summary>
+        </member>
+        <member name="M:aspNetPOP3.POP3AuthenticationException.#ctor">
+            <summary>
+            Creates an instance of a POP3AuthenticationException
+            </summary>
+        </member>
+        <member name="M:aspNetPOP3.POP3AuthenticationException.#ctor(System.String)">
+            <summary>
+            Creates an instance of a POP3AuthenticationException
+            </summary>
+        </member>
+        <member name="M:aspNetPOP3.POP3AuthenticationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Creates an instance of a POP3AuthenticationException
+            </summary>
+        </member>
+        <member name="T:aspNetPOP3.POP3ConnectionException">
+            <summary>
+            The exception raised during POP3 Server connection.
+            </summary>
+        </member>
+        <member name="M:aspNetPOP3.POP3ConnectionException.#ctor">
+            <summary>
+            Creates an instance of a POP3ConnectionException
+            </summary>
+        </member>
+        <member name="M:aspNetPOP3.POP3ConnectionException.#ctor(System.String)">
+            <summary>
+            Creates an instance of a POP3ConnectionException
+            </summary>
+        </member>
+        <member name="M:aspNetPOP3.POP3ConnectionException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Creates an instance of a POP3ConnectionException
+            </summary>
+        </member>
+        <member name="T:aspNetPOP3.POP3ProtocolException">
+            <summary>
+            The exception raised during POP3 Protocol communication.
+            </summary>
+        </member>
+        <member name="M:aspNetPOP3.POP3ProtocolException.#ctor">
+            <summary>
+            Creates an instance of a POP3ProtocolException
+            </summary>
+        </member>
+        <member name="M:aspNetPOP3.POP3ProtocolException.#ctor(System.String)">
+            <summary>
+            Creates an instance of a POP3ProtocolException
+            </summary>
+        </member>
+        <member name="M:aspNetPOP3.POP3ProtocolException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Creates an instance of a POP3ProtocolException
+            </summary>
+        </member>
+        <member name="T:aspNetPOP3.POP3ProxyException">
+            <summary>
+            The exception raised during Proxy communication.
+            </summary>
+        </member>
+        <member name="M:aspNetPOP3.POP3ProxyException.#ctor">
+            <summary>
+            Creates an instance of the POP3ProxyException
+            </summary>
+        </member>
+        <member name="M:aspNetPOP3.POP3ProxyException.#ctor(System.String)">
+            <summary>
+            Creates an instance of the POP3ProxyException
+            </summary>
+            <param name="errorMessage">Error message </param>
+        </member>
+        <member name="M:aspNetPOP3.POP3ProxyException.#ctor(System.String,System.Exception)">
+            <summary>
+            Creates an instance of the POP3ProxyException
+            </summary>
+        </member>
+        <member name="M:aspNetPOP3.POP3ProxyException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Creates an instance of the POP3ProxyException
+            </summary>
+        </member>
+        <member name="T:aspNetPOP3.Sockets.IPOP3Socket">
+            <summary>
+            Summary description for ISMTPSocket.
+            </summary>
+        </member>
+        <member name="T:aspNetPOP3.Sockets.SslObject">
+            <summary>
+            Summary description for ISMTPSocket.
+            </summary>
+        </member>
+        <member name="T:aspNetPOP3.MessageStat">
+            <summary>
+            A message statistic, consisting of the Message Number, Message Size, and POP3 server generated Unique Id.
+            </summary>
+            
+            
+        </member>
+        <member name="P:aspNetPOP3.MessageStat.MessageNumber">
+            <summary>
+            The POP3 Message number.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetPOP3.MessageStat.Size">
+            <summary>
+            The size of the message in bytes.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetPOP3.MessageStat.UniqueId">
+            <summary>
+            The Unique Id, assigned to the message by the POP3 server.
+            </summary>
+            
+        </member>
+        <member name="T:aspNetPOP3.POP3">
+            <summary>
+            The aspNetPOP3 main object used for connecting to a POP3 server.
+            </summary>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.OnLogEvent(aspNetPOP3.POP3LogEventArgs)">
+            <summary>
+            Raises the LogEvent event of the POP3 class.
+            </summary>
+            <param name="e"></param>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.OnDownloadHeaders(aspNetPOP3.DownloadHeadersEventArgs)">
+            <summary>
+            Raises the DownloadHeaders event.
+            </summary>
+            
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.OnDownloadHeadersRow(aspNetPOP3.DownloadHeadersRowEventArgs)">
+            <summary>
+            Raises the DownloadHeadersRow event.
+            </summary>
+            
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.OnDownloadMessage(aspNetPOP3.DownloadMessageEventArgs)">
+            <summary>
+            Raises the DownloadMessage event.
+            </summary>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.OnDownloadMessageRow(aspNetPOP3.DownloadMessageRowEventArgs)">
+            <summary>
+            Raises the DownloadMessageRow event.
+            </summary>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.OnServerResponse(aspNetPOP3.ServerResponseEventArgs)">
+            <summary>
+            The method called when data is downloaded from the server.
+            </summary>
+            <param name="e">Server Response Event args</param>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.#ctor">
+            <summary>
+            Creates an instance of an aspNetPOP3.POP3 object.
+            </summary>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.#ctor(System.Boolean,System.Boolean)">
+            <seealso cref="M:aspNetPOP3.POP3.LoadFromConfig(System.Boolean)"/>
+            <seealso cref="M:aspNetPOP3.POP3.LoadFromConfig(System.Boolean)"/>
+            <summary>
+            Creates an instance of an aspNetPOP3.POP3 object.
+            <seealso cref="M:aspNetPOP3.POP3.LoadFromConfig(System.Boolean)"/>
+            </summary>
+            
+            <param name="loadFromConfig">Load default settings from the application config file.</param>
+            <param name="connect">automatically connect</param>
+        </member>
+        <member name="M:aspNetPOP3.POP3.#ctor(System.String)">
+            <summary>
+            Creates an instance of an aspNetPOP3.POP3 object.
+            </summary>
+            <param name="server">The POP3 server name or IP address.</param>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Creates an instance of an aspNetPOP3.POP3 object.
+            </summary>
+            <param name="password">Password used for connection</param>
+            <param name="server">POp3 Server name or IP Address</param>
+            <param name="username">Username for Connection</param>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.#ctor(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Creates an instance of an aspNetPOP3.POP3 object.
+            </summary>
+            
+            <param name="server">Server name or IP address</param>
+            <param name="username">Username for connection</param>
+            <param name="password">Password for connection</param>
+            <param name="port">Server Port, default 110</param>
+        </member>
+        <member name="M:aspNetPOP3.POP3.Finalize">
+            <summary>
+            Finalizes the POP3 object.
+            </summary>
+        </member>
+        <member name="M:aspNetPOP3.POP3.Dispose">
+            <summary>
+            Cleans up any unused POP3 socket resources.
+            </summary>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.CancelDeletes">
+            <summary>
+            Cancels any pending deletes.
+            </summary>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.CheckBlackList(System.Int32)">
+            <summary>
+            Checks to see if the message came from a Black Listed IP
+            </summary>
+            <returns>True if the message was spam.</returns>
+            
+            <param name="messageNumber">Message number to check.</param>
+        </member>
+        <member name="M:aspNetPOP3.POP3.CommitDeletes">
+            <summary>
+            Deletes any messages marked for deletion.
+            </summary>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.CommitDeletes(System.Int32)">
+            <summary>
+            Deletes any messages marked for deletion.
+            </summary>
+            
+            
+            <param name="timeWait">The number of milliseconds to wait before reconnect.</param>
+        </member>
+        <member name="M:aspNetPOP3.POP3.Connect">
+            <summary>
+            Connects to the POP3 Server
+            </summary>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.Connect(System.String,System.String)">
+            <summary>
+            Connects to the POP3 Server
+            </summary>
+            <param name="username">Username used for connection</param>
+            <param name="password">Password used for connection</param>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.Connect(System.String,System.String,System.String)">
+            <summary>
+            Connects to the POP3 Server
+            </summary>
+            <param name="username">Username used for connection</param>
+            <param name="password">Password used for connection</param>
+            <param name="server">The remote server DNS name or IP address.</param>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.Delete(System.Int32)">
+            <summary>
+            Marks a message for deletion.
+            </summary>
+            <param name="messageNumber">Message number to delete.</param>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.DeleteAll">
+            <summary>
+            Marks all messages to be deleted in the Inbox.
+            </summary>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.Disconnect">
+            <summary>
+            Disconnects from the POP3 server.
+            </summary>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.ExpirationDate">
+            <summary>
+            If this is an evaluation version, it retrieves the expiration date. If this is a full version, it 
+            returns a 'Full Version' message.
+            </summary>
+            <returns>The expiration date as a string.</returns>
+        </member>
+        <member name="M:aspNetPOP3.POP3.GetHeaders(System.Int32)">
+            <summary>
+            Retrieves the headers for a message number.
+            </summary>
+            <param name="messageNumber">The message number at the POP3 server.</param>
+            
+            <returns>The headers of the message</returns>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.GetMessage(System.Int32)">
+            <summary>
+            Retrieves the POP3 message found at the server.
+            </summary>
+            <param name="messageNumber">The message number to retrieve.</param>
+            <returns>The entire message as an aspNetMime.MimeMessage</returns>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.GetMessages(System.Int32,System.Int32)">
+            <summary>
+            Retrieves all of the messages at the POP3 server as a MimePartCollection
+            </summary>
+            <param name="startAt">The first message to download.</param>
+            <param name="count">The number of messages to download</param>
+            <returns>The messages as a MimePartCollection</returns>
+            
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.GetMessages(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Retrieves all of the messages at the POP3 server as a MimePartCollection
+            </summary>
+            <param name="startAt">The first message to download.</param>
+            <param name="count">The number of messages to download</param>
+            <param name="throwException">Throws any POP3 Connection exceptions.</param>
+            <returns>The messages as a MimePartCollection</returns>
+            
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.GetMessageAsText(System.Int32)">
+            <summary>
+            Retrieves a message from the POP3 server as text. 
+            </summary>
+            
+            <param name="messageNumber">The message number.</param>
+            <returns>The message as a string of text</returns>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.GetMessageAsBinary(System.Int32)">
+            <summary>
+            Returns an email as a byte array.
+            </summary>
+            <param name="messageNumber">Message number index</param>
+            <returns>Message as a byte array.</returns>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.GetMessageLines(System.Int32,System.Int32)">
+            <summary>
+            Retrieves the number of lines for a message.
+            </summary>
+            <param name="messageNumber">The message number.</param>
+            <param name="numberOfLines">Number of lines found in the message.</param>
+            <returns>The POP3 message lines.</returns>
+            
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.HeaderList">
+            <summary>
+            Retrieve the all of the messages' headers as an ArrayList
+            </summary>
+            
+            <returns>ArrayList of headers</returns>
+        </member>
+        <member name="M:aspNetPOP3.POP3.HeaderList(System.Int32,System.Int32)">
+            <summary>
+            Downloads a range of messages' headers as an ArrayList.
+            </summary>
+            <param name="startAt">The first message number headers to download.</param>
+            <param name="count">The number of messages' headers to download.</param>
+            <returns>An ArrayList of all the messages' headers</returns>
+            
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.HeaderList(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Downloads a range of messages' headers as an ArrayList.
+            </summary>
+            <param name="startAt">The first message number headers to download.</param>
+            <param name="count">The number of messages' headers to download.</param>
+            <param name="throwException">Throw any connection exceptions.</param>
+            <returns>An ArrayList of all the messages' headers</returns>
+            
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.HeaderTable">
+            <summary>
+            Retrieves all of the messages headers as a DataTable.
+            </summary>
+            <returns>DataTable of message headers</returns>
+            
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.HeaderTable(System.Int32,System.Int32)">
+            <summary>
+            Downloads a range of messges' headers as a DataTable
+            </summary>
+            <returns>A DataTable of the downloaded messages' headers.</returns>
+            
+            
+            <param name="startAt">The first message number headers to download.</param>
+            <param name="count">The number of messages' headers to download.</param>
+        </member>
+        <member name="M:aspNetPOP3.POP3.HeaderTable(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Downloads a range of messges' headers as a DataTable
+            </summary>
+            <returns>A DataTable of the downloaded messages' headers.</returns>
+            
+            
+            <param name="startAt">The first message number headers to download.</param>
+            <param name="count">The number of messages' headers to download.</param>
+            <param name="throwException">Throw any POP3 connection exceptions.</param>
+        </member>
+        <member name="M:aspNetPOP3.POP3.HeaderTable(System.Int32,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            Downloads a range of messges' headers as a DataTable
+            </summary>
+            <returns>A DataTable of the downloaded messages' headers.</returns>
+            
+            
+            <param name="startAt">The first message number headers to download.</param>
+            <param name="count">The number of messages' headers to download.</param>
+            <param name="throwException">Throw an exception while retrieving the headers.</param>
+            <param name="htmlEncode">Html Encode the values for web output.</param>
+        </member>
+        <member name="M:aspNetPOP3.POP3.HeaderTable(System.Int32,System.Int32,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Downloads a range of messges' headers as a DataTable
+            </summary>
+            <returns>A DataTable of the downloaded messages' headers.</returns>
+            
+            
+            <param name="startAt">The first message number headers to download.</param>
+            <param name="count">The number of messages' headers to download.</param>
+            <param name="throwException">Throw an exception while retrieving the headers.</param>
+            <param name="htmlEncode">Html Encode the values for web output.</param>
+            <param name="checkForSpam">Checks the message to see if it has been black listed as spam.</param>
+        </member>
+        <member name="M:aspNetPOP3.POP3.LoadFromConfig(System.Boolean)">
+             <summary>
+             Loads default properties into the POP3 class from the application configuration file.
+             </summary>
+             <param name="connect">Automatically connect after the properties have loaded.</param>
+             
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.LoadSslSocket(System.Object)">
+            <summary>
+            Loads the SslSocket object for SSL communication
+            </summary>
+            <param name="sslSocket">The AdvancedIntellect.Ssl.SslSocket object</param>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.MessageCount">
+            <summary>
+            Retrieves the number of messages found in the Inbox.
+            </summary>
+            <returns>Number of Messages</returns>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.MessageSize(System.Int32)">
+            <summary>
+            Retrieves the message size as number of bytes.
+            </summary>
+            <param name="messageNumber">Message number.</param>
+            <returns>Size in bytes.</returns>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.MessageSizeListing">
+            <summary>
+            Retrieves the Message Stats, populating the Message Number and Size properties.
+            </summary>
+            <returns>Array of Message Stats</returns>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.MessageTable">
+            <summary>
+            Retrieves all POP3 messages as a DataTable
+            </summary>
+            <returns>The POP3 Inbox as a DataTable</returns>
+            
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.MessageTable(System.Int32,System.Int32)">
+            <summary>
+            Retrieves messages as a DataTable
+            </summary>
+            <param name="startAt">The first message to retrieve.</param>
+            <param name="count">The number of messages to retrieve.</param>
+            <returns>Each message as a row in a DataTable</returns>
+            
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.MessageTable(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Retrieves messages as a DataTable
+            </summary>
+            <param name="startAt">The first message to retrieve.</param>
+            <param name="count">The number of messages to retrieve.</param>
+            <param name="throwException">Throw any POP3 connection exceptions.</param>
+            <returns>Each message as a row in a DataTable</returns>
+            
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.MessageTable(System.Int32,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            Retrieves messages as a DataTable
+            </summary>
+            <returns>Each message as a row in a DataTable</returns>
+            
+            
+            <param name="startAt">The first message to retrieve.</param>
+            <param name="count">The number of messages to retrieve.</param>
+            <param name="throwException">Throw any POP3 connection exceptions.</param>
+            <param name="checkForSpam">Checks each message to see if it came from a Black Listed IP</param>
+        </member>
+        <member name="M:aspNetPOP3.POP3.MessageList">
+            <summary>
+            Returns an ArrayList of messages as strings.
+            </summary>
+            <returns>An ArrayList of messages, with each message as a string.</returns>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.MessageList(System.Int32,System.Int32)">
+            <summary>
+            Returns an ArrayList of messages as strings.
+            </summary>
+            <param name="startAt">The starting index of messages to download.</param>
+            <param name="count">The number of messages to retrieve. Set count =-1 to retrieve all messages.</param>
+            <returns>An ArrayList of messages, with each message as a string.</returns>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.MessageList(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Returns an ArrayList of messages as strings.
+            </summary>
+            <param name="startAt">The starting index of messages to download.</param>
+            <param name="count">The number of messages to retrieve. Set count =-1 to retrieve all messages.</param>
+            <param name="throwException">Throw any exceptions that occur.</param>
+            <returns>An ArrayList of messages, with each message as a string.</returns>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.MessageUniqueId(System.Int32)">
+            <summary>
+            Retrieves the unique message id for a given message number.
+            </summary>
+            <returns>The unique message id.</returns>
+            
+            
+            <param name="messageNumber">Message number</param>
+        </member>
+        <member name="M:aspNetPOP3.POP3.MessageUniqueIdListing">
+            <summary>
+            Retrieves the Message Stats, populating the Message Number and Unique Id properties.
+            </summary>
+            <returns>Array of Message Stats</returns>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.Noop">
+            <summary>
+            Sends a no-operation (null) command to the POP3 server, simply to keep the connection alive.
+            </summary>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.PopulateInboxStats">
+            <summary>
+            Populates the InboxMessageCount and InboxSize properties.
+            </summary>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.Reconnect">
+            <summary>
+            Reconnects to the POP3 server, if the connection is dropped or closed.
+            </summary>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.Reset">
+            <summary>
+            Resets the POP3 session. Any messages marked for deletion are unmarked.
+            </summary>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.SaveToFile(System.Int32,System.String)">
+            <summary>
+            Saves a message to a file.
+            </summary>
+            <param name="messageNumber">The message number to save.</param>
+            <param name="path">The full path to save the message to.</param>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.VersionNumber">
+            <summary>
+            Retrieves the version number of aspNetPOP3
+            </summary>
+            <returns>The version number</returns>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.WriteLineToLog(System.String)">
+            <summary>
+            Writes a line of text to the log file.
+            </summary>
+            <param name="line">Text to write to the log file.</param>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.WriteToLog(System.String)">
+            <summary>
+            Writes text to the log file.
+            </summary>
+            <param name="text">Text to write to the log file.</param>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.BeginConnect(System.AsyncCallback,System.Object)">
+            <summary>
+            Used for asynchronous Connect completion.
+            </summary>
+            <param name="callback">The async callback.</param>
+            <param name="state">The State object</param>
+            <returns>An IAsyncResult instance that references the asynchronous request.</returns>
+            
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.EndConnect(System.IAsyncResult)">
+            <summary>
+            Ends an asynchronous Connect.
+            </summary>
+            <param name="result">The pending Connect result object.</param>
+            
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.BeginGetHeaders(System.Int32,System.AsyncCallback,System.Object)">
+            <summary>
+            Used for asynchronous GetHeaders completion.
+            </summary>
+            <param name="callback">The async callback.</param>
+            <param name="state">The State object</param>
+            <param name="messageNumber">The message number headers to retrieve.</param>
+            <returns>An IAsyncResult instance that references the asynchronous request.</returns>
+            
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.EndGetHeaders(System.IAsyncResult)">
+            <summary>
+            Ends an asynchronous GetHeaders.
+            </summary>
+            <param name="result">The pending GetHeaders result object.</param>
+            <returns>The string of headers</returns>
+            
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.BeginGetMessage(System.Int32,System.AsyncCallback,System.Object)">
+            <summary>
+            Used for asynchronous GetMessage completion.
+            </summary>
+            <param name="callback">The async callback.</param>
+            <param name="state">The State object</param>
+            <param name="messageNumber">The message number to retrieve.</param>
+            <returns>An IAsyncResult instance that references the asynchronous request.</returns>
+            
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.EndGetMessage(System.IAsyncResult)">
+            <summary>
+            Ends an asynchronous GetMessage.
+            </summary>
+            <param name="result">The pending GetMessage result object.</param>
+            <returns>The results</returns>
+            
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.BeginGetMessageAsText(System.Int32,System.AsyncCallback,System.Object)">
+            <summary>
+            Used for asynchronous GetMessageAsText completion.
+            </summary>
+            <param name="callback">The async callback.</param>
+            <param name="state">The State object</param>
+            <param name="messageNumber">The message number to retrieve.</param>
+            <returns>An IAsyncResult instance that references the asynchronous request.</returns>
+            
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.EndGetMessageAsText(System.IAsyncResult)">
+            <summary>
+            Ends an asynchronous GetMessageAsText.
+            </summary>
+            <param name="result">The pending GetMessageAsText result object.</param>
+            <returns>The results</returns>
+            
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.BeginGetMessages(System.Int32,System.Int32,System.Boolean,System.AsyncCallback,System.Object)">
+            <summary>
+            Used for asynchronous GetMessages completion.
+            </summary>
+            <param name="callback">The async callback.</param>
+            <param name="state">The State object</param>
+            <param name="startAt">The message number to start at.</param>
+            <param name="count">The number of messages to retrieve (-1 to download all).</param>
+            <param name="throwException">Throw exceptions during the download process</param>
+            <returns>An IAsyncResult instance that references the asynchronous request.</returns>
+            
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.EndGetMessages(System.IAsyncResult)">
+            <summary>
+            Ends an asynchronous GetMessages.
+            </summary>
+            <param name="result">The pending GetMessages result object.</param>
+            <returns>The results</returns>
+            
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.BeginHeaderList(System.Int32,System.Int32,System.Boolean,System.AsyncCallback,System.Object)">
+            <summary>
+            Used for asynchronous HeaderList completion.
+            </summary>
+            <param name="callback">The async callback.</param>
+            <param name="state">The State object</param>
+            <param name="startAt">The message number to start at.</param>
+            <param name="count">The number of messages' headers to retrieve (-1 to download all).</param>
+            <param name="throwException">Throw exceptions during the download process</param>
+            <returns>An IAsyncResult instance that references the asynchronous request.</returns>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.EndHeaderList(System.IAsyncResult)">
+            <summary>
+            Ends an asynchronous HeaderList.
+            </summary>
+            <param name="result">The pending HeaderList result object.</param>
+            <returns>The results</returns>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.BeginHeaderTable(System.Int32,System.Int32,System.Boolean,System.Boolean,System.AsyncCallback,System.Object)">
+            <summary>
+            Used for asynchronous HeaderTable completion.
+            </summary>
+            <param name="startAt">Message index to start at.</param>
+            <param name="count">The number of messages to retrieve (-1 to retrieve all)</param>
+            <param name="throwException">Throw exceptions during download</param>
+            <param name="htmlEncode">HTML encode the header values.</param>
+            <param name="callback">The async callback.</param>
+            <param name="state">The State object</param>
+            <returns>An IAsyncResult instance that references the asynchronous request.</returns>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.EndHeaderTable(System.IAsyncResult)">
+            <summary>
+            Ends an asynchronous HeaderTable execution.
+            </summary>
+            <param name="result">The pending HeaderTable result object.</param>
+            <returns>The results</returns>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.BeginMessageTable(System.Int32,System.Int32,System.Boolean,System.AsyncCallback,System.Object)">
+            <summary>
+            Used for asynchronous MessageTable completion.
+            </summary>
+            <param name="callback">The async callback.</param>
+            <param name="state">The State object</param>
+            <param name="startAt">The message number to start at.</param>
+            <param name="count">The number of messages to retrieve (-1 to download all).</param>
+            <param name="throwException">Throw exceptions during the download process</param>
+            <returns>An IAsyncResult instance that references the asynchronous request.</returns>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.EndMessageTable(System.IAsyncResult)">
+            <summary>
+            Ends an asynchronous MessageTable.
+            </summary>
+            <param name="result">The pending MessageTable result object.</param>
+            <returns>The results</returns>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.LoadLicenseFile(System.String)">
+            <summary>Loads a license file, based upon a fileystem path.</summary>
+            <param name="path">Filesystem path to the license file.</param>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.LoadLicenseString(System.String)">
+            <summary>Loads a license file, from a properly formatted Xml license string.</summary>
+            
+            
+            <param name="xmlString">A string containing the Xml license contents.</param>
+        </member>
+        <member name="M:aspNetPOP3.POP3.LoadLicenseStream(System.IO.Stream)">
+            <summary>
+            Loads the license from a System.IO.Stream
+            </summary>
+            <param name="stream"></param>
+        </member>
+        <member name="M:aspNetPOP3.POP3.LoadLicenseResource">
+            <summary>
+            Loads a license that was embedded as a resource.
+            </summary>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3.LoadLicenseResource(System.String)">
+            <summary>
+            Loads the license contents from a specific resource name.
+            </summary>
+            <param name="resourceName">The name of the embedded resource</param>
+            
+        </member>
+        <member name="E:aspNetPOP3.POP3.LogEvent">
+            <summary>
+            The Log Event that is raised every time an entry is written to the POP3 log.
+            </summary>
+            
+        </member>
+        <member name="E:aspNetPOP3.POP3.DownloadHeaders">
+            <summary>
+             A DownloadHeaders event has occurred.
+            </summary>
+            
+            
+        </member>
+        <member name="E:aspNetPOP3.POP3.DownloadHeadersRow">
+            <seealso cref="M:aspNetPOP3.POP3.HeaderTable"/>
+            <summary>
+            A DownloadHeadersRow event has occurred. This event is raised every time a new
+            row of data is added to the internal table compiled during POP3.HeaderTable()
+            </summary>
+            
+            
+        </member>
+        <member name="E:aspNetPOP3.POP3.DownloadMessage">
+            <summary>
+             A DownloadMessage event has occurred.
+            </summary>
+            
+        </member>
+        <member name="E:aspNetPOP3.POP3.DownloadMessageRow">
+            <summary>
+             A DownloadMessageRow event has occurred.
+            </summary>
+            
+        </member>
+        <member name="E:aspNetPOP3.POP3.ServerResponse">
+            <summary>
+            The event raised when data is downloaded from the server.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetPOP3.POP3.DateTimeOffset">
+            <summary>
+            The TimeSpan offset to be used when determining the email's date.
+            </summary>
+            
+            
+        </member>
+        <member name="P:aspNetPOP3.POP3.BlackListChecker">
+            <summary>
+            The BlackListChecker used for checking if a message has come from a Black Listed
+            IP.
+            </summary>
+            
+            
+        </member>
+        <member name="P:aspNetPOP3.POP3.Detect8BitEmails">
+            <summary>
+            Detects and Parses 8Bit Emails.
+            </summary>
+            
+            
+        </member>
+        <member name="P:aspNetPOP3.POP3.IsConnected">
+            <summary>
+            True if the POP3 class has connected to the mail server, and is awaiting commands. False if not.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetPOP3.POP3.Log">
+            <summary>
+            The in-memory log, if POP3.LogInMemory = true.
+            </summary>
+            <returns>The in-memory log as a string.</returns>
+            
+        </member>
+        <member name="P:aspNetPOP3.POP3.LogEncoding">
+            <summary>
+            Encoding used to write to the log file.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetPOP3.POP3.LogInMemory">
+            <summary>
+            Keeps an in-memory log of the session. Useful in ASP.NET, when the user account does 
+            not have write-permissions to the file system.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetPOP3.POP3.LogOverwrite">
+            <summary>
+            Over write any previously existing log.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetPOP3.POP3.LogPath">
+            <summary>
+            Path to the log file.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetPOP3.POP3.MimeDecoding">
+            <summary>
+            The Encoding class used for creating and decoding the Mime Messages used by aspNetPOP3.
+            </summary>
+            
+            
+        </member>
+        <member name="P:aspNetPOP3.POP3.InboxSize">
+            <summary>
+            The size of the Inbox in bytes. PopulateInboxStats() must be called
+            for this property to be populated.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetPOP3.POP3.InboxMessageCount">
+            <summary>
+            The number of messages in the Inbox. PopulateInboxStats() must be called for this
+            property to be populated.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetPOP3.POP3.Password">
+            <summary>
+            The password used for logging into the POP3 server.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetPOP3.POP3.Port">
+            <summary>
+            Port for connecting to the server. By default Port is set to 110.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetPOP3.POP3.Proxy">
+            <summary>
+            Creates an instance of a proxy server object.
+            </summary>
+            
+            
+        </member>
+        <member name="P:aspNetPOP3.POP3.ResponseEncoding">
+            <summary>
+            The Encoding used to encode POP3 commands issued against the servers, to a byte array of data.
+            </summary>
+            
+            
+        </member>
+        <member name="P:aspNetPOP3.POP3.RequestEncoding">
+            <summary>
+            The Encoding used to decode POP3 responses from bytes to text.
+            </summary>
+            
+            
+        </member>
+        <member name="P:aspNetPOP3.POP3.SynchronizingObject">
+            <summary>
+            Gets or sets the object used to marshal the event handler calls issued as a result of events.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetPOP3.POP3.Server">
+            <summary>
+            The POP3 server name or IP address.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetPOP3.POP3.TimeOut">
+            <summary>
+            Timeout, in milliseconds, for sending and receiving commands from the POP3 server.
+            </summary>
+            
+        </member>
+        <member name="P:aspNetPOP3.POP3.Username">
+            <summary>
+            The username for logging into the POP3 server.
+            </summary>
+            
+        </member>
+        <member name="T:aspNetPOP3.POP3Proxy">
+            <summary>
+            Used for communicating through a Socks4 or Socks5 proxy server to the POP3 server.
+            </summary>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3Proxy.#ctor">
+            <summary>Creates an instance of the POP3Proxy object.</summary>
+            <summary>The proxy server name or IP address</summary>
+            
+        </member>
+        <member name="M:aspNetPOP3.POP3Proxy.#ctor(System.String)">
+            <summary>Creates an instance of the POP3Proxy object</summary>
+            
+            <param name="server">Server name or IP of the proxy server.</param>
+        </member>
+        <member name="M:aspNetPOP3.POP3Proxy.#ctor(System.String,System.Int32)">
+            <summary>Creates an instance of the POP3Proxy object</summary>
+            <summary>Creates an instance of the POP3Proxy object</summary>
+            
+            <param name="server">Proxy server name or IP address.</param>
+            <param name="port">Proxy server port number.</param>
+        </member>
+        <member name="P:aspNetPOP3.POP3Proxy.Authentication">
+            <summary>Used to control Authentication to the Proxy server.</summary>
+            
+            
+        </member>
+        <member name="P:aspNetPOP3.POP3Proxy.Enabled">
+            <summary>Enable using a proxy server.</summary>
+            
+            
+        </member>
+        <member name="P:aspNetPOP3.POP3Proxy.Password">
+            <summary>The proxy server password.</summary>
+            
+        </member>
+        <member name="P:aspNetPOP3.POP3Proxy.Port">
+            <summary>The port number of the proxy server.</summary>
+            
+            
+        </member>
+        <member name="P:aspNetPOP3.POP3Proxy.Server">
+            <summary>The proxy server name or IP address</summary>
+            
+        </member>
+        <member name="P:aspNetPOP3.POP3Proxy.Type">
+            <summary>The type (Socks4 or Socks5) of proxy server.</summary>
+            
+            
+        </member>
+        <member name="P:aspNetPOP3.POP3Proxy.Username">
+            <summary>The username required to communicate through the proxy server.</summary>
+            
+        </member>
+        <member name="P:aspNetPOP3.POP3Proxy.UseRemoteDns">
+            <summary>Let the proxy server resolve the POP3 server's name.</summary>
+            
+        </member>
+        <member name="T:aspNetPOP3.POP3ProxyAuthentication">
+            <summary>Authentication to use when comminicating through the Proxy server.</summary>
+            <summary>Creates an instance of the POP3Proxy object</summary>
+            
+        </member>
+        <member name="F:aspNetPOP3.POP3ProxyAuthentication.None">
+            <summary>
+            Do not use any authentication. If the username and password properties are set,
+            this value is only valid if set after setting the username and password values.
+            </summary>
+            
+        </member>
+        <member name="F:aspNetPOP3.POP3ProxyAuthentication.UsernamePassword">
+            <summary>Use username/password authentication.</summary>
+            	
+        </member>
+        <member name="T:aspNetPOP3.POP3ProxyType">
+            <summary>The type of proxy server.</summary>
+            <summary>Creates an instance of the POP3Proxy object</summary>
+            
+        </member>
+        <member name="F:aspNetPOP3.POP3ProxyType.None">
+            <summary>Do not use the proxy server.</summary>
+            
+        </member>
+        <member name="F:aspNetPOP3.POP3ProxyType.Socks4">
+            <summary>Socks4 compliant proxy</summary>
+            	
+        </member>
+        <member name="F:aspNetPOP3.POP3ProxyType.Socks5">
+            <summary>Socks5 compliant proxy</summary>
+            
+        </member>
+    </members>
+</doc>

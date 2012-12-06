@@ -1,0 +1,230 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/DefaultNoColumns.Master" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="WebAPI.MasterPage" %>
+
+
+<%@ Register Src="CloudControl.ascx" TagName="CloudControl" TagPrefix="uc1" %>
+<%@ Register Src="SponsorsList.ascx" TagName="SponsorsList" TagPrefix="uc2" %>
+<asp:Content ContentPlaceHolderID="blankSublinks" ID="DefaultSublinksID" runat="server">
+    <asp:ContentPlaceHolder ID="defaultSublinks" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+
+
+
+
+<asp:Content ContentPlaceHolderID="blankContent" ID="DefaultContentID" runat="server">
+    <%--<script type="text/javascript"><!--
+        google_ad_client = "pub-3690548624166179";
+        /* 728x90, created 3/22/09 */
+        google_ad_slot = "0153537864";
+        google_ad_width = 728;
+        google_ad_height = 90;
+        //-->
+    </script>
+    <script type="text/javascript"
+    src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+    </script>--%>
+    
+    
+  
+    
+
+    <tr>
+        <td class="contentLeft hideOnScreenLessthan800px" valign="top">
+            <!-- Left column links -->
+            <%-- <div class="slashBullet">
+                    <asp:HyperLink ID="HyperLinkSessionsOverview" runat="server" NavigateUrl="~/SessionsOverview.aspx" >Camp Schedule</asp:HyperLink></div>
+                <br />--%>
+            <%-- <div class="slashBullet">
+                    <asp:HyperLink ID="HyperLinkSessionRooms" runat="server" NavigateUrl="~/SessionRooms.aspx" >Sessions By Room</asp:HyperLink></div>
+                <br />--%>
+            <div class="slashBullet">
+                <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Location.aspx">Location</asp:HyperLink></div>
+            <div class="slashBullet">
+                <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="http://blog.siliconvalley-codecamp.com/session-change-log/">Session Change Log</asp:HyperLink></div>
+            <div class="slashBullet">
+                <asp:HyperLink ID="HyperLinkVolunteer" runat="server" NavigateUrl="~/Volunteer.aspx">For Volunteers</asp:HyperLink></div>
+            <div class="slashBullet">
+                <asp:HyperLink ID="HyperLinkProfileInfo" runat="server" NavigateUrl="~/Register.aspx">My Profile</asp:HyperLink></div>
+            <div class="slashBullet">
+                <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/Rss.aspx">RSS Feed</asp:HyperLink></div>
+            <div class="slashBullet">
+                <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="~/Faq.aspx">FAQ</asp:HyperLink>
+             </div>
+             <div class="slashBullet">
+                <asp:HyperLink ID="HyperLinkSessionInterest" runat="server" NavigateUrl="SessionInterestChart.aspx">Session Interest Chart</asp:HyperLink>
+            </div>
+
+             <div class="slashBullet">
+                <asp:HyperLink ID="HyperLinkSessionPlanToAttend" Visible="false" runat="server" NavigateUrl="SessionPlanToAttendChart.aspx">Session Attend Chart</asp:HyperLink>
+            </div>
+
+
+            <div class="slashBullet">
+                <asp:HyperLink ID="HyperLinkCodeCampEval" runat="server" NavigateUrl="~/CodeCampEval.aspx">Code Camp Evaluations</asp:HyperLink></div>
+            <div class="slashBullet">
+                <asp:HyperLink ID="HyperLinkVolunteerJobs" Visible="false" runat="server" NavigateUrl="~/VolunteerForJob.aspx">Volunteer Jobs</asp:HyperLink></div>
+
+            <div class="slashBullet">
+                <asp:HyperLink ID="HyperLinkVolunteersMeeting" Visible="false" runat="server" NavigateUrl="~/VolunteerMeeting.aspx">Volunteer Mtg 8/16/11
+                </asp:HyperLink>
+            </div>
+
+            <h3>
+                Recent Job Posts</h3>
+            <asp:SqlDataSource ID="SqlDataSourceJobs" runat="server" ConnectionString="<%$ ConnectionStrings:CodeCampSV06 %>"
+                SelectCommand="  SELECT TOP 5 Id,
+                            JobName,
+                            JobCompanyName,
+                            JobLocation,
+                            JobURL,
+                            JobBrief,
+                            StartRunDate,
+                            EndRunDate,
+                            HideListing
+                     FROM SponsorListJobListing
+                     WHERE GETDATE() &gt;=  StartRunDate AND
+                           GETDATE() &lt;= EndRunDate AND
+                           HideListing = 0 AND
+                           SponsorListId &gt;= @SponsorListIdStart AND
+                           SponsorListId &lt;= @SponsorListIdStop
+                    ORDER BY  StartRunDate DESC">
+                <SelectParameters>
+                    <asp:Parameter DefaultValue="0" Name="SponsorListIdStart" />
+                    <asp:Parameter DefaultValue="99999999" Name="SponsorListIdStop" />
+                </SelectParameters>
+            </asp:SqlDataSource>
+            <asp:Repeater ID="RepeaterJobs" runat="server" DataSourceID="SqlDataSourceJobs" Visible="true"    >
+                <HeaderTemplate>
+                    <ul class="recentPosts">
+                </HeaderTemplate>
+                <FooterTemplate>
+                    </ul>
+                </FooterTemplate>
+                <ItemTemplate>
+                    <li>
+                      
+                        <asp:HyperLink ID="HyperLinkJobURL" NavigateUrl="~/Jobs.aspx" Text='<%# Eval("JobName")%>'
+                             runat="server"></asp:HyperLink>
+                     
+                        <span  title="<%# Eval("JobCompanyName")%>">
+                            <%# Eval("JobCompanyName")%>
+                        </span>
+                      
+                     </li>
+                </ItemTemplate>
+                
+            </asp:Repeater>
+            <h3>
+                Recent News Posts</h3>
+            <asp:ObjectDataSource ID="ObjectDataSourceRSS" runat="server" SelectMethod="Get"
+                TypeName="WebAPI.Code.RSSFeedObject">
+                <SelectParameters>
+                    <asp:Parameter DefaultValue="5" Name="numberToGet" Type="Int32" />
+                </SelectParameters>
+            </asp:ObjectDataSource>
+            <asp:Repeater ID="RepeaterRSS" runat="server" DataSourceID="ObjectDataSourceRSS">
+                <HeaderTemplate>
+                    <ul class="recentPosts">
+                </HeaderTemplate>
+                <FooterTemplate>
+                    </ul>
+                </FooterTemplate>
+                <ItemTemplate>
+                    <li>
+                        <asp:HyperLink ID="HyperLinkURL" runat="server" NavigateUrl='<%# Eval("PostURL") %>'
+                            Text='<%# Eval("PostTitle") %>'></asp:HyperLink>
+                    </li>
+                </ItemTemplate>
+            </asp:Repeater>
+            <div class="pad" style="margin-top: 40px;">
+                <asp:HyperLink ID="HyperLink3" ImageUrl="~/Images/orcsweb1.gif" onclick="javascript:pageTracker._trackPageview ('/outbound/ADS-ORCSWEB');"
+                    NavigateUrl="http://www.orcsweb.com/hosting/windows-cloud-servers/" ToolTip="The Hosting Cloud, Easy Powerful.  Scalable."
+                    Target="_blank" runat="server"></asp:HyperLink>
+            </div>
+        </td>
+        <td valign="top" class="contentMain" id="ContentId">
+            <!-- Main content for pages ContentPlaceHolder  -->
+            <asp:ContentPlaceHolder ID="parentContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </td>
+        <td valign="top" class="contentRightBottom  hideOnScreenLessthan800px">
+            <!-- Right column top portion ContentPlaceHolder -->
+            <div class="contentRight hidePrint">
+                <asp:ContentPlaceHolder ID="SidebarRight" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <div>
+                <div class="hidePrint">
+                    <div class="rightBullet">
+                        Attendance is <strong>FREE</strong>, but space is limited so you need to Register.</div>
+                    <div class="socialMediaIconWrap">
+                        <div class="socialMediaIcon">
+                            <a title="Go to Silicon Valley Code Camp's Facebook page" target="_new" href="http://www.facebook.com/group.php?gid=6125701762">
+                                <img src="App_Themes/Gray2010/Images/facebook.png"></a>
+                        </div>
+                        <div class="socialMediaIcon">
+                            <a title="Follow Silicon Valley Code Camp tweets" target="_new" href="http://twitter.com/sv_code_camp">
+                                <img src="App_Themes/Gray2010/Images/twitter.png"></a>
+                        </div>
+                        <div class="socialMediaIcon">
+                            <a title="Go to Silicon Valley Code Camp's Google+ page" target="_new" href="https://plus.google.com/110656351842726857531?prsrc=3" rel="publisher">
+                                <img src="App_Themes/Gray2010/Images/google-plus.png"></a>
+                        </div>
+                        <div class="socialMediaIcon">
+                            <a title="Go to Silicon Valley Code Camp's LinkedIn page" target="_new" href="http://www.linkedin.com/groups?gid=976557&trk=myg_ugrp_ovr">
+                                <img src="App_Themes/Gray2010/Images/linkedin.png"></a>
+                        </div>
+                        <div class="socialMediaIcon">
+                            <a title="Subscribe to RSS Feed" target="_new" href="Rss.aspx">
+                                <img src="App_Themes/Gray2010/Images/feed.png"></a>
+                        </div>
+                    </div>
+                   
+                    <%-- <asp:UpdatePanel runat="server" ID="UPD1"    UpdateMode="Always" >
+                    <ContentTemplate>--%>
+                    <div runat="server" id="cloudcontrolid" class="cloudControl">
+                        
+                        <table cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td valign="middle">
+                                <div class="mainHeading">
+                                    Sessions</div>
+                            </td>
+                            <td valign="middle" align="right">
+                                <div class="slashBullet">
+                                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Sessions.aspx">View all sessions</asp:HyperLink></div>
+                            </td>
+                        </tr>
+                       </table>
+
+                        <asp:CheckBox ID="CheckBoxShowAllCloudTags" Text="Show Top Tags Only" Checked="true"
+                            AutoPostBack="true" runat="server" OnCheckedChanged="CheckBoxShowAllCloudTags_CheckedChanged" />
+                        <br />
+                        <uc1:CloudControl ID="CloudControl2" TagsToShow="0" MinCount="0" runat="server" Visible="true" />
+                    </div>
+                </div>
+                <%-- </ContentTemplate>
+                    </asp:UpdatePanel>
+                --%>
+                <div runat="server" id="SponsorChannelDiv" class="hidePrint">
+                    <table cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td valign="middle">
+                                <div class="mainHeading">
+                                    <a href="Sponsors.aspx">Sponsors</a>
+                                </div>
+                            </td>
+                            <td valign="middle" align="right">
+                                <div class="slashBullet">
+                                    <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/Sponsors.aspx">Be a sponsor</asp:HyperLink></div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="sponsorSide">
+                        <uc2:SponsorsList ID="SponsorsList1" ShowPictures="false" runat="server" />
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+</asp:Content>

@@ -1,0 +1,583 @@
+﻿
+.scheduleLine, .scheduleLine a 
+{
+	text-decoration: none; color: #666666;
+}
+
+.scheduleTime
+{
+	color: #333333;
+}
+
+
+.scheduleLine:hover .scheduleTitle { color: #cc3300 }
+.scheduleLine:hover .scheduleSpeaker { background-color: #ffe5bf }
+.scheduleLine:hover .scheduleRoom { 
+	background-image: url("Images/scheduleArrow.gif");
+	background-position: right center;
+	background-repeat: no-repeat;
+	padding-right: 20px;
+}
+
+
+
+
+/* Body and general layout styles */
+
+body, div, td, form { margin: 0px; padding: 0px; }
+
+.pad { color: #333333; padding: 0px 13px 30px 13px }
+.margin { margin: 20px; }
+
+
+
+
+
+/* Common link styles */
+
+.pad a, .pad a:active, .pad a:visited,
+.slashBullet a, .slashBullet a:active, .slashBullet a:visited,
+.headLogin a, .headLogin a:active, .headLogin a:visited,
+.noWrap a, .noWrap a:active, .noWrap a:visited
+{
+	text-decoration: none; color: #666666;
+	background-image: url("Images/dotted.gif");
+	background-position: bottom left;
+	background-repeat: repeat-x;
+}
+
+
+
+
+
+
+/* Styles used in the header of the design */
+
+.headBar  
+{
+	font-family: Calibri, Arial, sans-serif;
+	font-size: smaller;	color: #b4b4b4;
+	background-color: #313131; 
+	background-image: url("Images/headBackground.jpg");
+	background-position: top right;	background-repeat: no-repeat;
+	width: 100%; border: 0px 
+}
+
+.headLogin
+{
+	padding: 10px; margin: 0px;
+	font-family: Calibri, Arial, sans-serif;
+	font-size: small; color: #cccccc;
+}
+
+.headLoginButton
+{
+	padding-right: 10px;
+}
+
+.headLogin a, .headLogin a:active, .headLogin a:visited
+{
+	text-decoration: none; color: #cccccc;
+	background-image: url("Images/dotted.gif");
+	background-position: bottom left;
+	background-repeat: repeat-x;
+}
+
+.headLogo {
+	padding-left: 10px;
+}
+
+.headDate 
+{
+	font-size: large; font-family: Cambria, Georgia, serif; padding-left: 30px;
+}
+
+.headLinksBar  
+{
+	margin: 0px 10px 0px 10px; padding: 0px;
+}
+
+.headSubLinksBar  
+{
+	font-family: Calibri, Arial, sans-serif;
+	font-size: medium; font-weight: bold; color: #cccccc;
+	background-color: #7d7d7d;
+	width: 100%; padding-left: 10px;
+	height: 28px;
+}
+
+.slogan  	
+{
+	font-family: Cambria, Georgia, serif;
+	font-size: 16px; font-weight: normal; color: White;
+}
+
+
+
+
+
+
+/* Styles used for main content, shared styles and page specific styles */
+
+.contentTable, div, td, span, body 
+{
+	font-family: Calibri, Arial, sans-serif;
+}
+
+.contentTable
+{
+	font-size: small; color: Black;
+	width: 100%;
+	padding: 0px, 0px, 0px, 0px;
+	margin: 0px, 0px, 0px, 0px;
+}
+
+.contentMain
+{
+	height: 800px;
+}
+
+.mainHeading
+{
+	font-family: Cambria, Georgia, serif;
+	font-size: large; font-weight: bold; color: #333333;
+	margin: 20px 0px 20px 0px; padding-left: 10px;
+	border-left: solid 3px #cc3300;
+}
+
+.subHeading 
+{
+	font-family: Calibri, Arial, sans-serif;
+	font-size: large; font-weight: bold; color: #333333;
+}
+
+.subHeading2
+{
+	font-family: Cambria, Georgia, serif;
+	font-size: small; font-weight: bold; color: #999999;
+	padding-bottom: 15px; padding-top: 15px;
+}
+
+.contentBullet 
+{
+	padding-left: 15px; margin-bottom: 15px;
+	background-image: url("Images/contentBullet.gif");
+	background-repeat: no-repeat;
+}
+
+.slashBullet
+{
+        padding-left: 20px; text-align: left;
+        background-image: url("Images/slashBullet.gif");
+        background-repeat: no-repeat;
+        font-size: 12px;
+}
+
+
+
+
+.required 
+{
+	font-family: Calibri, Arial, sans-serif;
+	font-size: small; color: Red;
+}
+
+.registerTable
+{
+	border-top: solid 1px #f0f0f0;
+	margin-bottom: 30px;
+	width: 550px;
+}
+
+.registerLeft 
+{
+	width: 180px; padding-right: 10px;
+}
+
+.grayBackground { background-color: #f0f0f0; padding: 5px; }
+
+.sessionsPanel
+{
+	width: 100%; height: 116px; padding-bottom: 10px;
+	background-image: url("Images/sessionsLine.gif");
+}
+
+.sessionsButton { margin: 0px 0px 0px 20px; }
+
+.sessionsContainer { }
+
+.sessionContent { padding-right: 10px; }
+
+.sessionTags { width: 140px; border-left: 1px solid #cccccc; padding: 10px; }
+
+.sessionLevel { font-family: Cambria, Georgia, serif; color: #666666; }
+
+.sessionDetails
+{
+	white-space: nowrap;
+}
+
+.sessionButtons 
+{
+	white-space: nowrap;
+	padding-left: 10px;
+}
+
+.sessionName { }
+
+.sessionTime { }
+
+.sessionRoom { }
+
+.sessionDescription { padding: 15px 15px 0px 0px; }
+
+.sessionEvaluation { padding: 15px 0px 15px 15px; text-align: left; }
+
+.sessionRoomPhoto { padding-top: 15px; }
+
+.tagBullet  
+{
+	font-family: Cambria, Georgia, serif;
+	padding-left: 25px; height: 17px; margin-bottom: 3px;
+	background-image: url("Images/tag.gif"); 
+	background-repeat: no-repeat; 
+	background-position: top-left; 
+}
+
+.tagBullet a, .tagBullet a:active, .tagBullet a:visited
+{
+	background-image: none;
+	white-space: nowrap;
+}
+
+.scheduleTime { font-weight: bold; }
+
+.scheduleSessions { padding-left: 10px; padding-bottom: 10px; }
+
+.scheduleLine { padding-bottom: 7px; }
+
+.speakerContainer { }
+
+.speakerDescription { padding-top: 10px; padding-bottom: 10px; }
+
+.speakerImage { margin-left: 30px; margin-right: 30px; }
+
+.newsContainer { }
+
+.newsPad { padding: 0px 13px 0px 13px; }
+
+.newsPosted { font-family: Cambria, Georgia, serif; padding-right: 15px; color: #666666; }
+
+.padLeft { padding: 0px 30px 5px 13px }
+
+.marginLeft { margin: 0px 30px 5px 13px }
+
+.cloudControl a, .cloudControl a:active, .cloudControl a:visited
+{
+	text-decoration: none; color: #003399;
+	background-image: none;
+}
+
+.cloudControl { color: #999999; }
+
+.cloudItem { white-space: nowrap; display: inline; }
+
+.noWrap { white-space: nowrap; }
+
+
+
+
+
+
+/* Styles used in the left column */
+
+.contentLeft {
+	font-family: Calibri, Arial, sans-serif;
+	font-size: small; color: #666666;
+	width: 130px;
+	border-right: 1px solid #d2d2d2;
+	padding: 20px 10px 10px 10px;
+}
+
+.contentSmallGray 
+{
+	font-family: Cambria, Georgia, serif;
+	font-size: small; color: #999999;
+	padding-left: 30px; margin-bottom: 30px;
+	width: 200px;
+}
+
+
+
+
+
+
+/* Styles used in the right column */
+
+.contentRight
+{
+	font-family: Calibri, Arial, sans-serif;
+	font-size: medium; color: #cccccc;
+	border-bottom: solid 3px black;
+	background-color: #313131; 
+	background-image: url("Images/rightBackground.jpg");
+	background-position: top left; background-repeat: no-repeat;
+	width: 100%; height: 180px; margin-bottom: 20px;
+}
+
+.rightNote 
+{
+	font-size: 15px; font-weight: bold; color: White;
+	padding: 15px;
+}
+
+.rightRegister 
+{
+	color: #cccccc;
+	padding-left: 15px;
+}
+
+.contentRightBottom
+{
+	font-family: Calibri, Arial, sans-serif;
+	font-size: small; color: #333333;
+	border-left: 1px solid #d2d2d2;
+	background-color: #f0f0f0; 
+	width: 300px;
+}
+
+.contentRight a, .contentRight a:visited, .contentRight a:active
+{
+	text-decoration: none;
+}
+
+.mainHeadingBlack
+{
+	font-family: Calibri, Arial, sans-serif;
+	font-size: large; font-weight: bold; color: White;
+	background-color: Black;
+	padding-bottom: 5px; padding-left: 10px; 
+	border-left: solid 3px #cc3300;	
+	background-image: url("Images/daysLeftArrow.gif");
+	background-position: top right;
+	background-repeat: no-repeat;
+	max-width: 100%; 
+}
+
+.mainHeadingBlack a:visited, .mainHeadingBlack a:active, .mainHeadingBlack a {
+	text-decoration: none;
+	color: white;
+}
+
+.headingLink 
+{
+	float: right;
+
+}
+
+.daysLeft
+{
+	font-family: Calibri, Arial, sans-serif;
+	font-size: small; font-weight: bold; color: #999999;
+	padding-left: 10px;
+}
+
+.rightBullet 
+{
+	margin-left: 10px; margin-right: 10px; margin-bottom: 30px;
+	padding-left: 35px;
+	background-image: url("Images/rightBullet.gif");
+	background-repeat: no-repeat;
+}
+
+.rightButton1 { padding: 10px 10px 10px 0px; }
+.rightButton2 { padding: 10px 0px 10px 0px; }
+
+
+
+
+
+/* Styles used in the footer */
+
+.footLeft 
+{
+	padding-left: 10px;
+	color: #383838;
+	background-color: #7d7d7d; 
+}
+
+.footMiddle
+{
+	padding-left: 10px;
+	color: #383838;
+	background-color: #7d7d7d; 
+}
+
+.footMiddle a, .footMiddle a:active, .footMiddle a:visited
+{
+	text-decoration: underline;
+	color: #383838;
+}
+.footMiddle1
+{
+	padding-left: 10px;
+	color: #383838;
+	background-color: #7d7d7d; 
+}
+
+.footMiddle1 a, .footMiddle a:active, .footMiddle a:visited
+{
+	text-decoration: underline;
+	color: White;
+}
+
+
+
+
+
+.footRight
+{
+	padding: 5px 0px 5px 10px;
+	color: #7d7d7d; 
+	background-color: #383838;
+}
+
+
+
+
+
+
+
+
+
+.AspNet-Menu
+{
+	margin: 0px;	
+	padding: 0px;
+	border-collapse: collapse;
+}
+
+.headLinksBar .AspNet-Menu-Horizontal .AspNet-Menu
+{
+	border-right: 1px solid #666666;
+}
+
+.AspNet-Menu-TopLevel-register:hover, .AspNet-Menu-TopLevel-register:hover a { background-color: #254b32; color: White; }
+.AspNet-Menu-TopLevel-program:hover, .AspNet-Menu-TopLevel-program:hover a { background-color: #583225; color: White; }
+.AspNet-Menu-TopLevel-news:hover,.AspNet-Menu-TopLevel-news:hover a { background-color: #254b65; color: White; }
+.AspNet-Menu-TopLevel-about:hover, .AspNet-Menu-TopLevel-about:hover a { background-color: #3e3e58; color: White; }
+.AspNet-Menu-TopLevel-wiki:hover, .AspNet-Menu-TopLevel-wiki:hover a { background-color: #4b4b4b; color: White; }
+
+.AspNet-Menu a, AspNet-Menu a:visited, AspNet-Menu a:active
+{
+	color: #cccccc;
+	margin: 5px 20px 5px 0px;
+	text-decoration: none;
+	color: #b4b4b4;
+}
+
+.headLinksBar .AspNet-Menu a, .headLinksBar AspNet-Menu a:visited, .headLinksBar AspNet-Menu a:active
+{
+	color: #cccccc;
+	margin: 0px;
+	text-decoration: none;
+	color: #b4b4b4;
+	width: 115px; height: 40px;
+	display: block;
+	padding-left: 5px;
+	line-height: 50px;
+}
+
+.AspNet-Menu-Selected a, .AspNet-Menu-Selected a:visited, .AspNet-Menu-Selected a:active, 
+.AspNet-Menu-TopLevel-about-Selected a, .AspNet-Menu-TopLevel-about-Selected a:visited, .AspNet-Menu-TopLevel-about-Selected a:active,
+.AspNet-Menu-TopLevel-wiki-Selected a, .AspNet-Menu-TopLevel-wiki-Selected a:visited, .AspNet-Menu-TopLevel-wiki-Selected a:active,
+.AspNet-Menu-TopLevel-news-Selected a, .AspNet-Menu-TopLevel-news-Selected a:visited, .AspNet-Menu-TopLevel-news-Selected a:active,
+.AspNet-Menu-TopLevel-program-Selected a, .AspNet-Menu-TopLevel-program-Selected a:visited, .AspNet-Menu-TopLevel-program-Selected a:active,
+.AspNet-Menu-TopLevel-register-Selected a, .AspNet-Menu-TopLevel-register-Selected a:visited, .AspNet-Menu-TopLevel-register-Selected a:active
+{
+	color: white;
+}
+
+.AspNet-Menu-TopLevel-about-Selected, .AspNet-Menu-TopLevel-about,
+.AspNet-Menu-TopLevel-register, .AspNet-Menu-TopLevel-register-Selected,
+.AspNet-Menu-TopLevel-program, .AspNet-Menu-TopLevel-program-Selected,
+.AspNet-Menu-TopLevel-news, .AspNet-Menu-TopLevel-news-Selected,
+.AspNet-Menu-TopLevel-wiki, .AspNet-Menu-TopLevel-wiki-Selected
+{
+	border-left: 1px solid #666666;
+	font-size: 15px; font-weight: bold;	
+	margin: 0px;
+}
+
+.AspNet-Menu-TopLevel-about-Selected, .AspNet-Menu-TopLevel-about
+{
+	border-bottom: 5px solid #9966cc;	
+}	
+.AspNet-Menu-TopLevel-about-Selected
+{
+	background-color: #6666cc;
+}
+
+.AspNet-Menu-TopLevel-register, .AspNet-Menu-TopLevel-register-Selected
+{
+	border-bottom: 5px solid #00ff00;
+}
+
+.AspNet-Menu-TopLevel-register-Selected, .AspNet-Menu-TopLevel-register-Selected
+{
+	background-color: #009933;
+}
+
+.AspNet-Menu-TopLevel-program, .AspNet-Menu-TopLevel-program-Selected
+{
+	border-bottom: 5px solid #ff9900;
+}
+
+.AspNet-Menu-TopLevel-program-Selected, .AspNet-Menu-TopLevel-program-Selected
+{
+	background-color: #cc3300;
+}
+
+.AspNet-Menu-TopLevel-news, .AspNet-Menu-TopLevel-news-Selected
+{
+	border-bottom: 5px solid #33ccff;
+}
+
+.AspNet-Menu-TopLevel-news-Selected, .AspNet-Menu-TopLevel-news-Selected
+{
+	background-color: #0099ff;
+}
+
+.AspNet-Menu-TopLevel-wiki, .AspNet-Menu-TopLevel-wiki-Selected
+{
+	border-bottom: 5px solid #ffffff;
+}
+
+.AspNet-Menu-TopLevel-wiki-Selected, .AspNet-Menu-TopLevel-wiki-Selected
+{
+	background-color: #999999;
+}
+
+
+
+
+
+
+
+
+/* Common settings for controls */
+
+select, label { font-family: Calibri, Arial, sans-serif; font-size: small; }
+label { padding-right: 30px; }
+
+
+
+
+
+.AspNet-Menu-Item:hover a
+{
+	text-decoration: none;
+	background-image: url("Images/dottedLight.gif");
+	background-position: bottom left;
+	background-repeat: repeat-x;
+}

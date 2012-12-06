@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="Default.aspx" title="HOME"  description="Silicon Valley CodeCamp 08">
+
+    <siteMapNode url="Register.aspx" title="REGISTER"  description=""  />
+    <siteMapNode url="Program.aspx" title="PROGRAM"  description="">
+      <siteMapNode url="MyEvals.aspx" title="Evals"  description="" />
+      <siteMapNode url="SessionsOverview.aspx" title="Session Overview"  description="Session Overview" />
+      <siteMapNode url="Sessions.aspx" title="Sessions"  description="" />
+      <siteMapNode url="Tracks.aspx" title="Tracks"  description="" />
+      <siteMapNode url="SessionRooms.aspx" title="Rooms"  description="Room List With Sessions In Each Room" />
+      <siteMapNode url="SubmitSession.aspx" title="Submit Session"  description="" />
+      <siteMapNode url="Speakers.aspx" title="Speakers"  description="" />
+      <siteMapNode url="Presenters.aspx" title="For Speakers"  description="" />
+    </siteMapNode>
+    <siteMapNode url="News.aspx" title="NEWS"  description="" />
+    <siteMapNode url="About.aspx" title="ABOUT"  description="" >
+      <siteMapNode url="Contact.aspx" title="Contact" description="" />
+      <siteMapNode url="Location.aspx" title="Location"  description="" />
+      <siteMapNode url="Organizers.aspx" title="Organizers"  description="" />
+      <siteMapNode url="Sponsors.aspx" title="Sponsors"  description="" />
+      <siteMapNode url="Previous.aspx" title="Past CodeCamps"  description="" />
+      <siteMapNode url="SpreadTheWord.aspx" title="Spread The Word" description="" />
+      <siteMapNode url="SiteAdmin.aspx" title="Admin"  description="" />
+      <siteMapNode url="ViewEvents.aspx" title="WebMonitorEvents"  description="" />
+      <siteMapNode url="ReferralUrlLinks.aspx" title="Live Referral Links"  description="" /> 
+      <siteMapNode url="ReferralUrls.aspx" title="My Referral Links"  description="" /> 
+    </siteMapNode>
+    <siteMapNode url="~/Wiki.aspx" title="WIKI"  description="" />
+    <siteMapNode url="~/Jobs.aspx" title="JOBS"  description="A Place To Find Jobs In and Around Silicon Valley" />
+
+  </siteMapNode>
+</siteMap>

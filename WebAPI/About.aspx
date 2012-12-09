@@ -18,7 +18,7 @@
 
 <div class="pad">
     
-    <p>Code Camp is a new type of community event where developers learn from fellow developers. All are welcome to attend and speak. Code Camps have been wildly successful, and we’re going to bring that success to Northern California.</p>
+    <p>Code Camp is a new type of community event where developers learn from fellow developers. All are welcome to attend and speak.</p>
    
 </div>
 

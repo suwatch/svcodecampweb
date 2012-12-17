@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI.csproj", "{82F54305-7B43-42D2-A1A1-DD0F52243570}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLib", "..\..\SVCodeCampNonWeb\ClassLib\ClassLib.csproj", "{41CFB413-4909-41E4-A7C7-07E652DEEE16}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLib", "..\SVCodeCampNonWeb\ClassLib\ClassLib.csproj", "{41CFB413-4909-41E4-A7C7-07E652DEEE16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSSFriendly", "..\..\SVCodeCampNonWeb\CSSFriendly\CSSFriendly.csproj", "{1439911B-BE4E-48A0-9208-927321992C67}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSSFriendly", "..\SVCodeCampNonWeb\CSSFriendly\CSSFriendly.csproj", "{1439911B-BE4E-48A0-9208-927321992C67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "..\..\SVCodeCampNonWeb\DataAccess\DataAccess.csproj", "{24EB0137-ECA0-43EA-8143-245917D6CDAC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "..\SVCodeCampNonWeb\DataAccess\DataAccess.csproj", "{24EB0137-ECA0-43EA-8143-245917D6CDAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQToSQL", "..\..\SVCodeCampNonWeb\LINQToSQL\LINQToSQL.csproj", "{32A3F1A8-9A71-45B7-AEC2-026FD4BF37E9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQToSQL", "..\SVCodeCampNonWeb\LINQToSQL\LINQToSQL.csproj", "{32A3F1A8-9A71-45B7-AEC2-026FD4BF37E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

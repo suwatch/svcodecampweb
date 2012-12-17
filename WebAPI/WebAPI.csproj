@@ -1221,19 +1221,19 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SVCodeCampNonWeb\ClassLib\ClassLib.csproj">
+    <ProjectReference Include="..\..\SVCodeCampNonWeb\ClassLib\ClassLib.csproj">
       <Project>{41cfb413-4909-41e4-a7c7-07e652deee16}</Project>
       <Name>ClassLib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SVCodeCampNonWeb\CSSFriendly\CSSFriendly.csproj">
+    <ProjectReference Include="..\..\SVCodeCampNonWeb\CSSFriendly\CSSFriendly.csproj">
       <Project>{1439911b-be4e-48a0-9208-927321992c67}</Project>
       <Name>CSSFriendly</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SVCodeCampNonWeb\DataAccess\DataAccess.csproj">
+    <ProjectReference Include="..\..\SVCodeCampNonWeb\DataAccess\DataAccess.csproj">
       <Project>{24eb0137-eca0-43ea-8143-245917d6cdac}</Project>
       <Name>DataAccess</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SVCodeCampNonWeb\LINQToSQL\LINQToSQL.csproj">
+    <ProjectReference Include="..\..\SVCodeCampNonWeb\LINQToSQL\LINQToSQL.csproj">
       <Project>{32a3f1a8-9a71-45b7-aec2-026fd4bf37e9}</Project>
       <Name>LINQToSQL</Name>
     </ProjectReference>

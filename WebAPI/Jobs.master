@@ -1,0 +1,140 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/DefaultNoColumnsJobs.master" AutoEventWireup="true" Inherits="Jobs" Codebehind="Jobs.master.cs" %>
+<%@ Register TagPrefix="uc2" TagName="SponsorsList" Src="~/SponsorsList.ascx"  %>
+
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="blankSublinks" Runat="Server">
+
+
+
+
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="blankContent" Runat="Server">
+
+<div id="col1Wrap">
+    <div id="col1">
+        <!-- Main content for pages ContentPlaceHolder  -->
+    <asp:ContentPlaceHolder ID="parentContent" runat="server">
+    </asp:ContentPlaceHolder>
+    </div>
+</div>
+<div id="col2">
+        <!-- Left column links -->
+            <%-- <div class="slashBullet">
+                <asp:HyperLink ID="HyperLinkSessionsOverview" runat="server" NavigateUrl="~/SessionsOverview.aspx" >Camp Schedule</asp:HyperLink></div>
+            <br />--%>
+            <%-- <div class="slashBullet">
+                <asp:HyperLink ID="HyperLinkSessionRooms" runat="server" NavigateUrl="~/SessionRooms.aspx" >Sessions By Room</asp:HyperLink></div>
+            <br />--%>
+            <ul class="slashBullet">
+                <li><asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Location.aspx">Location</asp:HyperLink></li>
+                <li><asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="http://blog.siliconvalley-codecamp.com/session-change-log/">Session Change Log</asp:HyperLink></li>
+                <li><asp:HyperLink ID="HyperLinkVolunteer" runat="server" NavigateUrl="~/Volunteer.aspx">For Volunteers</asp:HyperLink></li>
+                <li><asp:HyperLink ID="HyperLinkProfileInfo" runat="server" NavigateUrl="~/Register.aspx">My Profile</asp:HyperLink></li>
+                <li><asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/Rss.aspx">RSS Feed</asp:HyperLink></li>
+                <li><asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="~/Faq.aspx">FAQ</asp:HyperLink></li>
+                <li><asp:HyperLink ID="HyperLinkCodeCampEval" runat="server" NavigateUrl="~/CodeCampEval.aspx" >Code Camp Evaluations</asp:HyperLink></li>
+                <li><asp:HyperLink ID="HyperLinkVolunteerJobs" Visible="false" runat="server" NavigateUrl="~/VolunteerForJob.aspx" >Volunteer Jobs</asp:HyperLink></li>
+            </ul>
+                
+
+            <h3>Recent Posts</h3>
+            <asp:ObjectDataSource ID="ObjectDataSourceRSS" runat="server"
+                SelectMethod="Get" TypeName="WebAPI.Code.RSSFeedObject">
+                <SelectParameters>
+                    <asp:Parameter DefaultValue="5" Name="numberToGet" Type="Int32" />
+                </SelectParameters>
+            </asp:ObjectDataSource>
+            <asp:Repeater ID="RepeaterRSS" runat="server" DataSourceID="ObjectDataSourceRSS">
+                <HeaderTemplate>
+                    <ul class="recentPosts">
+                </HeaderTemplate>
+                <FooterTemplate>
+                    </ul>
+                </FooterTemplate>
+                <ItemTemplate>
+                    <li>
+                        <asp:HyperLink ID="HyperLinkURL" runat="server" 
+                            NavigateUrl='<%# Eval("PostURL") %>'
+                            Text='<%# Eval("PostTitle") %>'></asp:HyperLink>
+                    </li>
+                </ItemTemplate>
+            </asp:Repeater>
+                
+                
+            <div class="pad" style="margin-top: 40px;" >
+                <asp:HyperLink ID="HyperLink3" ImageUrl="~/Images/orcsweb1.gif" onclick="javascript:pageTracker._trackPageview ('/outbound/ADS-ORCSWEB');"
+                    NavigateUrl="http://www.orcsweb.com/hosting/windows-cloud-servers/"  ToolTip="The Hosting Cloud, Easy Powerful.  Scalable." Target="_blank"  runat="server"></asp:HyperLink>
+            </div>
+
+
+    </div>
+        
+    <div id="col3">
+            <!-- Right column top portion ContentPlaceHolder -->
+            <div class="contentRight">
+                <asp:ContentPlaceHolder ID="SidebarRight" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <div>
+                <div class="rightBullet">
+                    Attendance is <strong>FREE</strong>, but space is limited so you need to Register.</div>
+                <div class="socialMediaIconWrap">
+                    <div class="socialMediaIcon">
+                        <a title="Go to Silicon Valley Code Camp's Facebook page" target="_new" href="http://www.facebook.com/group.php?gid=6125701762"><img src="App_Themes/Gray2010/Images/facebook.png"></a>
+                    </div>
+                    <div class="socialMediaIcon">
+                        <a title="Follow Silicon Valley Code Camp tweets" target="_new" href="http://twitter.com/sv_code_camp"><img src="App_Themes/Gray2010/Images/twitter.png"></a>
+                    </div>
+                    <div class="socialMediaIcon">
+                        <a title="Go to Silicon Valley Code Camp's LinkedIn page" target="_new" href="http://www.linkedin.com/groups?gid=976557&trk=myg_ugrp_ovr"><img src="App_Themes/Gray2010/Images/linkedin.png"></a>
+                    </div>
+                    <div class="socialMediaIcon">
+                        <a title="Subscribe to RSS Feed" target="_new" href="Rss.aspx"><img src="App_Themes/Gray2010/Images/feed.png"></a>
+                    </div>
+                </div>
+                <table cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                            <td valign="middle">
+                                <div class="mainHeading">
+                                    Topics</div>
+                            </td>
+                            <td valign="middle" align="right">
+                                <div class="slashBullet">
+                                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Sessions.aspx">View all topics</asp:HyperLink></div>
+                            </td>
+                        </tr>
+                </table>
+                
+                
+             
+                
+                <div runat="server" id="SponsorChannelDiv" >
+               
+                    <table cellpadding="0" cellspacing="0" width="100%">
+                        <tr>
+                            <td valign="middle">
+                                <div class="mainHeading">
+                                    <a href="Sponsors.aspx">Sponsors</a>
+                                </div>
+                            </td>
+                            <td valign="middle" align="right">
+                                <div class="slashBullet">
+                                    <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/Sponsors.aspx">Be a sponsor</asp:HyperLink></div>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <div class="sponsorSide">
+                        <uc2:SponsorsList ShowPictures="false" runat="server"  />
+                    </div>
+                </div>
+                                     
+                
+                
+              
+            </div>
+    </div>
+
+</asp:Content>
+

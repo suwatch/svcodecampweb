@@ -1,10 +1,9 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="DefaultNoColumns.master.cs" Inherits="WebAPI.DefaultNoColumns" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" 
+    Inherits="DefaultNoColumns" Codebehind="DefaultNoColumns.master.cs" %>
 
-<!DOCTYPE html>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%--<%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>--%>
 <html xmlns="http://www.w3.org/1999/xhtml">
-
-
 <head id="Head1" runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Silicon Valley Code Camp</title>
@@ -210,5 +209,3 @@
     
 </body>
 </html>
-
-    

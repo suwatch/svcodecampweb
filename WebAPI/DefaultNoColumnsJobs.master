@@ -1,0 +1,224 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" 
+    Inherits="DefaultNoColumnsJobs" Codebehind="DefaultNoColumnsJobs.master.cs" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%--<%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>--%>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Silicon Valley Code Camp</title>
+    <link rel="alternate" type="application/rss+xml" 
+       title="Code Camp Rss Feed" 
+       href="http://www.siliconvalley-codecamp.com/Rss.aspx" /> 
+    <%--<script charset="UTF-8" type="text/javascript" src="http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.2&mkt=en-us">
+    </script>--%>
+    
+    <%--
+    <script src="js/ext-base.js" type="text/javascript"></script>
+    <script src="js/ext-all-debug.js" type="text/javascript"></script>
+    <link href="js/ext-all.css" rel="stylesheet" type="text/css" />--%>
+    
+    <!-- Adapter -->
+    <script type="text/javascript" src="JSProd/resources/extjs/adapter/ext/ext-base.js"></script>
+
+    <!-- ExtJS -->
+    <script type="text/javascript" src="JSProd/resources/extjs/ext-all.js"></script>
+
+    <!-- Extension -->
+    <script type="text/javascript" src="JSProd/resources/ux/extensions/FileUploadField.js"></script>
+
+    <!-- eo Registration Page -->
+    
+    
+
+</head>
+<body>
+    <form id="form1" runat="server">
+   <%-- <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true" />--%>
+    <div id="rap">
+        <div id="header">
+            <div class="headLogin">
+                    <%-- <script type="text/javascript">
+                        //<![CDATA[
+                        //show the window
+                        function showDialog()
+                        {                    
+                            //Force reload in order to guarantee that the onload event handler 
+                            // of the dialog which configures it executes on every show.
+                            var oWnd = window.radopen(null, "DialogWindow");
+                            oWnd.setUrl(oWnd.get_navigateUrl());
+                        }
+                            
+                           
+                        // Called when a window is being closed.  (force refresh)
+                        function OnClientclose(radWindow)
+                        {     
+                                window.location.href = "News.aspx";           
+                        }    
+                        //]]>            
+                    </script>--%>
+
+                        <asp:DropDownList ID="DropDownListCodeCampYearID" runat="server" AutoPostBack="true" 
+                        onselectedindexchanged="CodeCampYearID_SelectedIndexChanged"  >
+                        <%-- <asp:ListItem Selected="False" Text="2008 Code Camp " Value="3" ></asp:ListItem>
+                        <asp:ListItem Selected="False" Text="2009 Code Camp " Value="4" ></asp:ListItem>
+                        <asp:ListItem Selected="True"  Text="2010 Code Camp " Value="5" ></asp:ListItem>--%>
+                    </asp:DropDownList>
+                    &nbsp;&nbsp;
+                    <asp:HyperLink ID="IDLoginButton" SkinID="ButtonLogin" NavigateUrl="LoginCamp.aspx"
+                        runat="server" />   
+                    <asp:LoginStatus ID="IDLoginStatus1" runat="server" />
+                    <asp:LoginName runat="server" ID="IDLoginName1" />
+                    <%--<telerik:RadWindowManager ID="Singleton" runat="server">
+                        <Windows>
+                            <telerik:RadWindow ID="DialogWindow" Behaviors="Close" 
+                                ReloadOnShow="true" OnClientClose="OnClientclose"
+                                BackColor="Gray" Modal="true" runat="server" Height="250" 
+                                NavigateUrl="./Login.aspx">
+                            </telerik:RadWindow>
+                        </Windows>
+                    </telerik:RadWindowManager>--%>
+                        
+                    <asp:HyperLink ID="HyperLinkForgotChangePassword" runat="server" 
+                            NavigateUrl="~/PasswordIssues.aspx" Text="Forgot Password?" ></asp:HyperLink>
+                        
+            </div>
+            <div class="campLogo">
+                <asp:HyperLink ID="HomeLink" runat="server" NavigateUrl="Default.aspx">
+                    <asp:Image ID="HeadLogo" SkinID="ImageLogo" alt="Silicon Valley Code Camp"
+                        runat="server" />
+                </asp:HyperLink>
+            </div>
+
+            <div class="campDatesHeader">
+                <%--<span class="headDate">--%><asp:Label CssClass="headDate" runat="server" ID="HeaderId1"  ></asp:Label>   <%--</span>--%>
+                <%--Saturday and Sunday, November 8th & 9th, 2008--%>
+            </div>
+
+            <div id="headerMenu">
+                <!-- Main navigation menu -->
+                <div class="headLinksBar" runat="server" id="HeaderLinksBarID" >
+                    <asp:Menu ID="mainMenu" runat="server" Orientation="Horizontal" DataSourceID="SiteMapMain"
+                        MaximumDynamicDisplayLevels="0" StaticItemFormatString="// {0} &nbsp;&nbsp;&nbsp; "
+                        StaticMenuItemStyle-CssClass="menuItem" StaticSelectedStyle-CssClass="menuItemSelected"
+                        StaticMenuItemStyle-ItemSpacing="0">
+                    </asp:Menu>
+                </div>
+                
+                <asp:SiteMapDataSource ID="SiteMapMain" runat="server" ShowStartingNode="False" />
+                <asp:SiteMapDataSource ID="SiteMapAbout" runat="server" ShowStartingNode="False"
+                    StartingNodeUrl="~/About.aspx" />
+                <asp:SiteMapDataSource ID="SiteMapProgram" runat="server" ShowStartingNode="False"
+                    StartingNodeUrl="~/Program.aspx" />
+            </div>
+    </div>
+    <div id="subHeaderMenu">
+        <div runat="server" id="HeadSubLinksBarID" >
+        <table width="100%" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="headSubLinksBar">
+                    <asp:ContentPlaceHolder ID="blankSublinks" runat="server">
+                    </asp:ContentPlaceHolder>
+                </td>
+            </tr>
+        </table>
+            </div>
+        <div runat="server" id="RegistrationHeaderID" > 
+                    <asp:Label ID="LabelRegistrationStatus" runat="server" Text=""></asp:Label>
+        </div>
+    </div>
+    <div id="colMask">
+        <div id="colMid">
+            <div id="colLeft">
+                <!-- Main content area -->
+                <asp:ContentPlaceHolder ID="blankContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="creditit" >
+        
+        
+        <table class="contentTable" cellpadding="0" cellspacing="0">
+        
+        <tr>
+            <td class="footLeft">
+               <%-- <asp:Image ID="Curves" SkinID="ImageFootCurves" AlternateText="" runat="server" />--%>
+               
+               Windows Cloud Server hosted by
+               <a href="http://www.orcsweb.com/hosting/windows-cloud-servers/">ORCSWeb</a>    
+
+            </td>
+            <td class="footMiddle1" colspan="1"  >
+                Copyright © <asp:Literal runat="server" ID="CodeCampActualYearId"></asp:Literal> SV-Code Camp &nbsp;
+ 
+                Site Built with ASP.NET 4.0 by <a href="http://PeterKellner.net">Peter Kellner</a> &nbsp;&nbsp;&nbsp;
+                <a href="http://peterkellner.net/2008/05/19/codecampwebsiteseries2/">Blog Posts on Building Site Here</a> 
+               <asp:Label runat="server" ID="SVNVersionId" ></asp:Label>
+                </td>
+             <td class="footRight" colspan="1">
+             (RSS Feed)&nbsp;&nbsp;&nbsp; <asp:HyperLink ID="HyperLinkRSS"  NavigateUrl="~/Rss.aspx" ImageUrl="~/Images/rssfeed_10x10.png"
+                    runat="server">RSS</asp:HyperLink>
+             </td>
+        </tr>
+        <tr>
+        <td colspan="2">
+          
+        </td>
+        </tr>
+    </table>
+        
+
+    </div>
+    
+    
+    
+    
+
+    <%--<div class="credit">
+        
+     
+
+        <div class="bottomRss">
+        (RSS Feed)&nbsp;&nbsp;&nbsp; <asp:HyperLink ID="HyperLinkRSS"  NavigateUrl="~/Rss.aspx" ImageUrl="~/Images/rssfeed_10x10.png" runat="server">RSS</asp:HyperLink>
+        </div>
+        <div class="centerText">
+            
+            
+          &nbsp;  Windows Cloud Server hosted by
+               <a href="http://www.orcsweb.com/hosting/windows-cloud-servers/">ORCSWeb</a>    
+
+
+            Copyright © <asp:Literal runat="server" ID="CodeCampActualYearId"></asp:Literal> SV-Code Camp &nbsp;
+            Site Built with ASP.NET 4.0 by <a href="http://PeterKellner.net">Peter Kellner</a> &nbsp;&nbsp;&nbsp;
+            <a href="http://peterkellner.net/2008/05/19/codecampwebsiteseries2/">Blog Posts on Building Site Here</a>&nbsp;&nbsp;&nbsp;&nbsp; 
+            Rev:<asp:Label runat="server" ID="SVNVersionId" ></asp:Label>
+        </div>
+    </div>--%>
+    </div>
+    </form>
+    
+    
+    
+    
+  <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-648264-3");
+        pageTracker._trackPageview();
+    } catch (err) { }</script>
+  
+  
+<%--<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-648264-3");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>--%>
+    
+</body>
+</html>

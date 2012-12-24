@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/RightRegister.master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="WebAPI.About" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/RightRegister.master" AutoEventWireup="true" Inherits="About" Codebehind="About.aspx.cs" %>
 
 
 <asp:Content ID="SublinksSessions" ContentPlaceHolderID="Sublinks" runat="server">
@@ -12,13 +12,13 @@
 
 
 
-<div class="mainHeading">About</div>
+<div class="mainHeading">About Us</div>
 
 
 
 <div class="pad">
     
-    <p>Code Camp is a new type of community event where developers learn from fellow developers. All are welcome to attend and speak.</p>
+    <p>Code Camp is a new type of community event where developers learn from fellow developers. All are welcome to attend and speak. Code Camps have been wildly successful, and we’re going to bring that success to Northern California.</p>
    
 </div>
 
@@ -38,12 +38,12 @@ By
 
 
 <script type="text/javascript"><!--
-    google_ad_client = "pub-3690548624166179";
-    /* 728x90, created 3/22/09 */
-    google_ad_slot = "0153537864";
-    google_ad_width = 728;
-    google_ad_height = 90;
-    //-->
+google_ad_client = "pub-3690548624166179";
+/* 728x90, created 3/22/09 */
+google_ad_slot = "0153537864";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
 </script>
 <script type="text/javascript"
 src="http://pagead2.googlesyndication.com/pagead/show_ads.js">

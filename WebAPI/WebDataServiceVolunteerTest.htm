@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>WebDataServiceVolunteerTest Page</title>
+    <script src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.js" type="text/javascript"></script>    
+    <script src="JavaScript/json2.js" type="text/javascript"></script> 
+   
+</head>
+<body>
+
+<form>
+    <label>Id:</label>  
+    <input id="id" />  
+  
+    <br />  
+  
+    <label>Description:</label>  
+    <input id="description" />  
+</form>
+
+<button id="btnAdd">Add Movie</button>  
+
+<script type="text/javascript">
+$("#btnAdd").click(function () {   
+        // Convert the form into an object
+        var data = { Id: $("#id").val(), Description: $("#description").val() };   
+        
+        
+        
+  
+        // JSONify the data   
+        var data = JSON.stringify(data);   
+  
+        // Post it     POST is insert; PUT is update ; MERGE is for just replacing data specified; DELETE is to delete record
+        $.ajax({   
+            type: "PUT",   
+            contentType: "application/json; charset=utf-8",
+            url: "WebDataServiceVolunteer.svc/Jobs(" + $("#id").val() + ")",   
+            data: data,   
+            dataType: "json",   
+            success: insertCallback   
+        });   
+    });
+
+    function insertCallback(result) {
+        // unwrap result   
+        var newMovie = result["d"];
+
+        // Show primary key   
+        alert("Movie added with primary key " + newMovie.Id);
+    }
+     
+
+
+</script>
+
+
+
+
+</body>
+</html>

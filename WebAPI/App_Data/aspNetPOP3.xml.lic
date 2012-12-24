@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<license version="1.1">
+  <Customer>
+    <name>peter@peterkellner.net
+</name>
+  </Customer>
+  <products>
+    <Product>
+      <name>aspNetPOP3</name>
+      <version>2</version>
+      <licensetype>server</licensetype>
+      <expires>-1</expires>
+    </Product>
+    <Product>
+      <name>aspNetMime</name>
+      <version>2</version>
+      <licensetype>server</licensetype>
+      <expires>-1</expires>
+    </Product>
+  </products>
+  <LicenseInformation>
+    <Version>1.1</Version>
+    <H1>0</H1>
+    <H2>9ysRqPIlIn+XKPazIdmBJQ==</H2>
+  </LicenseInformation>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+      <Reference URI="">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <DigestValue>umwahhbfu0aDjpKYWGQ8a0rdX3U=</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>KQmCMN5xnXZpp7epp6Q/45gdoIFs3UxefSRCyW+sR884WYLHsM/LVVC0eatSJkp31u12m/MztwlO8YkKFS/DMnV3sW+60tQz0AZELDnt2CmiV8W8a3TvOBr1YtIU/ydSCWjqP+wyYM0fnh06q2YHeBTVLxHM1oTtmcfeetv7rzA=</SignatureValue>
+  </Signature>
+</license>

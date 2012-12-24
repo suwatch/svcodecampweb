@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<license version="1.1">
+  <Customer>
+    <name>peter@peterkellner.net
+</name>
+  </Customer>
+  <products>
+    <Product>
+      <name>ListNanny</name>
+      <version>2</version>
+      <licensetype>server</licensetype>
+      <expires>-1</expires>
+    </Product>
+  </products>
+  <LicenseInformation>
+    <Version>1.1</Version>
+    <H1>0</H1>
+    <H2>HDTTdnIRVcWsnAMkrda7gA==</H2>
+  </LicenseInformation>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+      <Reference URI="">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <DigestValue>AyY0kot8DGcovDVgA3C4na0GQiw=</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>da+EXDceOqy7LSSCeDuSzSskCh0whJW61lUk556KB/RGYdbrs8arKQn63HcbXi7OzfQidKFLAWuQOZUtDYUd0PKkH1N9Nib3lisgsZoR1kzNhKeVdvDcRcWHeUYEVX6djR/c4kb25eqj/2SKgVU/BUWQAwgUyhTpAyU+o1udJ+M=</SignatureValue>
+  </Signature>
+</license>

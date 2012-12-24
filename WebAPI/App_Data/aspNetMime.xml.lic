@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<license version="1.1">
+  <Customer>
+    <name>peter@peterkellner.net
+</name>
+  </Customer>
+  <products>
+    <Product>
+      <name>aspNetMime</name>
+      <version>2</version>
+      <licensetype>server</licensetype>
+      <expires>-1</expires>
+    </Product>
+  </products>
+  <LicenseInformation>
+    <Version>1.1</Version>
+    <H1>0</H1>
+    <H2>8laNNfLrNNvlluzYc96uxQ==</H2>
+  </LicenseInformation>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+      <Reference URI="">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <DigestValue>75LAmaJf4bYJoo2KLzyBf4DTGwM=</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>YVqhKE00seHrcIJzGoGqhMd0z17IN8V/BoInjzCLvfXLM70Ce48WHz5sn8Ph/RSQ37WfWiPlOnQWozkl+mccMuMWZCxCgOG/ngQr47q32d9qIeirGkyDZGdrRyWDfs0l7dcKLJRTDLKht4DEZ8znSdCM51PXJWH1V0dHTRpPlWM=</SignatureValue>
+  </Signature>
+</license>

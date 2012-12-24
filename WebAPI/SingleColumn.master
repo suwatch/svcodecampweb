@@ -1,0 +1,15 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/MasterPage.master"%>
+
+<script runat="server">
+
+
+</script>
+
+
+<asp:Content ID="RegisterContent" ContentPlaceHolderID="parentContent" runat="server">
+    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+
+
+

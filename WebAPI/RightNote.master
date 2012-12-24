@@ -1,0 +1,27 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/MasterPage.master"%>
+
+
+<asp:Content ContentPlaceHolderID="defaultSublinks" ID="rightSublinks" runat="server">
+    <asp:ContentPlaceHolder ID="Sublinks" runat="server">
+        <span class="slogan">By and For the Developer Community</span>
+    </asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="RegisterContent" ContentPlaceHolderID="parentContent" runat="server">
+    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="RegisterRightContent" ContentPlaceHolderID="SidebarRight" runat="server">
+    <div class="rightNote">
+        75 min sessions <br />
+        Handouts with lots of Q&A time <br />
+        Hands-on demos or exercises <br />
+        Chalk talks or full-on slides <br />
+        Experts sharing their insights <br />
+        Share with others, etc. <br /> <br />
+
+        ...and free coffee and food!
+    </div>
+</asp:Content>
+

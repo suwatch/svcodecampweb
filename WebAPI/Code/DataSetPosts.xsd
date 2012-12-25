@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetPosts" targetNamespace="http://tempuri.org/DataSetPosts.xsd" xmlns:mstns="http://tempuri.org/DataSetPosts.xsd" xmlns="http://tempuri.org/DataSetPosts.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="CodeCampSV06" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="CodeCampSV06 (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.CodeCampSV06.ConnectionString" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PostsTableAdapter" GeneratorDataComponentClassName="PostsTableAdapter" Name="Posts" UserDataComponentName="PostsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="CodeCampSV06 (Web.config)" DbObjectName="CodeCampSV06.dbo.wp_posts" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetByDateDesc" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetByDateDesc" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="False" UserGetMethodName="GetByDateDesc" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT ID, post_author, post_date, post_date_gmt, post_content, post_title, post_category, post_excerpt, post_status, comment_status, post_name, 
+               post_modified
+FROM  wp_posts
+WHERE post_status &lt;&gt; 'hold'
+ORDER BY post_date DESC
+</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="post_author" DataSetColumn="post_author" />
+              <Mapping SourceColumn="post_date" DataSetColumn="post_date" />
+              <Mapping SourceColumn="post_date_gmt" DataSetColumn="post_date_gmt" />
+              <Mapping SourceColumn="post_content" DataSetColumn="post_content" />
+              <Mapping SourceColumn="post_title" DataSetColumn="post_title" />
+              <Mapping SourceColumn="post_category" DataSetColumn="post_category" />
+              <Mapping SourceColumn="post_excerpt" DataSetColumn="post_excerpt" />
+              <Mapping SourceColumn="post_status" DataSetColumn="post_status" />
+              <Mapping SourceColumn="comment_status" DataSetColumn="comment_status" />
+              <Mapping SourceColumn="post_name" DataSetColumn="post_name" />
+              <Mapping SourceColumn="post_modified" DataSetColumn="post_modified" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetPosts" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DataSetPosts" msprop:Generator_DataSetName="DataSetPosts">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Posts" msprop:Generator_UserTableName="Posts" msprop:Generator_RowDeletedName="PostsRowDeleted" msprop:Generator_RowChangedName="PostsRowChanged" msprop:Generator_RowClassName="PostsRow" msprop:Generator_RowChangingName="PostsRowChanging" msprop:Generator_RowEvArgName="PostsRowChangeEvent" msprop:Generator_RowEvHandlerName="PostsRowChangeEventHandler" msprop:Generator_TableClassName="PostsDataTable" msprop:Generator_TableVarName="tablePosts" msprop:Generator_RowDeletingName="PostsRowDeleting" msprop:Generator_TablePropName="Posts">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:int" />
+              <xs:element name="post_author" msprop:Generator_UserColumnName="post_author" msprop:Generator_ColumnVarNameInTable="columnpost_author" msprop:Generator_ColumnPropNameInRow="post_author" msprop:Generator_ColumnPropNameInTable="post_authorColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="post_date" msprop:Generator_UserColumnName="post_date" msprop:Generator_ColumnVarNameInTable="columnpost_date" msprop:Generator_ColumnPropNameInRow="post_date" msprop:Generator_ColumnPropNameInTable="post_dateColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="post_date_gmt" msprop:Generator_UserColumnName="post_date_gmt" msprop:Generator_ColumnVarNameInTable="columnpost_date_gmt" msprop:Generator_ColumnPropNameInRow="post_date_gmt" msprop:Generator_ColumnPropNameInTable="post_date_gmtColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="post_content" msprop:Generator_UserColumnName="post_content" msprop:Generator_ColumnVarNameInTable="columnpost_content" msprop:Generator_ColumnPropNameInRow="post_content" msprop:Generator_ColumnPropNameInTable="post_contentColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="post_title" msprop:Generator_UserColumnName="post_title" msprop:Generator_ColumnVarNameInTable="columnpost_title" msprop:Generator_ColumnPropNameInRow="post_title" msprop:Generator_ColumnPropNameInTable="post_titleColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="post_category" msprop:Generator_UserColumnName="post_category" msprop:Generator_ColumnVarNameInTable="columnpost_category" msprop:Generator_ColumnPropNameInRow="post_category" msprop:Generator_ColumnPropNameInTable="post_categoryColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="post_excerpt" msprop:Generator_UserColumnName="post_excerpt" msprop:Generator_ColumnVarNameInTable="columnpost_excerpt" msprop:Generator_ColumnPropNameInRow="post_excerpt" msprop:Generator_ColumnPropNameInTable="post_excerptColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="post_status" msprop:Generator_UserColumnName="post_status" msprop:Generator_ColumnVarNameInTable="columnpost_status" msprop:Generator_ColumnPropNameInRow="post_status" msprop:Generator_ColumnPropNameInTable="post_statusColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="comment_status" msprop:Generator_UserColumnName="comment_status" msprop:Generator_ColumnVarNameInTable="columncomment_status" msprop:Generator_ColumnPropNameInRow="comment_status" msprop:Generator_ColumnPropNameInTable="comment_statusColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="post_name" msprop:Generator_UserColumnName="post_name" msprop:Generator_ColumnVarNameInTable="columnpost_name" msprop:Generator_ColumnPropNameInRow="post_name" msprop:Generator_ColumnPropNameInTable="post_nameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="post_modified" msprop:Generator_UserColumnName="post_modified" msprop:Generator_ColumnVarNameInTable="columnpost_modified" msprop:Generator_ColumnPropNameInRow="post_modified" msprop:Generator_ColumnPropNameInTable="post_modifiedColumn" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

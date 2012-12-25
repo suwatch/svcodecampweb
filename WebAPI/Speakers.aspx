@@ -88,7 +88,7 @@
         </asp:Repeater>
     </div>
     <asp:ObjectDataSource ID="ObjectDataSourceAllPresenters" runat="server" SelectMethod="GetData"
-        TypeName="DataSetPresentersTableAdapters.AttendeesTableAdapter">
+        TypeName="WebAPI.Code.DataSetPresentersTableAdapters.AttendeesTableAdapter">
         <SelectParameters>
             <asp:ControlParameter ControlID="LabelCodeCampYearId" DefaultValue="" Name="CodeCampYearId"
                 PropertyName="Text" />
@@ -101,14 +101,14 @@
         </SelectParameters>
     </asp:ObjectDataSource>
     <asp:ObjectDataSource ID="ObjectDataSourceBySessionX" runat="server" SelectMethod="GetAttendeeBySessionId"
-        TypeName="DataSetPresentersTableAdapters.AttendeesTableAdapter" CacheDuration="120"
+        TypeName="WebAPI.Code.DataSetPresentersTableAdapters.AttendeesTableAdapter" CacheDuration="120"
         EnableCaching="True">
         <SelectParameters>
             <asp:QueryStringParameter Name="id" QueryStringField="id" Type="Int32" />
         </SelectParameters>
     </asp:ObjectDataSource>
     <asp:ObjectDataSource ID="ObjectDataSourceByAttendeeId" runat="server" SelectMethod="GetAttendeeByAttendeeId"
-        TypeName="DataSetPresentersTableAdapters.AttendeesTableAdapter" CacheDuration="120"
+        TypeName="WebAPI.Code.DataSetPresentersTableAdapters.AttendeesTableAdapter" CacheDuration="120"
         EnableCaching="True">
         <SelectParameters>
             <asp:QueryStringParameter Name="AttendeeId" QueryStringField="Attendeeid" Type="Int32" />

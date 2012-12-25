@@ -1,0 +1,280 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+
+<head>
+    <title>3PLogic</title>
+    
+    <!-- CSS -->
+    <link type="text/css" href="../../../ext/resources/css/ext-all.css" rel="stylesheet" />
+    
+    <!-- Base -->
+    <script type="text/javascript" src="../../../ext/adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="../../../ext/ext-all-debug.js"></script>
+
+    <!-- UX -->
+    <script src="../../extensions/HiddenNumber.js" type="text/javascript"></script>
+    <script src="../../FieldSerializer.js" type="text/javascript"></script>
+    <script src="../FieldSerializer.js" type="text/javascript"></script>
+    
+    <script type="text/javascript">
+        Ext.ns("Logic");
+        
+        Logic.init = function () {
+            var win = new Ext.Window({
+                id         : "winContact",
+                title      : "Contact",
+                autoHeight : true,
+                width      : 400,
+                closable   : false,
+                bodyStyle  : "background-color: #fff;",
+                defaults   : {
+                    xtype     : "textfield",
+                    border    : false,
+                    bodyStyle : "background-color: #fff;padding:5px;"
+                },
+                
+                // Add a FieldSerializer 
+                plugins : [ new Ext.ux.plugins.FieldSerializer({
+                    //addJsonStringFn : false,
+                    
+                    converters : {
+                        simpleDateConverter : function () {
+                            return this.getValue().dateFormat("Y-m-d");
+                        }
+                    }
+                })],
+
+                items : [
+                    {
+                        xtype    : "panel",
+                        layout   : "form",
+                        defaults : {
+                            anchor : "100%"
+                        },
+                        items : [
+                            {
+                                xtype      : "hiddennumber",
+                                itemId     : "id",
+                                value      : 12345
+                            },
+                            {
+                                xtype      : "datefield",
+                                name       : "dateCreated",
+                                itemId     : "dateCreated",
+                                fieldLabel : "Date Created",
+                                value      : new Date().add(Date.MONTH, -6),
+                                disabled   : true,
+                                
+                                // custom converter to return specialized date formatting.
+                                converter  : function () {
+                                    return this.getValue().dateFormat("M$");
+                                }
+                            },
+                            {
+                                xtype      : "datefield",
+                                name       : "lastUpdated",
+                                itemId     : "lastUpdated",
+                                fieldLabel : "Last Updated",
+                                value      : new Date(),
+                                disabled   : true,
+                                
+                                // specify converter which was defined in FieldSerializer
+                                // plugin constructor configuration object. 
+                                converter  : "simpleDateConverter"
+                            },
+                            {
+                                xtype      : "textfield",
+                                itemId     : "firstname",
+                                fieldLabel : "First Name",
+                                value      : "Geoffrey",
+                                
+                                // Return Converter object with custom name + value.
+                                // An instance of the "item" is passed as an argument to the converter. 
+                                converter  : function () {
+                                    return {
+                                        name  : "name",
+
+                                        // the value is a concat of "firstname" + "lastname"
+                                        value : this.getValue() + " " + Ext.getCmp("lastname").getValue()
+                                    };
+                                }
+                            },
+                            {
+                                xtype      : "textfield",
+                                id         : "lastname",
+                                name       : "lastname",
+                                itemId     : "lastname",
+                                fieldLabel : "Last Name",
+                                value      : "McGill",
+                                
+                                // the "lastname" is ignored in the field serialization.
+                                // The "lastname" is concatinated with the "firstname" 
+                                // to create a single "name" field.
+                                ignore     : true
+                            },
+                            {
+                                xtype      : "datefield",
+                                name       : "birthdate",
+                                itemId     : "birthdate",
+                                fieldLabel : "Birthday",
+                                
+                                // This datefield will just return a Date object during
+                                // serialization. Or, an ISO 8601 string representation
+                                // of the Date when .toJsonString() is called.
+                                //
+                                // Example
+                                //
+                                // {
+                                //     birthdate : "1973-02-20T00:00:00"
+                                // }
+                                value      : new Date().add(Date.YEAR, -35)
+                            }
+                        ]
+                    },
+                    {
+                        xtype     : "tabpanel",
+                        
+                        // The "name" config is specified which which cause the 
+                        // serializer to branch and create "addresses" sub object.
+                        name      : "addresses[]",
+                        border    : false,
+                        plain     : true,
+                        activeTab : 0,
+                        defaults  : {
+                            layout : "form"
+                        },
+                        items : [
+                            {
+                                title : "Business",
+                                
+                                // A "billing" object will be created inside "addresses"
+                                //
+                                // Example
+                                //
+                                // { 
+                                //     name : "Geoffrey McGill",
+                                //     addresses : {
+                                //         business : {
+                                //             city   : "Edmonton",
+                                //             region : "AB
+                                //         }
+                                //     }
+                                // }
+                                name  : "business",
+                                items : [
+                                    {
+                                        xtype    : "checkbox",
+                                        checked  : true,
+                                        name     : "isMailing",
+                                        boxLabel : "This is the mailing address"
+                                    },
+                                    {
+                                        xtype      : "textfield",
+                                        
+                                        // This field is missing "name" config option,
+                                        // so the "itemId" will be used instead. 
+                                        // If both were missing, the field would not be
+                                        // serialized, unless a "converter" was specified.
+                                        itemId     : "city",
+                                        fieldLabel : "City",
+                                        anchor     : "100%",
+                                        value      : "Edmonton"
+                                    },
+                                    {
+                                        xtype         : "combo",
+                                        id            : "regionbilling",
+                                        name          : "region",
+                                        itemId        : "region",
+                                        fieldLabel    : "Province/State",
+                                        anchor        : "100%",
+                                        store         : new Ext.data.SimpleStore({
+                                            fields : ["text", "value"],
+                                            data   : [["British Columbia", "BC"], ["Alberta", "AB"], ["Ontario", "ON"]]
+                                        }),
+                                        valueField    : "value",
+                                        displayField  : "text",
+                                        triggerAction : "all",
+                                        queryDelay    : 10,
+                                        mode          : "local"
+                                    }
+                                ]
+                            },
+                            {
+                                title : "Home",
+                                
+                                // Another object within "addresses"
+                                name  : "home",
+                                items : [
+                                    {
+                                        // NOTE: this field does not specify a "name" or "itemId" 
+                                        // config option, so the field will not be serialized by default,
+                                        // unless a custom converter is specified.
+                                        xtype    : "checkbox",
+                                        boxLabel : "This is the mailing address"
+                                    },
+                                    {
+                                        xtype      : "textfield",
+                                        itemId     : "city",
+                                        fieldLabel : "City",
+                                        anchor     : "100%",
+                                        value      : "Toronto"
+                                    },
+                                    {
+                                        xtype         : "combo",
+                                        id            : "regionshipping",
+                                        name          : "region",
+                                        itemId        : "region",
+                                        fieldLabel    : "Province/State",
+                                        anchor        : "100%",
+                                        store         : new Ext.data.SimpleStore({
+                                            fields : ["text", "value"],
+                                            data   : [["British Columbia", 0], ["Alberta", 1], ["Ontario", 2]]
+                                        }),
+                                        valueField    : "value",
+                                        displayField  : "text",
+                                        triggerAction : "all",
+                                        queryDelay    : 10,
+                                        mode          : "local",
+                                        
+                                        // custom converter to return a 
+                                        converter     : function () {
+                                            return ["BC", "AB", "ON"][this.getValue()];
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                buttons : [
+                    {
+                        text : "serialize",
+                        listeners : {
+                            click : function (el) {
+                                console.log(win.serialize());
+                            }
+                        }
+                    },
+                    {
+                        text : "toJsonString",
+                        listeners : {
+                            click : function (el) {
+                                console.log(win.serialize().toJsonString());
+                            }
+                        }
+                    }
+                ]
+            }).show();
+            
+            Ext.getCmp("regionbilling").setValue("AB");
+            Ext.getCmp("regionshipping").setValue(2);
+        };
+        
+        Ext.onReady(Logic.init);
+    </script>
+</head>
+<body>
+</body>
+</html>

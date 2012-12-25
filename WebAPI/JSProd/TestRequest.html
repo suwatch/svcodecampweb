@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>3PLogic</title>
+    
+    <!-- CSS -->
+    <link type="text/css" href="js/ext/resources/css/ext-all.css" rel="stylesheet" />
+    <link type="text/css" href="css/app.css" rel="stylesheet" />
+    
+    <!-- Base -->
+    <script type="text/javascript" src="js/ext/adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="js/ext/ext-all-debug.js"></script>
+    
+
+   
+</head>
+<body>
+
+<script type="text/javascript" >
+
+
+    Ext.onReady(function() {
+
+        var postURL = "../Data/Load/Reprocess";
+        var query = { Id: 22 };
+
+        var that = this;
+
+        var reProcess = new Ext.data.Connection ({
+            listeners : {
+                beforerequest   : function () {
+                    Ext.Msg.wait('Please wait...', 'ReProcessing');
+                },
+                requestcomplete : function () {
+                    Ext.Msg.hide();
+                }
+            }
+        });
+
+        reProcess.request({
+            url     : "../Data/Load/Reprocess",
+            method: "POST",
+
+            success: function(r, o) {
+                var responseVal = Ext.decode(r.responseText, true);
+                if (responseVal.success == true) {
+                    Ext.Msg.alert("Success!");
+                }
+                else {
+                    Ext.Msg.show({
+                        title: "Exception",
+                        icon: Ext.MessageBox.ERROR,
+                        msg: responseVal.msg,
+                        buttons: Ext.Msg.OK
+                    });
+                }
+            },
+            failure : function (r, o) {
+                Ext.Msg.show({
+                    title: "Exception",
+                    icon: Ext.MessageBox.ERROR,
+                    msg: "An Error has occurred. :(",
+                    buttons: Ext.Msg.OK
+                });
+            },
+           params: {
+               query : Ext.util.JSON.encode(query)
+           }
+        });
+
+    });
+    
+        
+</script>
+
+</body>
+</html>

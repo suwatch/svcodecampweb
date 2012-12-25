@@ -215,6 +215,14 @@
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="Telerik.Charting, Version=2.0.2.0, Culture=neutral, PublicKeyToken=d14f3dcc8e3e8763, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dlls\Telerik.Charting.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Web.UI, Version=2008.1.619.35, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dlls\Telerik.Web.UI.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
@@ -376,6 +384,41 @@
     <Compile Include="Code\BoxSessionManager.cs" />
     <Compile Include="Code\CaptchaImageUtils.cs" />
     <Compile Include="Code\CaptchaUltimateControl.cs" />
+    <Compile Include="Code\DataSetAttendees.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetAttendees.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Code\DataSetLevels.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetLevels.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Code\DataSetPictures.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetPictures.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Code\DataSetPosts.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetPosts.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Code\DataSetPresenters.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetPresenters.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Code\DataSetSessions.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetSessions.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Code\DataSetVistaInstall.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetVistaInstall.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Code\RadioButtonListWithArg.cs" />
     <Compile Include="Code\RSSFeed.cs" />
     <Compile Include="Code\SessionInterestAnalysis.cs" />
@@ -1277,6 +1320,13 @@
     <Compile Include="Wiki.aspx.designer.cs">
       <DependentUpon>Wiki.aspx</DependentUpon>
     </Compile>
+    <Compile Include="_Register.aspx.cs">
+      <DependentUpon>_Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_Register.aspx.designer.cs">
+      <DependentUpon>_Register.aspx</DependentUpon>
+    </Compile>
     <Compile Include="_test\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1865,6 +1915,10 @@
     <Content Include="dlls\Newtonsoft.Json.pdb" />
     <Content Include="dlls\Newtonsoft.Json.xml" />
     <Content Include="dlls\SpreadsheetGear.dll" />
+    <Content Include="dlls\Telerik.Charting.dll" />
+    <Content Include="dlls\Telerik.Charting.xml" />
+    <Content Include="dlls\Telerik.Web.UI.dll" />
+    <Content Include="dlls\Telerik.Web.UI.XML" />
     <Content Include="dlls\ZipLib.dll" />
     <Content Include="EmailerAdmin.aspx" />
     <Content Include="EmailOptOut.aspx" />
@@ -2278,6 +2332,7 @@
     <Content Include="WebStats.htm" />
     <Content Include="Wiki.aspx" />
     <Content Include="_PROBLEMS\README.TXT" />
+    <Content Include="_Register.aspx" />
     <Content Include="_test\WebForm1.aspx" />
     <Content Include="MasterPage.master" />
     <Content Include="RightRegister.master" />
@@ -2349,6 +2404,83 @@
     <Content Include="App_Data\EventBoardJson.txt.ori" />
     <Content Include="App_Data\ListNanny.xml.lic" />
     <Content Include="App_Data\Logging.sic" />
+    <Content Include="Code\DataSetAttendees.xsc">
+      <DependentUpon>DataSetAttendees.xsd</DependentUpon>
+    </Content>
+    <None Include="Code\DataSetAttendees.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetAttendees.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Code\DataSetAttendees.xss">
+      <DependentUpon>DataSetAttendees.xsd</DependentUpon>
+    </Content>
+    <Content Include="Code\DataSetLevels.xsc">
+      <DependentUpon>DataSetLevels.xsd</DependentUpon>
+    </Content>
+    <None Include="Code\DataSetLevels.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetLevels.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Code\DataSetLevels.xss">
+      <DependentUpon>DataSetLevels.xsd</DependentUpon>
+    </Content>
+    <Content Include="Code\DataSetPictures.xsc">
+      <DependentUpon>DataSetPictures.xsd</DependentUpon>
+    </Content>
+    <None Include="Code\DataSetPictures.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetPictures.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Code\DataSetPictures.xss">
+      <DependentUpon>DataSetPictures.xsd</DependentUpon>
+    </Content>
+    <Content Include="Code\DataSetPosts.xsc">
+      <DependentUpon>DataSetPosts.xsd</DependentUpon>
+    </Content>
+    <None Include="Code\DataSetPosts.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetPosts.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Code\DataSetPosts.xss">
+      <DependentUpon>DataSetPosts.xsd</DependentUpon>
+    </Content>
+    <Content Include="Code\DataSetPresenters.xsc">
+      <DependentUpon>DataSetPresenters.xsd</DependentUpon>
+    </Content>
+    <None Include="Code\DataSetPresenters.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetPresenters.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Code\DataSetPresenters.xss">
+      <DependentUpon>DataSetPresenters.xsd</DependentUpon>
+    </Content>
+    <Content Include="Code\DataSetSessions.xsc">
+      <DependentUpon>DataSetSessions.xsd</DependentUpon>
+    </Content>
+    <None Include="Code\DataSetSessions.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetSessions.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Code\DataSetSessions.xss">
+      <DependentUpon>DataSetSessions.xsd</DependentUpon>
+    </Content>
+    <Content Include="Code\DataSetVistaInstall.xsc">
+      <DependentUpon>DataSetVistaInstall.xsd</DependentUpon>
+    </Content>
+    <None Include="Code\DataSetVistaInstall.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetVistaInstall.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Code\DataSetVistaInstall.xss">
+      <DependentUpon>DataSetVistaInstall.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="ListNanny.aspx" />
     <Content Include="MiscPagesxx\Membership1.aspx" />

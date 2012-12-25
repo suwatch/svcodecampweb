@@ -1,0 +1,9 @@
+.formRegister h3 {
+    font: bold 14px Calibri, Verdana, Arial;
+    margin: 6px 0 4px 0;
+    border-bottom: 1px dotted gray;
+    color: #003B5F;
+}
+.formRegister .smallText {
+    font: normal 13px Calibri, Verdana, Arial;
+}

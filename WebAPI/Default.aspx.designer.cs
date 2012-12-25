@@ -90,7 +90,7 @@ public partial class Default {
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.UserControl SessionTweetListPlanToAttend;
+    protected global::SessionTweetList SessionTweetListPlanToAttend;
     
     /// <summary>
     /// SessionTweetListShowInterest control.
@@ -99,7 +99,7 @@ public partial class Default {
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.UserControl SessionTweetListShowInterest;
+    protected global::SessionTweetList SessionTweetListShowInterest;
     
     /// <summary>
     /// CodeCampAnnounceID control.
@@ -145,15 +145,6 @@ public partial class Default {
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::System.Web.UI.WebControls.HyperLink HyperLink2;
-    
-    /// <summary>
-    /// RegistrationCount2 control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.UserControl RegistrationCount2;
     
     /// <summary>
     /// I1 control.
@@ -207,7 +198,7 @@ public partial class Default {
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.UserControl TwitterFeed2;
+    protected global::TwitterFeed TwitterFeed2;
     
     /// <summary>
     /// TwitterFeed1 control.
@@ -216,5 +207,5 @@ public partial class Default {
     /// Auto-generated field.
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
-    protected global::System.Web.UI.UserControl TwitterFeed1;
+    protected global::TwitterFeed TwitterFeed1;
 }

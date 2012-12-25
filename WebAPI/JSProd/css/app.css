@@ -1,0 +1,215 @@
+﻿.grayBtn .x-btn-tl, .grayBtn .x-btn-tr, .grayBtn .x-btn-tc, .grayBtn .x-btn-ml, .grayBtn .x-btn-mr, .grayBtn .x-btn-mc, .grayBtn .x-btn-bl, .grayBtn .x-btn-br, .grayBtn .x-btn-bc {
+    background: none;
+}
+
+.grayBtn .x-btn-tl {
+    width: 3px;
+    height: 3px;
+    background: no-repeat 0 0;
+}
+
+.grayBtn .x-btn-tr {
+    width: 3px;
+    height: 3px;
+    background: no-repeat -3px 0;
+}
+
+.grayBtn .x-btn-tc {
+    height: 3px;
+    background: repeat-x 0 -6px;
+}
+
+.grayBtn .x-btn-ml {
+    width: 3px;
+    background: no-repeat 0 -24px;
+}
+
+.grayBtn .x-btn-mr {
+    width: 3px;
+    background: no-repeat -3px -24px;
+}
+
+.grayBtn .x-btn-mc {
+    background: repeat-x 0 -1096px;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0 5px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.grayBtn .x-btn-bl {
+    width: 3px;
+    height: 3px;
+    background: no-repeat 0 -3px;
+}
+
+.grayBtn .x-btn-br {
+    width: 3px;
+    height: 3px;
+    background: no-repeat -3px -3px;
+}
+
+.grayBtn .x-btn-bc {
+    height: 3px;
+    background: repeat-x 0 -15px;
+}
+
+.grayBtn .x-btn-text {
+    font-weight: bold;
+}
+
+.grayBtn .x-btn-tl, .grayBtn .x-btn-tr, .grayBtn .x-btn-tc, .grayBtn .x-btn-ml, .grayBtn .x-btn-mr, .grayBtn .x-btn-mc, .grayBtn .x-btn-bl, .grayBtn .x-btn-br, .grayBtn .x-btn-bc {
+    background-image: url(../images/default/button/btn.gif);
+}
+
+/* Consolidation Filter Panel */
+.filterPanel_ct {
+    font-family: Arial, Tahoma, Verdana, Helvetica, sans-serif;
+}
+.filterPanel_ct .x-panel-header {
+    font-family: Arial, Tahoma, Verdana, Helvetica, sans-serif;
+	color: #FFFFFF;
+	font-size: 14px;
+	text-align: center;
+}
+.filterPanel_ct .x-panel-body {
+	background-color: #F0F0F0;
+    border-width: 0 1px;
+}
+.filterPanel_ct .x-fieldset 
+{
+    margin:5px 0;
+	border: none;
+}
+.filterPanel_ct .x-fieldset .left-padded {
+    padding-left: 8px;
+}
+.filterPanel_ct .consolidation_table table.x-table-layout {
+    width: 100%;    
+}
+.filterPanel_ct .consolidation_table table.x-table-layout td {
+    vertical-align: top;
+    background: transparent url(../images/3PL/consolidation_filter_dot.gif) repeat-x 0 14px;
+}
+.filterPanel_ct .consolidationCheckbox {
+    background-color: #F0F0F0;
+    font-size: 12px;
+    float: left;
+}
+.filterPanel_ct .consolidation_cell_right {
+    color: #2D4FD2;
+    font-size: 12px;
+    text-align: right;
+    padding-top:2px;
+}
+.filterPanel_ct .consolidation_cell_right .x-panel-body-noborder {
+    float: right;
+    background-color: #F0F0F0;
+}
+.filterPanel_ct .filterCheckbox {
+	font-weight: bold;
+}
+.filterPanel_ct .x-fieldset-header-text {
+	color: #2D4FD2;
+	font-size: 14px;
+}
+.filterPanel_ct .x-panel-ml, .filterPanel_ct .x-panel-mr, .filterPanel_ct .x-panel-mc, .filterPanel_ct .x-panel-bc, .filterPanel_ct .x-panel-bl, .filterPanel_ct .x-panel-br {
+	padding:0;
+	background: none;
+	background-color: white; 
+}
+.filterPanel_ct fieldset, .ext-ie .filterPanel_ct .x-fieldset {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-right:5px;
+}
+.filterPanel_ct .x-fieldset legend {
+    font-family: Arial, Tahoma, Verdana, Helvetica, sans-serif;
+	margin-bottom: 5px;
+	margin-left:-8px;
+}
+.ext-ie7 .filterPanel_ct .x-fieldset legend, .ext-ie6 .filterPanel_ct .x-fieldset legend {
+	margin-left:-14px;
+	padding-right: 0px;
+}
+.ext-ie7 .filterPanel_ct .x-fieldset {
+	margin-bottom: 4px;
+	margin-right: 0px;
+}
+.filterPanel_ct .x-panel-tl, .filterPanel_ct .x-panel-tr {
+	background-image: url(/JSProd/resources/images/filterPanel/corners-sprite-filter.gif);
+	border-bottom: none;
+}
+.filterPanel_ct .x-panel-tc {
+	background: none;
+	background-color: #708393;
+}
+.filterPanel_ct .x-tool {
+	background-image: url(/JSProd/resources/images/filterPanel/fieldset-arrow-filter.gif);
+}
+.filterPanel_ct .x-tool-toggle {
+	background-position: 0 0;
+}
+.filterPanel_ct .x-tool-toggle-over {
+	background-position: -15px 0;
+}
+.filterPanel_ct .x-panel-collapsed .x-tool {
+	background-image: url(/JSProd/resources/images/filterPanel/fieldset-arrow-filter.gif);
+}
+.filterPanel_ct .x-panel-collapsed .x-tool-toggle {
+	background-position: 0 -15px;
+}
+.filterPanel_ct .x-panel-collapsed .x-tool-toggle-over {
+	background-position: -15px -15px;
+}
+.filterPanel_ct fieldset .x-panel-bwrap {
+	border-bottom: none;
+}
+.filterPanel_table_cell {
+	font-size: 12px;
+	padding:2px;
+}
+/* filter panel bold item */
+.filterPanel_ct .boldText {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 0;
+}
+/* Filter Slider */
+.filterPanel_ct .x-filter-slider-msg {
+    color: green;
+    margin-left: 8px;
+}
+.filterPanel_ct .slider_ct {
+    margin-left: 8px;
+}
+.inline-el{
+    float:left;
+}
+/* ColemanFTPStaging */
+.x-radio-group-no-border {
+    padding-top: 2px;
+}
+.ext-ie .x-radio-group-no-border {
+    padding-top: 0;
+}
+.x-radio-group-no-border .x-panel-bwrap .x-panel-body {
+    border: none;
+}
+
+.x-radio-group-no-border label.x-form-cb-label {
+    font-size: 12px;
+    padding-top: 3px;
+    position: absolute;
+}
+.ext-ie8 .x-radio-group-no-border label.x-form-cb-label {
+    padding-top: 5px;
+}
+/* Row Color */
+.row-light-red {
+    background-color: #FFAFAF;
+}
+.label-font-small label {
+    font-size: 11px;
+}

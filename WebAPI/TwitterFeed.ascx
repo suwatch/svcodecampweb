@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" Inherits="TwitterFeed" Codebehind="TwitterFeed.ascx.cs" %>
 
-<%@ Register src="RegistrationCount.ascx" tagname="RegistrationCount" tagprefix="uc1" %>
+<%--<%@ Register src="RegistrationCount.ascx" tagname="RegistrationCount" tagprefix="uc1" %>--%>
 
 <div runat="server" id="TopAreaAboveTweetsID" visible="true" >
 <%--<div style="float:right;margin: 0px 50px 0px 0px;">

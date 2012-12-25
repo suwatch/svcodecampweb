@@ -3,7 +3,7 @@
 
 
 
-<%@ Register Assembly="App_Code" Namespace="CodeCampSV" TagPrefix="RBUTIL" %>
+<%@ Register  Namespace="CodeCampSV" TagPrefix="RBUTIL" %>
 
 <asp:Content ID="SublinksSessions" ContentPlaceHolderID="Sublinks" runat="server">
 
@@ -452,7 +452,7 @@
         </asp:ObjectDataSource>
 
         <asp:ObjectDataSource ID="ObjectDataSourceLevels" runat="server" CacheDuration="3600"
-            EnableCaching="True" SelectMethod="GetData" TypeName="DataSetLevelsTableAdapters.SessionLevelsTableAdapter"></asp:ObjectDataSource>
+            EnableCaching="True" SelectMethod="GetData" TypeName="WebAPI.Code.DataSetLevelsTableAdapters.SessionLevelsTableAdapter"></asp:ObjectDataSource>
 
     </div>
 

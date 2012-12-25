@@ -11,9 +11,10 @@ public partial class ReferralUrls : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
-        //if (!IsPostBack)
-        //{
+        if (Context.User.Identity.IsAuthenticated)
+        {
+            //if (!IsPostBack)
+            //{
             PopulateDropDownListWithUnclaimedUrls();
             if (Context.User.Identity.IsAuthenticated)
             {
@@ -23,7 +24,8 @@ public partial class ReferralUrls : System.Web.UI.Page
             {
                 ButtonClaimReferringUrl.Enabled = false;
             }
-        //}
+            //}
+        }
 
 
     }

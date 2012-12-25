@@ -1,0 +1,325 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Sessions TestPage</title>
+    <link href="Ext3/resources/css/ext-all.css" rel="stylesheet" type="text/css"/>
+
+    <script src="Ext3/adapter/ext/ext-base.js" type="text/javascript"></script>
+
+    <script src="Ext3/ext-all-debug.js" type="text/javascript"></script>
+
+    <script src="Ext3/plugins/RowExpander.js" type="text/javascript"></script>
+
+    <script src="Ext3/plugins/FitToParent.js" type="text/javascript"></script>
+
+    <link href="../App_Themes/Gray2009/Style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+<script type="text/javascript" language="javascript">
+    Ext.ns('CCWeb');
+</script>
+
+<script src="Utils/Sessions/sessionsStore.js" type="text/javascript"></script>
+
+<!--<script src="Utils/Sessions/sessionsGrid.js" type="text/javascript"></script>-->
+
+<script type="text/javascript">
+
+    Ext.onReady(function() {
+
+        Ext.BLANK_IMAGE_URL = 'Scripts/extjs/resources/images/default/s.gif';
+        Ext.QuickTips.init();
+
+        var tpl = Ext.XTemplate.from('SessionDetail');
+        tpl.compile();
+        var panelSessions = new Ext.Panel({
+            id: 'sessions-view',
+            region: 'center',
+            frame: true,
+            width: 777,
+            autoHeight: true,
+            collapsible: true,
+            layout: 'fit',
+            title: 'Sessions DataView',
+
+            items: new Ext.DataView({
+                store: CCWeb.sessionStore,
+                tpl: tpl,
+                autoHeight: true,
+                multiSelect: true,
+                overClass: 'x-view-over',
+                itemSelector: 'div.thumb-wrap',
+                emptyText: 'No Sessions to display',
+                prepareData: function(data) {
+                    data.Description = Ext.util.Format.ellipsis(data.Description, 200);
+                    data.Title = data.Title;
+                    return data;
+                }
+
+            })
+        });
+
+        new Ext.Viewport({
+            layout: 'border',
+            items: [panelSessions]
+        });
+
+
+
+
+
+        CCWeb.sessionStore.load();
+
+        //        var dv = new Ext.DataView({
+        //                store: store,
+        //                tpl: tpl,
+        //                autoHeight:true,
+        //                multiSelect: false,
+        //                overClass:'x-view-over',
+        //                itemSelector:'div.thumb-wrap',
+        //                emptyText: 'No images to display',
+        //                prepareData: function(data){
+        //                    data.shortName = Ext.util.Format.ellipsis(data.name, 15);
+        //                    data.sizeString = Ext.util.Format.fileSize(data.size);
+        //                    data.dateString = data.lastmod.format("m/d/Y g:i a");
+        //                    return data;
+        //                }
+        //            });
+
+
+
+
+
+
+
+        //        var pageSize = 25;
+        //
+        //        // pluggable renders
+        //        function renderTopic(value, p, record) {
+        //            return String.format(
+        //                    '<b><a href="http://extjs.com/forum/showthread.php?t={2}" target="_blank">{0}</a></b><a href="http://extjs.com/forum/forumdisplay.php?f={3}" target="_blank">{1} Forum</a>',
+        //                    value, Ext.util.Format.htmlDecode(record.description), record.Id, record.CodeCampYearId);
+        //        }
+        //
+        //
+        //        var grid = new Ext.grid.GridPanel({
+        //            renderTo: 'MainDiv1',
+        //            margins: '0 15 15 15',
+        //            store: CCWeb.sessionStore,
+        //            frame: true,
+        //            title: 'GridPanel',
+        //            height: 250,
+        //            width: 700,
+        //            loadMask: true,
+        //
+        //            bbar: new Ext.PagingToolbar({
+        //                pageSize: pageSize,
+        //                store: CCWeb.sessionStore,
+        //                displayInfo: true,
+        //                displayMsg: 'Displaying topics {0} - {1} of {2}',
+        //                emptyMsg: "No Sessions to display"
+        //            }),
+        //
+        //            // customize view config
+        //            viewConfig: {
+        //                forceFit: true,
+        //                enableRowBody: true,
+        //                showPreview: true,
+        //                getRowClass: function(record, rowIndex, p, store) {
+        //                    if (this.showPreview) {
+        //                        p.body = '<p>' + record.data.Description + '</p>';
+        //                        return 'x-grid3-row-expanded';
+        //                    }
+        //                    return 'x-grid3-row-collapsed';
+        //                }
+        //            },
+        //
+        //            items: new Ext.DataView({
+        //                    store: CCWeb.sessionStore,
+        //                    tpl: tpl,
+        //                    autoHeight:true,
+        //                    multiSelect: true,
+        //                    overClass:'x-view-over',
+        //                    itemSelector:'div.thumb-wrap',
+        //                    emptyText: 'No images to display'
+        //                })
+        //
+        //
+        //        });
+        //
+        //
+        //        CCWeb.sessionStore.load({
+        //            params:
+        //            {
+        //                start: 0,
+        //                limit: pageSize
+        //            }
+        //        });
+    });
+
+
+</script>
+
+<!-- <div id="shoppingList" style="overflow: hidden; width: 100%;">
+</div>-->
+<hr/>
+<br/>
+
+<div id="MainDiv1" style="overflow: hidden; width: 100%;">
+</div>
+<div id="SessionDetail">
+    <tpl for=".">
+    <div class="thumb-wrap" id="{Username}">
+    <table cellpadding="0" cellspacing="0" width="100%">
+        <tbody>
+        <tr>
+            <td class="sessionContent">
+                <!--TEST-->
+                <table cellpadding="0" cellspacing="0" width="100%">
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div class="subHeading">
+                                            <span id="ctl00_ctl00_ctl00_blankContent_parentContent_MainContent_Repeater1_ctl01_Label1">
+                                              {Title}                
+                                            </span>
+                            </div>
+                        </td>
+                        <td align="center" valign="middle">
+                            <div class="sessionLevel">
+                                            <span id="ctl00_ctl00_ctl00_blankContent_parentContent_MainContent_Repeater1_ctl01_Label2"
+                                                  style="display: inline-block; width: 90px;">Beginner</span></div>
+                        </td>
+                        <td align="right" valign="middle">
+                            <a id="ctl00_ctl00_ctl00_blankContent_parentContent_MainContent_Repeater1_ctl01_LinkButton1"
+                               href="javascript:__doPostBack('ctl00$ctl00$ctl00$blankContent$parentContent$MainContent$Repeater1$ctl01$LinkButton1','')">
+                                Wiki Here</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table cellpadding="0" cellspacing="0" width="100%">
+                    <tbody>
+                    <tr>
+                        <td valign="top">
+                            <div class="sessionName">
+                                <a id="A6" href="Speakers.aspx?Id={AttendeesId}" >{PresenterName}</a></div>
+                            <div class="sessionDetails">
+                                <span class="sessionTime"><span id="Span7">Agenda Not Made Yet</span></span> &nbsp;
+                                | &nbsp; <span class="sessionRoom"><span id="Span8">Room Unknown</span></span>
+                            </div>
+                        </td>
+                        <td align="right" valign="top">
+                            <div class="sessionButtons">
+                                <a href="SessionEdit.aspx?Id=9999" id="EditSessionID">Edit Session</a> <a
+                                    href="EmailSpeaker.aspx?Id=9999"
+                                    id="A1">Email Speaker</a> <a href="SessionEdit.aspx?Id=9999" id="A2">Delete
+                                Session</a>
+                                <a href="SessionEdit.aspx?Id=9999" id="A3">Show Session Evals</a> <span id="Span9"
+                                                                                                        style="display: inline-block; width: 90px;">Intermediate</span>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table>
+                    <tbody>
+                    <tr>
+                        <td valign="top">
+                            <div class="sessionDescription">
+                                <div id="ctl00_ctl00_ctl00_blankContent_parentContent_MainContent_Repeater1_ctl01_Div3">
+                                                <span id="ctl00_ctl00_ctl00_blankContent_parentContent_MainContent_Repeater1_ctl01_Label6">
+                                                {Description}
+                                                </span>
+                                </div>
+                            </div>
+                        </td>
+                        <td valign="top">
+                            <div id="ctl00_ctl00_ctl00_blankContent_parentContent_MainContent_Repeater1_ctl01_Div4"
+                                 style="float: right;">
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="sessionEvaluation">
+                </div>
+                <div class="grayBackground">
+                    <table id="RadioButtonListWithArg1"
+                           disabled="disabled" border="0">
+                        <tr>
+                            <td>
+                                <span disabled="disabled"><input id="RadioButtonNotInterested" name="SessionInterest"
+                                                                 type="radio"><label>Not Interested</label></span>
+                            </td>
+                            <td>
+                                <span disabled="disabled"><input id="RadioButtonInterested" name="SessionInterest"
+                                                                 type="radio"><label>Interested</label></span>
+                            </td>
+                            <td>
+                                <span disabled="disabled"><input id="RadioButtonWillAttend" name="SessionInterest"
+                                                                 value=0 disabled="disabled" type="radio"><label>Will
+                                    Attend</label></span>
+                            </td>
+
+                        </tr>
+
+                    </table>
+                </div>
+                <!--TEST-->
+            </td>
+            <td class="sessionTags" valign="top">
+                <div id="ctl00_ctl00_ctl00_blankContent_parentContent_MainContent_Repeater1_ctl01_Div2"
+                     class="tags">
+                    <div class="tagBullet">
+                        <a id="ctl00_ctl00_ctl00_blankContent_parentContent_MainContent_Repeater1_ctl01_RepeaterTagNamesBySession_ctl00_HyperLinkCategory"
+                           href="Sessions.aspx?sortby=title&amp;by=category&amp;tag=6">C#</a>
+                    </div>
+                    <div class="tagBullet">
+                        <a id="ctl00_ctl00_ctl00_blankContent_parentContent_MainContent_Repeater1_ctl01_RepeaterTagNamesBySession_ctl01_HyperLinkCategory"
+                           href="Sessions.aspx?sortby=title&amp;by=category&amp;tag=16">JavaScript</a>
+                    </div>
+                    <div class="tagBullet">
+                        <a id="ctl00_ctl00_ctl00_blankContent_parentContent_MainContent_Repeater1_ctl01_RepeaterTagNamesBySession_ctl02_HyperLinkCategory"
+                           href="Sessions.aspx?sortby=title&amp;by=category&amp;tag=213">NET</a>
+                    </div>
+                    <div class="tagBullet">
+                        <a id="ctl00_ctl00_ctl00_blankContent_parentContent_MainContent_Repeater1_ctl01_RepeaterTagNamesBySession_ctl03_HyperLinkCategory"
+                           href="Sessions.aspx?sortby=title&amp;by=category&amp;tag=89">Performance</a>
+                    </div>
+                    <div class="tagBullet">
+                        <a id="ctl00_ctl00_ctl00_blankContent_parentContent_MainContent_Repeater1_ctl01_RepeaterTagNamesBySession_ctl04_HyperLinkCategory"
+                           href="Sessions.aspx?sortby=title&amp;by=category&amp;tag=59">Python</a>
+                    </div>
+                    <div class="tagBullet">
+                        <a id="ctl00_ctl00_ctl00_blankContent_parentContent_MainContent_Repeater1_ctl01_RepeaterTagNamesBySession_ctl05_HyperLinkCategory"
+                           href="Sessions.aspx?sortby=title&amp;by=category&amp;tag=241">Regular Expressions</a>
+                    </div>
+                    <div class="tagBullet">
+                        <a id="ctl00_ctl00_ctl00_blankContent_parentContent_MainContent_Repeater1_ctl01_RepeaterTagNamesBySession_ctl06_HyperLinkCategory"
+                           href="Sessions.aspx?sortby=title&amp;by=category&amp;tag=22">Ruby</a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+   </tpl>
+   <div class="x-clear"></div>
+
+</div>
+<hr/>
+<br/>
+<hr/>
+<hr/>
+<br/>
+
+<script type="text/javascript" language="javascript">
+    //Ext.onReady(CCWeb.sessionsGrid);
+</script>
+
+</body>
+</html>

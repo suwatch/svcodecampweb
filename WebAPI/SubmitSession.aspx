@@ -3,7 +3,7 @@
     Inherits="SubmitSession" Title="Submit Session CodeCamp SFBA" Codebehind="SubmitSession.aspx.cs" %>
 
 
-<%@ Register Namespace="PeterKellner.Utils"  TagPrefix="CAPTCHA"    %>
+<%@ Register Namespace="PeterKellner.Utils"  TagPrefix="CAPTCHA" assembly="WebAPI"   %>
 
 
 <asp:Content ID="SublinksSessions" ContentPlaceHolderID="blankSublinks" runat="server">

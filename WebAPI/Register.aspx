@@ -2,8 +2,11 @@
     AutoEventWireup="true" ValidateRequest="false" Inherits="Register"
     Title="Registration CodeCamp" Codebehind="Register.aspx.cs" %>
 
-<%@ Register Assembly="App_Code" Namespace="PeterKellner.Utils" TagPrefix="CAPTCHA" %>
-<%@ Register Assembly="App_Code" Namespace="CodeCampSV" TagPrefix="CST" %>
+
+<%@ Register Namespace="PeterKellner.Utils" TagPrefix="CAPTCHA" assembly="WebAPI" %>
+<%@ Register TagPrefix="CST" Namespace="CodeCampSV" Assembly="WebAPI" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="blankContent" runat="Server">
   
     <tr>

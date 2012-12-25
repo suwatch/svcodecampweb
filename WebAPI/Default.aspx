@@ -3,7 +3,7 @@
     Title="Silicon Valley Code Camp Home Page" Codebehind="Default.aspx.cs" %>
 
 <%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
-<%@ Register Src="RegistrationCount.ascx" TagName="RegistrationCount" TagPrefix="uc1" %>
+<%--<%@ Register Src="RegistrationCount.ascx" TagName="RegistrationCount" TagPrefix="uc1" %>--%>
 <%@ Register Src="TwitterFeed.ascx" TagName="TwitterFeed" TagPrefix="uc2" %>
 <%@ Register Src="~/SessionTweetList.ascx" TagPrefix="uc1" TagName="SessionTweetList" %>
 
@@ -123,7 +123,7 @@
                  <div class="pad" visible="False" runat="server" id="ShowChartWithAttendeesCountsID">
                     <asp:HyperLink ID="HyperLink2" NavigateUrl="~/RegistrationCount.aspx" Font-Bold="true"
                         runat="server">Current Registration Count to Date Versus Last Year</asp:HyperLink>
-                    <uc1:RegistrationCount ID="RegistrationCount2" runat="server" />
+                  <%--  <uc1:RegistrationCount ID="RegistrationCount2" runat="server" />--%>
                     <br />
                     <i id="I1" runat="server">(Yellow: Last Year Blue: This Year)</i>
                     <br />

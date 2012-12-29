@@ -445,6 +445,7 @@
       <DependentUpon>Contributors.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SessionController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -2537,6 +2538,11 @@
     <Content Include="text.psd" />
     <Content Include="Version.ashx" />
     <Content Include="WebServiceCodeCamp.ashx" />
+    <Content Include="Views\ApiTest\Session.cshtml" />
+    <Content Include="Views\ApiTest\Index.cshtml" />
+    <Content Include="Views\Home\Session.cshtml" />
+    <Content Include="Views\ApiTest\Index-ori.cshtml" />
+    <Content Include="Views\Home\Copy of Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -2576,16 +2582,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:17138/</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

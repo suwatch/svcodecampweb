@@ -5,38 +5,8 @@
                 <a href="~/">ASP.NET Web API</a></p>
         </div>
     </div>
-    
-    <script type="text/javascript">
-
-        $(document).ready(function () {
-            // Send an AJAX request
-            $.getJSON("api/session/GetAll",
-            function (data) {
-                // On success, 'data' contains a list of products.
-                $.each(data, function (key, val) {
-
-                    //debugger;
-
-                    // Format the text to display.
-                    //var str = val.Name + ': $' + val.Price;
-                    var str = val.PresenterName + ' : ' + val.Title;
-                    
-                    // Add a list item for the product.
-                    $('<li/>', { text: str })
-                    .appendTo($('#sessions'));
-                });
-            });
-        });
-      
-
-
-    </script>
-
 </header>
 <div id="body">
-    
-    <div id="sessions"></div>
-    <br/>
     <section class="featured">
         <div class="content-wrapper">
             <hgroup class="title">

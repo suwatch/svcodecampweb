@@ -1,58 +1,187 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+using System.Web;
+using System.Web.Mvc;
 using CodeCampSV;
 
 namespace WebAPI.Controllers
 {
-    public class SessionController : ApiController
+    public class SessionController : Controller
     {
-
-        //[HttpGet]
-        // http://localhost:17138/api/Session/GetAll
-        public IEnumerable<SessionsResult> GetAll()
+        public ActionResult Index(string year)
         {
+            var codeCampYearId = CodeCampYearId(year);
+            if (codeCampYearId < 0)
+            {
+                throw new HttpException(404, "NotFound");
+            }
 
+            List<SessionsResult> sessions = SessionsManager.I.Get(new SessionsQuery()
+            {
+                CodeCampYearId = codeCampYearId
+            });
 
-            var sessions = SessionsManager.I.Get(new SessionsQuery()
-                                                     {
-                                                         CodeCampYearId = 7
-                                                     });
+            foreach (var rec in sessions)
+            {
+                rec.SessionSlug = Utils.GenerateSlug(rec.Title); // ORM has no access to this function so need to do it here
+            }
 
-            return sessions.ToList();
+            return View(sessions.OrderBy(a => a.SessionSlug));
         }
 
 
+        public ActionResult Detail(string year, string session)
+        {
+            SessionsResult sessionResult;
+
+            var codeCampYearId = CodeCampYearId(year);
+
+            if (codeCampYearId < 0)
+            {
+                throw new HttpException(404, "NotFound");
+            }
+
+            List<SessionsResult> sessions = SessionsManager.I.Get(new SessionsQuery()
+                                                      {
+                                                          CodeCampYearId = codeCampYearId
+                                                      });
+
+            var sessionSlugsDict = new Dictionary<string, int>();
+            foreach (SessionsResult result in sessions)
+            {
+                string slugTitle = Utils.GenerateSlug(result.Title);
+                if (!sessionSlugsDict.ContainsKey(slugTitle))
+                {
+                    sessionSlugsDict.Add(slugTitle, result.Id);
+                }
+            }
+
+            if (sessionSlugsDict.ContainsKey(session))
+            {
+                sessionResult = sessions.FirstOrDefault(a => a.Id == sessionSlugsDict[session]);
+                if (sessionResult != null && Request.Url != null)
+                {
+                    sessionResult.SpeakerPictureUrl =
+                        String.Format("{0}://{1}/{2}", Request.IsSecureConnection ? "https" : "http",
+                                      Request.Url.Authority, sessionResult.SpeakerPictureUrl);
+                }
+            }
+            else
+            {
+                throw new HttpException(404, "NotFound");
+            }
+
+            return View(sessionResult);
+        }
+
+        private static int CodeCampYearId(string year)
+        {
+            var codeCampYears = Utils.GetListCodeCampYear();
+            var dateDict = codeCampYears.ToDictionary(k => k.CampStartDate.Year.ToString(CultureInfo.InvariantCulture),
+                                                      v => v.Id);
+            int codeCampYearId = -1;
+            if (dateDict.ContainsKey(year))
+            {
+                codeCampYearId = dateDict[year];
+            }
+            return codeCampYearId;
+        }
 
 
-        //// GET api/session
-        //public IEnumerable<string> Get()
+        ////
+        //// GET: /Session/
+
+        //public ActionResult Index()
         //{
-        //    return new string[] { "value1", "value2" };
+        //    return View();
         //}
 
-        //// GET api/session/5
-        //public string Get(int id)
+        ////
+        //// GET: /Session/Details/5
+
+        //public ActionResult Details(int id)
         //{
-        //    return "value";
+        //    return View();
         //}
 
-        //// POST api/session
-        //public void Post([FromBody]string value)
+        ////
+        //// GET: /Session/Create
+
+        //public ActionResult Create()
         //{
+        //    return View();
         //}
 
-        //// PUT api/session/5
-        //public void Put(int id, [FromBody]string value)
+        ////
+        //// POST: /Session/Create
+
+        //[HttpPost]
+        //public ActionResult Create(FormCollection collection)
         //{
+        //    try
+        //    {
+        //        // TODO: Add insert logic here
+
+        //        return RedirectToAction("Index");
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
         //}
 
-        //// DELETE api/session/5
-        //public void Delete(int id)
+        ////
+        //// GET: /Session/Edit/5
+
+        //public ActionResult Edit(int id)
         //{
+        //    return View();
+        //}
+
+        ////
+        //// POST: /Session/Edit/5
+
+        //[HttpPost]
+        //public ActionResult Edit(int id, FormCollection collection)
+        //{
+        //    try
+        //    {
+        //        // TODO: Add update logic here
+
+        //        return RedirectToAction("Index");
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
+
+        ////
+        //// GET: /Session/Delete/5
+
+        //public ActionResult Delete(int id)
+        //{
+        //    return View();
+        //}
+
+        ////
+        //// POST: /Session/Delete/5
+
+        //[HttpPost]
+        //public ActionResult Delete(int id, FormCollection collection)
+        //{
+        //    try
+        //    {
+        //        // TODO: Add delete logic here
+
+        //        return RedirectToAction("Index");
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
         //}
     }
 }

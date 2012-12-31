@@ -293,6 +293,7 @@
     <Compile Include="AllAttendees.aspx.designer.cs">
       <DependentUpon>AllAttendees.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Api\SessionController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -2543,6 +2544,8 @@
     <Content Include="Views\Home\Session.cshtml" />
     <Content Include="Views\ApiTest\Index-ori.cshtml" />
     <Content Include="Views\Home\Copy of Index.cshtml" />
+    <Content Include="Views\Session\index.cshtml" />
+    <Content Include="Views\Session\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

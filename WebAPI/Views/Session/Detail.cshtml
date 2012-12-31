@@ -1,0 +1,17 @@
+﻿@model CodeCampSV.SessionsResult
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detail</h2>
+
+@Model.Id
+<br/>
+@Model.Title
+<br/>
+@Model.Description
+<br/>
+
+<img src="@Model.SpeakerPictureUrl" alt="@Model.PresenterName"   />

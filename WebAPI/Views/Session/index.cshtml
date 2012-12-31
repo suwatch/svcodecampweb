@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2>Session Page</h2>
+
+ <script type="text/javascript">
+
+        $(document).ready(function () {
+            // Send an AJAX request
+            $.getJSON("api/session/GetAll",
+            function (data) {
+                // On success, 'data' contains a list of products.
+                $.each(data, function (key, val) {
+
+                    //debugger;
+
+                    // Format the text to display.
+                    //var str = val.Name + ': $' + val.Price;
+                    var str = val.PresenterName + ' : ' + val.Title;
+                    
+                    // Add a list item for the product.
+                    $('<li/>', { text: str })
+                    .appendTo($('#sessions'));
+                });
+            });
+        });
+      
+
+
+    </script>
+
+
+ <div id="sessions"></div>

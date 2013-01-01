@@ -26,9 +26,10 @@ namespace WebAPI.Controllers
             foreach (var rec in sessions)
             {
                 rec.SessionSlug = Utils.GenerateSlug(rec.Title); // ORM has no access to this function so need to do it here
+                UpdateSpeakerPictureUrl(rec);
             }
 
-            return View(sessions.OrderBy(a => a.SessionSlug));
+            return View(sessions.OrderBy(a => a.SessionSlug).ToList());
         }
 
 
@@ -63,9 +64,7 @@ namespace WebAPI.Controllers
                 sessionResult = sessions.FirstOrDefault(a => a.Id == sessionSlugsDict[session]);
                 if (sessionResult != null && Request.Url != null)
                 {
-                    sessionResult.SpeakerPictureUrl =
-                        String.Format("{0}://{1}/{2}", Request.IsSecureConnection ? "https" : "http",
-                                      Request.Url.Authority, sessionResult.SpeakerPictureUrl);
+                    UpdateSpeakerPictureUrl(sessionResult);
                 }
             }
             else
@@ -74,6 +73,26 @@ namespace WebAPI.Controllers
             }
 
             return View(sessionResult);
+        }
+
+        private void UpdateSpeakerPictureUrl(SessionsResult sessionResult)
+        {
+            sessionResult.SpeakerPictureUrl =
+                String.Format(
+                    "{0}://{1}/attendeeimage/{2}.jpg", // adding stuff like ?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white is for the client
+                    Request.IsSecureConnection ? "https" : "http",
+                    Request.Url.Authority, sessionResult.Attendeesid);
+
+            sessionResult.SessionUrl =
+                String.Format(
+                    "{0}://{1}/Session/{2}/{3}",
+                    Request.IsSecureConnection ? "https" : "http",
+                    Request.Url.Authority,
+                    Utils.ConvertCodeCampYearToActualYear(
+                        sessionResult.CodeCampYearId.ToString(CultureInfo.InvariantCulture)),
+                    sessionResult.SessionSlug);
+
+
         }
 
         private static int CodeCampYearId(string year)

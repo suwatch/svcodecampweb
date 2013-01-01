@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -35,7 +36,7 @@ namespace WebAPI
                      dbo.SponsorList.id
         ";
 
-            LabelCodeCampYearId.Text = Utils.GetCurrentCodeCampYear().ToString();
+            LabelCodeCampYearId.Text = Utils.GetCurrentCodeCampYear().ToString(CultureInfo.InvariantCulture);
 
             int cacheTimeSeconds = Utils.RetrieveSecondsForSessionCacheTimeout();
 

@@ -1259,6 +1259,7 @@
     <Compile Include="ViewEvents.aspx.designer.cs">
       <DependentUpon>ViewEvents.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\SessionViewModel.cs" />
     <Compile Include="Volunteer.aspx.cs">
       <DependentUpon>Volunteer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

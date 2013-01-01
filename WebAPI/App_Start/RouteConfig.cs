@@ -13,27 +13,71 @@ namespace WebAPI
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            string currentYear =
+                Utils.ConvertCodeCampYearToActualYear(
+                    Utils.GetCurrentCodeCampYear().ToString(CultureInfo.InvariantCulture));
+
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // SESSIONS
             routes.MapRoute("SessionRouteAll", "Session/{year}",
                       new
                       {
                           /* Your default route */
                           controller = "Session",
                           action = "Index",
-                          year = Utils.ConvertCodeCampYearToActualYear(Utils.GetCurrentCodeCampYear().ToString(CultureInfo.InvariantCulture))
+                          year = currentYear
+                      });
+            routes.MapRoute("SessionRouteDetail", "Session/{year}/{session}",
+                      new
+                      {
+                          /* Your default route */
+                          controller = "Session",
+                          action = "Detail",
+                          year = -1,
+                          session = -1
                       });
 
-            routes.MapRoute("SessionRouteDetail", "Session/{year}/{session}",
-                       new
-                       {
-                           /* Your default route */
-                           controller = "Session",
-                           action = "Detail",
-                           year = -1,
-                           session = -1
-                       });
 
+            // SPONSORS
+            routes.MapRoute("SponsorRouteAll", "Sponsor/{year}",
+                      new
+                      {
+                          /* Your default route */
+                          controller = "Sponsor",
+                          action = "Index",
+                          year = currentYear
+                      });
+            routes.MapRoute("SponsorRouteDetail", "Sponsor/{year}/{sponsor}",
+                     new
+                     {
+                         /* Your default route */
+                         controller = "Sponsor",
+                         action = "Detail",
+                         year = -1,
+                         sponsor = ""
+                     });
+
+            // SPEAKERS
+            routes.MapRoute("SpeakerRouteAll", "Speaker/{year}",
+                      new
+                      {
+                          /* Your default route */
+                          controller = "Speaker",
+                          action = "Index",
+                          year = currentYear
+                      });
+            routes.MapRoute("SpeakerRouteDetail", "Speaker/{year}/{speaker}",
+                     new
+                     {
+                         /* Your default route */
+                         controller = "Speaker",
+                         action = "Detail",
+                         year = -1,
+                         speaker = ""
+                     });
+
+           
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

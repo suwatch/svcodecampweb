@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CodeCampSV;
+using WebAPI.ViewModels;
 
 namespace WebAPI.Controllers
 {
@@ -29,8 +30,34 @@ namespace WebAPI.Controllers
                 UpdateSpeakerPictureUrl(rec);
             }
 
-            return View(sessions.OrderBy(a => a.SessionSlug).ToList());
+            List<SponsorListResult> sponsors =
+                SponsorListManager.I.Get(new SponsorListQuery()
+                                             {
+                                                 CodeCampYearId = codeCampYearId,
+                                                 IncludeSponsorLevel = true,
+                                                 PlatinumLevel = Utils.MinSponsorLevelPlatinum,
+                                                 GoldLevel = Utils.MinSponsorLevelGold,
+                                                 SilverLevel = Utils.MinSponsorLevelSilver,
+                                                 BronzeLevel = Utils.MinSponsorLevelBronze
+                                             });
+
+
+            foreach (var rec in sponsors)
+            {
+                UpdateSponsorPictureUrl(rec);
+            }
+
+            var viewModel = new SessionViewModel()
+                                {
+                                    DaysUntilCodeCampString = "9999 Days Until Camp",
+                                    Sessions = sessions.OrderBy(a => a.SessionSlug).ToList(),
+                                    Sponsors = sponsors
+                                };
+
+            return View(viewModel);
         }
+
+     
 
 
         public ActionResult Detail(string year, string session)
@@ -75,24 +102,33 @@ namespace WebAPI.Controllers
             return View(sessionResult);
         }
 
-        private void UpdateSpeakerPictureUrl(SessionsResult sessionResult)
+        private void UpdateSpeakerPictureUrl(SessionsResult rec)
         {
-            sessionResult.SpeakerPictureUrl =
+            rec.SpeakerPictureUrl =
                 String.Format(
                     "{0}://{1}/attendeeimage/{2}.jpg", // adding stuff like ?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white is for the client
                     Request.IsSecureConnection ? "https" : "http",
-                    Request.Url.Authority, sessionResult.Attendeesid);
+                    Request.Url.Authority, rec.Attendeesid);
 
-            sessionResult.SessionUrl =
+            rec.SessionUrl =
                 String.Format(
                     "{0}://{1}/Session/{2}/{3}",
                     Request.IsSecureConnection ? "https" : "http",
                     Request.Url.Authority,
                     Utils.ConvertCodeCampYearToActualYear(
-                        sessionResult.CodeCampYearId.ToString(CultureInfo.InvariantCulture)),
-                    sessionResult.SessionSlug);
+                        rec.CodeCampYearId.ToString(CultureInfo.InvariantCulture)),
+                    rec.SessionSlug);
 
 
+        }
+
+        private void UpdateSponsorPictureUrl(SponsorListResult rec)
+        {
+            rec.ImageURL =
+               String.Format(
+                   "{0}://{1}/sponsorimage/{2}.jpg", // adding stuff like ?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white is for the client
+                   Request.IsSecureConnection ? "https" : "http",
+                   Request.Url.Authority, rec.Id);
         }
 
         private static int CodeCampYearId(string year)

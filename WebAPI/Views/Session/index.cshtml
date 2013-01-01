@@ -1,15 +1,15 @@
-﻿@model List<CodeCampSV.SessionsResult>
+﻿@model WebAPI.ViewModels.SessionViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
+<h1>@Model.DaysUntilCodeCampString</h1>
 
-<h2>Session Page</h2>
+<h2>Sessions</h2>
 
-@foreach (var session in Model) {
-
+@foreach (var session in Model.Sessions) {
     <br/>
     @session.Title
     <br/>
@@ -18,9 +18,23 @@
     <img src="@(session.SpeakerPictureUrl)?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white" alt="@session.PresenterName"  />
     <br/>
     <a href=" @session.SessionUrl"> @session.SessionUrl</a>
-   
+    <br/> 
+}
+
+@foreach (var sponsor in Model.Sponsors) {
     <br/>
-       
+    @sponsor.SponsorName
+    <br/>
+    @sponsor.NavigateURL
+      <br/>
+    @sponsor.SponsorSupportLevel
+     <br/>
+    @sponsor.SponsorSupportLevelOrder
+    <br/>
+    @(sponsor.ImageURL)
+    <br/>
+    <img src="@(sponsor.ImageURL)?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white" alt="@sponsor.SponsorName"  />
+    <hr/>
 }
 
 

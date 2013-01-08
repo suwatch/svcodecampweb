@@ -2374,7 +2374,6 @@
     <Content Include="Images\Sponsors\image_source\pluralsight-color-logo.eps" />
     <Content Include="Images\Sponsors\image_source\Wakanda + character.eps" />
     <Content Include="Images\Sponsors\Netflix_4C_White_Logo.eps" />
-    <Content Include="Images\Sponsors\WS_FTP.LOG" />
     <Content Include="GeneralHandlers\CodeCampConfigs.ashx" />
     <Content Include="GeneralHandlers\Login.ashx" />
     <Content Include="GeneralHandlers\Presenters.ashx" />
@@ -2484,6 +2483,8 @@
     <Content Include="Code\DataSetVistaInstall.xss">
       <DependentUpon>DataSetVistaInstall.xsd</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\svcodecamp - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\svcodecamp - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="ListNanny.aspx" />
     <Content Include="MiscPagesxx\Membership1.aspx" />
@@ -2531,7 +2532,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="WebConnectionStrings.config" />
+    <Content Include="WebConnectionStrings.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.sitemap" />
     <Content Include="SessionInterest.ashx" />
     <Content Include="SessionJSONHandler.ashx" />

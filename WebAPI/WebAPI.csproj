@@ -2532,7 +2532,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="WebConnectionStrings.config">
+    <Content Include="WebConnectionStrings_orcsweb.config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.sitemap" />
@@ -2550,6 +2550,7 @@
     <Content Include="Views\Home\Copy of Index.cshtml" />
     <Content Include="Views\Session\index.cshtml" />
     <Content Include="Views\Session\Detail.cshtml" />
+    <Content Include="WebConnectionStrings.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

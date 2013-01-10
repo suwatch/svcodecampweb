@@ -56,9 +56,6 @@
     <OutputPath>bin\Production\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Gurock.SmartInspect.LinqToSql">
-      <HintPath>..\Web\Bin\Gurock.SmartInspect.LinqToSql.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />

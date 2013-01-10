@@ -5,7 +5,7 @@ using System.Configuration;
 using System.Data.Linq;
 using System.Data.Linq.Mapping;
 using System.Linq;
-using Gurock.SmartInspect.LinqToSql;
+
 
 
 namespace CodeCampSV
@@ -42,10 +42,10 @@ namespace CodeCampSV
         {
             var meta = new TDataContext();
 
-            if (_smartInspectEnabled)
-            {
-                meta.Log = new SmartInspectLinqToSqlAdapter();
-            }
+            //if (_smartInspectEnabled)
+            //{
+            //    meta.Log = new SmartInspectLinqToSqlAdapter();
+            //}
 
             var record = new TEntity();
             ApplyToDataModel(record, result);
@@ -86,10 +86,10 @@ namespace CodeCampSV
             {
                 var meta = new TDataContext();
 
-                if (_smartInspectEnabled)
-                {
-                    meta.Log = new SmartInspectLinqToSqlAdapter();
-                }
+                //if (_smartInspectEnabled)
+                //{
+                //    meta.Log = new SmartInspectLinqToSqlAdapter();
+                //}
 
                 var tableAttribute =
                     AttributeHelper.GetAttribute(typeof (TEntity), typeof (TableAttribute)) as TableAttribute;
@@ -125,10 +125,10 @@ namespace CodeCampSV
 
             var meta = new TDataContext();
 
-            if (_smartInspectEnabled)
-            {
-                meta.Log = new SmartInspectLinqToSqlAdapter();
-            }
+            //if (_smartInspectEnabled)
+            //{
+            //    meta.Log = new SmartInspectLinqToSqlAdapter();
+            //}
 
             //var table = meta.GetTable<TEntity>();
             //List<TEntity> entities = new List<TEntity>();
@@ -145,10 +145,10 @@ namespace CodeCampSV
         {
             var meta = new TDataContext();
 
-            if (_smartInspectEnabled)
-            {
-                meta.Log = new SmartInspectLinqToSqlAdapter();
-            }
+            //if (_smartInspectEnabled)
+            //{
+            //    meta.Log = new SmartInspectLinqToSqlAdapter();
+            //}
 
             var tableAttribute =
                 AttributeHelper.GetAttribute(typeof (TEntity), typeof (TableAttribute)) as TableAttribute;

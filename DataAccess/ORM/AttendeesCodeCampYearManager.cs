@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CodeCampSV;
 using System.ComponentModel;
-using Gurock.SmartInspect.LinqToSql;
+
 
 namespace CodeCampSV
 {

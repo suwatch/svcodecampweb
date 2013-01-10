@@ -1,0 +1,136 @@
+﻿//D This is the Manager class used for data operations.  It is meant to have another Partial
+//D class associated with it.
+//D C 3PLogic, Inc.
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.ComponentModel;
+
+//###32
+// using ThreePLogic.Data.ThreePLogicEntity;
+
+
+//###31
+// namespace ThreePLogic.Data.ThreePLogicAccess
+{
+    //D Here are the 2 methods that needs to be auto genearted. 
+    //D First is a one to one maping to the database columns. 
+    //D Since we auto generate the results class too, we can guarantee the columns are all there
+    [DataObject(true)]
+    //###15
+    //public partial class LoadManager : ManagerBase<LoadManager, LoadResult, Load, ThreePLogicDataContext>
+    {
+        //###14
+        //protected override void ApplyToDataModel(Load record, LoadResult result)
+        {
+            // The columns below are all the columns from the table with the exception of the primary key (Id)
+            //###11
+            //record.CreatedByCompanyId = result.CreatedByCompanyId ?? record.CreatedByCompanyId;
+            //record.DateCreated = result.DateCreated ?? record.DateCreated;
+            //record.LoadStatusId = result.LoadStatusId ?? record.LoadStatusId;
+            //record.ShipmentTypeId = result.ShipmentTypeId ?? record.ShipmentTypeId;
+            //record.TenderedByCompanyId = result.TenderedByCompanyId ?? record.TenderedByCompanyId;
+            //record.LoadReference = result.LoadReference ?? record.LoadReference;
+            //record.Price = result.Price ?? record.Price
+            //record.PlanId = result.PlanId ?? record.PlanId;
+            //D
+            //D Used by Default in Update and Insert Methods.
+        }
+
+        //###16
+        //protected override Load GetEntityById(ThreePLogicDataContext meta, int id)
+        {
+            //###17
+            //return (from r in meta.Load where r.Id == id select r).FirstOrDefault();
+        }
+
+		//###37
+		//public IQueryable<AttendeesResult> GetBaseResultIQueryable(IQueryable<Attendees> baseQuery)
+        {
+		    //###22
+		    //IQueryable<AttendeesResult> results = (from myData in baseQuery
+            //                                       orderby myData.Id
+            //                                       select new AttendeesResult
+            //                                       {
+            //                                           Id = myData.Id,
+            //                                           PKID = myData.PKID,
+            //                                           Username = myData.Username,
+            //                                           ApplicationName = myData.ApplicationName,
+			//										   ...
+			//										   SaturdayDinner = myData.SaturdayDinner,
+            //                                           PhoneNumber = myData.PhoneNumber
+            //                                       });
+		    return results;
+        }
+        
+        //###34
+        //public List<LoadResult> GetJustBaseTableColumns(LoadQuery query)
+        {
+            //###35
+			//foreach (var info in typeof (SessionsQuery).GetProperties())
+            {
+                object value = info.GetValue(query, null);
+                if (value != null)
+                {
+                    object[] attributes = info.GetCustomAttributes(typeof (AutoGenColumnAttribute), true);
+                    if (attributes.Length == 0)
+                    {
+                        //###36
+                        //string errorMessage = String.Format("Attribute Illegal Here, Use Normal Get(..), not GetJustBaseTableColumns(..)  Table {0} : Method {1}",TableName, "columnName");
+                        throw new ApplicationException(errorMessage);
+                    }
+                }
+            }
+        
+
+            //###33
+            //var meta = new ThreePLogicDataContext();
+
+            //###21
+            //IQueryable<Company> baseQuery = from myData in meta.Company select myData;
+            
+            baseQuery = BaseQueryAutoGen(baseQuery,query);
+            
+            //###22
+            //IQueryable<CompanyResult> results = (from myData in baseQuery
+            //                                     orderby myData.Id
+            //                                     select new CompanyResult
+            //                                                {
+            //                                                    Id = myData.Id,
+            //                                                    Name = myData.Name,
+            //                                                    CompanyURL = myData.CompanyURL,
+            //                                                    CompanyNotes = myData.CompanyNotes,
+            //                                                    ActiveFlag = myData.ActiveFlag,
+            //                                                    CompanyStatusId = myData.CompanyStatusId,
+            //                                                    ParentId = myData.ParentId,
+            //                                                    CreateDate =
+            //                                                        new DateTime(myData.CreateDate.Ticks,
+            //                                                                     DateTimeKind.Utc)
+            //                                                });
+            
+            //###23
+            //List<CompanyResult> resultList = GetFinalResults(results, query);
+            //D
+            return resultList;  
+        }
+        
+        
+        //D This is called from partial class which can be modified and not regenerated
+        //D This class is expected to be regenerated as new columns are added
+        //###28
+        //private static IQueryable<CompanyAuthority> BaseQueryAutoGen(IQueryable<CompanyAuthority> baseQuery, CompanyAuthorityQuery query)
+        {
+			//D This assumes all tables have an Id column
+            if (query.Id != null) baseQuery = baseQuery.Where(a => a.Id == query.Id);
+            if (query.Ids != null) baseQuery = baseQuery.Where(a => query.Ids.Contains(a.Id));
+            
+            //D Generate Queries for Each type of data
+            //if (query.EffectiveDate != null) baseQuery = baseQuery.Where(a => a.EffectiveDate.CompareTo(query.EffectiveDate) == 0);
+            //if (query.CompanyId != null) baseQuery = baseQuery.Where(a => a.CompanyId == query.CompanyId);
+            //###30
+
+            return baseQuery;
+        }
+        
+    }
+}

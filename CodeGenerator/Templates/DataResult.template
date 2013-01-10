@@ -1,0 +1,29 @@
+﻿//D This file is meant as a starting point only.  it should be copied into working source tree only if there is not
+//D an existing file with this name in it already.
+//D C 3PLogic, Inc.
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.ComponentModel;
+
+//###31
+// namespace ThreePLogic.Data.ThreePLogicAccess
+{
+    [Serializable][DataContract]
+    //public partial class LoadResult
+    //###18
+    {
+        //D Put things here that may not come from the table directly
+        //D For example, you may have StatusTypeId in your Result, however
+        //D you want to return the StatusTypeName so you would be the
+        //D following here:
+        //D public string StatusTypeName { get; set; }
+        //D
+        //D You can also put computed type columns like
+        //D public bool? IsStar { get; set; }
+        //D
+        //D Or even related datasets like:
+        //D public List<CargoResult> Cargos { get; set; }
+        //D
+    }
+}

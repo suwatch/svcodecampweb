@@ -1,0 +1,28 @@
+﻿//D  Regenerated Code
+//D  C 3PLogic, Inc.
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Data.SqlTypes;
+using System.ComponentModel;
+
+//###31
+// namespace ThreePLogic.Data.ThreePLogicAccess
+{
+    [Serializable]
+    //###27
+    //public partial class CompanyAuthorityQuery : QueryBase
+    {
+        //D  Retrieving by one Id or a list of Id's is always supported.
+        [AutoGenColumn]
+        public int? Id { get; set; }
+        [AutoGenColumn]
+        public List<int> Ids { get; set; }
+        //D
+        //D Generate query for all columns in table
+        // public DateTime? EffectiveDate;
+        // public string Name;
+        // public bool? isActive;
+        //###29
+    }
+}

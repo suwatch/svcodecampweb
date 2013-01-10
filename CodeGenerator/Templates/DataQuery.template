@@ -1,0 +1,25 @@
+﻿//D This file is meant as a starting point only.  it should be copied into working source tree only if there is not
+//D an existing file with this name in it already.
+//D C 3PLogic, Inc.
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.ComponentModel;
+
+//###31
+// namespace ThreePLogic.Data.ThreePLogicAccess
+{
+    //###19
+    //public partial class LoadQuery
+    {
+		//D Make sure to make Query Parameters Properties with  {get; set;} and not just public properties
+		//D (Otherwise, the [AutoGenAttribute] column can not do it's job to make sure you don't specify parameters
+		//D  that are not in GetJustBaseTableColumns return)
+        //D
+        //D All the items in this section are ANDed together.
+        //D Below are examples of the types of Queries you can use among others.
+        //D public bool? WithCargo { get; set; }
+        //D public bool? IsStared { get; set; }
+        //D public List<int> PlanIds { get; set; }
+    }
+}

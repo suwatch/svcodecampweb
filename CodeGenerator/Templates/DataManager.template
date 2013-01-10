@@ -1,0 +1,97 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+//###32
+// using ThreePLogic.Data.ThreePLogicEntity;
+using System.ComponentModel;
+
+//###31
+// namespace ThreePLogic.Data.ThreePLogicAccess
+{
+    //public partial class LoadManager
+    //###24
+    {
+        //D public override void Insert(LoadResult result)
+        //D {
+        //D    base.Insert(result);
+        //D    if (result.Cargos != null && result.Cargos.Count > 0)
+        //D    {
+        //D       foreach (CargoResult c in result.Cargos)
+        //D       {
+        //D           c.LoadId = result.Id;
+        //D           CargoManager.I.Insert(c);
+        //D        }
+        //D     }
+        //D }
+        //D
+        //D public override void Update(LoadResult result)
+        //D {
+        //D     base.Update(result);
+        //D     if (result.Cargos != null && result.Cargos.Count > 0)
+        //D     {
+        //D         CargoManager.I.Update(result.Cargos);
+        //D     }
+        //D }
+
+        //###20
+        //public List<LoadResult> Get(LoadQuery query)
+        {
+
+            //###33
+            //var meta = new ThreePLogicDataContext();
+
+            //###21
+            //IQueryable<Company> baseQuery = from myData in meta.Company select myData;
+            
+           
+            //D next is automated query formation from AutoGen Shared Class 
+            //D (do not remove next line or filters will go away)
+            baseQuery = BaseQueryAutoGen(baseQuery,query);
+            
+			//###38
+			// IQueryable<AttendeesResult> results = GetBaseResultIQueryable(baseQuery);
+
+            ////////////xxx22
+            //IQueryable<CompanyResult> results = (from myData in baseQuery
+            //                                     orderby myData.Id
+            //                                     select new CompanyResult
+            //                                                {
+            //                                                    Id = myData.Id,
+            //                                                    Name = myData.Name,
+            //                                                    CompanyURL = myData.CompanyURL,
+            //                                                    CompanyNotes = myData.CompanyNotes,
+            //                                                    ActiveFlag = myData.ActiveFlag,
+            //                                                    CompanyStatusId = myData.CompanyStatusId,
+            //                                                    ParentId = myData.ParentId,
+            //                                                    CreateDate =
+            //                                                        new DateTime(myData.CreateDate.Ticks,
+            //                                                                     DateTimeKind.Utc)
+            //                                                });
+            
+            //###23
+            //List<CompanyResult> resultList = GetFinalResults(results, query);
+            
+            //D Put Stuff Here if you want to load another result
+            //D The following is done AFTER GetFinalResults so that we don't waste machine cycles sucking in all the
+            //D addresses for all results returned, just the ones that are actually being returned.
+            //D if (query.WithAddress != null && query.WithAddress == true)
+            //D {
+            //D    foreach (var r in companyResultList)
+            //D    {
+            //D        r.CompanyAddressResultList =
+            //D            CompanyAddressManager.I.Get(new CompanyAddressQuery { CompanyIds = query.Ids, WithAddress = true });
+            //D    }
+            //D }
+            //D            
+            return resultList;  
+        }
+        
+        [DataObjectMethod(DataObjectMethodType.Select, true)]
+        //public List<CompanyAuthorityResult> GetAll()
+        //###25
+        {
+            //###26
+            //return Get(new CompanyAuthorityQuery {IsMaterializeResult = true});
+        }
+    }
+}

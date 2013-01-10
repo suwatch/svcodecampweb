@@ -1,0 +1,34 @@
+﻿//D This is the Class that is used by the Manager class for data operations.
+//D C 3PLogic, Inc.
+
+using System;
+using System.Data.SqlTypes;
+using System.Runtime.Serialization;
+
+//###31
+// namespace ThreePLogic.Data.ThreePLogicAccess
+{
+    //Here are all the columns which are exact one to one mapping from the database table
+    //except the Id column which is in the ResultBase
+    //public partial class LoadResult : ResultBase
+    //###12
+    {
+        //###13
+        
+        //public int? LoadStatusId { get; set; }
+        //public int? ShipmentTypeId { get; set; }
+        //public int? TenderedByCompanyId { get; set; }
+        //public int? CreatedByCompanyId { get; set; }
+        //public string LoadReference { get; set; }
+        //public DateTime? DateCreated { get; set; }
+        //public double? Price { get; set; }
+        //public int? PlanId { get; set; }
+        //D 
+        //D Do not put Id here since it is in ResultBase already
+        //D 
+        //D Might include other classes here such as:
+        //D public List<PhoneResult> AssociatedPhoneResult { get; set; }
+        //D or
+        //D public List<SegmentResult> Segments { get; set; }
+    }
+}

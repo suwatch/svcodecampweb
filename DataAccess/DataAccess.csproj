@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{24EB0137-ECA0-43EA-8143-245917D6CDAC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataAccess</RootNamespace>
+    <AssemblyName>DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Production|AnyCPU'">
+    <OutputPath>bin\Production\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Gurock.SmartInspect.LinqToSql">
+      <HintPath>..\Web\Bin\Gurock.SmartInspect.LinqToSql.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Converters\AttributeHelper.cs" />
+    <Compile Include="Converters\DoubleConverter.cs" />
+    <Compile Include="Converters\IntConverter.cs" />
+    <Compile Include="Converters\LongConverter.cs" />
+    <Compile Include="Converters\LongDateTimeConverter.cs" />
+    <Compile Include="DataFoundation\AutoGenColumnAttribute.cs" />
+    <Compile Include="DataFoundation\ManagerBase.cs" />
+    <Compile Include="DataFoundation\QueryBase.cs" />
+    <Compile Include="DataFoundation\ResultBase.cs" />
+    <Compile Include="Extensions\ListExtension.cs" />
+    <Compile Include="Extensions\ObjectExtension.cs" />
+    <Compile Include="Extensions\StringExtension.cs" />
+    <Compile Include="ORM\AttendeesCodeCampYearManager.cs" />
+    <Compile Include="ORM\AttendeesCodeCampYearQuery.cs" />
+    <Compile Include="ORM\AttendeesCodeCampYearResult.cs" />
+    <Compile Include="ORM\AttendeesManager.cs" />
+    <Compile Include="ORM\AttendeesQuery.cs" />
+    <Compile Include="ORM\AttendeesResult.cs" />
+    <Compile Include="ORM\AttendeesTagListDetailManager.cs" />
+    <Compile Include="ORM\AttendeesTagListDetailQuery.cs" />
+    <Compile Include="ORM\AttendeesTagListDetailResult.cs" />
+    <Compile Include="ORM\AttendeesTagListManager.cs" />
+    <Compile Include="ORM\AttendeesTagListQuery.cs" />
+    <Compile Include="ORM\AttendeesTagListResult.cs" />
+    <Compile Include="ORM\AttendeeVideoManager.cs" />
+    <Compile Include="ORM\AttendeeVideoQuery.cs" />
+    <Compile Include="ORM\AttendeeVideoResult.cs" />
+    <Compile Include="ORM\AttendeeVolunteerManager.cs" />
+    <Compile Include="ORM\AttendeeVolunteerQuery.cs" />
+    <Compile Include="ORM\AttendeeVolunteerResult.cs" />
+    <Compile Include="ORM\AutoGen\AttendeesCodeCampYearManager.cs" />
+    <Compile Include="ORM\AutoGen\AttendeesCodeCampYearQuery.cs" />
+    <Compile Include="ORM\AutoGen\AttendeesCodeCampYearResult.cs" />
+    <Compile Include="ORM\AutoGen\AttendeesManager.cs" />
+    <Compile Include="ORM\AutoGen\AttendeesQuery.cs" />
+    <Compile Include="ORM\AutoGen\AttendeesResult.cs" />
+    <Compile Include="ORM\AutoGen\AttendeesTagListDetailManager.cs" />
+    <Compile Include="ORM\AutoGen\AttendeesTagListDetailQuery.cs" />
+    <Compile Include="ORM\AutoGen\AttendeesTagListDetailResult.cs" />
+    <Compile Include="ORM\AutoGen\AttendeesTagListManager.cs" />
+    <Compile Include="ORM\AutoGen\AttendeesTagListQuery.cs" />
+    <Compile Include="ORM\AutoGen\AttendeesTagListResult.cs" />
+    <Compile Include="ORM\AutoGen\AttendeeVideoManager.cs" />
+    <Compile Include="ORM\AutoGen\AttendeeVideoQuery.cs" />
+    <Compile Include="ORM\AutoGen\AttendeeVideoResult.cs" />
+    <Compile Include="ORM\AutoGen\AttendeeVolunteerManager.cs" />
+    <Compile Include="ORM\AutoGen\AttendeeVolunteerQuery.cs" />
+    <Compile Include="ORM\AutoGen\AttendeeVolunteerResult.cs" />
+    <Compile Include="ORM\AutoGen\CodeCampEvalsManager.cs" />
+    <Compile Include="ORM\AutoGen\CodeCampEvalsQuery.cs" />
+    <Compile Include="ORM\AutoGen\CodeCampEvalsResult.cs" />
+    <Compile Include="ORM\AutoGen\CodeCampYearManager.cs" />
+    <Compile Include="ORM\AutoGen\CodeCampYearQuery.cs" />
+    <Compile Include="ORM\AutoGen\CodeCampYearResult.cs" />
+    <Compile Include="ORM\AutoGen\ConfigurationDataManager.cs" />
+    <Compile Include="ORM\AutoGen\ConfigurationDataQuery.cs" />
+    <Compile Include="ORM\AutoGen\ConfigurationDataResult.cs" />
+    <Compile Include="ORM\AutoGen\EmailDetailsManager.cs" />
+    <Compile Include="ORM\AutoGen\EmailDetailsQuery.cs" />
+    <Compile Include="ORM\AutoGen\EmailDetailsResult.cs" />
+    <Compile Include="ORM\AutoGen\EmailOptOutManager.cs" />
+    <Compile Include="ORM\AutoGen\EmailOptOutQuery.cs" />
+    <Compile Include="ORM\AutoGen\EmailOptOutResult.cs" />
+    <Compile Include="ORM\AutoGen\LectureRoomsManager.cs" />
+    <Compile Include="ORM\AutoGen\LectureRoomsQuery.cs" />
+    <Compile Include="ORM\AutoGen\LectureRoomsResult.cs" />
+    <Compile Include="ORM\AutoGen\Log4NetAllManager.cs" />
+    <Compile Include="ORM\AutoGen\Log4NetAllQuery.cs" />
+    <Compile Include="ORM\AutoGen\Log4NetAllResult.cs" />
+    <Compile Include="ORM\AutoGen\PicturesManager.cs" />
+    <Compile Include="ORM\AutoGen\PicturesQuery.cs" />
+    <Compile Include="ORM\AutoGen\PicturesResult.cs" />
+    <Compile Include="ORM\AutoGen\ProfileDataManager.cs" />
+    <Compile Include="ORM\AutoGen\ProfileDataQuery.cs" />
+    <Compile Include="ORM\AutoGen\ProfileDataResult.cs" />
+    <Compile Include="ORM\AutoGen\ReferringUrlGroupManager.cs" />
+    <Compile Include="ORM\AutoGen\ReferringUrlGroupQuery.cs" />
+    <Compile Include="ORM\AutoGen\ReferringUrlGroupResult.cs" />
+    <Compile Include="ORM\AutoGen\ReferringUrlManager.cs" />
+    <Compile Include="ORM\AutoGen\ReferringUrlQuery.cs" />
+    <Compile Include="ORM\AutoGen\ReferringUrlResult.cs" />
+    <Compile Include="ORM\AutoGen\RolesInMembershipManager.cs" />
+    <Compile Include="ORM\AutoGen\RolesInMembershipQuery.cs" />
+    <Compile Include="ORM\AutoGen\RolesInMembershipResult.cs" />
+    <Compile Include="ORM\AutoGen\SessionAttendeeManager.cs" />
+    <Compile Include="ORM\AutoGen\SessionAttendeeQuery.cs" />
+    <Compile Include="ORM\AutoGen\SessionAttendeeResult.cs" />
+    <Compile Include="ORM\AutoGen\SessionEvalsManager.cs" />
+    <Compile Include="ORM\AutoGen\SessionEvalsQuery.cs" />
+    <Compile Include="ORM\AutoGen\SessionEvalsResult.cs" />
+    <Compile Include="ORM\AutoGen\SessionLevelsManager.cs" />
+    <Compile Include="ORM\AutoGen\SessionLevelsQuery.cs" />
+    <Compile Include="ORM\AutoGen\SessionLevelsResult.cs" />
+    <Compile Include="ORM\AutoGen\SessionPicturesManager.cs" />
+    <Compile Include="ORM\AutoGen\SessionPicturesQuery.cs" />
+    <Compile Include="ORM\AutoGen\SessionPicturesResult.cs" />
+    <Compile Include="ORM\AutoGen\SessionPresenterManager.cs" />
+    <Compile Include="ORM\AutoGen\SessionPresenterQuery.cs" />
+    <Compile Include="ORM\AutoGen\SessionPresenterResult.cs" />
+    <Compile Include="ORM\AutoGen\SessionsJobListingManager.cs" />
+    <Compile Include="ORM\AutoGen\SessionsJobListingQuery.cs" />
+    <Compile Include="ORM\AutoGen\SessionsJobListingResult.cs" />
+    <Compile Include="ORM\AutoGen\SessionsManager.cs" />
+    <Compile Include="ORM\AutoGen\SessionsQuery.cs" />
+    <Compile Include="ORM\AutoGen\SessionsResult.cs" />
+    <Compile Include="ORM\AutoGen\SessionTagsManager.cs" />
+    <Compile Include="ORM\AutoGen\SessionTagsQuery.cs" />
+    <Compile Include="ORM\AutoGen\SessionTagsResult.cs" />
+    <Compile Include="ORM\AutoGen\SessionTimesManager.cs" />
+    <Compile Include="ORM\AutoGen\SessionTimesQuery.cs" />
+    <Compile Include="ORM\AutoGen\SessionTimesResult.cs" />
+    <Compile Include="ORM\AutoGen\SessionVideoManager.cs" />
+    <Compile Include="ORM\AutoGen\SessionVideoQuery.cs" />
+    <Compile Include="ORM\AutoGen\SessionVideoResult.cs" />
+    <Compile Include="ORM\AutoGen\SponsorListCodeCampYearManager.cs" />
+    <Compile Include="ORM\AutoGen\SponsorListCodeCampYearQuery.cs" />
+    <Compile Include="ORM\AutoGen\SponsorListCodeCampYearResult.cs" />
+    <Compile Include="ORM\AutoGen\SponsorListContactManager.cs" />
+    <Compile Include="ORM\AutoGen\SponsorListContactQuery.cs" />
+    <Compile Include="ORM\AutoGen\SponsorListContactResult.cs" />
+    <Compile Include="ORM\AutoGen\SponsorListContactTypeManager.cs" />
+    <Compile Include="ORM\AutoGen\SponsorListContactTypeQuery.cs" />
+    <Compile Include="ORM\AutoGen\SponsorListContactTypeResult.cs" />
+    <Compile Include="ORM\AutoGen\SponsorListJobListingManager.cs" />
+    <Compile Include="ORM\AutoGen\SponsorListJobListingQuery.cs" />
+    <Compile Include="ORM\AutoGen\SponsorListJobListingResult.cs" />
+    <Compile Include="ORM\AutoGen\SponsorListManager.cs" />
+    <Compile Include="ORM\AutoGen\SponsorListNoteManager.cs" />
+    <Compile Include="ORM\AutoGen\SponsorListNoteQuery.cs" />
+    <Compile Include="ORM\AutoGen\SponsorListNoteResult.cs" />
+    <Compile Include="ORM\AutoGen\SponsorListQuery.cs" />
+    <Compile Include="ORM\AutoGen\SponsorListResult.cs" />
+    <Compile Include="ORM\AutoGen\TagsManager.cs" />
+    <Compile Include="ORM\AutoGen\TagsQuery.cs" />
+    <Compile Include="ORM\AutoGen\TagsResult.cs" />
+    <Compile Include="ORM\AutoGen\TrackManager.cs" />
+    <Compile Include="ORM\AutoGen\TrackQuery.cs" />
+    <Compile Include="ORM\AutoGen\TrackResult.cs" />
+    <Compile Include="ORM\AutoGen\TrackSessionManager.cs" />
+    <Compile Include="ORM\AutoGen\TrackSessionQuery.cs" />
+    <Compile Include="ORM\AutoGen\TrackSessionResult.cs" />
+    <Compile Include="ORM\AutoGen\TwitterUpdateManager.cs" />
+    <Compile Include="ORM\AutoGen\TwitterUpdateQuery.cs" />
+    <Compile Include="ORM\AutoGen\TwitterUpdateResult.cs" />
+    <Compile Include="ORM\AutoGen\UsersInRolesMembershipManager.cs" />
+    <Compile Include="ORM\AutoGen\UsersInRolesMembershipQuery.cs" />
+    <Compile Include="ORM\AutoGen\UsersInRolesMembershipResult.cs" />
+    <Compile Include="ORM\AutoGen\VideoManager.cs" />
+    <Compile Include="ORM\AutoGen\VideoQuery.cs" />
+    <Compile Include="ORM\AutoGen\VideoResult.cs" />
+    <Compile Include="ORM\AutoGen\VistaSlotsManager.cs" />
+    <Compile Include="ORM\AutoGen\VistaSlotsQuery.cs" />
+    <Compile Include="ORM\AutoGen\VistaSlotsResult.cs" />
+    <Compile Include="ORM\AutoGen\VolunteerJobManager.cs" />
+    <Compile Include="ORM\AutoGen\VolunteerJobQuery.cs" />
+    <Compile Include="ORM\AutoGen\VolunteerJobResult.cs" />
+    <Compile Include="ORM\AutoGen\ZIPCODEWORLDGOLDManager.cs" />
+    <Compile Include="ORM\AutoGen\ZIPCODEWORLDGOLDQuery.cs" />
+    <Compile Include="ORM\AutoGen\ZIPCODEWORLDGOLDResult.cs" />
+    <Compile Include="ORM\CodeCampEvalsManager.cs" />
+    <Compile Include="ORM\CodeCampEvalsQuery.cs" />
+    <Compile Include="ORM\CodeCampEvalsResult.cs" />
+    <Compile Include="ORM\CodeCampYearManager.cs" />
+    <Compile Include="ORM\CodeCampYearQuery.cs" />
+    <Compile Include="ORM\CodeCampYearResult.cs" />
+    <Compile Include="ORM\ConfigurationDataManager.cs" />
+    <Compile Include="ORM\ConfigurationDataQuery.cs" />
+    <Compile Include="ORM\ConfigurationDataResult.cs" />
+    <Compile Include="ORM\EmailDetailsManager.cs" />
+    <Compile Include="ORM\EmailDetailsQuery.cs" />
+    <Compile Include="ORM\EmailDetailsResult.cs" />
+    <Compile Include="ORM\EmailOptOutManager.cs" />
+    <Compile Include="ORM\EmailOptOutQuery.cs" />
+    <Compile Include="ORM\EmailOptOutResult.cs" />
+    <Compile Include="ORM\LectureRoomsManager.cs" />
+    <Compile Include="ORM\LectureRoomsQuery.cs" />
+    <Compile Include="ORM\LectureRoomsResult.cs" />
+    <Compile Include="ORM\Log4NetAllManager.cs" />
+    <Compile Include="ORM\Log4NetAllQuery.cs" />
+    <Compile Include="ORM\Log4NetAllResult.cs" />
+    <Compile Include="ORM\PicturesManager.cs" />
+    <Compile Include="ORM\PicturesQuery.cs" />
+    <Compile Include="ORM\PicturesResult.cs" />
+    <Compile Include="ORM\ProfileDataManager.cs" />
+    <Compile Include="ORM\ProfileDataQuery.cs" />
+    <Compile Include="ORM\ProfileDataResult.cs" />
+    <Compile Include="ORM\ReferringUrlGroupManager.cs" />
+    <Compile Include="ORM\ReferringUrlGroupQuery.cs" />
+    <Compile Include="ORM\ReferringUrlGroupResult.cs" />
+    <Compile Include="ORM\ReferringUrlManager.cs" />
+    <Compile Include="ORM\ReferringUrlQuery.cs" />
+    <Compile Include="ORM\ReferringUrlResult.cs" />
+    <Compile Include="ORM\RolesInMembershipManager.cs" />
+    <Compile Include="ORM\RolesInMembershipQuery.cs" />
+    <Compile Include="ORM\RolesInMembershipResult.cs" />
+    <Compile Include="ORM\SessionAttendeeManager.cs" />
+    <Compile Include="ORM\SessionAttendeeQuery.cs" />
+    <Compile Include="ORM\SessionAttendeeResult.cs" />
+    <Compile Include="ORM\SessionEvalsManager.cs" />
+    <Compile Include="ORM\SessionEvalsQuery.cs" />
+    <Compile Include="ORM\SessionEvalsResult.cs" />
+    <Compile Include="ORM\SessionLevelsManager.cs" />
+    <Compile Include="ORM\SessionLevelsQuery.cs" />
+    <Compile Include="ORM\SessionLevelsResult.cs" />
+    <Compile Include="ORM\SessionPicturesManager.cs" />
+    <Compile Include="ORM\SessionPicturesQuery.cs" />
+    <Compile Include="ORM\SessionPicturesResult.cs" />
+    <Compile Include="ORM\SessionPresenterManager.cs" />
+    <Compile Include="ORM\SessionPresenterQuery.cs" />
+    <Compile Include="ORM\SessionPresenterResult.cs" />
+    <Compile Include="ORM\SessionsJobListingManager.cs" />
+    <Compile Include="ORM\SessionsJobListingQuery.cs" />
+    <Compile Include="ORM\SessionsJobListingResult.cs" />
+    <Compile Include="ORM\SessionsManager.cs" />
+    <Compile Include="ORM\SessionsQuery.cs" />
+    <Compile Include="ORM\SessionsResult.cs" />
+    <Compile Include="ORM\SessionTagsManager.cs" />
+    <Compile Include="ORM\SessionTagsQuery.cs" />
+    <Compile Include="ORM\SessionTagsResult.cs" />
+    <Compile Include="ORM\SessionTimesManager.cs" />
+    <Compile Include="ORM\SessionTimesQuery.cs" />
+    <Compile Include="ORM\SessionTimesResult.cs" />
+    <Compile Include="ORM\SessionVideoManager.cs" />
+    <Compile Include="ORM\SessionVideoQuery.cs" />
+    <Compile Include="ORM\SessionVideoResult.cs" />
+    <Compile Include="ORM\SponsorListCodeCampYearManager.cs" />
+    <Compile Include="ORM\SponsorListCodeCampYearQuery.cs" />
+    <Compile Include="ORM\SponsorListCodeCampYearResult.cs" />
+    <Compile Include="ORM\SponsorListContactManager.cs" />
+    <Compile Include="ORM\SponsorListContactQuery.cs" />
+    <Compile Include="ORM\SponsorListContactResult.cs" />
+    <Compile Include="ORM\SponsorListContactTypeManager.cs" />
+    <Compile Include="ORM\SponsorListContactTypeQuery.cs" />
+    <Compile Include="ORM\SponsorListContactTypeResult.cs" />
+    <Compile Include="ORM\SponsorListJobListingManager.cs" />
+    <Compile Include="ORM\SponsorListJobListingQuery.cs" />
+    <Compile Include="ORM\SponsorListJobListingResult.cs" />
+    <Compile Include="ORM\SponsorListManager.cs" />
+    <Compile Include="ORM\SponsorListNoteManager.cs" />
+    <Compile Include="ORM\SponsorListNoteQuery.cs" />
+    <Compile Include="ORM\SponsorListNoteResult.cs" />
+    <Compile Include="ORM\SponsorListQuery.cs" />
+    <Compile Include="ORM\SponsorListResult.cs" />
+    <Compile Include="ORM\TagsManager.cs" />
+    <Compile Include="ORM\TagsQuery.cs" />
+    <Compile Include="ORM\TagsResult.cs" />
+    <Compile Include="ORM\TrackManager.cs" />
+    <Compile Include="ORM\TrackQuery.cs" />
+    <Compile Include="ORM\TrackResult.cs" />
+    <Compile Include="ORM\TrackSessionManager.cs" />
+    <Compile Include="ORM\TrackSessionQuery.cs" />
+    <Compile Include="ORM\TrackSessionResult.cs" />
+    <Compile Include="ORM\TwitterUpdateManager.cs" />
+    <Compile Include="ORM\TwitterUpdateQuery.cs" />
+    <Compile Include="ORM\TwitterUpdateResult.cs" />
+    <Compile Include="ORM\UsersInRolesMembershipManager.cs" />
+    <Compile Include="ORM\UsersInRolesMembershipQuery.cs" />
+    <Compile Include="ORM\UsersInRolesMembershipResult.cs" />
+    <Compile Include="ORM\VideoManager.cs" />
+    <Compile Include="ORM\VideoQuery.cs" />
+    <Compile Include="ORM\VideoResult.cs" />
+    <Compile Include="ORM\VistaSlotsManager.cs" />
+    <Compile Include="ORM\VistaSlotsQuery.cs" />
+    <Compile Include="ORM\VistaSlotsResult.cs" />
+    <Compile Include="ORM\VolunteerJobManager.cs" />
+    <Compile Include="ORM\VolunteerJobQuery.cs" />
+    <Compile Include="ORM\VolunteerJobResult.cs" />
+    <Compile Include="ORM\ZIPCODEWORLDGOLDManager.cs" />
+    <Compile Include="ORM\ZIPCODEWORLDGOLDQuery.cs" />
+    <Compile Include="ORM\ZIPCODEWORLDGOLDResult.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Newtonsoft.Json.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LINQToSQL\LINQToSQL.csproj">
+      <Project>{32A3F1A8-9A71-45B7-AEC2-026FD4BF37E9}</Project>
+      <Name>LINQToSQL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

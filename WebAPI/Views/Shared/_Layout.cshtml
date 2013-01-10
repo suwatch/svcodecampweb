@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/Styles/svcc")
+    @Styles.Render("~/Content/Styles")
     @Scripts.Render("~/bundles/modernizr")
 
     @Scripts.Render("~/bundles/jquery")
@@ -16,25 +16,99 @@
     <div id="wrapper">
 
         <header id="header">
-
-
+            <div class="logoInfoBar">
+                <div class="logoWrap">
+                    <img src="~/Content/Images/silicon-valley-code-camp.png">
+                </div>
+                <div class="dateWrap">
+                    SATURDAY & SUNDAY<br />
+                    OCTOBER 6TH-7TH, 2013
+                </div>
+                <div class="venueWrap">
+                    <span class="title">FOOTHILL COLLEGE,</span><br />
+                    12345 EL MONTE RD.<br />
+                    LOS ALTOS HILLS, CA
+                </div>
+            </div>
+            <div class="menuUserBar">
+                <div class="menuWrap">
+                    <ul>
+                        <li class="registration">
+                            <div class="menuItemWrap">
+                                <span class="imgWrap"></span>
+                                <span class="textWrap">REGISTRATION</span>
+                            </div>
+                        </li>
+                        <li class="program">
+                            <div class="menuItemWrap">
+                                <span class="imgWrap"></span>
+                                <span class="textWrap">PROGRAM</span>
+                            </div>
+                        </li>
+                        <li class="giving">
+                            <div class="menuItemWrap">
+                                <span class="imgWrap"></span>
+                                <span class="textWrap">GIVING</span>
+                            <div>
+                        </li>
+                        <li class="news">
+                            <div class="menuItemWrap">
+                                <span class="imgWrap"></span>
+                                <span class="textWrap">NEWS</span>
+                            <div>
+                        </li>
+                        <li class="about">
+                            <div class="menuItemWrap">
+                                <span class="imgWrap"></span>
+                                <span class="textWrap">ABOUT</span>
+                            <div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="userWrap">
+                    <div class="loginForm">
+                        LOGIN | REGISTER
+                    </div>
+                </div>
+            </div>
         </header><!-- #header-->
 
         <section id="middle">
 
             <div id="container">
-                <div id="content">
-                    @RenderBody()
+                <div id="contentWrap">
+                    <div class="roundBorder section " id="content">
+                        @RenderBody()
+                    </div>
                 </div><!-- #content-->
             </div><!-- #container-->
 
-            <aside id="sideLeft">
+            <div class="sidebar" id="sideLeft">
+                <aside>
+                    <div class="daysToGo">
+                        <h1>@Model.DaysUntilCodeCampString</h1>
+                    </div>
+                    <div class="sectionBreak"></div>
+                    <div class="sectionTitle">JOB POSTS</div>
+                    <div class="roundBorder section  jobPosts">
 
-            </aside><!-- #sideLeft -->
+                    </div>
+                    <div class="sectionBreak"></div>
+                    <div class="sectionTitle">NEWS</div>
+                    <div class="roundBorder section  news">
 
-            <aside id="sideRight">
+                    </div>
+                </aside>
+            </div><!-- #sideLeft -->
 
-            </aside><!-- #sideRight -->
+            <div class="sidebar" id="sideRight">
+                <aside>
+                    <div class="sectionBreak"></div>
+                    <div class="sectionTitle">OUR<br />SPONSORS</div>
+                    <div class="roundBorder section  sponsors">
+                    </div>
+                </aside>
+            </div><!-- #sideRight -->
 
         </section><!-- #middle-->
 

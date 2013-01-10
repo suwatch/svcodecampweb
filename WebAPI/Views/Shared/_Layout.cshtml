@@ -4,16 +4,45 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/Styles/svcc")
     @Scripts.Render("~/bundles/modernizr")
-</head>
-<body>
-   
 
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
-    
-     @RenderBody()
 
+</head>
+<body>
+
+    <div id="wrapper">
+
+        <header id="header">
+
+
+        </header><!-- #header-->
+
+        <section id="middle">
+
+            <div id="container">
+                <div id="content">
+                    @RenderBody()
+                </div><!-- #content-->
+            </div><!-- #container-->
+
+            <aside id="sideLeft">
+
+            </aside><!-- #sideLeft -->
+
+            <aside id="sideRight">
+
+            </aside><!-- #sideRight -->
+
+        </section><!-- #middle-->
+
+    </div><!-- #wrapper -->
+
+    <footer id="footer">
+
+    </footer><!-- #footer -->
 </body>
+
 </html>

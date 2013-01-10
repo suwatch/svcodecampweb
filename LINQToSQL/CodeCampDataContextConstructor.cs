@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Configuration;
-using Gurock.SmartInspect.LinqToSql;
+//using Gurock.SmartInspect.LinqToSql;
 
 
 namespace CodeCampSV
@@ -25,10 +25,10 @@ namespace CodeCampSV
             var connectionString = ConfigurationManager.ConnectionStrings["CodeCampSV06"].ToString();
             Connection.ConnectionString = connectionString;
 
-            if (_smartInspectEnabled)
-            {
-                Log = new SmartInspectLinqToSqlAdapter();
-            }
+            //if (_smartInspectEnabled)
+            //{
+            //    Log = new SmartInspectLinqToSqlAdapter();
+            //}
         }
     }
 }

@@ -85,18 +85,61 @@
 
             <div class="sidebar" id="sideLeft">
                 <aside>
-                    <div class="daysToGo">
-                        <h1>@Model.DaysUntilCodeCampString</h1>
+                    <div class="roundBorder daysCountdown">
+                        <h1><span class="daysNumber">@Model.DaysUntilCodeCampString</span> <br/>DAYS TO GO</h1>
                     </div>
                     <div class="sectionBreak"></div>
-                    <div class="sectionTitle">JOB POSTS</div>
+                    <div class="sectionTitle"><span class="luggageIcon"></span> <h2>JOB POSTS</h2></div>
                     <div class="roundBorder section  jobPosts">
-
+                        <div class="listWrap">
+                            <ul>
+                                <li>
+                                    <span class="date">12.22</span><br />
+                                    <a href="#">Design & Content Manager</a><br />
+                                    Stanford Law School - Standford, CA
+                                </li>
+                                <li>
+                                    <span class="date">12.14</span><br />
+                                    <a href="#">Software Engineer (iOS)</a><br />
+                                    WhaleShark Media - Austin, TX
+                                </li>
+                                <li>
+                                    <span class="date">12.12</span><br />
+                                    <a href="#">PHP Developer</a><br />
+                                    FortuneBuilders - San Francisco, CA
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="buttonWrap">
+                            <a href="#" class="button round magenta">
+                            MORE JOBS
+                            </a>
+                        </div>
                     </div>
                     <div class="sectionBreak"></div>
-                    <div class="sectionTitle">NEWS</div>
+                    <div class="sectionTitle"><span class="laptopIcon"></span> <h2>NEWS</h2></div>
                     <div class="roundBorder section  news">
-
+                        <div class="listWrap">
+                            <ul>
+                                <li>
+                                    <span class="date">12.20</span><br />
+                                    <a href="#">Are Programmers Impossible to Manage?</a>
+                                </li>
+                                <li>
+                                    <span class="date">12.11</span><br />
+                                    <a href="#">The Meaning of Code</a>
+                                </li>
+                                <li>
+                                    <span class="date">12.09</span><br />
+                                    <a href="#">The Art of Dashboard Design</a><br />
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="buttonWrap">
+                            <a href="#" class="button round magenta">
+                            MORE JOBS
+                            </a>
+                        </div>
                     </div>
                 </aside>
             </div><!-- #sideLeft -->

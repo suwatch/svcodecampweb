@@ -16,11 +16,11 @@
 
 /* Font stacks */
 @mixin scadaFont {
-  font-family: Scada, Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-family: 'Scada', Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 @mixin handelGothicFont {
-  font-family: HandelGothic, Scada, Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-family: 'HandelGothic', 'Scada', Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 @mixin arialFont {
@@ -45,6 +45,11 @@
 
 @mixin verdanaFont {
   font-family: Verdana, Geneva, sans-serif;
+}
+
+// Sprites
+@mixin imageSprites {
+  background: transparent url('../Images/sprites.png') no-repeat;
 }
 
 // Main Layout Structure
@@ -136,7 +141,7 @@ input {
 -----------------------------------------------------------------------------*/
 #sideLeft {
   float: left;
-  width: 180px;
+  width: 178px;
   margin-left: -100%;
   position: relative;
 }
@@ -147,7 +152,7 @@ input {
 #sideRight {
   float: left;
   margin-right: -3px;
-  width: 180px;
+  width: 178px;
   margin-left: -180px;
   position: relative;
 }
@@ -282,14 +287,14 @@ body {
 // Sidebar
 .sidebar {
   .sectionBreak {
-    height: 10px;
+    height: 20px;
   }
   .sectionTitle {
     @include handelGothicFont;
     color: #5c5c5c;
     text-shadow: 0 -1px #e8e6e6;
     font: {
-      size: 18px;
+      size: 19px;
       weight: bold;
     }
   }
@@ -301,11 +306,80 @@ body {
 
 // Sidebar Left
 #sideLeft {
-  .daysToGo {
-
+  .daysCountdown {
+    background: #e7e7e7 url('../Images/daysCountdownReflection.png') no-repeat;
+    height: 106px;
+    text-align: center;
+    color: #5c5c5c;
+    @include handelGothicFont;
+    font: {
+      size: 19px;
+      weight: bold;
+    }
+    h1 {
+      padding-top: 23px;
+    }
+    .daysNumber {
+      font-size: 36px;
+      text-shadow: 0 -1px #fff;
+      line-height: 38px;
+    }
   }
+
+  .sectionTitle {
+    padding: 0 0 8px 8px;
+    h2 {
+      display: inline-block;
+    }
+  }
+
+  .luggageIcon, .laptopIcon {
+    width: 29px;
+    height: 24px;
+    display: inline-block;
+    @include imageSprites;
+    margin-bottom: -4px;
+  }
+
+  .luggageIcon {
+    background-position: -100px -175px;
+  }
+
+  .laptopIcon {
+    background-position: -100px -150px;
+  }
+
   .section {
-    padding: 8px;
+    padding: 15px;
+    .listWrap {
+      ul {
+        li {
+          border-bottom: 1px dotted #ccc;
+          line-height: 16px;
+          @include scadaFont;
+          font: {
+            size: 13px;
+          }
+          padding: 8px 0 4px;
+          color: #333;
+          .date {
+            color: #92278f;
+            font-weight: bold;
+          }
+          a {
+            color: #000;
+            text-decoration: none;
+            font: {
+              size: 14px;
+              weight: bold;
+            }
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
   }
 }
 // End -  Sidebar Left

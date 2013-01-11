@@ -49,7 +49,7 @@ namespace WebAPI.Controllers
 
             var viewModel = new SessionViewModel()
                                 {
-                                    DaysUntilCodeCampString = "9999 Days Until Camp",
+                                    DaysUntilCodeCampString = "9999",
                                     Sessions = sessions.OrderBy(a => a.SessionSlug).ToList(),
                                     Sponsors = sponsors
                                 };

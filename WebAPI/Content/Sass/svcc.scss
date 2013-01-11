@@ -171,6 +171,55 @@ input {
 
 // End - Main Layout Structure
 
+// Buttons
+a.button {
+  &.round {
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    text-align: center;
+    @include handelGothicFont;
+    padding: 9px;
+    text-shadow: 0 1px #62125b;
+    text-decoration: none;
+    color: #fff;
+    font: {
+      size: 14px;
+    }
+  }
+  &.magenta {
+    background-color: #84197f;
+    &:hover {
+      background-color: #a920a0;
+      text-shadow: none;
+    }
+  }
+  &.blue {
+    background-color: #25aae1;
+    text-align: center;
+    &:hover {
+      background-color: #29bbf8;
+      text-shadow: none;
+    }
+  }
+  &.gray {
+    background-color: #f3f2f3;
+    text-align: center;
+    text-shadow: 0 1px #fff;
+    color: #5e5d5d;
+    &:hover {
+      background-color: #f8f8f8;
+      text-shadow: none;
+    }
+    &.border {
+      border: 1px solid #c5c5c5;
+      &:hover {
+        border-color: #5e5d5d;
+      }
+    }
+  }
+}
+// End - Buttons
+
 body {
   background: #d3d0d1 url('../Images/bg.jpg');
 }
@@ -288,6 +337,7 @@ body {
 .sidebar {
   .sectionBreak {
     height: 20px;
+    clear: both;
   }
   .sectionTitle {
     @include handelGothicFont;
@@ -364,6 +414,7 @@ body {
           color: #333;
           .date {
             color: #92278f;
+            font-size: 12px;
             font-weight: bold;
           }
           a {
@@ -374,12 +425,152 @@ body {
               weight: bold;
             }
             &:hover {
+              text-shadow: none;
               text-decoration: underline;
+              color: #333;
             }
           }
         }
       }
     }
+    .buttonWrap {
+      clear: both;
+      text-align: center;
+      margin: 20px 0 10px;
+    }
+  }
+
+  .sponsor {
+    width: 177px;
+    height: 73px;
+    background: #e9e9e9 url('../Images/sidebarLeft-sponsor-bg.png') no-repeat;
+    .wrap {
+      text-align: center;
+      padding-top: 20px;
+    }
+    a.orcsweb {
+      width: 110px;
+      height: 30px;
+    }
   }
 }
 // End -  Sidebar Left
+
+// Sidebar Right
+#sideRight {
+  .socialMediaChannels {
+    width: 142px;
+    height: 82px;
+    margin: 30px 0 0 20px;
+    ul {
+      li {
+        a {
+          @include imageSprites;
+          text-indent: -9999px;
+          width: 36px;
+          height: 36px;
+          float: left;
+          margin: 0 6px 6px 0;
+        }
+        &.facebook a {
+          background-position: 0 -50px;
+          &:hover {
+            background-position: -150px -50px;
+          }
+        }
+        &.twitter a {
+          background-position: -39px -50px;
+          &:hover {
+            background-position: -191px -50px;
+          }
+        }
+        &.googlePlus a {
+          background-position: -80px -50px;
+          &:hover {
+            background-position: -231px -50px;
+          }
+        }
+        &.linkedIn a {
+          background-position: 0px -91px;
+          &:hover {
+            background-position: -150px -91px;
+          }
+        }
+        &.rss a {
+          background-position: -40px -91px;
+          &:hover {
+            background-position: -191px -91px;
+          }
+        }
+        &.contact a {
+          background-position: -80px -91px;
+          &:hover {
+            background-position: -231px -91px;
+          }
+        }
+      }
+    }
+  }
+
+  // Sponsors
+  .sectionTitle.sponsors {
+    margin-left: 6px;
+  }
+  .section.sponsors {
+    .button.becomeSponsor {
+      border-top-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+      text-align: center;
+      padding: 9px;
+      background-color: #25aae1;
+      text-align: center;
+      cursor: pointer;
+      &:hover {
+        background-color: #29bbf8;
+        a {
+          text-shadow: none;
+        }
+      }
+      margin: 0 auto;
+      width: 116px;
+      height: auto !important;
+      a {
+        text-shadow: 0 1px #1c84a5;
+        @include handelGothicFont;
+        text-decoration: none;
+        color: #fff;
+      }
+    }
+
+    a.button.gray {
+      width: 116px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .sponsorsListWrap {
+      dl {
+        dt {
+          border: 1px solid #c7c7c7;
+          border-bottom: none;
+          background-color: #f8f6f8;
+          @include handelGothicFont;
+          a {
+            padding: 3px;
+            display: block;
+            color: #6e6e6e;
+            text-shadow: 0 1px #FFF;
+            text-decoration: none;
+          }
+          font: {
+            size: 14px;
+          }
+        }
+      }
+    }
+
+  }
+  // End - Sponsors
+
+}
+// End - Sidebar Right

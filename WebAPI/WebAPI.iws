@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ee82a8b-af13-4672-838f-c68c30f0c55a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/WebAPI.dll" afterPath="$PROJECT_DIR$/bin/WebAPI.dll" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Content/Images/sprites.png" afterPath="$PROJECT_DIR$/Content/Images/sprites.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Content/Sass/svcc.scss" afterPath="$PROJECT_DIR$/Content/Sass/svcc.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Content/Styles/svcc.css" afterPath="$PROJECT_DIR$/Content/Styles/svcc.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Controllers/SessionController.cs" afterPath="$PROJECT_DIR$/Controllers/SessionController.cs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" afterPath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebAPI.iws" afterPath="$PROJECT_DIR$/WebAPI.iws" />
     </list>
     <ignored path="WebAPI.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -79,7 +77,7 @@
           <file leaf-file-name="_Layout.cshtml" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Views/Shared/_Layout.cshtml">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="129" column="49" selection-start="5597" selection-end="5597" vertical-scroll-proportion="-0.84782606">
+                <state line="198" column="66" selection-start="8804" selection-end="8804" vertical-scroll-proportion="0.5842391">
                   <folding />
                 </state>
               </provider>
@@ -133,7 +131,7 @@
           <file leaf-file-name="svcc.css" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Content/Styles/svcc.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="1" column="0" selection-start="5976" selection-end="5976" vertical-scroll-proportion="0.0">
+                <state line="1" column="0" selection-start="9413" selection-end="9413" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -146,7 +144,7 @@
           <file leaf-file-name="svcc.scss" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Content/Sass/svcc.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="358" column="28" selection-start="6920" selection-end="6929" vertical-scroll-proportion="0.33164558">
+                <state line="560" column="26" selection-start="11092" selection-end="11092" vertical-scroll-proportion="0.5265823">
                   <folding />
                 </state>
               </provider>
@@ -420,6 +418,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebAPI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebAPI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Content" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sponsors" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -725,11 +745,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/GeneralHandlers/CodeCampConfigs.ashx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="80" selection-start="410" selection-end="410" vertical-scroll-proportion="-0.61997706" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Content/Sass/config.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="42" selection-start="171" selection-end="171" vertical-scroll-proportion="0.0" />
@@ -793,7 +808,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/Styles/svcc.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="5976" selection-end="5976" vertical-scroll-proportion="0.0">
+        <state line="1" column="0" selection-start="9413" selection-end="9413" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -805,16 +820,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Content/Images/sponsors/orcsweb-small.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Views/Shared/_Layout.cshtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="129" column="49" selection-start="5597" selection-end="5597" vertical-scroll-proportion="-0.84782606">
+        <state line="198" column="66" selection-start="8804" selection-end="8804" vertical-scroll-proportion="0.5842391">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/Sass/svcc.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="358" column="28" selection-start="6920" selection-end="6929" vertical-scroll-proportion="0.33164558">
+        <state line="560" column="26" selection-start="11092" selection-end="11092" vertical-scroll-proportion="0.5265823">
           <folding />
         </state>
       </provider>

@@ -2551,6 +2551,7 @@
     <Content Include="Views\Session\index.cshtml" />
     <Content Include="Views\Session\Detail.cshtml" />
     <Content Include="WebConnectionStrings.config" />
+    <Content Include="Views\Session\indexTest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

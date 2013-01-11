@@ -11,5 +11,8 @@ namespace WebAPI.ViewModels
         public string DaysUntilCodeCampString { get; set; }
         public List<SessionsResult> Sessions { get; set; }
         public List<SponsorListResult> Sponsors { get; set; }
+
+        public List<SessionTimesResult> SessionsByTime { get; set; }
+
     }
 }

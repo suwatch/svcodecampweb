@@ -11,6 +11,9 @@ namespace CodeCampSV
     [Serializable]
     public partial class SessionTimesResult
     {
+        public List<SessionsResult> sessionsResults { get; set; } 
+
+
         //  Put things here that may not come from the table directly
         //  For example, you may have StatusTypeId in your Result, however
         //  you want to return the StatusTypeName so you would be the

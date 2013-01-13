@@ -90,7 +90,8 @@ namespace WebAPI.Controllers
                                                       {
                                                           Id = sessionTimesResults.Max(a => a.Id) + 1,
                                                           CodeCampYearId = codeCampYearId,
-                                                          sessionsResults = sessions
+                                                          sessionsResults = sessions,
+                                                          StartTimeFriendly = "Unassigned"
                                                       };
                 sessionTimesResults.Add(sessionTimeResultUnassigned);
             }

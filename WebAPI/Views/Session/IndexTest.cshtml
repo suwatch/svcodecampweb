@@ -1,0 +1,131 @@
+﻿@model WebAPI.ViewModels.SessionViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<script type="text/javascript">
+
+    $(document).ready(function() {
+
+
+       var xx =   $('#myTable tbody tr').map(function() {
+            // $(this) is used more than once; cache it for performance.
+            var $row = $(this);
+
+            debugger;
+
+            // For each row that's "mapped", return an object that
+            //  describes the first and second <td> in the row.
+            return {
+                id: $row.find(':nth-child(1)').text(),
+                text: $row.find(':nth-child(2)').text()
+            };
+        }).get();
+
+        debugger;
+        alert(xx);
+
+        // Handler for .ready() called.
+    });
+
+
+
+
+
+</script>*@
+
+
+<h1>@Model.DaysUntilCodeCampString</h1>
+
+<h2>Sessions</h2>
+
+@Html.Raw("<table id='myTable' border='1'>")
+
+@foreach (var sessionTime in Model.SessionsByTime)
+{
+    @Html.Raw("<tr>")
+    @Html.Raw("<td>")
+    @sessionTime.StartTimeFriendly
+    @Html.Raw("</td>")
+    @Html.Raw("<td></td>")
+    @Html.Raw("</tr>")
+    
+    foreach (var session in sessionTime.sessionsResults)
+    {
+        @Html.Raw("<tr>")
+        @Html.Raw("<td width='300'>")
+        
+        @Html.Raw("</td>")
+
+
+    
+        @Html.Raw("<td width='300'>")
+       
+            @session.Title
+            <br/>
+            @session.Description
+        <br/>
+    
+            <img src="@(session.SpeakerPictureUrl)?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white" alt="@session.PresenterName"  />
+            <br/>
+            <a href="@session.SessionUrl"> @session.SessionUrl</a>
+            <br/>
+        @Html.Raw("</td>")
+        @Html.Raw("</tr>")
+    }
+   
+
+    
+}
+    
+  @Html.Raw("</table>")
+
+@foreach (var sponsor in Model.Sponsors) {
+    <br/>
+    @sponsor.SponsorName
+    <br/>
+    @sponsor.NavigateURL
+      <br/>
+    @sponsor.SponsorSupportLevel
+     <br/>
+    @sponsor.SponsorSupportLevelOrder
+    <br/>
+    @(sponsor.ImageURL)
+    <br/>
+    <img src="@(sponsor.ImageURL)?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white" alt="@sponsor.SponsorName"  />
+    <hr/>
+}
+
+
+
+
+
+@* <script type="text/javascript">
+
+//        $(document).ready(function () {
+//            // Send an AJAX request
+//            $.getJSON("api/session/GetAll",
+//            function (data) {
+//                // On success, 'data' contains a list of products.
+//                $.each(data, function (key, val) {
+//
+//                    //debugger;
+//
+//                    // Format the text to display.
+//                    //var str = val.Name + ': $' + val.Price;
+//                    var str = val.PresenterName + ' : ' + val.Title;
+//
+//                    // Add a list item for the product.
+//                    $('<li/>', { text: str })
+//                    .appendTo($('#sessions'));
+//                });
+//            });
+//        });
+      
+
+
+    </script>
+
+
+ <div id="sessions"></div>*@

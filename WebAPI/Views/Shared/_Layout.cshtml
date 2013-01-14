@@ -4,7 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/Styles")
+
+    @* @Styles.Render("~/Content/Styles")*@
+
+     @Styles.Render("~/Content/themes/base/css", "~/Content/Styles")
+
     @Scripts.Render("~/bundles/modernizr")
 
     @Scripts.Render("~/bundles/jquery")

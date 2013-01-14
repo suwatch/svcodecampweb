@@ -1825,6 +1825,14 @@
     <Content Include="CodeCampEvalsSuccess.aspx" />
     <Content Include="ConfirmRegistration.aspx" />
     <Content Include="Contact.aspx" />
+    <Content Include="Content\Images\bg.jpg" />
+    <Content Include="Content\Images\daysCountdownReflection.png" />
+    <Content Include="Content\Images\header-bg.jpg" />
+    <Content Include="Content\Images\sidebarLeft-sponsor-bg.png" />
+    <Content Include="Content\Images\silicon-valley-code-camp.png" />
+    <Content Include="Content\Images\sponsors\orcsweb-small.png" />
+    <Content Include="Content\Images\sprites.png" />
+    <Content Include="Content\Styles\svcc.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -2483,6 +2491,9 @@
     <Content Include="Code\DataSetVistaInstall.xss">
       <DependentUpon>DataSetVistaInstall.xsd</DependentUpon>
     </Content>
+    <Content Include="Content\Fonts\handel-gothic-bt.eot" />
+    <Content Include="Content\Fonts\handel-gothic-bt.ttf" />
+    <Content Include="Content\Sass\svcc.scss" />
     <None Include="Properties\PublishProfiles\svcodecamp - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\svcodecamp - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />

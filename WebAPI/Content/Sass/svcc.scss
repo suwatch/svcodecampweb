@@ -123,7 +123,7 @@ input {
   overflow: hidden;
 }
 #contentWrap {
-  padding: 0 195px 0 195px;
+  padding: 0 190px 0 190px;
 }
 #content {
   background-color: #fff;
@@ -223,6 +223,15 @@ a.button {
 body {
   background: #d3d0d1 url('../Images/bg.jpg');
 }
+
+// Links
+a {
+  color: #000;
+  &:hover {
+    color: #25aae1;
+  }
+}
+// End - Links
 
 // Header
 #header {
@@ -514,7 +523,7 @@ body {
 
   // Sponsors
   .sectionTitle.sponsors {
-    margin-left: 6px;
+    margin: 0 0 8px 6px;
   }
   .section.sponsors {
     .button.becomeSponsor {
@@ -549,21 +558,70 @@ body {
     }
 
     .sponsorsListWrap {
+      padding-top: 15px;
       dl {
         dt {
-          border: 1px solid #c7c7c7;
-          border-bottom: none;
+          border-top: 1px solid #c7c7c7;
           background-color: #f8f6f8;
-          @include handelGothicFont;
           a {
-            padding: 3px;
+            vertical-align: top;
             display: block;
             color: #6e6e6e;
             text-shadow: 0 1px #FFF;
             text-decoration: none;
+            padding-left: 8px;
+            line-height: 8px;
+          }
+          span.arrow {
+            @include imageSprites;
+            width: 15px;
+            height: 23px;
+            display: inline-block;
+            padding-top: 3px;
+            background-position: 1px -168px;
+            border-right: 1px solid #e3e2e3;
+          }
+          span.label {
+            display: inline-block;
+            vertical-align: top;
+            padding: 7px 0 0 10px;
+            border-left: 1px solid #fff;
+            height: 19px;
+            @include handelGothicFont;
+            line-height: 14px;
+            font-size: 14px;
           }
           font: {
             size: 14px;
+          }
+          &:last-of-type {
+            border-bottom: 1px solid #c7c7c7;
+            a {
+              height: 44px;
+            }
+            span.arrow {
+              height: 41px;
+            }
+            span.label {
+              height: 37px;
+            }
+          }
+        }
+        dd {
+          table {
+            width: 178px;
+            border-top: 1px solid #e6e6e6;
+            tr {
+              td {
+                font-size: 13px;
+                width: 89px;
+                padding: 2px 0 2px 8px;
+                border-right: 1px solid #e6e6e6;
+                a {
+                  text-decoration: none;
+                }
+              }
+            }
           }
         }
       }
@@ -574,3 +632,135 @@ body {
 
 }
 // End - Sidebar Right
+
+// Main Content
+#contentWrap {
+  h1.title {
+    @include handelGothicFont;
+    font-size: 28px;
+    text-transform: uppercase;
+    text-shadow: 0 2px #f5f5f5;
+    color: #5c5c5c;
+  }
+  // Sessions
+  .sessionsWrap {
+    padding-top: 15px;
+    .sessionsList {
+      padding-top: 15px;
+      h4 {
+        color: #676767;
+        font-size: 18px;
+        @include scadaFont;
+        border: 1px solid #ececec;
+        background-color: #faf7fa;
+        padding: 8px;
+      }
+      table {
+        width: 100%;
+        tr {
+          border-bottom: 1px dotted #b8b7b7;
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+        td.action, td.details {
+          width: 80px;
+        }
+        td {
+          padding: 11px 8px;
+          color: #2e363d;
+          font-size: 14px;
+          i {
+            font-style: italic;
+          }
+          a.author {
+            font-weight: bold;
+          }
+
+          .interestSelectBtn, .detailsBtn {
+            border-top-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+            border: 1px solid #ececec;
+            background-color: #faf9fa;
+            padding: 4px 8px;
+            vertical-align: top;
+            font-size: 13px;
+            cursor: pointer;
+            &:hover {
+              background-color: #e9e7e9;
+              border: 1px solid #c5c5c5;
+            }
+            &:active {
+              background-color: #dddbdd;
+            }
+          }
+
+          // Intereset Select button
+          .interestSelectBtn {
+            padding: 0 8px;
+            width: 120px;
+            height: 31px;
+            .label {
+              vertical-align: top;
+              width: 94px;
+              display: inline-block;
+              border-right: 1px solid #e3e2e3;
+              padding: 9px 8px 9px 0;
+            }
+            .arrow {
+              border-left: 1px solid #fff;
+              display: inline-block;
+              @include imageSprites;
+              width: 16px;
+              height: 31px;
+              background-position: 5px -138px;
+            }
+          }
+          // End - Intereset Select button
+
+          // Details button
+          div.detailsBtn {
+            div.icon {
+              width: 11px;
+              display: inline-block;
+              height: 18px;
+              @include imageSprites;
+              background-position: -75px -150px;
+              margin: 2px 4px 0 2px;
+            }
+            div.label {
+              vertical-align: top;
+              margin: 5px 0 0 3px;
+              display: inline-block;
+            }
+          }
+          // End - Details button
+        }
+      }
+    }
+  }
+  // End - Sessions
+}
+// End - Main Content
+
+// Footer
+.footerWrap {
+  float: right;
+  padding-top: 14px;
+  ul {
+    li {
+      float: left;
+      padding: 8px 20px 0 0;
+      a {
+        color: #fff;
+        text-decoration: none;;
+        @include handelGothicFont;
+        font {
+          size: 16px;
+          weight: bold;
+        }
+      }
+    }
+  }
+}
+// End - Footer

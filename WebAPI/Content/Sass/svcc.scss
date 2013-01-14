@@ -1,10 +1,56 @@
+// Bourbon mixin
+@import 'bourbon/bourbon';
+
 // Resets default style
 @import "compass/reset";
+
+
+// Import Fonts
+@import url(http://fonts.googleapis.com/css?family=Scada);
+@import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
 
 // Font face
 @import "compass/css3/font-face";
 // Handel Gothic
-@include font-face("HandelGothic", font-files("../Fonts/handel-gothic-bt.ttf", "../Fonts/handel-gothic-bt.eot"));
+@include font-face("HandelGothic", font-files("/Content/Fonts/handel-gothic-bt.ttf", "/Content/Fonts/handel-gothic-bt.eot"));
+
+/* Font stacks */
+@mixin scadaFont {
+  font-family: 'Scada', Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+@mixin handelGothicFont {
+  font-family: 'HandelGothic', 'Scada', Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+@mixin arialFont {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+@mixin calibriFont {
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+}
+
+@mixin helveticaFont {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+@mixin georgiaFont {
+  font-family: Georgia, Times, "Times New Roman", serif;
+}
+
+@mixin tahomaFont {
+  font-family: Tahoma, Verdana, Segoe, sans-serif;
+}
+
+@mixin verdanaFont {
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+// Sprites
+@mixin imageSprites {
+  background: transparent url('../Images/sprites.png') no-repeat;
+}
 
 // Main Layout Structure
 // Fixed width, Header, 2 sidebars, main content, footer on window bottom
@@ -16,7 +62,8 @@ header, nav, section, article, aside, footer {
   display: block;
 }
 body {
-  font: 12px/18px Arial, Tahoma, Verdana, sans-serif;
+  font-size: 12px/18px;
+  @include scadaFont;
   width: 100%;
   height: 100%;
 }
@@ -38,7 +85,8 @@ input {
   vertical-align: middle;
 }
 #wrapper {
-  width: 1000px;
+  width: 1018px;
+  padding-top: 15px;
   margin: 0 auto;
   min-height: 100%;
   height: auto !important;
@@ -49,7 +97,7 @@ input {
 /* Header
 -----------------------------------------------------------------------------*/
 #header {
-  height: 150px;
+  height: 157px;
 }
 
 
@@ -60,6 +108,7 @@ input {
   padding: 0 0 100px;
   height: 1%;
   position: relative;
+  padding: 15px 0 25px;
 }
 #middle:after {
   content: '.';
@@ -73,8 +122,18 @@ input {
   float: left;
   overflow: hidden;
 }
+#contentWrap {
+  padding: 0 195px 0 195px;
+}
 #content {
-  padding: 0 270px 0 270px;
+  background-color: #fff;
+  padding: 16px
+}
+
+.roundBorder {
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  @include box-shadow(0px 0px 6px 3px hsla(0, 0%, 0%, 0.1));
 }
 
 
@@ -82,10 +141,9 @@ input {
 -----------------------------------------------------------------------------*/
 #sideLeft {
   float: left;
-  width: 250px;
+  width: 178px;
   margin-left: -100%;
   position: relative;
-  background: #B5E3FF;
 }
 
 
@@ -94,10 +152,9 @@ input {
 #sideRight {
   float: left;
   margin-right: -3px;
-  width: 250px;
-  margin-left: -250px;
+  width: 178px;
+  margin-left: -180px;
   position: relative;
-  background: #FFACAA;
 }
 
 
@@ -105,10 +162,415 @@ input {
 -----------------------------------------------------------------------------*/
 #footer {
   width: 1000px;
-  margin: -100px auto 0;
+  margin: 0 auto;
   height: 100px;
-  background: #BFF08E;
-  position: relative;
+  background: #3c3b3b;
+  height: 55px;
+  border-top-right-radius: 10px;
 }
 
 // End - Main Layout Structure
+
+// Buttons
+a.button {
+  &.round {
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    text-align: center;
+    @include handelGothicFont;
+    padding: 9px;
+    text-shadow: 0 1px #62125b;
+    text-decoration: none;
+    color: #fff;
+    font: {
+      size: 14px;
+    }
+  }
+  &.magenta {
+    background-color: #84197f;
+    &:hover {
+      background-color: #a920a0;
+      text-shadow: none;
+    }
+  }
+  &.blue {
+    background-color: #25aae1;
+    text-align: center;
+    &:hover {
+      background-color: #29bbf8;
+      text-shadow: none;
+    }
+  }
+  &.gray {
+    background-color: #f3f2f3;
+    text-align: center;
+    text-shadow: 0 1px #fff;
+    color: #5e5d5d;
+    &:hover {
+      background-color: #f8f8f8;
+      text-shadow: none;
+    }
+    &.border {
+      border: 1px solid #c5c5c5;
+      &:hover {
+        border-color: #5e5d5d;
+      }
+    }
+  }
+}
+// End - Buttons
+
+body {
+  background: #d3d0d1 url('../Images/bg.jpg');
+}
+
+// Header
+#header {
+  background: #fff url('../Images/header-bg.jpg') no-repeat;
+  @include box-shadow(0px 2px 6px 3px hsla(0, 0%, 0%, 0.1));
+  .logoInfoBar {
+    height: 107px;
+    >div {
+      float: left;
+      margin: 15px;
+    }
+    .logoWrap {
+      padding: 6px 10px 0;
+
+      text-align: center;
+    }
+    .dateWrap, .venueWrap {
+      @include handelGothicFont;
+      border-left: 1px solid #e2e3e4;
+      padding: 19px 15px;
+      text-shadow: 0 1px #fff;
+    }
+    .dateWrap {
+      text-align: center;
+      color: #5c5c5c;
+      font: {
+        size: 19px;
+        weight: bold;
+      }
+      width: 307px;
+    }
+    .venueWrap {
+      text-align: left;
+      color: #9ea0a4;
+      font-size: 12px;
+      margin-left: 0;
+      .title {
+        font: {
+          size: 16px;
+          weight: bold;
+        }
+        color: #5c5c5c;
+      }
+    }
+  }
+  .menuUserBar {
+    clear: both;
+    height: 48px;
+    margin: 0 10px;
+    .menuWrap {
+      float: left;
+      border-right: 1px solid #1d1915;
+      height: 48px;
+      width: inherit;
+      ul {
+        li {
+          list-style-type: none;
+          float: left;
+          color: #fff;
+          @include handelGothicFont;
+          font-size: 14px;
+          height: 49px;
+          border-right: 1px solid #7c7b7b;
+          border-left: 1px solid #1d1915;
+          &:first-child {
+            border-left: none;
+          }
+          .menuItemWrap {
+            padding: 17px 20px 0;
+            .imgWrap {
+              width: 10px;
+              height: 10px;
+              padding-right: 5px;
+              display: inline-block;
+              background: transparent url('../Images/sprites.png') no-repeat;
+            }
+          }
+          &.program .imgWrap {
+            background-position: -25px 0;
+          }
+          &.giving .imgWrap {
+            background-position: -50px 0;
+          }
+          &.news .imgWrap {
+            background-position: -75px 0;
+          }
+          &.about .imgWrap {
+            background-position: -100px 0;
+          }
+        }
+      }
+    }
+    .userWrap {
+      width: 300px;
+      height: inherit;
+      float: right;
+      .loginForm {
+        @include scadaFont;
+        padding-top: 17px;
+        text-align: right;
+        color: #fff;
+        font: {
+          size: 16px;
+        }
+      }
+    }
+  }
+}
+// End - Header
+
+// Sidebar
+.sidebar {
+  .sectionBreak {
+    height: 20px;
+    clear: both;
+  }
+  .sectionTitle {
+    @include handelGothicFont;
+    color: #5c5c5c;
+    text-shadow: 0 -1px #e8e6e6;
+    font: {
+      size: 19px;
+      weight: bold;
+    }
+  }
+  .section {
+    background-color: #fff;
+    min-height: 100px;
+  }
+}
+
+// Sidebar Left
+#sideLeft {
+  .daysCountdown {
+    background: #e7e7e7 url('../Images/daysCountdownReflection.png') no-repeat;
+    height: 106px;
+    text-align: center;
+    color: #5c5c5c;
+    @include handelGothicFont;
+    font: {
+      size: 19px;
+      weight: bold;
+    }
+    h1 {
+      padding-top: 23px;
+    }
+    .daysNumber {
+      font-size: 36px;
+      text-shadow: 0 -1px #fff;
+      line-height: 38px;
+    }
+  }
+
+  .sectionTitle {
+    padding: 0 0 8px 8px;
+    h2 {
+      display: inline-block;
+    }
+  }
+
+  .luggageIcon, .laptopIcon {
+    width: 29px;
+    height: 24px;
+    display: inline-block;
+    @include imageSprites;
+    margin-bottom: -4px;
+  }
+
+  .luggageIcon {
+    background-position: -100px -175px;
+  }
+
+  .laptopIcon {
+    background-position: -100px -150px;
+  }
+
+  .section {
+    padding: 15px;
+    .listWrap {
+      ul {
+        li {
+          border-bottom: 1px dotted #ccc;
+          line-height: 16px;
+          @include scadaFont;
+          font: {
+            size: 13px;
+          }
+          padding: 8px 0 4px;
+          color: #333;
+          .date {
+            color: #92278f;
+            font-size: 12px;
+            font-weight: bold;
+          }
+          a {
+            color: #000;
+            text-decoration: none;
+            font: {
+              size: 14px;
+              weight: bold;
+            }
+            &:hover {
+              text-shadow: none;
+              text-decoration: underline;
+              color: #333;
+            }
+          }
+        }
+      }
+    }
+    .buttonWrap {
+      clear: both;
+      text-align: center;
+      margin: 20px 0 10px;
+    }
+  }
+
+  .sponsor {
+    width: 177px;
+    height: 73px;
+    background: #e9e9e9 url('../Images/sidebarLeft-sponsor-bg.png') no-repeat;
+    .wrap {
+      text-align: center;
+      padding-top: 20px;
+    }
+    a.orcsweb {
+      width: 110px;
+      height: 30px;
+    }
+  }
+}
+// End -  Sidebar Left
+
+// Sidebar Right
+#sideRight {
+  .socialMediaChannels {
+    width: 142px;
+    height: 82px;
+    margin: 30px 0 0 20px;
+    ul {
+      li {
+        a {
+          @include imageSprites;
+          text-indent: -9999px;
+          width: 36px;
+          height: 36px;
+          float: left;
+          margin: 0 6px 6px 0;
+        }
+        &.facebook a {
+          background-position: 0 -50px;
+          &:hover {
+            background-position: -150px -50px;
+          }
+        }
+        &.twitter a {
+          background-position: -39px -50px;
+          &:hover {
+            background-position: -191px -50px;
+          }
+        }
+        &.googlePlus a {
+          background-position: -80px -50px;
+          &:hover {
+            background-position: -231px -50px;
+          }
+        }
+        &.linkedIn a {
+          background-position: 0px -91px;
+          &:hover {
+            background-position: -150px -91px;
+          }
+        }
+        &.rss a {
+          background-position: -40px -91px;
+          &:hover {
+            background-position: -191px -91px;
+          }
+        }
+        &.contact a {
+          background-position: -80px -91px;
+          &:hover {
+            background-position: -231px -91px;
+          }
+        }
+      }
+    }
+  }
+
+  // Sponsors
+  .sectionTitle.sponsors {
+    margin-left: 6px;
+  }
+  .section.sponsors {
+    .button.becomeSponsor {
+      border-top-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+      text-align: center;
+      padding: 9px;
+      background-color: #25aae1;
+      text-align: center;
+      cursor: pointer;
+      &:hover {
+        background-color: #29bbf8;
+        a {
+          text-shadow: none;
+        }
+      }
+      margin: 0 auto;
+      width: 116px;
+      height: auto !important;
+      a {
+        text-shadow: 0 1px #1c84a5;
+        @include handelGothicFont;
+        text-decoration: none;
+        color: #fff;
+      }
+    }
+
+    a.button.gray {
+      width: 116px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .sponsorsListWrap {
+      dl {
+        dt {
+          border: 1px solid #c7c7c7;
+          border-bottom: none;
+          background-color: #f8f6f8;
+          @include handelGothicFont;
+          a {
+            padding: 3px;
+            display: block;
+            color: #6e6e6e;
+            text-shadow: 0 1px #FFF;
+            text-decoration: none;
+          }
+          font: {
+            size: 14px;
+          }
+        }
+      }
+    }
+
+  }
+  // End - Sponsors
+
+}
+// End - Sidebar Right

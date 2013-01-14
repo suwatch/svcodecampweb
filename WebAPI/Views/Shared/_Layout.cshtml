@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/Styles/svcc")
+    @Styles.Render("~/Content/Styles")
     @Scripts.Render("~/bundles/modernizr")
 
     @Scripts.Render("~/bundles/jquery")
@@ -16,25 +16,201 @@
     <div id="wrapper">
 
         <header id="header">
-
-
+            <div class="logoInfoBar">
+                <div class="logoWrap">
+                    <img src="~/Content/Images/silicon-valley-code-camp.png">
+                </div>
+                <div class="dateWrap">
+                    SATURDAY & SUNDAY<br />
+                    OCTOBER 6TH-7TH, 2013
+                </div>
+                <div class="venueWrap">
+                    <span class="title">FOOTHILL COLLEGE,</span><br />
+                    12345 EL MONTE RD.<br />
+                    LOS ALTOS HILLS, CA
+                </div>
+            </div>
+            <div class="menuUserBar">
+                <div class="menuWrap">
+                    <ul>
+                        <li class="registration">
+                            <div class="menuItemWrap">
+                                <span class="imgWrap"></span>
+                                <span class="textWrap">REGISTRATION</span>
+                            </div>
+                        </li>
+                        <li class="program">
+                            <div class="menuItemWrap">
+                                <span class="imgWrap"></span>
+                                <span class="textWrap">PROGRAM</span>
+                            </div>
+                        </li>
+                        <li class="giving">
+                            <div class="menuItemWrap">
+                                <span class="imgWrap"></span>
+                                <span class="textWrap">GIVING</span>
+                            <div>
+                        </li>
+                        <li class="news">
+                            <div class="menuItemWrap">
+                                <span class="imgWrap"></span>
+                                <span class="textWrap">NEWS</span>
+                            <div>
+                        </li>
+                        <li class="about">
+                            <div class="menuItemWrap">
+                                <span class="imgWrap"></span>
+                                <span class="textWrap">ABOUT</span>
+                            <div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="userWrap">
+                    <div class="loginForm">
+                        LOGIN | REGISTER
+                    </div>
+                </div>
+            </div>
         </header><!-- #header-->
 
         <section id="middle">
 
             <div id="container">
-                <div id="content">
-                    @RenderBody()
+                <div id="contentWrap">
+                    <div class="roundBorder section " id="content">
+                        @RenderBody()
+                    </div>
                 </div><!-- #content-->
             </div><!-- #container-->
 
-            <aside id="sideLeft">
+            <div class="sidebar" id="sideLeft">
+                <aside>
+                    <div class="roundBorder daysCountdown">
+                        <h1><span class="daysNumber">@Model.DaysUntilCodeCampString</span> <br/>DAYS TO GO</h1>
+                    </div>
+                    <div class="sectionBreak"></div>
+                    <div class="sectionTitle"><span class="luggageIcon"></span> <h2>JOB POSTS</h2></div>
+                    <div class="roundBorder section  jobPosts">
+                        <div class="listWrap">
+                            <ul>
+                                <li>
+                                    <span class="date">12.22</span><br />
+                                    <a href="#">Design & Content Manager</a><br />
+                                    Stanford Law School - Standford, CA
+                                </li>
+                                <li>
+                                    <span class="date">12.14</span><br />
+                                    <a href="#">Software Engineer (iOS)</a><br />
+                                    WhaleShark Media - Austin, TX
+                                </li>
+                                <li>
+                                    <span class="date">12.12</span><br />
+                                    <a href="#">PHP Developer</a><br />
+                                    FortuneBuilders - San Francisco, CA
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="buttonWrap">
+                            <a href="#" class="button round magenta">
+                            MORE JOBS
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sectionBreak"></div>
+                    <div class="sectionTitle"><span class="laptopIcon"></span> <h2>NEWS</h2></div>
+                    <div class="roundBorder section  news">
+                        <div class="listWrap">
+                            <ul>
+                                <li>
+                                    <span class="date">12.20</span><br />
+                                    <a href="#">Are Programmers Impossible to Manage?</a>
+                                </li>
+                                <li>
+                                    <span class="date">12.11</span><br />
+                                    <a href="#">The Meaning of Code</a>
+                                </li>
+                                <li>
+                                    <span class="date">12.09</span><br />
+                                    <a href="#">The Art of Dashboard Design</a><br />
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="buttonWrap">
+                            <a href="#" class="button round magenta">
+                            MORE NEWS
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sectionBreak"></div>
+                    <div class="roundBorder sponsor">
+                        <div class="wrap">
+                            <a href="#" class="orcsweb"><img src="~/Content/Images/sponsors/orcsweb-small.png"></a>
+                        </div>
+                    </div>
+                </aside>
+            </div><!-- #sideLeft -->
 
-            </aside><!-- #sideLeft -->
+            <div class="sidebar" id="sideRight">
+                <aside>
+                    <div class="socialMediaChannels">
+                        <ul>
+                            <li class="facebook">
+                                <a href="#">Facebook</a>
+                            </li>
+                            <li class="twitter">
+                                <a href="#">Twitter</a>
+                            </li>
+                            <li class="googlePlus">
+                                <a href="#">Google+</a>
+                            </li>
+                            <li class="linkedIn">
+                                <a href="#">LinkedIn</a>
+                            </li>
+                            <li class="rss">
+                                <a href="#">RSS</a>
+                            </li>
+                            <li class="contact">
+                                <a href="#">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="sectionBreak"></div>
+                    <div class="sectionTitle sponsors">OUR<br />SPONSORS</div>
+                    <div class="roundBorder section  sponsors">
+                        <div class="topButtonsWrap">
+                            <br />
+                            <div class="button becomeSponsor">
+                                <a href="#">BECOME A<br />SPONSOR</a>
+                            </div>
+                            <br />
+                            <a href="#" class="button round gray border">VIEW ALL</a>
+                        </div>
+                        <div class="sponsorsListWrap">
+                            <dl class="accordion">
 
-            <aside id="sideRight">
+                            <dt><a href="">PLATINUM</a></dt>
+                            <dd></dd>
+                            <dt><a href="">GOLD</a></dt>
+                            <dd></dd>
+                            <dt><a href="">SILVER</a></dt>
+                            <dd></dd>
+                            <dt><a href="">BRONZE</a></dt>
+                            <dd></dd>
+                            <dt><a href="">COMMUNITY<br />SPONSORS</a></dt>
+                            <dd></dd>
 
-            </aside><!-- #sideRight -->
+                            </dl>
+                        </div>
+                        <div class="bottomButtonsWrap">
+                            <br />
+                            <div class="button becomeSponsor">
+                                <a href="#">BECOME A<br />SPONSOR</a>
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                </aside>
+            </div><!-- #sideRight -->
 
         </section><!-- #middle-->
 

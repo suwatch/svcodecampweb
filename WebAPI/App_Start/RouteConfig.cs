@@ -19,6 +19,8 @@ namespace WebAPI
 
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.IgnoreRoute("Content/{*pathInfo}");
+
             // SESSIONS
 
 

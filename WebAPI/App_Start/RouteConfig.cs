@@ -19,7 +19,20 @@ namespace WebAPI
 
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.IgnoreRoute("Content/{*pathInfo}");
+
             // SESSIONS
+
+
+            routes.MapRoute("SessionRouteTest", "Session/Test",
+                     new
+                     {
+                         /* Your default route */
+                         controller = "Session",
+                         action = "IndexTest",
+                         year = currentYear
+                     });
+
             routes.MapRoute("SessionRouteAll", "Session/{year}",
                       new
                       {

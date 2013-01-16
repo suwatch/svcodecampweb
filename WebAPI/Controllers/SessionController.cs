@@ -13,6 +13,20 @@ namespace WebAPI.Controllers
     {
         public ActionResult Index(string year)
         {
+            var viewModel = GetSessionViewModel(year);
+
+            return View(viewModel);
+        }
+
+        public ActionResult IndexTest(string year)
+        {
+            var viewModel = GetSessionViewModel(year);
+
+            return View(viewModel);
+        }
+
+        private SessionViewModel GetSessionViewModel(string year)
+        {
             var codeCampYearId = CodeCampYearId(year);
             if (codeCampYearId < 0)
             {
@@ -20,9 +34,9 @@ namespace WebAPI.Controllers
             }
 
             List<SessionsResult> sessions = SessionsManager.I.Get(new SessionsQuery()
-            {
-                CodeCampYearId = codeCampYearId
-            });
+                                                                      {
+                                                                          CodeCampYearId = codeCampYearId
+                                                                      });
 
             foreach (var rec in sessions)
             {
@@ -31,7 +45,7 @@ namespace WebAPI.Controllers
             }
 
             List<SponsorListResult> sponsors =
-                SponsorListManager.I.Get(new SponsorListQuery()
+                SponsorListManager.I.Get(new SponsorListQuery
                                              {
                                                  CodeCampYearId = codeCampYearId,
                                                  IncludeSponsorLevel = true,
@@ -47,17 +61,50 @@ namespace WebAPI.Controllers
                 UpdateSponsorPictureUrl(rec);
             }
 
+            var sessionsList = sessions.OrderBy(a => a.SessionSlug).ToList();
+
+            List<SessionTimesResult> sessionTimesResults =
+                SessionTimesManager.I.Get(new SessionTimesQuery
+                                              {
+                                                  CodeCampYearId = codeCampYearId
+                                              });
+
+            var sessionsAssignedToTime = new List<int>();
+
+            // need to go through all times and sort. need to create extra record for unassigned times
+            foreach (var sessionTimeResult in sessionTimesResults)
+            {
+                sessionTimeResult.sessionsResults =
+                    sessionsList.Where(a => a.SessionTimesId == sessionTimeResult.Id)
+                                .OrderBy(a => a.Title.ToUpper())
+                                .ToList();
+                sessionsAssignedToTime.AddRange(sessionTimeResult.sessionsResults.Select(a => a.Id).ToList());
+            }
+
+            var allSessionIds = sessions.Select(a => a.Id).ToList();
+
+            var unAssignedIds = allSessionIds.Except(sessionsAssignedToTime);
+            if (unAssignedIds.Any())
+            {
+                var sessionTimeResultUnassigned = new SessionTimesResult
+                                                      {
+                                                          Id = sessionTimesResults.Max(a => a.Id) + 1,
+                                                          CodeCampYearId = codeCampYearId,
+                                                          sessionsResults = sessions,
+                                                          StartTimeFriendly = "Unassigned"
+                                                      };
+                sessionTimesResults.Add(sessionTimeResultUnassigned);
+            }
+
             var viewModel = new SessionViewModel()
                                 {
-                                    DaysUntilCodeCampString = "9999",
-                                    Sessions = sessions.OrderBy(a => a.SessionSlug).ToList(),
+                                    DaysUntilCodeCampString = "9999 Days Until Camp",
+                                    Sessions = sessionsList,
+                                    SessionsByTime = sessionTimesResults,
                                     Sponsors = sponsors
                                 };
-
-            return View(viewModel);
+            return viewModel;
         }
-
-     
 
 
         public ActionResult Detail(string year, string session)

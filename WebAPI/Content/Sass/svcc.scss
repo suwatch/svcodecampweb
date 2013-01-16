@@ -227,11 +227,24 @@ body {
 // Links
 a {
   color: #000;
+  text-decoration: none;
   &:hover {
     color: #25aae1;
+    text-decoration: underline;
   }
 }
 // End - Links
+
+// Element disply and visiblity
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+.visible {
+  display: block;
+  visibility: visible;
+}
+// End - Element disply and visiblity
 
 // Header
 #header {
@@ -286,8 +299,8 @@ a {
       border-right: 1px solid #1d1915;
       height: 48px;
       width: inherit;
-      ul {
-        li {
+      > ul {
+        > li {
           list-style-type: none;
           float: left;
           color: #fff;
@@ -296,11 +309,20 @@ a {
           height: 49px;
           border-right: 1px solid #7c7b7b;
           border-left: 1px solid #1d1915;
+          div > a {
+            color: #fff;
+            padding: 17px 20px;
+            display: block;
+            h2 {
+              padding: 0;
+              margin: 0;
+              display: inline;
+            }
+          }
           &:first-child {
             border-left: none;
           }
           .menuItemWrap {
-            padding: 17px 20px 0;
             .imgWrap {
               width: 10px;
               height: 10px;
@@ -321,6 +343,67 @@ a {
           &.about .imgWrap {
             background-position: -100px 0;
           }
+          // Dropdown
+          ul {
+            float: left;
+            padding: 10px 0;
+            width: 100%;
+            list-style: none;
+            background-color: #F5F5F5;
+            z-index: 9999;
+            left: auto;
+            position: absolute;
+            padding: 8px 18px 8px 12px;
+            width: 150px;
+            margin-top: 1px;
+            @include box-shadow(0px 0px 6px 2px hsla(0, 0%, 0%, 0.3));
+            background: #F5F5F5 url('../Images/header-submenu-bg.png') no-repeat;
+            background-position: bottom;
+            display: none;
+            visibility: hidden;
+            li {
+              border: none;
+              color: #5c5c5c;
+              border-bottom: 1px dotted #cdcdcd;
+              @include scadaFont;
+              padding: 8px 0;
+              &:last-of-type {
+                border-bottom: none;
+              }
+              a {
+                padding: 4px;
+                width: 100%;
+                display: block;
+                &:hover {
+                  color:  #fff;
+                  background-color: #4b4a4a;
+                  text-decoration: none;;
+                }
+              }
+              span {
+                width: 8px;
+                height: 8px;
+                padding-right: 6px;
+                display: inline-block;
+                @include imageSprites;
+                background-size: 219px 160px;
+              }
+            }
+          }
+          &.program ul span {
+            background-position: -20px 0;
+          }
+          &:hover {
+            background-color: #383737;
+            a {
+              text-decoration: none;
+            }
+            ul {
+              display: block;
+              visibility: visible;
+            }
+          }
+          // End - Dropdown
         }
       }
     }
@@ -568,7 +651,6 @@ a {
             display: block;
             color: #6e6e6e;
             text-shadow: 0 1px #FFF;
-            text-decoration: none;
             padding-left: 8px;
             line-height: 8px;
           }
@@ -617,9 +699,6 @@ a {
                 width: 89px;
                 padding: 2px 0 2px 8px;
                 border-right: 1px solid #e6e6e6;
-                a {
-                  text-decoration: none;
-                }
               }
             }
           }

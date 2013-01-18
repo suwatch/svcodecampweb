@@ -2561,7 +2561,9 @@
     <Content Include="Views\Home\Copy of Index.cshtml" />
     <Content Include="Views\Session\index.cshtml" />
     <Content Include="Views\Session\Detail.cshtml" />
-    <Content Include="WebConnectionStrings.config" />
+    <Content Include="WebConnectionStrings.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Session\IndexTest.cshtml" />
   </ItemGroup>
   <ItemGroup>

@@ -2,17 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ee82a8b-af13-4672-838f-c68c30f0c55a" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/System.Net.Http.Formatting.dll" afterPath="$PROJECT_DIR$/bin/System.Net.Http.Formatting.dll" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/System.Net.Http.WebRequest.dll" afterPath="$PROJECT_DIR$/bin/System.Net.Http.WebRequest.dll" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/System.Net.Http.dll" afterPath="$PROJECT_DIR$/bin/System.Net.Http.dll" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/System.Web.Http.WebHost.dll" afterPath="$PROJECT_DIR$/bin/System.Web.Http.WebHost.dll" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/System.Web.Http.dll" afterPath="$PROJECT_DIR$/bin/System.Web.Http.dll" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/System.Web.Mvc.dll" afterPath="$PROJECT_DIR$/bin/System.Web.Mvc.dll" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/System.Web.Razor.dll" afterPath="$PROJECT_DIR$/bin/System.Web.Razor.dll" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Content/Images/sprites.png" afterPath="$PROJECT_DIR$/Content/Images/sprites.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebAPI.csproj" afterPath="$PROJECT_DIR$/WebAPI.csproj" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebAPI.iws" afterPath="$PROJECT_DIR$/WebAPI.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" afterPath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/Session/index.cshtml" afterPath="$PROJECT_DIR$/Views/Session/index.cshtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Content/Styles/svcc.css" afterPath="$PROJECT_DIR$/Content/Styles/svcc.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Content/Sass/svcc.scss" afterPath="$PROJECT_DIR$/Content/Sass/svcc.scss" />
     </list>
     <ignored path="WebAPI.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1358344700406" ignored="false" />
+    <file path="/Dummy.txt" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1358391332899" ignored="false" />
     <file path="/_Layout.cshtml" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1358353405422" ignored="false" />
-    <file path="/svcc.scss" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1358352883241" ignored="false" />
-    <file path="/index.cshtml" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1358183044772" ignored="false" />
+    <file path="/svcc.scss" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1358446967600" ignored="false" />
+    <file path="/index.cshtml" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1358447042894" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../../AgelessEmail/HG/HG01/AEWeb/StarSaverPub/.sencha/app/plugin.xml" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1358227773431" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../../AgelessEmail/HG/HG01/AEWeb/StarSaver/resources/sass/app.scss" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1358230186596" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../../AgelessEmail/HG/HG01/AEWeb/StarSaver/app.json" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1358231576783" ignored="false" />
@@ -76,19 +85,19 @@
     <splitter split-orientation="vertical" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="index.cshtml" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="index.cshtml" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Views/Session/index.cshtml">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="24" column="114" selection-start="1108" selection-end="1108" vertical-scroll-proportion="0.0">
+                <state line="7" column="17" selection-start="144" selection-end="144" vertical-scroll-proportion="0.18428184">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="_Layout.cshtml" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="_Layout.cshtml" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Views/Shared/_Layout.cshtml">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="94" column="100" selection-start="3684" selection-end="3684" vertical-scroll-proportion="0.7479675">
+                <state line="97" column="36" selection-start="3571" selection-end="3572" vertical-scroll-proportion="-3.1764705">
                   <folding />
                 </state>
               </provider>
@@ -115,7 +124,7 @@
           <file leaf-file-name="BundleConfig.cs" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/App_Start/BundleConfig.cs">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="7" column="110" selection-start="201" selection-end="201" vertical-scroll-proportion="0.0">
+                <state line="10" column="110" selection-start="365" selection-end="365" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -137,7 +146,7 @@
           <file leaf-file-name="svcc.scss" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Content/Sass/svcc.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="244" column="22" selection-start="4487" selection-end="4487" vertical-scroll-proportion="0.8484849">
+                <state line="786" column="35" selection-start="16764" selection-end="16764" vertical-scroll-proportion="0.8712121">
                   <folding />
                 </state>
               </provider>
@@ -146,7 +155,7 @@
           <file leaf-file-name="SessionController.cs" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Controllers/SessionController.cs">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="51" column="59" selection-start="1879" selection-end="1902" vertical-scroll-proportion="0.0">
+                <state line="98" column="59" selection-start="4162" selection-end="4162" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -179,9 +188,9 @@
         <option value="$PROJECT_DIR$/App_Start/BundleConfig.cs" />
         <option value="$PROJECT_DIR$/Content/Sass/layout_html5_fix_lcr_s2_fb_1/index.html" />
         <option value="$PROJECT_DIR$/Controllers/SessionController.cs" />
-        <option value="$PROJECT_DIR$/Views/Session/index.cshtml" />
-        <option value="$PROJECT_DIR$/Content/Sass/svcc.scss" />
         <option value="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" />
+        <option value="$PROJECT_DIR$/Content/Sass/svcc.scss" />
+        <option value="$PROJECT_DIR$/Views/Session/index.cshtml" />
       </list>
     </option>
   </component>
@@ -463,14 +472,14 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="MemberChooser.sorted" value="false" />
     <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
-    <property name="GoToClass.includeLibraries" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html" />
-    <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -485,19 +494,6 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -526,6 +522,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -757,7 +766,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/App_Start/BundleConfig.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="110" selection-start="201" selection-end="201" vertical-scroll-proportion="0.0">
+        <state line="10" column="110" selection-start="365" selection-end="365" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -778,7 +787,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Controllers/SessionController.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="59" selection-start="1879" selection-end="1902" vertical-scroll-proportion="0.0">
+        <state line="98" column="59" selection-start="4162" selection-end="4162" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -797,23 +806,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Views/Session/index.cshtml">
+    <entry file="file://$PROJECT_DIR$/Views/Shared/_Layout.cshtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="114" selection-start="1108" selection-end="1108" vertical-scroll-proportion="0.0">
+        <state line="97" column="36" selection-start="3571" selection-end="3572" vertical-scroll-proportion="-3.1764705">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/Sass/svcc.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="244" column="22" selection-start="4487" selection-end="4487" vertical-scroll-proportion="0.8484849">
+        <state line="786" column="35" selection-start="16764" selection-end="16764" vertical-scroll-proportion="0.8712121">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Views/Shared/_Layout.cshtml">
+    <entry file="file://$PROJECT_DIR$/Views/Session/index.cshtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="100" selection-start="3684" selection-end="3684" vertical-scroll-proportion="0.7479675">
+        <state line="7" column="17" selection-start="144" selection-end="144" vertical-scroll-proportion="0.18428184">
           <folding />
         </state>
       </provider>

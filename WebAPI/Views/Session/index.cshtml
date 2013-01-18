@@ -4,6 +4,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<script type="text/javascript">
+$(document).ready(function () {
+    $('.interestSelectBtn').click(function () {
+        console.log(arguments)
+    });
+});
+</script>
+
 
 <h1 class="title">Sessions</h1>
 
@@ -14,7 +22,16 @@
         <table>
             <tr>
                 <td class="title">What's New in .NET 4.5 <i>by</i> <a href="#" class="author">Andrew Cole</a> </td>
-                <td class="action"><div class="interestSelectBtn"><div class="label">Not Interested</div><div class="arrow"></div></div></td>
+                <td class="action">
+                    <div class="interestSelectBtn">
+                        <div class="label">Not Interested</div><div class="arrow"></div>
+                        <div class="select">
+                            <div class="option"><div class="icon"></div><div class="label">Not Interested</div></div>
+                            <div class="option interested"><div class="icon"></div><div class="label">Interested</div></div>
+                            <div class="option attending"><div class="icon"></div><div class="label">Attending</div></div>
+                        </div>
+                    </div>
+                </td>
                 <td class="details"><div class="detailsBtn"><div class="icon"></div><div class="label">Details</div></div></td>
             </tr>
             <tr>
@@ -24,7 +41,11 @@
             </tr>
             <tr>
                 <td class="title">Dependency Injection in .Net <i>by</i> <a href="#" class="author">Eric Le Saux</a> </td>
-                <td class="action"><div class="interestSelectBtn"><div class="label">Not Interested</div><div class="arrow"></div></div></td>
+                <td class="action">
+                <div class="interestSelectBtn">
+                    <div class="label">Not Interested</div><div class="arrow"></div>
+                </div>
+                </td>
                 <td class="details"><div class="detailsBtn"><div class="icon"></div><div class="label">Details</div></div></td>
             </tr>
             <tr>
@@ -40,7 +61,15 @@
             <table>
                 <tr>
                     <td class="title">.NET Best Practices <i>by</i> <a href="#" class="author">John Cantona</a> </td>
-                    <td class="action"><div class="interestSelectBtn"><div class="label">Not Interested</div><div class="arrow"></div></div></td>
+                    <td class="action">
+                        <div class="interestSelectBtn">
+                            <div class="label">Not Interested</div><div class="arrow"></div>
+                            <div class="select">
+                                <div class="option"><div class="icon"></div><div class="label">Not Interested</div></div>
+                                <div class="option interested"><div class="icon"></div><div class="label">Interested</div></div>
+                            </div>
+                        </div>
+                    </td>
                     <td class="details"><div class="detailsBtn"><div class="icon"></div><div class="label">Details</div></div></td>
                 </tr>
                 <tr>

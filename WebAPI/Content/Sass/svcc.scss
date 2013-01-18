@@ -743,7 +743,7 @@ a {
           }
         }
         td.action, td.details {
-          width: 80px;
+          width: 90px;
         }
         td {
           padding: 11px 8px;
@@ -756,7 +756,7 @@ a {
             font-weight: bold;
           }
 
-          .interestSelectBtn, .detailsBtn {
+          .detailsBtn {
             border-top-right-radius: 10px;
             border-bottom-left-radius: 10px;
             border: 1px solid #ececec;
@@ -764,7 +764,6 @@ a {
             padding: 4px 8px;
             vertical-align: top;
             font-size: 13px;
-            cursor: pointer;
             &:hover {
               background-color: #e9e7e9;
               border: 1px solid #c5c5c5;
@@ -776,23 +775,83 @@ a {
 
           // Intereset Select button
           .interestSelectBtn {
-            padding: 0 8px;
-            width: 120px;
-            height: 31px;
-            .label {
-              vertical-align: top;
-              width: 94px;
-              display: inline-block;
-              border-right: 1px solid #e3e2e3;
-              padding: 9px 8px 9px 0;
-            }
-            .arrow {
-              border-left: 1px solid #fff;
-              display: inline-block;
-              @include imageSprites;
-              width: 16px;
+
+            .select {
+              width: 153px;
               height: 31px;
-              background-position: 5px -138px;
+              cursor: pointer;
+              &:hover .label, &:hover .arrow {
+                background-color: #e9e7e9;
+                border: 1px solid #c5c5c5;
+              }
+              &:active .label, &:active .arrow {
+                background-color: #dddbdd;
+              }
+
+              .label {
+                border-bottom-left-radius: 10px;
+                vertical-align: top;
+                width: 116px;
+                height: 17px;
+                display: inline-block;
+                border: 1px solid #ececec;
+                border-right: 1px solid #e3e2e3;
+                padding: 9px 8px 6px 0;
+                background-color: #faf9fa;
+                text-align: top;
+                vertical-align: top;
+                .icon {
+                  width: 14px;
+                  height: 14px;
+                  display: inline-block;
+                  @include imageSprites;
+                  background-position: -9999px -9999px;
+                  margin: 0 4px 0px 5px;
+                }
+
+                .text {
+                  display: inline-block;
+                  vertical-align: text-top;
+                }
+              }
+              .arrow {
+                border-top-right-radius: 10px;
+                border: 1px solid #ececec;
+                border-left: 1px solid #fff;
+                display: inline-block;
+                @include imageSprites;
+                width: 24px;
+                height: 32px;
+                background-position: 5px -138px;
+                background-color: #faf9fa;
+
+              }
+
+            }
+
+            &.Interested {
+              .select {
+                .label {
+                  background-color: #e18309;
+                  border: 1px solid #e18309;
+                  color: #fff;
+                  .icon {
+                    background-position: -50px -150px;
+                  }
+                }
+              }
+            }
+            &.Attending {
+              .select {
+                .label {
+                  background-color: #39b54a;
+                  border: 1px solid #39b54a;
+                  color: #fff;
+                  .icon {
+                    background-position: -25px -148px;
+                  }
+                }
+              }
             }
 
             // Select options
@@ -829,16 +888,17 @@ a {
                   margin: 6px 4px 0px;
                 }
                 &.interested .icon {
-                  background-position: -25px -175px;
+                  background-position: -50px -176px;
                 }
                 &.attending .icon {
-                  background-position: -50px -176px;
+                  background-position: -25px -175px;
                 }
                 .label {
                   border: none;
                   display: inline-block;
+                  vertical-align: text-top;
                   padding: 0;
-                  margin: 6px 0 0 8px;
+                  margin: -2px 0 0 8px;
                 }
               }
             }

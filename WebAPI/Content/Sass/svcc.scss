@@ -772,13 +772,38 @@ a {
             &:active {
               background-color: #dddbdd;
             }
-            .select {
+          }
+
+          // Intereset Select button
+          .interestSelectBtn {
+            padding: 0 8px;
+            width: 120px;
+            height: 31px;
+            .label {
+              vertical-align: top;
+              width: 94px;
+              display: inline-block;
+              border-right: 1px solid #e3e2e3;
+              padding: 9px 8px 9px 0;
+            }
+            .arrow {
+              border-left: 1px solid #fff;
+              display: inline-block;
+              @include imageSprites;
+              width: 16px;
+              height: 31px;
+              background-position: 5px -138px;
+            }
+
+            // Select options
+            .selectOptionsWrap {
+              z-index: 9999;
               width: 140px;
               position: absolute;
-              background-color: #f3f1f3;
-              border: 1px solid #c5c5c5;
               margin-top: -36px;
               margin-left: -10px;
+              background-color: #f3f1f3;
+              border: 1px solid #c5c5c5;
               padding: 8px;
               @include box-shadow(0px 3px 3px 1px hsla(0, 0%, 0%, 0.3));
               border-top-right-radius: 10px;
@@ -817,28 +842,8 @@ a {
                 }
               }
             }
-          }
+            // End - Select options
 
-          // Intereset Select button
-          .interestSelectBtn {
-            padding: 0 8px;
-            width: 120px;
-            height: 31px;
-            .label {
-              vertical-align: top;
-              width: 94px;
-              display: inline-block;
-              border-right: 1px solid #e3e2e3;
-              padding: 9px 8px 9px 0;
-            }
-            .arrow {
-              border-left: 1px solid #fff;
-              display: inline-block;
-              @include imageSprites;
-              width: 16px;
-              height: 31px;
-              background-position: 5px -138px;
-            }
           }
           // End - Intereset Select button
 
@@ -862,6 +867,11 @@ a {
         }
       }
     }
+
+    #selectOptionsWrap {
+      display: none;
+    }
+
   }
   // End - Sessions
 }

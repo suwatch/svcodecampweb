@@ -6,6 +6,7 @@
 
 <script type="text/javascript">
 $(document).ready(function () {
+
     var floatingElement,
         targetSelectBtn;
 
@@ -22,26 +23,55 @@ $(document).ready(function () {
         hideFloatingElement(floatingElement);
     });
 
-    $('.interestSelectBtn .select').click(function (e) {
-        console.log(arguments)
-        // Add to monitor the current floating element
+    // Session details floating panel
+    $('.detailsBtn').click(function (e) {
+        console.log(e);
+        var buttonOffset = $(this).offset();
+        console.log()
         if (floatingElement) {
             hideFloatingElement(floatingElement);
         }
-        monitorFloatingElement('#selectOptionsWrap');
-
-        targetSelectBtn = e.currentTarget.parentElement;
-
-        $('#selectOptionsWrap').appendTo(targetSelectBtn);
-        $('#selectOptionsWrap').fadeIn('fast', 'linear');
-
+        monitorFloatingElement('.detailsFloatingPanel');
+        $('.detailsFloatingPanel').fadeIn('fast', 'linear').css({
+            'top': buttonOffset.top - 408
+        });
         // Stop event bubbling so body listener for hiding floating
         // panel won't be triggered
         e.stopPropagation();
+    });
+    $('.closePanelButton').click(function (e) {
+        if (floatingElement) {
+            hideFloatingElement(floatingElement);
+        }
+    });
+    // End - Session details floating panel
 
-        $('.interestSelectBtn .option').click(function (e) {
-            interestSelectHandler(targetSelectBtn, e.currentTarget);
-        });
+    // Session Select
+    $('.interestSelectBtn .select').click(function (e) {
+        console.log(e)
+        // Show drop down
+        if (e.srcElement.className == 'arrow') {
+            // Add to monitor the current floating element
+            if (floatingElement) {
+                hideFloatingElement(floatingElement);
+            }
+            monitorFloatingElement('#selectOptionsWrap');
+
+            targetSelectBtn = e.currentTarget.parentElement;
+
+            $('#selectOptionsWrap').appendTo(targetSelectBtn);
+            $('#selectOptionsWrap').fadeIn('fast', 'linear');
+
+            // Stop event bubbling so body listener for hiding floating
+            // panel won't be triggered
+            e.stopPropagation();
+
+            $('.interestSelectBtn .option').click(function (e) {
+                interestSelectHandler(targetSelectBtn, e.currentTarget);
+            });
+        } else {
+            // Toggle through the options
+        }
     });
 
     function interestSelectHandler (select, option) {
@@ -68,6 +98,8 @@ $(document).ready(function () {
         }
     }
 
+    // End - Session Select
+
 });
 </script>
 
@@ -80,6 +112,47 @@ $(document).ready(function () {
         <div class="option"><div class="icon"></div><div class="label">Not Interested</div></div>
         <div class="option interested"><div class="icon"></div><div class="label">Interested</div></div>
         <div class="option attending"><div class="icon"></div><div class="label">Attending</div></div>
+    </div>
+
+    <div class="detailsFloatingPanel">
+        <div class="closePanelButton"><div class="icon"></div></div>
+        <div class="content">
+            <div class="sessionWrap">
+                <h3>3 Patterns to Scale Scrum</h3>
+                <div class="details">
+                    <span class="timeIcon"></span>Saturday, 5 PM <span class="mapLocationIcon"></span>Room 302, Lot 1 &nbsp;<a href="#">Map</a>
+                </div>
+                <p>Scrum is the simplest possible agile method so it's easy to get started with small team of software developers. What happens when you try to apply Scrum to large projects?</p>
+                <div class="footer">
+                    <div class="buttonWrap">
+                        <a href="#" class="button round blue">READ MORE</a>
+                    </div>
+                </div>
+            </div>
+            <div class="speakerWrap">
+                <div class="title">Speaker</div>
+                <div class="avatarWrap">
+                    <img src="~/Content/Images/speaker-avatar-sample.png" />
+                </div>
+                <div class="speakerInfo">
+                    by <a href="#">Scott Pilgrim</a><br />
+                    <p>
+                        Digital Project Manager<br />
+                        Certified Scrum Master
+                    </p>
+                    <div class="buttonWrap">
+                        <a href="#" class="button round blue">READ MORE</a>
+                    </div>
+                </div>
+                <div class="sessionType">
+                    <span class="label">Type</span> <br /><br />
+                    Conference (<a href="#">What is it?</a>)
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="pointer"></div>
+        </div>
     </div>
 
     <div class="sessionsList">

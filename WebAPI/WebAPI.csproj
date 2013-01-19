@@ -1827,9 +1827,12 @@
     <Content Include="Contact.aspx" />
     <Content Include="Content\Images\bg.jpg" />
     <Content Include="Content\Images\daysCountdownReflection.png" />
+    <Content Include="Content\Images\floating-panel-bg.png" />
     <Content Include="Content\Images\header-bg.jpg" />
+    <Content Include="Content\Images\header-submenu-bg.png" />
     <Content Include="Content\Images\sidebarLeft-sponsor-bg.png" />
     <Content Include="Content\Images\silicon-valley-code-camp.png" />
+    <Content Include="Content\Images\speaker-avatar-sample.png" />
     <Content Include="Content\Images\sponsors\orcsweb-small.png" />
     <Content Include="Content\Images\sprites.png" />
     <Content Include="Content\Styles\svcc.css" />

@@ -748,9 +748,6 @@ a {
             border-bottom: none;
           }
         }
-        td.action, td.details {
-          width: 90px;
-        }
         td {
           padding: 11px 8px;
           color: #2e363d;
@@ -931,6 +928,20 @@ a {
             }
           }
           // End - Details button
+
+          &.title {
+            width: 330px;
+            .description {
+              display: none;
+            }
+          }
+          &.action {
+            width: 170px;
+          }
+          &.details {
+            width: 105px;
+          }
+
         }
       }
     }
@@ -941,9 +952,8 @@ a {
 
   }
 
-  // Details Floating panel
-  .detailsFloatingPanel {
-    display: none;
+  // Floating panel
+  .floatingPanel {
     position: absolute;
     margin-left: 253px;
     z-index: 9999;
@@ -953,6 +963,22 @@ a {
     border: 2px solid #fff;
     @include scadaFont;
     @include box-shadow(0px 0px 6px 4px hsla(0, 0%, 0%, 0.4));
+    .footer {
+      .pointer {
+        width: 22px;
+        height: 22px;
+        @include imageSprites;
+        background-position: -150px -150px;
+        position: relative;
+        margin-top: 16px;
+        margin-left: 450px;
+      }
+    }
+  }
+
+  // Session Details Floating panel
+  .detailsFloatingPanel {
+    display: none;
     width: 555px;
     height: 220px;
     .closePanelButton {
@@ -971,17 +997,6 @@ a {
         margin: 3px 0 0 10px;
         @include imageSprites;
         background-position: -50px -20px;
-      }
-    }
-    .footer {
-      .pointer {
-        width: 22px;
-        height: 22px;
-        @include imageSprites;
-        background-position: -150px -150px;
-        position: relative;
-        margin-top: 16px;
-        margin-left: 450px;
       }
     }
     .content {
@@ -1011,20 +1026,24 @@ a {
           background-color: #eaeaea;
           vertical-align: top;
           margin: 5px 0;
-          padding: 8px 8px 0;
+          padding: 8px 4px 0;
+          vertical-align: top;
           .timeIcon, .mapLocationIcon {
             display: inline-block;
             width: 16px;
             height: 16px;
             @include imageSprites;
             background-position: -9999px -9999px;
-            margin: -2px 5px 0 3px;
+            margin: -2px 5px -5px 3px;
           }
           .timeIcon {
             background-position: -75px -200px;
           }
           .mapLocationIcon {
             background-position: -75px -175px;
+          }
+          a {
+            vertical-align: top;
           }
         }
         p {
@@ -1076,6 +1095,37 @@ a {
   }
   // End - Details Floating panel
 
+  // Speaker floating panel
+  .speakerPanel {
+    position: relative;
+    width: 245px;
+    height: 145px;
+    .speakerAvatarWrap, .speakerInfoWrap {
+      display: inline-block;
+      vertical-align: top;
+    }
+    .speakerAvatarWrap {
+      width: 85px;
+      height: 100px;
+    }
+  }
+  // End - Speaker floating panel
+
+  // Sponsor floating panel
+  .sponsorPanel {
+    position: relative;
+    width: 265px;
+    height: 145px;
+    .sponsorLogoWrap, .sponsorInfoWrap {
+      display: inline-block;
+      vertical-align: top;
+    }
+    .speakerLogoWrap {
+      width: 75px;
+      height: 100px;
+    }
+  }
+  // End - Sponsor floating panel
 
   // End - Sessions
 }

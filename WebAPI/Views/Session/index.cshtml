@@ -28,7 +28,9 @@ $(document).ready(function () {
 
     // Session details floating panel
     $('.detailsBtn').click(function (e) {
-        var buttonOffset = $(this).offset();
+        var buttonOffset = $(this).offset(),
+        sessionId = $(this).attr('sessionId');
+        console.log(sessionId);
         if (floatingElement) {
             hideFloatingElement(floatingElement);
         }
@@ -36,6 +38,12 @@ $(document).ready(function () {
         $('#detailsFloatingPanel').fadeIn('fast', 'linear').css({
             'top': buttonOffset.top - 408
         });
+
+        // Copy session description
+        console.log($('#sessionDescription_' + sessionId).clone())
+        console.log($('#detailsFloatingPanel .description'))
+        $('#detailsFloatingPanel .description').replaceWith($('#sessionDescription_' + sessionId).text());
+
         // Stop event bubbling so body listener for hiding floating
         // panel won't be triggered
         e.stopPropagation();
@@ -208,11 +216,11 @@ $(document).ready(function () {
         <div class="contentWrap">
             <div class="content">
                 <div class="sessionWrap">
-                    <h3>3 Patterns to Scale Scrum</h3>
+                    <h3 class="title">3 Patterns to Scale Scrum</h3>
                     <div class="details">
                         <span class="timeIcon"></span>Saturday, 5 PM <span class="mapLocationIcon"></span>Room 302, Lot 1 &nbsp;<a href="#">Map</a>
                     </div>
-                    <p>Scrum is the simplest possible agile method so it's easy to get started with small team of software developers. What happens when you try to apply Scrum to large projects?</p>
+                    <p class="description">Scrum is the simplest possible agile method so it's easy to get started with small team of software developers. What happens when you try to apply Scrum to large projects?</p>
                     <div class="footer">
                         <div class="buttonWrap">
                             <a href="#" class="button round blue">READ MORE</a>
@@ -371,7 +379,9 @@ $(document).ready(function () {
             <tr>
                 <td class="title" width="330">
                     @session.Title <i>by</i> <a href="#" class="author">@session.PresenterName</a>
-                    <div class="sessionDetails" id="sessionDetails_@session.Id">@session.SessionTime @session.RoomNumber </div>
+                    <div class="sessionDetails" id="sessionDetails_@session.Id">@session.SessionTime @session.RoomNumber 
+                        <span class="timeIcon"></span>@session.SessionTime <span class="mapLocationIcon"></span>Room @session.RoomNumber <a href="#">Map</a>
+                    </div>
                     <div class="sessionDescription" id="sessionDescription_@session.Id">@session.Description</div>
                 </td>
                 <td class="action">
@@ -380,7 +390,7 @@ $(document).ready(function () {
                     </div>
                 </td>
                 <td class="details">
-                    <div class="detailsBtn"><div class="icon"></div><div class="label">Details</div></div>                    
+                    <div class="detailsBtn" id="detailsBtn_@session.Id" sessionId="@session.Id"><div class="icon"></div><div class="label">Details</div></div>
                 </td>
             </tr>
 }

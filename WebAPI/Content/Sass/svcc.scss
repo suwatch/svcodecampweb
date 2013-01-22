@@ -954,15 +954,21 @@ a {
 
   // Floating panel
   .floatingPanel {
+    display: none;
     position: absolute;
     margin-left: 253px;
     z-index: 9999;
     top: 0;
     left: 0;
-    background: #fff url('../Images/floating-panel-bg.png') repeat-x right top;
-    border: 2px solid #fff;
-    @include scadaFont;
-    @include box-shadow(0px 0px 6px 4px hsla(0, 0%, 0%, 0.4));
+    .contentWrap {
+      background: #fff url('../Images/floating-panel-bg.png') repeat-x right top;
+      border: 2px solid #fff;
+      @include scadaFont;
+      font-size: 14px;
+      line-height: 15px;
+      @include box-shadow(0px 0px 6px 4px hsla(0, 0%, 0%, 0.4));
+      padding: 5px;
+    }
     .footer {
       .pointer {
         width: 22px;
@@ -970,7 +976,6 @@ a {
         @include imageSprites;
         background-position: -150px -150px;
         position: relative;
-        margin-top: 16px;
         margin-left: 450px;
       }
     }
@@ -978,7 +983,6 @@ a {
 
   // Session Details Floating panel
   .detailsFloatingPanel {
-    display: none;
     width: 555px;
     height: 220px;
     .closePanelButton {
@@ -1000,7 +1004,7 @@ a {
       }
     }
     .content {
-      margin: 15px 10px 5px;
+      margin: 10px 5px 5px;
       vertical-align: top;
       a {
         color: #25aae1;
@@ -1097,9 +1101,12 @@ a {
 
   // Speaker floating panel
   .speakerPanel {
-    position: relative;
-    width: 245px;
+    display: block;
+    width: 255px;
     height: 145px;
+    .content {
+      padding: 5px 0;
+    }
     .speakerAvatarWrap, .speakerInfoWrap {
       display: inline-block;
       vertical-align: top;
@@ -1108,21 +1115,45 @@ a {
       width: 85px;
       height: 100px;
     }
+    .speakerInfoWrap {
+      width: 150px;
+      > a {
+        color: #25aae1;
+      }
+    }
+    .footer {
+      .pointer {
+        margin-left: 210px;
+      }
+    }
   }
   // End - Speaker floating panel
 
   // Sponsor floating panel
   .sponsorPanel {
-    position: relative;
-    width: 265px;
+    width: 275px;
     height: 145px;
+    .content {
+      padding: 5px 0;
+    }
     .sponsorLogoWrap, .sponsorInfoWrap {
       display: inline-block;
       vertical-align: top;
     }
-    .speakerLogoWrap {
+    .sponsorLogoWrap {
       width: 75px;
       height: 100px;
+    }
+    .sponsorInfoWrap {
+      width: 180px;
+      > a {
+        color: #25aae1;
+      }
+    }
+    .footer {
+      .pointer {
+        margin-left: 230px;
+      }
     }
   }
   // End - Sponsor floating panel

@@ -8,27 +8,27 @@
 $(document).ready(function () {
 
     var floatingElement,
-        targetSelectBtn;
+        targetSelectBtn,
+        timeoutVal;
 
     function monitorFloatingElement (el) {
         floatingElement = el;
     }
 
     function hideFloatingElement (el) {
-        console.log('hideFloatingElement')
         $(el).hide();
+        if (timeoutVal) {
+            clearTimeout(timeoutVal);
+        }
     }
 
     $('body').click(function () {
-        console.log('body click');
         hideFloatingElement(floatingElement);
     });
 
     // Session details floating panel
     $('.detailsBtn').click(function (e) {
-        console.log(e);
         var buttonOffset = $(this).offset();
-        console.log()
         if (floatingElement) {
             hideFloatingElement(floatingElement);
         }
@@ -54,7 +54,6 @@ $(document).ready(function () {
 
     // Session Select
     $('.interestSelectBtn .select').click(function (e) {
-        console.log(e)
         // Show drop down
         if (e.target.className == 'arrow') {
             // Add to monitor the current floating element
@@ -107,31 +106,85 @@ $(document).ready(function () {
 
     // Speaker panel
      $('.sessionsList .author').hover(function (e) {
-        console.log(e)
-        console.log($(this).position())
-        console.log($(this).offset())
-        console.log('hover')
-
-        var linkPos;
-
+        if (timeoutVal) {
+            clearTimeout(timeoutVal);
+        }
         switch(e.type) {
             case 'mouseenter':
-                linkPos = $(this).position();
                 // Add to monitor the current floating element
                 if (floatingElement) {
                     hideFloatingElement(floatingElement);
                 }
                 monitorFloatingElement('.speakerPanel');
-                $('.speakerPanel').fadeIn('fast', 'linear').css({'top': linkPos.top, 'left': linkPos.left});
+
+                $('.speakerPanel').fadeIn('fast', 'linear').css({'top': e.pageY - 320, 'left': e.pageX - 570});
+
             break;
             case 'mouseleave':
-                console.log('mouse leave')
-                console.log(floatingElement)
                 monitorFloatingElement('.speakerPanel');
-                hideFloatingElement(floatingElement);
+
+                timeoutVal = setTimeout(function () {
+                    hideFloatingElement(floatingElement);
+                    timeoutVal = null;
+                }, 2000);
+
             break;
         }
 
+     });
+
+     $('.speakerPanel').hover(function () {
+        if (timeoutVal) {
+            clearTimeout(timeoutVal);
+        }
+     }, function () {
+        timeoutVal = setTimeout(function () {
+        hideFloatingElement(floatingElement);
+            timeoutVal = null;
+        }, 2000);
+     });
+    // End - Speaker panel
+
+
+    // Sponsor floating panel
+     $('.sponsorsListWrap .sponsor').hover(function (e) {
+        if (timeoutVal) {
+            clearTimeout(timeoutVal);
+        }
+        switch(e.type) {
+            case 'mouseenter':
+                // Add to monitor the current floating element
+                if (floatingElement) {
+                    hideFloatingElement(floatingElement);
+                }
+                monitorFloatingElement('.sponsorPanel');
+
+                $('.sponsorPanel').fadeIn('fast', 'linear').css({'top': e.pageY - 320, 'left': e.pageX - 590});
+
+            break;
+            case 'mouseleave':
+
+                monitorFloatingElement('.sponsorPanel');
+
+                timeoutVal = setTimeout(function () {
+                    hideFloatingElement(floatingElement);
+                    timeoutVal = null;
+                }, 2000);
+
+            break;
+        }
+
+     });
+
+     $('.sponsorPanel').hover(function () {
+        if (timeoutVal) {
+            clearTimeout(timeoutVal);
+        }
+     }, function () {
+        timeoutVal = setTimeout(function () {
+        hideFloatingElement(floatingElement);
+            timeoutVal = null;
+        }, 2000);
      });
     // End - Speaker panel
 
@@ -310,25 +363,30 @@ $(document).ready(function () {
                 </tr>
             </table>
         </div>
-@*
+
     <div class="sessionsList">
         <h4>Saturday, 11:15 AM</h4>
         <table>
 @foreach (var session in Model.Sessions) {
             <tr>
-                <td class="title" width="330"> @session.Title <i>by</i> <a href="#" class="author">John Cantona</a><div class="description">@session.Description</div></td>
-                <td class="action">@session.
-                    <div class="interestSelectBtn" id="select_@session.Id">
+                <td class="title" width="330">
+                    @session.Title <i>by</i> <a href="#" class="author">@session.PresenterName</a>
+                    <div class="sessionDetails" id="sessionDetails_@session.Id">@session.SessionTime @session.RoomNumber </div>
+                    <div class="sessionDescription" id="sessionDescription_@session.Id">@session.Description</div>
+                </td>
+                <td class="action">
+                    <div class="interestSelectBtn" id="interestSelectBtn_@session.Id">
                         <div class="select"><div class="label"><span class="icon"></span><span class="text">Not Interested</span></div><div class="arrow"></div></div>
                     </div>
                 </td>
-                <td class="details"><div class="detailsBtn"><div class="icon"></div><div class="label">Details</div></div></td>
+                <td class="details">
+                    <div class="detailsBtn"><div class="icon"></div><div class="label">Details</div></div>                    
+                </td>
             </tr>
 }
         </table>
     </div>
 
-    *@
 
 </div>
 

@@ -944,6 +944,9 @@ a {
 
         }
       }
+      .sessionDetails, .sessionDescription {
+        display: none;
+      }
     }
 
     #selectOptionsWrap {
@@ -971,12 +974,15 @@ a {
     }
     .footer {
       .pointer {
+        float: left;
         width: 22px;
         height: 22px;
         @include imageSprites;
         background-position: -150px -150px;
-        position: relative;
+        position: absolute;
         margin-left: 450px;
+        top: 230;
+        left: 0;
       }
     }
   }
@@ -1101,7 +1107,7 @@ a {
 
   // Speaker floating panel
   .speakerPanel {
-    display: block;
+    float: left;
     width: 255px;
     height: 145px;
     .content {

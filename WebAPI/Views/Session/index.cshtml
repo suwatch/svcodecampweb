@@ -47,7 +47,9 @@ $(document).ready(function () {
         $('#detailsFloatingPanel .description').html($('#sessionDescription_' + sessionId).text());
         $('#detailsFloatingPanel h3.title').html($('#sessionTitle_' + sessionId).text());
         $('#detailsFloatingPanel .details').html($('#sessionDetails_' + sessionId).html());
-
+        $('#detailsFloatingPanel .presenterName').text($('#presenterName_' + sessionId).text());
+        $('#detailsFloatingPanel .speakerAvatar').html($('#speakerAvatar_' + sessionId).html());
+        console.log($('#speakerAvatar_' + sessionId))
         // Stop event bubbling so body listener for hiding floating
         // panel won't be triggered
         e.stopPropagation();
@@ -116,53 +118,6 @@ $(document).ready(function () {
 
     // End - Session Select
 
-    // Speaker panel
-     $('.sessionsList .author').hover(function (e) {
-        if (timeoutVal) {
-            clearTimeout(timeoutVal);
-        }
-        console.info($(this)[0].offsetTop)
-        console.info(e)
-        console.info($(this))
-        switch(e.type) {
-            case 'mouseenter':
-                // Add to monitor the current floating element
-                if (floatingElement) {
-                    hideFloatingElement(floatingElement);
-                }
-                monitorFloatingElement('.speakerPanel');
-
-                $('.speakerPanel').fadeIn('fast', 'linear').css({
-                   'top': e.pageY - 310
-                });
-
-            break;
-            case 'mouseleave':
-                monitorFloatingElement('.speakerPanel');
-
-                timeoutVal = setTimeout(function () {
-                    hideFloatingElement(floatingElement);
-                    timeoutVal = null;
-                }, 2000);
-
-            break;
-        }
-
-     });
-
-     $('.speakerPanel').hover(function () {
-        if (timeoutVal) {
-            clearTimeout(timeoutVal);
-        }
-     }, function () {
-        timeoutVal = setTimeout(function () {
-        hideFloatingElement(floatingElement);
-            timeoutVal = null;
-        }, 2000);
-     });
-    // End - Speaker panel
-
-
     // Sponsor floating panel
      $('.sponsorsListWrap .sponsor').hover(function (e) {
         if (timeoutVal) {
@@ -176,7 +131,7 @@ $(document).ready(function () {
                 }
                 monitorFloatingElement('.sponsorPanel');
 
-                $('.sponsorPanel').fadeIn('fast', 'linear').css({'top': e.pageY - 320, 'left': e.pageX - 590});
+                $('.sponsorPanel').fadeIn('fast', 'linear').css({'top': e.pageY - 322, 'left': e.pageX - 520});
 
             break;
             case 'mouseleave':
@@ -201,7 +156,7 @@ $(document).ready(function () {
         timeoutVal = setTimeout(function () {
         hideFloatingElement(floatingElement);
             timeoutVal = null;
-        }, 2000);
+        }, 1300);
      });
     // End - Speaker panel
 
@@ -241,10 +196,10 @@ $(document).ready(function () {
                 <div class="speakerWrap">
                     <div class="title">Speaker</div>
                     <div class="avatarWrap">
-                        <img src="~/Content/Images/speaker-avatar-sample.png" />
+                        <img class="speakerAvatar" src="~/Content/Images/speaker-avatar-sample.png" />
                     </div>
                     <div class="speakerInfo">
-                        by <a href="#">Scott Pilgrim</a><br />
+                        by <a href="#" class="presenterName">Scott Pilgrim</a><br />
                         <p>
                             Digital Project Manager<br />
                             Certified Scrum Master
@@ -256,30 +211,6 @@ $(document).ready(function () {
                     <div class="sessionType">
                         <span class="label">Type</span> <br /><br />
                         Conference (<a href="#">What is it?</a>)
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer">
-            <div class="pointer"></div>
-        </div>
-    </div>
-
-    <div class="floatingPanel speakerPanel">
-        <div class="contentWrap">
-            <div class="content">
-                <div class="speakerAvatarWrap">
-                    <img src="" alt="" />
-                </div>
-                <div class="speakerInfoWrap">
-                    <a href="#">Jerrel Blankenship</a><br />
-                    <p>
-                        from Delaware, OH<br />
-                        Software Developer<br />
-                        Certified Scrum Master<br />
-                    </p>
-                    <div class="buttonWrap">
-                        <a href="#" class="button round blue">READ MORE</a>
                     </div>
                 </div>
             </div>
@@ -389,13 +320,14 @@ $(document).ready(function () {
 @foreach (var session in Model.Sessions) {
             <tr>
                 <td class="title" width="330">
-                    <span id="sessionTitle_@session.Id">@session.Title</span> <br /><i>by</i> <a href="#" class="author" id="presenterName_@session.Id">@session.PresenterName</a>
+                    <span id="sessionTitle_@session.Id">@session.Title</span> <br /><i>by</i> <a href="@session.PresenterURL" class="author" id="presenterName_@session.Id">@session.PresenterName</a>
                     <div class="sessionDetails" id="sessionDetails_@session.Id">
                         <span class="timeIcon"></span>@session.SessionTime <span class="mapLocationIcon"></span>Room @session.RoomNumber <a href="#">Map</a>
                     </div>
                     <div class="sessionDescription" id="sessionDescription_@session.Id">@session.Description</div>
                     <div class="speakerInfo">
-                        
+                        <img src="@(session.SpeakerPictureUrl)?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white" alt="@session.PresenterName" id="speakerAvatar_@session.Id" />
+                        <div class="speakerBio"></div>
                     </div>
                 </td>
                 <td class="action">

@@ -94,7 +94,20 @@
             </div><!-- #container-->
 
             <div class="sidebar" id="sideLeft">
-                <aside>
+@*
+@{
+        
+    var daysCountDownAppend = "";
+    var daysCountDown = @Model.DaysUntilCodeCampString;
+
+    if (daysCountDown > 1)
+    {
+        daysCountDownAppend = "S";
+    }
+}
+
+*@
+               <aside>
                     <div class="roundBorder daysCountdown">
                         <h1><span class="daysNumber">@Model.DaysUntilCodeCampString</span> <br/>DAYS TO GO</h1>
                     </div>

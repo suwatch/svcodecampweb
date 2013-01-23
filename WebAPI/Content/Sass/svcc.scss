@@ -937,7 +937,7 @@ a {
             }
           }
           &.action {
-            width: 170px;
+            width: 150px;
           }
           &.details {
             width: 105px;
@@ -945,7 +945,7 @@ a {
 
         }
       }
-      .sessionDetails, .sessionDescription {
+      .sessionDetails, .sessionDescription, .speakerInfo {
         display: none;
       }
     }
@@ -995,7 +995,7 @@ a {
     .closePanelButton {
       float: right;
       width: 90px;
-      margin-left: 460px;
+      margin-left: 493px;
       height: 32px;
       z-index: 10;
       background-color: #eeeeee;
@@ -1120,6 +1120,7 @@ a {
     float: left;
     width: 255px;
     height: 145px;
+    margin-left: 195px;
     .content {
       padding: 5px 0;
     }
@@ -1139,7 +1140,7 @@ a {
     }
     .footer {
       .pointer {
-        margin-left: 210px;
+        margin-left: 30px;
       }
     }
   }
@@ -1168,7 +1169,7 @@ a {
     }
     .footer {
       .pointer {
-        margin-left: 230px;
+        margin-left: 190px;
       }
     }
   }

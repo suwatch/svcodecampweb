@@ -34,6 +34,9 @@ namespace CodeCampSV
         [DataMember]
         public string PresenterURL { get; set; }
 
+        [DataMember]
+        public string SpeakersShort { get; set; } // either "Douglas Crockford" or "Smith,Jones,..." for multiple
+
 
         [DataMember]
         public string RoomNumber { get; set; }
@@ -72,9 +75,11 @@ namespace CodeCampSV
         [DataMember] 
         public List<SessionEvalsResult> SessionEvalsResults { get; set; }
        
+        [DataMember]
         public SessionLevelsResult SessionLevelsResult { get; set; }
 
-      
+
+        public string TitleEllipsized { get; set; }
        
     }
 }

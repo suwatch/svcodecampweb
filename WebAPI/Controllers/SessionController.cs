@@ -25,7 +25,7 @@ namespace WebAPI.Controllers
             return View(viewModel);
         }
 
-        private SessionViewModel GetSessionViewModel(string year)
+        private CommonViewModel GetSessionViewModel(string year)
         {
             var codeCampYearId = CodeCampYearId(year);
             if (codeCampYearId < 0)
@@ -33,16 +33,21 @@ namespace WebAPI.Controllers
                 throw new HttpException(404, "NotFound");
             }
 
-            List<SessionsResult> sessions = SessionsManager.I.Get(new SessionsQuery()
+            List<SessionsResult> sessions = SessionsManager.I.Get(new SessionsQuery
                                                                       {
-                                                                          CodeCampYearId = codeCampYearId
+                                                                          CodeCampYearId = codeCampYearId,
+                                                                          WithInterestOrPlanToAttend = true,
+                                                                          WithLectureRoom = true,
+                                                                          WithSpeakers = true,
+                                                                          WithTags = true
                                                                       });
 
-            foreach (var rec in sessions)
-            {
-                rec.SessionSlug = Utils.GenerateSlug(rec.Title); // ORM has no access to this function so need to do it here
-                UpdateSpeakerPictureUrl(rec);
-            }
+            //foreach (var rec in sessions)
+            //{
+            //    rec.SessionSlug = Utils.GenerateSlug(rec.Title); // ORM has no access to this function so need to do it here
+            //    rec.TitleEllipsized = Utils.GetTitleEllipsized(rec.Title, 50, "...");
+            //    UpdateSpeakerPictureUrl(rec);
+            //}
 
             List<SponsorListResult> sponsors =
                 SponsorListManager.I.Get(new SponsorListQuery
@@ -96,9 +101,8 @@ namespace WebAPI.Controllers
                 sessionTimesResults.Add(sessionTimeResultUnassigned);
             }
 
-            var viewModel = new SessionViewModel()
+            var viewModel = new CommonViewModel()
                                 {
-                                    DaysUntilCodeCampString = "245",
                                     Sessions = sessionsList,
                                     SessionsByTime = sessionTimesResults,
                                     Sponsors = sponsors
@@ -126,10 +130,10 @@ namespace WebAPI.Controllers
             var sessionSlugsDict = new Dictionary<string, int>();
             foreach (SessionsResult result in sessions)
             {
-                string slugTitle = Utils.GenerateSlug(result.Title);
-                if (!sessionSlugsDict.ContainsKey(slugTitle))
+
+                if (!sessionSlugsDict.ContainsKey(result.SessionSlug))
                 {
-                    sessionSlugsDict.Add(slugTitle, result.Id);
+                    sessionSlugsDict.Add(result.SessionSlug, result.Id);
                 }
             }
 

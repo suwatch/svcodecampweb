@@ -1,170 +1,170 @@
-﻿@model WebAPI.ViewModels.SessionViewModel
+﻿@*The View Model is Referenced from _Layout.cshtml.  Only items relevant to the page displayed are populated in model*@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <script type="text/javascript">
-$(document).ready(function () {
+    $(document).ready(function () {
 
-    var floatingElement,
-        targetSelectBtn,
-        timeoutVal;
+        var floatingElement,
+            targetSelectBtn,
+            timeoutVal;
 
-    function getAllSessionTime () {
-        console.log($('.sessionsList .sessionDetails').length);
-        console.log($('tr.session').length);
-    }
-
-    getAllSessionTime();
-
-    function monitorFloatingElement (el) {
-        floatingElement = el;
-    }
-
-    function hideFloatingElement (el) {
-        $(el).hide();
-        if (timeoutVal) {
-            clearTimeout(timeoutVal);
+        function getAllSessionTime() {
+            console.log($('.sessionsList .sessionDetails').length);
+            console.log($('tr.session').length);
         }
-    }
 
-    $('body').click(function () {
-        hideFloatingElement(floatingElement);
-    });
+        getAllSessionTime();
 
-    // Session details floating panel
-    $('.detailsBtn').click(function (e) {
-        var buttonOffset = $(this).offset(),
-        sessionId = $(this).attr('sessionId');
-        console.log(sessionId);
-        if (floatingElement) {
+        function monitorFloatingElement(el) {
+            floatingElement = el;
+        }
+
+        function hideFloatingElement(el) {
+            $(el).hide();
+            if (timeoutVal) {
+                clearTimeout(timeoutVal);
+            }
+        }
+
+        $('body').click(function () {
             hideFloatingElement(floatingElement);
-        }
-        monitorFloatingElement('#detailsFloatingPanel');
-        $('#detailsFloatingPanel').fadeIn('fast', 'linear').css({
-            'top': buttonOffset.top - 408
         });
 
-        // Copy session description
-        $('#detailsFloatingPanel .description').html($('#sessionDescription_' + sessionId).text());
-        $('#detailsFloatingPanel h3.title').html($('#sessionTitle_' + sessionId).text());
-        $('#detailsFloatingPanel .details').html($('#sessionDetails_' + sessionId).html());
-        $('#detailsFloatingPanel .presenterName').text($('#presenterName_' + sessionId).text());
-        $('#detailsFloatingPanel .speakerAvatar').html($('#speakerAvatar_' + sessionId).html());
-        console.log($('#speakerAvatar_' + sessionId))
-        // Stop event bubbling so body listener for hiding floating
-        // panel won't be triggered
-        e.stopPropagation();
-    });
-    // Prevents closing of the details panel when clicked
-    $('#detailsFloatingPanel').click(function (e) {
-        e.stopPropagation();
-    });
-    // Close button for details floating panel
-    $('.closePanelButton').click(function (e) {
-        if (floatingElement) {
-            hideFloatingElement(floatingElement);
-        }
-    });
-    // End - Session details floating panel
-
-    // Session Select
-    $('.interestSelectBtn .select').click(function (e) {
-        // Show drop down
-        if (e.target.className == 'arrow') {
-            // Add to monitor the current floating element
+        // Session details floating panel
+        $('.detailsBtn').click(function (e) {
+            var buttonOffset = $(this).offset(),
+            sessionId = $(this).attr('sessionId');
+            console.log(sessionId);
             if (floatingElement) {
                 hideFloatingElement(floatingElement);
             }
-            monitorFloatingElement('#selectOptionsWrap');
+            monitorFloatingElement('#detailsFloatingPanel');
+            $('#detailsFloatingPanel').fadeIn('fast', 'linear').css({
+                'top': buttonOffset.top - 408
+            });
 
-            targetSelectBtn = e.currentTarget.parentElement;
-
-            $('#selectOptionsWrap').appendTo(targetSelectBtn);
-            $('#selectOptionsWrap').fadeIn('fast', 'linear');
-
+            // Copy session description
+            $('#detailsFloatingPanel .description').html($('#sessionDescription_' + sessionId).text());
+            $('#detailsFloatingPanel h3.title').html($('#sessionTitle_' + sessionId).text());
+            $('#detailsFloatingPanel .details').html($('#sessionDetails_' + sessionId).html());
+            $('#detailsFloatingPanel .presenterName').text($('#presenterName_' + sessionId).text());
+            $('#detailsFloatingPanel .speakerAvatar').html($('#speakerAvatar_' + sessionId).html());
+            console.log($('#speakerAvatar_' + sessionId))
             // Stop event bubbling so body listener for hiding floating
             // panel won't be triggered
             e.stopPropagation();
+        });
+        // Prevents closing of the details panel when clicked
+        $('#detailsFloatingPanel').click(function (e) {
+            e.stopPropagation();
+        });
+        // Close button for details floating panel
+        $('.closePanelButton').click(function (e) {
+            if (floatingElement) {
+                hideFloatingElement(floatingElement);
+            }
+        });
+        // End - Session details floating panel
 
-            $('.interestSelectBtn .option').click(function (e) {
-                interestSelectHandler(targetSelectBtn, e.currentTarget);
-            });
-        } else {
-            // Toggle through the options
-        }
-    });
-
-    function interestSelectHandler (select, option) {
-
-        var label = option.textContent,
-            selectEl = $('#'+ select.id),
-            targetLabel = '#'+ select.id + ' .select .label .text';
-
-        $(targetLabel).text(label);
-
-        $('#'+ select.id).addClass(label);
-
-        switch (label) {
-            case 'Attending':
-                selectEl.removeClass('Interested');
-            break;
-            case 'Interested':
-                selectEl.removeClass('Attending');
-            break;
-            default:
-                selectEl.removeClass('Interested');
-                selectEl.removeClass('Attending');
-        }
-    }
-
-    // End - Session Select
-
-    // Sponsor floating panel
-     $('.sponsorsListWrap .sponsor').hover(function (e) {
-        if (timeoutVal) {
-            clearTimeout(timeoutVal);
-        }
-        switch(e.type) {
-            case 'mouseenter':
+        // Session Select
+        $('.interestSelectBtn .select').click(function (e) {
+            // Show drop down
+            if (e.target.className == 'arrow') {
                 // Add to monitor the current floating element
                 if (floatingElement) {
                     hideFloatingElement(floatingElement);
                 }
-                monitorFloatingElement('.sponsorPanel');
+                monitorFloatingElement('#selectOptionsWrap');
 
-                $('.sponsorPanel').fadeIn('fast', 'linear').css({'top': e.pageY - 322, 'left': e.pageX - 520});
+                targetSelectBtn = e.currentTarget.parentElement;
 
-            break;
-            case 'mouseleave':
+                $('#selectOptionsWrap').appendTo(targetSelectBtn);
+                $('#selectOptionsWrap').fadeIn('fast', 'linear');
 
-                monitorFloatingElement('.sponsorPanel');
+                // Stop event bubbling so body listener for hiding floating
+                // panel won't be triggered
+                e.stopPropagation();
 
-                timeoutVal = setTimeout(function () {
-                    hideFloatingElement(floatingElement);
-                    timeoutVal = null;
-                }, 2000);
+                $('.interestSelectBtn .option').click(function (e) {
+                    interestSelectHandler(targetSelectBtn, e.currentTarget);
+                });
+            } else {
+                // Toggle through the options
+            }
+        });
 
-            break;
+        function interestSelectHandler(select, option) {
+
+            var label = option.textContent,
+                selectEl = $('#' + select.id),
+                targetLabel = '#' + select.id + ' .select .label .text';
+
+            $(targetLabel).text(label);
+
+            $('#' + select.id).addClass(label);
+
+            switch (label) {
+                case 'Attending':
+                    selectEl.removeClass('Interested');
+                    break;
+                case 'Interested':
+                    selectEl.removeClass('Attending');
+                    break;
+                default:
+                    selectEl.removeClass('Interested');
+                    selectEl.removeClass('Attending');
+            }
         }
 
-     });
+        // End - Session Select
 
-     $('.sponsorPanel').hover(function () {
-        if (timeoutVal) {
-            clearTimeout(timeoutVal);
-        }
-     }, function () {
-        timeoutVal = setTimeout(function () {
-        hideFloatingElement(floatingElement);
-            timeoutVal = null;
-        }, 1300);
-     });
-    // End - Speaker panel
+        // Sponsor floating panel
+        $('.sponsorsListWrap .sponsor').hover(function (e) {
+            if (timeoutVal) {
+                clearTimeout(timeoutVal);
+            }
+            switch (e.type) {
+                case 'mouseenter':
+                    // Add to monitor the current floating element
+                    if (floatingElement) {
+                        hideFloatingElement(floatingElement);
+                    }
+                    monitorFloatingElement('.sponsorPanel');
+
+                    $('.sponsorPanel').fadeIn('fast', 'linear').css({ 'top': e.pageY - 322, 'left': e.pageX - 520 });
+
+                    break;
+                case 'mouseleave':
+
+                    monitorFloatingElement('.sponsorPanel');
+
+                    timeoutVal = setTimeout(function () {
+                        hideFloatingElement(floatingElement);
+                        timeoutVal = null;
+                    }, 2000);
+
+                    break;
+            }
+
+        });
+
+        $('.sponsorPanel').hover(function () {
+            if (timeoutVal) {
+                clearTimeout(timeoutVal);
+            }
+        }, function () {
+            timeoutVal = setTimeout(function () {
+                hideFloatingElement(floatingElement);
+                timeoutVal = null;
+            }, 1300);
+        });
+        // End - Speaker panel
 
 
-});
+    });
 </script>
 
 
@@ -173,13 +173,24 @@ $(document).ready(function () {
 <div class="sessionsWrap">
 
     <div id="selectOptionsWrap" class="selectOptionsWrap">
-        <div class="option"><div class="icon"></div><div class="label">Not Interested</div></div>
-        <div class="option interested"><div class="icon"></div><div class="label">Interested</div></div>
-        <div class="option attending"><div class="icon"></div><div class="label">Attending</div></div>
+        <div class="option">
+            <div class="icon"></div>
+            <div class="label">Not Interested</div>
+        </div>
+        <div class="option interested">
+            <div class="icon"></div>
+            <div class="label">Interested</div>
+        </div>
+        <div class="option attending">
+            <div class="icon"></div>
+            <div class="label">Attending</div>
+        </div>
     </div>
 
     <div class="floatingPanel detailsFloatingPanel" id="detailsFloatingPanel">
-        <div class="closePanelButton"><div class="icon"></div></div>
+        <div class="closePanelButton">
+            <div class="icon"></div>
+        </div>
         <div class="contentWrap">
             <div class="content">
                 <div class="sessionWrap">
@@ -212,7 +223,9 @@ $(document).ready(function () {
                         </div>
                     </div>
                     <div class="sessionType">
-                        <span class="label">Type</span> <br /><br />
+                        <span class="label">Type</span>
+                        <br />
+                        <br />
                         Conference (<a href="#">What is it?</a>)
                     </div>
                 </div>
@@ -245,33 +258,66 @@ $(document).ready(function () {
     <div class="sessionsList">
         <h4>Saturday, 11:15 AM</h4>
         <table>
-@{
-    var sessionCount = 0;
-}
-@foreach (var session in Model.Sessions) {
-    sessionCount++;
-            <tr id="session_@session.Id" class="session">
-                <td class="title" width="330">@(sessionCount)
-                    <span id="sessionTitle_@session.Id">@session.Title</span> <br /><i>by</i> <a href="@session.PresenterURL" class="author" id="presenterName_@session.Id">@session.PresenterName</a>
-                    <div class="sessionDetails" id="sessionDetails_@session.Id">
-                        <span class="timeIcon"></span>@session.SessionTime <span class="mapLocationIcon"></span>Room @session.RoomNumber <a href="#">Map</a>
-                    </div>
-                    <div class="sessionDescription" id="sessionDescription_@session.Id">@session.Description</div>
-                    <div class="speakerInfo">
-                        <img src="@(session.SpeakerPictureUrl)?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white" alt="@session.PresenterName" id="speakerAvatar_@session.Id" />
-                        <div class="speakerBio"></div>
-                    </div>
-                </td>
-                <td class="action">
-                    <div class="interestSelectBtn" id="interestSelectBtn_@session.Id">
-                        <div class="select"><div class="label"><span class="icon"></span><span class="text">Not Interested</span></div><div class="arrow"></div></div>
-                    </div>
-                </td>
-                <td class="details">
-                    <div class="detailsBtn" id="detailsBtn_@session.Id" sessionId="@session.Id"><div class="icon"></div><div class="label">Details</div></div>
-                </td>
-            </tr>
-}
+            @{
+     var sessionCount = 0;
+            }
+
+            @foreach (var session in Model.Sessions)
+            {
+
+
+
+                sessionCount++;
+    
+    
+                <tr id="session_@session.Id" class="session">
+                    <td class="title" width="330">@(sessionCount)
+
+
+                        @*BELOW, PresenterURL goes to link inside code camp*@
+
+                        <span id="sessionTitle_@session.Id">@session.TitleEllipsized</span>
+                        <br />
+                        <i>by</i> <a href="@session.PresenterURL" class="author" id="presenterName_@session.Id">@session.SpeakersShort</a>
+                        <div class="sessionDetails" id="sessionDetails_@session.Id">
+                            <span class="timeIcon"></span>@session.SessionTime <span class="mapLocationIcon"></span>Room @session.RoomNumber <a href="#">Map</a>
+                        </div>
+                        <div class="sessionDescription" id="sessionDescription_@session.Id">@session.Description</div>
+                        <div class="speakerInfo">
+
+
+
+
+                            <img src="@(session.SpeakerPictureUrl)?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white" alt="@session.PresenterName" id="speakerAvatar_@session.Id" />
+                            <div class="speakerBio"></div>
+
+
+
+
+
+
+
+
+
+
+                        </div>
+                    </td>
+                    <td class="action">
+                        <div class="interestSelectBtn" id="interestSelectBtn_@session.Id">
+                            <div class="select">
+                                <div class="label"><span class="icon"></span><span class="text">Not Interested</span></div>
+                                <div class="arrow"></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="details">
+                        <div class="detailsBtn" id="detailsBtn_@session.Id" sessionId="@session.Id">
+                            <div class="icon"></div>
+                            <div class="label">Details</div>
+                        </div>
+                    </td>
+                </tr>
+            }
         </table>
     </div>
 

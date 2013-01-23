@@ -42,7 +42,11 @@ $(document).ready(function () {
         // Copy session description
         console.log($('#sessionDescription_' + sessionId).clone())
         console.log($('#detailsFloatingPanel .description'))
-        $('#detailsFloatingPanel .description').replaceWith($('#sessionDescription_' + sessionId).text());
+        console.log($('#sessionDescription_' + sessionId).text())
+
+        $('#detailsFloatingPanel .description').html($('#sessionDescription_' + sessionId).text());
+        $('#detailsFloatingPanel h3.title').html($('#sessionTitle_' + sessionId).text());
+        $('#detailsFloatingPanel .details').html($('#sessionDetails_' + sessionId).html());
 
         // Stop event bubbling so body listener for hiding floating
         // panel won't be triggered
@@ -117,6 +121,9 @@ $(document).ready(function () {
         if (timeoutVal) {
             clearTimeout(timeoutVal);
         }
+        console.info($(this)[0].offsetTop)
+        console.info(e)
+        console.info($(this))
         switch(e.type) {
             case 'mouseenter':
                 // Add to monitor the current floating element
@@ -125,7 +132,9 @@ $(document).ready(function () {
                 }
                 monitorFloatingElement('.speakerPanel');
 
-                $('.speakerPanel').fadeIn('fast', 'linear').css({'top': e.pageY - 320, 'left': e.pageX - 570});
+                $('.speakerPanel').fadeIn('fast', 'linear').css({
+                   'top': e.pageY - 310
+                });
 
             break;
             case 'mouseleave':
@@ -216,11 +225,13 @@ $(document).ready(function () {
         <div class="contentWrap">
             <div class="content">
                 <div class="sessionWrap">
-                    <h3 class="title">3 Patterns to Scale Scrum</h3>
-                    <div class="details">
-                        <span class="timeIcon"></span>Saturday, 5 PM <span class="mapLocationIcon"></span>Room 302, Lot 1 &nbsp;<a href="#">Map</a>
+                    <div class="textWrap">
+                        <h3 class="title">3 Patterns to Scale Scrum</h3>
+                        <div class="details">
+                            <span class="timeIcon"></span>Saturday, 5 PM <span class="mapLocationIcon"></span>Room 302, Lot 1 &nbsp;<a href="#">Map</a>
+                        </div>
+                        <p class="description">Scrum is the simplest possible agile method so it's easy to get started with small team of software developers. What happens when you try to apply Scrum to large projects?</p>
                     </div>
-                    <p class="description">Scrum is the simplest possible agile method so it's easy to get started with small team of software developers. What happens when you try to apply Scrum to large projects?</p>
                     <div class="footer">
                         <div class="buttonWrap">
                             <a href="#" class="button round blue">READ MORE</a>
@@ -378,11 +389,14 @@ $(document).ready(function () {
 @foreach (var session in Model.Sessions) {
             <tr>
                 <td class="title" width="330">
-                    @session.Title <i>by</i> <a href="#" class="author">@session.PresenterName</a>
-                    <div class="sessionDetails" id="sessionDetails_@session.Id">@session.SessionTime @session.RoomNumber 
+                    <span id="sessionTitle_@session.Id">@session.Title</span> <br /><i>by</i> <a href="#" class="author" id="presenterName_@session.Id">@session.PresenterName</a>
+                    <div class="sessionDetails" id="sessionDetails_@session.Id">
                         <span class="timeIcon"></span>@session.SessionTime <span class="mapLocationIcon"></span>Room @session.RoomNumber <a href="#">Map</a>
                     </div>
                     <div class="sessionDescription" id="sessionDescription_@session.Id">@session.Description</div>
+                    <div class="speakerInfo">
+                        
+                    </div>
                 </td>
                 <td class="action">
                     <div class="interestSelectBtn" id="interestSelectBtn_@session.Id">

@@ -931,6 +931,7 @@ a {
 
           &.title {
             width: 330px;
+            line-height: 16px;
             .description {
               display: none;
             }
@@ -959,7 +960,7 @@ a {
   .floatingPanel {
     display: none;
     position: absolute;
-    margin-left: 253px;
+    margin-left: 223px;
     z-index: 9999;
     top: 0;
     left: 0;
@@ -980,7 +981,7 @@ a {
         @include imageSprites;
         background-position: -150px -150px;
         position: absolute;
-        margin-left: 450px;
+        margin-left: 480px;
         top: 230;
         left: 0;
       }
@@ -989,7 +990,7 @@ a {
 
   // Session Details Floating panel
   .detailsFloatingPanel {
-    width: 555px;
+    width: 585px;
     height: 220px;
     .closePanelButton {
       float: right;
@@ -1021,14 +1022,21 @@ a {
         }
       }
       .sessionWrap {
-        width: 280px;
+        width: 310px;
         height: 190px;
         display: inline-block;
         border-right: 1px solid #d9d9d9;
         padding-right: 10px;
+        .textWrap {
+          height: 155px;
+          overflow: hidden;
+          margin-bottom: 12px;
+        }
         h3 {
-          font-size: 21px;
-          padding: 5px 10px;
+          font-weight: bold;
+          font-size: 19px;
+          padding: 0 10px;
+          line-height: 19px;
         }
         .details {
           height: 20px;
@@ -1060,6 +1068,8 @@ a {
           padding: 5px;
           font-size: 14px;
           line-height: 15px;
+          overflow: hidden;
+          height: 72px;
         }
         .footer {
           .buttonWrap {

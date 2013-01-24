@@ -255,49 +255,130 @@
         </div>
     </div>
 
+    <div class="sessionsFilterWrap roundBorder">
+        <div class="header"><div class="arrow"></div><div class="label">FILTERS</div></div>
+        <div class="filterOptionsWrap">
+            <div class="daysFitlerWrap">
+                <div class="labelWrap">
+                    <span class="icon"></span><span class="label">Day: </span>
+                </div>
+                <div class="optionsWrap">
+                    <ul>
+                        <li><span class="checkbox"></span><span class="label">Show all</span></li>
+                        <li><span class="checkbox"></span><span class="label">Saturday</span></li>
+                        <li><span class="checkbox"></span><span class="label">Sunday</span></li>
+                    </ul>
+                </div>                
+            </div>
+            <div class="timeFilterWrap">
+                <div class="labelWrap">
+                    <span class="icon"></span><span class="label">Time: </span>
+                </div>
+                <div class="optionsWrap">
+                    <div class="timeOption">
+                        <div class="dayLabel"><span class="icon"></span><span class="label">Saturday: </span></div>
+                        <div class="timesWrap">
+                            <ul>
+                                <li><span class="checkbox"></span><span class="label">9:45 AM</span></li>
+                                <li><span class="checkbox"></span><span class="label">11:15 AM</span></li>
+                                <li><span class="checkbox"></span><span class="label">1:45 PM</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeOption">
+                        <div class="dayLabel"><span class="icon"></span><span class="label">Sunday: </span></div>
+                        <div class="timesWrap">
+                            <ul>
+                                <li><span class="checkbox"></span><span class="label">9:45 AM</span></li>
+                                <li><span class="checkbox"></span><span class="label">10:45 AM</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+            <div class="categoryFilterWrap">
+                <div class="labelWrap">
+                    <span class="icon"></span><span class="label">Category: </span>
+                </div>
+                <div class="optionsWrap">
+                    <ul>
+                        <li><span class="checkbox"></span><span class="label">Technology</span></li>
+                        <li><span class="checkbox"></span><span class="label">Business</span></li>
+                        <li><span class="checkbox"></span><span class="label">Career</span></li>
+                        <li><span class="checkbox"></span><span class="label">Kids</span></li>
+                        <li><span class="checkbox"></span><span class="label">Software Management</span></li>
+                    </ul>
+                </div>  
+            </div>
+            <div class="tagsFilterOptions">
+                <div class="labelWrap">
+                    <span class="icon"></span><span class="label">Tags: </span>
+                </div>
+                <div class="optionsWrap">
+                    <ul>
+                        <li><span class="checkbox"></span><span class="label">C++</span></li>
+                        <li><span class="checkbox"></span><span class="label">.NET</span></li>
+                        <li><span class="checkbox"></span><span class="label">Database</span></li>
+                        <li><span class="checkbox"></span><span class="label">Linq2SQL</span></li>
+                    </ul>
+                </div>
+                <div class="tagFiltersButton">Tag Filters</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sessionGroupSearchWrap ">
+        <div class="groupWrap">
+            <span class="label">Group sessions by</span>
+            <div class="groupSessionsSelect"></div>
+        </div>
+        <div class="searchWrap">
+            <span class="label">Search: </span>
+        </div>
+    </div>
+
     <div class="sessionsList">
         <h4>Saturday, 11:15 AM</h4>
         <table>
-            @{
-                 var sessionCount = 0;
-            }
 
             @foreach (var session in Model.Sessions)
             {
-                sessionCount++;
     
                 <tr id="session_@session.Id" class="session">
-                    <td class="title" width="330">@(sessionCount)
+                    <td class="title" width="330">
 
 
                         @*BELOW, PresenterURL goes to link inside code camp*@
 
                         <span id="sessionTitle_@session.Id">@session.TitleEllipsized</span>
                         <br />
-                        <i>by</i> <a href="@session.PresenterURL" class="author" id="presenterName_@session.Id">@session.SpeakersShort</a>
+                        <i>by</i>
+                        @{ var multipleSpeakerSeparator = " "; }
+                        @foreach (var speaker in session.SpeakersList)
+                            {
+                              @multipleSpeakerSeparator <a href="@session.PresenterURL" class="author" id="speaker_@(session.Id)_@speaker.Id">@speaker.UserFirstName @speaker.UserLastName</a>multipleSpeakerSeparator = ",";
+                            }
                         <div class="sessionDetails" id="sessionDetails_@session.Id">
                             <span class="timeIcon"></span>@session.SessionTime <span class="mapLocationIcon"></span>Room @session.RoomNumber <a href="#">Map</a>
                         </div>
                         <div class="sessionDescription" id="sessionDescription_@session.Id">@session.Description</div>
-                        <div class="speakerInfox">
-
-                            <table>
+                        <div class="speakerInfo" id="speakerInfoList_@session.Id">
                                 
                                 @foreach (var speaker in session.SpeakersList)
                                 {
-                                    <tr>
-                                        <td>
-                                                  @speaker.UserLastName xxx<br/>
-                                   
-                                                  @* <img src="@(session.SpeakerPictureUrl)?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white" alt="@session.PresenterName" id="speakerAvatar_@session.Id" />*@
-                                                  <div class="speakerBio"></div>
-                                
-                                       </td>
-
-                                    </tr>
+                                    
+                                    <div class="speakerInfo">
+                                        <div class="avatarWrap">
+                                            <img class="speakerAvatar" src="~/Content/Images/speaker-avatar-sample.png" />
+                                        </div>
+                                        <div class="speakerInfo">
+                                            <div id="authorLinkContainer_@(session.Id)_@speaker.Id"></div>
+                                            <p>
+                                                Description
+                                            </p>
+                                        </div>
+                                    </div>
                                 }
-
-                            </table>
 
                         </div>
                     </td>

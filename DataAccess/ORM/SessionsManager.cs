@@ -73,6 +73,10 @@ namespace CodeCampSV
 
         public List<SessionsResult> Get(SessionsQuery query)
         {
+            if (query.CodeCampYearId.HasValue)
+            {
+                query.CodeCampYearIds = new List<int>() { query.CodeCampYearId.Value};
+            }
 
             var meta = new CodeCampDataContext();
 
@@ -141,35 +145,31 @@ namespace CodeCampSV
             }
 
             var speakerResults = new List<AttendeesResult>();
-            var sessionPresenterResults = new List<SessionPresenterResult>();
+            List<SessionPresenterResult> sessionPresenterResults =new List<SessionPresenterResult>();
             if (query.WithSpeakers != null && query.WithSpeakers.Value)
             {
+                var attendeesQuery = new AttendeesQuery
+                                         {
+                                             PresentersOnly = true
+                                         };
+                var sessionPresenterQuery = new SessionPresenterQuery();
+
+                
+
                 if (query.CodeCampYearIds != null && query.CodeCampYearIds.Count > 0)
                 {
-                    speakerResults = AttendeesManager.I.Get(new AttendeesQuery()
-                    {
-                        PresentersOnly = true,
-                        CodeCampYearIds = query.CodeCampYearIds
-                    });
-
-                    // could add codecampyear to this to make it faster
-                    sessionPresenterResults = SessionPresenterManager.I.Get(new SessionPresenterQuery()
-                                                                                {
-                                                                                    
-                                                                                });
-
-
-
+                    attendeesQuery.CodeCampYearIds = query.CodeCampYearIds;
+                    sessionPresenterQuery.CodeCampYearIds = query.CodeCampYearIds;
+                    attendeesQuery.CodeCampYearIds = query.CodeCampYearIds;
                 }
-                else
-                {
-                    speakerResults = AttendeesManager.I.Get(new AttendeesQuery()
-                                                                {
-                                                                    PresentersOnly = true
-                                                                });
-                    sessionPresenterResults = SessionPresenterManager.I.GetAll();
-                }
+
+                sessionPresenterResults = SessionPresenterManager.I.Get(sessionPresenterQuery);
+
+                speakerResults = AttendeesManager.I.Get(attendeesQuery);
             }
+
+           
+                   
 
 
             IQueryable<SessionsResult> results = GetBaseResultIQueryable(baseQuery);

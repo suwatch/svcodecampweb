@@ -733,6 +733,28 @@ a {
   // Sessions
   .sessionsWrap {
     padding-top: 15px;
+
+    // Sessions Filters
+    .sessionsFilterWrap {
+      background-color: #f6f3f6;
+      @include box-shadow(none);
+      border: 1px solid #c5c5c5;
+      .header {
+        height: 40px;
+        background-color: #f8f8f8;
+        border-top-right-radius: 10px;
+        border-bottom: 1px solid #d8dadb;
+        @include box-shadow(0px 3px 3px 1px hsla(0, 0%, 0%, 0.1));
+      }
+    }
+    // End - Sessions Filters
+
+    // Session Group and Search bar
+    .sessionGroupSearchWrap {
+
+    }
+    // End - Session Group and Search bar
+
     .sessionsList {
       padding-top: 15px;
       h4 {

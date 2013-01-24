@@ -24,30 +24,30 @@ namespace WebAPI
 
 
             // SPEAKERS
-            routes.MapRoute("SpeakersRouteAll", "Speakers",
+            //routes.MapRoute("SpeakersRouteTest", "Speakers/Test",
+            //     new
+            //     {
+            //         /* Your default route */
+            //         controller = "Speakers",
+            //         action = "IndexTest",
+            //         year = currentYear
+            //     });
+
+            routes.MapRoute("SpeakersRouteAll", "Speakers/{year}",
                       new
                       {
                           /* Your default route */
-                          controller = "Speakers/{year}",
+                          controller = "Speakers",
                           action = "Index",
                           year = currentYear
                       });
-            routes.MapRoute("SpeakersRouteTest", "Speakers/Test",
-                    new
-                    {
-                        /* Your default route */
-                        controller = "Speakers",
-                        action = "IndexTest",
-                        year = currentYear
-                    });
+         
 
 
 
 
 
             // SESSIONS
-
-
             routes.MapRoute("SessionRouteTest", "Session/Test",
                      new
                      {

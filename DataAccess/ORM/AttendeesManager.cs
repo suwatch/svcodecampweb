@@ -50,10 +50,10 @@ namespace CodeCampSV
             {
                 if (query.PresentersOnly != null && query.PresentersOnly.Value)
                 {
-                    var speakerIds = from sessionPresenter in meta.SessionPresenter
-                                     join session in meta.Sessions on sessionPresenter.SessionId equals session.Id
-                                     where query.CodeCampYearIds.Contains(session.CodeCampYearId)
-                                     select sessionPresenter.AttendeeId;
+                    var speakerIds = (from sessionPresenter in meta.SessionPresenter
+                                      join session in meta.Sessions on sessionPresenter.SessionId equals session.Id
+                                      where query.CodeCampYearIds.Contains(session.CodeCampYearId)
+                                      select sessionPresenter.AttendeeId).ToList();
                     baseQuery = baseQuery.Where(data => speakerIds.Contains(data.Id));
                 }
                 else
@@ -100,20 +100,21 @@ namespace CodeCampSV
 
             var resultList = new List<AttendeesResult>();
 
-            if (query.CodeCampYearIds != null && query.CodeCampYearIds.Count > 0)
-            {
-                var attendeeIds = (from data in meta.AttendeesCodeCampYear
-                                   where query.CodeCampYearIds.Contains(data.CodeCampYearId)
-                                   select data.AttendeesId).ToList();
+            // NOT NEESSARY BECAUSE CODECAMPYEARS FILTERED ABOVE
+            //if (query.CodeCampYearIds != null && query.CodeCampYearIds.Count > 0)
+            //{
+            //    var attendeeIds = (from data in meta.AttendeesCodeCampYear
+            //                       where query.CodeCampYearIds.Contains(data.CodeCampYearId)
+            //                       select data.AttendeesId).ToList();
                 
-                // can't use contains because list will be to long. need to do it one by one sadly
-                var resultListTemp = GetFinalResults(results, query);
-                resultList.AddRange(resultListTemp.Where(rec => attendeeIds.Contains(rec.Id)));
-            }
-            else
-            {
+            //    // can't use contains because list will be to long. need to do it one by one sadly
+            //    var resultListTemp = GetFinalResults(results, query);
+            //    resultList.AddRange(resultListTemp.Where(rec => attendeeIds.Contains(rec.Id)));
+            //}
+            //else
+            //{
                 resultList = GetFinalResults(results, query);
-            }
+            //}
 
             var sessionsBySpeakerdict = new Dictionary<int, List<SessionPresentResultSmall>>();
             if (query.IncludeSessions.HasValue && query.IncludeSessions.Value)

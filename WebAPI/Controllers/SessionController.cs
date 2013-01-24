@@ -39,10 +39,10 @@ namespace WebAPI.Controllers
                                                                           WithInterestOrPlanToAttend = true,
                                                                           WithLectureRoom = true,
                                                                           WithSpeakers = true,
-                                                                          WithTags = true
+                                                                          WithTags = true,
                                                                           
 
-                                                                          //Attendeesid = 1164 // nima
+                                                                          Attendeesid = 1164 // nima
                                                                       });
 
             //foreach (var rec in sessions)

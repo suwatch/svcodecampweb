@@ -28,7 +28,7 @@ namespace WebAPI
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            RouteDebug.RouteDebugger.RewriteRoutesForTesting(RouteTable.Routes);
+            //RouteDebug.RouteDebugger.RewriteRoutesForTesting(RouteTable.Routes);
 
 
             //if (_smartInspectEnabled)
@@ -94,7 +94,7 @@ namespace WebAPI
                                                  {
                                                      "/sponsorimage/",
                                                      "/attendeeimage/",
-                                                     "/trackimage"
+                                                     "/trackimage/"
                                                  };
 
                     foreach (var imageDirPrefix in imageDirs)

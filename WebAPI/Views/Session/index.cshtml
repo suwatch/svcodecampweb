@@ -89,7 +89,7 @@
                 e.stopPropagation();
 
                 $('.interestSelectBtn .option').click(function (e) {
-                    interestSelectHandler(targetSelectBtn, e.currentTarget);
+                    interestSelectHandler(targetSelectBtn, $(this));
                 });
             } else {
                 // Toggle through the options
@@ -98,7 +98,7 @@
 
         function interestSelectHandler(select, option) {
 
-            var label = option.textContent,
+            var label = option.find('.label').text(),
                 selectEl = $('#' + select.id),
                 targetLabel = '#' + select.id + ' .select .label .text';
 
@@ -303,10 +303,7 @@
                     </td>
                     <td class="action">
                         <div class="interestSelectBtn" id="interestSelectBtn_@session.Id">
-                            <div class="select">
-                                <div class="label"><span class="icon"></span><span class="text">Not Interested</span></div>
-                                <div class="arrow"></div>
-                            </div>
+                            <div class="select"><div class="label"><span class="icon"></span><span class="text">Not Interested</span></div><div class="arrow"></div></div>
                         </div>
                     </td>
                     <td class="details">

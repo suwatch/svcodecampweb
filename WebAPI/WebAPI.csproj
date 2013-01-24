@@ -2568,7 +2568,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Session\IndexTest.cshtml" />
-    <Content Include="Views\Session\SessionSortDemo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

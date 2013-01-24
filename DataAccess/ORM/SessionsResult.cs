@@ -15,6 +15,9 @@ namespace CodeCampSV
         [DataMember] public string SessionSlug { get; set; }
         [DataMember] public string SessionUrl { get; set; }
 
+        [DataMember]
+        public string DescriptionEllipsized { get; set; }
+
         [DataMember] public int InterestedCount { get; set; }
         [DataMember] public int NotInterestedCount { get; set; }
         [DataMember] public int WillAttendCount { get; set; }

@@ -33,5 +33,8 @@ namespace CodeCampSV
         [DataMember] 
         public List<int> SessionIds { get; set; } // does not include if marked DoNotShowPrimarySpeaker in session record
 
+        [DataMember]
+        public string UserBioEllipsized { get; set; }
+
     }
 }

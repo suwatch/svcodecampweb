@@ -1,4 +1,4 @@
-﻿@model WebAPI.ViewModels.SessionViewModel
+﻿@model WebAPI.ViewModels.CommonViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -36,65 +36,52 @@
 </script>*@
 
 
-<h1>@Model.DaysUntilCodeCampString</h1>
+
 
 <h2>Sessions</h2>
 
-@Html.Raw("<table id='myTable' border='1'>")
+        @Html.Raw("<table id='myTable' border='1'>")
+ 
+        @foreach (var sessionTime in Model.SessionsByTime)
+        { 
+          
+            @Html.Raw("<tr>")
+            @Html.Raw("<td>")
+            @sessionTime.StartTimeFriendly
+            @Html.Raw("</td>")
+            @Html.Raw("<td></td>")
+            @Html.Raw("</tr>")
 
-@foreach (var sessionTime in Model.SessionsByTime)
+            @Html.Raw("<table>")
+                foreach (var session in sessionTime.sessionsResults)
+                {
+                <tr>
+                    <td width="300"></td>
+                    <td width="300">@session.Title</td>
+                </tr>
+                }
+            @Html.Raw("</table>")
+          
+        }
+    
+
+@Html.Raw("</table>")
+
+@foreach (var sponsor in Model.Sponsors)
 {
-    @Html.Raw("<tr>")
-    @Html.Raw("<td>")
-    @sessionTime.StartTimeFriendly
-    @Html.Raw("</td>")
-    @Html.Raw("<td></td>")
-    @Html.Raw("</tr>")
-    
-    foreach (var session in sessionTime.sessionsResults)
-    {
-        @Html.Raw("<tr>")
-        @Html.Raw("<td width='300'>")
-        
-        @Html.Raw("</td>")
-
-
-    
-        @Html.Raw("<td width='300'>")
-       
-            @session.Title
-            <br/>
-            @session.Description
-        <br/>
-    
-            <img src="@(session.SpeakerPictureUrl)?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white" alt="@session.PresenterName"  />
-            <br/>
-            <a href="@session.SessionUrl"> @session.SessionUrl</a>
-            <br/>
-        @Html.Raw("</td>")
-        @Html.Raw("</tr>")
-    }
-   
-
-    
-}
-    
-  @Html.Raw("</table>")
-
-@foreach (var sponsor in Model.Sponsors) {
-    <br/>
+    <br />
     @sponsor.SponsorName
-    <br/>
+    <br />
     @sponsor.NavigateURL
-      <br/>
+    <br />
     @sponsor.SponsorSupportLevel
-     <br/>
+    <br />
     @sponsor.SponsorSupportLevelOrder
-    <br/>
+    <br />
     @(sponsor.ImageURL)
-    <br/>
+    <br />
     <img src="@(sponsor.ImageURL)?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white" alt="@sponsor.SponsorName"  />
-    <hr/>
+    <hr />
 }
 
 

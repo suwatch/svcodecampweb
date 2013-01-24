@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
 using CodeCampSV;
 using System.ComponentModel;
 using System.Web;
@@ -79,14 +82,14 @@ namespace CodeCampSV
             // .Where(a => a.Id == 594).ToList();
             baseQuery = BaseQueryAutoGen(baseQuery, query);
 
-            if (query.SkipRoomIds != null && query.SkipRoomIds.Count() > 0)
+            if (query.SkipRoomIds != null && query.SkipRoomIds.Any())
             {
                 baseQuery = from data in baseQuery
                             where data.LectureRoomsId.HasValue && !query.SkipRoomIds.Contains(data.LectureRoomsId.Value)
                             select data;
             }
 
-            if (query.RoomIds != null && query.RoomIds.Count() > 0)
+            if (query.RoomIds != null && query.RoomIds.Any())
             {
                 baseQuery = from data in baseQuery
                             where data.LectureRoomsId.HasValue && query.RoomIds.Contains(data.LectureRoomsId.Value)
@@ -94,8 +97,8 @@ namespace CodeCampSV
             }
 
 
-            List<int> sessionIdsPlanToAttend = new List<int>();
-            List<int> sessionIdsInterested = new List<int>();
+            var sessionIdsPlanToAttend = new List<int>();
+            var sessionIdsInterested = new List<int>();
             if (query.WithInterestOrPlanToAttend != null &&  HttpContext.Current != null && HttpContext.Current.User.Identity.IsAuthenticated )
             {
                 string username = HttpContext.Current.User.Identity.Name;
@@ -154,6 +157,9 @@ namespace CodeCampSV
                                                                                 {
                                                                                     
                                                                                 });
+
+
+
                 }
                 else
                 {
@@ -192,13 +198,15 @@ namespace CodeCampSV
                                   };
             var speakerDict = 
                 presentersQuery.ToDictionary(presenter => presenter.Id, presenter => presenter.SpeakerName);
-            var speakerURL = new Dictionary<int, string>();
+            var speakerUrlDict = new Dictionary<int, string>();
             var speakerImageUrl = new Dictionary<int, string>();
             foreach (var presenter in presentersQuery)
             {
-                speakerURL.Add(presenter.Id, presenter.UserWebsite);
+                speakerUrlDict.Add(presenter.Id, presenter.UserWebsite);
                 speakerImageUrl.Add(presenter.Id,presenter.PKID.ToString());
             }
+
+
 
             var lectureRoomsDict = (from data in meta.LectureRooms select data).ToDictionary(k => k.Id, v => v.Number);
             var sessionTimesDict = (from data in meta.SessionTimes select data).ToDictionary(k => k.Id, v => v.StartTimeFriendly);
@@ -218,7 +226,7 @@ namespace CodeCampSV
                                       select new { cnt = g.Count(), id = g.Key }).ToDictionary(k => k.id, v => v.cnt);
 
 
-            Dictionary<int, SessionTimes> sessionTimesFullDict = new Dictionary<int, SessionTimes>();
+            var sessionTimesFullDict = new Dictionary<int, SessionTimes>();
             if (query.WithSchedule != null)
             {
                 sessionTimesFullDict =
@@ -261,7 +269,7 @@ namespace CodeCampSV
                 if (session.Createdate != null)
                 {
                     var ts = DateTime.Now.Subtract(session.Createdate.Value);
-                    session.SessionPosted = (ts.Days + 1).ToString();
+                    session.SessionPosted = (ts.Days + 1).ToString(CultureInfo.InvariantCulture);
                 }
                 else
                 {
@@ -270,9 +278,14 @@ namespace CodeCampSV
 
                 // http://localhost:5691/Web/DisplayImage.ashx?sizex=100&PKID=33a199dd-1154-45cb-bc94-40ffc5a99391
                 // (the next 3 lines maybe overwritten if speaker is set to be removed)
-                session.SpeakerPictureUrl = String.Format("DisplayImage.ashx?sizex=150&PKID={0}", speakerImageUrl[session.Attendeesid]);
-                session.PresenterName = speakerDict[session.Attendeesid];
-                session.PresenterURL = speakerURL[session.Attendeesid];
+
+                // GOING FORWARD WE DON'T WANT TO USE SINGLE PICTURE FOR SESSIONS SPEAKER SINCE CAN HAVE MULTIPLE SPEAKERS
+                //session.SpeakerPictureUrl = String.Format("DisplayImage.ashx?sizex=150&PKID={0}", speakerImageUrl[session.Attendeesid]);
+                //session.PresenterName = speakerDict[session.Attendeesid];
+                //session.PresenterURL = speakerUrlDict[session.Attendeesid];
+                session.SpeakerPictureUrl = "DO NOT USE, USE SpeakersList instead";
+                session.PresenterName = "DO NOT USE, USE SpeakersList instead";
+                session.PresenterURL = "DO NOT USE, USE SpeakersList instead";
 
 
                 if (query.WithSpeakers != null && query.WithSpeakers.Value)
@@ -345,9 +358,31 @@ namespace CodeCampSV
                         }
                     }
 
-
-
-
+                    // need to update speakersshort
+                    
+                    var sbSpeakersShort = new StringBuilder();
+                    if (session.SpeakersList.Count > 0 && session.SpeakersList.Count <= 1)
+                    {
+                        session.SpeakersShort = session.SpeakersList[0].UserFirstName + " " +
+                                                session.SpeakersList[0].UserLastName;
+                    }
+                    else if (session.SpeakersList.Count > 1)
+                    {
+                        foreach (var speaker in session.SpeakersList)
+                        {
+                            sbSpeakersShort.Append(speaker.UserLastName);
+                            sbSpeakersShort.Append(", ");
+                        }
+                        session.SpeakersShort = sbSpeakersShort.ToString().Trim();
+                        if (session.SpeakersShort.Length > 2)
+                        {
+                            session.SpeakersShort.Remove(session.SpeakersShort.Length - 2);
+                        }
+                    }
+                    else
+                    {
+                        session.SpeakersShort = "Unknown Speaker";
+                    }
                     //session.SpeakersList = speakerResults.Where(a => speakerIdsForList.Contains(a.Id)).ToList();
                 }
 
@@ -397,9 +432,41 @@ namespace CodeCampSV
                     List<int> tagIds = sessionTagsManagers.Where(a=>a.SessionId == session.Id).Select(a => a.TagId).ToList();
                     session.TagsResults = (tagsResults.Where(data => tagIds.Contains(data.Id))).ToList();
                 }
+
+                session.SessionSlug = GenerateSlug(session.Title); // ORM has no access to this function so need to do it here
+                session.TitleEllipsized = GetTitleEllipsized(session.Title, 48, "...");
             }
 
             return resultList;
+        }
+
+        private string GenerateSlug(string phrase)
+        {
+            string str = RemoveAccent(phrase).ToLower();
+            // invalid chars           
+            str = Regex.Replace(str, @"[^a-z0-9\s-]", "");
+            // convert multiple spaces into one space   
+            str = Regex.Replace(str, @"\s+", " ").Trim();
+            // cut and trim 
+            str = str.Substring(0, str.Length <= 45 ? str.Length : 45).Trim();
+            str = Regex.Replace(str, @"\s", "-"); // hyphens   
+            return str;
+        }
+
+        private static string RemoveAccent(string txt)
+        {
+            byte[] bytes = Encoding.GetEncoding("Cyrillic").GetBytes(txt);
+            return Encoding.ASCII.GetString(bytes);
+        }
+
+        private string GetTitleEllipsized(string text, int characterCount, string ellipsis)
+        {
+            var cleanTailRegex = new Regex(@"\s+\S*$");
+
+            if (string.IsNullOrEmpty(text) || characterCount < 0 || text.Length <= characterCount)
+                return text;
+
+            return cleanTailRegex.Replace(text.Substring(0, characterCount + 1), "") + ellipsis;
         }
 
         [DataObjectMethod(DataObjectMethodType.Select, true)]

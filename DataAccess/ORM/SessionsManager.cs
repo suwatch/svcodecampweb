@@ -165,9 +165,15 @@ namespace CodeCampSV
 
                 sessionPresenterResults = SessionPresenterManager.I.Get(sessionPresenterQuery);
 
+                List<int> speakerIdsAll = sessionPresenterResults.Select(a => a.AttendeeId).ToList();
 
 
-                //speakerResults = AttendeesManager.I.Get(attendeesQuery);
+
+
+                speakerResults = AttendeesManager.I.Get(new AttendeesQuery()
+                                                            {
+                                                                Ids = speakerIdsAll
+                                                            });
             }
 
            
@@ -300,46 +306,48 @@ namespace CodeCampSV
                         sessionPresenterResults.Where(a => a.SessionId == session1.Id).Select(a => a.AttendeeId).ToList();
 
                     // quick and dirty cleansing of speaker data so just public data will be shown
-                    var tempSpeakerResults =  speakerResults.Where(a => speakerIdsForList.Contains(a.Id)).ToList();
+                    var tempSpeakerResults =
+                        speakerResults.Where(a => speakerIdsForList.Contains(a.Id))
+                                      .OrderBy(a => a.UserLastName.ToUpper());
                     session.SpeakersList = new List<AttendeesResult>();
                     foreach (var rec in tempSpeakerResults)
                     {
-                        // need to figure out if removing primary speaker is necessary
-                        if (session.DoNotShowPrimarySpeaker)
-                        {
-                            string userNameOfSpeakerFromSession = session.Username;
-                            string userNameOfSpeakerFromSessionSpeaker = rec.Username;
-                            if (!userNameOfSpeakerFromSession.Equals(userNameOfSpeakerFromSessionSpeaker))
-                            {
-                                session.SpeakersList.Add(new AttendeesResult()
-                                {
-                                    Id = rec.Id,
-                                    Email = rec.Email,
-                                    TwitterHandle = rec.TwitterHandle,
-                                    Username = rec.Username,
-                                    City = rec.City,
-                                    State = rec.State,
-                                    UserBio = rec.UserBio,
-                                    UserFirstName = rec.UserFirstName,
-                                    UserLastName = rec.UserLastName,
-                                    UserZipCode = rec.UserZipCode,
-                                    UserWebsite = rec.UserWebsite,
-                                    SpeakerPictureUrl =
-                                        String.Format(
-                                            "DisplayImage.ashx?sizex=100&amp;PKID={0}",
-                                            rec.PKID)
-                                });
+                        //// need to figure out if removing primary speaker is necessary
+                        //if (session.DoNotShowPrimarySpeaker)
+                        //{
+                        //    string userNameOfSpeakerFromSession = session.Username;
+                        //    string userNameOfSpeakerFromSessionSpeaker = rec.Username;
+                        //    if (!userNameOfSpeakerFromSession.Equals(userNameOfSpeakerFromSessionSpeaker))
+                        //    {
+                        //        session.SpeakersList.Add(new AttendeesResult()
+                        //        {
+                        //            Id = rec.Id,
+                        //            Email = rec.Email,
+                        //            TwitterHandle = rec.TwitterHandle,
+                        //            Username = rec.Username,
+                        //            City = rec.City,
+                        //            State = rec.State,
+                        //            UserBio = rec.UserBio,
+                        //            UserFirstName = rec.UserFirstName,
+                        //            UserLastName = rec.UserLastName,
+                        //            UserZipCode = rec.UserZipCode,
+                        //            UserWebsite = rec.UserWebsite,
+                        //            SpeakerPictureUrl =
+                        //                String.Format(
+                        //                    String.Format("attendeeimage/{0}.jpg", rec.Id),
+                        //                    rec.Id)
+                        //        });
 
-                                // kind of klugy if there are more than 2 speakers, but for now, we should push someone who is not the primary speaker
-                                // into the primary slot.
-                                session.Username = userNameOfSpeakerFromSessionSpeaker;
-                                session.PresenterName = rec.UserFirstName + " " + rec.UserLastName;
-                                session.PresenterURL = rec.UserWebsite;
-                                session.SpeakerPictureUrl = String.Format("DisplayImage.ashx?sizex=100&amp;PKID={0}",rec.PKID);
-                            }
-                        }
-                        else
-                        {
+                        //        // kind of klugy if there are more than 2 speakers, but for now, we should push someone who is not the primary speaker
+                        //        // into the primary slot.
+                        //        session.Username = "DO NOT USE THIS. USE SpeakersList instead";
+                        //        session.PresenterName = "DO NOT USE THIS. USE SpeakersList instead";
+                        //        session.PresenterURL = rec.UserWebsite;
+                        //        session.SpeakerPictureUrl = "DO NOT USE THIS. USE SpeakersList instead";
+                        //    }
+                        //}
+                        //else
+                        //{
                             var attendeeResult = new AttendeesResult()
                                                           {
                                                               Id = rec.Id,
@@ -355,12 +363,12 @@ namespace CodeCampSV
                                                               UserWebsite = rec.UserWebsite,
                                                               SpeakerPictureUrl =
                                                                   String.Format(
-                                                                      "DisplayImage.ashx?sizex=100&amp;PKID={0}",
+                                                                      String.Format("attendeeimage/{0}.jpg", rec.Id),
                                                                       rec.PKID)
                                                           };
 
                             session.SpeakersList.Add(attendeeResult);
-                        }
+                        //}
                     }
 
                     // need to update speakersshort

@@ -4695,22 +4695,26 @@ namespace CodeCampSV
             }
         }
 
-        public static void UpdateTwitterHandleForAttendee(int attendeeId, string twitterHandle)
+        public static void UpdateTwitterHandleForAttendee(string attendeeIdString, string twitterHandle)
         {
-            if (!twitterHandle.StartsWith("@") && twitterHandle.Length > 1)
+            int attendeeId;
+            if (Int32.TryParse(attendeeIdString, out attendeeId))
             {
-                twitterHandle = "@" + twitterHandle;
-                using (
-                    var sqlConnection =
-                        new SqlConnection(ConfigurationManager.ConnectionStrings["CodeCampSV06"].ConnectionString))
+                if (!twitterHandle.StartsWith("@") && twitterHandle.Length > 1)
                 {
-                    sqlConnection.Open();
-                    const string sqlSelect = "UPDATE Attendees SET TwitterHandle = @TwitterHandle WHERE Id = @Id";
-                    using (var sqlCommand = new SqlCommand(sqlSelect, sqlConnection))
+                    twitterHandle = "@" + twitterHandle;
+                    using (
+                        var sqlConnection =
+                            new SqlConnection(ConfigurationManager.ConnectionStrings["CodeCampSV06"].ConnectionString))
                     {
-                        sqlCommand.Parameters.Add("@Id", SqlDbType.Int).Value = attendeeId;
-                        sqlCommand.Parameters.Add("@TwitterHandle", SqlDbType.NVarChar).Value = twitterHandle;
-                        sqlCommand.ExecuteNonQuery();
+                        sqlConnection.Open();
+                        const string sqlSelect = "UPDATE Attendees SET TwitterHandle = @TwitterHandle WHERE Id = @Id";
+                        using (var sqlCommand = new SqlCommand(sqlSelect, sqlConnection))
+                        {
+                            sqlCommand.Parameters.Add("@Id", SqlDbType.Int).Value = attendeeId;
+                            sqlCommand.Parameters.Add("@TwitterHandle", SqlDbType.NVarChar).Value = twitterHandle;
+                            sqlCommand.ExecuteNonQuery();
+                        }
                     }
                 }
             }

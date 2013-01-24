@@ -46,26 +46,26 @@ namespace CodeCampSV
                 baseQuery = baseQuery.Where(data => query.Emails.Contains(data.Email));
             }
 
-            //if (query.CodeCampYearIds != null && query.CodeCampYearIds.Count > 0)
-            //{
-            //    if (query.PresentersOnly != null && query.PresentersOnly.Value)
-            //    {
-            //        var speakerIds = from sessionPresenter in meta.SessionPresenter
-            //                         join session in meta.Sessions on sessionPresenter.SessionId equals session.Id
-            //                         where query.CodeCampYearIds.Contains(session.CodeCampYearId)
-            //                         select sessionPresenter.AttendeeId;
-            //        baseQuery = baseQuery.Where(data => speakerIds.Contains(data.Id));
-            //    }
-            //    else
-            //    {
-            //        // this may blow up with two many attendees in contains (which translates to sql IN)
-            //        var speakerIds = (from data in meta.AttendeesCodeCampYear
-            //                    where query.CodeCampYearIds.Contains(data.CodeCampYearId)
-            //                    select data.AttendeesId).ToList();
-            //        baseQuery = baseQuery.Where(data => speakerIds.Contains(data.Id));
-            //    }
-            //}
-            //else
+            if (query.CodeCampYearIds != null && query.CodeCampYearIds.Count > 0)
+            {
+                if (query.PresentersOnly != null && query.PresentersOnly.Value)
+                {
+                    var speakerIds = from sessionPresenter in meta.SessionPresenter
+                                     join session in meta.Sessions on sessionPresenter.SessionId equals session.Id
+                                     where query.CodeCampYearIds.Contains(session.CodeCampYearId)
+                                     select sessionPresenter.AttendeeId;
+                    baseQuery = baseQuery.Where(data => speakerIds.Contains(data.Id));
+                }
+                else
+                {
+                    // this may blow up with two many attendees in contains (which translates to sql IN)
+                    var speakerIds = (from data in meta.AttendeesCodeCampYear
+                                      where query.CodeCampYearIds.Contains(data.CodeCampYearId)
+                                      select data.AttendeesId).ToList();
+                    baseQuery = baseQuery.Where(data => speakerIds.Contains(data.Id));
+                }
+            }
+            else
             {
                 // if codecampyear not specified, thenw we need to deal with presentersonly separately
                 if (query.PresentersOnly != null)

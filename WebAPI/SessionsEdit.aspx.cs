@@ -359,19 +359,19 @@ public partial class SessionsEdit : BaseContentPage
 
         if (SpeakerHandle1Tr.Visible)
         {
-            Utils.UpdateTwitterHandleForAttendee(Convert.ToInt32(SpeakerHandle1Id.Text),
+            Utils.UpdateTwitterHandleForAttendee(SpeakerHandle1Id.Text,
                                                  TextBoxSpeakerHandle1.Text);                    
         }
 
         if (SpeakerHandle2Tr.Visible)
         {
-            Utils.UpdateTwitterHandleForAttendee(Convert.ToInt32(SpeakerHandle2Id.Text),
+            Utils.UpdateTwitterHandleForAttendee(SpeakerHandle2Id.Text,
                                                  TextBoxSpeakerHandle2.Text);
         }
 
         if (SpeakerHandle3Tr.Visible)
         {
-            Utils.UpdateTwitterHandleForAttendee(Convert.ToInt32(SpeakerHandle3Id.Text),
+            Utils.UpdateTwitterHandleForAttendee(SpeakerHandle3Id.Text,
                                                  TextBoxSpeakerHandle3.Text);
         }
 

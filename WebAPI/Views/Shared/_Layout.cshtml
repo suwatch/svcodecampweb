@@ -95,23 +95,18 @@
                 </div><!-- #content-->
             </div><!-- #container-->
 
-            <div class="sidebar" id="sideLeft">
-@*
-@{
-        
-    var daysCountDownAppend = "";
-    var daysCountDown = @Model.DaysUntilCodeCampString;
-
-    if (daysCountDown > 1)
-    {
-        daysCountDownAppend = "S";
+    @{
+        string daysAppend = "";
     }
-}
+    @if (@Model.DaysUntilCodeCampString != "1")
+    {
+        daysAppend = "S";
+    }
 
-*@
+            <div class="sidebar" id="sideLeft">
                <aside>
-                    <div class="roundBorder daysCountdown">
-                        <h1><span class="daysNumber">@Model.DaysUntilCodeCampString</span></h1>
+                    <div class="roundBorder daysCountdown @Model.DaysUntilCodeCampString">
+                        <h1><span class="daysNumber">@Model.DaysUntilCodeCampString</span><br />DAY@(daysAppend) TO GO</h1>
                     </div>
                     <div class="sectionBreak"></div>
                     <div class="sectionTitle"><span class="luggageIcon"></span> <h2>JOB POSTS</h2></div>

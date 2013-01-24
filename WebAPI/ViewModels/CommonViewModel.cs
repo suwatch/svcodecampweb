@@ -59,18 +59,14 @@ namespace WebAPI.ViewModels
             daysToGo = random.Next(-1, 3);
 
             var retStr = "";
-            if (daysToGo > 1)
+            if (daysToGo >= 1)
             {
-                retStr = String.Format("{0} Days To Go", daysToGo);
-            }
-            else if (daysToGo == 1)
-            {
-                retStr = String.Format("{0} Day To Go", daysToGo);
+                retStr = String.Format("{0}", daysToGo);
             }
             else
             {
                 // please hide this panel so that the jobs panel is on top if this condition is met
-                retStr = "HIDE-ME-WITH-JAVASCRIPT";
+                retStr = "HIDE-ME-WITH-CSS";
             }
             return retStr;
         }

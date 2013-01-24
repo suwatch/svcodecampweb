@@ -455,6 +455,9 @@ a {
 // Sidebar Left
 #sideLeft {
   .daysCountdown {
+    &.HIDE-ME-WITH-CSS {
+      display: none;
+    }
     background: #e7e7e7 url('../Images/daysCountdownReflection.png') no-repeat;
     height: 106px;
     text-align: center;

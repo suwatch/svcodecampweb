@@ -80,15 +80,8 @@ namespace WebAPI
                           action = "Index",
                           year = currentYear
                       });
-            routes.MapRoute("SpeakerRouteDetail", "Speaker/{year}/{speaker}",
-                     new
-                     {
-                         /* Your default route */
-                         controller = "Speaker",
-                         action = "Detail",
-                         year = -1,
-                         speaker = ""
-                     });
+
+          
 
            
             routes.MapRoute(

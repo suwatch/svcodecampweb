@@ -447,6 +447,7 @@
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SessionController.cs" />
+    <Compile Include="Controllers\SpeakerController\SpeakerController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -2568,6 +2569,8 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Session\IndexTest.cshtml" />
+    <Content Include="Views\Speaker\IndexTest.cshtml" />
+    <Content Include="Views\Speaker\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

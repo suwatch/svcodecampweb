@@ -357,6 +357,7 @@ namespace CodeCampSV
                                                               City = rec.City,
                                                               State = rec.State,
                                                               UserBio = rec.UserBio,
+                                                              UserBioEllipsized = GetEllipsized(rec.UserBio,90,"..."),
                                                               UserFirstName = rec.UserFirstName,
                                                               UserLastName = rec.UserLastName,
                                                               UserZipCode = rec.UserZipCode,
@@ -447,7 +448,8 @@ namespace CodeCampSV
                 }
 
                 session.SessionSlug = GenerateSlug(session.Title); // ORM has no access to this function so need to do it here
-                session.TitleEllipsized = GetTitleEllipsized(session.Title, 48, "...");
+                session.TitleEllipsized = GetEllipsized(session.Title, 48, "...");
+                session.DescriptionEllipsized = GetEllipsized(session.Description, 90, "...");
             }
 
             return resultList;
@@ -472,7 +474,7 @@ namespace CodeCampSV
             return Encoding.ASCII.GetString(bytes);
         }
 
-        private string GetTitleEllipsized(string text, int characterCount, string ellipsis)
+        private string GetEllipsized(string text, int characterCount, string ellipsis)
         {
             var cleanTailRegex = new Regex(@"\s+\S*$");
 

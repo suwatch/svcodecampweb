@@ -45,7 +45,7 @@ namespace WebAPI.Controllers
             //                                                              //Attendeesid = 1164 // nima
             //                                                          });
 
-            List<AttendeesResult> speakers = AttendeesManager.I.Get(new AttendeesQuery()
+            List<SpeakerResult> speakers = AttendeesManager.I.GetSpeakerResults(new AttendeesQuery()
                                                                   {
                                                                       CodeCampYearId = codeCampYearId,
                                                                       PresentersOnly = true,

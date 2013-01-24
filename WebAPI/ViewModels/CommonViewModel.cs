@@ -14,7 +14,7 @@ namespace WebAPI.ViewModels
         public List<SessionsResult> Sessions { get; set; }
         public List<SponsorListResult> Sponsors { get; set; }
         public List<SessionTimesResult> SessionsByTime { get; set; }
-        public List<AttendeesResult> Speakers { get; set; }
+        public List<SpeakerResult> Speakers { get; set; }
 
 
 

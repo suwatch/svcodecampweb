@@ -1,11 +1,53 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using CodeCampSV;
 using System.ComponentModel;
+using DataAccess.Code;
 
 namespace CodeCampSV
 {
+    public class SpeakerResult
+    {
+        [DataMember]
+        public int AttendeeId { get; set; }
+        [DataMember]
+        public Guid PKID { get; set; }
+        [DataMember]
+        public string Username { get; set; }
+        [DataMember]
+        public string UserWebsite { get; set; }
+        [DataMember]
+        public string UserLocation { get; set; }
+        [DataMember]
+        public string UserFirstName { get; set; }
+        [DataMember]
+        public string UserLastName { get; set; }
+        [DataMember]
+        public string UserZipCode { get; set; }
+        [DataMember]
+        public string UserBio { get; set; }
+        [DataMember]
+        public string UserBioEllipsized { get; set; }
+        [DataMember]
+        public bool? SaturdayClasses { get; set; }
+        [DataMember]
+        public bool? SundayClasses { get; set; }
+        [DataMember]
+        public string PhoneNumber { get; set; }
+        [DataMember]
+        public string AddressLine1 { get; set; }
+        [DataMember]
+        public string ShirtSize { get; set; }
+        [DataMember]
+        public int? EmailSubscription { get; set; }
+        [DataMember]
+        public string TwitterHandle { get; set; }
+        [DataMember]
+        public string ImageUrl { get; set; }
+    }
+
     public partial class AttendeesManager
     {
         public class SessionPresentResultSmall
@@ -15,6 +57,36 @@ namespace CodeCampSV
             public int AttendeeId { get; set; }
             public int PrimarySpeakerId { get; set; }
             public bool DoNotShowPrimarySpeaker { get; set; }
+        }
+
+     
+
+        public List<SpeakerResult> GetSpeakerResults(AttendeesQuery query)
+        {
+            List<AttendeesResult> recs = Get(query);
+            var speakers = new List<SpeakerResult>();
+            recs.ForEach(a => speakers.Add(new SpeakerResult()
+                                               {
+                                                   AttendeeId = a.Id,
+                                                   PKID = a.PKID,
+                                                   Username = a.Username,
+                                                   UserWebsite = a.UserWebsite,
+                                                   UserLocation = a.UserLocation,
+                                                   UserFirstName = a.UserFirstName,
+                                                   UserLastName = a.UserLastName,
+                                                   UserZipCode = a.UserZipCode,
+                                                   UserBio = a.UserBio,
+                                                   UserBioEllipsized = Utils.GetEllipsized(a.UserBio,90,"..."),
+                                                   SaturdayClasses = a.SaturdayClasses,
+                                                   SundayClasses = a.SundayClasses,
+                                                   PhoneNumber = a.PhoneNumber,
+                                                   AddressLine1 = a.AddressLine1,
+                                                   EmailSubscription = a.EmailSubscription,
+                                                   TwitterHandle = a.TwitterHandle,
+                                                   ImageUrl = String.Format("attendeeimage/{0}.jpg", a.Id)
+
+                                               }));
+            return speakers;
         }
 
         public List<AttendeesResult> Get(AttendeesQuery query)

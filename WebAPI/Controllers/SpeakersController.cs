@@ -7,9 +7,9 @@ using System.Web.Mvc;
 using CodeCampSV;
 using WebAPI.ViewModels;
 
-namespace WebAPI.Controllers.SpeakerController
+namespace WebAPI.Controllers
 {
-    public class SpeakerController : Controller
+    public class SpeakersController : Controller
     {
         public ActionResult Index(string year)
         {

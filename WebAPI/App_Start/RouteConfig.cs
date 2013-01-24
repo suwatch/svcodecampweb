@@ -21,6 +21,30 @@ namespace WebAPI
 
             routes.IgnoreRoute("Content/{*pathInfo}");
 
+
+
+            // SPEAKERS
+            routes.MapRoute("SpeakersRouteAll", "Speakers",
+                      new
+                      {
+                          /* Your default route */
+                          controller = "Speakers/{year}",
+                          action = "Index",
+                          year = currentYear
+                      });
+            routes.MapRoute("SpeakersRouteTest", "Speakers/Test",
+                    new
+                    {
+                        /* Your default route */
+                        controller = "Speakers",
+                        action = "IndexTest",
+                        year = currentYear
+                    });
+
+
+
+
+
             // SESSIONS
 
 
@@ -71,15 +95,7 @@ namespace WebAPI
                          sponsor = ""
                      });
 
-            // SPEAKERS
-            routes.MapRoute("SpeakerRouteAll", "Speaker/{year}",
-                      new
-                      {
-                          /* Your default route */
-                          controller = "Speaker",
-                          action = "Index",
-                          year = currentYear
-                      });
+           
 
           
 

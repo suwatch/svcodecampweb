@@ -40,32 +40,29 @@
 
 <h2>Sessions</h2>
 
-        @Html.Raw("<table id='myTable' border='1'>")
+       <table id='myTable' border='1'>
  
         @foreach (var sessionTime in Model.SessionsByTime)
         { 
           
-            @Html.Raw("<tr>")
-            @Html.Raw("<td>")
-            @sessionTime.StartTimeFriendly
-            @Html.Raw("</td>")
-            @Html.Raw("<td></td>")
-            @Html.Raw("</tr>")
-
-            @Html.Raw("<table>")
-                foreach (var session in sessionTime.sessionsResults)
+            <tr>
+              <td>@sessionTime.StartTimeFriendly</td>
+              <td></td>
+            </tr>
+            <table>
+                @foreach (var session in sessionTime.sessionsResults)
                 {
                 <tr>
                     <td width="300"></td>
                     <td width="300">@session.Title</td>
                 </tr>
                 }
-            @Html.Raw("</table>")
+            </table>
           
         }
     
 
-@Html.Raw("</table>")
+</table>
 
 @foreach (var sponsor in Model.Sponsors)
 {

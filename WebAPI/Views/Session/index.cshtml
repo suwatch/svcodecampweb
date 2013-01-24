@@ -259,16 +259,12 @@
         <h4>Saturday, 11:15 AM</h4>
         <table>
             @{
-     var sessionCount = 0;
+                 var sessionCount = 0;
             }
 
             @foreach (var session in Model.Sessions)
             {
-
-
-
                 sessionCount++;
-    
     
                 <tr id="session_@session.Id" class="session">
                     <td class="title" width="330">@(sessionCount)
@@ -283,22 +279,25 @@
                             <span class="timeIcon"></span>@session.SessionTime <span class="mapLocationIcon"></span>Room @session.RoomNumber <a href="#">Map</a>
                         </div>
                         <div class="sessionDescription" id="sessionDescription_@session.Id">@session.Description</div>
-                        <div class="speakerInfo">
+                        <div class="speakerInfox">
 
+                            <table>
+                                
+                                @foreach (var speaker in session.SpeakersList)
+                                {
+                                    <tr>
+                                        <td>
+                                                  @speaker.UserLastName xxx<br/>
+                                   
+                                                  @* <img src="@(session.SpeakerPictureUrl)?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white" alt="@session.PresenterName" id="speakerAvatar_@session.Id" />*@
+                                                  <div class="speakerBio"></div>
+                                
+                                       </td>
 
+                                    </tr>
+                                }
 
-
-                            <img src="@(session.SpeakerPictureUrl)?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white" alt="@session.PresenterName" id="speakerAvatar_@session.Id" />
-                            <div class="speakerBio"></div>
-
-
-
-
-
-
-
-
-
+                            </table>
 
                         </div>
                     </td>

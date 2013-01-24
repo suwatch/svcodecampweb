@@ -22,7 +22,7 @@ namespace CodeCampSV
 
             var meta = new CodeCampDataContext();
 
-            // add to codecampyearids
+            // add to codecampyearids (make sure List is always populated)
             if (query.CodeCampYearId.HasValue)
             {
                 if (query.CodeCampYearIds != null && query.CodeCampYearIds.Count > 0)
@@ -50,10 +50,10 @@ namespace CodeCampSV
             {
                 if (query.PresentersOnly != null && query.PresentersOnly.Value)
                 {
-                    var speakerIds = (from sessionPresenter in meta.SessionPresenter
-                                      join session in meta.Sessions on sessionPresenter.SessionId equals session.Id
-                                      where query.CodeCampYearIds.Contains(session.CodeCampYearId)
-                                      select sessionPresenter.AttendeeId).ToList();
+                    var speakerIds = from sessionPresenter in meta.SessionPresenter
+                                     join session in meta.Sessions on sessionPresenter.SessionId equals session.Id
+                                     where query.CodeCampYearIds.Contains(session.CodeCampYearId)
+                                     select sessionPresenter.AttendeeId;
                     baseQuery = baseQuery.Where(data => speakerIds.Contains(data.Id));
                 }
                 else

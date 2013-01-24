@@ -145,27 +145,29 @@ namespace CodeCampSV
             }
 
             var speakerResults = new List<AttendeesResult>();
-            List<SessionPresenterResult> sessionPresenterResults =new List<SessionPresenterResult>();
+            var sessionPresenterResults =new List<SessionPresenterResult>();
             if (query.WithSpeakers != null && query.WithSpeakers.Value)
             {
-                var attendeesQuery = new AttendeesQuery
-                                         {
-                                             PresentersOnly = true
-                                         };
+                //var attendeesQuery = new AttendeesQuery
+                //                         {
+                //                             PresentersOnly = true
+                //                         };
                 var sessionPresenterQuery = new SessionPresenterQuery();
 
                 
 
                 if (query.CodeCampYearIds != null && query.CodeCampYearIds.Count > 0)
                 {
-                    attendeesQuery.CodeCampYearIds = query.CodeCampYearIds;
+                    //attendeesQuery.CodeCampYearIds = query.CodeCampYearIds;
                     sessionPresenterQuery.CodeCampYearIds = query.CodeCampYearIds;
-                    attendeesQuery.CodeCampYearIds = query.CodeCampYearIds;
+                    //attendeesQuery.CodeCampYearIds = query.CodeCampYearIds;
                 }
 
                 sessionPresenterResults = SessionPresenterManager.I.Get(sessionPresenterQuery);
 
-                speakerResults = AttendeesManager.I.Get(attendeesQuery);
+
+
+                //speakerResults = AttendeesManager.I.Get(attendeesQuery);
             }
 
            
@@ -185,26 +187,29 @@ namespace CodeCampSV
                 sessionTagsManagers = SessionTagsManager.I.GetAll();
             }
 
-            // next several lines are just for the single speaker that is associated with the session. not the multiple speaker option
-            List<int> speakerIds = (resultList.Select(data => data.Attendeesid)).ToList();
-            var presentersQuery = from attend in meta.Attendees
-                                  where speakerIds.Contains(attend.Id)
-                                  select new
-                                  {
-                                      attend.Id,
-                                      SpeakerName = attend.UserFirstName + " " + attend.UserLastName,
-                                      attend.UserWebsite,
-                                      attend.PKID
-                                  };
-            var speakerDict = 
-                presentersQuery.ToDictionary(presenter => presenter.Id, presenter => presenter.SpeakerName);
-            var speakerUrlDict = new Dictionary<int, string>();
-            var speakerImageUrl = new Dictionary<int, string>();
-            foreach (var presenter in presentersQuery)
-            {
-                speakerUrlDict.Add(presenter.Id, presenter.UserWebsite);
-                speakerImageUrl.Add(presenter.Id,presenter.PKID.ToString());
-            }
+
+
+
+            //// next several lines are just for the single speaker that is associated with the session. not the multiple speaker option
+            //List<int> speakerIds = (resultList.Select(data => data.Attendeesid)).ToList();
+            //var presentersQuery = from attend in meta.Attendees
+            //                      where speakerIds.Contains(attend.Id)
+            //                      select new
+            //                      {
+            //                          attend.Id,
+            //                          SpeakerName = attend.UserFirstName + " " + attend.UserLastName,
+            //                          attend.UserWebsite,
+            //                          attend.PKID
+            //                      };
+            //var speakerDict = 
+            //    presentersQuery.ToDictionary(presenter => presenter.Id, presenter => presenter.SpeakerName);
+            //var speakerUrlDict = new Dictionary<int, string>();
+            //var speakerImageUrl = new Dictionary<int, string>();
+            //foreach (var presenter in presentersQuery)
+            //{
+            //    speakerUrlDict.Add(presenter.Id, presenter.UserWebsite);
+            //    speakerImageUrl.Add(presenter.Id,presenter.PKID.ToString());
+            //}
 
 
 

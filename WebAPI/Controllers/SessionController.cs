@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CodeCampSV;
+using WebAPI.Code;
 using WebAPI.ViewModels;
 
 namespace WebAPI.Controllers
@@ -52,23 +53,7 @@ namespace WebAPI.Controllers
             //    UpdateSpeakerPictureUrl(rec);
             //}
 
-            List<SponsorListResult> sponsors =
-                SponsorListManager.I.Get(new SponsorListQuery
-                                             {
-                                                 CodeCampYearId = codeCampYearId,
-                                                 IncludeSponsorLevel = true,
-                                                 PlatinumLevel = Utils.MinSponsorLevelPlatinum,
-                                                 GoldLevel = Utils.MinSponsorLevelGold,
-                                                 SilverLevel = Utils.MinSponsorLevelSilver,
-                                                 BronzeLevel = Utils.MinSponsorLevelBronze
-                                             });
-
-
-            foreach (var rec in sponsors)
-            {
-                UpdateSponsorPictureUrl(rec);
-            }
-
+            var sponsors = ControllerUtils.AllSponsors(codeCampYearId);
             var sessionsList = sessions.OrderBy(a => a.SessionSlug).ToList();
 
             List<SessionTimesResult> sessionTimesResults =
@@ -112,6 +97,8 @@ namespace WebAPI.Controllers
                                 };
             return viewModel;
         }
+
+     
 
 
         public ActionResult Detail(string year, string session)

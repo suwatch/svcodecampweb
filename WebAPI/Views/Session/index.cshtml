@@ -356,7 +356,7 @@
                         @{ var multipleSpeakerSeparator = " "; }
                         @foreach (var speaker in session.SpeakersList)
                             {
-                              @multipleSpeakerSeparator <a href="@session.PresenterURL" class="author" id="speaker_@(session.Id)_@speaker.Id">@speaker.UserFirstName @speaker.UserLastName</a>multipleSpeakerSeparator = ",";
+                              @multipleSpeakerSeparator <a href="@(speaker.SpeakerLocalUrl)" class="author" id="speaker_@(speaker.AttendeeId)"> @speaker.UserFirstName @speaker.UserLastName </a>multipleSpeakerSeparator = ",";
                             }
                         <div class="sessionDetails" id="sessionDetails_@session.Id">
                             <span class="timeIcon"></span>@session.SessionTime <span class="mapLocationIcon"></span>Room @session.RoomNumber <a href="#">Map</a>
@@ -372,7 +372,7 @@
                                             <img class="speakerAvatar" src="~/Content/Images/speaker-avatar-sample.png" />
                                         </div>
                                         <div class="speakerInfo">
-                                            <div id="authorLinkContainer_@(session.Id)_@speaker.Id"></div>
+                                            <div id="authorLinkContainer_@(session.Id)_@speaker.AttendeeId"></div>
                                             <p>
                                                 Description
                                             </p>

@@ -17,9 +17,15 @@ namespace CodeCampSV
         [DataMember]
         public string Username { get; set; }
         [DataMember]
+        public string Email { get; set; }
+        [DataMember]
         public string UserWebsite { get; set; }
         [DataMember]
         public string UserLocation { get; set; }
+        [DataMember]
+        public string City { get; set; }
+        [DataMember]
+        public string State { get; set; }
         [DataMember]
         public string UserFirstName { get; set; }
         [DataMember]
@@ -46,6 +52,8 @@ namespace CodeCampSV
         public string TwitterHandle { get; set; }
         [DataMember]
         public string ImageUrl { get; set; }
+        [DataMember]
+        public string SpeakerLocalUrl { get; set; }
     }
 
     public partial class AttendeesManager
@@ -83,8 +91,8 @@ namespace CodeCampSV
                                                    AddressLine1 = a.AddressLine1,
                                                    EmailSubscription = a.EmailSubscription,
                                                    TwitterHandle = a.TwitterHandle,
-                                                   ImageUrl = String.Format("attendeeimage/{0}.jpg", a.Id)
-
+                                                   ImageUrl = String.Format("/attendeeimage/{0}.jpg", a.Id),
+                                                   SpeakerLocalUrl = String.Format("/Speaker/Detail/{0}-{1}-{2}",a.UserFirstName,a.UserLastName,a.Id)
                                                }));
             return speakers;
         }
@@ -94,6 +102,7 @@ namespace CodeCampSV
 
             var meta = new CodeCampDataContext();
 
+           
             // add to codecampyearids (make sure List is always populated)
             if (query.CodeCampYearId.HasValue)
             {
@@ -117,6 +126,28 @@ namespace CodeCampSV
             {
                 baseQuery = baseQuery.Where(data => query.Emails.Contains(data.Email));
             }
+
+            if (!String.IsNullOrEmpty(query.SpeakerNameWithId))
+            {
+                // looking for "Peter-Kellner-903"
+                List<string> parts = query.SpeakerNameWithId.Split(new[] { '-' }).ToList();
+                if (parts.Count == 3)
+                {
+                    int attendeeId;
+                    if (Int32.TryParse(parts[2], out attendeeId))
+                    {
+                        if (parts[0].Length > 0 && parts[1].Length > 0)
+                        {
+                            // paydirt!
+                            baseQuery = baseQuery.Where(a => a.UserFirstName.ToLower() == parts[0].ToLower() &&
+                                                             a.UserLastName.ToLower() == parts[1].ToLower() &&
+                                                             a.Id == attendeeId);
+
+                        }
+                    }
+                }
+            }
+
 
             if (query.CodeCampYearIds != null && query.CodeCampYearIds.Count > 0)
             {

@@ -37,5 +37,7 @@ namespace CodeCampSV
         public List<int> CodeCampYearIds { get; set; }
 
         public bool? IncludeSessions { get; set; }
+
+        public string SpeakerNameWithId { get; set; }
     }
 }

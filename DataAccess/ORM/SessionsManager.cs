@@ -310,7 +310,7 @@ namespace CodeCampSV
                     var tempSpeakerResults =
                         speakerResults.Where(a => speakerIdsForList.Contains(a.Id))
                                       .OrderBy(a => a.UserLastName.ToUpper());
-                    session.SpeakersList = new List<AttendeesResult>();
+                    session.SpeakersList = new List<SpeakerResult>();
                     foreach (var rec in tempSpeakerResults)
                     {
                         //// need to figure out if removing primary speaker is necessary
@@ -349,13 +349,13 @@ namespace CodeCampSV
                         //}
                         //else
                         //{
-                            var attendeeResult = new AttendeesResult()
+                            var attendeeResult = new SpeakerResult()
                                                           {
-                                                              Id = rec.Id,
+                                                              AttendeeId = rec.Id,
                                                               Email = rec.Email,
                                                               TwitterHandle = rec.TwitterHandle,
                                                               Username = rec.Username,
-                                                              City = rec.City,
+                                                              City = "",
                                                               State = rec.State,
                                                               UserBio = rec.UserBio,
                                                               UserBioEllipsized = Utils.GetEllipsized(rec.UserBio,90,"..."),
@@ -363,10 +363,12 @@ namespace CodeCampSV
                                                               UserLastName = rec.UserLastName,
                                                               UserZipCode = rec.UserZipCode,
                                                               UserWebsite = rec.UserWebsite,
-                                                              SpeakerPictureUrl =
+                                                              SpeakerLocalUrl = String.Format("/Speakers/Detail/{0}-{1}-{2}",rec.UserFirstName,rec.UserLastName,rec.Id),
+                                                              ImageUrl = 
                                                                   String.Format(
-                                                                      String.Format("attendeeimage/{0}.jpg", rec.Id),
+                                                                      String.Format("/attendeeimage/{0}.jpg", rec.Id),
                                                                       rec.PKID)
+                                                                     
                                                           };
 
                             session.SpeakersList.Add(attendeeResult);
@@ -451,6 +453,8 @@ namespace CodeCampSV
                 session.SessionSlug = Utils.GenerateSlug(session.Title); // ORM has no access to this function so need to do it here
                 session.TitleEllipsized = Utils.GetEllipsized(session.Title, 48, "...");
                 session.DescriptionEllipsized = Utils.GetEllipsized(session.Description, 90, "...");
+              
+
             }
 
             return resultList;

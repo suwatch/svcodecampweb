@@ -41,6 +41,13 @@ namespace WebAPI
                           action = "Index",
                           year = currentYear
                       });
+            routes.MapRoute("SpeakersRouteOne", "Speakers/Detail/{speakername}",
+                        new
+                        {
+                            /* Your default route */
+                            controller = "Speakers",
+                            action = "Detail"
+                        });
          
 
 

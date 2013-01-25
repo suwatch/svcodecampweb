@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CodeCampSV;
+using WebAPI.Code;
 using WebAPI.ViewModels;
 
 namespace WebAPI.Controllers
@@ -23,6 +24,30 @@ namespace WebAPI.Controllers
             var viewModel = GetSessionViewModel(year);
 
             return View(viewModel);
+        }
+
+        public ActionResult Detail(string speakername)
+        {
+            var viewModel = GetSpeakerDetail(speakername);
+
+            viewModel.Sponsors = ControllerUtils.AllSponsors(Utils.GetCurrentCodeCampYear());
+
+            return View(viewModel);
+        }
+
+        private CommonViewModel GetSpeakerDetail(string speakername)
+        {
+            var codeCampYearId = Utils.GetCurrentCodeCampYear();
+
+            var commonViewModel = new CommonViewModel();
+            List<SpeakerResult> speakers = AttendeesManager.I.GetSpeakerResults(new AttendeesQuery
+            {
+               PresentersOnly = true,
+                IncludeSessions = true,
+                SpeakerNameWithId = speakername
+            });
+            commonViewModel.Speakers = speakers;
+            return commonViewModel;
         }
 
         private CommonViewModel GetSessionViewModel(string year)
@@ -64,10 +89,10 @@ namespace WebAPI.Controllers
                                              });
 
 
-            foreach (var rec in sponsors)
-            {
-                UpdateSponsorPictureUrl(rec);
-            }
+            //foreach (var rec in sponsors)
+            //{
+            //    UpdateSponsorPictureUrl(rec);
+            //}
 
            
            
@@ -81,78 +106,8 @@ namespace WebAPI.Controllers
         }
 
 
-        public ActionResult Detail(string year, string session)
-        {
-            SessionsResult sessionResult;
 
-            var codeCampYearId = CodeCampYearId(year);
-
-            if (codeCampYearId < 0)
-            {
-                throw new HttpException(404, "NotFound");
-            }
-
-            List<SessionsResult> sessions = SessionsManager.I.Get(new SessionsQuery()
-                                                                      {
-                                                                          CodeCampYearId = codeCampYearId
-                                                                      });
-
-            var sessionSlugsDict = new Dictionary<string, int>();
-            foreach (SessionsResult result in sessions)
-            {
-
-                if (!sessionSlugsDict.ContainsKey(result.SessionSlug))
-                {
-                    sessionSlugsDict.Add(result.SessionSlug, result.Id);
-                }
-            }
-
-            if (sessionSlugsDict.ContainsKey(session))
-            {
-                sessionResult = sessions.FirstOrDefault(a => a.Id == sessionSlugsDict[session]);
-                if (sessionResult != null && Request.Url != null)
-                {
-                    UpdateSpeakerPictureUrl(sessionResult);
-                }
-            }
-            else
-            {
-                throw new HttpException(404, "NotFound");
-            }
-
-            return View(sessionResult);
-        }
-
-        private void UpdateSpeakerPictureUrl(SessionsResult rec)
-        {
-            rec.SpeakerPictureUrl =
-                String.Format(
-                    "{0}://{1}/attendeeimage/{2}.jpg",
-                    // adding stuff like ?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white is for the client
-                    Request.IsSecureConnection ? "https" : "http",
-                    Request.Url.Authority, rec.Attendeesid);
-
-            rec.SessionUrl =
-                String.Format(
-                    "{0}://{1}/Session/{2}/{3}",
-                    Request.IsSecureConnection ? "https" : "http",
-                    Request.Url.Authority,
-                    Utils.ConvertCodeCampYearToActualYear(
-                        rec.CodeCampYearId.ToString(CultureInfo.InvariantCulture)),
-                    rec.SessionSlug);
-
-
-        }
-
-        private void UpdateSponsorPictureUrl(SponsorListResult rec)
-        {
-            rec.ImageURL =
-                String.Format(
-                    "{0}://{1}/sponsorimage/{2}.jpg",
-                    // adding stuff like ?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white is for the client
-                    Request.IsSecureConnection ? "https" : "http",
-                    Request.Url.Authority, rec.Id);
-        }
+      
 
         private static int CodeCampYearId(string year)
         {

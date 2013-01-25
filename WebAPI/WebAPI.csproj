@@ -392,6 +392,7 @@
     <Compile Include="Code\BoxSessionManager.cs" />
     <Compile Include="Code\CaptchaImageUtils.cs" />
     <Compile Include="Code\CaptchaUltimateControl.cs" />
+    <Compile Include="Code\ControllerUtils.cs" />
     <Compile Include="Code\DataSetAttendees.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2580,6 +2581,7 @@
     <Content Include="Views\Session\IndexTest.cshtml" />
     <Content Include="Views\Speakers\IndexTest.cshtml" />
     <Content Include="Views\Speakers\Index.cshtml" />
+    <Content Include="Views\Speakers\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

@@ -43,7 +43,7 @@ namespace WebAPI.Controllers
                                                                           WithTags = true,
                                                                           
 
-                                                                          Attendeesid = 1164 // nima
+                                                                          //Attendeesid = 1164 // nima
                                                                       });
 
             //foreach (var rec in sessions)

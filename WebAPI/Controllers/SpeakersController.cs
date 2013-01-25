@@ -14,14 +14,14 @@ namespace WebAPI.Controllers
     {
         public ActionResult Index(string year)
         {
-            var viewModel = GetSessionViewModel(year);
+            var viewModel = GetViewModel(year);
 
             return View(viewModel);
         }
 
         public ActionResult IndexTest(string year)
         {
-            var viewModel = GetSessionViewModel(year);
+            var viewModel = GetViewModel(year);
 
             return View(viewModel);
         }
@@ -30,6 +30,7 @@ namespace WebAPI.Controllers
         {
             var viewModel = GetSpeakerDetail(speakername);
 
+            // always need to populate common things
             viewModel.Sponsors = ControllerUtils.AllSponsors(Utils.GetCurrentCodeCampYear());
 
             return View(viewModel);
@@ -37,7 +38,7 @@ namespace WebAPI.Controllers
 
         private CommonViewModel GetSpeakerDetail(string speakername)
         {
-            var codeCampYearId = Utils.GetCurrentCodeCampYear();
+            //var codeCampYearId = Utils.GetCurrentCodeCampYear();
 
             var commonViewModel = new CommonViewModel();
             List<SpeakerResult> speakers = AttendeesManager.I.GetSpeakerResults(new AttendeesQuery
@@ -50,25 +51,13 @@ namespace WebAPI.Controllers
             return commonViewModel;
         }
 
-        private CommonViewModel GetSessionViewModel(string year)
+        private CommonViewModel GetViewModel(string year)
         {
             var codeCampYearId = CodeCampYearId(year);
             if (codeCampYearId < 0)
             {
                 throw new HttpException(404, "NotFound");
             }
-
-            //List<SessionsResult> sessions = SessionsManager.I.Get(new SessionsQuery
-            //                                                          {
-            //                                                              CodeCampYearId = codeCampYearId,
-            //                                                              WithInterestOrPlanToAttend = true,
-            //                                                              WithLectureRoom = true,
-            //                                                              WithSpeakers = true,
-            //                                                              WithTags = true
-
-
-            //                                                              //Attendeesid = 1164 // nima
-            //                                                          });
 
             List<SpeakerResult> speakers = AttendeesManager.I.GetSpeakerResults(new AttendeesQuery()
                                                                   {
@@ -77,30 +66,15 @@ namespace WebAPI.Controllers
                                                                       IncludeSessions = true
                                                                   });
 
-            List<SponsorListResult> sponsors =
-                SponsorListManager.I.Get(new SponsorListQuery
-                                             {
-                                                 CodeCampYearId = codeCampYearId,
-                                                 IncludeSponsorLevel = true,
-                                                 PlatinumLevel = Utils.MinSponsorLevelPlatinum,
-                                                 GoldLevel = Utils.MinSponsorLevelGold,
-                                                 SilverLevel = Utils.MinSponsorLevelSilver,
-                                                 BronzeLevel = Utils.MinSponsorLevelBronze
-                                             });
 
 
-            //foreach (var rec in sponsors)
-            //{
-            //    UpdateSponsorPictureUrl(rec);
-            //}
+          
 
-           
-           
 
             var viewModel = new CommonViewModel()
                                 {
                                     Speakers = speakers,
-                                    Sponsors = sponsors
+                                    Sponsors = ControllerUtils.AllSponsors(codeCampYearId)
                                 };
             return viewModel;
         }

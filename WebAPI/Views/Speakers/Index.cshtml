@@ -6,38 +6,39 @@
 
 <h2>Speakers</h2>
 
-       <table id='myTable' border='1'>
+       <table id='myTable' >
  
         @foreach (var speaker in Model.Speakers)
         { 
           
             <tr>
                 <td>@speaker.UserFirstName @speaker.UserLastName    </td>
-                 <td>@speaker.UserBioEllipsized   </td>
+                 <td>@speaker.AttendeeId   </td>
                 <td> <img src="@(speaker.ImageUrl)?width=70"/>   </td>
-            </tr>
-            
-            @*
-             <tr>
-              <td>@speaker.UserImage</td>
-              <td></td>
-            </tr>
+           
+            <td>
+           
             <table>
-                @foreach (var session in speaker.se)
+                @foreach (var session in speaker.Sessions)
                 {
-                <tr>
-                    <td width="300"></td>
-                    <td width="300">@session.Title   </td>
-                </tr>
+                    <tr>
+                       
+                        <td><a href="@(session.SessionUrl)">@session.TitleEllipsized</a>  </td>
+                        
+                        
+
+                    </tr>
                 }
-            </table>*@
+            </table>
+                </td>
+          </tr>
           
         }
     
 
 </table>
 
-@foreach (var sponsor in Model.Sponsors)
+@*@foreach (var sponsor in Model.Sponsors)
 {
     <br />
     @sponsor.SponsorName
@@ -52,7 +53,7 @@
     <br />
     <img src="@(sponsor.ImageURL)?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white" alt="@sponsor.SponsorName"  />
     <hr />
-}
+}*@
 
 
 

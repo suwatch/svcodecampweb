@@ -1,7 +1,67 @@
 ﻿@model WebAPI.ViewModels.CommonViewModel
 
 @{
-    ViewBag.Title = "Detail";
+    ViewBag.Title = "Session Detail";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+           @foreach (var session in Model.Sessions)
+            {
+    
+                <tr id="session_@session.Id" class="session">
+                    <td class="title" width="330">
+
+
+                        @*BELOW, PresenterURL goes to link inside code camp*@
+
+                        <span id="sessionTitle_@session.Id">@session.TitleEllipsized</span>
+                        <br />
+                        <i>by</i>
+                        @{ var multipleSpeakerSeparator = " "; }
+                        @foreach (var speaker in session.SpeakersList)
+                            {
+                              @multipleSpeakerSeparator <a href="@(speaker.SpeakerLocalUrl)" class="author" id="speaker_@(speaker.AttendeeId)" speakerId="@speaker.AttendeeId"> @speaker.UserFirstName @speaker.UserLastName </a>multipleSpeakerSeparator = ",";
+                            }
+                        <div class="sessionDetails" id="sessionDetails_@session.Id">
+                            <span class="timeIcon"></span>@session.SessionTime <span class="mapLocationIcon"></span>Room @session.RoomNumber <!-- <a href="#">Map</a> -->
+                        </div>
+                        <div class="sessionDescription" id="sessionDescription_@session.Id">@session.Description</div>
+                        
+                        <br/>
+                        <hr/>
+
+                        <div class="speakerInfo" id="speakerInfoList_@session.Id">
+                                
+                                @foreach (var speaker in session.SpeakersList)
+                                {
+                                    
+                                    <div class="speakerInfoItem">
+                                        <div class="avatarWrap">
+                                            <img class="speakerAvatar" src="@(speaker.ImageUrl)?width=70" />
+                                        </div>
+                                        <div class="speakerInfo">
+                                            <div id="authorLinkContainer_@(session.Id)_@speaker.AttendeeId"></div>
+                                            <p>
+                                                @speaker.UserBio
+                                            </p>
+                                        </div>
+                                    </div>
+                                }
+
+                        </div>
+                    </td>
+                    <td class="action">
+                        <div class="interestSelectBtn" id="interestSelectBtn_@session.Id">
+                            <div class="select"><div class="label"><span class="icon"></span><span class="text">Not Interested</span></div><div class="arrow"></div></div>
+                        </div>
+                    </td>
+                    <td class="details">
+                        <div class="detailsBtn" id="detailsBtn_@session.Id" sessionId="@session.Id">
+                            <div class="icon"></div>
+                            <div class="label">Details</div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -35,6 +36,21 @@ namespace DataAccess.Code
                 return text;
 
             return cleanTailRegex.Replace(text.Substring(0, characterCount + 1), "") + ellipsis;
+        }
+
+        /// <summary>
+        /// "7" -> "2012"
+        /// "6" -> "2012"
+        /// ...
+        /// </summary>
+        /// <param name="codeCampYear"></param>
+        /// <returns></returns>
+        public static string ConvertCodeCampYearToActualYear(string codeCampYear)
+        {
+            int codeCampYearId;
+            Int32.TryParse(codeCampYear, out codeCampYearId);
+            int codeCampYearNumber = 2005 + codeCampYearId;
+            return codeCampYearNumber.ToString(CultureInfo.InvariantCulture);
         }
     }
 

@@ -14,25 +14,27 @@ namespace WebAPI.Controllers
     {
         public ActionResult Index(string year)
         {
-            var viewModel = GetSessionViewModel(year);
+            var viewModel = GetViewModel(year);
 
             return View(viewModel);
         }
 
         public ActionResult IndexTest(string year)
         {
-            var viewModel = GetSessionViewModel(year);
+            var viewModel = GetViewModel(year);
 
             return View(viewModel);
         }
 
-        private CommonViewModel GetSessionViewModel(string year)
+        private CommonViewModel GetViewModel(string year)
         {
             var codeCampYearId = CodeCampYearId(year);
             if (codeCampYearId < 0)
             {
                 throw new HttpException(404, "NotFound");
             }
+
+            var sponsors = ControllerUtils.AllSponsors(codeCampYearId);
 
             List<SessionsResult> sessions = SessionsManager.I.Get(new SessionsQuery
                                                                       {
@@ -41,70 +43,25 @@ namespace WebAPI.Controllers
                                                                           WithLectureRoom = true,
                                                                           WithSpeakers = true,
                                                                           WithTags = true,
-                                                                          
-
                                                                           //Attendeesid = 1164 // nima
                                                                       });
 
-            //foreach (var rec in sessions)
-            //{
-            //    rec.SessionSlug = Utils.GenerateSlug(rec.Title); // ORM has no access to this function so need to do it here
-            //    rec.TitleEllipsized = Utils.GetTitleEllipsized(rec.Title, 50, "...");
-            //    UpdateSpeakerPictureUrl(rec);
-            //}
-
-            var sponsors = ControllerUtils.AllSponsors(codeCampYearId);
-            var sessionsList = sessions.OrderBy(a => a.SessionSlug).ToList();
-
-            List<SessionTimesResult> sessionTimesResults =
-                SessionTimesManager.I.Get(new SessionTimesQuery
-                                              {
-                                                  CodeCampYearId = codeCampYearId
-                                              });
-
-            var sessionsAssignedToTime = new List<int>();
-
-            // need to go through all times and sort. need to create extra record for unassigned times
-            foreach (var sessionTimeResult in sessionTimesResults)
-            {
-                sessionTimeResult.sessionsResults =
-                    sessionsList.Where(a => a.SessionTimesId == sessionTimeResult.Id)
-                                .OrderBy(a => a.Title.ToUpper())
-                                .ToList();
-                sessionsAssignedToTime.AddRange(sessionTimeResult.sessionsResults.Select(a => a.Id).ToList());
-            }
-
-            var allSessionIds = sessions.Select(a => a.Id).ToList();
-
-            var unAssignedIds = allSessionIds.Except(sessionsAssignedToTime);
-            if (unAssignedIds.Any())
-            {
-                var sessionTimeResultUnassigned = new SessionTimesResult
-                                                      {
-                                                          Id = sessionTimesResults.Max(a => a.Id) + 1,
-                                                          CodeCampYearId = codeCampYearId,
-                                                          sessionsResults = sessions,
-                                                          StartTimeFriendly = "Unassigned"
-                                                      };
-                sessionTimesResults.Add(sessionTimeResultUnassigned);
-            }
-
             var viewModel = new CommonViewModel()
                                 {
-                                    Sessions = sessionsList,
-                                    SessionsByTime = sessionTimesResults,
+                                    Sessions = sessions.OrderBy(a => a.SessionSlug).ToList(),
+                                    SessionsByTime = ControllerUtils.SessionTimesResultsWithSessionInfo(codeCampYearId, sessions),
                                     Sponsors = sponsors
                                 };
             return viewModel;
         }
 
-     
+
+       
 
 
         public ActionResult Detail(string year, string session)
         {
-            SessionsResult sessionResult;
-
+          
             var codeCampYearId = CodeCampYearId(year);
 
             if (codeCampYearId < 0)
@@ -112,13 +69,13 @@ namespace WebAPI.Controllers
                 throw new HttpException(404, "NotFound");
             }
 
-            List<SessionsResult> sessions = SessionsManager.I.Get(new SessionsQuery()
+            List<SessionsResult> sessionsTemp = SessionsManager.I.Get(new SessionsQuery()
                                                       {
                                                           CodeCampYearId = codeCampYearId
                                                       });
 
             var sessionSlugsDict = new Dictionary<string, int>();
-            foreach (SessionsResult result in sessions)
+            foreach (SessionsResult result in sessionsTemp)
             {
 
                 if (!sessionSlugsDict.ContainsKey(result.SessionSlug))
@@ -127,50 +84,77 @@ namespace WebAPI.Controllers
                 }
             }
 
+            var sessions = new List<SessionsResult>();
             if (sessionSlugsDict.ContainsKey(session))
             {
-                sessionResult = sessions.FirstOrDefault(a => a.Id == sessionSlugsDict[session]);
-                if (sessionResult != null && Request.Url != null)
+                SessionsResult sr = sessionsTemp.FirstOrDefault(a => a.Id == sessionSlugsDict[session]);
+                if (sr != null)
                 {
-                    UpdateSpeakerPictureUrl(sessionResult);
+                    sessions = SessionsManager.I.Get(new SessionsQuery
+                                                         {
+                                                             Id = sr.Id,
+                                                             WithInterestOrPlanToAttend = true,
+                                                             WithLectureRoom = true,
+                                                             WithSpeakers = true,
+                                                             WithTags = true,
+
+                                                             //Attendeesid = 1164 // nima
+                                                         });
                 }
+
+
+
+
+
+
+                //if (sessionResult != null && Request.Url != null)
+                //{
+                //    UpdateSpeakerPictureUrl(sessionResult);
+                //}
             }
             else
             {
                 throw new HttpException(404, "NotFound");
             }
 
-            return View(sessionResult);
+           
+
+            var viewModel = new CommonViewModel()
+            {
+                Sessions = sessions,
+                Sponsors = ControllerUtils.AllSponsors(codeCampYearId)
+            };
+            return View(viewModel);
         }
 
-        private void UpdateSpeakerPictureUrl(SessionsResult rec)
-        {
-            rec.SpeakerPictureUrl =
-                String.Format(
-                    "{0}://{1}/attendeeimage/{2}.jpg", // adding stuff like ?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white is for the client
-                    Request.IsSecureConnection ? "https" : "http",
-                    Request.Url.Authority, rec.Attendeesid);
+        //private void UpdateSpeakerPictureUrl(SessionsResult rec)
+        //{
+        //    rec.SpeakerPictureUrl =
+        //        String.Format(
+        //            "{0}://{1}/attendeeimage/{2}.jpg", // adding stuff like ?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white is for the client
+        //            Request.IsSecureConnection ? "https" : "http",
+        //            Request.Url.Authority, rec.Attendeesid);
 
-            rec.SessionUrl =
-                String.Format(
-                    "{0}://{1}/Session/{2}/{3}",
-                    Request.IsSecureConnection ? "https" : "http",
-                    Request.Url.Authority,
-                    Utils.ConvertCodeCampYearToActualYear(
-                        rec.CodeCampYearId.ToString(CultureInfo.InvariantCulture)),
-                    rec.SessionSlug);
+        //    rec.SessionUrl =
+        //        String.Format(
+        //            "{0}://{1}/Session/{2}/{3}",
+        //            Request.IsSecureConnection ? "https" : "http",
+        //            Request.Url.Authority,
+        //            Utils.ConvertCodeCampYearToActualYear(
+        //                rec.CodeCampYearId.ToString(CultureInfo.InvariantCulture)),
+        //            rec.SessionSlug);
 
 
-        }
+        //}
 
-        private void UpdateSponsorPictureUrl(SponsorListResult rec)
-        {
-            rec.ImageURL =
-               String.Format(
-                   "{0}://{1}/sponsorimage/{2}.jpg", // adding stuff like ?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white is for the client
-                   Request.IsSecureConnection ? "https" : "http",
-                   Request.Url.Authority, rec.Id);
-        }
+        //private void UpdateSponsorPictureUrl(SponsorListResult rec)
+        //{
+        //    rec.ImageURL =
+        //       String.Format(
+        //           "{0}://{1}/sponsorimage/{2}.jpg", // adding stuff like ?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white is for the client
+        //           Request.IsSecureConnection ? "https" : "http",
+        //           Request.Url.Authority, rec.Id);
+        //}
 
         private static int CodeCampYearId(string year)
         {

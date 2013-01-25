@@ -235,6 +235,62 @@ a {
 }
 // End - Links
 
+// Rounded Select input
+.roundSelect {
+
+  .select {
+    height: 31px;
+    cursor: pointer;
+    &:hover .label, &:hover .arrow {
+      background-color: #e9e7e9;
+      border: 1px solid #c5c5c5;
+    }
+    &:active .label, &:active .arrow {
+      background-color: #dddbdd;
+    }
+
+    .label {
+      border-bottom-left-radius: 10px;
+      vertical-align: top;
+      height: 15px;
+      display: inline-block;
+      border: 1px solid #ececec;
+      border-right: 1px solid #e3e2e3;
+      padding: 9px 8px 6px;
+      background-color: #faf9fa;
+      text-align: top;
+      vertical-align: top;
+      font-size: 14px;
+      .icon {
+        width: 14px;
+        height: 14px;
+        display: inline-block;
+        @include imageSprites;
+        background-position: -9999px -9999px;
+        margin: 0 4px 0px 5px;
+      }
+
+      .text {
+        display: inline-block;
+        vertical-align: text-top;
+      }
+    }
+    .arrow {
+      border-top-right-radius: 10px;
+      border: 1px solid #ececec;
+      border-left: 1px solid #fff;
+      display: inline-block;
+      @include imageSprites;
+      width: 24px;
+      height: 30px;
+      background-position: 5px -138px;
+      background-color: #faf9fa;
+
+    }
+
+  }
+}
+
 // Element disply and visiblity
 .hidden {
   display: none;
@@ -743,6 +799,7 @@ a {
       // for Icon elements usng global image sprite
       .icon, span.checkbox {
         @include imageSprites;
+        display: block;
       }
 
       .header {
@@ -783,12 +840,13 @@ a {
         padding: 14px;
 
         // options
-        ul {
+        .optionsWrap ul {
           padding-top: 8px;
           li {
             @include scadaFont;
             font-size: 14px;
             float: left;
+            cursor: pointer;
             .checkbox {
               width: 10px;
               height: 10px;
@@ -797,6 +855,11 @@ a {
               margin-right: 5px;
             }
             margin: 3px 5px;
+            &.selected {
+              .checkbox {
+                background-position: 0 0;
+              }
+            }
           }
         }
         .labelWrap {
@@ -811,7 +874,7 @@ a {
           vertical-align: top;
           padding-top: 6px;
           display: inline-block;
-          width: 90px;
+          width: 80px;
           .icon {
             width: 20px;
             height: 20px;
@@ -848,6 +911,27 @@ a {
             }
           }
           border-bottom: 1px solid #d8d7db;
+          .optionsWrap {
+            padding-top: 8px;
+            .timeOption {
+              padding-bottom: 4px;
+              .dayLabel {
+                vertical-align: top;
+                width: 65px;
+                padding-top: 4px;
+                display: inline-block;
+                font-weight: bold;
+                font-size: 13px;
+              }
+              .timesWrap {
+                vertical-align: top;
+                display: inline-block;
+                ul {
+                  padding-top: 0;
+                }
+              }
+            }
+          }
         }
         // End -  Time filter
 
@@ -858,7 +942,10 @@ a {
               background-position: -75px -250px;
               margin-right: 5px;
             }
-            width: 120px;
+            width: 110px;
+          }
+          .optionsWrap {
+            width: 450px;
           }
         }
         // End - Category filters
@@ -871,16 +958,93 @@ a {
               margin-right: 5px;
             }
           }
+          .optionsWrap {
+            width: 375px;
+          }
+          .buttonRightWrap {
+            width: 110px;
+            display: inline-block;
+            padding-top: 5px;
+          }
         }
         // End - Tags filters
 
+        // Tag filter button
+        .tagFiltersButton {
+          cursor: pointer;
+          width: 104px;
+          .label, .arrow {
+            vertical-align: top;
+            border: 1px solid #4a4a4a;
+            background-color: #5c5c5c;
+            display: inline-block;
+            height: 26px;
+          }
+          &:hover {
+            .label, .arrow {
+              background-color: #676767;
+            }
+          }
+          .label {
+            border-bottom-left-radius: 10px;
+            font-size: 13px;
+            color: #fff;
+            text-shadow: 0 1px #333;
+            span {
+              display: block;
+              padding: 6px 6px 0;
+            }
+          }
+          .arrow {
+            border-left: 1px solid #9c9c9c;
+            border-top-right-radius: 10px;
+            width: 23px;
+            .icon {
+              width: 10px;
+              height: 12px;
+              background-position: -150px -200px;
+              margin: 7px 0 0 8px;
+            }
+          }
+        }
+        // End - Tag filter button
       }
     }
     // End - Sessions Filters
 
     // Session Group and Search bar
     .sessionGroupSearchWrap {
-
+      @include scadaFont;
+      padding-top: 10px;
+      font-size: 14px;
+      .groupWrap {
+        width: 270px;
+        display: inline-block;
+        >.label {
+          vertical-align: top;
+          margin-top: 10px;
+          width: 110px;
+          display: inline-block;
+        }
+        .groupSessionsSelect {
+          padding-right: 10px;
+          display: inline-block;
+          .roundSelect {
+            width: 78px;
+          }
+        }
+      }
+      .searchWrap {
+        vertical-align: top;
+        width: 300px;
+        display: inline-block;
+        >.label {
+          vertical-align: top;
+          margin-top: 10px;
+          width: 110px;
+          display: inline-block;
+        }
+      }
     }
     // End - Session Group and Search bar
 

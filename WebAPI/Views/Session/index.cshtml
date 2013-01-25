@@ -296,7 +296,7 @@
                     </div>
                     <div class="optionsWrap">
                         <ul>
-                            <li><span class="checkbox"></span><span class="label">Show all</span></li>
+                            <li class="selected"><span class="checkbox"></span><span class="label">Show all</span></li>
                             <li><span class="checkbox"></span><span class="label">Saturday</span></li>
                             <li><span class="checkbox"></span><span class="label">Sunday</span></li>
                         </ul>
@@ -334,7 +334,7 @@
                     </div>
                     <div class="optionsWrap">
                         <ul>
-                            <li><span class="checkbox"></span><span class="label">Technology</span></li>
+                            <li class="selected"><span class="checkbox"></span><span class="label">Technology</span></li>
                             <li><span class="checkbox"></span><span class="label">Business</span></li>
                             <li><span class="checkbox"></span><span class="label">Career</span></li>
                             <li><span class="checkbox"></span><span class="label">Kids</span></li>
@@ -348,13 +348,15 @@
                     </div>
                     <div class="optionsWrap">
                         <ul>
-                            <li><span class="checkbox"></span><span class="label">C++</span></li>
-                            <li><span class="checkbox"></span><span class="label">.NET</span></li>
-                            <li><span class="checkbox"></span><span class="label">Database</span></li>
+                            <li class="selected"><span class="checkbox"></span><span class="label">C++</span></li>
+                            <li class="selected"><span class="checkbox"></span><span class="label">.NET</span></li>
+                            <li class="selected"><span class="checkbox"></span><span class="label">Database</span></li>
                             <li><span class="checkbox"></span><span class="label">Linq2SQL</span></li>
                         </ul>
                     </div>
-                    <div class="tagFiltersButton">Tag Filters</div>
+                    <div class="buttonRightWrap">
+                        <div class="tagFiltersButton"><div class="label"><span>Tag Filters</span></div><div class="arrow"><span class="icon"></span></div></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -362,8 +364,12 @@
 
     <div class="sessionGroupSearchWrap ">
         <div class="groupWrap">
-            <span class="label">Group sessions by</span>
-            <div class="groupSessionsSelect"></div>
+            <div class="label">Group sessions by</div>
+            <div class="groupSessionsSelect">
+                <div class="roundSelect">
+                    <div class="select"><div class="label"><span class="text">Time</span></div><div class="arrow"></div></div>
+                </div>
+            </div>
         </div>
         <div class="searchWrap">
             <span class="label">Search: </span>

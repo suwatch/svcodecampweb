@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ee82a8b-af13-4672-838f-c68c30f0c55a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebAPI.iws" afterPath="$PROJECT_DIR$/WebAPI.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Content/Images/sprites.png" afterPath="$PROJECT_DIR$/Content/Images/sprites.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/Session/index.cshtml" afterPath="$PROJECT_DIR$/Views/Session/index.cshtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Content/Styles/svcc.css" afterPath="$PROJECT_DIR$/Content/Styles/svcc.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Content/Sass/svcc.scss" afterPath="$PROJECT_DIR$/Content/Sass/svcc.scss" />
@@ -11,8 +11,8 @@
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1359079347264" ignored="false" />
     <file path="/_Layout.cshtml" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1358994996923" ignored="false" />
-    <file path="/svcc.scss" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1359103331675" ignored="false" />
-    <file path="/index.cshtml" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1359100665428" ignored="false" />
+    <file path="/svcc.scss" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1359110193671" ignored="false" />
+    <file path="/index.cshtml" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1359109873640" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../../AgelessEmail/HG/HG01/AEWeb/StarSaverPub/.sencha/app/plugin.xml" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1358227773431" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../../AgelessEmail/HG/HG01/AEWeb/StarSaver/resources/sass/app.scss" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1358230186596" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../../AgelessEmail/HG/HG01/AEWeb/StarSaver/app.json" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1358231576783" ignored="false" />
@@ -82,7 +82,7 @@
           <file leaf-file-name="index.cshtml" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Views/Session/index.cshtml">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="329" column="18" selection-start="12775" selection-end="12775" vertical-scroll-proportion="0.071428575">
+                <state line="373" column="30" selection-start="15215" selection-end="15225" vertical-scroll-proportion="0.47704083">
                   <folding />
                 </state>
               </provider>
@@ -149,7 +149,7 @@
           <file leaf-file-name="svcc.scss" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Content/Sass/svcc.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="806" column="26" selection-start="17184" selection-end="17184" vertical-scroll-proportion="0.51944447">
+                <state line="1037" column="27" selection-start="22680" selection-end="22680" vertical-scroll-proportion="0.5694444">
                   <folding />
                 </state>
               </provider>
@@ -167,7 +167,7 @@
           <file leaf-file-name="index.cshtml" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Views/Session/index.cshtml">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="394" column="169" selection-start="16059" selection-end="16059" vertical-scroll-proportion="-2.0980392">
+                <state line="400" column="169" selection-start="16517" selection-end="16517" vertical-scroll-proportion="-2.0980392">
                   <folding />
                 </state>
               </provider>
@@ -797,14 +797,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Views/Session/index.cshtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="394" column="169" selection-start="16059" selection-end="16059" vertical-scroll-proportion="-2.0980392">
+        <state line="400" column="169" selection-start="16517" selection-end="16517" vertical-scroll-proportion="-2.0980392">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/Sass/svcc.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="806" column="26" selection-start="17184" selection-end="17184" vertical-scroll-proportion="0.51944447">
+        <state line="1037" column="27" selection-start="22680" selection-end="22680" vertical-scroll-proportion="0.5694444">
           <folding />
         </state>
       </provider>

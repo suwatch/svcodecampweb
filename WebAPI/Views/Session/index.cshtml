@@ -63,14 +63,23 @@
                 console.log(speaker)
                 console.dir(speaker)
                 $('#authorLinkContainer_' + sessionId + '_' + $('#' + speaker.id).attr('speakerId')).html(speaker.outerHTML);
-                floatingPanelOffset += 82;
             }
+
+
+                floatingPanelOffset = speakers.length * 50;
+
 
             console.info(floatingPanelOffset)
 
             $('#detailsFloatingPanel').fadeIn('fast', 'linear').css({
-                'top': buttonOffset.top - (326 + floatingPanelOffset)
-            });
+                            'top': buttonOffset.top - ( $('#detailsFloatingPanel .contentWrap').height() + 200)
+                        });
+
+            console.log($('#detailsFloatingPanel .contentWrap').height())
+            console.log($('#detailsFloatingPanel .contentWrap'))
+            console.log(buttonOffset.top)
+
+
 
             // Stop event bubbling so body listener for hiding floating
             // panel won't be triggered
@@ -243,11 +252,13 @@
                         </div>
                     </div>
                     </div>
+                    <!--
                     <div class="sessionType">
                         <span class="label">Type</span>
                         <br />
                         Conference (<a href="#">What is it?</a>)
                     </div>
+                    -->
                 </div>
             </div>
         </div>
@@ -379,7 +390,7 @@
                               @multipleSpeakerSeparator <a href="@(speaker.SpeakerLocalUrl)" class="author" id="speaker_@(speaker.AttendeeId)" speakerId="@speaker.AttendeeId"> @speaker.UserFirstName @speaker.UserLastName </a>multipleSpeakerSeparator = ",";
                             }
                         <div class="sessionDetails" id="sessionDetails_@session.Id">
-                            <span class="timeIcon"></span>@session.SessionTime <span class="mapLocationIcon"></span>Room @session.RoomNumber <a href="#">Map</a>
+                            <span class="timeIcon"></span>@session.SessionTime <span class="mapLocationIcon"></span>Room @session.RoomNumber <!-- <a href="#">Map</a> -->
                         </div>
                         <div class="sessionDescription" id="sessionDescription_@session.Id">@session.Description</div>
                         <div class="speakerInfo" id="speakerInfoList_@session.Id">

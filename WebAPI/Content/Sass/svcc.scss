@@ -1050,7 +1050,6 @@ a {
         width: 310px;
         height: 190px;
         display: inline-block;
-        border-right: 1px solid #d9d9d9;
         padding-right: 10px;
         .textWrap {
           height: 155px;
@@ -1106,6 +1105,8 @@ a {
         width: 225px;
         display: inline-block;
         padding-left: 10px;
+        border-left: 1px solid #d9d9d9;
+        min-height: 192px;
         margin: 0;
         vertical-align: top;
         .title {

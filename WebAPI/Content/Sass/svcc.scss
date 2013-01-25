@@ -739,12 +739,141 @@ a {
       background-color: #f6f3f6;
       @include box-shadow(none);
       border: 1px solid #c5c5c5;
+
+      // for Icon elements usng global image sprite
+      .icon, span.checkbox {
+        @include imageSprites;
+      }
+
       .header {
         height: 40px;
         background-color: #f8f8f8;
         border-top-right-radius: 10px;
         border-bottom: 1px solid #d8dadb;
         @include box-shadow(0px 3px 3px 1px hsla(0, 0%, 0%, 0.1));
+        .arrow {
+          width: 41px;
+          vertical-align: top;
+          height: 41px;
+          display: inline-block;
+          cursor: pointer;
+          border-right: 1px solid #d8dadb;
+          .icon {
+            background-position: -150px -175px;
+            display: block;
+            width: 15px;
+            height: 13px;
+            margin: 17px 0 0 15px;
+          }
+        }
+        .label {
+          display: inline-block;
+          @include handelGothicFont;
+          padding-left: 15px;
+          font: {
+            size: 16px;
+            weight: bold;
+          }
+          color: #656565;
+          text-shadow: 0px 1px #ccc;
+          padding-top: 13px;
+        }
+      }
+      .filterContentWrap {
+        padding: 14px;
+
+        // options
+        ul {
+          padding-top: 8px;
+          li {
+            @include scadaFont;
+            font-size: 14px;
+            float: left;
+            .checkbox {
+              width: 10px;
+              height: 10px;
+              display: inline-block;
+              background-position: 0 -20px;
+              margin-right: 5px;
+            }
+            margin: 3px 5px;
+          }
+        }
+        .labelWrap {
+          @include handelGothicFont;
+          font-size: 16px;
+        }
+        .daysFilterWrap, .timeFilterWrap, .categoryFilterWrap, .tagsFilterWrap {
+          margin-bottom: 5px;
+          clear: both;
+        }
+        .labelWrap {
+          vertical-align: top;
+          padding-top: 6px;
+          display: inline-block;
+          width: 90px;
+          .icon {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+          }
+          .label {
+            display: inline-block;
+            vertical-align: top;
+            padding-top: 3px;
+          }
+        }
+        .optionsWrap {
+          vertical-align: top;
+          display: inline-block;
+        }
+        // Days filter
+        .daysFilterWrap {
+          .labelWrap {
+            .icon {
+              background-position: 0 -250px;
+              margin-right: 5px;
+            }
+          }
+
+        }
+        // End - Days filter
+
+        // Time filter
+        .timeFilterWrap {
+          .labelWrap {
+            .icon {
+              background-position: -25px -250px;
+              margin-right: 5px;
+            }
+          }
+          border-bottom: 1px solid #d8d7db;
+        }
+        // End -  Time filter
+
+        // Category filters
+        .categoryFilterWrap {
+          .labelWrap {
+            .icon {
+              background-position: -75px -250px;
+              margin-right: 5px;
+            }
+            width: 120px;
+          }
+        }
+        // End - Category filters
+
+        // Tags filters
+        .tagsFilterWrap {
+          .labelWrap {
+            .icon {
+              background-position: -50px -250px;
+              margin-right: 5px;
+            }
+          }
+        }
+        // End - Tags filters
+
       }
     }
     // End - Sessions Filters

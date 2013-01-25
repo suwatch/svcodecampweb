@@ -36,15 +36,15 @@
         // Session details floating panel
         $('.detailsBtn').click(function (e) {
             var buttonOffset = $(this).offset(),
-            sessionId = $(this).attr('sessionId');
+            sessionId = $(this).attr('sessionId'),
+            floatingPanelOffset = 0,
+            speakers, speaker, i;
+
             console.log(sessionId);
             if (floatingElement) {
                 hideFloatingElement(floatingElement);
             }
             monitorFloatingElement('#detailsFloatingPanel');
-            $('#detailsFloatingPanel').fadeIn('fast', 'linear').css({
-                'top': buttonOffset.top - 408
-            });
 
             // Copy session description
             $('#detailsFloatingPanel .description').html($('#sessionDescription_' + sessionId).text());
@@ -53,6 +53,25 @@
             $('#detailsFloatingPanel .presenterName').text($('#presenterName_' + sessionId).text());
             $('#detailsFloatingPanel .speakerAvatar').html($('#speakerAvatar_' + sessionId).html());
             console.log($('#speakerAvatar_' + sessionId))
+            // Speakers
+            speakers = $('#session_' + sessionId).find('.author');
+            console.log(speakers)
+            $('#detailsFloatingPanel .speakerList').html($('#speakerInfoList_' + sessionId).html());
+
+            for (i = 0; i < speakers.length; i++) {
+                speaker = speakers[i];
+                console.log(speaker)
+                console.dir(speaker)
+                $('#authorLinkContainer_' + sessionId + '_' + $('#' + speaker.id).attr('speakerId')).html(speaker.outerHTML);
+                floatingPanelOffset += 82;
+            }
+
+            console.info(floatingPanelOffset)
+
+            $('#detailsFloatingPanel').fadeIn('fast', 'linear').css({
+                'top': buttonOffset.top - (326 + floatingPanelOffset)
+            });
+
             // Stop event bubbling so body listener for hiding floating
             // panel won't be triggered
             e.stopPropagation();
@@ -209,6 +228,7 @@
                 </div>
                 <div class="speakerWrap">
                     <div class="title">Speaker</div>
+                    <div class="speakerList">
                     <div class="avatarWrap">
                         <img class="speakerAvatar" src="~/Content/Images/speaker-avatar-sample.png" />
                     </div>
@@ -222,9 +242,9 @@
                             <a href="#" class="button round blue">READ MORE</a>
                         </div>
                     </div>
+                    </div>
                     <div class="sessionType">
                         <span class="label">Type</span>
-                        <br />
                         <br />
                         Conference (<a href="#">What is it?</a>)
                     </div>
@@ -356,7 +376,7 @@
                         @{ var multipleSpeakerSeparator = " "; }
                         @foreach (var speaker in session.SpeakersList)
                             {
-                              @multipleSpeakerSeparator <a href="@(speaker.SpeakerLocalUrl)" class="author" id="speaker_@(speaker.AttendeeId)"> @speaker.UserFirstName @speaker.UserLastName </a>multipleSpeakerSeparator = ",";
+                              @multipleSpeakerSeparator <a href="@(speaker.SpeakerLocalUrl)" class="author" id="speaker_@(speaker.AttendeeId)" speakerId="@speaker.AttendeeId"> @speaker.UserFirstName @speaker.UserLastName </a>multipleSpeakerSeparator = ",";
                             }
                         <div class="sessionDetails" id="sessionDetails_@session.Id">
                             <span class="timeIcon"></span>@session.SessionTime <span class="mapLocationIcon"></span>Room @session.RoomNumber <a href="#">Map</a>
@@ -367,14 +387,14 @@
                                 @foreach (var speaker in session.SpeakersList)
                                 {
                                     
-                                    <div class="speakerInfo">
+                                    <div class="speakerInfoItem">
                                         <div class="avatarWrap">
                                             <img class="speakerAvatar" src="~/Content/Images/speaker-avatar-sample.png" />
                                         </div>
                                         <div class="speakerInfo">
                                             <div id="authorLinkContainer_@(session.Id)_@speaker.AttendeeId"></div>
                                             <p>
-                                                Description
+                                                @speaker.UserBio
                                             </p>
                                         </div>
                                     </div>

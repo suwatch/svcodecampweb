@@ -1113,26 +1113,35 @@ a {
           padding: 8px 0 12px;
         }
         .avatarWrap {
-          width: 66px;
-          height: 100px;
+          width: 65px;
+          height: 80px;
           display: inline-block;
           vertical-align: top;
+        }
+        .speakerInfoItem {
+          width: 225px;
+          height: 92px;
+          overflow: hidden;
+          margin-bottom: 10px;
         }
         .speakerInfo {
           display: inline-block;
           width: 150px;
           font-size: 14px;
           line-height: 15px;
+          a {
+            font-weight: bold;
+          }
           p {
             font-size: 14px;
             line-height: 15px;
           }
         }
         .sessionType {
-          padding-top: 10px;
-          font-size: 14px;
+          font-size: 15px;
+          line-height: 18px;
           .label {
-            font-size: 15px;
+            font-size: 14px;
           }
         }
       }

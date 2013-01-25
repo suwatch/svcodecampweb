@@ -231,7 +231,7 @@ public partial class SessionsEdit : BaseContentPage
             SpeakerName1.Text = sessionInfo.SpeakersList[0].UserFirstName  + " " +
                                   sessionInfo.SpeakersList[0].UserLastName;
             TextBoxSpeakerHandle1.Text = sessionInfo.SpeakersList[0].TwitterHandle ?? "";
-            SpeakerHandle1Id.Text = sessionInfo.SpeakersList[0].Id.ToString(CultureInfo.InvariantCulture);
+            SpeakerHandle1Id.Text = sessionInfo.SpeakersList[0].AttendeeId.ToString(CultureInfo.InvariantCulture);
         }
 
         if (SpeakerHandle2Tr.Visible && sessionInfo.SpeakersList != null && sessionInfo.SpeakersList.Count > 1)
@@ -239,7 +239,7 @@ public partial class SessionsEdit : BaseContentPage
             SpeakerName2.Text = sessionInfo.SpeakersList[1].UserFirstName + " " +
                                   sessionInfo.SpeakersList[1].UserLastName;
             TextBoxSpeakerHandle2.Text = sessionInfo.SpeakersList[1].TwitterHandle ?? "";
-            SpeakerHandle2Id.Text = sessionInfo.SpeakersList[1].Id.ToString(CultureInfo.InvariantCulture);
+            SpeakerHandle2Id.Text = sessionInfo.SpeakersList[1].AttendeeId.ToString(CultureInfo.InvariantCulture);
         }
 
         if (SpeakerHandle3Tr.Visible && sessionInfo.SpeakersList != null && sessionInfo.SpeakersList.Count > 2)
@@ -247,7 +247,7 @@ public partial class SessionsEdit : BaseContentPage
             SpeakerName3.Text = sessionInfo.SpeakersList[2].UserFirstName + " " +
                                   sessionInfo.SpeakersList[2].UserLastName;
             TextBoxSpeakerHandle3.Text = sessionInfo.SpeakersList[2].TwitterHandle ?? "";
-            SpeakerHandle3Id.Text = sessionInfo.SpeakersList[2].Id.ToString(CultureInfo.InvariantCulture);
+            SpeakerHandle3Id.Text = sessionInfo.SpeakersList[2].AttendeeId.ToString(CultureInfo.InvariantCulture);
         }
 
 

@@ -155,7 +155,7 @@ namespace CodeCampSV
 
                 foreach (var rec in resultList)
                 {
-
+                    rec.ImageURL = String.Format("/sponsorimage/{0}.jpg", rec.Id);
 
                     if (query.IncludeSponsorLevel.HasValue && query.IncludeSponsorLevel.Value && query.CodeCampYearId.HasValue &&
                          query.PlatinumLevel.HasValue && query.SilverLevel.HasValue && query.GoldLevel.HasValue && query.BronzeLevel.HasValue)

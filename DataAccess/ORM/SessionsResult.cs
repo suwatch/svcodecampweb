@@ -69,8 +69,8 @@ namespace CodeCampSV
         public string SpeakerPictureUrl { get; set; }
         [DataMember] 
         public List<TagsResult> TagsResults { get; set; }
-        [DataMember] 
-        public List<AttendeesResult> SpeakersList { get; set; }
+        //[DataMember] 
+        //public List<AttendeesResult> SpeakersList { get; set; }
         [DataMember] 
         public LectureRoomsResult LectureRoomsResult { get; set; }
         [DataMember] 
@@ -80,6 +80,9 @@ namespace CodeCampSV
        
         [DataMember]
         public SessionLevelsResult SessionLevelsResult { get; set; }
+
+        [DataMember]
+        public List<SpeakerResult> SpeakersList { get; set; }
 
 
         public string TitleEllipsized { get; set; }

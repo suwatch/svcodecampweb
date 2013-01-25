@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using CodeCampSV;
 using System.ComponentModel;
 using System.Web;
+using DataAccess.Code;
 
 namespace CodeCampSV
 {
@@ -309,7 +310,7 @@ namespace CodeCampSV
                     var tempSpeakerResults =
                         speakerResults.Where(a => speakerIdsForList.Contains(a.Id))
                                       .OrderBy(a => a.UserLastName.ToUpper());
-                    session.SpeakersList = new List<AttendeesResult>();
+                    session.SpeakersList = new List<SpeakerResult>();
                     foreach (var rec in tempSpeakerResults)
                     {
                         //// need to figure out if removing primary speaker is necessary
@@ -348,24 +349,26 @@ namespace CodeCampSV
                         //}
                         //else
                         //{
-                            var attendeeResult = new AttendeesResult()
+                            var attendeeResult = new SpeakerResult()
                                                           {
-                                                              Id = rec.Id,
+                                                              AttendeeId = rec.Id,
                                                               Email = rec.Email,
                                                               TwitterHandle = rec.TwitterHandle,
                                                               Username = rec.Username,
-                                                              City = rec.City,
+                                                              City = "",
                                                               State = rec.State,
                                                               UserBio = rec.UserBio,
-                                                              UserBioEllipsized = GetEllipsized(rec.UserBio,90,"..."),
+                                                              UserBioEllipsized = Utils.GetEllipsized(rec.UserBio,90,"..."),
                                                               UserFirstName = rec.UserFirstName,
                                                               UserLastName = rec.UserLastName,
                                                               UserZipCode = rec.UserZipCode,
                                                               UserWebsite = rec.UserWebsite,
-                                                              SpeakerPictureUrl =
+                                                              SpeakerLocalUrl = String.Format("/Speakers/Detail/{0}-{1}-{2}",rec.UserFirstName,rec.UserLastName,rec.Id),
+                                                              ImageUrl = 
                                                                   String.Format(
-                                                                      String.Format("attendeeimage/{0}.jpg", rec.Id),
+                                                                      String.Format("/attendeeimage/{0}.jpg", rec.Id),
                                                                       rec.PKID)
+                                                                     
                                                           };
 
                             session.SpeakersList.Add(attendeeResult);
@@ -447,42 +450,17 @@ namespace CodeCampSV
                     session.TagsResults = (tagsResults.Where(data => tagIds.Contains(data.Id))).ToList();
                 }
 
-                session.SessionSlug = GenerateSlug(session.Title); // ORM has no access to this function so need to do it here
-                session.TitleEllipsized = GetEllipsized(session.Title, 48, "...");
-                session.DescriptionEllipsized = GetEllipsized(session.Description, 90, "...");
+                session.SessionSlug = Utils.GenerateSlug(session.Title); // ORM has no access to this function so need to do it here
+                session.TitleEllipsized = Utils.GetEllipsized(session.Title, 48, "...");
+                session.DescriptionEllipsized = Utils.GetEllipsized(session.Description, 90, "...");
+              
+
             }
 
             return resultList;
         }
 
-        private string GenerateSlug(string phrase)
-        {
-            string str = RemoveAccent(phrase).ToLower();
-            // invalid chars           
-            str = Regex.Replace(str, @"[^a-z0-9\s-]", "");
-            // convert multiple spaces into one space   
-            str = Regex.Replace(str, @"\s+", " ").Trim();
-            // cut and trim 
-            str = str.Substring(0, str.Length <= 45 ? str.Length : 45).Trim();
-            str = Regex.Replace(str, @"\s", "-"); // hyphens   
-            return str;
-        }
-
-        private static string RemoveAccent(string txt)
-        {
-            byte[] bytes = Encoding.GetEncoding("Cyrillic").GetBytes(txt);
-            return Encoding.ASCII.GetString(bytes);
-        }
-
-        private string GetEllipsized(string text, int characterCount, string ellipsis)
-        {
-            var cleanTailRegex = new Regex(@"\s+\S*$");
-
-            if (string.IsNullOrEmpty(text) || characterCount < 0 || text.Length <= characterCount)
-                return text;
-
-            return cleanTailRegex.Replace(text.Substring(0, characterCount + 1), "") + ellipsis;
-        }
+     
 
         [DataObjectMethod(DataObjectMethodType.Select, true)]
         public List<SessionsResult> GetAll()

@@ -28,14 +28,16 @@ namespace WebAPI
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+            //RouteDebug.RouteDebugger.RewriteRoutesForTesting(RouteTable.Routes);
 
-            if (_smartInspectEnabled)
-            {
-                string fileName = HttpContext.Current.Server.MapPath("~\\App_Data\\Logging.sic");
 
-                SiAuto.Si.LoadConfiguration(fileName);
-                SiAuto.Main.EnterProcess();
-            }
+            //if (_smartInspectEnabled)
+            //{
+            //    string fileName = HttpContext.Current.Server.MapPath("~\\App_Data\\Logging.sic");
+
+            //    SiAuto.Si.LoadConfiguration(fileName);
+            //    SiAuto.Main.EnterProcess();
+            //}
 
 
             string baseDir = HttpContext.Current.Server.MapPath("~\\App_Data\\");
@@ -92,7 +94,7 @@ namespace WebAPI
                                                  {
                                                      "/sponsorimage/",
                                                      "/attendeeimage/",
-                                                     "/trackimage"
+                                                     "/trackimage/"
                                                  };
 
                     foreach (var imageDirPrefix in imageDirs)

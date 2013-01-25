@@ -96,6 +96,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>dlls\DevExpress.XtraEditors.v7.3.Design.dll</HintPath>
     </Reference>
+    <Reference Include="Glimpse.Core">
+      <HintPath>packages\Glimpse.0.87\lib\net40\Glimpse.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Gurock.SmartInspect, Version=3.3.2.49, Culture=neutral, PublicKeyToken=a78b0a9303ab7a7c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>dlls\Gurock.SmartInspect.dll</HintPath>
@@ -132,6 +135,10 @@
       <HintPath>dlls\ListNanny.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="RouteDebug, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dlls\RouteDebug.dll</HintPath>
+    </Reference>
     <Reference Include="SpreadsheetGear, Version=6.0.3.152, Culture=neutral, PublicKeyToken=39c186f5904944ec, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>dlls\SpreadsheetGear.dll</HintPath>
@@ -385,6 +392,7 @@
     <Compile Include="Code\BoxSessionManager.cs" />
     <Compile Include="Code\CaptchaImageUtils.cs" />
     <Compile Include="Code\CaptchaUltimateControl.cs" />
+    <Compile Include="Code\ControllerUtils.cs" />
     <Compile Include="Code\DataSetAttendees.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -447,6 +455,7 @@
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SessionController.cs" />
+    <Compile Include="Controllers\SpeakersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -1348,6 +1357,7 @@
     <Content Include="AgendaUpdateSpeakersMultipleSessions.aspx" />
     <Content Include="AllAttendees.aspx" />
     <Content Include="App_Data\EventBoardJson.txt" />
+    <Content Include="App_Readme\glimpse.readme.txt" />
     <Content Include="App_Sprites\adobe-flash.jpg" />
     <Content Include="App_Sprites\alumwire-logo.jpg" />
     <Content Include="App_Sprites\BAADD.jpg" />
@@ -1928,6 +1938,7 @@
     <Content Include="dlls\Newtonsoft.Json.dll" />
     <Content Include="dlls\Newtonsoft.Json.pdb" />
     <Content Include="dlls\Newtonsoft.Json.xml" />
+    <Content Include="dlls\RouteDebug.dll" />
     <Content Include="dlls\SpreadsheetGear.dll" />
     <Content Include="dlls\Telerik.Charting.dll" />
     <Content Include="dlls\Telerik.Charting.xml" />
@@ -2568,6 +2579,9 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Session\IndexTest.cshtml" />
+    <Content Include="Views\Speakers\IndexTest.cshtml" />
+    <Content Include="Views\Speakers\Index.cshtml" />
+    <Content Include="Views\Speakers\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

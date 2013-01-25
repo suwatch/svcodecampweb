@@ -21,9 +21,40 @@ namespace WebAPI
 
             routes.IgnoreRoute("Content/{*pathInfo}");
 
+
+
+            // SPEAKERS
+            //routes.MapRoute("SpeakersRouteTest", "Speakers/Test",
+            //     new
+            //     {
+            //         /* Your default route */
+            //         controller = "Speakers",
+            //         action = "IndexTest",
+            //         year = currentYear
+            //     });
+
+            routes.MapRoute("SpeakersRouteAll", "Speakers/{year}",
+                      new
+                      {
+                          /* Your default route */
+                          controller = "Speakers",
+                          action = "Index",
+                          year = currentYear
+                      });
+            routes.MapRoute("SpeakersRouteOne", "Speakers/Detail/{speakername}",
+                        new
+                        {
+                            /* Your default route */
+                            controller = "Speakers",
+                            action = "Detail"
+                        });
+         
+
+
+
+
+
             // SESSIONS
-
-
             routes.MapRoute("SessionRouteTest", "Session/Test",
                      new
                      {
@@ -71,24 +102,9 @@ namespace WebAPI
                          sponsor = ""
                      });
 
-            // SPEAKERS
-            routes.MapRoute("SpeakerRouteAll", "Speaker/{year}",
-                      new
-                      {
-                          /* Your default route */
-                          controller = "Speaker",
-                          action = "Index",
-                          year = currentYear
-                      });
-            routes.MapRoute("SpeakerRouteDetail", "Speaker/{year}/{speaker}",
-                     new
-                     {
-                         /* Your default route */
-                         controller = "Speaker",
-                         action = "Detail",
-                         year = -1,
-                         speaker = ""
-                     });
+           
+
+          
 
            
             routes.MapRoute(

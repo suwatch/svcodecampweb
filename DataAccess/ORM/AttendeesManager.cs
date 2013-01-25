@@ -1,11 +1,61 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using CodeCampSV;
 using System.ComponentModel;
+using DataAccess.Code;
 
 namespace CodeCampSV
 {
+    public class SpeakerResult
+    {
+        [DataMember]
+        public int AttendeeId { get; set; }
+        [DataMember]
+        public Guid PKID { get; set; }
+        [DataMember]
+        public string Username { get; set; }
+        [DataMember]
+        public string Email { get; set; }
+        [DataMember]
+        public string UserWebsite { get; set; }
+        [DataMember]
+        public string UserLocation { get; set; }
+        [DataMember]
+        public string City { get; set; }
+        [DataMember]
+        public string State { get; set; }
+        [DataMember]
+        public string UserFirstName { get; set; }
+        [DataMember]
+        public string UserLastName { get; set; }
+        [DataMember]
+        public string UserZipCode { get; set; }
+        [DataMember]
+        public string UserBio { get; set; }
+        [DataMember]
+        public string UserBioEllipsized { get; set; }
+        [DataMember]
+        public bool? SaturdayClasses { get; set; }
+        [DataMember]
+        public bool? SundayClasses { get; set; }
+        [DataMember]
+        public string PhoneNumber { get; set; }
+        [DataMember]
+        public string AddressLine1 { get; set; }
+        [DataMember]
+        public string ShirtSize { get; set; }
+        [DataMember]
+        public int? EmailSubscription { get; set; }
+        [DataMember]
+        public string TwitterHandle { get; set; }
+        [DataMember]
+        public string ImageUrl { get; set; }
+        [DataMember]
+        public string SpeakerLocalUrl { get; set; }
+    }
+
     public partial class AttendeesManager
     {
         public class SessionPresentResultSmall
@@ -17,11 +67,42 @@ namespace CodeCampSV
             public bool DoNotShowPrimarySpeaker { get; set; }
         }
 
+     
+
+        public List<SpeakerResult> GetSpeakerResults(AttendeesQuery query)
+        {
+            List<AttendeesResult> recs = Get(query);
+            var speakers = new List<SpeakerResult>();
+            recs.ForEach(a => speakers.Add(new SpeakerResult()
+                                               {
+                                                   AttendeeId = a.Id,
+                                                   PKID = a.PKID,
+                                                   Username = a.Username,
+                                                   UserWebsite = a.UserWebsite,
+                                                   UserLocation = a.UserLocation,
+                                                   UserFirstName = a.UserFirstName,
+                                                   UserLastName = a.UserLastName,
+                                                   UserZipCode = a.UserZipCode,
+                                                   UserBio = a.UserBio,
+                                                   UserBioEllipsized = Utils.GetEllipsized(a.UserBio,90,"..."),
+                                                   SaturdayClasses = a.SaturdayClasses,
+                                                   SundayClasses = a.SundayClasses,
+                                                   PhoneNumber = a.PhoneNumber,
+                                                   AddressLine1 = a.AddressLine1,
+                                                   EmailSubscription = a.EmailSubscription,
+                                                   TwitterHandle = a.TwitterHandle,
+                                                   ImageUrl = String.Format("/attendeeimage/{0}.jpg", a.Id),
+                                                   SpeakerLocalUrl = String.Format("/Speaker/Detail/{0}-{1}-{2}",a.UserFirstName,a.UserLastName,a.Id)
+                                               }));
+            return speakers;
+        }
+
         public List<AttendeesResult> Get(AttendeesQuery query)
         {
 
             var meta = new CodeCampDataContext();
 
+           
             // add to codecampyearids (make sure List is always populated)
             if (query.CodeCampYearId.HasValue)
             {
@@ -46,14 +127,36 @@ namespace CodeCampSV
                 baseQuery = baseQuery.Where(data => query.Emails.Contains(data.Email));
             }
 
+            if (!String.IsNullOrEmpty(query.SpeakerNameWithId))
+            {
+                // looking for "Peter-Kellner-903"
+                List<string> parts = query.SpeakerNameWithId.Split(new[] { '-' }).ToList();
+                if (parts.Count == 3)
+                {
+                    int attendeeId;
+                    if (Int32.TryParse(parts[2], out attendeeId))
+                    {
+                        if (parts[0].Length > 0 && parts[1].Length > 0)
+                        {
+                            // paydirt!
+                            baseQuery = baseQuery.Where(a => a.UserFirstName.ToLower() == parts[0].ToLower() &&
+                                                             a.UserLastName.ToLower() == parts[1].ToLower() &&
+                                                             a.Id == attendeeId);
+
+                        }
+                    }
+                }
+            }
+
+
             if (query.CodeCampYearIds != null && query.CodeCampYearIds.Count > 0)
             {
                 if (query.PresentersOnly != null && query.PresentersOnly.Value)
                 {
-                    var speakerIds = from sessionPresenter in meta.SessionPresenter
-                                     join session in meta.Sessions on sessionPresenter.SessionId equals session.Id
-                                     where query.CodeCampYearIds.Contains(session.CodeCampYearId)
-                                     select sessionPresenter.AttendeeId;
+                    var speakerIds = (from sessionPresenter in meta.SessionPresenter
+                                      join session in meta.Sessions on sessionPresenter.SessionId equals session.Id
+                                      where query.CodeCampYearIds.Contains(session.CodeCampYearId)
+                                      select sessionPresenter.AttendeeId).ToList();
                     baseQuery = baseQuery.Where(data => speakerIds.Contains(data.Id));
                 }
                 else
@@ -100,20 +203,21 @@ namespace CodeCampSV
 
             var resultList = new List<AttendeesResult>();
 
-            if (query.CodeCampYearIds != null && query.CodeCampYearIds.Count > 0)
-            {
-                var attendeeIds = (from data in meta.AttendeesCodeCampYear
-                                   where query.CodeCampYearIds.Contains(data.CodeCampYearId)
-                                   select data.AttendeesId).ToList();
+            // NOT NEESSARY BECAUSE CODECAMPYEARS FILTERED ABOVE
+            //if (query.CodeCampYearIds != null && query.CodeCampYearIds.Count > 0)
+            //{
+            //    var attendeeIds = (from data in meta.AttendeesCodeCampYear
+            //                       where query.CodeCampYearIds.Contains(data.CodeCampYearId)
+            //                       select data.AttendeesId).ToList();
                 
-                // can't use contains because list will be to long. need to do it one by one sadly
-                var resultListTemp = GetFinalResults(results, query);
-                resultList.AddRange(resultListTemp.Where(rec => attendeeIds.Contains(rec.Id)));
-            }
-            else
-            {
+            //    // can't use contains because list will be to long. need to do it one by one sadly
+            //    var resultListTemp = GetFinalResults(results, query);
+            //    resultList.AddRange(resultListTemp.Where(rec => attendeeIds.Contains(rec.Id)));
+            //}
+            //else
+            //{
                 resultList = GetFinalResults(results, query);
-            }
+            //}
 
             var sessionsBySpeakerdict = new Dictionary<int, List<SessionPresentResultSmall>>();
             if (query.IncludeSessions.HasValue && query.IncludeSessions.Value)

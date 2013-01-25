@@ -1,0 +1,88 @@
+﻿@model WebAPI.ViewModels.CommonViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Speakers</h2>
+
+       <table id='myTable' border='1'>
+ 
+        @foreach (var speaker in Model.Speakers)
+        { 
+          
+            <tr>
+                <td>@speaker.UserFirstName @speaker.UserLastName    </td>
+                 <td>@speaker.UserBioEllipsized   </td>
+                <td> <img src="@(speaker.ImageUrl)?width=70"/>   </td>
+            </tr>
+            
+            @*
+             <tr>
+              <td>@speaker.UserImage</td>
+              <td></td>
+            </tr>
+            <table>
+                @foreach (var session in speaker.se)
+                {
+                <tr>
+                    <td width="300"></td>
+                    <td width="300">@session.Title   </td>
+                </tr>
+                }
+            </table>*@
+          
+        }
+    
+
+</table>
+
+@*@foreach (var sponsor in Model.Sponsors)
+{
+    <br />
+    @sponsor.SponsorName
+    <br />
+    @sponsor.NavigateURL
+    <br />
+    @sponsor.SponsorSupportLevel
+    <br />
+    @sponsor.SponsorSupportLevelOrder
+    <br />
+    @(sponsor.ImageURL)
+    <br />
+    <img src="@(sponsor.ImageURL)?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white" alt="@sponsor.SponsorName"  />
+    <hr />
+}
+*@
+
+
+
+
+@* <script type="text/javascript">
+
+//        $(document).ready(function () {
+//            // Send an AJAX request
+//            $.getJSON("api/session/GetAll",
+//            function (data) {
+//                // On success, 'data' contains a list of products.
+//                $.each(data, function (key, val) {
+//
+//                    //debugger;
+//
+//                    // Format the text to display.
+//                    //var str = val.Name + ': $' + val.Price;
+//                    var str = val.PresenterName + ' : ' + val.Title;
+//
+//                    // Add a list item for the product.
+//                    $('<li/>', { text: str })
+//                    .appendTo($('#sessions'));
+//                });
+//            });
+//        });
+      
+
+
+    </script>
+
+
+ <div id="sessions"></div>*@

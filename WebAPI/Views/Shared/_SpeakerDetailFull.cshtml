@@ -1,0 +1,14 @@
+﻿@model CodeCampSV.SpeakerResult
+
+<table>
+    <tr>
+        
+        <td width="300"><a href="@Model.SpeakerLocalUrl" alt="@Model.UserFirstName @Model.UserLastName">@Model.UserFirstName @Model.UserLastName</a></td>
+        <td>@Model.UserBioEllipsized   </td>
+        <td>
+            <img src="@(Model.ImageUrl)?width=70"/>
+        </td>
+    </tr>
+</table>
+
+

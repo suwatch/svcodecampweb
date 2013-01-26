@@ -14,22 +14,27 @@
             <tr>
                 <td>@speaker.UserFirstName @speaker.UserLastName    </td>
                  <td>@speaker.AttendeeId   </td>
-                <td> <img src="@(speaker.ImageUrl)?width=70"/>   </td>
+                <td> <img src="@(speaker.ImageUrl)?width=70"/>   
+
+            </td>
            
             <td>
            
-            <table>
-                @foreach (var session in speaker.Sessions)
-                {
-                    <tr>
-                       
-                        <td><a href="@(session.SessionUrl)">@session.TitleEllipsized</a>  </td>
-                        
-                        
+                <table>
+                    
+                    @*When we are on the speaker page, there needs to be a "Details" button that when
+                    pressed brings up a pop up window that shows all the sessions for this speaker.
+                    That is what the next foreach(var session ..) is. that is the sessions for this speaker*@
 
-                    </tr>
-                }
-            </table>
+                    @foreach (var session in speaker.Sessions)
+                    {
+                        <tr>
+                       
+                            <td><a href="@(session.SessionUrl)">@session.TitleEllipsized</a>  </td>
+                        
+                        </tr>
+                    }
+                </table>
                 </td>
           </tr>
           

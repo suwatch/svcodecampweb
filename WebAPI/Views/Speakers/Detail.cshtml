@@ -4,35 +4,41 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Speakers</h2>
+<h2>Speaker</h2>
 
        <table id='myTable' border='1'>
  
-        @foreach (var speaker in Model.Speakers)
-        { 
-          
-            <tr>
-                <td>@speaker.UserFirstName @speaker.UserLastName    </td>
-                 <td>@speaker.UserBioEllipsized   </td>
-                <td> <img src="@(speaker.ImageUrl)?width=70"/>   </td>
-            </tr>
-            
-            @*
-             <tr>
-              <td>@speaker.UserImage</td>
-              <td></td>
-            </tr>
-            <table>
-                @foreach (var session in speaker.se)
-                {
-                <tr>
-                    <td width="300"></td>
-                    <td width="300">@session.Title   </td>
-                </tr>
-                }
-            </table>*@
-          
-        }
+        
+           @foreach (var speaker in Model.Speakers)
+           {
+
+               <tr>
+                   <td>@speaker.UserFirstName @speaker.UserLastName    </td>
+                   <td>@speaker.UserBio</td>
+                   <td> <img src="@(speaker.ImageUrl)?width=70"/>   </td>
+               </tr>
+               
+               <tr>
+                   <td colspan="3">
+                        <table>
+                            @foreach (var session in speaker.Sessions)
+                            {
+                                <tr>
+                                    <td colspan="3">
+                                        
+
+                                        <a href="@session.SessionUrl">@session.Title</a>  Year: @session.CodeCampYearId
+                                    
+                                    
+                                    
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </td>
+               </tr>
+
+           }
     
 
 </table>

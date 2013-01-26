@@ -2582,6 +2582,7 @@
     <Content Include="Views\Speakers\IndexTest.cshtml" />
     <Content Include="Views\Speakers\Index.cshtml" />
     <Content Include="Views\Speakers\Detail.cshtml" />
+    <Content Include="Views\Shared\_SpeakerDetailFull.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

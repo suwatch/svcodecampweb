@@ -33,25 +33,42 @@ namespace WebAPI
             //         year = currentYear
             //     });
 
-            routes.MapRoute("SpeakersRouteAll", "Speakers/{year}",
-                      new
-                      {
-                          /* Your default route */
-                          controller = "Speakers",
-                          action = "Index",
-                          year = currentYear
-                      });
-            routes.MapRoute("SpeakersRouteOne", "Speakers/Detail/{speakername}",
+            //routes.MapRoute("SpeakersRouteAll", "Speakers/{year}",
+            //          new
+            //          {
+            //              /* Your default route */
+            //              controller = "Speakers",
+            //              action = "Index",
+            //              year = currentYear
+            //          });
+            //routes.MapRoute("SpeakersRouteOne", "Speakers/Detail/{speakername}",
+            //            new
+            //            {
+            //                /* Your default route */
+            //                controller = "Speakers",
+            //                action = "Detail"
+            //            });
+
+
+
+            // PRESENTERS
+            routes.MapRoute("PresenterRouteAll", "Presenter/{year}",
+                     new
+                     {
+                         /* Your default route */
+                         controller = "Presenter",
+                         action = "Index",
+                         year = currentYear
+                     });
+            routes.MapRoute("PresenterRouteOne", "Presenter/{year}/{speakername}",
                         new
                         {
                             /* Your default route */
-                            controller = "Speakers",
-                            action = "Detail"
+                            controller = "Presenter",
+                            action = "Detail",
+                            year = currentYear
                         });
          
-
-
-
 
 
             // SESSIONS

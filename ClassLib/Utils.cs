@@ -2933,12 +2933,17 @@ namespace CodeCampSV
             return retCnt;
         }
 
+        /// <summary>
+        /// "2012" -> 7
+        /// </summary>
+        /// <param name="codeCampYearIn"></param>
+        /// <returns></returns>
         public static int ConvertCodeCampYearToCodeCampYearId(string codeCampYearIn)
         {
             int codeCampYear;
             Int32.TryParse(codeCampYearIn, out codeCampYear);
-            int codeCampYearNumber = 2005 + codeCampYear;
-            return codeCampYearNumber;
+            int codeCampYearId = codeCampYear - 2005;
+            return codeCampYearId;
 
         }
 
@@ -3089,12 +3094,7 @@ namespace CodeCampSV
                                                                                CodeCampYearId = codeCampYearId,
                                                                                AttendeesId = attendeesId
                                                                            })).FirstOrDefault();
-            bool isRegistered = false;
-            if (attendeesCodeCampYear != null)
-            {
-                isRegistered = true;
-            }
-            return isRegistered;
+            return attendeesCodeCampYear != null;
         }
 
         public static bool CheckUserCanViewTrack()
@@ -3115,11 +3115,6 @@ namespace CodeCampSV
 
             string primarySpeakerUsername = GetUserNameFromSessionId(sessionId);
             return null;
-
-
-
-
-
         }
 
         /// <summary>

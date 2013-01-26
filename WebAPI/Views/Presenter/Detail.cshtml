@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Speaker</h2>
+<h2>Presenters</h2>
 
        <table id='myTable' border='1'>
  
@@ -13,7 +13,7 @@
            {
 
                <tr>
-                   <td>@speaker.UserFirstName @speaker.UserLastName    </td>
+                   <td> <a href="@(speaker.SpeakerLocalUrl)">             @speaker.UserFirstName @speaker.UserLastName</a>     </td>
                    <td>@speaker.UserBio</td>
                    <td> <img src="@(speaker.ImageUrl)?width=70"/>   </td>
                </tr>

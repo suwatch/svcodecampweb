@@ -349,27 +349,35 @@ namespace CodeCampSV
                         //}
                         //else
                         //{
-                            var attendeeResult = new SpeakerResult()
-                                                          {
-                                                              AttendeeId = rec.Id,
-                                                              Email = rec.Email,
-                                                              TwitterHandle = rec.TwitterHandle,
-                                                              Username = rec.Username,
-                                                              City = "",
-                                                              State = rec.State,
-                                                              UserBio = rec.UserBio,
-                                                              UserBioEllipsized = Utils.GetEllipsized(rec.UserBio,90,"..."),
-                                                              UserFirstName = rec.UserFirstName,
-                                                              UserLastName = rec.UserLastName,
-                                                              UserZipCode = rec.UserZipCode,
-                                                              UserWebsite = rec.UserWebsite,
-                                                              SpeakerLocalUrl = String.Format("/Speakers/Detail/{0}-{1}-{2}",rec.UserFirstName,rec.UserLastName,rec.Id),
-                                                              ImageUrl = 
-                                                                  String.Format(
-                                                                      String.Format("/attendeeimage/{0}.jpg", rec.Id),
-                                                                      rec.PKID)
-                                                                     
-                                                          };
+                        var attendeeResult = new SpeakerResult()
+                                                 {
+                                                     AttendeeId = rec.Id,
+                                                     Email = rec.Email,
+                                                     TwitterHandle = rec.TwitterHandle,
+                                                     Username = rec.Username,
+                                                     City = "",
+                                                     State = rec.State,
+                                                     UserBio = rec.UserBio,
+                                                     UserBioEllipsized = Utils.GetEllipsized(rec.UserBio, 90, "..."),
+                                                     UserFirstName = rec.UserFirstName,
+                                                     UserLastName = rec.UserLastName,
+                                                     UserZipCode = rec.UserZipCode,
+                                                     UserWebsite = rec.UserWebsite,
+                                                     SpeakerLocalUrl = String.Format("/Presenter/{0}/{1}-{2}-{3}",
+                                                                                     Utils
+                                                                                         .ConvertCodeCampYearToActualYear
+                                                                                         (session.CodeCampYearId.ToString(CultureInfo.InvariantCulture)),
+                                                                                     Utils.AlphaNumericOnly(
+                                                                                         rec.UserFirstName),
+                                                                                     Utils.AlphaNumericOnly(
+                                                                                         rec.UserLastName),
+                                                                                     rec.Id),
+                                                     ImageUrl =
+                                                         String.Format(
+                                                             String.Format("/attendeeimage/{0}.jpg", rec.Id),
+                                                             rec.PKID)
+
+                                                 };
 
                             session.SpeakersList.Add(attendeeResult);
                         //}

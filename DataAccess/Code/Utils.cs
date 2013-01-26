@@ -52,6 +52,19 @@ namespace DataAccess.Code
             int codeCampYearNumber = 2005 + codeCampYearId;
             return codeCampYearNumber.ToString(CultureInfo.InvariantCulture);
         }
+
+        /// <summary>
+        /// strips all non alpha numeric
+        /// </summary>
+        /// <param name="inString"></param>
+        /// <returns></returns>
+        public static string AlphaNumericOnly(string inString)
+        {
+            char[] arr = inString.ToCharArray();
+            arr = Array.FindAll(arr, (c => (char.IsLetterOrDigit(c))));
+           return new string(arr);
+        }
+
     }
 
 

@@ -455,7 +455,7 @@
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SessionController.cs" />
-    <Compile Include="Controllers\SpeakersController.cs" />
+    <Compile Include="Controllers\PresenterController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -2579,10 +2579,10 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Session\IndexTest.cshtml" />
-    <Content Include="Views\Speakers\IndexTest.cshtml" />
-    <Content Include="Views\Speakers\Index.cshtml" />
-    <Content Include="Views\Speakers\Detail.cshtml" />
-    <Content Include="Views\Shared\_SpeakerDetailFull.cshtml" />
+    <Content Include="Views\Presenter\IndexTest.cshtml" />
+    <Content Include="Views\Presenter\Index.cshtml" />
+    <Content Include="Views\Presenter\Detail.cshtml" />
+    <Content Include="Views\Shared\_PresenterDetailFull.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

@@ -124,13 +124,30 @@ namespace CodeCampSV
                                                    TwitterHandle = a.TwitterHandle,
                                                    ImageUrl = String.Format("/attendeeimage/{0}.jpg", a.Id),
                                                    Sessions = a.Sessions,
-
-
                                                    SpeakerLocalUrl =
-                                                       String.Format("/Speaker/Detail/{0}-{1}-{2}", a.UserFirstName,
-                                                                     a.UserLastName, a.Id)
+                                                       CreateSpeakerLocalUrl(a,query)
                                                }));
             return speakers;
+        }
+
+       /// <summary>
+        ///  only create a URL if this person is really a speaker for the given year
+       /// </summary>
+       /// <param name="speaker"></param>
+       /// <param name="query"></param>
+       /// <returns></returns>
+        private static string CreateSpeakerLocalUrl(AttendeesResult speaker,AttendeesQuery query)
+        {
+            var retStr = "NOT SPEAKER";
+           if (query.PresentersOnly.HasValue && query.PresentersOnly.Value && query.CodeCampYearIds != null && query.CodeCampYearIds.Count == 1)
+           {
+               retStr = String.Format("/Presenter/{0}/{1}-{2}-{3}",
+                                      Utils.ConvertCodeCampYearToActualYear(
+                                          query.CodeCampYearIds[0].ToString(CultureInfo.InvariantCulture)),
+                                      speaker.UserFirstName,
+                                      speaker.UserLastName, speaker.Id);
+           }
+           return retStr;
         }
 
         public List<AttendeesResult> Get(AttendeesQuery query)
@@ -165,21 +182,17 @@ namespace CodeCampSV
 
             if (!String.IsNullOrEmpty(query.SpeakerNameWithId))
             {
-                // looking for "Peter-Kellner-903"
+                // looking for "Peter-Kellner-903"   (all we really care about is Id at end which is third item. I can't think of any reason (at the moment) why this is bad
+                //                                    someone could get this url to work  /hate-codecamp-903 but I don't really see the problem for code camp at any rate
+                //                                    I prefer not to check the first two words because there could be funny data in the old data that was not checked and I still
+                //                                    want the links to work. later we can fix it to check the first/last name if it is an issue.
                 List<string> parts = query.SpeakerNameWithId.Split(new[] {'-'}).ToList();
                 if (parts.Count == 3)
                 {
                     int attendeeId;
                     if (Int32.TryParse(parts[2], out attendeeId))
                     {
-                        if (parts[0].Length > 0 && parts[1].Length > 0)
-                        {
-                            // paydirt!
-                            baseQuery = baseQuery.Where(a => a.UserFirstName.ToLower() == parts[0].ToLower() &&
-                                                             a.UserLastName.ToLower() == parts[1].ToLower() &&
-                                                             a.Id == attendeeId);
-
-                        }
+                            baseQuery = baseQuery.Where(a => a.Id == attendeeId);
                     }
                 }
             }

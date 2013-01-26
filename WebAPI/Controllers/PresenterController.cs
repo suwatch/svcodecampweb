@@ -10,7 +10,7 @@ using WebAPI.ViewModels;
 
 namespace WebAPI.Controllers
 {
-    public class SpeakersController : Controller
+    public class PresenterController : Controller
     {
         public ActionResult Index(string year)
         {
@@ -26,9 +26,9 @@ namespace WebAPI.Controllers
             return View(viewModel);
         }
 
-        public ActionResult Detail(string speakername)
+        public ActionResult Detail(string year,string speakername)
         {
-            var viewModel = GetSpeakerDetail(speakername);
+            var viewModel = GetSpeakerDetail(year,speakername);
 
             // always need to populate common things
             viewModel.Sponsors = ControllerUtils.AllSponsors(Utils.GetCurrentCodeCampYear());
@@ -36,17 +36,22 @@ namespace WebAPI.Controllers
             return View(viewModel);
         }
 
-        private CommonViewModel GetSpeakerDetail(string speakername)
+        private CommonViewModel GetSpeakerDetail(string year,string speakername)
         {
             //var codeCampYearId = Utils.GetCurrentCodeCampYear();
 
             var commonViewModel = new CommonViewModel();
-            List<SpeakerResult> speakers = AttendeesManager.I.GetSpeakerResults(new AttendeesQuery
-            {
-               PresentersOnly = true,
-                IncludeSessions = true,
-                SpeakerNameWithId = speakername
-            });
+            List<SpeakerResult> speakers =
+                AttendeesManager.I.GetSpeakerResults(new AttendeesQuery
+                                                         {
+                                                             PresentersOnly = true,
+                                                             IncludeSessions = true,
+                                                             SpeakerNameWithId = speakername,
+                                                             CodeCampYearId =
+                                                                 Utils
+                                                                 .ConvertCodeCampYearToCodeCampYearId
+                                                                 (year)
+                                                         });
             commonViewModel.Speakers = speakers;
             return commonViewModel;
         }

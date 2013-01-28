@@ -37,7 +37,6 @@
         $('.detailsBtn').click(function (e) {
             var buttonOffset = $(this).offset(),
             sessionId = $(this).attr('sessionId'),
-            floatingPanelOffset = 0,
             speakers, speaker, i;
 
             console.log(sessionId);
@@ -64,12 +63,6 @@
                 console.dir(speaker);
                 $('#authorLinkContainer_' + sessionId + '_' + $('#' + speaker.id).attr('speakerId')).html(speaker.outerHTML);
             }
-
-
-                floatingPanelOffset = speakers.length * 50;
-
-
-            console.info(floatingPanelOffset);
 
             $('#detailsFloatingPanel').fadeIn('fast', 'linear').css({
                             'top': buttonOffset.top - ( $('#detailsFloatingPanel .contentWrap').height() + 200)
@@ -267,6 +260,51 @@
         </div>
     </div>
 
+    <div class="floatingPanel tagsFilterLightbox" id="tagsFilterLightbox">
+        <div class="closePanelButton"></div>
+        <div class="content">
+            <div class="header">
+                <h3>PICK TAGS</h3>
+            </div>
+            <div class="tagsCheckboxWrap">
+                <ul>
+                    <li><span class="checkbox"></span><span class="label">.NET Framework</span></li>
+                    <li><span class="checkbox"></span><span class="label">ActionScript</span></li>
+                    <li><span class="checkbox"></span><span class="label">Ada</span></li>
+                    <li><span class="checkbox"></span><span class="label">Ajax</span></li>
+                    <li><span class="checkbox"></span><span class="label">Algorithm</span></li>
+                    <li><span class="checkbox"></span><span class="label">Android</span></li>
+                    <li><span class="checkbox"></span><span class="label">AppleScript</span></li>
+                    <li><span class="checkbox"></span><span class="label">ASCET</span></li>
+                    <li><span class="checkbox"></span><span class="label">ASP</span></li>
+                    <li><span class="checkbox"></span><span class="label">ASP.NET</span></li>
+                    <li><span class="checkbox"></span><span class="label">ASP.BASH</span></li>
+                    <li><span class="checkbox"></span><span class="label">BPEL</span></li>
+                    <li><span class="checkbox"></span><span class="label">C</span></li>
+                    <li><span class="checkbox"></span><span class="label">C#</span></li>
+                    <li><span class="checkbox"></span><span class="label">C++</span></li>
+                    <li><span class="checkbox"></span><span class="label">Cg</span></li>
+                    <li><span class="checkbox"></span><span class="label">Clojure</span></li>
+                    <li><span class="checkbox"></span><span class="label">Cobol</span></li>
+                    <li><span class="checkbox"></span><span class="label">Cocoa Touch</span></li>
+                    <li><span class="checkbox"></span><span class="label">Code Igniter</span></li>
+                    <li><span class="checkbox"></span><span class="label">ColdFusion</span></li>
+                    <li><span class="checkbox"></span><span class="label">Common Lisp</span></li>
+                    <li><span class="checkbox"></span><span class="label">CSS</span></li>
+                    <li><span class="checkbox"></span><span class="label">Curl</span></li>
+                    <li><span class="checkbox"></span><span class="label">Database</span></li>
+                    <li><span class="checkbox"></span><span class="label">Debugging</span></li>
+                    <li><span class="checkbox"></span><span class="label">Delphi</span></li>
+                    <li><span class="checkbox"></span><span class="label">Django</span></li>
+                    <li><span class="checkbox"></span><span class="label">Emacs Lisp</span></li>
+                    <li><span class="checkbox"></span><span class="label">Emacs Erlang</span></li>
+                    <li><span class="checkbox"></span><span class="label">F#</span></li>
+                    <li><span class="checkbox"></span><span class="label">Facebook</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <div class="floatingPanel sponsorPanel">
         <div class="contentWrap">
             <div class="content">
@@ -381,9 +419,7 @@
                     <input type="text" value="Type your search..." />
                 </div>
                 <div class="searchButtonWrap">
-                    <div class="searchButton">
-                        <span class="icon"></span>
-                    </div>
+                    <input type="button" class="searchButton" value="" />
                 </div>
             </div>
         </div>

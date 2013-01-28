@@ -33,6 +33,10 @@
             hideFloatingElement(floatingElement);
         });
 
+
+        // Tags filter button and floating panel
+        $("#tagFiltersButton").colorbox({inline:true, href:"#tagsFilterLightbox"});
+
         // Session details floating panel
         $('.detailsBtn').click(function (e) {
             var buttonOffset = $(this).offset(),
@@ -393,7 +397,7 @@
                         </ul>
                     </div>
                     <div class="buttonRightWrap">
-                        <div class="tagFiltersButton"><div class="label"><span>Tag Filters</span></div><div class="arrow"><span class="icon"></span></div></div>
+                        <div class="tagFiltersButton" id="tagFiltersButton"><div class="label"><span>Tag Filters</span></div><div class="arrow"><span class="icon"></span></div></div>
                     </div>
                 </div>
             </div>

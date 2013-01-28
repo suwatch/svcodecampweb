@@ -1845,6 +1845,7 @@
     <Content Include="Content\Images\speaker-avatar-sample.png" />
     <Content Include="Content\Images\sponsors\orcsweb-small.png" />
     <Content Include="Content\Images\sprites.png" />
+    <Content Include="Content\Styles\colorbox.css" />
     <Content Include="Content\Styles\svcc.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -2274,6 +2275,9 @@
     <Content Include="RoomAssignments.aspx" />
     <Content Include="Rss.aspx" />
     <Content Include="SaturdayDinnerStatus.aspx" />
+    <Content Include="Scripts\colorbox-master\colorbox.css" />
+    <Content Include="Scripts\colorbox-master\jquery.colorbox-min.js" />
+    <Content Include="Scripts\colorbox-master\jquery.colorbox.js" />
     <Content Include="SessionAssignPictures.aspx" />
     <Content Include="SessionAssignVideo.aspx" />
     <Content Include="SessionChangeOwner.aspx" />
@@ -2508,6 +2512,7 @@
     <Content Include="Content\Fonts\handel-gothic-bt.eot" />
     <Content Include="Content\Fonts\handel-gothic-bt.ttf" />
     <Content Include="Content\Sass\svcc.scss" />
+    <Content Include="Content\Sass\colorbox.scss" />
     <None Include="Properties\PublishProfiles\svcodecamp - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\svcodecamp - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />

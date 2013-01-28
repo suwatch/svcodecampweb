@@ -45,23 +45,23 @@
                 hideFloatingElement(floatingElement);
             }
             monitorFloatingElement('#detailsFloatingPanel');
-
-            // Copy session description
+            
+            // Copy text fields from dom to floating panel fields
             $('#detailsFloatingPanel .description').html($('#sessionDescription_' + sessionId).text());
             $('#detailsFloatingPanel h3.title').html($('#sessionTitle_' + sessionId).text());
             $('#detailsFloatingPanel .details').html($('#sessionDetails_' + sessionId).html());
             $('#detailsFloatingPanel .presenterName').text($('#presenterName_' + sessionId).text());
             $('#detailsFloatingPanel .speakerAvatar').html($('#speakerAvatar_' + sessionId).html());
-            console.log($('#speakerAvatar_' + sessionId))
+            console.log($('#speakerAvatar_' + sessionId));
             // Speakers
             speakers = $('#session_' + sessionId).find('.author');
-            console.log(speakers)
+            console.log(speakers);
             $('#detailsFloatingPanel .speakerList').html($('#speakerInfoList_' + sessionId).html());
 
             for (i = 0; i < speakers.length; i++) {
                 speaker = speakers[i];
-                console.log(speaker)
-                console.dir(speaker)
+                console.log(speaker);
+                console.dir(speaker);
                 $('#authorLinkContainer_' + sessionId + '_' + $('#' + speaker.id).attr('speakerId')).html(speaker.outerHTML);
             }
 
@@ -69,15 +69,15 @@
                 floatingPanelOffset = speakers.length * 50;
 
 
-            console.info(floatingPanelOffset)
+            console.info(floatingPanelOffset);
 
             $('#detailsFloatingPanel').fadeIn('fast', 'linear').css({
                             'top': buttonOffset.top - ( $('#detailsFloatingPanel .contentWrap').height() + 200)
                         });
 
-            console.log($('#detailsFloatingPanel .contentWrap').height())
-            console.log($('#detailsFloatingPanel .contentWrap'))
-            console.log(buttonOffset.top)
+            console.log($('#detailsFloatingPanel .contentWrap').height());
+            console.log($('#detailsFloatingPanel .contentWrap'));
+            console.log(buttonOffset.top);
 
 
 
@@ -421,7 +421,7 @@
                                     
                                     <div class="speakerInfoItem">
                                         <div class="avatarWrap">
-                                            <img class="speakerAvatar" src="~/Content/Images/speaker-avatar-sample.png" />
+                                            <img class="speakerAvatar" src="@(speaker.ImageUrl)?width=55" />
                                         </div>
                                         <div class="speakerInfo">
                                             <div id="authorLinkContainer_@(session.Id)_@speaker.AttendeeId"></div>

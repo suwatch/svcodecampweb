@@ -11,7 +11,7 @@ namespace CodeCampSV
     [Serializable]
     public partial class SessionTimesResult
     {
-        public List<SessionsResult> sessionsResults { get; set; } 
+        public List<SessionsResult> SessionsResults { get; set; } 
 
 
         //  Put things here that may not come from the table directly

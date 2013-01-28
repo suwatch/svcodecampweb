@@ -35,9 +35,24 @@
 
 </script>*@
 
+<h2>Session Times For Filter</h2>
 
-
-
+<ul>
+@foreach (var timeResult in Model.SessionTimeResults)
+ {
+     <li>@timeResult.StartTimeFriendly   @timeResult.StartTimeFriendlyDay @timeResult.StartTimeFriendlyTime  </li>
+ }
+ </ul>
+<br/>
+<h2>Tags </h2>
+<p>(in filter leave out the first few checkbox. just show "Tag Filters" button)</p>
+<ul>
+@foreach (var tags in Model.TagsResults)
+ {
+     <li>@tags.TagName  @tags.Id </li>
+ }
+ </ul>
+<br/>
 <h2>Sessions</h2>
 
        <table id='myTable' border='1'>
@@ -46,7 +61,7 @@
         { 
           
             <tr>
-              <td>@sessionTime.StartTimeFriendly</td>
+              <td>@sessionTime.StartTimeFriendly  </td>
               <td></td>
             </tr>
             <table>

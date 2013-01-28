@@ -777,6 +777,38 @@ a {
 }
 // End - Sidebar Right
 
+// Floating panel
+.floatingPanel {
+  display: none;
+  position: absolute;
+  margin-left: 223px;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  .contentWrap {
+    background: #fff url('../Images/floating-panel-bg.png') repeat-x right top;
+    border: 2px solid #fff;
+    @include scadaFont;
+    font-size: 14px;
+    line-height: 15px;
+    @include box-shadow(0px 0px 6px 4px hsla(0, 0%, 0%, 0.4));
+    padding: 5px;
+  }
+  .footer {
+    .pointer {
+      float: left;
+      width: 22px;
+      height: 22px;
+      @include imageSprites;
+      background-position: -150px -150px;
+      position: absolute;
+      margin-left: 480px;
+      top: 230;
+      left: 0;
+    }
+  }
+}
+
 // Main Content
 #contentWrap {
   h1.title {
@@ -1338,85 +1370,6 @@ a {
 
   }
 
-  // Floating panel
-  .floatingPanel {
-    display: none;
-    position: absolute;
-    margin-left: 223px;
-    z-index: 9999;
-    top: 0;
-    left: 0;
-    .contentWrap {
-      background: #fff url('../Images/floating-panel-bg.png') repeat-x right top;
-      border: 2px solid #fff;
-      @include scadaFont;
-      font-size: 14px;
-      line-height: 15px;
-      @include box-shadow(0px 0px 6px 4px hsla(0, 0%, 0%, 0.4));
-      padding: 5px;
-    }
-    .footer {
-      .pointer {
-        float: left;
-        width: 22px;
-        height: 22px;
-        @include imageSprites;
-        background-position: -150px -150px;
-        position: absolute;
-        margin-left: 480px;
-        top: 230;
-        left: 0;
-      }
-    }
-  }
-
-  // Tags filter floating panel
-  #tagsFilterLightbox {
-    display: block;
-    position: static;
-    width: 675px;
-    height: 500px;
-    background-color: #fefefe;
-    // for Icon elements usng global image sprite
-    span.checkbox {
-      @include imageSprites;
-      display: block;
-    }
-    .content {
-      .header {
-        h3 {
-          @include handelGothicFont;
-          font-size: 24px;
-          color: #3c3c3c;
-        }
-      }
-    }
-    .tagsCheckboxWrap {
-      ul {
-        padding-top: 8px;
-        li {
-          @include scadaFont;
-          font-size: 14px;
-          cursor: pointer;
-          .checkbox {
-            width: 10px;
-            height: 10px;
-            display: inline-block;
-            background-position: 0 -20px;
-            margin-right: 5px;
-          }
-          margin: 3px 5px;
-          &.selected {
-            .checkbox {
-              background-position: 0 0;
-            }
-          }
-        }
-      }
-    }
-  }
-  // End - Tags filter floating panel
-
   // Session Details Floating panel
   .detailsFloatingPanel {
     width: 585px;
@@ -1640,4 +1593,94 @@ a {
 }
 // End - Footer
 
+// Tags filter floating panel
+#tagsFilterLightbox {
+  width: 800px;
+  margin-left: 0;
+  z-index: 9999;
+  // for Icon elements usng global image sprite
+  span.checkbox {
+    @include imageSprites;
+    display: block;
+  }
+  .contentWrap {
+    height: 350px;
+    margin: 20px;
+    .header {
+      h3 {
+        @include handelGothicFont;
+        font-size: 24px;
+        color: #3c3c3c;
+      }
+    }
+  }
+  .tagsCheckboxWrap {
+    clear: both;
+    height: 315px;
+    // Todo: Work on CSS comptability for column list for IE 8 below
+    ul {
+      padding-top: 8px;
+      li {
+        @include scadaFont;
+        font-size: 14px;
+        cursor: pointer;
+        width: 130px;
+        height: 17px;
+        padding: 4px 5px 0;
+        position: relative;
+        .checkbox {
+          width: 10px;
+          height: 10px;
+          display: inline-block;
+          background-position: 0 -20px;
+          margin-right: 5px;
+        }
+        margin: 3px 5px;
+        &:hover {
+          background-color: #ececec;
+        }
+        &.selected {
+          background-color: #e6e6e6;
+          border-top-left-radius: 6px;
+          border-bottom-right-radius: 6px;
+          .checkbox {
+            background-position: 0 0;
+          }
+        }
+        &:nth-of-type(14), &:nth-of-type(27), &:nth-of-type(40), &:nth-of-type(53) {
+          margin-top: -312px;
+        }
+        &:nth-of-type(n+14) {
+          margin-left: 150px;
+        }
 
+        &:nth-of-type(n+27) {
+          margin-left: 290px;
+        }
+
+        &:nth-of-type(n+40) {
+          margin-left: 440px;
+        }
+
+        &:nth-of-type(n+53) {
+          margin-left: 590px;
+        }
+      }
+    }
+  }
+}
+.tagsFilterLightboxColorBox {
+  #cboxLoadedContent {
+    border: none;
+    background: none;
+    #tagsFilterLightbox {
+      display: block;
+      position: static;
+    }
+  }
+}
+// End - Tags filter floating panel
+
+.clearBoth {
+  clear: both;
+}

@@ -35,7 +35,13 @@
 
 
         // Tags filter button and floating panel
-        $("#tagFiltersButton").colorbox({inline:true, href:"#tagsFilterLightbox"});
+        $("#tagFiltersButton").colorbox({
+            inline:true,
+            transition: 'fade',
+            href:"#tagsFilterLightbox",
+            className: 'tagsFilterLightboxColorBox',
+            opacity: 0.5
+        });
 
         // Session details floating panel
         $('.detailsBtn').click(function (e) {
@@ -266,13 +272,13 @@
 
     <div class="floatingPanel tagsFilterLightbox" id="tagsFilterLightbox">
         <div class="closePanelButton"></div>
-        <div class="content">
+        <div class="contentWrap roundBorder">
             <div class="header">
                 <h3>PICK TAGS</h3>
             </div>
             <div class="tagsCheckboxWrap">
                 <ul>
-                    <li><span class="checkbox"></span><span class="label">.NET Framework</span></li>
+                    <li class="selected"><span class="checkbox"></span><span class="label">.NET Framework</span></li>
                     <li><span class="checkbox"></span><span class="label">ActionScript</span></li>
                     <li><span class="checkbox"></span><span class="label">Ada</span></li>
                     <li><span class="checkbox"></span><span class="label">Ajax</span></li>
@@ -281,7 +287,7 @@
                     <li><span class="checkbox"></span><span class="label">AppleScript</span></li>
                     <li><span class="checkbox"></span><span class="label">ASCET</span></li>
                     <li><span class="checkbox"></span><span class="label">ASP</span></li>
-                    <li><span class="checkbox"></span><span class="label">ASP.NET</span></li>
+                    <li class="selected"><span class="checkbox"></span><span class="label">ASP.NET</span></li>
                     <li><span class="checkbox"></span><span class="label">ASP.BASH</span></li>
                     <li><span class="checkbox"></span><span class="label">BPEL</span></li>
                     <li><span class="checkbox"></span><span class="label">C</span></li>
@@ -304,7 +310,36 @@
                     <li><span class="checkbox"></span><span class="label">Emacs Erlang</span></li>
                     <li><span class="checkbox"></span><span class="label">F#</span></li>
                     <li><span class="checkbox"></span><span class="label">Facebook</span></li>
+                    <li><span class="checkbox"></span><span class="label">Flash</span></li>
+                    <li><span class="checkbox"></span><span class="label">Flex</span></li>
+                    <li><span class="checkbox"></span><span class="label">Fortran</span></li>
+                    <li><span class="checkbox"></span><span class="label">Genexus</span></li>
+                    <li><span class="checkbox"></span><span class="label">GridView</span></li>
+                    <li><span class="checkbox"></span><span class="label">Groovy</span></li>
+                    <li><span class="checkbox"></span><span class="label">Haskell</span></li>
+                    <li><span class="checkbox"></span><span class="label">Haxe</span></li>
+                    <li><span class="checkbox"></span><span class="label">HLSL</span></li>
+                    <li><span class="checkbox"></span><span class="label">HTML 5</span></li>
+                    <li><span class="checkbox"></span><span class="label">iPhone</span></li>
+                    <li><span class="checkbox"></span><span class="label">ITT IDL</span></li>
+                    <li><span class="checkbox"></span><span class="label">Java</span></li>
+                    <li><span class="checkbox"></span><span class="label">Javascript</span></li>
+                    <li><span class="checkbox"></span><span class="label">jQuery</span></li>
+                    <li><span class="checkbox"></span><span class="label">LabVIEW</span></li>
+                    <li><span class="checkbox"></span><span class="label">Lasso</span></li>
+                    <li><span class="checkbox"></span><span class="label">LaTeX</span></li>
+                    <li><span class="checkbox"></span><span class="label">Linq</span></li>
+                    <li><span class="checkbox"></span><span class="label">Linux</span></li>
+                    <li><span class="checkbox"></span><span class="label">Lua</span></li>
+                    <li><span class="checkbox"></span><span class="label">MATLAB</span></li>
+                    <li><span class="checkbox"></span><span class="label">Multi-threading</span></li>
                 </ul>
+            </div>
+            <div class="clearBoth"></div>
+            <div class="buttonWrap">
+                <div class="finishButton">
+                FINISHED
+                </div>
             </div>
         </div>
     </div>

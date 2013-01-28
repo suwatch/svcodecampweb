@@ -1031,6 +1031,10 @@ a {
           display: inline-block;
           .roundSelect {
             width: 78px;
+            .label {
+              font-weight: bold;
+              font-size: 13px;
+            }
           }
         }
       }
@@ -1043,6 +1047,37 @@ a {
           margin-top: 10px;
           width: 110px;
           display: inline-block;
+        }
+        .searchInputWrap {
+          > div {
+            height: 26px;
+            display: inline-block;
+          }
+          .searchTypeWrap {
+            background-color: #f5f4f4;
+            border: 1px solid #cbcbcb;
+            border-bottom-left-radius: 10px;
+            width: 70px;
+          }
+          .inputWrap {
+            input {
+              height: 26px;
+            }
+          }
+          .searchButtonWrap {
+            width: 30px;
+            border-top-right-radius: 10px;
+            background-color: #5c5c5c;
+            border: 1px solid #4a4a4a;
+            .icon {
+              @include imageSprites;
+              width: 21px;
+              height: 17px;
+              display: block;
+              background-position: -50px -200px;
+              margin: 5px 0 0 5px;
+            }
+          }
         }
       }
     }

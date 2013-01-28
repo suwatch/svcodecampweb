@@ -46,6 +46,15 @@ namespace CodeCampSV
 
             
             List<SessionTimesResult> resultList = GetFinalResults(results, query);
+
+            foreach (var r in resultList)
+            {
+                if (r.StartTime.HasValue)
+                {
+                    r.StartTimeFriendlyDay = r.StartTime.Value.DayOfWeek.ToString();
+                    r.StartTimeFriendlyTime = r.StartTime.Value.ToString("hh:mm tt ");
+                }
+            }
             
             //  Put Stuff Here if you want to load another result
             //  The following is done AFTER GetFinalResults so that we don't waste machine cycles sucking in all the

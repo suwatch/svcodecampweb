@@ -5,13 +5,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace CodeCampSV
 {
     [Serializable]
     public partial class SessionTimesResult
     {
-        public List<SessionsResult> SessionsResults { get; set; } 
+        public List<SessionsResult> SessionsResults { get; set; }
+
+       
+        public string StartTimeFriendlyDay { get; set; }
+        public string StartTimeFriendlyTime { get; set; }
 
 
         //  Put things here that may not come from the table directly
@@ -26,5 +31,8 @@ namespace CodeCampSV
         //  Or even related datasets like:
         //  public List<CargoResult> Cargos { get; set; }
         // 
+
+
+
     }
 }

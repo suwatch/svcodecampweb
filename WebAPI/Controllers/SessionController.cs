@@ -46,11 +46,26 @@ namespace WebAPI.Controllers
                                                                           //Attendeesid = 1164 // nima
                                                                       });
 
+            List<SessionTimesResult> sessionTimeResults =
+                SessionTimesManager.I.Get(new SessionTimesQuery()
+                                              {
+                                                  CodeCampYearId = codeCampYearId
+                                              });
+
+            List<TagsResult> tagsResults =
+                TagsManager.I.Get(new TagsQuery()
+                                      {
+                                          CodeCampYearId = codeCampYearId
+                                      });
+
+
             var viewModel = new CommonViewModel()
                                 {
                                     Sessions = sessions.OrderBy(a => a.SessionSlug).ToList(),
                                     SessionsByTime = ControllerUtils.SessionTimesResultsWithSessionInfo(codeCampYearId, sessions),
-                                    Sponsors = sponsors
+                                    Sponsors = sponsors,
+                                    SessionTimeResults = sessionTimeResults,
+                                    TagsResults = tagsResults
                                 };
             return viewModel;
         }

@@ -3,20 +3,21 @@
   <component name="ChangeListManager">
     <list default="true" id="1ee82a8b-af13-4672-838f-c68c30f0c55a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebAPI.iws" afterPath="$PROJECT_DIR$/WebAPI.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" afterPath="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/Session/index.cshtml" afterPath="$PROJECT_DIR$/Views/Session/index.cshtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Content/Styles/svcc.css" afterPath="$PROJECT_DIR$/Content/Styles/svcc.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Content/Sass/svcc.scss" afterPath="$PROJECT_DIR$/Content/Sass/svcc.scss" />
     </list>
     <ignored path="WebAPI.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1359342506777" ignored="false" />
-    <file path="/_Layout.cshtml" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1358994996923" ignored="false" />
-    <file path="/svcc.scss" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1359370675354" ignored="false" />
-    <file path="/index.cshtml" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1359370205243" ignored="false" />
+    <file path="/Dummy.txt" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1359435428250" ignored="false" />
+    <file path="/_Layout.cshtml" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1359445734203" ignored="false" />
+    <file path="/svcc.scss" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1359445590892" ignored="false" />
+    <file path="/index.cshtml" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1359445143363" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../../AgelessEmail/HG/HG01/AEWeb/StarSaverPub/.sencha/app/plugin.xml" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1358227773431" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../../AgelessEmail/HG/HG01/AEWeb/StarSaver/resources/sass/app.scss" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1358230186596" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../../AgelessEmail/HG/HG01/AEWeb/StarSaver/app.json" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1358231576783" ignored="false" />
-    <file path="/a.dummy" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1359361645526" ignored="false" />
+    <file path="/a.dummy" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1359445984330" ignored="false" />
     <file path="/SessionSortDemo.cshtml" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1358937675436" ignored="false" />
     <file path="/CommonViewModel.cs" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1358994496199" ignored="false" />
     <file path="$PROJECT_DIR$/../../../../../GoldMail/HG/HG01/goldmail1/Web/Views/MySavedProjects/_MySavedProjectsJSPartial.cshtml" changelist="1ee82a8b-af13-4672-838f-c68c30f0c55a" time="1359345335839" ignored="false" />
@@ -84,10 +85,10 @@
     <splitter split-orientation="vertical" split-proportion="0.54051054">
       <split-first>
         <leaf>
-          <file leaf-file-name="index.cshtml" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="index.cshtml" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Views/Session/index.cshtml">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="334" column="89" selection-start="15241" selection-end="15241" vertical-scroll-proportion="0.9132653">
+                <state line="500" column="47" selection-start="23142" selection-end="23142" vertical-scroll-proportion="-1.882353">
                   <folding />
                 </state>
               </provider>
@@ -102,10 +103,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="_Layout.cshtml" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="_Layout.cshtml" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Views/Shared/_Layout.cshtml">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="105" column="0" selection-start="3717" selection-end="3717" vertical-scroll-proportion="-0.65384614">
+                <state line="32" column="44" selection-start="775" selection-end="793" vertical-scroll-proportion="0.6897959">
                   <folding />
                 </state>
               </provider>
@@ -123,7 +124,7 @@
           <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Content/Sass/layout_html5_fix_lcr_s2_fb_1/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="16" column="169" selection-start="594" selection-end="596" vertical-scroll-proportion="-2.6153846">
+                <state line="16" column="169" selection-start="594" selection-end="596" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -160,10 +161,10 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="svcc.scss" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="svcc.scss" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Content/Sass/svcc.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="1677" column="23" selection-start="37975" selection-end="37975" vertical-scroll-proportion="0.90555555">
+                <state line="1381" column="69" selection-start="31886" selection-end="31886" vertical-scroll-proportion="0.53571427">
                   <folding />
                 </state>
               </provider>
@@ -181,7 +182,7 @@
           <file leaf-file-name="index.cshtml" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Views/Session/index.cshtml">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="488" column="169" selection-start="23004" selection-end="23004" vertical-scroll-proportion="0.0">
+                <state line="213" column="55" selection-start="7337" selection-end="7337" vertical-scroll-proportion="-1.0980393">
                   <folding />
                 </state>
               </provider>
@@ -215,11 +216,11 @@
         <option value="$PROJECT_DIR$/Views/Session/SessionSortDemo.cshtml" />
         <option value="$PROJECT_DIR$/Controllers/SessionController.cs" />
         <option value="$PROJECT_DIR$/ViewModels/CommonViewModel.cs" />
-        <option value="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" />
         <option value="$PROJECT_DIR$/App_Start/BundleConfig.cs" />
         <option value="$PROJECT_DIR$/Content/colorbox.scss" />
         <option value="$PROJECT_DIR$/Views/Session/index.cshtml" />
         <option value="$PROJECT_DIR$/Content/Sass/svcc.scss" />
+        <option value="$PROJECT_DIR$/Views/Shared/_Layout.cshtml" />
       </list>
     </option>
   </component>
@@ -257,6 +258,19 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane">
+        <subPane />
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -473,19 +487,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane />
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -635,12 +636,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852387" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32852387" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -814,13 +815,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Views/Shared/_Layout.cshtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="0" selection-start="3717" selection-end="3717" vertical-scroll-proportion="-0.65384614">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/App_Start/BundleConfig.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state line="48" column="70" selection-start="2564" selection-end="2564" vertical-scroll-proportion="0.0">
@@ -830,7 +824,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/Sass/layout_html5_fix_lcr_s2_fb_1/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="169" selection-start="594" selection-end="596" vertical-scroll-proportion="-2.6153846">
+        <state line="16" column="169" selection-start="594" selection-end="596" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -849,16 +843,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Views/Session/index.cshtml">
+    <entry file="file://$PROJECT_DIR$/Content/Sass/svcc.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="488" column="169" selection-start="23004" selection-end="23004" vertical-scroll-proportion="0.0">
+        <state line="1381" column="69" selection-start="31886" selection-end="31886" vertical-scroll-proportion="0.53571427">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Content/Sass/svcc.scss">
+    <entry file="file://$PROJECT_DIR$/Views/Session/index.cshtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1677" column="23" selection-start="37975" selection-end="37975" vertical-scroll-proportion="0.90555555">
+        <state line="500" column="47" selection-start="23142" selection-end="23142" vertical-scroll-proportion="-1.882353">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/Shared/_Layout.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="44" selection-start="775" selection-end="793" vertical-scroll-proportion="0.6897959">
           <folding />
         </state>
       </provider>

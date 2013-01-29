@@ -40,7 +40,17 @@
             transition: 'fade',
             href:"#tagsFilterLightbox",
             className: 'tagsFilterLightboxColorBox',
-            opacity: 0.5
+            opacity: 0.5,
+            onOpen: function () {
+                $('#tagsFilterLightbox .closePanelButton').click(function () {
+                    $.colorbox.close();
+                });
+            }
+        });
+
+        // Tags checkbox list
+        $('.tagsCheckboxWrap ul li, .sessionsFilterWrap .optionsWrap ul li').click(function () {
+            $(this).toggleClass('selected')
         });
 
         // Session details floating panel
@@ -271,7 +281,9 @@
     </div>
 
     <div class="floatingPanel tagsFilterLightbox" id="tagsFilterLightbox">
-        <div class="closePanelButton"></div>
+        <div class="closePanelButton">
+            <div class="icon"></div>
+        </div>
         <div class="contentWrap roundBorder">
             <div class="header">
                 <h3>PICK TAGS</h3>
@@ -337,8 +349,9 @@
             </div>
             <div class="clearBoth"></div>
             <div class="buttonWrap">
-                <div class="finishButton">
-                FINISHED
+                <div class="finishButton button round gray border">
+                    <div class="icon"></div>
+                    <div class="label">FINISHED</div>
                 </div>
             </div>
         </div>
@@ -405,6 +418,7 @@
                         </div>
                     </div>
                 </div>
+                <!--
                 <div class="categoryFilterWrap">
                     <div class="labelWrap">
                         <span class="icon"></span><span class="label">Category : </span>
@@ -419,6 +433,7 @@
                         </ul>
                     </div>
                 </div>
+                -->
                 <div class="tagsFilterWrap">
                     <div class="labelWrap">
                         <span class="icon"></span><span class="label">Tags : </span>

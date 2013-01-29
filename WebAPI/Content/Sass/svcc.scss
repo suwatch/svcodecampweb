@@ -172,7 +172,7 @@ input {
 // End - Main Layout Structure
 
 // Buttons
-a.button {
+a.button, div {
   &.round {
     border-top-right-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -785,6 +785,26 @@ a {
   z-index: 9999;
   top: 0;
   left: 0;
+
+  .closePanelButton {
+    float: right;
+    width: 90px;
+    margin-left: 493px;
+    height: 32px;
+    z-index: 10;
+    background-color: #eeeeee;
+    border-bottom-left-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    .icon {
+      width: 80px;
+      height: 25px;
+      margin: 3px 0 0 10px;
+      @include imageSprites;
+      background-position: -50px -20px;
+    }
+  }
+
   .contentWrap {
     background: #fff url('../Images/floating-panel-bg.png') repeat-x right top;
     border: 2px solid #fff;
@@ -1374,24 +1394,6 @@ a {
   .detailsFloatingPanel {
     width: 585px;
     height: 220px;
-    .closePanelButton {
-      float: right;
-      width: 90px;
-      margin-left: 493px;
-      height: 32px;
-      z-index: 10;
-      background-color: #eeeeee;
-      border-bottom-left-radius: 10px;
-      position: absolute;
-      cursor: pointer;
-      .icon {
-        width: 80px;
-        height: 25px;
-        margin: 3px 0 0 10px;
-        @include imageSprites;
-        background-position: -50px -20px;
-      }
-    }
     .content {
       margin: 10px 5px 5px;
       vertical-align: top;
@@ -1598,19 +1600,44 @@ a {
   width: 800px;
   margin-left: 0;
   z-index: 9999;
+  .closePanelButton {
+    margin-left: 682px;
+  }
   // for Icon elements usng global image sprite
   span.checkbox {
     @include imageSprites;
     display: block;
   }
   .contentWrap {
-    height: 350px;
+    height: 370px;
     margin: 20px;
+    padding: 20px;
     .header {
       h3 {
         @include handelGothicFont;
         font-size: 24px;
         color: #3c3c3c;
+      }
+    }
+    .buttonWrap {
+      padding-top: 10px;
+      height: 40px;
+      margin-left: 50%;
+      .finishButton {
+        margin-left: -50px;
+        cursor: pointer;
+        width: 100px;
+        .icon {
+          width: 14px;
+          height: 14px;
+          display: inline-block;
+          margin-bottom: -3px;
+          @include imageSprites;
+          background-position: -25px -20px;
+        }
+        .label {
+          display: inline-block;
+        }
       }
     }
   }

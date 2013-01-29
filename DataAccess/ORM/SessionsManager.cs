@@ -248,6 +248,13 @@ namespace CodeCampSV
 
             foreach (var session in resultList)
             {
+                session.SessionUrl =
+                    String.Format("/Session/{0}/{1}",
+                                  Utils.ConvertCodeCampYearToActualYear(
+                                      session.CodeCampYearId.ToString(CultureInfo.InvariantCulture)),
+                                  Utils.GenerateSlug(session.Title));
+
+
                 if (query.WithSchedule != null && session.SessionTimesId.HasValue)
                 {
                     if (sessionTimesFullDict.ContainsKey(session.SessionTimesId.Value))

@@ -721,7 +721,7 @@ a {
           }
           span.arrow {
             @include imageSprites;
-            width: 15px;
+            width: 16px;
             height: 23px;
             display: inline-block;
             padding-top: 3px;
@@ -753,8 +753,17 @@ a {
               height: 37px;
             }
           }
+          &.active {
+            span.arrow {
+              background-position: 0 -141px;
+            }
+          }
         }
         dd {
+          display: none;
+          &.active {
+            display: block;
+          }
           table {
             width: 178px;
             border-top: 1px solid #e6e6e6;
@@ -868,11 +877,17 @@ a {
           cursor: pointer;
           border-right: 1px solid #d8dadb;
           .icon {
-            background-position: -150px -175px;
+            background-position: -175px -175px;
+            margin: 15px 0 0 17px;
             display: block;
-            width: 15px;
+            width: 16px;
             height: 13px;
-            margin: 17px 0 0 15px;
+          }
+          &.active {
+            .icon {
+              background-position: -150px -175px;
+              margin: 17px 0 0 15px;
+            }
           }
         }
         .label {

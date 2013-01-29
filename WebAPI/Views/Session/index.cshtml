@@ -49,10 +49,41 @@
             }
         });
 
+        // Filter accordion
+        $('.sessionsFilterWrap .header .arrow').click(function () {
+            if ($(this).hasClass('active')) {
+                $('.sessionsFilterWrap .filterContentWrap').slideUp();
+            } else {
+                $('.sessionsFilterWrap .filterContentWrap').slideDown();
+            }
+            $(this).toggleClass('active')
+        });
+        // End - Filter accordion
+
         // Tags checkbox list
         $('.tagsCheckboxWrap ul li, .sessionsFilterWrap .optionsWrap ul li').click(function () {
             $(this).toggleClass('selected')
         });
+
+        // Session days filter checkbox
+        $('#sessionDaysCheckboxList li').click(function () {
+
+            $(this).parent().find('li').removeClass('selected');
+            $(this).addClass('selected');
+
+            if ($(this).hasClass('saturday')) {
+                $('.timeFilterWrap .saturday').show();
+                $('.timeFilterWrap .sunday').hide();
+
+            } else if ($(this).hasClass('sunday')) {
+                $('.timeFilterWrap .saturday').hide();
+                $('.timeFilterWrap .sunday').show();
+            } else {
+                $('.timeFilterWrap .saturday').show();
+                $('.timeFilterWrap .sunday').show();
+            }
+        });
+        // End - Session days filter checkbox
 
         // Session details floating panel
         $('.detailsBtn').click(function (e) {
@@ -373,18 +404,18 @@
     </div>
 
     <div class="sessionsFilterWrap roundBorder">
-        <div class="header"><div class="arrow"><span class="icon"></span></div><div class="label">FILTERS</div></div>
-        <div class="filterContentWrap">
+        <div class="header"><div class="arrow active"><span class="icon"></span></div><div class="label">FILTERS</div></div>
+        <div class="filterContentWrap active">
             <div class="filterOptionsWrap">
                 <div class="daysFilterWrap">
                     <div class="labelWrap">
                         <span class="icon"></span><span class="label">Day : </span>
                     </div>
                     <div class="optionsWrap">
-                        <ul>
-                            <li class="selected"><span class="checkbox"></span><span class="label">Show all</span></li>
-                            <li><span class="checkbox"></span><span class="label">Saturday</span></li>
-                            <li><span class="checkbox"></span><span class="label">Sunday</span></li>
+                        <ul id="sessionDaysCheckboxList">
+                            <li class="showAll selected"><span class="checkbox"></span><span class="label">Show all</span></li>
+                            <li class="saturday"><span class="checkbox"></span><span class="label">Saturday</span></li>
+                            <li class="sunday"><span class="checkbox"></span><span class="label">Sunday</span></li>
                         </ul>
                     </div>
                 </div>
@@ -393,7 +424,7 @@
                         <span class="icon"></span><span class="label">Time : </span>
                     </div>
                     <div class="optionsWrap">
-                        <div class="timeOption">
+                        <div class="timeOption saturday">
                             <div class="dayLabel"><span class="icon"></span><span class="label">Saturday: </span></div>
                             <div class="timesWrap">
                                 <ul>
@@ -403,7 +434,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="timeOption">
+                        <div class="timeOption sunday">
                             <div class="dayLabel"><span class="icon"></span><span class="label">Sunday: </span></div>
                             <div class="timesWrap">
                                 <ul>
@@ -502,10 +533,10 @@
                         <div class="sessionDescription" id="sessionDescription_@session.Id">@session.Description</div>
                         <div class="sessionUrl" id="sessionUrl_@session.Id"><a href="@(session.SessionUrl)" title="@session.TitleEllipsized" class="button round blue">READ MORE</a></div>
                         <div class="speakerInfo" id="speakerInfoList_@session.Id">
-                                
+
                                 @foreach (var speaker in session.SpeakersList)
                                 {
-                                    
+
                                     <div class="speakerInfoItem">
                                         <div class="avatarWrap">
                                             <img class="speakerAvatar" src="@(speaker.ImageUrl)?width=55" />

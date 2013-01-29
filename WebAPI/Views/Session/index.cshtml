@@ -16,6 +16,7 @@
             console.log($('tr.session').length);
         }
 
+
         getAllSessionTime();
 
         function monitorFloatingElement(el) {
@@ -71,6 +72,8 @@
             $('#detailsFloatingPanel .details').html($('#sessionDetails_' + sessionId).html());
             $('#detailsFloatingPanel .presenterName').text($('#presenterName_' + sessionId).text());
             $('#detailsFloatingPanel .speakerAvatar').html($('#speakerAvatar_' + sessionId).html());
+            // Session URL
+            $('#detailsFloatingPanel .footer .buttonWrap').html($('#sessionUrl_' + sessionId).html());
             console.log($('#speakerAvatar_' + sessionId));
             // Speakers
             speakers = $('#session_' + sessionId).find('.author');
@@ -236,11 +239,11 @@
             <div class="content">
                 <div class="sessionWrap">
                     <div class="textWrap">
-                        <h3 class="title">3 Patterns to Scale Scrum</h3>
+                        <h3 class="title"></h3>
                         <div class="details">
                             <span class="timeIcon"></span>Saturday, 5 PM <span class="mapLocationIcon"></span>Room 302, Lot 1 &nbsp;<a href="#">Map</a>
                         </div>
-                        <p class="description">Scrum is the simplest possible agile method so it's easy to get started with small team of software developers. What happens when you try to apply Scrum to large projects?</p>
+                        <p class="description"></p>
                     </div>
                     <div class="footer">
                         <div class="buttonWrap">
@@ -255,14 +258,7 @@
                         <img class="speakerAvatar" src="~/Content/Images/speaker-avatar-sample.png" />
                     </div>
                     <div class="speakerInfo">
-                        by <a href="#" class="presenterName">Scott Pilgrim</a><br />
-                        <p>
-                            Digital Project Manager<br />
-                            Certified Scrum Master
-                        </p>
-                        <div class="buttonWrap">
-                            <a href="#" class="button round blue">READ MORE</a>
-                        </div>
+
                     </div>
                     </div>
                     <!--
@@ -489,7 +485,7 @@
                 <tr id="session_@session.Id" class="session">
                     <td class="title" width="330">
 
-
+                        
                         @*BELOW, PresenterURL goes to link inside code camp*@
 
                         <span id="sessionTitle_@session.Id">@session.TitleEllipsized</span>
@@ -504,6 +500,7 @@
                             <span class="timeIcon"></span>@session.SessionTime <span class="mapLocationIcon"></span>Room @session.RoomNumber <!-- <a href="#">Map</a> -->
                         </div>
                         <div class="sessionDescription" id="sessionDescription_@session.Id">@session.Description</div>
+                        <div class="sessionUrl" id="sessionUrl_@session.Id"><a href="@(session.SessionUrl)" title="@session.TitleEllipsized" class="button round blue">READ MORE</a></div>
                         <div class="speakerInfo" id="speakerInfoList_@session.Id">
                                 
                                 @foreach (var speaker in session.SpeakersList)

@@ -1379,7 +1379,7 @@ a {
 
         }
       }
-      .sessionDetails, .sessionDescription, .speakerInfo {
+      .sessionDetails, .sessionDescription, .speakerInfo, .sessionUrl {
         display: none;
       }
     }
@@ -1455,6 +1455,7 @@ a {
           height: 72px;
         }
         .footer {
+          padding-top: 4px;
           .buttonWrap {
             float: right;
           }

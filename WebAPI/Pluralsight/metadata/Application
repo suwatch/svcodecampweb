@@ -1,0 +1,16 @@
+{
+    "type": "application",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "views": [
+            "MainViewport"
+        ],
+        "name": "MyApp"
+    },
+    "id": "ExtBox1-ext-gen4271",
+    "designerId": "application"
+}

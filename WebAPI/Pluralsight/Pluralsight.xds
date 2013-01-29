@@ -1,0 +1,47 @@
+{
+    "name": "Pluralsight",
+    "settings": {
+        "urlPrefix": "",
+        "spacesToIndent": 4,
+        "exportPath": "",
+        "sdkPath": "",
+        "lineEnding": "CRLF",
+        "genTimestamps": false,
+        "cacheBust": false
+    },
+    "xdsVersion": "2.1.0",
+    "xdsBuild": 678,
+    "schemaVersion": 1,
+    "upgradeVersion": 210000000498,
+    "framework": "touch21",
+    "topInstanceFileMap": {
+        "7f259d22-1761-448a-b273-9ffe8887be2c": {
+            "paths": [
+                "metadata/resource/Library"
+            ],
+            "className": "Library"
+        },
+        "f1e6c395-2878-4bed-af4b-a12be42a7e3c": {
+            "paths": [
+                "metadata/view/MainViewport",
+                "app/view/override/MainViewport.js",
+                "app/view/MainViewport.js"
+            ],
+            "className": "MainViewport"
+        }
+    },
+    "viewOrderMap": {
+        "view": [
+            "f1e6c395-2878-4bed-af4b-a12be42a7e3c"
+        ],
+        "store": [],
+        "controller": [],
+        "model": [],
+        "resource": [
+            "7f259d22-1761-448a-b273-9ffe8887be2c"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

@@ -978,7 +978,7 @@ a {
               margin-right: 5px;
             }
           }
-          border-bottom: 1px solid #d8d7db;
+
           .optionsWrap {
             padding-top: 8px;
             .timeOption {
@@ -1020,6 +1020,8 @@ a {
 
         // Tags filters
         .tagsFilterWrap {
+          border-top: 1px solid #d8d7db;
+          padding-top: 2px;
           .labelWrap {
             .icon {
               background-position: -50px -250px;
@@ -1614,8 +1616,8 @@ a {
 
 // Tags filter floating panel
 #tagsFilterLightbox {
-  width: 800px;
-  margin-left: 0;
+  width: 780px;
+  margin: 10px 0 0 120px;
   z-index: 9999;
   .closePanelButton {
     margin-left: 682px;
@@ -1627,7 +1629,6 @@ a {
   }
   .contentWrap {
     height: 370px;
-    margin: 20px;
     padding: 20px;
     .header {
       h3 {
@@ -1713,16 +1714,7 @@ a {
     }
   }
 }
-.tagsFilterLightboxColorBox {
-  #cboxLoadedContent {
-    border: none;
-    background: none;
-    #tagsFilterLightbox {
-      display: block;
-      position: static;
-    }
-  }
-}
+
 // End - Tags filter floating panel
 
 .clearBoth {

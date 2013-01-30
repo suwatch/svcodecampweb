@@ -43,11 +43,6 @@ namespace WebAPI
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
 
-            // Lightbox
-            bundles.Add(new ScriptBundle("~/bundles/colorbox").Include(
-                        "~/Scripts/colorbox-master/jquery.colorbox.js"));
-
-
 
         }
     }

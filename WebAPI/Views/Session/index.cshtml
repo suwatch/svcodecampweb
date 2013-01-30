@@ -61,27 +61,100 @@
         // End - Filter accordion
 
         // Tags checkbox list
-        $('.tagsCheckboxWrap ul li, .sessionsFilterWrap .optionsWrap ul li').click(function () {
+        $('.tagsCheckboxWrap ul li, .timeFilterWrap ul li, .tagsFilterWrap ul li').click(function () {
             $(this).toggleClass('selected')
         });
 
         // Session days filter checkbox
+        // // Makes all Days selected
+
+        $('#sessionDaysCheckboxList li').addClass('selected');
+
         $('#sessionDaysCheckboxList li').click(function () {
 
-            $(this).parent().find('li').removeClass('selected');
-            $(this).addClass('selected');
+            var targetEl = $(this),
+            saturdayTimes = $('.timeFilterWrap .saturday'),
+            sundayTimes = $('.timeFilterWrap .sunday'),
+            showAll = null;
 
-            if ($(this).hasClass('saturday')) {
-                $('.timeFilterWrap .saturday').show();
-                $('.timeFilterWrap .sunday').hide();
-
-            } else if ($(this).hasClass('sunday')) {
-                $('.timeFilterWrap .saturday').hide();
-                $('.timeFilterWrap .sunday').show();
+            // Show All handler
+            if (targetEl.hasClass('showAll')) {
+                if (targetEl.hasClass('selected')) {
+                    showAll = false;
+                } else {
+                    showAll = true;
+                }
+            } else if (targetEl.hasClass('saturday')) {
+                // Deselect if selected
+                if (targetEl.hasClass('selected')) {
+                    targetEl.parent().find('li').removeClass('selected');
+                    targetEl.parent().find('li.sunday').addClass('selected');
+                    saturdayTimes.show();
+                    sundayTimes.hide();
+                } else {
+                    targetEl.addClass('selected');
+                    saturdayTimes.show();
+                    sundayTimes.hide();
+                    // Check if sunday is selected
+                    if (targetEl.parent().find('li.sunday.selected')) {
+                        showAll = true;
+                    } else {
+                        showAll = false;
+                    }
+                }
             } else {
-                $('.timeFilterWrap .saturday').show();
-                $('.timeFilterWrap .sunday').show();
+                // Deselect if selected
+                if (targetEl.hasClass('selected')) {
+                    targetEl.parent().find('li').removeClass('selected');
+                    targetEl.parent().find('li.saturday').addClass('selected');
+                    saturdayTimes.show();
+                    sundayTimes.hide();
+                } else {
+                    targetEl.addClass('selected');
+                    saturdayTimes.show();
+                    sundayTimes.hide();
+                    // Check if sunday is selected
+                    if (targetEl.parent().find('li.saturday.selected')) {
+                        showAll = true;
+                    } else {
+                        showAll = false;
+                    }
+                }
             }
+
+            if (typeof showAll == 'boolean') {
+                // Show All
+                if (showAll) {
+                    targetEl.parent().find('li').addClass('selected');
+                    saturdayTimes.show();
+                    sundayTimes.show();
+                } else {
+                // Hide All
+                    targetEl.parent().find('li').removeClass('selected');
+                    saturdayTimes.hide();
+                    sundayTimes.hide();
+                }
+            }
+
+
+
+//            $(this).parent().find('li').removeClass('selected');
+//            $(this).addClass('selected');
+//
+//
+//
+//
+//            if ($(this).hasClass('saturday')) {
+//                $('.timeFilterWrap .saturday').show();
+//                $('.timeFilterWrap .sunday').hide();
+//
+//            } else if ($(this).hasClass('sunday')) {
+//                $('.timeFilterWrap .saturday').hide();
+//                $('.timeFilterWrap .sunday').show();
+//            } else {
+//                $('.timeFilterWrap .saturday').show();
+//                $('.timeFilterWrap .sunday').show();
+//            }
         });
         // End - Session days filter checkbox
 
@@ -91,7 +164,6 @@
             sessionId = $(this).attr('sessionId'),
             speakers, speaker, i;
 
-            console.log(sessionId);
             if (floatingElement) {
                 hideFloatingElement(floatingElement);
             }
@@ -105,28 +177,19 @@
             $('#detailsFloatingPanel .speakerAvatar').html($('#speakerAvatar_' + sessionId).html());
             // Session URL
             $('#detailsFloatingPanel .footer .buttonWrap').html($('#sessionUrl_' + sessionId).html());
-            console.log($('#speakerAvatar_' + sessionId));
+
             // Speakers
             speakers = $('#session_' + sessionId).find('.author');
-            console.log(speakers);
             $('#detailsFloatingPanel .speakerList').html($('#speakerInfoList_' + sessionId).html());
 
             for (i = 0; i < speakers.length; i++) {
                 speaker = speakers[i];
-                console.log(speaker);
-                console.dir(speaker);
                 $('#authorLinkContainer_' + sessionId + '_' + $('#' + speaker.id).attr('speakerId')).html(speaker.outerHTML);
             }
 
             $('#detailsFloatingPanel').fadeIn('fast', 'linear').css({
                             'top': buttonOffset.top - ( $('#detailsFloatingPanel .contentWrap').height() + 200)
                         });
-
-            console.log($('#detailsFloatingPanel .contentWrap').height());
-            console.log($('#detailsFloatingPanel .contentWrap'));
-            console.log(buttonOffset.top);
-
-
 
             // Stop event bubbling so body listener for hiding floating
             // panel won't be triggered

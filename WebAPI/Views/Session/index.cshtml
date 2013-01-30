@@ -75,86 +75,85 @@
             var targetEl = $(this),
             saturdayTimes = $('.timeFilterWrap .saturday'),
             sundayTimes = $('.timeFilterWrap .sunday'),
-            showAll = null;
+            showDay = 'all';
 
             // Show All handler
             if (targetEl.hasClass('showAll')) {
                 if (targetEl.hasClass('selected')) {
-                    showAll = false;
+                    showDay = 'none';
                 } else {
-                    showAll = true;
+                    showDay = 'all';
                 }
             } else if (targetEl.hasClass('saturday')) {
+                // SATURDAY
                 // Deselect if selected
                 if (targetEl.hasClass('selected')) {
-                    targetEl.parent().find('li').removeClass('selected');
-                    targetEl.parent().find('li.sunday').addClass('selected');
-                    saturdayTimes.show();
-                    sundayTimes.hide();
-                } else {
-                    targetEl.addClass('selected');
-                    saturdayTimes.show();
-                    sundayTimes.hide();
-                    // Check if sunday is selected
-                    if (targetEl.parent().find('li.sunday.selected')) {
-                        showAll = true;
+                    // If sunday is has been selected
+                    if (targetEl.parent().find('li.sunday').hasClass('selected')) {
+                        // Show only Sunday
+                        showDay = 'sunday';
                     } else {
-                        showAll = false;
+                        // Hide all
+                        showDay = 'none';
+                    }
+                } else {
+                    // If sunday is has been selected
+                    if (targetEl.parent().find('li.sunday').hasClass('selected')) {
+                        // Show all
+                        showDay = 'all';
+                    } else {
+                        // Show only Saturday
+                        showDay = 'saturday';
                     }
                 }
             } else {
+                // SATURDAY
                 // Deselect if selected
                 if (targetEl.hasClass('selected')) {
-                    targetEl.parent().find('li').removeClass('selected');
-                    targetEl.parent().find('li.saturday').addClass('selected');
-                    saturdayTimes.show();
-                    sundayTimes.hide();
-                } else {
-                    targetEl.addClass('selected');
-                    saturdayTimes.show();
-                    sundayTimes.hide();
-                    // Check if sunday is selected
-                    if (targetEl.parent().find('li.saturday.selected')) {
-                        showAll = true;
+                    // If sunday is has been selected
+                    if (targetEl.parent().find('li.saturday').hasClass('selected')) {
+                        // Show only Saturday
+                        showDay = 'saturday';
                     } else {
-                        showAll = false;
+                        // Hide all
+                        showDay = 'none';
+                    }
+                } else {
+                    // If sunday is has been selected
+                    if (targetEl.parent().find('li.saturday').hasClass('selected')) {
+                        // Show all
+                        showDay = 'all';
+                    } else {
+                        // Show only Sunday
+                        showDay = 'sunday';
                     }
                 }
             }
 
-            if (typeof showAll == 'boolean') {
-                // Show All
-                if (showAll) {
+            // Reset selection
+            targetEl.parent().find('li').removeClass('selected');
+
+            switch(showDay) {
+                case 'saturday':
+                    targetEl.parent().find('li.saturday').addClass('selected');
+                    saturdayTimes.show();
+                    sundayTimes.hide();
+                    break;
+                case 'sunday':
+                    targetEl.parent().find('li.sunday').addClass('selected');
+                    saturdayTimes.hide();
+                    sundayTimes.show();
+                    break;
+                case 'all':
                     targetEl.parent().find('li').addClass('selected');
                     saturdayTimes.show();
                     sundayTimes.show();
-                } else {
-                // Hide All
-                    targetEl.parent().find('li').removeClass('selected');
+                    break;
+                default:
                     saturdayTimes.hide();
                     sundayTimes.hide();
-                }
             }
 
-
-
-//            $(this).parent().find('li').removeClass('selected');
-//            $(this).addClass('selected');
-//
-//
-//
-//
-//            if ($(this).hasClass('saturday')) {
-//                $('.timeFilterWrap .saturday').show();
-//                $('.timeFilterWrap .sunday').hide();
-//
-//            } else if ($(this).hasClass('sunday')) {
-//                $('.timeFilterWrap .saturday').hide();
-//                $('.timeFilterWrap .sunday').show();
-//            } else {
-//                $('.timeFilterWrap .saturday').show();
-//                $('.timeFilterWrap .sunday').show();
-//            }
         });
         // End - Session days filter checkbox
 

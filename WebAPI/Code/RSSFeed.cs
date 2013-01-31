@@ -16,7 +16,7 @@ namespace WebAPI.Code
         public List<RSSItem> Get(int numberToGet)
         {
             string cacheName = String.Format("{0}_{1}", Utils.CacheRSSFeed, numberToGet);
-            List<RSSItem> rssItems = (List<RSSItem>)HttpContext.Current.Cache[cacheName];
+            var rssItems = (List<RSSItem>)HttpContext.Current.Cache[cacheName];
 
             if (rssItems == null)
             {
@@ -25,16 +25,26 @@ namespace WebAPI.Code
                 {
                     XDocument feedXML = XDocument.Load("http://blog.siliconvalley-codecamp.com/feed/");
 
-                    var feeds = feedXML.Descendants("item").Select(feed => new
-                                                                               {
-                                                                                   PostTitle = feed.Element("title").Value,
-                                                                                   PostURL = feed.Element("link").Value
-                                                                               });
+                    var feeds = feedXML.Descendants("item").Select(feed =>
+                                                                       {
+                                                                           var xElement = feed.Element("title");
+                                                                           var element = feed.Element("link");
+                                                                           var pubDate = feed.Element("pubDate");
+                                                                           if (element != null)
+                                                                               if (pubDate != null)
+                                                                                   return xElement != null ? new
+                                                                                                                 {
+                                                                                                                     PostTitle = xElement.Value,
+                                                                                                                     PostURL = element.Value,
+                                                                                                                     pubDate = pubDate.Value
+                                                                                                                 } : null;
+                                                                           return null;
+                                                                       });
 
                     int id = 0;
                     foreach (var rec in feeds)
                     {
-                        rssItems.Add(new RSSItem(id, rec.PostTitle, rec.PostURL));
+                        rssItems.Add(new RSSItem(id, rec.PostTitle, rec.PostURL,rec.pubDate));
                         id++;
                         if (id >= numberToGet)
                         {
@@ -68,11 +78,29 @@ namespace WebAPI.Code
         [DataObjectField(false)]
         public string PostURL { get; set; }
 
-        public RSSItem(int id, string postTitle, string postURL)
+        [DataObjectField(false)]
+        public DateTime PubDate { get; set; }
+
+        [DataObjectField(false)]
+        public String PubDateMonthYearOnly { get; set; }
+
+
+
+        public RSSItem(int id, string postTitle, string postURL, string pubDate)
         {
+            DateTime pubDateLocal = ConvertToDateTime(pubDate);
+
             Id = id;
             PostTitle = postTitle;
+            PubDate = pubDateLocal;
             PostURL = postURL;
+            PubDateMonthYearOnly = String.Format("{0:mm/d}", pubDateLocal);
+        }
+
+        private DateTime ConvertToDateTime(string pubDate)
+        {
+            string newstring = String.Format("{0:MM/dd/yyyy hh:mm tt}", DateTime.Parse(pubDate.Remove(pubDate.IndexOf(" +"))));
+            return Convert.ToDateTime(newstring);
         }
     }
 }

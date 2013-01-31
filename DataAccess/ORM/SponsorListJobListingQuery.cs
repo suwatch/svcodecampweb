@@ -19,5 +19,11 @@ namespace CodeCampSV
         //  public bool? WithCargo { get; set; }
         //  public bool? IsStared { get; set; }
         //  public List<int> PlanIds { get; set; }
+
+        public bool? Top5ActiveListings { get; set; }
+
+        public bool? Top5ForTesting { get; set; }
+
+
     }
 }

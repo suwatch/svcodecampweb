@@ -35,6 +35,29 @@
 
 </script>*@
 
+<h2>Feed Items, Top 5</h2>
+
+<ul>
+@foreach (var feed in Model.FeedItems)
+ {
+     <li>@feed.PostTitle   @feed.PostURL @feed.PubDateMonthYearOnly    </li>
+     <li>-------------------------------------</li>
+ }
+ </ul>
+<br/>
+
+
+<h2>Jobs, Top 5</h2>
+
+<ul>
+@foreach (var job in Model.JobListings)
+ {
+     <li>@job.JobName   @job.JobLocation @job.JobCompanyName @job.JobLocation @job.JobDateFriendly @job.JobURL   </li>
+     <li>-------------------------------------</li>
+ }
+ </ul>
+<br/>
+
 <h2>Session Times For Filter</h2>
 
 <ul>

@@ -36,6 +36,10 @@ namespace WebAPI.Controllers
 
             var sponsors = ControllerUtils.AllSponsors(codeCampYearId);
 
+            var jobs = ControllerUtils.JobsTop();
+
+            List<RSSItem> feedItems = ControllerUtils.FeedItems();
+
             List<SessionsResult> sessions = SessionsManager.I.Get(new SessionsQuery
                                                                       {
                                                                           CodeCampYearId = codeCampYearId,
@@ -65,7 +69,9 @@ namespace WebAPI.Controllers
                                     SessionsByTime = ControllerUtils.SessionTimesResultsWithSessionInfo(codeCampYearId, sessions),
                                     Sponsors = sponsors,
                                     SessionTimeResults = sessionTimeResults,
-                                    TagsResults = tagsResults
+                                    TagsResults = tagsResults,
+                                    JobListings = jobs,
+                                    FeedItems = feedItems
                                 };
             return viewModel;
         }

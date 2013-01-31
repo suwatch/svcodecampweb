@@ -37,6 +37,32 @@ namespace CodeCampSV
 
             IQueryable<SponsorListJobListing> baseQuery = from myData in meta.SponsorListJobListing select myData;
 
+            DateTime today = DateTime.UtcNow;
+
+            //var result = meta.Meeting.Where(d => today >= start
+            //                                   && d.MeetingDate <= end);
+
+            if (query.Top5ActiveListings.HasValue && query.Top5ActiveListings.Value)
+            {
+                baseQuery =
+                    baseQuery.Where(
+                        data => today >= data.StartRunDate &&
+                                today <= data.EndRunDate && data.HideListing == false).Take(5);
+            }
+
+            if (query.Top5ForTesting.HasValue && query.Top5ForTesting.Value)
+            {
+                baseQuery =
+                    baseQuery.Where(
+                        data => data.HideListing == false)
+                             .OrderByDescending(a => a.StartRunDate)
+                             .Take(5);
+            }
+
+
+
+
+
 
             //  next is automated query formation from AutoGen Shared Class 
             //  (do not remove next line or filters will go away)
@@ -49,10 +75,15 @@ namespace CodeCampSV
 
             List<SponsorListJobListingResult> resultList = GetFinalResults(results, query);
 
+            foreach (var job in resultList)
+            {
+                job.JobDateFriendly = String.Format("{0:mm/d/yy}", job.StartRunDate);
+            }
+
             //var recs = from data in meta.SessionsJobListing
             //           select data.SessionId
             //           where 
-                       
+
 
 
 

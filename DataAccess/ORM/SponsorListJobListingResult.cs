@@ -12,5 +12,6 @@ namespace CodeCampSV
     public partial class SponsorListJobListingResult
     {
         //public List<int> SessionIds { get; set; } 
+        public string JobDateFriendly { get; set; }
     }
 }

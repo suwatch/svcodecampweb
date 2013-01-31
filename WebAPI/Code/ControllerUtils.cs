@@ -69,9 +69,18 @@ namespace WebAPI.Code
             return sessionTimesResults;
         }
 
-        public static int xx()
+     
+        public static List<SponsorListJobListingResult> JobsTop()
         {
-            throw new NotImplementedException();
+            return SponsorListJobListingManager.I.Get(new SponsorListJobListingQuery()
+                                                          {
+                                                              Top5ForTesting = true
+                                                          });
+        }
+
+        public static List<RSSItem> FeedItems()
+        {
+            return new RSSFeedObject().Get(5);
         }
     }
 }

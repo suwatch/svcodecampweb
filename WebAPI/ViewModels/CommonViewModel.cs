@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using CodeCampSV;
+using WebAPI.Code;
 
 namespace WebAPI.ViewModels
 {
@@ -17,9 +18,8 @@ namespace WebAPI.ViewModels
         public List<SpeakerResult> Speakers { get; set; }
         public List<SessionTimesResult> SessionTimeResults { get; set; }
         public List<TagsResult> TagsResults { get; set; }
-
-
-
+        public List<SponsorListJobListingResult> JobListings { get; set; }
+        public List<RSSItem> FeedItems { get; set; }
 
         public string DaysUntilCodeCampString
         {

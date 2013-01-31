@@ -167,6 +167,8 @@ input {
   background: #3c3b3b;
   height: 55px;
   border-top-right-radius: 10px;
+  @include box-shadow(0 0 6px 3px hsla(0, 0%, 0%, 0.2));
+
 }
 
 // End - Main Layout Structure
@@ -1594,19 +1596,34 @@ a {
 
 // Footer
 .footerWrap {
-  float: right;
   padding-top: 14px;
-  ul {
-    li {
-      float: left;
-      padding: 8px 20px 0 0;
-      a {
-        color: #fff;
-        text-decoration: none;;
-        @include handelGothicFont;
-        font {
-          size: 16px;
-          weight: bold;
+  @include handelGothicFont;
+  .creditsWrap {
+    font-size: 13px;
+    line-height: 15px;
+    color: #fff;
+    float: left;
+    margin-left: 20px;
+    a {
+      color: #fff;
+    }
+  }
+  .linksWrap {
+    float: right;
+    ul {
+      li {
+        float: left;
+        padding: 8px 20px 0 0;
+        a {
+          color: #fff;
+          text-decoration: none;;
+          font {
+            size: 16px;
+            weight: bold;
+          }
+          &:hover {
+            text-decoration: underline;
+          }
         }
       }
     }

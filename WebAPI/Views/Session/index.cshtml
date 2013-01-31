@@ -11,14 +11,6 @@
             targetSelectBtn,
             timeoutVal;
 
-        function getAllSessionTime() {
-            console.log($('.sessionsList .sessionDetails').length);
-            console.log($('tr.session').length);
-        }
-
-
-        getAllSessionTime();
-
         function monitorFloatingElement(el) {
             floatingElement = el;
         }
@@ -96,12 +88,14 @@
         // // Makes all Days selected
 
         $('#sessionDaysCheckboxList li').addClass('selected');
+        // Makes all times selected
+        $('.timeFilterWrap .optionsWrap li').addClass('selected');
 
         $('#sessionDaysCheckboxList li').click(function () {
 
             var targetEl = $(this),
-            saturdayTimes = $('.timeFilterWrap .Saturday'),
-            sundayTimes = $('.timeFilterWrap .Sunday'),
+            saturdayTimes = $('.timeFilterWrap .Saturday li'),
+            sundayTimes = $('.timeFilterWrap .Sunday li'),
             showDay = 'all';
 
             // Show All handler
@@ -159,31 +153,68 @@
 
             // Reset selection
             targetEl.parent().find('li').removeClass('selected');
-            $('.timeFilterWrap').show();
 
             switch(showDay) {
                 case 'saturday':
                     targetEl.parent().find('li.saturday').addClass('selected');
-                    saturdayTimes.show();
-                    sundayTimes.hide();
+                    saturdayTimes.addClass('selected');
+                    sundayTimes.removeClass('selected');
                     break;
                 case 'sunday':
                     targetEl.parent().find('li.sunday').addClass('selected');
-                    saturdayTimes.hide();
-                    sundayTimes.show();
+                    saturdayTimes.removeClass('selected');
+                    sundayTimes.addClass('selected');
                     break;
                 case 'all':
                     targetEl.parent().find('li').addClass('selected');
-                    saturdayTimes.show();
-                    sundayTimes.show();
+                    saturdayTimes.addClass('selected');
+                    sundayTimes.addClass('selected');
                     break;
                 default:
-                    saturdayTimes.hide();
-                    sundayTimes.hide();
-                    $('.timeFilterWrap').hide();
+                    saturdayTimes.removeClass('selected');
+                    sundayTimes.removeClass('selected');
             }
 
         });
+
+        // Listens for check events on session times
+        $('.timeFilterWrap .optionsWrap li').click(function () {
+
+            var sessionDay = $(this).parent().parent().parent(),
+                saturdayTimesSelectedCheckboxes = $('.timeFilterWrap .optionsWrap .Saturday li.selected'),
+                sundayTimesSelectedCheckboxes = $('.timeFilterWrap .optionsWrap .Sunday li.selected'),
+                timeCheckboxes = $('.timeFilterWrap .optionsWrap li'),
+                timeCheckboxesSelected = $('.timeFilterWrap .optionsWrap li.selected'),
+                timeCheckboxesCount = timeCheckboxes.length,
+                timeCheckboxesSelectedCount = timeCheckboxesSelected.length;
+
+            // Check the associated session day if session time is checked
+            if ($(this).hasClass('selected')) {
+                if (sessionDay.hasClass('Saturday')) {
+                    $('.daysFilterWrap li.saturday').addClass('selected');
+                } else {
+                    $('.daysFilterWrap li.sunday').addClass('selected');
+                }
+            } else {
+                // Check if there's no selected time for a day
+                // then uncheck the associated day checkbox
+                if (saturdayTimesSelectedCheckboxes.length == 0) {
+                    $('.daysFilterWrap li.saturday').removeClass('selected');
+                }
+                if (sundayTimesSelectedCheckboxes.length == 0) {
+                    $('.daysFilterWrap li.sunday').removeClass('selected');
+                }
+            }
+
+            // Check if every checkbox time is selected
+            // then select show all
+            if (timeCheckboxesCount == timeCheckboxesSelectedCount) {
+                $('.daysFilterWrap li.showAll').addClass('selected');
+            } else {
+                $('.daysFilterWrap li.showAll').removeClass('selected');
+            }
+        });
+
         // End - Session days filter checkbox
 
         // Session details floating panel

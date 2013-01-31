@@ -2275,9 +2275,6 @@
     <Content Include="RoomAssignments.aspx" />
     <Content Include="Rss.aspx" />
     <Content Include="SaturdayDinnerStatus.aspx" />
-    <Content Include="Scripts\colorbox-master\colorbox.css" />
-    <Content Include="Scripts\colorbox-master\jquery.colorbox-min.js" />
-    <Content Include="Scripts\colorbox-master\jquery.colorbox.js" />
     <Content Include="SessionAssignPictures.aspx" />
     <Content Include="SessionAssignVideo.aspx" />
     <Content Include="SessionChangeOwner.aspx" />
@@ -2512,7 +2509,6 @@
     <Content Include="Content\Fonts\handel-gothic-bt.eot" />
     <Content Include="Content\Fonts\handel-gothic-bt.ttf" />
     <Content Include="Content\Sass\svcc.scss" />
-    <Content Include="Content\Sass\colorbox.scss" />
     <None Include="Properties\PublishProfiles\svcodecamp - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\svcodecamp - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
@@ -2591,6 +2587,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Scripts\colorbox-master\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

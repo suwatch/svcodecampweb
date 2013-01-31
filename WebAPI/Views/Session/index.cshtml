@@ -11,14 +11,6 @@
             targetSelectBtn,
             timeoutVal;
 
-        function getAllSessionTime() {
-            console.log($('.sessionsList .sessionDetails').length);
-            console.log($('tr.session').length);
-        }
-
-
-        getAllSessionTime();
-
         function monitorFloatingElement(el) {
             floatingElement = el;
         }
@@ -36,23 +28,194 @@
 
 
         // Tags filter button and floating panel
-        $("#tagFiltersButton").colorbox({
-            inline:true,
-            transition: 'fade',
-            href:"#tagsFilterLightbox",
-            className: 'tagsFilterLightboxColorBox',
-            opacity: 0.5,
-            onOpen: function () {
-                $('#tagsFilterLightbox .closePanelButton').click(function () {
-                    $.colorbox.close();
-                });
+        $("#tagFiltersButton").click(function (e) {
+
+            // Add to monitor the current floating element
+            if (floatingElement) {
+                hideFloatingElement(floatingElement);
+            }
+            monitorFloatingElement('#tagsFilterLightbox');
+
+            $('#tagsFilterLightbox').fadeIn('fast', 'linear');
+
+
+            // Stop event bubbling so body listener for hiding floating
+            // panel won't be triggered
+            e.stopPropagation();
+        });
+        // Prevents closing of the details panel when clicked
+        $('#tagsFilterLightbox').click(function (e) {
+            e.stopPropagation();
+        });
+
+        // Close button for details floating panel
+        $('#tagsFilterLightbox .closePanelButton').click(function (e) {
+            if (floatingElement) {
+                hideFloatingElement(floatingElement);
+            }
+        });
+        // End -  Tags filter button and floating panel
+//        $("#tagFiltersButton").colorbox({
+//            inline:true,
+//            transition: 'fade',
+//            href:"#tagsFilterLightbox",
+//            className: 'tagsFilterLightboxColorBox',
+//            opacity: 0.5,
+//            onOpen: function () {
+//                $('#tagsFilterLightbox .closePanelButton').click(function () {
+//                    $.colorbox.close();
+//                });
+//            }
+//        });
+
+        // Filter accordion
+        $('.sessionsFilterWrap .header .arrow').click(function () {
+            if ($(this).hasClass('active')) {
+                $('.sessionsFilterWrap .filterContentWrap').slideUp();
+            } else {
+                $('.sessionsFilterWrap .filterContentWrap').slideDown();
+            }
+            $(this).toggleClass('active')
+        });
+        // End - Filter accordion
+
+        // Tags checkbox list
+        $('.tagsCheckboxWrap ul li, .timeFilterWrap ul li, .tagsFilterWrap ul li').click(function () {
+            $(this).toggleClass('selected')
+        });
+
+        // Session days filter checkbox
+        // // Makes all Days selected
+
+        $('#sessionDaysCheckboxList li').addClass('selected');
+        // Makes all times selected
+        $('.timeFilterWrap .optionsWrap li').addClass('selected');
+
+        $('#sessionDaysCheckboxList li').click(function () {
+
+            var targetEl = $(this),
+            saturdayTimes = $('.timeFilterWrap .Saturday li'),
+            sundayTimes = $('.timeFilterWrap .Sunday li'),
+            showDay = 'all';
+
+            // Show All handler
+            if (targetEl.hasClass('showAll')) {
+                if (targetEl.hasClass('selected')) {
+                    showDay = 'none';
+                } else {
+                    showDay = 'all';
+                }
+            } else if (targetEl.hasClass('saturday')) {
+                // SATURDAY
+                // Deselect if selected
+                if (targetEl.hasClass('selected')) {
+                    // If sunday is has been selected
+                    if (targetEl.parent().find('li.sunday').hasClass('selected')) {
+                        // Show only Sunday
+                        showDay = 'sunday';
+                    } else {
+                        // Hide all
+                        showDay = 'none';
+                    }
+                } else {
+                    // If sunday is has been selected
+                    if (targetEl.parent().find('li.sunday').hasClass('selected')) {
+                        // Show all
+                        showDay = 'all';
+                    } else {
+                        // Show only Saturday
+                        showDay = 'saturday';
+                    }
+                }
+            } else {
+                // SATURDAY
+                // Deselect if selected
+                if (targetEl.hasClass('selected')) {
+                    // If sunday is has been selected
+                    if (targetEl.parent().find('li.saturday').hasClass('selected')) {
+                        // Show only Saturday
+                        showDay = 'saturday';
+                    } else {
+                        // Hide all
+                        showDay = 'none';
+                    }
+                } else {
+                    // If sunday is has been selected
+                    if (targetEl.parent().find('li.saturday').hasClass('selected')) {
+                        // Show all
+                        showDay = 'all';
+                    } else {
+                        // Show only Sunday
+                        showDay = 'sunday';
+                    }
+                }
+            }
+
+            // Reset selection
+            targetEl.parent().find('li').removeClass('selected');
+
+            switch(showDay) {
+                case 'saturday':
+                    targetEl.parent().find('li.saturday').addClass('selected');
+                    saturdayTimes.addClass('selected');
+                    sundayTimes.removeClass('selected');
+                    break;
+                case 'sunday':
+                    targetEl.parent().find('li.sunday').addClass('selected');
+                    saturdayTimes.removeClass('selected');
+                    sundayTimes.addClass('selected');
+                    break;
+                case 'all':
+                    targetEl.parent().find('li').addClass('selected');
+                    saturdayTimes.addClass('selected');
+                    sundayTimes.addClass('selected');
+                    break;
+                default:
+                    saturdayTimes.removeClass('selected');
+                    sundayTimes.removeClass('selected');
+            }
+
+        });
+
+        // Listens for check events on session times
+        $('.timeFilterWrap .optionsWrap li').click(function () {
+
+            var sessionDay = $(this).parent().parent().parent(),
+                saturdayTimesSelectedCheckboxes = $('.timeFilterWrap .optionsWrap .Saturday li.selected'),
+                sundayTimesSelectedCheckboxes = $('.timeFilterWrap .optionsWrap .Sunday li.selected'),
+                timeCheckboxes = $('.timeFilterWrap .optionsWrap li'),
+                timeCheckboxesSelected = $('.timeFilterWrap .optionsWrap li.selected'),
+                timeCheckboxesCount = timeCheckboxes.length,
+                timeCheckboxesSelectedCount = timeCheckboxesSelected.length;
+
+            // Check the associated session day if session time is checked
+            if ($(this).hasClass('selected')) {
+                if (sessionDay.hasClass('Saturday')) {
+                    $('.daysFilterWrap li.saturday').addClass('selected');
+                } else {
+                    $('.daysFilterWrap li.sunday').addClass('selected');
+                }
+            } else {
+                // Check if there's no selected time for a day
+                // then uncheck the associated day checkbox
+                if (saturdayTimesSelectedCheckboxes.length == 0) {
+                    $('.daysFilterWrap li.saturday').removeClass('selected');
+                }
+                if (sundayTimesSelectedCheckboxes.length == 0) {
+                    $('.daysFilterWrap li.sunday').removeClass('selected');
+                }
+            }
+
+            // Check if every checkbox time is selected
+            // then select show all
+            if (timeCheckboxesCount == timeCheckboxesSelectedCount) {
+                $('.daysFilterWrap li.showAll').addClass('selected');
+            } else {
+                $('.daysFilterWrap li.showAll').removeClass('selected');
             }
         });
 
-        // Tags checkbox list
-        $('.tagsCheckboxWrap ul li, .sessionsFilterWrap .optionsWrap ul li').click(function () {
-            $(this).toggleClass('selected')
-        });
+        // End - Session days filter checkbox
 
         // Session details floating panel
         $('.detailsBtn').click(function (e) {
@@ -60,7 +223,6 @@
             sessionId = $(this).attr('sessionId'),
             speakers, speaker, i;
 
-            console.log(sessionId);
             if (floatingElement) {
                 hideFloatingElement(floatingElement);
             }
@@ -74,16 +236,13 @@
             $('#detailsFloatingPanel .speakerAvatar').html($('#speakerAvatar_' + sessionId).html());
             // Session URL
             $('#detailsFloatingPanel .footer .buttonWrap').html($('#sessionUrl_' + sessionId).html());
-            console.log($('#speakerAvatar_' + sessionId));
+
             // Speakers
             speakers = $('#session_' + sessionId).find('.author');
-            console.log(speakers);
             $('#detailsFloatingPanel .speakerList').html($('#speakerInfoList_' + sessionId).html());
 
             for (i = 0; i < speakers.length; i++) {
                 speaker = speakers[i];
-                console.log(speaker);
-                console.dir(speaker);
                 $('#authorLinkContainer_' + sessionId + '_' + $('#' + speaker.id).attr('speakerId')).html(speaker.outerHTML);
             }
 
@@ -91,20 +250,16 @@
                             'top': buttonOffset.top - ( $('#detailsFloatingPanel .contentWrap').height() + 200)
                         });
 
-            console.log($('#detailsFloatingPanel .contentWrap').height());
-            console.log($('#detailsFloatingPanel .contentWrap'));
-            console.log(buttonOffset.top);
-
-
-
             // Stop event bubbling so body listener for hiding floating
             // panel won't be triggered
             e.stopPropagation();
         });
+
         // Prevents closing of the details panel when clicked
         $('#detailsFloatingPanel').click(function (e) {
             e.stopPropagation();
         });
+
         // Close button for details floating panel
         $('.closePanelButton').click(function (e) {
             if (floatingElement) {
@@ -373,18 +528,18 @@
     </div>
 
     <div class="sessionsFilterWrap roundBorder">
-        <div class="header"><div class="arrow"><span class="icon"></span></div><div class="label">FILTERS</div></div>
-        <div class="filterContentWrap">
+        <div class="header"><div class="arrow active"><span class="icon"></span></div><div class="label">FILTERS</div></div>
+        <div class="filterContentWrap active">
             <div class="filterOptionsWrap">
                 <div class="daysFilterWrap">
                     <div class="labelWrap">
                         <span class="icon"></span><span class="label">Day : </span>
                     </div>
                     <div class="optionsWrap">
-                        <ul>
-                            <li class="selected"><span class="checkbox"></span><span class="label">Show all</span></li>
-                            <li><span class="checkbox"></span><span class="label">Saturday</span></li>
-                            <li><span class="checkbox"></span><span class="label">Sunday</span></li>
+                        <ul id="sessionDaysCheckboxList">
+                            <li class="showAll selected"><span class="checkbox"></span><span class="label">Show all</span></li>
+                            <li class="saturday"><span class="checkbox"></span><span class="label">Saturday</span></li>
+                            <li class="sunday"><span class="checkbox"></span><span class="label">Sunday</span></li>
                         </ul>
                     </div>
                 </div>
@@ -393,25 +548,42 @@
                         <span class="icon"></span><span class="label">Time : </span>
                     </div>
                     <div class="optionsWrap">
-                        <div class="timeOption">
-                            <div class="dayLabel"><span class="icon"></span><span class="label">Saturday: </span></div>
-                            <div class="timesWrap">
-                                <ul>
-                                    <li><span class="checkbox"></span><span class="label">9:45 AM</span></li>
-                                    <li><span class="checkbox"></span><span class="label">11:15 AM</span></li>
-                                    <li><span class="checkbox"></span><span class="label">1:45 PM</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="timeOption">
-                            <div class="dayLabel"><span class="icon"></span><span class="label">Sunday: </span></div>
-                            <div class="timesWrap">
-                                <ul>
-                                    <li><span class="checkbox"></span><span class="label">9:45 AM</span></li>
-                                    <li><span class="checkbox"></span><span class="label">10:45 AM</span></li>
-                                </ul>
-                            </div>
-                        </div>
+                        @{
+                            var previousDay = "";
+                            var sessionDayTimeCount = Model.SessionTimeResults.Count - 1;
+                            var i = 0;
+                        }
+                        
+                        @foreach (var timeResult in Model.SessionTimeResults)
+                         {
+                                                   
+                            
+                            if (previousDay != timeResult.StartTimeFriendlyDay)
+                            {
+                                previousDay = timeResult.StartTimeFriendlyDay;
+                                 @:<div class="timeOption @timeResult.StartTimeFriendlyDay">
+                                    <div class="dayLabel"><span class="icon"></span><span class="label">@(@timeResult.StartTimeFriendlyDay): </span></div>
+                                    @:<div class="timesWrap">
+                                        @:<ul>
+
+                            }                             
+                                            <li><span class="checkbox"></span><span class="label">@(timeResult.StartTimeFriendlyTime)</span></li>
+
+                             if (i == sessionDayTimeCount || Model.SessionTimeResults[i+1].StartTimeFriendlyDay != previousDay)
+                            {
+                                        @:</ul>
+                                    @:</div>
+                                @:</div>
+                                
+                            }
+                            
+                             if (i <= sessionDayTimeCount)
+                             {
+                                 i++;
+                             } 
+                             
+                         }
+                        
                     </div>
                 </div>
                 <!--
@@ -493,19 +665,19 @@
                         <i>by</i>
                         @{ var multipleSpeakerSeparator = " "; }
                         @foreach (var speaker in session.SpeakersList)
-                            {
+                        {
                               @multipleSpeakerSeparator <a href="@(speaker.SpeakerLocalUrl)" class="author" id="speaker_@(speaker.AttendeeId)" speakerId="@speaker.AttendeeId"> @speaker.UserFirstName @speaker.UserLastName </a>multipleSpeakerSeparator = ",";
-                            }
+                        }
                         <div class="sessionDetails" id="sessionDetails_@session.Id">
                             <span class="timeIcon"></span>@session.SessionTime <span class="mapLocationIcon"></span>Room @session.RoomNumber <!-- <a href="#">Map</a> -->
                         </div>
                         <div class="sessionDescription" id="sessionDescription_@session.Id">@session.Description</div>
                         <div class="sessionUrl" id="sessionUrl_@session.Id"><a href="@(session.SessionUrl)" title="@session.TitleEllipsized" class="button round blue">READ MORE</a></div>
                         <div class="speakerInfo" id="speakerInfoList_@session.Id">
-                                
+
                                 @foreach (var speaker in session.SpeakersList)
                                 {
-                                    
+
                                     <div class="speakerInfoItem">
                                         <div class="avatarWrap">
                                             <img class="speakerAvatar" src="@(speaker.ImageUrl)?width=55" />

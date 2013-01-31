@@ -13,10 +13,38 @@
 
     @Scripts.Render("~/bundles/jquery")
 
-    @Scripts.Render("~/bundles/colorbox")
-    
-
     @RenderSection("scripts", required: false)
+
+    <script type="text/javascript" language="javascript">
+    $(document).ready(function () {
+
+            // Sponsors accordion
+            var sponsorAccordionList = $('.sponsorsListWrap dl > dd').hide(),
+                sponsorAccordionTitle = $('.sponsorsListWrap dl > dt');
+
+            $('.sponsorsListWrap dl > dt > a').click(function() {
+              var linkTarget = $(this),
+                targetTitle =  linkTarget.parent(),
+                targetList =  linkTarget.parent().next();
+
+                // Check if it's expanded
+                if(!targetList.hasClass('active')){
+                    // Close previous expanded panel
+                    sponsorAccordionList.removeClass('active').slideUp();
+                    sponsorAccordionTitle.removeClass('active');
+                    // Expanded current panel
+                    targetTitle.addClass('active');
+                    targetList.addClass('active').slideDown();
+                }
+
+                return false;
+            });
+            $(sponsorAccordionTitle[0]).addClass('active');
+            $(sponsorAccordionList[0]).addClass('active').slideDown();
+
+            // End - Sponsors accordion
+    });
+    </script>
 
 </head>
 <body>
@@ -210,8 +238,8 @@
                         <div class="sponsorsListWrap">
                             <dl class="accordion">
 
-                                <dt><a href=""><span class="arrow"></span><span class="label">PLATINUM</span></a></dt>
-                                <dd>
+                                <dt class="active"><a href=""><span class="arrow"></span><span class="label">PLATINUM</span></a></dt>
+                                <dd class="active">
                                     <table>
                                         <tr>
                                             <td></td>
@@ -256,13 +284,65 @@
                                     </table>
                                 </dd>
                                 <dt><a href=""><span class="arrow"></span><span class="label">GOLD</span></a></dt>
-                                <dd></dd>
+                                <dd>
+                                    <table>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" class="sponsor">Dr. Dobb's</a></td>
+                                            <td><a href="#" class="sponsor">PowerBuilder</a></td>
+                                        </tr>
+                                    </table>
+                                </dd>
                                 <dt><a href=""><span class="arrow"></span><span class="label">SILVER</span></a></dt>
-                                <dd></dd>
+                                <dd>
+                                    <table>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" class="sponsor">Appcelerator</a></td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                </dd>
                                 <dt><a href=""><span class="arrow"></span><span class="label">BRONZE</span></a></dt>
-                                <dd></dd>
+                                <dd>
+                                     <table>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" class="sponsor">Association of International Product Marketing and Management</a></td>
+                                            <td><a href="#" class="sponsor">Carnegie Mellon University Silicon Valley</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" class="sponsor">CozyRoc</a></td>
+                                            <td><a href="#" class="sponsor">FinalBuilder</a></td>
+                                        </tr>
+                                    </table>
+                                </dd>
                                 <dt><a href=""><span class="arrow"></span><span class="label">COMMUNITY<BR />SPONSORS</span></a></dt>
-                                <dd></dd>
+                                <dd>
+                                    <table>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" class="sponsor">ACCU</a></td>
+                                            <td><a href="#" class="sponsor">Bay Area Association of Database Developers</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" class="sponsor">Bay Area Scala Enthusiasts</a></td>
+                                            <td><a href="#" class="sponsor">Bay.NET User Group</a></td>
+                                        </tr>
+                                    </table>
+                                </dd>
 
                             </dl>
                         </div>
@@ -283,11 +363,17 @@
 
     <footer id="footer">
         <div class="footerWrap">
-            <ul>
-                <li><a href="#">TERMS & CONDITIONS</a></li>
-                <li><a href="#">CONTACT</a></li>
-                <li><a href="#">SITE MAP</a></li>
-            </ul>
+            <div class="creditsWrap">
+                Copyright © 2013   Silicon Valley Code Camp <br />
+                Site Built with ASP.NET 4.0 by <a href="http://peterkellner.net" target="_blank">PeterKellner.net</a>
+            </div>
+            <div class="linksWrap">
+                <ul>
+                    <li><a href="#">TERMS & CONDITIONS</a></li>
+                    <li><a href="mailto:info@siliconvalley-codecamp.com">CONTACT</a></li>
+                    <li><a href="#">SITE MAP</a></li>
+                </ul>
+            </div>
         </div>
     </footer><!-- #footer -->
 </body>

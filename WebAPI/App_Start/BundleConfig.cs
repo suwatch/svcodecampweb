@@ -12,7 +12,7 @@ namespace WebAPI
             // on azure, the EnableOptimizations seems to be true even though release does not set that
             BundleTable.EnableOptimizations = false;
 
-            bundles.Add(new StyleBundle("~/Content/Styles").Include("~/Content/Styles/svcc.css", "~/Content/Styles/colorbox.css"));
+            bundles.Add(new StyleBundle("~/Content/Styles").Include("~/Content/Styles/svcc.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
@@ -42,11 +42,6 @@ namespace WebAPI
                         "~/Content/themes/base/jquery.ui.datepicker.css",
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
-
-            // Lightbox
-            bundles.Add(new ScriptBundle("~/bundles/colorbox").Include(
-                        "~/Scripts/colorbox-master/jquery.colorbox.js"));
-
 
 
         }

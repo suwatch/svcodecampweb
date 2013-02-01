@@ -16,8 +16,8 @@
 Ext.define('MyApp.view.MyTabPanel', {
     extend: 'Ext.tab.Panel',
 
-    height: 250,
-    width: 400,
+    height: 400,
+    width: 550,
     activeTab: 0,
 
     initComponent: function() {
@@ -27,7 +27,13 @@ Ext.define('MyApp.view.MyTabPanel', {
             items: [
                 {
                     xtype: 'panel',
-                    title: 'Tab 1'
+                    title: 'Tab 1',
+                    items: [
+                        {
+                            xtype: 'button',
+                            text: 'MyButton'
+                        }
+                    ]
                 },
                 {
                     xtype: 'panel',

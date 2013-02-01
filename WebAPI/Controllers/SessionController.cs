@@ -26,6 +26,13 @@ namespace WebAPI.Controllers
             return View(viewModel);
         }
 
+        public ActionResult IndexTest1(string year)
+        {
+            var viewModel = GetViewModel(year);
+
+            return View(viewModel);
+        }
+
         private CommonViewModel GetViewModel(string year)
         {
             var codeCampYearId = CodeCampYearId(year);

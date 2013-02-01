@@ -8,8 +8,8 @@
     "userConfig": {
         "designer|userClassName": "MyTabPanel",
         "designer|initialView": true,
-        "height": 250,
-        "width": 400,
+        "height": 400,
+        "width": 550,
         "activeTab": 0
     },
     "id": "ExtBox1-ext-gen1952",
@@ -39,6 +39,19 @@
                         "designer|userClassName": "TabConfig"
                     },
                     "designerId": "50461ac4-7543-4d61-8a8a-782a859fe13c"
+                },
+                {
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyButton",
+                        "text": "MyButton"
+                    },
+                    "designerId": "6e59c932-64e2-4bc9-8986-9837cce5c037"
                 }
             ]
         },

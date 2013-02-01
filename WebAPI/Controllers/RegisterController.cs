@@ -15,15 +15,19 @@ namespace WebAPI.Controllers
         public ActionResult Index()
         {
             string year = Utils.ConvertCodeCampYearToActualYear(Utils.GetCurrentCodeCampYear().ToString());
-
             var viewModel = GetViewModel(year);
 
             return View(viewModel);
         }
 
-        public ActionResult IndexTest(string year)
+        public ActionResult IndexTest()
         {
-            return View();
+
+            string year = Utils.ConvertCodeCampYearToActualYear(Utils.GetCurrentCodeCampYear().ToString());
+            var viewModel = GetViewModel(year);
+
+            return View(viewModel);
+
         }
 
 

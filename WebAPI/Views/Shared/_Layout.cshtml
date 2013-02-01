@@ -159,22 +159,15 @@
                     </div>
                     <div class="roundBorder section  jobPosts">
                         <div class="listWrap">
-                            <ul>
+                            <ul>                          
+                            @foreach (var job in Model.JobListings)
+                            {
                                 <li>
-                                    <span class="date">12.22</span><br />
-                                    <a href="#">Design & Content Manager</a><br />
-                                    Stanford Law School - Standford, CA
+                                    <span class="date">@job.JobDateFriendly</span><br />
+                                    <a href="@job.JobURL" target="_blank" title="Go to job list - @job.JobName">@job.JobName</a><br />
+                                    @job.JobCompanyName - @job.JobLocation
                                 </li>
-                                <li>
-                                    <span class="date">12.14</span><br />
-                                    <a href="#">Software Engineer (iOS)</a><br />
-                                    WhaleShark Media - Austin, TX
-                                </li>
-                                <li>
-                                    <span class="date">12.12</span><br />
-                                    <a href="#">PHP Developer</a><br />
-                                    FortuneBuilders - San Francisco, CA
-                                </li>
+                            }
                             </ul>
                         </div>
                         <div class="buttonWrap">
@@ -189,22 +182,17 @@
                     <div class="roundBorder section  news">
                         <div class="listWrap">
                             <ul>
+                            @foreach (var feed in Model.FeedItems)
+                             {
                                 <li>
-                                    <span class="date">12.20</span><br />
-                                    <a href="#">Are Programmers Impossible to Manage?</a>
+                                    <span class="date">@feed.PubDateMonthYearOnly</span><br />
+                                    <a href="@feed.PostURL" title="Go to post - @feed.PostTitle">@feed.PostTitle</a>
                                 </li>
-                                <li>
-                                    <span class="date">12.11</span><br />
-                                    <a href="#">The Meaning of Code</a>
-                                </li>
-                                <li>
-                                    <span class="date">12.09</span><br />
-                                    <a href="#">The Art of Dashboard Design</a><br />
-                                </li>
+                             }
                             </ul>
                         </div>
                         <div class="buttonWrap">
-                            <a href="#" class="button round magenta">MORE NEWS
+                            <a href="http://blog.siliconvalley-codecamp.com/" class="button round magenta">MORE NEWS
                             </a>
                         </div>
                     </div>

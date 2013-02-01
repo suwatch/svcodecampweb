@@ -14,99 +14,73 @@ namespace WebAPI.Controllers
     {
         public ActionResult Index(string year)
         {
-            var viewModel = GetViewModel(year);
+            int codeCampYearId;
+            CommonViewModel commonViewModel = ControllerUtils.UpdateViewModel
+                 (new CommonViewModel(), ControllerUtils.GetCodeCampYearId(year), out codeCampYearId);
 
-            return View(viewModel);
+            UpdateCommonViewWithPresenters(commonViewModel, codeCampYearId);
+
+            return View(commonViewModel);
         }
 
         public ActionResult IndexTest(string year)
         {
-            var viewModel = GetViewModel(year);
+            int codeCampYearId;
+            CommonViewModel commonViewModel = ControllerUtils.UpdateViewModel
+                 (new CommonViewModel(), ControllerUtils.GetCodeCampYearId(year),out codeCampYearId);
 
-            return View(viewModel);
+            UpdateCommonViewWithPresenters(commonViewModel, codeCampYearId);
+
+            return View(commonViewModel);
+        }
+
+        private void UpdateCommonViewWithPresenters(CommonViewModel commonViewModel,int codeCampYearId)
+        {
+            commonViewModel.Speakers =
+              AttendeesManager.I.GetSpeakerResults(new AttendeesQuery()
+              {
+                  CodeCampYearId = codeCampYearId,
+                  PresentersOnly = true,
+                  IncludeSessions = true
+              });
         }
 
         public ActionResult Detail(string year,string speakername)
         {
-            var viewModel = GetSpeakerDetail(year,speakername);
+            int codeCampYearId;
+            CommonViewModel commonViewModel = ControllerUtils.UpdateViewModel
+                (new CommonViewModel(), ControllerUtils.GetCodeCampYearId(year), out codeCampYearId);
 
-            // always need to populate common things
-            viewModel.Sponsors = ControllerUtils.AllSponsors(Utils.GetCurrentCodeCampYear());
-
-            ControllerUtils.UpdateViewModel(viewModel);
-
-            return View(viewModel);
-        }
-
-        private CommonViewModel GetSpeakerDetail(string year,string speakername)
-        {
-            //var codeCampYearId = Utils.GetCurrentCodeCampYear();
-
-            var commonViewModel = new CommonViewModel();
-            List<SpeakerResult> speakers =
+            commonViewModel.Speakers =
                 AttendeesManager.I.GetSpeakerResults(new AttendeesQuery
-                                                         {
-                                                             PresentersOnly = true,
-                                                             IncludeSessions = true,
-                                                             SpeakerNameWithId = speakername,
-                                                             CodeCampYearId =
-                                                                 Utils
-                                                                 .ConvertCodeCampYearToCodeCampYearId
-                                                                 (year)
-                                                         });
-            commonViewModel.Speakers = speakers;
-
-            ControllerUtils.UpdateViewModel(commonViewModel);
-
-
-
-            return commonViewModel;
+                {
+                    PresentersOnly = true,
+                    IncludeSessions = true,
+                    SpeakerNameWithId = speakername,
+                    CodeCampYearId =
+                        Utils
+                        .ConvertCodeCampYearToCodeCampYearId
+                        (year)
+                });
+            return View(commonViewModel);
         }
 
-        private CommonViewModel GetViewModel(string year)
-        {
-            var codeCampYearId = CodeCampYearId(year);
-            if (codeCampYearId < 0)
-            {
-                throw new HttpException(404, "NotFound");
-            }
-
-            List<SpeakerResult> speakers = AttendeesManager.I.GetSpeakerResults(new AttendeesQuery()
-                                                                  {
-                                                                      CodeCampYearId = codeCampYearId,
-                                                                      PresentersOnly = true,
-                                                                      IncludeSessions = true
-                                                                  });
+       
 
 
 
-
-            var viewModel = new CommonViewModel()
-                                {
-                                    Speakers = speakers,
-                                    Sponsors = ControllerUtils.AllSponsors(codeCampYearId)
-                                };
-
-            ControllerUtils.UpdateViewModel(viewModel);
-
-            return viewModel;
-        }
-
-     
-
-
-        private static int CodeCampYearId(string year)
-        {
-            var codeCampYears = Utils.GetListCodeCampYear();
-            var dateDict = codeCampYears.ToDictionary(k => k.CampStartDate.Year.ToString(CultureInfo.InvariantCulture),
-                                                      v => v.Id);
-            int codeCampYearId = -1;
-            if (dateDict.ContainsKey(year))
-            {
-                codeCampYearId = dateDict[year];
-            }
-            return codeCampYearId;
-        }
+        //private static int CodeCampYearId(string year)
+        //{
+        //    var codeCampYears = Utils.GetListCodeCampYear();
+        //    var dateDict = codeCampYears.ToDictionary(k => k.CampStartDate.Year.ToString(CultureInfo.InvariantCulture),
+        //                                              v => v.Id);
+        //    int codeCampYearId = -1;
+        //    if (dateDict.ContainsKey(year))
+        //    {
+        //        codeCampYearId = dateDict[year];
+        //    }
+        //    return codeCampYearId;
+        //}
 
 
         ////

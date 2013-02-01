@@ -49,6 +49,8 @@ namespace WebAPI
             //                action = "Detail"
             //            });
 
+
+            // REGISTER
             routes.MapRoute("RegisterRouteAll", "Register",
                    new
                    {
@@ -88,14 +90,23 @@ namespace WebAPI
 
 
             // SESSIONS
+            routes.MapRoute("SessionRouteTest1", "Session/Test1",
+                   new
+                   {
+                       /* Your default route */
+                       controller = "Session",
+                       action = "IndexTest1",
+                       year = currentYear
+                   });
+
             routes.MapRoute("SessionRouteTest", "Session/Test",
-                     new
-                     {
-                         /* Your default route */
-                         controller = "Session",
-                         action = "IndexTest",
-                         year = currentYear
-                     });
+                   new
+                   {
+                       /* Your default route */
+                       controller = "Session",
+                       action = "IndexTest",
+                       year = currentYear
+                   });
 
             routes.MapRoute("SessionRouteAll", "Session/{year}",
                       new
@@ -114,6 +125,8 @@ namespace WebAPI
                           year = -1,
                           session = -1
                       });
+
+          
 
 
             // SPONSORS

@@ -14,86 +14,43 @@ namespace WebAPI.Controllers
     {
         public ActionResult Index(string year)
         {
-            var viewModel = GetViewModel(year);
+            int codeCampYearId;
+            CommonViewModel commonViewModel = ControllerUtils.UpdateViewModel
+                 (new CommonViewModel(), ControllerUtils.GetCodeCampYearId(year), out codeCampYearId);
 
-            return View(viewModel);
+            UpdateCommonViewWithSessions(commonViewModel, codeCampYearId);
+
+            return View(commonViewModel);
         }
 
         public ActionResult IndexTest(string year)
         {
-            var viewModel = GetViewModel(year);
-            ControllerUtils.UpdateViewModel(viewModel);
+            int codeCampYearId;
+            CommonViewModel commonViewModel = ControllerUtils.UpdateViewModel
+                 (new CommonViewModel(), ControllerUtils.GetCodeCampYearId(year), out codeCampYearId);
 
-            return View(viewModel);
+            UpdateCommonViewWithSessions(commonViewModel, codeCampYearId);
+
+            return View(commonViewModel);
         }
 
         public ActionResult IndexTest1(string year)
         {
-            var viewModel = GetViewModel(year);
+            int codeCampYearId;
+            CommonViewModel commonViewModel = ControllerUtils.UpdateViewModel
+                 (new CommonViewModel(), ControllerUtils.GetCodeCampYearId(year), out codeCampYearId);
 
-            return View(viewModel);
+            UpdateCommonViewWithSessions(commonViewModel, codeCampYearId);
+
+            return View(commonViewModel);
         }
-
-        private CommonViewModel GetViewModel(string year)
-        {
-            var codeCampYearId = CodeCampYearId(year);
-            if (codeCampYearId < 0)
-            {
-                throw new HttpException(404, "NotFound");
-            }
-
-            var sponsors = ControllerUtils.AllSponsors(codeCampYearId);
-
-            List<SessionsResult> sessions = SessionsManager.I.Get(new SessionsQuery
-                                                                      {
-                                                                          CodeCampYearId = codeCampYearId,
-                                                                          WithInterestOrPlanToAttend = true,
-                                                                          WithLectureRoom = true,
-                                                                          WithSpeakers = true,
-                                                                          WithTags = true,
-                                                                          //Attendeesid = 1164 // nima
-                                                                      });
-
-            List<SessionTimesResult> sessionTimeResults =
-                SessionTimesManager.I.Get(new SessionTimesQuery
-                                              {
-                                                  CodeCampYearId = codeCampYearId
-                                              });
-
-            List<TagsResult> tagsResults =
-                TagsManager.I.Get(new TagsQuery
-                                      {
-                                          CodeCampYearId = codeCampYearId
-                                      });
-
-
-            var viewModel = new CommonViewModel
-                                {
-                                    Sessions = sessions.OrderBy(a => a.SessionSlug).ToList(),
-                                    SessionsByTime = ControllerUtils.SessionTimesResultsWithSessionInfo(codeCampYearId, sessions),
-                                    Sponsors = sponsors,
-                                    SessionTimeResults = sessionTimeResults,
-                                    TagsResults = tagsResults
-                                };
-
-            ControllerUtils.UpdateViewModel(viewModel);
-
-            return viewModel;
-        }
-
-
-       
-
 
         public ActionResult Detail(string year, string session)
         {
-          
-            var codeCampYearId = CodeCampYearId(year);
 
-            if (codeCampYearId < 0)
-            {
-                throw new HttpException(404, "NotFound");
-            }
+            int codeCampYearId;
+            CommonViewModel commonViewModel = ControllerUtils.UpdateViewModel
+                 (new CommonViewModel(), ControllerUtils.GetCodeCampYearId(year), out codeCampYearId);
 
             List<SessionsResult> sessionsTemp = SessionsManager.I.Get(new SessionsQuery()
                                                       {
@@ -127,32 +84,43 @@ namespace WebAPI.Controllers
                                                              //Attendeesid = 1164 // nima
                                                          });
                 }
-
-
-
-
-
-
-                //if (sessionResult != null && Request.Url != null)
-                //{
-                //    UpdateSpeakerPictureUrl(sessionResult);
-                //}
             }
             else
             {
                 throw new HttpException(404, "NotFound");
             }
 
-         
-
-            var viewModel = new CommonViewModel()
-            {
-                Sessions = sessions,
-                Sponsors = ControllerUtils.AllSponsors(codeCampYearId)
-            };
-            ControllerUtils.UpdateViewModel(viewModel);
-            return View(viewModel);
+            commonViewModel.Sessions = sessions;
+            commonViewModel.SessionsByTime = ControllerUtils.SessionTimesResultsWithSessionInfo(codeCampYearId, sessions);
+            return View(commonViewModel);
         }
+
+        private void UpdateCommonViewWithSessions(CommonViewModel commonViewModel, int codeCampYearId)
+        {
+            var sessions = SessionsManager.I.Get(new SessionsQuery
+            {
+                CodeCampYearId = codeCampYearId,
+                WithInterestOrPlanToAttend = true,
+                WithLectureRoom = true,
+                WithSpeakers = true,
+                WithTags = true,
+                //Attendeesid = 1164 // nima
+            });
+
+            commonViewModel.Sessions = sessions;
+            commonViewModel.SessionsByTime = ControllerUtils.SessionTimesResultsWithSessionInfo(codeCampYearId, sessions);
+            commonViewModel.SessionTimeResults = SessionTimesManager.I.Get(new SessionTimesQuery
+            {
+                CodeCampYearId = codeCampYearId
+            });
+            commonViewModel.TagsResults = TagsManager.I.Get(new TagsQuery
+            {
+                CodeCampYearId = codeCampYearId
+            });
+        }
+
+      
+      
 
         //private void UpdateSpeakerPictureUrl(SessionsResult rec)
         //{

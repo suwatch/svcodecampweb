@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using CodeCampSV;
+using WebAPI.Controllers;
 using WebAPI.ViewModels;
 
 namespace WebAPI.Code
@@ -23,6 +25,8 @@ namespace WebAPI.Code
                 });
             return sponsors;
         }
+
+       
 
 
         /// <summary>
@@ -71,23 +75,80 @@ namespace WebAPI.Code
         }
 
      
+        /// <summary>
+        /// Returns last 5 job postings regardless of when
+        /// </summary>
+        /// <returns></returns>
         public static List<SponsorListJobListingResult> JobsTop()
         {
-            return SponsorListJobListingManager.I.Get(new SponsorListJobListingQuery()
+            return ManagerBase<SponsorListJobListingManager, SponsorListJobListingResult, SponsorListJobListing, CodeCampDataContext>.I.Get(new SponsorListJobListingQuery()
                                                           {
                                                               Top5ForTesting = true
                                                           });
         }
 
+        /// <summary>
+        /// returns last 5 blog feed items
+        /// </summary>
+        /// <returns></returns>
         public static List<RSSItem> FeedItems()
         {
             return new RSSFeedObject().Get(5);
         }
 
-        public static void UpdateViewModel(CommonViewModel viewModel)
+        /// <summary>
+        /// Adds Jobs,RSSFeed,Sponsors to CommonViewModel
+        /// </summary>
+        /// <param name="viewModel"></param>
+        /// <param name="codeCampYearId"></param>
+        /// <returns></returns>
+        public static CommonViewModel UpdateViewModel(CommonViewModel viewModel, int codeCampYearId)
         {
             viewModel.JobListings = JobsTop();
             viewModel.FeedItems = FeedItems();
+            viewModel.Sponsors = AllSponsors(codeCampYearId);
+            return viewModel;
+        }
+
+        /// <summary>
+        /// takes in int codeCampYearId (presumably as method call) and returns it for later use
+        /// </summary>
+        /// <param name="viewModel"></param>
+        /// <param name="codeCampYearId"></param>
+        /// <param name="codeCampYearIdOut"></param>
+        /// <returns></returns>
+        public static CommonViewModel UpdateViewModel
+            (CommonViewModel viewModel, int codeCampYearId, out int codeCampYearIdOut)
+        {
+            codeCampYearIdOut = codeCampYearId;
+            return UpdateViewModel(viewModel, codeCampYearId);
+        }
+
+        /// <summary>
+        /// Returns CodeCampYearId or throws 404 if not found (not sure if this is right error code for this)
+        /// </summary>
+        /// <param name="year"></param>
+        public static int GetCodeCampYearId(string year)
+        {
+            var codeCampYearId = CodeCampYearId(year);
+            if (codeCampYearId < 0)
+            {
+                throw new HttpException(404, "CCYearNotFound");
+            }
+            return codeCampYearId;
+        }
+
+        private static int CodeCampYearId(string year)
+        {
+            var codeCampYears = Utils.GetListCodeCampYear();
+            var dateDict = codeCampYears.ToDictionary(k => k.CampStartDate.Year.ToString(CultureInfo.InvariantCulture),
+                                                      v => v.Id);
+            int codeCampYearId = -1;
+            if (dateDict.ContainsKey(year))
+            {
+                codeCampYearId = dateDict[year];
+            }
+            return codeCampYearId;
         }
     }
 }

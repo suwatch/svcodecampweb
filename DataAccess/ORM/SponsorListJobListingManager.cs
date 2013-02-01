@@ -77,7 +77,7 @@ namespace CodeCampSV
 
             foreach (var job in resultList)
             {
-                job.JobDateFriendly = String.Format("{0:mm/d/yy}", job.StartRunDate);
+                job.JobDateFriendly = String.Format("{0:MM/dd/yy}", job.StartRunDate);
             }
 
             //var recs = from data in meta.SessionsJobListing

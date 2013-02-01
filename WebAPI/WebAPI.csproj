@@ -3103,6 +3103,7 @@
     <Content Include="Views\Shared\_PresenterDetailFull.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\Register\IndexTest.cshtml" />
+    <Content Include="Views\Session\IndexTest1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

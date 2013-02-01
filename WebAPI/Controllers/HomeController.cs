@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CodeCampSV;
+using WebAPI.Code;
+using WebAPI.ViewModels;
 
 namespace WebAPI.Controllers
 {
@@ -10,7 +14,17 @@ namespace WebAPI.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            string year =
+               Utils.ConvertCodeCampYearToActualYear(
+                   Utils.GetCurrentCodeCampYear().ToString(CultureInfo.InvariantCulture));
+            var viewModel = GetViewModel(year);
+            return View(viewModel);
+        }
+
+        private CommonViewModel GetViewModel(string year)
+        {
+            return ControllerUtils.UpdateViewModel
+                (new CommonViewModel(), ControllerUtils.GetCodeCampYearId(year));
         }
     }
 }

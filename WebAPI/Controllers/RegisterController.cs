@@ -14,67 +14,26 @@ namespace WebAPI.Controllers
     {
         public ActionResult Index()
         {
-            string year = Utils.ConvertCodeCampYearToActualYear(Utils.GetCurrentCodeCampYear().ToString());
+            string year =
+                Utils.ConvertCodeCampYearToActualYear(
+                    Utils.GetCurrentCodeCampYear().ToString(CultureInfo.InvariantCulture));
             var viewModel = GetViewModel(year);
-
-
-
             return View(viewModel);
         }
 
         public ActionResult IndexTest()
         {
-
-            string year = Utils.ConvertCodeCampYearToActualYear(Utils.GetCurrentCodeCampYear().ToString());
+            string year = Utils.ConvertCodeCampYearToActualYear
+                (Utils.GetCurrentCodeCampYear().ToString(CultureInfo.InvariantCulture));
             var viewModel = GetViewModel(year);
-
             return View(viewModel);
-
         }
 
 
         private CommonViewModel GetViewModel(string year)
         {
-            var codeCampYearId = CodeCampYearId(year);
-            if (codeCampYearId < 0)
-            {
-                throw new HttpException(404, "NotFound");
-            }
-
-            List<SpeakerResult> speakers = AttendeesManager.I.GetSpeakerResults(new AttendeesQuery()
-            {
-                CodeCampYearId = codeCampYearId,
-                PresentersOnly = true,
-                IncludeSessions = true
-            });
-
-
-
-            var jobs = ControllerUtils.JobsTop();
-            List<RSSItem> feedItems = ControllerUtils.FeedItems();
-
-            var viewModel = new CommonViewModel()
-            {
-                Speakers = speakers,
-                Sponsors = ControllerUtils.AllSponsors(codeCampYearId),
-                JobListings = jobs,
-                FeedItems = feedItems
-            };
-            return viewModel;
-        }
-
-
-        private static int CodeCampYearId(string year)
-        {
-            var codeCampYears = Utils.GetListCodeCampYear();
-            var dateDict = codeCampYears.ToDictionary(k => k.CampStartDate.Year.ToString(CultureInfo.InvariantCulture),
-                                                      v => v.Id);
-            int codeCampYearId = -1;
-            if (dateDict.ContainsKey(year))
-            {
-                codeCampYearId = dateDict[year];
-            }
-            return codeCampYearId;
+            return ControllerUtils.UpdateViewModel
+                (new CommonViewModel(), ControllerUtils.GetCodeCampYearId(year));
         }
 
     }

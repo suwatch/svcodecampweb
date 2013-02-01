@@ -6,16 +6,3 @@
 }
 
 
-
-
-<h2>Feed Items, Top 5</h2>
-
-<ul>
-@foreach (var feed in Model.FeedItems)
- {
-     <li>@feed.PostTitle   @feed.PostURL @feed.PubDateMonthYearOnly    </li>
-     <li>-------------------------------------</li>
- }
- </ul>
-<br/>
-

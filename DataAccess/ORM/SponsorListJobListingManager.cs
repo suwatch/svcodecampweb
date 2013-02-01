@@ -59,20 +59,11 @@ namespace CodeCampSV
                              .Take(5);
             }
 
-
-
-
-
-
             //  next is automated query formation from AutoGen Shared Class 
             //  (do not remove next line or filters will go away)
             baseQuery = BaseQueryAutoGen(baseQuery, query);
 
             IQueryable<SponsorListJobListingResult> results = GetBaseResultIQueryable(baseQuery);
-
-
-
-
             List<SponsorListJobListingResult> resultList = GetFinalResults(results, query);
 
             foreach (var job in resultList)

@@ -33,6 +33,8 @@ namespace WebAPI.Controllers
             // always need to populate common things
             viewModel.Sponsors = ControllerUtils.AllSponsors(Utils.GetCurrentCodeCampYear());
 
+            ControllerUtils.UpdateViewModel(viewModel);
+
             return View(viewModel);
         }
 
@@ -53,6 +55,11 @@ namespace WebAPI.Controllers
                                                                  (year)
                                                          });
             commonViewModel.Speakers = speakers;
+
+            ControllerUtils.UpdateViewModel(commonViewModel);
+
+
+
             return commonViewModel;
         }
 
@@ -73,8 +80,6 @@ namespace WebAPI.Controllers
 
 
 
-          
-
 
             var viewModel = new CommonViewModel()
                                 {
@@ -82,14 +87,13 @@ namespace WebAPI.Controllers
                                     Sponsors = ControllerUtils.AllSponsors(codeCampYearId)
                                 };
 
-           
+            ControllerUtils.UpdateViewModel(viewModel);
 
             return viewModel;
         }
 
+     
 
-
-      
 
         private static int CodeCampYearId(string year)
         {

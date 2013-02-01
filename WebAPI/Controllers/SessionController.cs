@@ -22,6 +22,7 @@ namespace WebAPI.Controllers
         public ActionResult IndexTest(string year)
         {
             var viewModel = GetViewModel(year);
+            ControllerUtils.UpdateViewModel(viewModel);
 
             return View(viewModel);
         }
@@ -42,10 +43,6 @@ namespace WebAPI.Controllers
             }
 
             var sponsors = ControllerUtils.AllSponsors(codeCampYearId);
-
-            var jobs = ControllerUtils.JobsTop();
-
-            List<RSSItem> feedItems = ControllerUtils.FeedItems();
 
             List<SessionsResult> sessions = SessionsManager.I.Get(new SessionsQuery
                                                                       {
@@ -76,10 +73,11 @@ namespace WebAPI.Controllers
                                     SessionsByTime = ControllerUtils.SessionTimesResultsWithSessionInfo(codeCampYearId, sessions),
                                     Sponsors = sponsors,
                                     SessionTimeResults = sessionTimeResults,
-                                    TagsResults = tagsResults,
-                                    JobListings = jobs,
-                                    FeedItems = feedItems
+                                    TagsResults = tagsResults
                                 };
+
+            ControllerUtils.UpdateViewModel(viewModel);
+
             return viewModel;
         }
 
@@ -145,13 +143,14 @@ namespace WebAPI.Controllers
                 throw new HttpException(404, "NotFound");
             }
 
-           
+         
 
             var viewModel = new CommonViewModel()
             {
                 Sessions = sessions,
                 Sponsors = ControllerUtils.AllSponsors(codeCampYearId)
             };
+            ControllerUtils.UpdateViewModel(viewModel);
             return View(viewModel);
         }
 

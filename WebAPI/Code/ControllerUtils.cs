@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using CodeCampSV;
+using WebAPI.ViewModels;
 
 namespace WebAPI.Code
 {
@@ -81,6 +82,12 @@ namespace WebAPI.Code
         public static List<RSSItem> FeedItems()
         {
             return new RSSFeedObject().Get(5);
+        }
+
+        public static void UpdateViewModel(CommonViewModel viewModel)
+        {
+            viewModel.JobListings = JobsTop();
+            viewModel.FeedItems = FeedItems();
         }
     }
 }

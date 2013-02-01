@@ -17,6 +17,8 @@ namespace WebAPI.Controllers
             string year = Utils.ConvertCodeCampYearToActualYear(Utils.GetCurrentCodeCampYear().ToString());
             var viewModel = GetViewModel(year);
 
+
+
             return View(viewModel);
         }
 
@@ -48,17 +50,16 @@ namespace WebAPI.Controllers
 
 
 
-
-
+            var jobs = ControllerUtils.JobsTop();
+            List<RSSItem> feedItems = ControllerUtils.FeedItems();
 
             var viewModel = new CommonViewModel()
             {
                 Speakers = speakers,
-                Sponsors = ControllerUtils.AllSponsors(codeCampYearId)
+                Sponsors = ControllerUtils.AllSponsors(codeCampYearId),
+                JobListings = jobs,
+                FeedItems = feedItems
             };
-
-
-
             return viewModel;
         }
 

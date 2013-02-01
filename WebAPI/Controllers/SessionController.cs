@@ -51,19 +51,19 @@ namespace WebAPI.Controllers
                                                                       });
 
             List<SessionTimesResult> sessionTimeResults =
-                SessionTimesManager.I.Get(new SessionTimesQuery()
+                SessionTimesManager.I.Get(new SessionTimesQuery
                                               {
                                                   CodeCampYearId = codeCampYearId
                                               });
 
             List<TagsResult> tagsResults =
-                TagsManager.I.Get(new TagsQuery()
+                TagsManager.I.Get(new TagsQuery
                                       {
                                           CodeCampYearId = codeCampYearId
                                       });
 
 
-            var viewModel = new CommonViewModel()
+            var viewModel = new CommonViewModel
                                 {
                                     Sessions = sessions.OrderBy(a => a.SessionSlug).ToList(),
                                     SessionsByTime = ControllerUtils.SessionTimesResultsWithSessionInfo(codeCampYearId, sessions),

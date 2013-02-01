@@ -1,39 +1,12 @@
-﻿@model WebAPI.ViewModels.CommonViewModel
+﻿@using Kendo.Mvc.UI
+@model WebAPI.ViewModels.CommonViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@*<script type="text/javascript">
-
-    $(document).ready(function() {
 
 
-       var xx =   $('#myTable tbody tr').map(function() {
-            // $(this) is used more than once; cache it for performance.
-            var $row = $(this);
-
-            debugger;
-
-            // For each row that's "mapped", return an object that
-            //  describes the first and second <td> in the row.
-            return {
-                id: $row.find(':nth-child(1)').text(),
-                text: $row.find(':nth-child(2)').text()
-            };
-        }).get();
-
-        debugger;
-        alert(xx);
-
-        // Handler for .ready() called.
-    });
-
-
-
-
-
-</script>*@
 
 <h2>Feed Items, Top 5</h2>
 
@@ -119,35 +92,86 @@
     <hr />
 }
 
+@(Html.Kendo().Window()
+    .Name("window")
+    .Title("About Alvar Aalto")
+    .Content(@<text>
+        <div class="armchair">
+            <img src="@Url.Content("~/Images/cal.jpg")"
+                    alt="Artek Alvar Aalto - Armchair 402" />
+            Artek Alvar Aalto - Armchair 402
+        </div>
+
+        <p>
+            Alvar Aalto is one of the greatest names in modern architecture and design.
+            Glassblowers at the iittala factory still meticulously handcraft the legendary
+            vases that are variations on one theme, fluid organic shapes that let the end user
+            ecide the use. Interpretations of the shape in new colors and materials add to the
+            growing Alvar Aalto Collection that remains true to his original design.
+        </p>
+
+        <p>
+            Born Hugo Alvar Henrik Aalto (February 3, 1898 - May 11, 1976) in Kuortane, Finland,
+            was noted for his humanistic approach to modernism. He studied architecture at the
+            Helsinki University of Technology from 1916 to 1921. In 1924 he married architect
+            Aino Marsio.
+        </p>
+
+        <p>
+            Alvar Aalto was one of the first and most influential architects of the Scandinavian
+            modern movement, and a member of the Congres Internationaux d'Architecture Moderne.
+            Major architectural works include the Finlandia Hall in Helsinki, Finland,
+            and the campus of Helsinki University of Technology.
+        </p>
+
+        <p>
+            Source:
+            <a href="http://www.aalto.com/about-alvar-aalto.html" title="About Alvar Aalto">www.aalto.com</a>
+        </p>
+    </text>)
+    .Draggable()
+    .Resizable()
+    .Width(600)
+    .Events(ev => ev.Close("onClose"))
+)
+
+<span id="undo" style="display:none" class="k-button">Click here to open the window.</span>
+
+<script>
+    function onClose() {
+        $("#undo").show();
+    }
+
+    $(document).ready(function() {
+        $("#undo").bind("click", function() {
+                $("#window").data("kendoWindow").open();
+                $("#undo").hide();
+            });
+    });
+</script>
+
+<style scoped>
+    #example
+    {
+        min-height:500px;
+    }
+
+    #undo {
+        text-align: center;
+        position: absolute;
+        white-space: nowrap;
+        padding: 1em;
+        cursor: pointer;
+    }
+    .armchair {
+        float: left;
+        margin: 30px 30px 120px 30px;
+        text-align: center;
+    }
+    .armchair img {
+        display: block;
+        margin-bottom: 10px;
+    }
+</style>
 
 
-
-
-@* <script type="text/javascript">
-
-//        $(document).ready(function () {
-//            // Send an AJAX request
-//            $.getJSON("api/session/GetAll",
-//            function (data) {
-//                // On success, 'data' contains a list of products.
-//                $.each(data, function (key, val) {
-//
-//                    //debugger;
-//
-//                    // Format the text to display.
-//                    //var str = val.Name + ': $' + val.Price;
-//                    var str = val.PresenterName + ' : ' + val.Title;
-//
-//                    // Add a list item for the product.
-//                    $('<li/>', { text: str })
-//                    .appendTo($('#sessions'));
-//                });
-//            });
-//        });
-      
-
-
-    </script>
-
-
- <div id="sessions"></div>*@

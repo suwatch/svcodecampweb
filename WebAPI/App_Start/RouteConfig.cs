@@ -49,6 +49,22 @@ namespace WebAPI
             //                action = "Detail"
             //            });
 
+            routes.MapRoute("RegisterRouteAll", "Register",
+                   new
+                   {
+                       /* Your default route */
+                       controller = "Register",
+                       action = "Index"
+                   });
+
+            routes.MapRoute("RegisterRouteTest", "Register/Test",
+                new
+                {
+                    /* Your default route */
+                    controller = "Register",
+                    action = "IndexTest"
+                });
+
 
 
             // PRESENTERS

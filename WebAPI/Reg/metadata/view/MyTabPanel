@@ -1,0 +1,100 @@
+{
+    "type": "tabpanel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "MyTabPanel",
+        "designer|initialView": true,
+        "height": 250,
+        "width": 400,
+        "activeTab": 0
+    },
+    "id": "ExtBox1-ext-gen1952",
+    "designerId": "0e0af803-ba26-46d9-9512-10a69019bce6",
+    "cn": [
+        {
+            "type": "panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyPanel",
+                "title": "Tab 1"
+            },
+            "designerId": "4a8ef96c-9c6c-4e56-8294-be71cab600dc",
+            "cn": [
+                {
+                    "type": "tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "TabConfig"
+                    },
+                    "designerId": "50461ac4-7543-4d61-8a8a-782a859fe13c"
+                }
+            ]
+        },
+        {
+            "type": "panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyPanel1",
+                "title": "Tab 2"
+            },
+            "designerId": "7d7f437b-5682-48f7-98f5-a1a75e2ab92f",
+            "cn": [
+                {
+                    "type": "tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "TabConfig1"
+                    },
+                    "designerId": "1c841527-e5dd-407d-9c7c-df2cae50d91f"
+                }
+            ]
+        },
+        {
+            "type": "panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyPanel2",
+                "title": "Tab 3"
+            },
+            "designerId": "df6e6321-d1ad-4f3e-a52a-5806b1a3461a",
+            "cn": [
+                {
+                    "type": "tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "TabConfig2"
+                    },
+                    "designerId": "487b7798-e786-4050-863a-abeb4f728a43"
+                }
+            ]
+        }
+    ]
+}

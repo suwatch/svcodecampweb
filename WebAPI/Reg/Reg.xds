@@ -1,0 +1,48 @@
+{
+    "name": "Reg",
+    "settings": {
+        "urlPrefix": "",
+        "spacesToIndent": 4,
+        "exportPath": "",
+        "sdkPath": "",
+        "lineEnding": "CRLF",
+        "genTimestamps": false,
+        "cacheBust": false
+    },
+    "xdsVersion": "2.1.0",
+    "xdsBuild": 678,
+    "schemaVersion": 1,
+    "upgradeVersion": 210000000498,
+    "framework": "ext41",
+    "topInstanceFileMap": {
+        "e7111639-edac-485b-8ee7-1e4dd153b8c7": {
+            "paths": [
+                "metadata/resource/Library"
+            ],
+            "className": "Library"
+        },
+        "0e0af803-ba26-46d9-9512-10a69019bce6": {
+            "paths": [
+                "metadata/view/MyTabPanel",
+                "app/view/override/MyTabPanel.js",
+                "app/view/MyTabPanel.js",
+                "app/view/Viewport.js"
+            ],
+            "className": "MyTabPanel"
+        }
+    },
+    "viewOrderMap": {
+        "view": [
+            "0e0af803-ba26-46d9-9512-10a69019bce6"
+        ],
+        "store": [],
+        "controller": [],
+        "model": [],
+        "resource": [
+            "e7111639-edac-485b-8ee7-1e4dd153b8c7"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

@@ -81,6 +81,9 @@ namespace WebAPI.Controllers
                                     Speakers = speakers,
                                     Sponsors = ControllerUtils.AllSponsors(codeCampYearId)
                                 };
+
+           
+
             return viewModel;
         }
 

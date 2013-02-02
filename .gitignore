@@ -118,3 +118,4 @@ UpgradeLog*.XML
 /WebAPI/WebConnectionStrings.config
 /FinalBuilder/*.fbl7
 
+/WebAPI/Content/Sass/.sass-cache/

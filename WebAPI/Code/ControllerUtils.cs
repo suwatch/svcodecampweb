@@ -93,7 +93,13 @@ namespace WebAPI.Code
         /// <returns></returns>
         public static List<RSSItem> FeedItems()
         {
-            return new RSSFeedObject().Get(5);
+            return new List<RSSItem>
+                       {
+                           new RSSItem(1, "title", "http://peterkellner.net", ""),
+                           new RSSItem(1, "title", "http://siliconvalley-codecamp.com", ""),
+
+                       };
+           // return new RSSFeedObject().Get(5);
         }
 
         /// <summary>

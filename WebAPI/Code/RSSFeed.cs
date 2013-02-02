@@ -32,24 +32,25 @@ namespace WebAPI.Code
                                                                            var pubDate = feed.Element("pubDate");
                                                                            if (element != null)
                                                                                if (pubDate != null)
-                                                                                   return xElement != null ? new
-                                                                                                                 {
-                                                                                                                     PostTitle = xElement.Value,
-                                                                                                                     PostURL = element.Value,
-                                                                                                                     pubDate = pubDate.Value
-                                                                                                                 } : null;
+                                                                                   return xElement != null
+                                                                                              ? new
+                                                                                                    {
+                                                                                                        PostTitle =
+                                                                                                    xElement.Value,
+                                                                                                        PostURL =
+                                                                                                    element.Value,
+                                                                                                        pubDate =
+                                                                                                    pubDate.Value
+                                                                                                    }
+                                                                                              : null;
                                                                            return null;
-                                                                       });
+                                                                       }).Take(numberToGet);
 
                     int id = 0;
                     foreach (var rec in feeds)
                     {
                         rssItems.Add(new RSSItem(id, rec.PostTitle, rec.PostURL,rec.pubDate));
                         id++;
-                        if (id >= numberToGet)
-                        {
-                            break;
-                        }
                     }
                 }
                 catch (Exception)
@@ -99,7 +100,12 @@ namespace WebAPI.Code
 
         private DateTime ConvertToDateTime(string pubDate)
         {
-            string newstring = String.Format("{0:MM/dd/yyyy hh:mm tt}", DateTime.Parse(pubDate.Remove(pubDate.IndexOf(" +"))));
+            string newstring = String.Format("{0:MM/dd/yyyy hh:mm tt}", DateTime.Now);
+            if (pubDate.Length > pubDate.IndexOf(" +", StringComparison.Ordinal) && pubDate.IndexOf("+", StringComparison.Ordinal) > 0)
+            {
+                newstring = String.Format("{0:MM/dd/yyyy hh:mm tt}", DateTime.Parse(pubDate.Remove(pubDate.IndexOf(" +", StringComparison.Ordinal))));
+             
+            }
             return Convert.ToDateTime(newstring);
         }
     }

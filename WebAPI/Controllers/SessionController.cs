@@ -14,31 +14,31 @@ namespace WebAPI.Controllers
     {
         public ActionResult Index(string year)
         {
-            int codeCampYearId;
-            CommonViewModel commonViewModel = ControllerUtils.UpdateViewModel
-                 (new CommonViewModel(), ControllerUtils.GetCodeCampYearId(year), out codeCampYearId);
-
-            UpdateCommonViewWithSessions(commonViewModel, codeCampYearId);
-
-            return View(commonViewModel);
+            return IndexReturn(year);
         }
+
+      
 
         public ActionResult IndexTest(string year)
         {
-            int codeCampYearId;
-            CommonViewModel commonViewModel = ControllerUtils.UpdateViewModel
-                 (new CommonViewModel(), ControllerUtils.GetCodeCampYearId(year), out codeCampYearId);
-
-            UpdateCommonViewWithSessions(commonViewModel, codeCampYearId);
-
-            return View(commonViewModel);
+            return IndexReturn(year);
         }
 
         public ActionResult IndexTest1(string year)
         {
+            return IndexReturn(year);
+        }
+
+        public ActionResult IndexTest2(string year)
+        {
+            return IndexReturn(year);
+        }
+
+        private ActionResult IndexReturn(string year)
+        {
             int codeCampYearId;
             CommonViewModel commonViewModel = ControllerUtils.UpdateViewModel
-                 (new CommonViewModel(), ControllerUtils.GetCodeCampYearId(year), out codeCampYearId);
+                (new CommonViewModel(), ControllerUtils.GetCodeCampYearId(year), out codeCampYearId);
 
             UpdateCommonViewWithSessions(commonViewModel, codeCampYearId);
 

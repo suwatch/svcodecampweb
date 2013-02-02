@@ -3104,6 +3104,7 @@
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\Register\IndexTest.cshtml" />
     <Content Include="Views\Session\IndexTest1.cshtml" />
+    <Content Include="Views\Session\indexTest2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

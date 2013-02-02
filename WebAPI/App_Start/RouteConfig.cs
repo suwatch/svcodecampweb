@@ -99,6 +99,15 @@ namespace WebAPI
                        year = currentYear
                    });
 
+            routes.MapRoute("SessionRouteTest2", "Session/Test2",
+                 new
+                 {
+                     /* Your default route */
+                     controller = "Session",
+                     action = "IndexTest2",
+                     year = currentYear
+                 });
+
             routes.MapRoute("SessionRouteTest", "Session/Test",
                    new
                    {

@@ -1,0 +1,15 @@
+{
+    "expandedState": {
+        "data": true,
+        "model": true,
+        "component": true,
+        "controller": true,
+        "resource": true,
+        "df2b5d10-8877-4b32-8e60-2a93cd582253": {
+            "id": "df2b5d10-8877-4b32-8e60-2a93cd582253"
+        },
+        "97dac02a-e566-4c7f-838d-9ebe3b3045af": {
+            "id": "97dac02a-e566-4c7f-838d-9ebe3b3045af"
+        }
+    }
+}

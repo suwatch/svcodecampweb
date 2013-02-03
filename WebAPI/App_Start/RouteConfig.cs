@@ -21,6 +21,8 @@ namespace WebAPI
 
             routes.IgnoreRoute("Content/{*pathInfo}");
 
+            routes.IgnoreRoute("ExtJSApps/SessionViewer");
+
 
 
             // SPEAKERS

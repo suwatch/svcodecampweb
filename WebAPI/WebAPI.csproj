@@ -3107,6 +3107,7 @@
     <Content Include="Views\Session\indexTest2.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ExtJSApps\SessionViewerProd\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\colorbox-master\" />
   </ItemGroup>

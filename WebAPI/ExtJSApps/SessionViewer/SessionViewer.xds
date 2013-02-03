@@ -1,0 +1,48 @@
+{
+    "name": "SessionViewer",
+    "settings": {
+        "urlPrefix": "",
+        "spacesToIndent": 4,
+        "exportPath": "",
+        "sdkPath": "",
+        "lineEnding": "CRLF",
+        "genTimestamps": false,
+        "cacheBust": false
+    },
+    "xdsVersion": "2.1.0",
+    "xdsBuild": 678,
+    "schemaVersion": 1,
+    "upgradeVersion": 210000000498,
+    "framework": "ext41",
+    "topInstanceFileMap": {
+        "df2b5d10-8877-4b32-8e60-2a93cd582253": {
+            "paths": [
+                "metadata/view/SessionsPanel",
+                "app/view/override/SessionsPanel.js",
+                "app/view/SessionsPanel.js",
+                "app/view/Viewport.js"
+            ],
+            "className": "SessionsPanel"
+        },
+        "97dac02a-e566-4c7f-838d-9ebe3b3045af": {
+            "paths": [
+                "metadata/resource/Library"
+            ],
+            "className": "Library"
+        }
+    },
+    "viewOrderMap": {
+        "view": [
+            "df2b5d10-8877-4b32-8e60-2a93cd582253"
+        ],
+        "store": [],
+        "controller": [],
+        "model": [],
+        "resource": [
+            "97dac02a-e566-4c7f-838d-9ebe3b3045af"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

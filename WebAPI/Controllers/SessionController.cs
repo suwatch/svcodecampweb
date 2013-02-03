@@ -44,7 +44,7 @@ namespace WebAPI.Controllers
 
             UpdateCommonViewWithSessions(commonViewModel, codeCampYearId);
 
-            commonViewModel.Sessions = commonViewModel.Sessions.Take(5).ToList();
+            //commonViewModel.Sessions = commonViewModel.Sessions.Take(5).ToList();
 
             return View(commonViewModel);
         }

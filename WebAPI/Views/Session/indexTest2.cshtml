@@ -8,19 +8,15 @@
 <script type="text/javascript">
     var x = $(document).ready(function () {
         var sessions = $('#sessionsTable tr').each(function () {
-           
             var localThis = $(this);
-          
             var sessionId = localThis.find('#sessionInfoDetail').data('id');
-
-
             var sessionTitle = localThis.find('#sessionTitle_' + sessionId)[0].innerHTML;
             var sessionDescription = localThis.find('#sessionDescription_' + sessionId)[0].innerHTML;
             var sessionTime = localThis.find('#sessionTime_' + sessionId)[0].innerHTML;
             var sessionRoomNumber = localThis.find('#sessionRoom_' + sessionId)[0].innerHTML;
             var sessionUrl = localThis.find('#sessionUrl_' + sessionId + ' a')[0].href;
+            
             var speakerInfos = localThis.find('#speakerInfoList_' + sessionId + ' .speakerInfoItem');
-            debugger;
             $(speakerInfos).each(function (iCnt) {
                 var localThisSpeaker = $(this);
                 var speakerBio = localThisSpeaker.find('.speakerBio')[0].innerHTML;
@@ -34,21 +30,19 @@
                 var speakerTwitter = localThisSpeaker.find('.speakerTwitterHandle')[0].innerHTML;
                 var speakerSaturdayClasses = localThisSpeaker.find('.speakerSaturdayClasses')[0].innerHTML;
                 var speakerSundayClasses = localThisSpeaker.find('.speakerSundayClasses')[0].innerHTML;
-              
-                
-                
-                debugger;
+            });
+
+            var tags = $($(localThis, 'tagInfoList_' + sessionId),'.tagId').find('.tagId');
+            $(tags).each(function (iCnt) {
+                var localThisTag = $(this);
+                var tag = localThisTag[0].innerHTML;
+                //console.log('   tag: ' + tag);
+
             });
             
-           
-
-            // $(localThis).find('td .speakerInfo')[0]
-            //$(localThis).find('td .speakerInfo')[0].children.each(function(indexCnt) {
-            //    var localThisSpeaker = $(this);
-            //    debugger;
-            //});
 
 
+            //console.log(sessionId);           
         });
     });
 
@@ -696,7 +690,6 @@
                             <div class="sessionDescription" id="sessionDescription_@session.Id">@session.Description</div>
                             <div class="sessionUrl" id="sessionUrl_@session.Id"><a href="@(session.SessionUrl)" title="@session.TitleEllipsized" class="button round blue sessionTitleEllipsized">READ MORE</a></div>
                             <div class="speakerInfo" id="speakerInfoList_@session.Id">
-
                                 @foreach (var speaker in session.SpeakersList)
                                 {
                                     <div class="speakerInfoItem">
@@ -724,6 +717,15 @@
                                 }
 
                             </div>
+                            
+                              <div class="tagInfo" id="tagInfoList_@session.Id">
+                                @foreach (var tag in session.TagsResults)
+                                {
+                                    <span class="tagId">@tag.Id</span>
+                                }
+
+                            </div>
+
                         </div>
                     </td>
                     <td class="action">

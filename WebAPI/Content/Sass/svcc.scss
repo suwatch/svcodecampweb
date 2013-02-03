@@ -1399,9 +1399,11 @@ a {
 
         }
       }
-      .sessionDetails, .sessionDescription, .speakerInfo, .sessionUrl {
+      .sessionDetails, .sessionDescription, .speakerInfo, .sessionUrl  {
         display: none;
       }
+	 
+
     }
 
     #selectOptionsWrap {
@@ -1409,6 +1411,11 @@ a {
     }
 
   }
+
+   // I'm hiding all the tagInfo here. not really sure why it is at this level PGK
+   .tagInfo {
+	    display: none;
+   }
 
   // Session Details Floating panel
   .detailsFloatingPanel {

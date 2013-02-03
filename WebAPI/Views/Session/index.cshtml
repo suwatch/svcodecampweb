@@ -4,6 +4,50 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+<script type="text/javascript">
+    var x = $(document).ready(function () {
+        var sessions = $('#sessionsTable tr').each(function () {
+            var localThis = $(this);
+            var sessionId = localThis.find('#sessionInfoDetail').data('id');
+            var sessionTitle = localThis.find('#sessionTitle_' + sessionId)[0].innerHTML;
+            var sessionDescription = localThis.find('#sessionDescription_' + sessionId)[0].innerHTML;
+            var sessionTime = localThis.find('#sessionTime_' + sessionId)[0].innerHTML;
+            var sessionRoomNumber = localThis.find('#sessionRoom_' + sessionId)[0].innerHTML;
+            var sessionUrl = localThis.find('#sessionUrl_' + sessionId + ' a')[0].href;
+            
+            var speakerInfos = localThis.find('#speakerInfoList_' + sessionId + ' .speakerInfoItem');
+            $(speakerInfos).each(function (iCnt) {
+                var localThisSpeaker = $(this);
+                var speakerBio = localThisSpeaker.find('.speakerBio')[0].innerHTML;
+                var userBioEllipsized = localThisSpeaker.find('.speakerBioEllipsized')[0].innerHTML;
+                var speakerPicture = localThisSpeaker.find('img')[0].src;
+                var speakerName = localThisSpeaker.find('.speakerName')[0].innerHTML;
+                var speakerWebSite = localThisSpeaker.find('.speakerWebSite')[0].innerHTML;
+                var speakerUrl = localThisSpeaker.find('.speakerUrl')[0].innerHTML;
+                var speakerCity = localThisSpeaker.find('.speakerCity')[0].innerHTML;
+                var speakerState = localThisSpeaker.find('.speakerState')[0].innerHTML;
+                var speakerTwitter = localThisSpeaker.find('.speakerTwitterHandle')[0].innerHTML;
+                var speakerSaturdayClasses = localThisSpeaker.find('.speakerSaturdayClasses')[0].innerHTML;
+                var speakerSundayClasses = localThisSpeaker.find('.speakerSundayClasses')[0].innerHTML;
+            });
+
+            var tags = $($(localThis, 'tagInfoList_' + sessionId),'.tagId').find('.tagId');
+            $(tags).each(function (iCnt) {
+                var localThisTag = $(this);
+                var tag = localThisTag[0].innerHTML;
+                //console.log('   tag: ' + tag);
+
+            });
+            
+
+
+            //console.log(sessionId);           
+        });
+    });
+
+</script>
+
 <script type="text/javascript">
     $(document).ready(function () {
 
@@ -55,18 +99,18 @@
             }
         });
         // End -  Tags filter button and floating panel
-//        $("#tagFiltersButton").colorbox({
-//            inline:true,
-//            transition: 'fade',
-//            href:"#tagsFilterLightbox",
-//            className: 'tagsFilterLightboxColorBox',
-//            opacity: 0.5,
-//            onOpen: function () {
-//                $('#tagsFilterLightbox .closePanelButton').click(function () {
-//                    $.colorbox.close();
-//                });
-//            }
-//        });
+        //        $("#tagFiltersButton").colorbox({
+        //            inline:true,
+        //            transition: 'fade',
+        //            href:"#tagsFilterLightbox",
+        //            className: 'tagsFilterLightboxColorBox',
+        //            opacity: 0.5,
+        //            onOpen: function () {
+        //                $('#tagsFilterLightbox .closePanelButton').click(function () {
+        //                    $.colorbox.close();
+        //                });
+        //            }
+        //        });
 
         // Filter accordion
         $('.sessionsFilterWrap .header .arrow').click(function () {
@@ -154,7 +198,7 @@
             // Reset selection
             targetEl.parent().find('li').removeClass('selected');
 
-            switch(showDay) {
+            switch (showDay) {
                 case 'saturday':
                     targetEl.parent().find('li.saturday').addClass('selected');
                     saturdayTimes.addClass('selected');
@@ -227,7 +271,7 @@
                 hideFloatingElement(floatingElement);
             }
             monitorFloatingElement('#detailsFloatingPanel');
-            
+
             // Copy text fields from dom to floating panel fields
             $('#detailsFloatingPanel .description').html($('#sessionDescription_' + sessionId).text());
             $('#detailsFloatingPanel h3.title').html($('#sessionTitle_' + sessionId).text());
@@ -247,8 +291,8 @@
             }
 
             $('#detailsFloatingPanel').fadeIn('fast', 'linear').css({
-                            'top': buttonOffset.top - ( $('#detailsFloatingPanel .contentWrap').height() + 200)
-                        });
+                'top': buttonOffset.top - ($('#detailsFloatingPanel .contentWrap').height() + 200)
+            });
 
             // Stop event bubbling so body listener for hiding floating
             // panel won't be triggered
@@ -409,12 +453,11 @@
                 <div class="speakerWrap">
                     <div class="title">Speaker</div>
                     <div class="speakerList">
-                    <div class="avatarWrap">
-                        <img class="speakerAvatar" src="~/Content/Images/speaker-avatar-sample.png" />
-                    </div>
-                    <div class="speakerInfo">
-
-                    </div>
+                        <div class="avatarWrap">
+                            <img class="speakerAvatar" src="~/Content/Images/speaker-avatar-sample.png" />
+                        </div>
+                        <div class="speakerInfo">
+                        </div>
                     </div>
                     <!--
                     <div class="sessionType">
@@ -453,48 +496,6 @@
                     <li class="selected"><span class="checkbox"></span><span class="label">ASP.NET</span></li>
                     <li><span class="checkbox"></span><span class="label">ASP.BASH</span></li>
                     <li><span class="checkbox"></span><span class="label">BPEL</span></li>
-                    <li><span class="checkbox"></span><span class="label">C</span></li>
-                    <li><span class="checkbox"></span><span class="label">C#</span></li>
-                    <li><span class="checkbox"></span><span class="label">C++</span></li>
-                    <li><span class="checkbox"></span><span class="label">Cg</span></li>
-                    <li><span class="checkbox"></span><span class="label">Clojure</span></li>
-                    <li><span class="checkbox"></span><span class="label">Cobol</span></li>
-                    <li><span class="checkbox"></span><span class="label">Cocoa Touch</span></li>
-                    <li><span class="checkbox"></span><span class="label">Code Igniter</span></li>
-                    <li><span class="checkbox"></span><span class="label">ColdFusion</span></li>
-                    <li><span class="checkbox"></span><span class="label">Common Lisp</span></li>
-                    <li><span class="checkbox"></span><span class="label">CSS</span></li>
-                    <li><span class="checkbox"></span><span class="label">Curl</span></li>
-                    <li><span class="checkbox"></span><span class="label">Database</span></li>
-                    <li><span class="checkbox"></span><span class="label">Debugging</span></li>
-                    <li><span class="checkbox"></span><span class="label">Delphi</span></li>
-                    <li><span class="checkbox"></span><span class="label">Django</span></li>
-                    <li><span class="checkbox"></span><span class="label">Emacs Lisp</span></li>
-                    <li><span class="checkbox"></span><span class="label">Emacs Erlang</span></li>
-                    <li><span class="checkbox"></span><span class="label">F#</span></li>
-                    <li><span class="checkbox"></span><span class="label">Facebook</span></li>
-                    <li><span class="checkbox"></span><span class="label">Flash</span></li>
-                    <li><span class="checkbox"></span><span class="label">Flex</span></li>
-                    <li><span class="checkbox"></span><span class="label">Fortran</span></li>
-                    <li><span class="checkbox"></span><span class="label">Genexus</span></li>
-                    <li><span class="checkbox"></span><span class="label">GridView</span></li>
-                    <li><span class="checkbox"></span><span class="label">Groovy</span></li>
-                    <li><span class="checkbox"></span><span class="label">Haskell</span></li>
-                    <li><span class="checkbox"></span><span class="label">Haxe</span></li>
-                    <li><span class="checkbox"></span><span class="label">HLSL</span></li>
-                    <li><span class="checkbox"></span><span class="label">HTML 5</span></li>
-                    <li><span class="checkbox"></span><span class="label">iPhone</span></li>
-                    <li><span class="checkbox"></span><span class="label">ITT IDL</span></li>
-                    <li><span class="checkbox"></span><span class="label">Java</span></li>
-                    <li><span class="checkbox"></span><span class="label">Javascript</span></li>
-                    <li><span class="checkbox"></span><span class="label">jQuery</span></li>
-                    <li><span class="checkbox"></span><span class="label">LabVIEW</span></li>
-                    <li><span class="checkbox"></span><span class="label">Lasso</span></li>
-                    <li><span class="checkbox"></span><span class="label">LaTeX</span></li>
-                    <li><span class="checkbox"></span><span class="label">Linq</span></li>
-                    <li><span class="checkbox"></span><span class="label">Linux</span></li>
-                    <li><span class="checkbox"></span><span class="label">Lua</span></li>
-                    <li><span class="checkbox"></span><span class="label">MATLAB</span></li>
                     <li><span class="checkbox"></span><span class="label">Multi-threading</span></li>
                 </ul>
             </div>
@@ -528,7 +529,10 @@
     </div>
 
     <div class="sessionsFilterWrap roundBorder">
-        <div class="header"><div class="arrow active"><span class="icon"></span></div><div class="label">FILTERS</div></div>
+        <div class="header">
+            <div class="arrow active"><span class="icon"></span></div>
+            <div class="label">FILTERS</div>
+        </div>
         <div class="filterContentWrap active">
             <div class="filterOptionsWrap">
                 <div class="daysFilterWrap">
@@ -553,37 +557,37 @@
                             var sessionDayTimeCount = Model.SessionTimeResults.Count - 1;
                             var i = 0;
                         }
-                        
+
                         @foreach (var timeResult in Model.SessionTimeResults)
-                         {
-                                                   
-                            
+                        {
+
+
                             if (previousDay != timeResult.StartTimeFriendlyDay)
                             {
                                 previousDay = timeResult.StartTimeFriendlyDay;
-                                 @:<div class="timeOption @timeResult.StartTimeFriendlyDay">
-                                    <div class="dayLabel"><span class="icon"></span><span class="label">@(@timeResult.StartTimeFriendlyDay): </span></div>
+                            @:<div class="timeOption @timeResult.StartTimeFriendlyDay">
+<div class="dayLabel"><span class="icon"></span><span class="label">@(@timeResult.StartTimeFriendlyDay): </span></div>
                                     @:<div class="timesWrap">
                                         @:<ul>
 
                             }                             
                                             <li><span class="checkbox"></span><span class="label">@(timeResult.StartTimeFriendlyTime)</span></li>
 
-                             if (i == sessionDayTimeCount || Model.SessionTimeResults[i+1].StartTimeFriendlyDay != previousDay)
+                            if (i == sessionDayTimeCount || Model.SessionTimeResults[i + 1].StartTimeFriendlyDay != previousDay)
                             {
                                         @:</ul>
                                     @:</div>
                                 @:</div>
-                                
+                                                        
                             }
-                            
-                             if (i <= sessionDayTimeCount)
-                             {
-                                 i++;
-                             } 
-                             
-                         }
-                        
+
+                            if (i <= sessionDayTimeCount)
+                            {
+                                i++;
+                            }
+
+                        }
+
                     </div>
                 </div>
                 <!--
@@ -615,7 +619,10 @@
                         </ul>
                     </div>
                     <div class="buttonRightWrap">
-                        <div class="tagFiltersButton" id="tagFiltersButton"><div class="label"><span>Tag Filters</span></div><div class="arrow"><span class="icon"></span></div></div>
+                        <div class="tagFiltersButton" id="tagFiltersButton">
+                            <div class="label"><span>Tag Filters</span></div>
+                            <div class="arrow"><span class="icon"></span></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -627,7 +634,10 @@
             <div class="label">Group sessions by</div>
             <div class="groupSessionsSelect">
                 <div class="roundSelect">
-                    <div class="select"><div class="label"><span class="text">Time</span></div><div class="arrow"></div></div>
+                    <div class="select">
+                        <div class="label"><span class="text">Time</span></div>
+                        <div class="arrow"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -635,7 +645,10 @@
             <div class="label">Search: </div>
             <div class="searchInputWrap">
                 <div class="searchTypeWrap">
-                    <div class="select"><div class="label"><span class="text">Keyword</span></div><div class="arrow"></div></div>
+                    <div class="select">
+                        <div class="label"><span class="text">Keyword</span></div>
+                        <div class="arrow"></div>
+                    </div>
                 </div>
                 <div class="inputWrap">
                     <input type="text" value="Type your search..." />
@@ -649,7 +662,7 @@
 
     <div class="sessionsList">
         <h4>Saturday, 11:15 AM</h4>
-        <table>
+        <table id="sessionsTable">
 
             @foreach (var session in Model.Sessions)
             {
@@ -657,27 +670,28 @@
                 <tr id="session_@session.Id" class="session">
                     <td class="title" width="330">
 
+                        <div id="sessionInfoDetail" data-id="@session.Id">
+                            @*BELOW, PresenterURL goes to link inside code camp*@
+
+                            <span id="sessionTitle_@session.Id">@session.TitleEllipsized</span>
+                            <br />
+                            <i>by</i>
+                            @{ var multipleSpeakerSeparator = " "; }
+                            @foreach (var speaker in session.SpeakersList)
+                            {
+                                @multipleSpeakerSeparator <a href="@(speaker.SpeakerLocalUrl)" class="author" id="speaker_@(speaker.AttendeeId)" speakerId="@speaker.AttendeeId"> @speaker.UserFirstName @speaker.UserLastName </a>multipleSpeakerSeparator = ",";
+                            }
                         
-                        @*BELOW, PresenterURL goes to link inside code camp*@
-
-                        <span id="sessionTitle_@session.Id">@session.TitleEllipsized</span>
-                        <br />
-                        <i>by</i>
-                        @{ var multipleSpeakerSeparator = " "; }
-                        @foreach (var speaker in session.SpeakersList)
-                        {
-                              @multipleSpeakerSeparator <a href="@(speaker.SpeakerLocalUrl)" class="author" id="speaker_@(speaker.AttendeeId)" speakerId="@speaker.AttendeeId"> @speaker.UserFirstName @speaker.UserLastName </a>multipleSpeakerSeparator = ",";
-                        }
-                        <div class="sessionDetails" id="sessionDetails_@session.Id">
-                            <span class="timeIcon"></span>@session.SessionTime <span class="mapLocationIcon"></span>Room @session.RoomNumber <!-- <a href="#">Map</a> -->
-                        </div>
-                        <div class="sessionDescription" id="sessionDescription_@session.Id">@session.Description</div>
-                        <div class="sessionUrl" id="sessionUrl_@session.Id"><a href="@(session.SessionUrl)" title="@session.TitleEllipsized" class="button round blue">READ MORE</a></div>
-                        <div class="speakerInfo" id="speakerInfoList_@session.Id">
-
+                            @* Next 3 lines are for popup not to get confused I think*@
+                            <div class="sessionDetails" id="sessionDetails_@session.Id">
+                                <span class="timeIcon"></span><span id="sessionTime_@session.Id" class="sessionTimeClass">@session.SessionTime</span>
+                                <span class="mapLocationIcon"></span>Room <span id="sessionRoom_@session.Id"  class="roomNumberClass">@session.RoomNumber</span>
+                            </div>
+                            <div class="sessionDescription" id="sessionDescription_@session.Id">@session.Description</div>
+                            <div class="sessionUrl" id="sessionUrl_@session.Id"><a href="@(session.SessionUrl)" title="@session.TitleEllipsized" class="button round blue sessionTitleEllipsized">READ MORE</a></div>
+                            <div class="speakerInfo" id="speakerInfoList_@session.Id">
                                 @foreach (var speaker in session.SpeakersList)
                                 {
-
                                     <div class="speakerInfoItem">
                                         <div class="avatarWrap">
                                             <img class="speakerAvatar" src="@(speaker.ImageUrl)?width=55" />
@@ -685,17 +699,40 @@
                                         <div class="speakerInfo">
                                             <div id="authorLinkContainer_@(session.Id)_@speaker.AttendeeId"></div>
                                             <p>
-                                                @speaker.UserBio
+                                                <span class="speakerBio">@speaker.UserBio</span>
                                             </p>
+                                            <span class="speakerName">@speaker.UserFirstName @speaker.UserLastName</span>
+                                            <span class="speakerBioEllipsized">@speaker.UserBioEllipsized</span>
+                                            <span class="speakerWebSite">@speaker.UserWebsite</span>
+                                            <span class="speakerUrl">@speaker.SpeakerLocalUrl</span>
+                                            <span class="speakerCity">@speaker.City</span>
+                                            <span class="speakerState">@speaker.State</span>
+                                            <span class="speakerTwitterHandle">@speaker.TwitterHandle</span>
+                                            <span class="speakerSaturdayClasses">@speaker.SaturdayClasses</span>
+                                            <span class="speakerSundayClasses">@speaker.SundayClasses</span>
+                                          
+
                                         </div>
                                     </div>
                                 }
 
+                            </div>
+                            
+                              <div class="tagInfo" id="tagInfoList_@session.Id">
+                                @foreach (var tag in session.TagsResults)
+                                {
+                                    <span class="tagId">@tag.Id</span>
+                                }
+
+                            </div>
+
                         </div>
                     </td>
                     <td class="action">
+                        @*DO NOT REFORMAT NEXT 4 LINES.  CAUSES INTEREST SELECTION TO SHIFT FUNNY*@
                         <div class="interestSelectBtn" id="interestSelectBtn_@session.Id">
-                            <div class="select"><div class="label"><span class="icon"></span><span class="text">Not Interested</span></div><div class="arrow"></div></div>
+                            <div class="select"><div class="label"><span class="icon"></span>
+                                <span class="text">Not Interested</span></div><div class="arrow"></div></div>
                         </div>
                     </td>
                     <td class="details">

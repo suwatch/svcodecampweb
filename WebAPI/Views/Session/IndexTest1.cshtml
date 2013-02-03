@@ -12,7 +12,7 @@
             var sessionDescription = $(localThis).find('td .sessionDescription')[0].innerHTML;
             var sessionTime = $(localThis).find('td .timeIcon')[0].innerHTML;
             var sessionRoomNuimber = $(localThis).find('td .roomNumber')[0].innerHTML;
-            var sessionUrl = $(localThis).find('td .sessionUrl a')[0].href;
+            var sessionUrl = localThis.find('#sessionUrl_' + sessionId + ' a')[0].href;
 
             debugger;
 

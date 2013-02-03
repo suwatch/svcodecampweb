@@ -40,7 +40,11 @@ namespace WebAPI.Controllers
             CommonViewModel commonViewModel = ControllerUtils.UpdateViewModel
                 (new CommonViewModel(), ControllerUtils.GetCodeCampYearId(year), out codeCampYearId);
 
+           
+
             UpdateCommonViewWithSessions(commonViewModel, codeCampYearId);
+
+            commonViewModel.Sessions = commonViewModel.Sessions.Take(5).ToList();
 
             return View(commonViewModel);
         }

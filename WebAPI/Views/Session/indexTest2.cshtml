@@ -4,6 +4,56 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+<script type="text/javascript">
+    var x = $(document).ready(function () {
+        var sessions = $('#sessionsTable tr').each(function () {
+           
+            var localThis = $(this);
+          
+            var sessionId = localThis.find('#sessionInfoDetail').data('id');
+
+
+            var sessionTitle = localThis.find('#sessionTitle_' + sessionId)[0].innerHTML;
+            var sessionDescription = localThis.find('#sessionDescription_' + sessionId)[0].innerHTML;
+            var sessionTime = localThis.find('#sessionTime_' + sessionId)[0].innerHTML;
+            var sessionRoomNumber = localThis.find('#sessionRoom_' + sessionId)[0].innerHTML;
+            var sessionUrl = localThis.find('#sessionUrl_' + sessionId + ' a')[0].href;
+            var speakerInfos = localThis.find('#speakerInfoList_' + sessionId + ' .speakerInfoItem');
+            debugger;
+            $(speakerInfos).each(function (iCnt) {
+                var localThisSpeaker = $(this);
+                var speakerBio = localThisSpeaker.find('.speakerBio')[0].innerHTML;
+                var userBioEllipsized = localThisSpeaker.find('.speakerBioEllipsized')[0].innerHTML;
+                var speakerPicture = localThisSpeaker.find('img')[0].src;
+                var speakerName = localThisSpeaker.find('.speakerName')[0].innerHTML;
+                var speakerWebSite = localThisSpeaker.find('.speakerWebSite')[0].innerHTML;
+                var speakerUrl = localThisSpeaker.find('.speakerUrl')[0].innerHTML;
+                var speakerCity = localThisSpeaker.find('.speakerCity')[0].innerHTML;
+                var speakerState = localThisSpeaker.find('.speakerState')[0].innerHTML;
+                var speakerTwitter = localThisSpeaker.find('.speakerTwitterHandle')[0].innerHTML;
+                var speakerSaturdayClasses = localThisSpeaker.find('.speakerSaturdayClasses')[0].innerHTML;
+                var speakerSundayClasses = localThisSpeaker.find('.speakerSundayClasses')[0].innerHTML;
+              
+                
+                
+                debugger;
+            });
+            
+           
+
+            // $(localThis).find('td .speakerInfo')[0]
+            //$(localThis).find('td .speakerInfo')[0].children.each(function(indexCnt) {
+            //    var localThisSpeaker = $(this);
+            //    debugger;
+            //});
+
+
+        });
+    });
+
+</script>
+
 <script type="text/javascript">
     $(document).ready(function () {
 
@@ -618,7 +668,7 @@
 
     <div class="sessionsList">
         <h4>Saturday, 11:15 AM</h4>
-        <table>
+        <table id="sessionsTable">
 
             @foreach (var session in Model.Sessions)
             {
@@ -640,7 +690,8 @@
                         
                             @* Next 3 lines are for popup not to get confused I think*@
                             <div class="sessionDetails" id="sessionDetails_@session.Id">
-                                <span class="timeIcon"></span><span class="sessionTimeClass">@session.SessionTime</span> <span class="mapLocationIcon"></span>Room <span class="roomNumberClass">@session.RoomNumber</span>
+                                <span class="timeIcon"></span><span id="sessionTime_@session.Id" class="sessionTimeClass">@session.SessionTime</span>
+                                <span class="mapLocationIcon"></span>Room <span id="sessionRoom_@session.Id"  class="roomNumberClass">@session.RoomNumber</span>
                             </div>
                             <div class="sessionDescription" id="sessionDescription_@session.Id">@session.Description</div>
                             <div class="sessionUrl" id="sessionUrl_@session.Id"><a href="@(session.SessionUrl)" title="@session.TitleEllipsized" class="button round blue sessionTitleEllipsized">READ MORE</a></div>
@@ -655,8 +706,19 @@
                                         <div class="speakerInfo">
                                             <div id="authorLinkContainer_@(session.Id)_@speaker.AttendeeId"></div>
                                             <p>
-                                                @speaker.UserBio
+                                                <span class="speakerBio">@speaker.UserBio</span>
                                             </p>
+                                            <span class="speakerName">@speaker.UserFirstName @speaker.UserLastName</span>
+                                            <span class="speakerBioEllipsized">@speaker.UserBioEllipsized</span>
+                                            <span class="speakerWebSite">@speaker.UserWebsite</span>
+                                            <span class="speakerUrl">@speaker.SpeakerLocalUrl</span>
+                                            <span class="speakerCity">@speaker.City</span>
+                                            <span class="speakerState">@speaker.State</span>
+                                            <span class="speakerTwitterHandle">@speaker.TwitterHandle</span>
+                                            <span class="speakerSaturdayClasses">@speaker.SaturdayClasses</span>
+                                            <span class="speakerSundayClasses">@speaker.SundayClasses</span>
+                                          
+
                                         </div>
                                     </div>
                                 }

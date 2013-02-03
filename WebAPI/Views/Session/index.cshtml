@@ -36,13 +36,13 @@
             $(tags).each(function (iCnt) {
                 var localThisTag = $(this);
                 var tag = localThisTag[0].innerHTML;
-                //console.log('   tag: ' + tag);
+                console.log('   tag: ' + tag);
 
             });
             
 
 
-            //console.log(sessionId);           
+            console.log(sessionId);           
         });
     });
 
@@ -718,10 +718,14 @@
 
                             </div>
                             
-                              <div class="tagInfo" id="tagInfoList_@session.Id">
+                            @*the tagname is for SEO only since hidden*@
+                            <div class="tagInfo" id="tagInfoList_@session.Id">
                                 @foreach (var tag in session.TagsResults)
                                 {
-                                    <span class="tagId">@tag.Id</span>
+                                    <div>
+                                        <span class="tagId">@tag.Id</span>
+                                        <span class="tagName">@tag.TagName</span>  
+                                    </div>
                                 }
 
                             </div>

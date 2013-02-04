@@ -464,12 +464,12 @@
         $(".toggle").click(function () {
 
             if ($('#iframe').is(":visible")) {
-                $('#iframe').hide('slow', function () {
-                    $('#sessionsNonExtjs').show('slow');
+                $('#iframe').hide(300, function () {
+                    $('#sessionsNonExtjs').show(0);
                 });
             } else {
-                $('#sessionsNonExtjs').hide('slow', function () {
-                    $('#iframe').show('slow');
+                $('#sessionsNonExtjs').hide(0, function () {
+                    $('#iframe').show(300);
                 });
             }
 

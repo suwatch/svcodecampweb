@@ -1,0 +1,44 @@
+{
+    "type": "application",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "models": [
+            "SessionModel"
+        ],
+        "stores": [
+            "SessionStore"
+        ],
+        "views": [
+            "MyPanel1"
+        ],
+        "appFolder": null,
+        "autoCreateViewport": true,
+        "name": "SessionViewerApp"
+    },
+    "id": "ExtBox1-ext-gen1587",
+    "designerId": "application",
+    "cn": [
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "launch",
+                "fn": "launch",
+                "implHandler": [
+                    "//var x = parent.SessionsDataGlobal;\r",
+                    "console.log('launch function');\r",
+                    ""
+                ]
+            },
+            "designerId": "0b7adfab-a1d4-4227-b26d-4e62f7124f0a"
+        }
+    ]
+}

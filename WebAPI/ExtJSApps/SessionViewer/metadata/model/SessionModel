@@ -1,0 +1,42 @@
+{
+    "type": "datamodel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "SessionModel",
+        "idProperty": null
+    },
+    "id": "ExtBox1-ext-gen3677",
+    "designerId": "1ff47ea3-a985-40bb-a1d1-83ee361be845",
+    "cn": [
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field",
+                "name": "sessionId"
+            },
+            "designerId": "5ae6f82a-19de-43f4-b332-30667c6df652"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field1",
+                "name": "sessionTitle"
+            },
+            "designerId": "d0ed66a5-0293-4c65-97ed-ac56ab55952a"
+        }
+    ]
+}

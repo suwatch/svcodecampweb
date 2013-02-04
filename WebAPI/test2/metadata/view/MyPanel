@@ -1,0 +1,68 @@
+{
+    "type": "panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "MyPanel",
+        "designer|initialView": true,
+        "height": 250,
+        "width": 400,
+        "title": "My Panel"
+    },
+    "id": "ExtBox1-ext-gen1920",
+    "designerId": "da1c59c5-6a61-45f0-8605-6ebdd1fa7051",
+    "cn": [
+        {
+            "type": "button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyButton",
+                "text": "MyButton"
+            },
+            "designerId": "0c312cb5-d9ea-48b0-9538-73958349bce8"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onPanelShow",
+                "fn": "onPanelShow",
+                "implHandler": [
+                    "console.log('onPanelShow');"
+                ],
+                "name": "show",
+                "scope": "me"
+            },
+            "designerId": "739ad663-a96d-4732-a421-512d06085163"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onPanelAfterLayout",
+                "fn": "onPanelAfterLayout",
+                "implHandler": [
+                    "console.log('after layout')"
+                ],
+                "name": "afterlayout",
+                "scope": "me"
+            },
+            "designerId": "0ae97c87-2da1-4dbd-9217-e219997bb7d0"
+        }
+    ]
+}

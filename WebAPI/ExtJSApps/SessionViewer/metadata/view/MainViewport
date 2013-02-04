@@ -1,0 +1,89 @@
+{
+    "type": "viewport",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "MainViewport",
+        "designer|initialView": true
+    },
+    "id": "ExtBox1-ext-gen2282",
+    "designerId": "86b503a1-4911-407a-9bae-64b4e8804534",
+    "cn": [
+        {
+            "type": "panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyPanel",
+                "title": "SessionPanel"
+            },
+            "designerId": "8b4da62f-4463-4553-954d-f25d0f694863",
+            "cn": [
+                {
+                    "type": "gridpanel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyGridPanel",
+                        "itemId": "SessionGrid",
+                        "title": "My Grid Panel",
+                        "store": "SessionStore"
+                    },
+                    "designerId": "eb95f438-b28c-4fac-ae3f-5ef64c4d37ea",
+                    "cn": [
+                        {
+                            "type": "gridview",
+                            "reference": {
+                                "name": "viewConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyGridView"
+                            },
+                            "designerId": "6c887e94-14b2-4f25-a03e-fa3e9e162126"
+                        },
+                        {
+                            "type": "gridcolumn",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyColumn1",
+                                "dataIndex": "sessionId",
+                                "text": "SessionId"
+                            },
+                            "designerId": "39b8cc8b-6151-47fa-9f02-5e52260a0784"
+                        },
+                        {
+                            "type": "gridcolumn",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyColumn2",
+                                "width": 427,
+                                "dataIndex": "sessionTitle",
+                                "text": "SessionTitle"
+                            },
+                            "designerId": "b6625802-d327-4dde-b6b7-f7c11f4073a3"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

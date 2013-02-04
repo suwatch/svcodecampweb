@@ -6,18 +6,12 @@
     },
     "codeClass": null,
     "userConfig": {
-        "models": [
-            "SessionModel"
-        ],
-        "stores": [
-            "SessionStore"
-        ],
         "views": [
-            "MainViewport"
+            "MyPanel"
         ],
         "autoCreateViewport": true,
-        "name": "SessionApp"
+        "name": "MyApp"
     },
-    "id": "ExtBox1-ext-gen2014",
+    "id": "ExtBox1-ext-gen1565",
     "designerId": "application"
 }

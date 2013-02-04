@@ -13,10 +13,10 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('SessionViewerApp.view.Viewport', {
-    extend: 'SessionViewerApp.view.SessionsPanel',
+Ext.define('SessionApp.view.Viewport', {
+    extend: 'SessionApp.view.MainViewport',
     renderTo: Ext.getBody(),
     requires: [
-        'SessionViewerApp.view.SessionsPanel'
+        'SessionApp.view.MainViewport'
     ]
 });

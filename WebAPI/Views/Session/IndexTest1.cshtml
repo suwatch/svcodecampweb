@@ -6,8 +6,17 @@
 
 
 <script type="text/javascript">
+
+    // used to pass into IFrame
+   
     var x = $(document).ready(function () {
-        var sessions = $('#sessionsTable tr').each(function () {
+        
+        //debugger;
+        SessionsDataGlobal = new Array();
+
+        var cnt = 0;
+
+        var sessions = $('#sessionsTable tr').each(function() {
             var localThis = $(this);
             var sessionId = localThis.find('#sessionInfoDetail').data('id');
             var sessionTitle = localThis.find('#sessionTitle_' + sessionId)[0].innerHTML;
@@ -16,8 +25,27 @@
             var sessionRoomNumber = localThis.find('#sessionRoom_' + sessionId)[0].innerHTML;
             var sessionUrl = localThis.find('#sessionUrl_' + sessionId + ' a')[0].href;
 
+            //SessionsDataGlobal.push({
+            //    sessionTitle: sessionTitle,
+            //    sessionId: sessionId,
+            //    speakerInfo: {}
+            //});
+
+            //debugger;
+            var sessionData = {
+                sessionTitle: sessionTitle,
+                sessionId: sessionId,
+                speakers: new Array(),
+                tags: new Array()
+            };
+
+            
+            
+
+
             var speakerInfos = localThis.find('#speakerInfoList_' + sessionId + ' .speakerInfoItem');
-            $(speakerInfos).each(function (iCnt) {
+            $(speakerInfos).each(function(iCnt) {
+
                 var localThisSpeaker = $(this);
                 var speakerBio = localThisSpeaker.find('.speakerBio')[0].innerHTML;
                 var userBioEllipsized = localThisSpeaker.find('.speakerBioEllipsized')[0].innerHTML;
@@ -30,21 +58,35 @@
                 var speakerTwitter = localThisSpeaker.find('.speakerTwitterHandle')[0].innerHTML;
                 var speakerSaturdayClasses = localThisSpeaker.find('.speakerSaturdayClasses')[0].innerHTML;
                 var speakerSundayClasses = localThisSpeaker.find('.speakerSundayClasses')[0].innerHTML;
+
+                //debugger;
+                sessionData.speakers.push({
+                    speakerName: speakerName,
+                    speakerUrl: speakerUrl
+                });
+                
+
+
             });
 
             var tags = $($(localThis, 'tagInfoList_' + sessionId), '.tagId').find('.tagId');
-            $(tags).each(function (iCnt) {
+            $(tags).each(function(iCnt) {
                 var localThisTag = $(this);
                 var tag = localThisTag[0].innerHTML;
                 //console.log('   tag: ' + tag);
-
+                //debugger;
+               sessionData.tags.push(tag);
             });
 
+            //debugger;
+            SessionsDataGlobal.push(sessionData);
 
-
+            cnt++;
             //console.log(sessionId);
         });
+        //debugger;
     });
+    
 
 </script>
 
@@ -138,9 +180,9 @@
         $('#sessionDaysCheckboxList li').click(function () {
 
             var targetEl = $(this),
-            saturdayTimes = $('.timeFilterWrap .Saturday li'),
-            sundayTimes = $('.timeFilterWrap .Sunday li'),
-            showDay = 'all';
+                saturdayTimes = $('.timeFilterWrap .Saturday li'),
+                sundayTimes = $('.timeFilterWrap .Sunday li'),
+                showDay = 'all';
 
             // Show All handler
             if (targetEl.hasClass('showAll')) {
@@ -199,24 +241,24 @@
             targetEl.parent().find('li').removeClass('selected');
 
             switch (showDay) {
-                case 'saturday':
-                    targetEl.parent().find('li.saturday').addClass('selected');
-                    saturdayTimes.addClass('selected');
-                    sundayTimes.removeClass('selected');
-                    break;
-                case 'sunday':
-                    targetEl.parent().find('li.sunday').addClass('selected');
-                    saturdayTimes.removeClass('selected');
-                    sundayTimes.addClass('selected');
-                    break;
-                case 'all':
-                    targetEl.parent().find('li').addClass('selected');
-                    saturdayTimes.addClass('selected');
-                    sundayTimes.addClass('selected');
-                    break;
-                default:
-                    saturdayTimes.removeClass('selected');
-                    sundayTimes.removeClass('selected');
+            case 'saturday':
+                targetEl.parent().find('li.saturday').addClass('selected');
+                saturdayTimes.addClass('selected');
+                sundayTimes.removeClass('selected');
+                break;
+            case 'sunday':
+                targetEl.parent().find('li.sunday').addClass('selected');
+                saturdayTimes.removeClass('selected');
+                sundayTimes.addClass('selected');
+                break;
+            case 'all':
+                targetEl.parent().find('li').addClass('selected');
+                saturdayTimes.addClass('selected');
+                sundayTimes.addClass('selected');
+                break;
+            default:
+                saturdayTimes.removeClass('selected');
+                sundayTimes.removeClass('selected');
             }
 
         });
@@ -264,8 +306,8 @@
         // Session details floating panel
         $('.detailsBtn').click(function (e) {
             var buttonOffset = $(this).offset(),
-            sessionId = $(this).attr('sessionId'),
-            speakers, speaker, i;
+                sessionId = $(this).attr('sessionId'),
+                speakers, speaker, i;
 
             if (floatingElement) {
                 hideFloatingElement(floatingElement);
@@ -350,15 +392,15 @@
             $('#' + select.id).addClass(label);
 
             switch (label) {
-                case 'Attending':
-                    selectEl.removeClass('Interested');
-                    break;
-                case 'Interested':
-                    selectEl.removeClass('Attending');
-                    break;
-                default:
-                    selectEl.removeClass('Interested');
-                    selectEl.removeClass('Attending');
+            case 'Attending':
+                selectEl.removeClass('Interested');
+                break;
+            case 'Interested':
+                selectEl.removeClass('Attending');
+                break;
+            default:
+                selectEl.removeClass('Interested');
+                selectEl.removeClass('Attending');
             }
         }
 
@@ -370,26 +412,26 @@
                 clearTimeout(timeoutVal);
             }
             switch (e.type) {
-                case 'mouseenter':
-                    // Add to monitor the current floating element
-                    if (floatingElement) {
-                        hideFloatingElement(floatingElement);
-                    }
-                    monitorFloatingElement('.sponsorPanel');
+            case 'mouseenter':
+                // Add to monitor the current floating element
+                if (floatingElement) {
+                    hideFloatingElement(floatingElement);
+                }
+                monitorFloatingElement('.sponsorPanel');
 
-                    $('.sponsorPanel').fadeIn('fast', 'linear').css({ 'top': e.pageY - 322, 'left': e.pageX - 520 });
+                $('.sponsorPanel').fadeIn('fast', 'linear').css({ 'top': e.pageY - 322, 'left': e.pageX - 520 });
 
-                    break;
-                case 'mouseleave':
+                break;
+            case 'mouseleave':
 
-                    monitorFloatingElement('.sponsorPanel');
+                monitorFloatingElement('.sponsorPanel');
 
-                    timeoutVal = setTimeout(function () {
-                        hideFloatingElement(floatingElement);
-                        timeoutVal = null;
-                    }, 2000);
+                timeoutVal = setTimeout(function () {
+                    hideFloatingElement(floatingElement);
+                    timeoutVal = null;
+                }, 2000);
 
-                    break;
+                break;
             }
 
         });
@@ -414,7 +456,7 @@
 <h1 class="title">Sessions</h1>
 
 <div class="sessionsWrap">
-<iframe id="#iframe" src="../ExtJSApps/SessionViewer/app.html" width="600" height="500"></iframe>
+  <iframe id="#iframe" src="../ExtJSApps/SessionViewer/app.html" width="600" height="500"></iframe>
 </div>
 
 <div class="sessionsWrap">

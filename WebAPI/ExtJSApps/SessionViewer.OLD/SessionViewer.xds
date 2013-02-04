@@ -15,22 +15,13 @@
     "upgradeVersion": 210000000498,
     "framework": "ext41",
     "topInstanceFileMap": {
-        "c04cffd6-001c-4b6e-8574-ef223f3a3824": {
+        "97dac02a-e566-4c7f-838d-9ebe3b3045af": {
             "paths": [
                 "metadata/resource/Library"
             ],
             "className": "Library"
         },
-        "86b503a1-4911-407a-9bae-64b4e8804534": {
-            "paths": [
-                "metadata/view/MainViewport",
-                "app/view/override/MainViewport.js",
-                "app/view/MainViewport.js",
-                "app/view/Viewport.js"
-            ],
-            "className": "MainViewport"
-        },
-        "bb183af3-be2b-40b8-82a9-bdb7c20a00ca": {
+        "78d14815-2e9c-4c52-9dfe-c3a873eadeb1": {
             "paths": [
                 "metadata/store/SessionStore",
                 "app/store/override/SessionStore.js",
@@ -38,28 +29,36 @@
             ],
             "className": "SessionStore"
         },
-        "1ff47ea3-a985-40bb-a1d1-83ee361be845": {
+        "baff78db-cd64-4027-89e3-a9ff665609e4": {
             "paths": [
                 "metadata/model/SessionModel",
                 "app/model/override/SessionModel.js",
                 "app/model/SessionModel.js"
             ],
             "className": "SessionModel"
+        },
+        "d746ce98-6a1f-492e-8bfb-647e1067938a": {
+            "paths": [
+                "metadata/view/MyPanel1",
+                "app/view/override/MyPanel1.js",
+                "app/view/MyPanel1.js"
+            ],
+            "className": "MyPanel1"
         }
     },
     "viewOrderMap": {
         "view": [
-            "86b503a1-4911-407a-9bae-64b4e8804534"
+            "d746ce98-6a1f-492e-8bfb-647e1067938a"
         ],
         "store": [
-            "bb183af3-be2b-40b8-82a9-bdb7c20a00ca"
+            "78d14815-2e9c-4c52-9dfe-c3a873eadeb1"
         ],
         "controller": [],
         "model": [
-            "1ff47ea3-a985-40bb-a1d1-83ee361be845"
+            "baff78db-cd64-4027-89e3-a9ff665609e4"
         ],
         "resource": [
-            "c04cffd6-001c-4b6e-8574-ef223f3a3824"
+            "97dac02a-e566-4c7f-838d-9ebe3b3045af"
         ],
         "app": [
             "application"

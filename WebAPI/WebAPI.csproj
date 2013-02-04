@@ -2875,6 +2875,7 @@
     <Content Include="Wiki.aspx" />
     <Content Include="_PROBLEMS\README.TXT" />
     <Content Include="_Register.aspx" />
+    <Content Include="_test.html" />
     <Content Include="_test\WebForm1.aspx" />
     <Content Include="MasterPage.master" />
     <Content Include="RightRegister.master" />
@@ -3108,8 +3109,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ExtJSApps\SessionViewerProd\" />
+    <Folder Include="ExtJSApps\SessionViewer\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\colorbox-master\" />
+    <Folder Include="_test1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

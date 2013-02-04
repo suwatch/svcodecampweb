@@ -25,8 +25,15 @@ Ext.application({
         'SessionStore'
     ],
     views: [
-        'MainViewport'
+        'MyPanel1'
     ],
     autoCreateViewport: true,
-    name: 'SessionApp'
+    name: 'SessionViewerApp',
+
+    launch: function() {
+        //var x = parent.SessionsDataGlobal;
+        console.log('launch function');
+
+    }
+
 });

@@ -1,0 +1,14 @@
+{
+    "type": "libraryresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "basePath": "..\\..\\ext-4.1.1a\\",
+        "debug": true
+    },
+    "id": "ExtBox1-ext-gen1595",
+    "designerId": "97dac02a-e566-4c7f-838d-9ebe3b3045af"
+}

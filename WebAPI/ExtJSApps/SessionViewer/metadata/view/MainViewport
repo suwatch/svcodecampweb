@@ -60,11 +60,11 @@
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "designer|userClassName": "MyColumn1",
+                                "designer|userClassName": "MyColumn2",
                                 "dataIndex": "sessionId",
-                                "text": "SessionId"
+                                "text": "Id"
                             },
-                            "designerId": "39b8cc8b-6151-47fa-9f02-5e52260a0784"
+                            "designerId": "5b5d5b6d-f526-4934-848f-742c9009b126"
                         },
                         {
                             "type": "gridcolumn",
@@ -74,12 +74,57 @@
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "designer|userClassName": "MyColumn2",
-                                "width": 427,
-                                "dataIndex": "sessionTitle",
-                                "text": "SessionTitle"
+                                "designer|userClassName": "MyColumn4",
+                                "dataIndex": "sessionRoom",
+                                "text": "Room"
                             },
-                            "designerId": "b6625802-d327-4dde-b6b7-f7c11f4073a3"
+                            "designerId": "77ed0465-9fc6-4d76-b8e7-1df8a1297b8a"
+                        },
+                        {
+                            "type": "gridcolumn",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyColumn5",
+                                "dataIndex": "sessionTime",
+                                "text": "Time"
+                            },
+                            "designerId": "0d69c3a3-432c-4896-97d5-9f451c80f78a"
+                        },
+                        {
+                            "type": "gridcolumn",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyColumn3",
+                                "width": 401,
+                                "dataIndex": "sessionTitle",
+                                "text": "Title"
+                            },
+                            "designerId": "d0b68701-fe9f-43a8-a1e8-cf58cc361c14"
+                        },
+                        {
+                            "type": "pagingtoolbar",
+                            "reference": {
+                                "name": "dockedItems",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dock": "bottom",
+                                "designer|userClassName": "MyPagingToolbar",
+                                "width": null,
+                                "autoScroll": true,
+                                "displayInfo": true,
+                                "store": "SessionStore1"
+                            },
+                            "designerId": "89700afc-f6f8-4691-bbb5-18d1e0053ccc"
                         }
                     ]
                 }

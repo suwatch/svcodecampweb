@@ -9,36 +9,9 @@
         "designer|userClassName": "SessionStore1",
         "storeId": "MyArrayStore1",
         "model": "SessionModel",
-        "data": null
+        "data": null,
+        "pageSize": 10
     },
     "id": "ExtBox1-ext-gen17453",
-    "designerId": "516e786e-ea6b-464d-853c-6080c1a9169b",
-    "cn": [
-        {
-            "type": "ajaxproxy",
-            "reference": {
-                "name": "proxy",
-                "type": "object"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|userClassName": "MyAjaxProxy"
-            },
-            "designerId": "cf3c8426-37a2-4e61-bbc3-5f36700b4b97",
-            "cn": [
-                {
-                    "type": "arrayreader",
-                    "reference": {
-                        "name": "reader",
-                        "type": "object"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "designer|userClassName": "MyArrayReader"
-                    },
-                    "designerId": "ee808d4a-abf1-4902-ab45-6c7206cfce27"
-                }
-            ]
-        }
-    ]
+    "designerId": "516e786e-ea6b-464d-853c-6080c1a9169b"
 }

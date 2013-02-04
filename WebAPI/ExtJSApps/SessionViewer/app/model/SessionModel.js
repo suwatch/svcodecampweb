@@ -22,6 +22,12 @@ Ext.define('SessionApp.model.SessionModel', {
         },
         {
             name: 'sessionTitle'
+        },
+        {
+            name: 'sessionRoom'
+        },
+        {
+            name: 'sessionTime'
         }
     ]
 });

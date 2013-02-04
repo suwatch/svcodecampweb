@@ -2844,6 +2844,7 @@
     <Content Include="SubmitSessionClosed.aspx" />
     <Content Include="TagGroupGraph.aspx" />
     <Content Include="TagList.aspx" />
+    <Content Include="test2\Paging.html" />
     <Content Include="TestLogin.aspx" />
     <Content Include="TestPageNoDB.aspx" />
     <Content Include="TheAppleStory.aspx" />
@@ -2876,6 +2877,7 @@
     <Content Include="_PROBLEMS\README.TXT" />
     <Content Include="_Register.aspx" />
     <Content Include="_test.html" />
+    <Content Include="_test\test\HtmlPage1.html" />
     <Content Include="_test\WebForm1.aspx" />
     <Content Include="MasterPage.master" />
     <Content Include="RightRegister.master" />

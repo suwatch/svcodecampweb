@@ -27,12 +27,7 @@ Ext.define('SessionApp.store.SessionStore1', {
         me.callParent([Ext.apply({
             storeId: 'MyArrayStore1',
             model: 'SessionApp.model.SessionModel',
-            proxy: {
-                type: 'ajax',
-                reader: {
-                    type: 'array'
-                }
-            }
+            pageSize: 10
         }, cfg)]);
     }
 });

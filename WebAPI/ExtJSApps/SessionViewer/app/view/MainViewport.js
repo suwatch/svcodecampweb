@@ -37,13 +37,32 @@ Ext.define('SessionApp.view.MainViewport', {
                                 {
                                     xtype: 'gridcolumn',
                                     dataIndex: 'sessionId',
-                                    text: 'SessionId'
+                                    text: 'Id'
                                 },
                                 {
                                     xtype: 'gridcolumn',
-                                    width: 427,
+                                    dataIndex: 'sessionRoom',
+                                    text: 'Room'
+                                },
+                                {
+                                    xtype: 'gridcolumn',
+                                    dataIndex: 'sessionTime',
+                                    text: 'Time'
+                                },
+                                {
+                                    xtype: 'gridcolumn',
+                                    width: 401,
                                     dataIndex: 'sessionTitle',
-                                    text: 'SessionTitle'
+                                    text: 'Title'
+                                }
+                            ],
+                            dockedItems: [
+                                {
+                                    xtype: 'pagingtoolbar',
+                                    dock: 'bottom',
+                                    autoScroll: true,
+                                    displayInfo: true,
+                                    store: 'SessionStore1'
                                 }
                             ]
                         }

@@ -37,6 +37,32 @@
                 "name": "sessionTitle"
             },
             "designerId": "d0ed66a5-0293-4c65-97ed-ac56ab55952a"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field2",
+                "name": "sessionRoom"
+            },
+            "designerId": "6b79005d-4d14-48bd-b78a-9ca98cf3ecc2"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field3",
+                "name": "sessionTime"
+            },
+            "designerId": "bb3f6293-2d2f-4de4-b317-f47a876db1eb"
         }
     ]
 }

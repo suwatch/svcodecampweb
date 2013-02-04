@@ -6,6 +6,9 @@
     },
     "codeClass": null,
     "userConfig": {
+        "requires": [
+            "Ext.ux.data.PagingMemoryProxy"
+        ],
         "models": [
             "SessionModel"
         ],
@@ -33,7 +36,7 @@
                 "fn": "launch",
                 "implHandler": [
                     "\r",
-                    "SessionApp.sessionData = [[103],[104],[105]];"
+                    "//SessionApp.sessionData = [[103],[104],[105]];"
                 ]
             },
             "designerId": "75d175a9-4763-4164-a033-15d7d86f685d"

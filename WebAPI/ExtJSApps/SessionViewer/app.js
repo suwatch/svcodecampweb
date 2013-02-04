@@ -18,6 +18,10 @@ Ext.Loader.setConfig({
 });
 
 Ext.application({
+
+    requires: [
+        'Ext.ux.data.PagingMemoryProxy'
+    ],
     models: [
         'SessionModel'
     ],
@@ -32,7 +36,7 @@ Ext.application({
 
     launch: function() {
 
-        SessionApp.sessionData = [[103],[104],[105]];
+        //SessionApp.sessionData = [[103],[104],[105]];
     }
 
 });

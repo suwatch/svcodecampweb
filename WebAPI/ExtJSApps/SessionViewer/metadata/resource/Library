@@ -6,6 +6,7 @@
     },
     "codeClass": null,
     "userConfig": {
+        "basePath": "../../extjs-4.1.3/",
         "debug": true
     },
     "id": "ExtBox1-ext-gen2022",

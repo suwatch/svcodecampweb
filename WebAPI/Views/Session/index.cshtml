@@ -6,7 +6,18 @@
 
 
 <script type="text/javascript">
+
+    // used to pass into IFrame
+
     var x = $(document).ready(function () {
+
+        $('#iframe').hide();
+
+        //debugger;
+        SessionsDataGlobal = new Array();
+
+        var cnt = 0;
+
         var sessions = $('#sessionsTable tr').each(function () {
             var localThis = $(this);
             var sessionId = localThis.find('#sessionInfoDetail').data('id');
@@ -15,9 +26,30 @@
             var sessionTime = localThis.find('#sessionTime_' + sessionId)[0].innerHTML;
             var sessionRoomNumber = localThis.find('#sessionRoom_' + sessionId)[0].innerHTML;
             var sessionUrl = localThis.find('#sessionUrl_' + sessionId + ' a')[0].href;
-            
+
+            //SessionsDataGlobal.push({
+            //    sessionTitle: sessionTitle,
+            //    sessionId: sessionId,
+            //    speakerInfo: {}
+            //});
+
+            //debugger;
+            var sessionData = {
+                sessionTitle: sessionTitle,
+                sessionId: sessionId,
+                sessionRoom: sessionRoomNumber,
+                sessionTime: sessionTime,
+                speakers: new Array(),
+                tags: new Array()
+            };
+
+
+
+
+
             var speakerInfos = localThis.find('#speakerInfoList_' + sessionId + ' .speakerInfoItem');
             $(speakerInfos).each(function (iCnt) {
+
                 var localThisSpeaker = $(this);
                 var speakerBio = localThisSpeaker.find('.speakerBio')[0].innerHTML;
                 var userBioEllipsized = localThisSpeaker.find('.speakerBioEllipsized')[0].innerHTML;
@@ -30,21 +62,35 @@
                 var speakerTwitter = localThisSpeaker.find('.speakerTwitterHandle')[0].innerHTML;
                 var speakerSaturdayClasses = localThisSpeaker.find('.speakerSaturdayClasses')[0].innerHTML;
                 var speakerSundayClasses = localThisSpeaker.find('.speakerSundayClasses')[0].innerHTML;
+
+                //debugger;
+                sessionData.speakers.push({
+                    speakerName: speakerName,
+                    speakerUrl: speakerUrl
+                });
+
+
+
             });
 
-            var tags = $($(localThis, 'tagInfoList_' + sessionId),'.tagId').find('.tagId');
+            var tags = $($(localThis, 'tagInfoList_' + sessionId), '.tagId').find('.tagId');
             $(tags).each(function (iCnt) {
                 var localThisTag = $(this);
                 var tag = localThisTag[0].innerHTML;
-                console.log('   tag: ' + tag);
-
+                //console.log('   tag: ' + tag);
+                //debugger;
+                sessionData.tags.push(tag);
             });
-            
 
+            //debugger;
+            SessionsDataGlobal.push(sessionData);
 
-            console.log(sessionId);           
+            cnt++;
+            //console.log(sessionId);
         });
+        //debugger;
     });
+
 
 </script>
 
@@ -138,9 +184,9 @@
         $('#sessionDaysCheckboxList li').click(function () {
 
             var targetEl = $(this),
-            saturdayTimes = $('.timeFilterWrap .Saturday li'),
-            sundayTimes = $('.timeFilterWrap .Sunday li'),
-            showDay = 'all';
+                saturdayTimes = $('.timeFilterWrap .Saturday li'),
+                sundayTimes = $('.timeFilterWrap .Sunday li'),
+                showDay = 'all';
 
             // Show All handler
             if (targetEl.hasClass('showAll')) {
@@ -264,8 +310,8 @@
         // Session details floating panel
         $('.detailsBtn').click(function (e) {
             var buttonOffset = $(this).offset(),
-            sessionId = $(this).attr('sessionId'),
-            speakers, speaker, i;
+                sessionId = $(this).attr('sessionId'),
+                speakers, speaker, i;
 
             if (floatingElement) {
                 hideFloatingElement(floatingElement);
@@ -407,351 +453,416 @@
         // End - Speaker panel
 
 
+
+        //$('#sessionsWrap').hide();
+
+        //$('#ContainerForFlip').show();
+
+        //$('#sessionsNonExtjs').show();
+
+
+        $(".toggle").click(function () {
+
+            if ($('#iframe').is(":visible")) {
+                $('#iframe').hide('slow', function () {
+                    $('#sessionsNonExtjs').show('slow');
+                });
+            } else {
+                $('#sessionsNonExtjs').hide('slow', function () {
+                    $('#iframe').show('slow');
+                });
+            }
+
+            //$('sessionsWrap current side').
+
+            //debugger;
+
+            //$('#sessionsNonExtjs').hide('slow', function() {
+            //    $('#iframe').show('slow');
+            //});
+
+            //$('#sessionsWrap').hide('slow', function () {
+            //    $('#sessionsWrapExtJS').show('slow');
+            //});
+
+
+            //var currentSide = $(".current"),
+            //otherSide = $(".side:not(.current)");
+
+            //currentSide.removeClass("current");
+            //otherSide.addClass("current");
+
+            //kendo.fx("#ContainerForFlip").slideInLeft(currentSide, otherSide).play();
+        });
+
+
     });
 </script>
 
 
+
+
+
+<button class="toggle">Advanced Mode</button>
+
+@*<div id="ContainerForFlip1">
+    <div id="sessionsWrapExtJS1">TOP</div>
+    <div id="sessionsWrap1">BOTTOM</div>
+</div>*@
+
+
+
+
 <h1 class="title">Sessions</h1>
 
-<div class="sessionsWrap">
+<div id="ContainerForFlip">
 
-    <div id="selectOptionsWrap" class="selectOptionsWrap">
-        <div class="option">
-            <div class="icon"></div>
-            <div class="label">Not Interested</div>
-        </div>
-        <div class="option interested">
-            <div class="icon"></div>
-            <div class="label">Interested</div>
-        </div>
-        <div class="option attending">
-            <div class="icon"></div>
-            <div class="label">Attending</div>
-        </div>
-    </div>
+    
+    <iframe id="iframe" class="side" src="../ExtJSApps/SessionViewer/app.html" width="600" height="500"></iframe>
+ 
+    <div id="sessionsNonExtjs" class="sessionsWrap current side">
 
-    <div class="floatingPanel detailsFloatingPanel" id="detailsFloatingPanel">
-        <div class="closePanelButton">
-            <div class="icon"></div>
+        <div id="selectOptionsWrap" class="selectOptionsWrap">
+            <div class="option">
+                <div class="icon"></div>
+                <div class="label">Not Interested</div>
+            </div>
+            <div class="option interested">
+                <div class="icon"></div>
+                <div class="label">Interested</div>
+            </div>
+            <div class="option attending">
+                <div class="icon"></div>
+                <div class="label">Attending</div>
+            </div>
         </div>
-        <div class="contentWrap">
-            <div class="content">
-                <div class="sessionWrap">
-                    <div class="textWrap">
-                        <h3 class="title"></h3>
-                        <div class="details">
-                            <span class="timeIcon"></span>Saturday, 5 PM <span class="mapLocationIcon"></span>Room 302, Lot 1 &nbsp;<a href="#">Map</a>
+
+        <div class="floatingPanel detailsFloatingPanel" id="detailsFloatingPanel">
+            <div class="closePanelButton">
+                <div class="icon"></div>
+            </div>
+            <div class="contentWrap">
+                <div class="content">
+                    <div class="sessionWrap">
+                        <div class="textWrap">
+                            <h3 class="title"></h3>
+                            <div class="details">
+                                <span class="timeIcon"></span>Saturday, 5 PM <span class="mapLocationIcon"></span>Room 302, Lot 1 &nbsp;<a href="#">Map</a>
+                            </div>
+                            <p class="description"></p>
                         </div>
-                        <p class="description"></p>
+                        <div class="footer">
+                            <div class="buttonWrap">
+                                <a href="#" class="button round blue">READ MORE</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="footer">
+                    <div class="speakerWrap">
+                        <div class="title">Speaker</div>
+                        <div class="speakerList">
+                            <div class="avatarWrap">
+                                <img class="speakerAvatar" src="~/Content/Images/speaker-avatar-sample.png" />
+                            </div>
+                            <div class="speakerInfo">
+                            </div>
+                        </div>
+                        <!--
+                            <div class="sessionType">
+                                <span class="label">Type</span>
+                                <br />
+                                Conference (<a href="#">What is it?</a>)
+                            </div>
+                            -->
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="pointer"></div>
+            </div>
+        </div>
+
+        <div class="floatingPanel tagsFilterLightbox" id="tagsFilterLightbox">
+            <div class="closePanelButton">
+                <div class="icon"></div>
+            </div>
+            <div class="contentWrap roundBorder">
+                <div class="header">
+                    <h3>PICK TAGS</h3>
+                </div>
+                <div class="tagsCheckboxWrap">
+                    <ul>
+                        <li class="selected"><span class="checkbox"></span><span class="label">.NET Framework</span></li>
+                        <li><span class="checkbox"></span><span class="label">ActionScript</span></li>
+                        <li><span class="checkbox"></span><span class="label">Ada</span></li>
+                        <li><span class="checkbox"></span><span class="label">Ajax</span></li>
+                        <li><span class="checkbox"></span><span class="label">Algorithm</span></li>
+                        <li><span class="checkbox"></span><span class="label">Android</span></li>
+                        <li><span class="checkbox"></span><span class="label">AppleScript</span></li>
+                        <li><span class="checkbox"></span><span class="label">ASCET</span></li>
+                        <li><span class="checkbox"></span><span class="label">ASP</span></li>
+                        <li class="selected"><span class="checkbox"></span><span class="label">ASP.NET</span></li>
+                        <li><span class="checkbox"></span><span class="label">ASP.BASH</span></li>
+                        <li><span class="checkbox"></span><span class="label">BPEL</span></li>
+                        <li><span class="checkbox"></span><span class="label">Multi-threading</span></li>
+                    </ul>
+                </div>
+                <div class="clearBoth"></div>
+                <div class="buttonWrap">
+                    <div class="finishButton button round gray border">
+                        <div class="icon"></div>
+                        <div class="label">FINISHED</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="floatingPanel sponsorPanel">
+            <div class="contentWrap">
+                <div class="content">
+                    <div class="sponsorLogoWrap">
+                        <img src="" alt="" />
+                    </div>
+                    <div class="sponsorInfoWrap">
+                        <p><a href="#">Wakanda</a> is an open-source platform for developing business web and mobile applications in Javascript.</p>
                         <div class="buttonWrap">
                             <a href="#" class="button round blue">READ MORE</a>
                         </div>
                     </div>
                 </div>
-                <div class="speakerWrap">
-                    <div class="title">Speaker</div>
-                    <div class="speakerList">
-                        <div class="avatarWrap">
-                            <img class="speakerAvatar" src="~/Content/Images/speaker-avatar-sample.png" />
+            </div>
+            <div class="footer">
+                <div class="pointer"></div>
+            </div>
+        </div>
+
+        <div class="sessionsFilterWrap roundBorder">
+            <div class="header">
+                <div class="arrow active"><span class="icon"></span></div>
+                <div class="label">FILTERS</div>
+            </div>
+            <div class="filterContentWrap active">
+                <div class="filterOptionsWrap">
+                    <div class="daysFilterWrap">
+                        <div class="labelWrap">
+                            <span class="icon"></span><span class="label">Day : </span>
                         </div>
-                        <div class="speakerInfo">
+                        <div class="optionsWrap">
+                            <ul id="sessionDaysCheckboxList">
+                                <li class="showAll selected"><span class="checkbox"></span><span class="label">Show all</span></li>
+                                <li class="saturday"><span class="checkbox"></span><span class="label">Saturday</span></li>
+                                <li class="sunday"><span class="checkbox"></span><span class="label">Sunday</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeFilterWrap">
+                        <div class="labelWrap">
+                            <span class="icon"></span><span class="label">Time : </span>
+                        </div>
+                        <div class="optionsWrap">
+                            @{
+                                var previousDay = "";
+                                var sessionDayTimeCount = Model.SessionTimeResults.Count - 1;
+                                var i = 0;
+                            }
+
+                            @foreach (var timeResult in Model.SessionTimeResults)
+                            {
+
+
+                                if (previousDay != timeResult.StartTimeFriendlyDay)
+                                {
+                                    previousDay = timeResult.StartTimeFriendlyDay;
+                                    @:<div class="timeOption @timeResult.StartTimeFriendlyDay">
+                                    <div class="dayLabel"><span class="icon"></span><span class="label">@(@timeResult.StartTimeFriendlyDay): </span></div>
+                                    @:<div class="timesWrap">
+                                    @:<ul>
+
+                                }                             
+                                <li><span class="checkbox"></span><span class="label">@(timeResult.StartTimeFriendlyTime)</span></li>
+
+                                if (i == sessionDayTimeCount || Model.SessionTimeResults[i + 1].StartTimeFriendlyDay != previousDay)
+                                {
+                                    @:</ul>
+                                    @:</div>
+                                    @:</div>
+                                                        
+                                }
+
+                                if (i <= sessionDayTimeCount)
+                                {
+                                    i++;
+                                }
+
+                            }
+
                         </div>
                     </div>
                     <!--
-                    <div class="sessionType">
-                        <span class="label">Type</span>
-                        <br />
-                        Conference (<a href="#">What is it?</a>)
-                    </div>
-                    -->
-                </div>
-            </div>
-        </div>
-        <div class="footer">
-            <div class="pointer"></div>
-        </div>
-    </div>
-
-    <div class="floatingPanel tagsFilterLightbox" id="tagsFilterLightbox">
-        <div class="closePanelButton">
-            <div class="icon"></div>
-        </div>
-        <div class="contentWrap roundBorder">
-            <div class="header">
-                <h3>PICK TAGS</h3>
-            </div>
-            <div class="tagsCheckboxWrap">
-                <ul>
-                    <li class="selected"><span class="checkbox"></span><span class="label">.NET Framework</span></li>
-                    <li><span class="checkbox"></span><span class="label">ActionScript</span></li>
-                    <li><span class="checkbox"></span><span class="label">Ada</span></li>
-                    <li><span class="checkbox"></span><span class="label">Ajax</span></li>
-                    <li><span class="checkbox"></span><span class="label">Algorithm</span></li>
-                    <li><span class="checkbox"></span><span class="label">Android</span></li>
-                    <li><span class="checkbox"></span><span class="label">AppleScript</span></li>
-                    <li><span class="checkbox"></span><span class="label">ASCET</span></li>
-                    <li><span class="checkbox"></span><span class="label">ASP</span></li>
-                    <li class="selected"><span class="checkbox"></span><span class="label">ASP.NET</span></li>
-                    <li><span class="checkbox"></span><span class="label">ASP.BASH</span></li>
-                    <li><span class="checkbox"></span><span class="label">BPEL</span></li>
-                    <li><span class="checkbox"></span><span class="label">Multi-threading</span></li>
-                </ul>
-            </div>
-            <div class="clearBoth"></div>
-            <div class="buttonWrap">
-                <div class="finishButton button round gray border">
-                    <div class="icon"></div>
-                    <div class="label">FINISHED</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="floatingPanel sponsorPanel">
-        <div class="contentWrap">
-            <div class="content">
-                <div class="sponsorLogoWrap">
-                    <img src="" alt="" />
-                </div>
-                <div class="sponsorInfoWrap">
-                    <p><a href="#">Wakanda</a> is an open-source platform for developing business web and mobile applications in Javascript.</p>
-                    <div class="buttonWrap">
-                        <a href="#" class="button round blue">READ MORE</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer">
-            <div class="pointer"></div>
-        </div>
-    </div>
-
-    <div class="sessionsFilterWrap roundBorder">
-        <div class="header">
-            <div class="arrow active"><span class="icon"></span></div>
-            <div class="label">FILTERS</div>
-        </div>
-        <div class="filterContentWrap active">
-            <div class="filterOptionsWrap">
-                <div class="daysFilterWrap">
-                    <div class="labelWrap">
-                        <span class="icon"></span><span class="label">Day : </span>
-                    </div>
-                    <div class="optionsWrap">
-                        <ul id="sessionDaysCheckboxList">
-                            <li class="showAll selected"><span class="checkbox"></span><span class="label">Show all</span></li>
-                            <li class="saturday"><span class="checkbox"></span><span class="label">Saturday</span></li>
-                            <li class="sunday"><span class="checkbox"></span><span class="label">Sunday</span></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeFilterWrap">
-                    <div class="labelWrap">
-                        <span class="icon"></span><span class="label">Time : </span>
-                    </div>
-                    <div class="optionsWrap">
-                        @{
-                            var previousDay = "";
-                            var sessionDayTimeCount = Model.SessionTimeResults.Count - 1;
-                            var i = 0;
-                        }
-
-                        @foreach (var timeResult in Model.SessionTimeResults)
-                        {
-
-
-                            if (previousDay != timeResult.StartTimeFriendlyDay)
-                            {
-                                previousDay = timeResult.StartTimeFriendlyDay;
-                            @:<div class="timeOption @timeResult.StartTimeFriendlyDay">
-<div class="dayLabel"><span class="icon"></span><span class="label">@(@timeResult.StartTimeFriendlyDay): </span></div>
-                                    @:<div class="timesWrap">
-                                        @:<ul>
-
-                            }                             
-                                            <li><span class="checkbox"></span><span class="label">@(timeResult.StartTimeFriendlyTime)</span></li>
-
-                            if (i == sessionDayTimeCount || Model.SessionTimeResults[i + 1].StartTimeFriendlyDay != previousDay)
-                            {
-                                        @:</ul>
-                                    @:</div>
-                                @:</div>
-                                                        
-                            }
-
-                            if (i <= sessionDayTimeCount)
-                            {
-                                i++;
-                            }
-
-                        }
-
-                    </div>
-                </div>
-                <!--
-                <div class="categoryFilterWrap">
-                    <div class="labelWrap">
-                        <span class="icon"></span><span class="label">Category : </span>
-                    </div>
-                    <div class="optionsWrap">
-                        <ul>
-                            <li class="selected"><span class="checkbox"></span><span class="label">Technology</span></li>
-                            <li><span class="checkbox"></span><span class="label">Business</span></li>
-                            <li><span class="checkbox"></span><span class="label">Career</span></li>
-                            <li><span class="checkbox"></span><span class="label">Kids</span></li>
-                            <li><span class="checkbox"></span><span class="label">Software Management</span></li>
-                        </ul>
-                    </div>
-                </div>
-                -->
-                <div class="tagsFilterWrap">
-                    <div class="labelWrap">
-                        <span class="icon"></span><span class="label">Tags : </span>
-                    </div>
-                    <div class="optionsWrap">
-                        <ul>
-                            <li class="selected"><span class="checkbox"></span><span class="label">C++</span></li>
-                            <li class="selected"><span class="checkbox"></span><span class="label">.NET</span></li>
-                            <li class="selected"><span class="checkbox"></span><span class="label">Database</span></li>
-                            <li><span class="checkbox"></span><span class="label">Linq2SQL</span></li>
-                        </ul>
-                    </div>
-                    <div class="buttonRightWrap">
-                        <div class="tagFiltersButton" id="tagFiltersButton">
-                            <div class="label"><span>Tag Filters</span></div>
-                            <div class="arrow"><span class="icon"></span></div>
+                        <div class="categoryFilterWrap">
+                            <div class="labelWrap">
+                                <span class="icon"></span><span class="label">Category : </span>
+                            </div>
+                            <div class="optionsWrap">
+                                <ul>
+                                    <li class="selected"><span class="checkbox"></span><span class="label">Technology</span></li>
+                                    <li><span class="checkbox"></span><span class="label">Business</span></li>
+                                    <li><span class="checkbox"></span><span class="label">Career</span></li>
+                                    <li><span class="checkbox"></span><span class="label">Kids</span></li>
+                                    <li><span class="checkbox"></span><span class="label">Software Management</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        -->
+                    <div class="tagsFilterWrap">
+                        <div class="labelWrap">
+                            <span class="icon"></span><span class="label">Tags : </span>
+                        </div>
+                        <div class="optionsWrap">
+                            <ul>
+                                <li class="selected"><span class="checkbox"></span><span class="label">C++</span></li>
+                                <li class="selected"><span class="checkbox"></span><span class="label">.NET</span></li>
+                                <li class="selected"><span class="checkbox"></span><span class="label">Database</span></li>
+                                <li><span class="checkbox"></span><span class="label">Linq2SQL</span></li>
+                            </ul>
+                        </div>
+                        <div class="buttonRightWrap">
+                            <div class="tagFiltersButton" id="tagFiltersButton">
+                                <div class="label"><span>Tag Filters</span></div>
+                                <div class="arrow"><span class="icon"></span></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="sessionGroupSearchWrap ">
-        <div class="groupWrap">
-            <div class="label">Group sessions by</div>
-            <div class="groupSessionsSelect">
-                <div class="roundSelect">
-                    <div class="select">
-                        <div class="label"><span class="text">Time</span></div>
-                        <div class="arrow"></div>
+        <div class="sessionGroupSearchWrap ">
+            <div class="groupWrap">
+                <div class="label">Group sessions by</div>
+                <div class="groupSessionsSelect">
+                    <div class="roundSelect">
+                        <div class="select">
+                            <div class="label"><span class="text">Time</span></div>
+                            <div class="arrow"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="searchWrap">
+                <div class="label">Search: </div>
+                <div class="searchInputWrap">
+                    <div class="searchTypeWrap">
+                        <div class="select">
+                            <div class="label"><span class="text">Keyword</span></div>
+                            <div class="arrow"></div>
+                        </div>
+                    </div>
+                    <div class="inputWrap">
+                        <input type="text" value="Type your search..." />
+                    </div>
+                    <div class="searchButtonWrap">
+                        <input type="button" class="searchButton" value="" />
                     </div>
                 </div>
             </div>
         </div>
-        <div class="searchWrap">
-            <div class="label">Search: </div>
-            <div class="searchInputWrap">
-                <div class="searchTypeWrap">
-                    <div class="select">
-                        <div class="label"><span class="text">Keyword</span></div>
-                        <div class="arrow"></div>
-                    </div>
-                </div>
-                <div class="inputWrap">
-                    <input type="text" value="Type your search..." />
-                </div>
-                <div class="searchButtonWrap">
-                    <input type="button" class="searchButton" value="" />
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="sessionsList">
-        <h4>Saturday, 11:15 AM</h4>
-        <table id="sessionsTable">
+        <div class="sessionsList">
+            <h4>Saturday, 11:15 AM</h4>
+            <table id="sessionsTable">
 
-            @foreach (var session in Model.Sessions)
-            {
+                @foreach (var session in Model.Sessions)
+                {
     
-                <tr id="session_@session.Id" class="session">
-                    <td class="title" width="330">
+                    <tr id="session_@session.Id" class="session">
+                        <td class="title" width="330">
 
-                        <div id="sessionInfoDetail" data-id="@session.Id">
-                            @*BELOW, PresenterURL goes to link inside code camp*@
+                            <div id="sessionInfoDetail" data-id="@session.Id">
+                                @*BELOW, PresenterURL goes to link inside code camp*@
 
-                            <span id="sessionTitle_@session.Id">@session.TitleEllipsized</span>
-                            <br />
-                            <i>by</i>
-                            @{ var multipleSpeakerSeparator = " "; }
-                            @foreach (var speaker in session.SpeakersList)
-                            {
-                                @multipleSpeakerSeparator <a href="@(speaker.SpeakerLocalUrl)" class="author" id="speaker_@(speaker.AttendeeId)" speakerId="@speaker.AttendeeId"> @speaker.UserFirstName @speaker.UserLastName </a>multipleSpeakerSeparator = ",";
-                            }
-                        
-                            @* Next 3 lines are for popup not to get confused I think*@
-                            <div class="sessionDetails" id="sessionDetails_@session.Id">
-                                <span class="timeIcon"></span><span id="sessionTime_@session.Id" class="sessionTimeClass">@session.SessionTime</span>
-                                <span class="mapLocationIcon"></span>Room <span id="sessionRoom_@session.Id"  class="roomNumberClass">@session.RoomNumber</span>
-                            </div>
-                            <div class="sessionDescription" id="sessionDescription_@session.Id">@session.Description</div>
-                            <div class="sessionUrl" id="sessionUrl_@session.Id"><a href="@(session.SessionUrl)" title="@session.TitleEllipsized" class="button round blue sessionTitleEllipsized">READ MORE</a></div>
-                            <div class="speakerInfo" id="speakerInfoList_@session.Id">
+                                <span id="sessionTitle_@session.Id">@session.TitleEllipsized</span>
+                                <br />
+                                <i>by</i>
+                                @{ var multipleSpeakerSeparator = " "; }
                                 @foreach (var speaker in session.SpeakersList)
                                 {
-                                    <div class="speakerInfoItem">
-                                        <div class="avatarWrap">
-                                            <img class="speakerAvatar" src="@(speaker.ImageUrl)?width=55" />
-                                        </div>
-                                        <div class="speakerInfo">
-                                            <div id="authorLinkContainer_@(session.Id)_@speaker.AttendeeId"></div>
-                                            <p>
-                                                <span class="speakerBio">@speaker.UserBio</span>
-                                            </p>
-                                            <span class="speakerName">@speaker.UserFirstName @speaker.UserLastName</span>
-                                            <span class="speakerBioEllipsized">@speaker.UserBioEllipsized</span>
-                                            <span class="speakerWebSite">@speaker.UserWebsite</span>
-                                            <span class="speakerUrl">@speaker.SpeakerLocalUrl</span>
-                                            <span class="speakerCity">@speaker.City</span>
-                                            <span class="speakerState">@speaker.State</span>
-                                            <span class="speakerTwitterHandle">@speaker.TwitterHandle</span>
-                                            <span class="speakerSaturdayClasses">@speaker.SaturdayClasses</span>
-                                            <span class="speakerSundayClasses">@speaker.SundayClasses</span>
+                                    @multipleSpeakerSeparator <a href="@(speaker.SpeakerLocalUrl)" class="author" id="speaker_@(speaker.AttendeeId)" speakerId="@speaker.AttendeeId"> @speaker.UserFirstName @speaker.UserLastName </a>multipleSpeakerSeparator = ",";
+                                }
+                        
+                                @* Next 3 lines are for popup not to get confused I think*@
+                                <div class="sessionDetails" id="sessionDetails_@session.Id">
+                                    <span class="timeIcon"></span><span id="sessionTime_@session.Id" class="sessionTimeClass">@session.SessionTime</span>
+                                    <span class="mapLocationIcon"></span>Room <span id="sessionRoom_@session.Id"  class="roomNumberClass">@session.RoomNumber</span>
+                                </div>
+                                <div class="sessionDescription" id="sessionDescription_@session.Id">@session.Description</div>
+                                <div class="sessionUrl" id="sessionUrl_@session.Id"><a href="@(session.SessionUrl)" title="@session.TitleEllipsized" class="button round blue sessionTitleEllipsized">READ MORE</a></div>
+                                <div class="speakerInfo" id="speakerInfoList_@session.Id">
+                                    @foreach (var speaker in session.SpeakersList)
+                                    {
+                                        <div class="speakerInfoItem">
+                                            <div class="avatarWrap">
+                                                <img class="speakerAvatar" src="@(speaker.ImageUrl)?width=55" />
+                                            </div>
+                                            <div class="speakerInfo">
+                                                <div id="authorLinkContainer_@(session.Id)_@speaker.AttendeeId"></div>
+                                                <p>
+                                                    <span class="speakerBio">@speaker.UserBio</span>
+                                                </p>
+                                                <span class="speakerName">@speaker.UserFirstName @speaker.UserLastName</span>
+                                                <span class="speakerBioEllipsized">@speaker.UserBioEllipsized</span>
+                                                <span class="speakerWebSite">@speaker.UserWebsite</span>
+                                                <span class="speakerUrl">@speaker.SpeakerLocalUrl</span>
+                                                <span class="speakerCity">@speaker.City</span>
+                                                <span class="speakerState">@speaker.State</span>
+                                                <span class="speakerTwitterHandle">@speaker.TwitterHandle</span>
+                                                <span class="speakerSaturdayClasses">@speaker.SaturdayClasses</span>
+                                                <span class="speakerSundayClasses">@speaker.SundayClasses</span>
                                           
 
+                                            </div>
                                         </div>
-                                    </div>
-                                }
+                                    }
 
-                            </div>
+                                </div>
                             
-                            @*the tagname is for SEO only since hidden*@
-                            <div class="tagInfo" id="tagInfoList_@session.Id">
-                                @foreach (var tag in session.TagsResults)
-                                {
-                                    <div>
-                                        <span class="tagId">@tag.Id</span>
-                                        <span class="tagName">@tag.TagName</span>  
-                                    </div>
-                                }
+                                @*the tagname is for SEO only since hidden*@
+                                <div class="tagInfo" id="tagInfoList_@session.Id">
+                                    @foreach (var tag in session.TagsResults)
+                                    {
+                                        <div>
+                                            <span class="tagId">@tag.Id</span>
+                                            <span class="tagName">@tag.TagName</span>  
+                                        </div>
+                                    }
+
+                                </div>
 
                             </div>
+                        </td>
+                        <td class="action">
+                            @*DO NOT REFORMAT NEXT 4 LINES.  CAUSES INTEREST SELECTION TO SHIFT FUNNY*@
+                            <div class="interestSelectBtn" id="interestSelectBtn_@session.Id">
+                                <div class="select"><div class="label"><span class="icon"></span>
+                                                        <span class="text">Not Interested</span></div><div class="arrow"></div></div>
+                            </div>
+                        </td>
+                        <td class="details">
+                            <div class="detailsBtn" id="detailsBtn_@session.Id" sessionId="@session.Id">
+                                <div class="icon"></div>
+                                <div class="label">Details</div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
 
-                        </div>
-                    </td>
-                    <td class="action">
-                        @*DO NOT REFORMAT NEXT 4 LINES.  CAUSES INTEREST SELECTION TO SHIFT FUNNY*@
-                        <div class="interestSelectBtn" id="interestSelectBtn_@session.Id">
-                            <div class="select"><div class="label"><span class="icon"></span>
-                                <span class="text">Not Interested</span></div><div class="arrow"></div></div>
-                        </div>
-                    </td>
-                    <td class="details">
-                        <div class="detailsBtn" id="detailsBtn_@session.Id" sessionId="@session.Id">
-                            <div class="icon"></div>
-                            <div class="label">Details</div>
-                        </div>
-                    </td>
-                </tr>
-            }
-        </table>
+
     </div>
 
-
 </div>
+
+
 
 
 @*

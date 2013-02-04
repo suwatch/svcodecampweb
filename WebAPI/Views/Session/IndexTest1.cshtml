@@ -11,6 +11,8 @@
    
     var x = $(document).ready(function () {
         
+        $('#iframe').hide();
+        
         //debugger;
         SessionsDataGlobal = new Array();
 
@@ -449,40 +451,76 @@
             }, 1300);
         });
         // End - Speaker panel
+        
+
+      
+        //$('#sessionsWrap').hide();
+
+        //$('#ContainerForFlip').show();
+        
+        //$('#sessionsNonExtjs').show();
+
 
         $(".toggle").click(function () {
+            
+            if ($('#iframe').is(":visible")) {
+                $('#iframe').hide('slow', function () {
+                    $('#sessionsNonExtjs').show('slow');
+                });
+            } else {
+                $('#sessionsNonExtjs').hide('slow', function () {
+                    $('#iframe').show('slow');
+                });
+            }
+            
+            //$('sessionsWrap current side').
 
-            var currentSide = $(".sessionsWrapExtJS"),
-                otherSide = $(".side:not(.sessionsWrapExtJS)");
+            //debugger;
 
-            currentSide.removeClass("sessionsWrap");
-            otherSide.addClass("sessionsWrap");
+            //$('#sessionsNonExtjs').hide('slow', function() {
+            //    $('#iframe').show('slow');
+            //});
 
-            kendo.fx("#ContainerForFlip").flipHorizontal(currentSide, otherSide).play();
+            //$('#sessionsWrap').hide('slow', function () {
+            //    $('#sessionsWrapExtJS').show('slow');
+            //});
+
+
+            //var currentSide = $(".current"),
+            //otherSide = $(".side:not(.current)");
+
+            //currentSide.removeClass("current");
+            //otherSide.addClass("current");
+
+            //kendo.fx("#ContainerForFlip").slideInLeft(currentSide, otherSide).play();
         });
+     
 
     });
 </script>
 
-<script type="text/javascript">
-    
-  
 
 
 
-</script>
 
 <button class="toggle">Advanced Mode</button>
+
+@*<div id="ContainerForFlip1">
+    <div id="sessionsWrapExtJS1">TOP</div>
+    <div id="sessionsWrap1">BOTTOM</div>
+</div>*@
+
+
+
 
 <h1 class="title">Sessions</h1>
 
 <div id="ContainerForFlip">
 
-    <div class="sessionsWrapExtJS">
-        <iframe id="#iframe" src="../ExtJSApps/SessionViewer/app.html" width="600" height="500"></iframe>
-    </div>
-
-    <div class="sessionsWrap">
+    
+    <iframe id="iframe" class="side" src="../ExtJSApps/SessionViewer/app.html" width="600" height="500"></iframe>
+ 
+    <div id="sessionsNonExtjs" class="sessionsWrap current side">
 
         <div id="selectOptionsWrap" class="selectOptionsWrap">
             <div class="option">

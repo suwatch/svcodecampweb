@@ -22,11 +22,17 @@ Ext.application({
         'SessionModel'
     ],
     stores: [
-        'SessionStore'
+        'SessionStore1'
     ],
     views: [
         'MainViewport'
     ],
     autoCreateViewport: true,
-    name: 'SessionApp'
+    name: 'SessionApp',
+
+    launch: function() {
+
+        SessionApp.sessionData = [[103],[104],[105]];
+    }
+
 });

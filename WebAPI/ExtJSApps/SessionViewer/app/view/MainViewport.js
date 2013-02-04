@@ -29,7 +29,7 @@ Ext.define('SessionApp.view.MainViewport', {
                             xtype: 'gridpanel',
                             itemId: 'SessionGrid',
                             title: 'My Grid Panel',
-                            store: 'SessionStore',
+                            store: 'SessionStore1',
                             viewConfig: {
 
                             },

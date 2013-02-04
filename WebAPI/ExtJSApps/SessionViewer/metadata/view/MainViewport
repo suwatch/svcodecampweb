@@ -36,7 +36,7 @@
                         "designer|userClassName": "MyGridPanel",
                         "itemId": "SessionGrid",
                         "title": "My Grid Panel",
-                        "store": "SessionStore"
+                        "store": "SessionStore1"
                     },
                     "designerId": "eb95f438-b28c-4fac-ae3f-5ef64c4d37ea",
                     "cn": [

@@ -6,14 +6,13 @@
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userClassName": "SessionStore",
-        "autoLoad": true,
-        "storeId": "MyArrayStore",
+        "designer|userClassName": "SessionStore1",
+        "storeId": "MyArrayStore1",
         "model": "SessionModel",
-        "data": "[[101],[102]]"
+        "data": null
     },
-    "id": "ExtBox1-ext-gen18263",
-    "designerId": "78d14815-2e9c-4c52-9dfe-c3a873eadeb1",
+    "id": "ExtBox1-ext-gen17453",
+    "designerId": "516e786e-ea6b-464d-853c-6080c1a9169b",
     "cn": [
         {
             "type": "ajaxproxy",
@@ -25,7 +24,7 @@
             "userConfig": {
                 "designer|userClassName": "MyAjaxProxy"
             },
-            "designerId": "9ae6139f-b0af-493c-bbd8-4a6a692a5d09",
+            "designerId": "cf3c8426-37a2-4e61-bbc3-5f36700b4b97",
             "cn": [
                 {
                     "type": "arrayreader",
@@ -37,7 +36,7 @@
                     "userConfig": {
                         "designer|userClassName": "MyArrayReader"
                     },
-                    "designerId": "023ec2b8-955a-48ca-82b7-2f2cdd629f68"
+                    "designerId": "ee808d4a-abf1-4902-ab45-6c7206cfce27"
                 }
             ]
         }

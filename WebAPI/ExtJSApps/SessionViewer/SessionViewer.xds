@@ -30,14 +30,6 @@
             ],
             "className": "MainViewport"
         },
-        "bb183af3-be2b-40b8-82a9-bdb7c20a00ca": {
-            "paths": [
-                "metadata/store/SessionStore",
-                "app/store/override/SessionStore.js",
-                "app/store/SessionStore.js"
-            ],
-            "className": "SessionStore"
-        },
         "1ff47ea3-a985-40bb-a1d1-83ee361be845": {
             "paths": [
                 "metadata/model/SessionModel",
@@ -45,6 +37,14 @@
                 "app/model/SessionModel.js"
             ],
             "className": "SessionModel"
+        },
+        "516e786e-ea6b-464d-853c-6080c1a9169b": {
+            "paths": [
+                "metadata/store/SessionStore1",
+                "app/store/override/SessionStore1.js",
+                "app/store/SessionStore1.js"
+            ],
+            "className": "SessionStore1"
         }
     },
     "viewOrderMap": {
@@ -52,7 +52,7 @@
             "86b503a1-4911-407a-9bae-64b4e8804534"
         ],
         "store": [
-            "bb183af3-be2b-40b8-82a9-bdb7c20a00ca"
+            "516e786e-ea6b-464d-853c-6080c1a9169b"
         ],
         "controller": [],
         "model": [

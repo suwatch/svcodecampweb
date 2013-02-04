@@ -450,19 +450,29 @@
         });
         // End - Speaker panel
 
+        $(".toggle").click(function () {
+
+            var currentSide = $(".sessionsWrapExtJS"),
+                otherSide = $(".side:not(.sessionsWrapExtJS)");
+
+            currentSide.removeClass("sessionsWrap");
+            otherSide.addClass("sessionsWrap");
+
+            kendo.fx("#ContainerForFlip").flipHorizontal(currentSide, otherSide).play();
+        });
 
     });
 </script>
 
 <script type="text/javascript">
     
-    kendo.fx($("#container")).flip("horizontal", $("#foo"), $("#bar")).play();
-    kendo.fx($("#container")).flipHorizontal($("#foo"), $("#bar")).play();
+  
 
 
 
 </script>
 
+<button class="toggle">Advanced Mode</button>
 
 <h1 class="title">Sessions</h1>
 

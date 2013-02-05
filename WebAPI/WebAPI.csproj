@@ -2084,6 +2084,7 @@
     <Content Include="Images\blue.bmp" />
     <Content Include="Images\BlueCircle.gif" />
     <Content Include="Images\cal.jpg" />
+    <Content Include="Images\CrashTestDummy.jpg" />
     <Content Include="Images\ExclamationPoint.gif" />
     <Content Include="Images\ExclamationPoint.jpg" />
     <Content Include="Images\ExclamationPoint_small1.jpg" />

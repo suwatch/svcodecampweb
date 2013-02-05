@@ -4,6 +4,7 @@
 using System;
 using System.Data.SqlTypes;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 namespace CodeCampSV
 {
@@ -15,7 +16,7 @@ namespace CodeCampSV
         [DataMember] public string Description { get; set; }
         [DataMember] public bool? Visible { get; set; }
         [DataMember] public string AlternateURL { get; set; }
-        [DataMember] public System.Data.Linq.Binary TrackImage { get; set; }
+        [DataMember][XmlIgnore()] public System.Data.Linq.Binary TrackImage { get; set; }
         [DataMember] public DateTime? CreationDate { get; set; }
         [DataMember] public DateTime? ModifiedDate { get; set; }
         

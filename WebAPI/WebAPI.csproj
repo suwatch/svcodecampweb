@@ -457,6 +457,7 @@
     <Compile Include="Contributors.aspx.designer.cs">
       <DependentUpon>Contributors.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\SponsorController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SessionController.cs" />
@@ -1361,6 +1362,9 @@
     <Content Include="AgendaUpdateByTime.aspx" />
     <Content Include="AgendaUpdateSpeakersMultipleSessions.aspx" />
     <Content Include="AllAttendees.aspx" />
+    <EmbeddedResource Include="App_Data\CommonViewModel.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <Content Include="App_Data\EventBoardJson.txt" />
     <Content Include="App_Readme\glimpse.readme.txt" />
     <Content Include="App_Sprites\adobe-flash.jpg" />
@@ -3108,6 +3112,8 @@
     <Content Include="Views\Register\IndexTest.cshtml" />
     <Content Include="Views\Session\IndexTest1.cshtml" />
     <Content Include="Views\Session\indexTest2.cshtml" />
+    <Content Include="Views\Sponsor\Index.cshtml" />
+    <Content Include="Views\Sponsor\IndexTest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ExtJSApps\SessionViewerProd\" />

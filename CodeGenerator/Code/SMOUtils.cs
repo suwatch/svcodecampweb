@@ -32,8 +32,8 @@ namespace ThreePLogicAccessCodeGen.Code
             // Pull out of connectionString the Catalog
             // Catalog=3plogic;
             const string catalogSearchString = "Catalog=";
-            int pos1 = connectionString.IndexOf(catalogSearchString) + catalogSearchString.Length;
-            int pos2 = connectionString.Substring(pos1).IndexOf(";") + pos1;
+            int pos1 = connectionString.IndexOf(catalogSearchString, StringComparison.Ordinal) + catalogSearchString.Length;
+            int pos2 = connectionString.Substring(pos1).IndexOf(";", StringComparison.Ordinal) + pos1;
             string catalogName = connectionString.Substring(pos1, pos2 - pos1).ToLower();
 
             using (var sqlConnection = new SqlConnection(connectionString))
@@ -135,8 +135,14 @@ namespace ThreePLogicAccessCodeGen.Code
                 string dataType = valueIn;
                 // get rid of anything after a comma
                 currentAttributeInfo.DataType =
-                    dataType.IndexOf(",") >= 0 ? dataType.Substring(0, dataType.IndexOf(",")) : dataType;
-            }
+                    dataType.IndexOf(",", StringComparison.Ordinal) >= 0
+                        ? dataType.Substring(0, dataType.IndexOf(",", StringComparison.Ordinal))
+                        : dataType;
+
+               
+
+
+        }
             else if (lastXMLTag.Equals("ColumnSize"))
             {
                 currentAttributeInfo.ColumnSize = Convert.ToInt32(valueIn);

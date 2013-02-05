@@ -149,17 +149,7 @@ namespace WebAPI
                           action = "Index",
                           year = currentYear
                       });
-            routes.MapRoute("SponsorRouteDetail", "Sponsor/{year}/{sponsor}",
-                     new
-                     {
-                         /* Your default route */
-                         controller = "Sponsor",
-                         action = "Detail",
-                         year = -1,
-                         sponsor = ""
-                     });
-
-           
+         
 
           
 

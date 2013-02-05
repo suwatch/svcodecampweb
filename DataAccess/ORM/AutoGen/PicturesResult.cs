@@ -4,6 +4,7 @@
 using System;
 using System.Data.SqlTypes;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 namespace CodeCampSV
 {
@@ -12,7 +13,7 @@ namespace CodeCampSV
         [DataMember] public Guid? AttendeePKID { get; set; }
         [DataMember] public DateTime? DateCreated { get; set; }
         [DataMember] public DateTime? DateUpdated { get; set; }
-        [DataMember] public System.Data.Linq.Binary PictureBytes { get; set; }
+        [DataMember][XmlIgnore()] public System.Data.Linq.Binary PictureBytes { get; set; }
         [DataMember] public string FileName { get; set; }
         [DataMember] public string Description { get; set; }
         

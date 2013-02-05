@@ -68,6 +68,7 @@ namespace WebAPI.Code
 
     }
 
+    [Serializable]
     public class RSSItem
     {
         [DataObjectField(true)]
@@ -85,7 +86,7 @@ namespace WebAPI.Code
         [DataObjectField(false)]
         public String PubDateMonthYearOnly { get; set; }
 
-
+        public RSSItem() {}
 
         public RSSItem(int id, string postTitle, string postURL, string pubDate)
         {

@@ -1,0 +1,32 @@
+﻿@model WebAPI.ViewModels.CommonViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Speakers</h2>
+
+       <table id='myTable' >
+ 
+      
+@foreach (var sponsor in Model.Sponsors)
+{
+    <br />
+    @sponsor.SponsorName
+    <br />
+    @sponsor.NavigateURL
+    <br />
+    @sponsor.SponsorSupportLevel
+    <br />
+    @sponsor.SponsorSupportLevelOrder
+    <br />
+    <img src="@(sponsor.ImageURL)?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white" alt="@sponsor.SponsorName"  />
+    <hr />
+}
+
+
+     
+
+</table>
+
+

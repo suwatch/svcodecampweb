@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Web;
+using System.Xml.Serialization;
 using CodeCampSV;
 using WebAPI.Controllers;
 using WebAPI.ViewModels;
@@ -39,38 +43,53 @@ namespace WebAPI.Code
         /// <returns></returns>
         public static List<SessionTimesResult> SessionTimesResultsWithSessionInfo(int codeCampYearId, List<SessionsResult> sessions)
         {
-            List<SessionTimesResult> sessionTimesResults =
-                ManagerBase<SessionTimesManager, SessionTimesResult, SessionTimes, CodeCampDataContext>.I.Get(new SessionTimesQuery
-                                                                                                                  {
-                                                                                                                      CodeCampYearId = codeCampYearId
-                                                                                                                  });
+             string retStr = "";
+            List<SessionTimesResult> sessionTimesResults;
+            if (IsTestMode)
+            {
+                var commonViewModel = CommonViewModelTestData();
+                sessionTimesResults = commonViewModel.SessionTimeResults;
+            }
+            else
+            {
+                sessionTimesResults =
+                    ManagerBase<SessionTimesManager, SessionTimesResult, SessionTimes, CodeCampDataContext>.I.Get
+                        (new SessionTimesQuery
+                             {
+                                 CodeCampYearId
+                                     =
+                                     codeCampYearId
+                             });
+            }
 
             var sessionsAssignedToTime = new List<int>();
 
-            // need to go through all times and sort. need to create extra record for unassigned times
-            foreach (var sessionTimeResult in sessionTimesResults)
-            {
-                sessionTimeResult.SessionsResults =
-                    sessions.Where(a => a.SessionTimesId == sessionTimeResult.Id)
-                            .OrderBy(a => a.Title.ToUpper())
-                            .ToList();
-                sessionsAssignedToTime.AddRange(sessionTimeResult.SessionsResults.Select(a => a.Id).ToList());
-            }
+                // need to go through all times and sort. need to create extra record for unassigned times
+                foreach (var sessionTimeResult in sessionTimesResults)
+                {
+                    sessionTimeResult.SessionsResults =
+                        sessions.Where(a => a.SessionTimesId == sessionTimeResult.Id)
+                                .OrderBy(a => a.Title.ToUpper())
+                                .ToList();
+                    sessionsAssignedToTime.AddRange(sessionTimeResult.SessionsResults.Select(a => a.Id).ToList());
+                }
 
-            var allSessionIds = sessions.Select(a => a.Id).ToList();
+                var allSessionIds = sessions.Select(a => a.Id).ToList();
 
-            var unAssignedIds = allSessionIds.Except(sessionsAssignedToTime);
-            if (unAssignedIds.Any())
-            {
-                var sessionTimeResultUnassigned = new SessionTimesResult
-                                                      {
-                                                          Id = sessionTimesResults.Max(a => a.Id) + 1,
-                                                          CodeCampYearId = codeCampYearId,
-                                                          SessionsResults = sessions,
-                                                          StartTimeFriendly = "Unassigned"
-                                                      };
-                sessionTimesResults.Add(sessionTimeResultUnassigned);
-            }
+                var unAssignedIds = allSessionIds.Except(sessionsAssignedToTime);
+                if (unAssignedIds.Any())
+                {
+                    var sessionTimeResultUnassigned = new SessionTimesResult
+                                                          {
+                                                              Id = sessionTimesResults.Max(a => a.Id) + 1,
+                                                              CodeCampYearId = codeCampYearId,
+                                                              SessionsResults = sessions,
+                                                              StartTimeFriendly = "Unassigned"
+                                                          };
+                    sessionTimesResults.Add(sessionTimeResultUnassigned);
+                }
+            
+
             return sessionTimesResults;
         }
 
@@ -155,6 +174,34 @@ namespace WebAPI.Code
                 codeCampYearId = dateDict[year];
             }
             return codeCampYearId;
+        }
+
+        public static bool IsTestMode
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["TestingDataOnly"] != null &&
+                       (ConfigurationManager.AppSettings["TestingDataOnly"].ToLower().Equals("true"));
+            } 
+        }
+
+        public static CommonViewModel CommonViewModelTestData()
+        {
+            CommonViewModel commonViewModel = null;
+            try
+            {
+                var assembly = Assembly.GetExecutingAssembly();
+                var textStreamReader =
+                    new StreamReader(assembly.GetManifestResourceStream("WebAPI.App_Data.CommonViewModel.xml"));
+                //string data = _textStreamReader.ReadToEnd();
+                var ser = new XmlSerializer(typeof(CommonViewModel));
+                commonViewModel = (CommonViewModel)ser.Deserialize(textStreamReader);
+            }
+            catch
+            {
+                throw new ApplicationException("deserializing test data failed");
+            }
+            return commonViewModel;
         }
     }
 }

@@ -3,11 +3,11 @@
     "settings": {
         "urlPrefix": "",
         "spacesToIndent": 4,
-        "exportPath": "",
+        "exportPath": "C:/VCProject/SVCodeCampWeb/WebAPI/ExtJSApps/SessionViewerProd",
         "sdkPath": "",
         "lineEnding": "CRLF",
         "genTimestamps": false,
-        "cacheBust": false
+        "cacheBust": true
     },
     "xdsVersion": "2.1.0",
     "xdsBuild": 678,

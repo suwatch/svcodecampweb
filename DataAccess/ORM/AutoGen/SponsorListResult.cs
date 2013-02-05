@@ -4,6 +4,7 @@
 using System;
 using System.Data.SqlTypes;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 namespace CodeCampSV
 {
@@ -24,7 +25,7 @@ namespace CodeCampSV
         [DataMember] public string CompanyState { get; set; }
         [DataMember] public string CompanyZip { get; set; }
         [DataMember] public string CompanyPhoneNumber { get; set; }
-        [DataMember] public System.Data.Linq.Binary CompanyImage { get; set; }
+        [DataMember][XmlIgnore()] public System.Data.Linq.Binary CompanyImage { get; set; }
         [DataMember] public DateTime? CreationDate { get; set; }
         [DataMember] public DateTime? ModifiedDate { get; set; }
         [DataMember] public string CompanyImageType { get; set; }

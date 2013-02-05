@@ -4,6 +4,7 @@
 using System;
 using System.Data.SqlTypes;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 namespace CodeCampSV
 {
@@ -32,7 +33,7 @@ namespace CodeCampSV
         [DataMember] public DateTime? LastPasswordChangedDate { get; set; }
         [DataMember] public string UserWebsite { get; set; }
         [DataMember] public string UserLocation { get; set; }
-        [DataMember] public System.Data.Linq.Binary UserImage { get; set; }
+        [DataMember][XmlIgnore()] public System.Data.Linq.Binary UserImage { get; set; }
         [DataMember] public string UserFirstName { get; set; }
         [DataMember] public string UserLastName { get; set; }
         [DataMember] public string UserZipCode { get; set; }

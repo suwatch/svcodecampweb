@@ -4,6 +4,7 @@
 using System;
 using System.Data.SqlTypes;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 namespace CodeCampSV
 {

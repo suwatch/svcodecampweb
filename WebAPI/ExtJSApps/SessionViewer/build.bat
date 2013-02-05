@@ -1,0 +1,1 @@
+sencha -sdk C:\VCProject\SVCodeCampWeb\WebAPI\extjs-4.1.3 generate app SessionApp C:\VCProject\SVCodeCampWeb\WebAPI\ExtJSApps\SessionViewer

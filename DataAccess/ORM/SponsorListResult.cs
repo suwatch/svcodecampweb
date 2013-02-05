@@ -16,6 +16,7 @@ namespace CodeCampSV
 
         public bool? HasCurrentCodeCampYear { get; set; } // Used to determine if this sponsor has current code camp year sponsored
 
+       
         public List<SponsorListCodeCampYearResult> SponsorListCodeCampYearResults { get; set; }
 
         public List<SponsorListContactResult> SponsorListContactResults { get; set; }

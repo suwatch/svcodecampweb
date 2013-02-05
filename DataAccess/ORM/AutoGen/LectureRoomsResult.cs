@@ -4,6 +4,7 @@
 using System;
 using System.Data.SqlTypes;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 namespace CodeCampSV
 {
@@ -15,7 +16,7 @@ namespace CodeCampSV
         [DataMember] public int? Capacity { get; set; }
         [DataMember] public bool? Projector { get; set; }
         [DataMember] public bool? Screen { get; set; }
-        [DataMember] public System.Data.Linq.Binary Picture { get; set; }
+        [DataMember][XmlIgnore()] public System.Data.Linq.Binary Picture { get; set; }
         [DataMember] public bool? Available { get; set; }
         
         //  

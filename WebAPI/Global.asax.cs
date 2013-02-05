@@ -12,6 +12,7 @@ using System.Web.SessionState;
 using CodeCampSV;
 using Gurock.SmartInspect;
 using ListNanny;
+using WebAPI.Code;
 
 namespace WebAPI
 {
@@ -47,66 +48,74 @@ namespace WebAPI
             aspNetMime.MimeMessage.LoadLicenseFile(string.Format("{0}aspNetMime.xml.lic", baseDir));
             NDR.LoadLicenseFile(string.Format("{0}ListNanny.xml.lic", baseDir));
 
-
-
-            if (!Roles.RoleExists("superuser")) Roles.CreateRole("superuser");
-            if (!Roles.RoleExists("surveyviewer")) Roles.CreateRole("surveyviewer");
-            if (!Roles.RoleExists("admin")) Roles.CreateRole("admin");
-            if (!Roles.RoleExists("presenter")) Roles.CreateRole("presenter");
-            if (!Roles.RoleExists("scheduler")) Roles.CreateRole("scheduler");
-            if (!Roles.RoleExists("scheduleviewer")) Roles.CreateRole("scheduleviewer");
-            if (!Roles.RoleExists("trackadmin")) Roles.CreateRole("trackadmin");
-            if (!Roles.RoleExists("removeprimaryspeaker")) Roles.CreateRole("removeprimaryspeaker");
-            if (!Roles.RoleExists("AddMoreThanTwoSessions")) Roles.CreateRole("AddMoreThanTwoSessions");
-            if (!Roles.RoleExists("AddTwoSessions")) Roles.CreateRole("AddTwoSessions");
-            if (!Roles.RoleExists("AddThreeSessions")) Roles.CreateRole("AddThreeSessions");
-            if (!Roles.RoleExists("AddFourSessions")) Roles.CreateRole("AddFourSessions");
-            if (!Roles.RoleExists("VolunteerCoordinator")) Roles.CreateRole("VolunteerCoordinator");
-            if (!Roles.RoleExists("NoAutoLoginForGUID")) Roles.CreateRole("NoAutoLoginForGUID");
-            if (!Roles.RoleExists("VideoEditor")) Roles.CreateRole("VideoEditor");
-            if (!Roles.RoleExists("TagGroupGraphViewer")) Roles.CreateRole("TagGroupGraphViewer");
-            if (!Roles.RoleExists("ReferralMaker")) Roles.CreateRole("ReferralMaker");
-            if (!Roles.RoleExists("AllowRegistration")) Roles.CreateRole("AllowRegistration");
-            if (!Roles.RoleExists("SponsorManager")) Roles.CreateRole("SponsorManager");
-            if (!Roles.RoleExists("SubmitSession")) Roles.CreateRole("SubmitSession");
-            if (!Roles.RoleExists("SessionHashTagger")) Roles.CreateRole("SessionHashTagger");
-            if (!Roles.RoleExists("SpeakerAssignOwnMaterialsUrl")) Roles.CreateRole("SpeakerAssignOwnMaterialsUrl");
-
-
-
-            MembershipUser mu = Membership.GetUser("pkellner");
-            if (mu == null)
+            if (!ControllerUtils.IsTestMode)
             {
-                MembershipCreateStatus outStat;
-                Membership.CreateUser("pkellner", "peterk", "peter@peterkellner.net", "q", "a", true, out outStat);
-            }
 
-            if (!Roles.IsUserInRole("pkellner", "admin"))
-            {
-                Roles.AddUserToRole("pkellner", "admin");
+                if (!Roles.RoleExists("superuser")) Roles.CreateRole("superuser");
+                if (!Roles.RoleExists("surveyviewer")) Roles.CreateRole("surveyviewer");
+                if (!Roles.RoleExists("admin")) Roles.CreateRole("admin");
+                if (!Roles.RoleExists("presenter")) Roles.CreateRole("presenter");
+                if (!Roles.RoleExists("scheduler")) Roles.CreateRole("scheduler");
+                if (!Roles.RoleExists("scheduleviewer")) Roles.CreateRole("scheduleviewer");
+                if (!Roles.RoleExists("trackadmin")) Roles.CreateRole("trackadmin");
+                if (!Roles.RoleExists("removeprimaryspeaker")) Roles.CreateRole("removeprimaryspeaker");
+                if (!Roles.RoleExists("AddMoreThanTwoSessions")) Roles.CreateRole("AddMoreThanTwoSessions");
+                if (!Roles.RoleExists("AddTwoSessions")) Roles.CreateRole("AddTwoSessions");
+                if (!Roles.RoleExists("AddThreeSessions")) Roles.CreateRole("AddThreeSessions");
+                if (!Roles.RoleExists("AddFourSessions")) Roles.CreateRole("AddFourSessions");
+                if (!Roles.RoleExists("VolunteerCoordinator")) Roles.CreateRole("VolunteerCoordinator");
+                if (!Roles.RoleExists("NoAutoLoginForGUID")) Roles.CreateRole("NoAutoLoginForGUID");
+                if (!Roles.RoleExists("VideoEditor")) Roles.CreateRole("VideoEditor");
+                if (!Roles.RoleExists("TagGroupGraphViewer")) Roles.CreateRole("TagGroupGraphViewer");
+                if (!Roles.RoleExists("ReferralMaker")) Roles.CreateRole("ReferralMaker");
+                if (!Roles.RoleExists("AllowRegistration")) Roles.CreateRole("AllowRegistration");
+                if (!Roles.RoleExists("SponsorManager")) Roles.CreateRole("SponsorManager");
+                if (!Roles.RoleExists("SubmitSession")) Roles.CreateRole("SubmitSession");
+                if (!Roles.RoleExists("SessionHashTagger")) Roles.CreateRole("SessionHashTagger");
+                if (!Roles.RoleExists("SpeakerAssignOwnMaterialsUrl")) Roles.CreateRole("SpeakerAssignOwnMaterialsUrl");
+
+
+
+                MembershipUser mu = Membership.GetUser("pkellner");
+                if (mu == null)
+                {
+                    MembershipCreateStatus outStat;
+                    Membership.CreateUser("pkellner", "peterk", "peter@peterkellner.net", "q", "a", true, out outStat);
+                }
+
+                if (!Roles.IsUserInRole("pkellner", "admin"))
+                {
+                    Roles.AddUserToRole("pkellner", "admin");
+                }
             }
 
 
             ImageResizer.Configuration.Config.Current.Pipeline.RewriteDefaults +=
                 (m, c, args) =>
-                {
-                    var imageDirs = new List<string>
-                                                 {
-                                                     "/sponsorimage/",
-                                                     "/attendeeimage/",
-                                                     "/trackimage/"
-                                                 };
-
-                    foreach (var imageDirPrefix in imageDirs)
                     {
-                        if (args.VirtualPath.IndexOf(imageDirPrefix, StringComparison.OrdinalIgnoreCase) > -1)
-                            args.QueryString["404"] = "~/Images/404-not-found-error.jpg";
-                    }
-                };
+                        if (ControllerUtils.IsTestMode)
+                        {
+                            args.VirtualPath = "~/Images/CrashTestDummy.jpg";
+                        }
+                        else
+                        {
+                            var imageDirs = new List<string>
+                                                {
+                                                    "/sponsorimage/",
+                                                    "/attendeeimage/",
+                                                    "/trackimage/"
+                                                };
 
-          
-
-
+                            foreach (var imageDirPrefix in imageDirs)
+                            {
+                                if (args.VirtualPath.IndexOf(imageDirPrefix, StringComparison.OrdinalIgnoreCase) > -1)
+                                {
+                                    args.VirtualPath = "~/Images/CrashTestDummy.jpg";
+                                    //args.QueryString["404"] = "~/Images/404-not-found-error.jpg";
+                                }
+                            }
+                        }
+                    };
         }
 
         protected void Session_Start(object sender, EventArgs e)

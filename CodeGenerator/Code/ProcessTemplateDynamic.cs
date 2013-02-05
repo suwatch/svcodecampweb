@@ -332,8 +332,16 @@ namespace ThreePLogicAccessCodeGen.Code
                 {
                     if (!attr.ColumnName.Equals("id"))
                     {
+                        string dataAttributeLabel = "[DataMember]";
+                        if (attr.DataType.Equals("System.Byte[]"))
+                        {
+                            dataAttributeLabel += "[XmlIgnore()]";
+                        }
+
+
                         //public int? PlanId { get; set; }
-                        string appendLine = String.Format("[DataMember] public {0} {1} {{ get; set; }}",
+                        string appendLine = String.Format("{0} public {1} {2} {{ get; set; }}",
+                                                          dataAttributeLabel,
                                                           attr.AllowDBNull ? attr.CsTypeIsNullable : attr.CsType,
                                                           UpperFirstLetter(attr.ColumnNameOriginal));
                         newLines.Add(indentString + appendLine);

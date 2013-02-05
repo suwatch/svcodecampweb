@@ -31,23 +31,24 @@ namespace WebAPI.ViewModels
             get { return CodeCampDateStringPretty(); }
         }
 
-
-
-
-
-
-
-
         private string CodeCampDateStringPretty()
         {
-            var rec = CodeCampYearManager.I.Get(new CodeCampYearQuery()
+            string retStr = "";
+            if (ControllerUtils.IsTestMode)
             {
-                Id = Utils.GetCurrentCodeCampYear()
-            });
-            var retStr = "";
-            if (rec != null && rec.Count >= 1)
+                retStr = "OCTOBER 5TH & 6TH, 2099";
+            }
+            else
             {
-                retStr = rec[0].CodeCampDateString.Replace("and","&").ToUpper();
+                var rec = CodeCampYearManager.I.Get(new CodeCampYearQuery()
+                                                        {
+                                                            Id = Utils.GetCurrentCodeCampYear()
+                                                        });
+                retStr = "";
+                if (rec != null && rec.Count >= 1)
+                {
+                    retStr = rec[0].CodeCampDateString.Replace("and", "&").ToUpper();
+                }
             }
             return retStr;
         }
@@ -55,26 +56,32 @@ namespace WebAPI.ViewModels
 
         private static string DaysToGoString()
         {
-            DateTime codeCampDateTime = Utils.GetCurrentCodeCampYearStartDate();
-            var daysToGo = codeCampDateTime.Subtract(DateTime.Now).Days;
-
-            Random random = new Random();
-            daysToGo = random.Next(-1, 3);
-
-            var retStr = "";
-            if (daysToGo >= 1)
+            string retStr = "";
+            if (ControllerUtils.IsTestMode)
             {
-                retStr = String.Format("{0}", daysToGo);
+                retStr = "7";
             }
             else
             {
-                // please hide this panel so that the jobs panel is on top if this condition is met
-                retStr = "HIDE-ME-WITH-CSS";
+                DateTime codeCampDateTime = Utils.GetCurrentCodeCampYearStartDate();
+                var daysToGo = codeCampDateTime.Subtract(DateTime.Now).Days;
+
+                Random random = new Random();
+                daysToGo = random.Next(-1, 3);
+
+                retStr = "";
+                if (daysToGo >= 1)
+                {
+                    retStr = String.Format("{0}", daysToGo);
+                }
+                else
+                {
+                    // please hide this panel so that the jobs panel is on top if this condition is met
+                    retStr = "HIDE-ME-WITH-CSS";
+                }
             }
             return retStr;
         }
-
-
     }
 
 }

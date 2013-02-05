@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Net.Mime;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml.Serialization;
 using CodeCampSV;
 using WebAPI.Code;
 using WebAPI.ViewModels;
@@ -16,9 +21,6 @@ namespace WebAPI.Controllers
         {
             return IndexReturn(year);
         }
-
-      
-
         public ActionResult IndexTest(string year)
         {
             return IndexReturn(year);
@@ -36,30 +38,66 @@ namespace WebAPI.Controllers
 
         private ActionResult IndexReturn(string year)
         {
-            int codeCampYearId;
-            CommonViewModel commonViewModel = ControllerUtils.UpdateViewModel
-                (new CommonViewModel(), ControllerUtils.GetCodeCampYearId(year), out codeCampYearId);
+            CommonViewModel commonViewModel;
+            if (ControllerUtils.IsTestMode)
+            {
+                commonViewModel = ControllerUtils.CommonViewModelTestData();
+            }
+            else
+            {
+                int codeCampYearId;
+                commonViewModel = ControllerUtils.UpdateViewModel
+                    (new CommonViewModel(), ControllerUtils.GetCodeCampYearId(year), out codeCampYearId);
 
-           
+                UpdateCommonViewWithSessions(commonViewModel, codeCampYearId);
 
-            UpdateCommonViewWithSessions(commonViewModel, codeCampYearId);
+                // not needed in production, just needed for generating a full commonview model for development
+                //UpdateCommonViewWithSpeakers(commonViewModel, codeCampYearId);
+
+                if (false)
+                {
+                    // serialize commonViewModel
+                    var ser = new XmlSerializer(typeof (CommonViewModel));
+                    using (var ms = new MemoryStream())
+                    {
+                        ser.Serialize(ms, commonViewModel);
+                        var bytes = ms.ToArray();
+                        var xmlString = System.Text.Encoding.UTF8.GetString(bytes);
+                        // put xmlString in /App_Data/CommonViewModel.xml with debugger (make sure to close file in vs or it locks it)
+                    }
+                }
+            }
 
             //commonViewModel.Sessions = commonViewModel.Sessions.Take(5).ToList();
 
             return View(commonViewModel);
         }
 
+
+
         public ActionResult Detail(string year, string session)
         {
+            int codeCampYearId = Utils.CurrentCodeCampYear;
+            CommonViewModel commonViewModel;
+            if (ControllerUtils.IsTestMode)
+            {
+                commonViewModel = ControllerUtils.CommonViewModelTestData();
 
-            int codeCampYearId;
-            CommonViewModel commonViewModel = ControllerUtils.UpdateViewModel
-                 (new CommonViewModel(), ControllerUtils.GetCodeCampYearId(year), out codeCampYearId);
+            }
+            else
+            {   
+                commonViewModel = ControllerUtils.UpdateViewModel
+                    (new CommonViewModel(), ControllerUtils.GetCodeCampYearId(year), out codeCampYearId);
 
-            List<SessionsResult> sessionsTemp = SessionsManager.I.Get(new SessionsQuery()
-                                                      {
-                                                          CodeCampYearId = codeCampYearId
-                                                      });
+                //List<SessionsResult> sessionsTemp;
+                //sessionsTemp = SessionsManager.I.Get(new SessionsQuery()
+                //                                         {
+                //                                             CodeCampYearId = codeCampYearId
+                //                                         });
+            }
+
+            List<SessionsResult> sessionsTemp = commonViewModel.Sessions;
+
 
             var sessionSlugsDict = new Dictionary<string, int>();
             foreach (SessionsResult result in sessionsTemp)
@@ -77,16 +115,18 @@ namespace WebAPI.Controllers
                 SessionsResult sr = sessionsTemp.FirstOrDefault(a => a.Id == sessionSlugsDict[session]);
                 if (sr != null)
                 {
-                    sessions = SessionsManager.I.Get(new SessionsQuery
-                                                         {
-                                                             Id = sr.Id,
-                                                             WithInterestOrPlanToAttend = true,
-                                                             WithLectureRoom = true,
-                                                             WithSpeakers = true,
-                                                             WithTags = true,
+                    sessions = commonViewModel.Sessions.Where(a => a.Id == sr.Id).ToList();
 
-                                                             //Attendeesid = 1164 // nima
-                                                         });
+                    //SessionsManager.I.Get(new SessionsQuery
+                    //                                 {
+                    //                                     Id = sr.Id,
+                    //                                     WithInterestOrPlanToAttend = true,
+                    //                                     WithLectureRoom = true,
+                    //                                     WithSpeakers = true,
+                    //                                     WithTags = true,
+
+                    //                                     //Attendeesid = 1164 // nima
+                    //                                 });
                 }
             }
             else
@@ -95,8 +135,25 @@ namespace WebAPI.Controllers
             }
 
             commonViewModel.Sessions = sessions;
-            commonViewModel.SessionsByTime = ControllerUtils.SessionTimesResultsWithSessionInfo(codeCampYearId, sessions);
+            commonViewModel.SessionsByTime = ControllerUtils.SessionTimesResultsWithSessionInfo(codeCampYearId,
+                                                                                                sessions);
             return View(commonViewModel);
+        }
+
+        /// <summary>
+        /// only used when creating xml for test data
+        /// </summary>
+        /// <param name="commonViewModel"></param>
+        /// <param name="codeCampYearId"></param>
+        private void UpdateCommonViewWithSpeakers(CommonViewModel commonViewModel, int codeCampYearId)
+        {
+           commonViewModel.Speakers =
+           AttendeesManager.I.GetSpeakerResults(new AttendeesQuery()
+           {
+               CodeCampYearId = codeCampYearId,
+               PresentersOnly = true,
+               IncludeSessions = true
+           });
         }
 
         private void UpdateCommonViewWithSessions(CommonViewModel commonViewModel, int codeCampYearId)

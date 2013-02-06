@@ -33,6 +33,17 @@ namespace WebAPI.Controllers
         {
             return IndexReturn(year);
         }
+       
+        private ActionResult IndexReturn(string year)
+        {
+            return View(_repositorySession.GetDataForYear(year));
+        }
+
+        public ActionResult Detail(string year, string session)
+        {
+            return View(_repositorySession.Detail(year, session));
+        }
+
         public ActionResult IndexTest(string year)
         {
             return IndexReturn(year);
@@ -48,15 +59,6 @@ namespace WebAPI.Controllers
             return IndexReturn(year);
         }
 
-        private ActionResult IndexReturn(string year)
-        {
-            return View(_repositorySession.GetDataForYear(year));
-        }
-
-        public ActionResult Detail(string year, string session)
-        {
-            return View(_repositorySession.Detail(year, session));
-        }
 
     }
 }

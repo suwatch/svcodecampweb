@@ -2372,6 +2372,8 @@
     <Content Include="Images\valid-rss.png" />
     <Content Include="Images\Video\WhatMakesYouATrueGeek.jpg" />
     <Content Include="Images\VistaInstall.jpg" />
+    <Content Include="Images\WebPreviews\SponsorRightColumn.jpg" />
+    <Content Include="Images\WebPreviews\SponsorsBottom.jpg" />
     <Content Include="index.aspx" />
     <Content Include="InterestCheck.aspx" />
     <Content Include="Jobs.aspx" />

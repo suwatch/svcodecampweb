@@ -18,7 +18,8 @@ namespace WebAPI.Repositories
         public CommonViewModel Detail(string year, string session)
         {
            var commonViewModel = ControllerUtils.CommonViewModelTestData();
-            return ControllerUtils.GetCommonViewModelOneSession(session, commonViewModel);
+            return ControllerUtils.
+                GetCommonViewModelOneSession(session, commonViewModel);
         }
     }
 

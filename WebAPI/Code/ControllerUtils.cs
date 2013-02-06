@@ -30,7 +30,29 @@ namespace WebAPI.Code
             return sponsors;
         }
 
-       
+        public static CommonViewModel GetCommonViewModelOneSession(string session, CommonViewModel commonViewModel)
+        {
+            List<SessionsResult> sessionsTemp = commonViewModel.Sessions;
+            var sessionSlugsDict = new Dictionary<string, int>();
+            foreach (SessionsResult result in sessionsTemp)
+            {
+                if (!sessionSlugsDict.ContainsKey(result.SessionSlug))
+                {
+                    sessionSlugsDict.Add(result.SessionSlug, result.Id);
+                }
+            }
+            var sessions = new List<SessionsResult>();
+            if (sessionSlugsDict.ContainsKey(session))
+            {
+                SessionsResult sessionsResult = sessionsTemp.FirstOrDefault(a => a.Id == sessionSlugsDict[session]);
+                if (sessionsResult != null)
+                {
+                    sessions = commonViewModel.Sessions.Where(a => a.Id == sessionsResult.Id).ToList();
+                }
+            }
+            commonViewModel.Sessions = sessions;
+            return commonViewModel;
+        }
 
 
         /// <summary>

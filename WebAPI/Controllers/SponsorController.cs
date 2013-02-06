@@ -6,12 +6,21 @@ using System.Web;
 using System.Web.Mvc;
 using CodeCampSV;
 using WebAPI.Code;
+using WebAPI.DependencyResolution;
+using WebAPI.Repositories;
 using WebAPI.ViewModels;
 
 namespace WebAPI.Controllers
 {
     public class SponsorController : Controller
     {
+        private readonly IRepositorySponsor _repositorySponsor;
+
+        public SponsorController(IRepositorySponsor repository)
+        {
+            _repositorySponsor = repository;
+        }
+
         public ActionResult Index(string year)
         {
             return IndexBase(year);
@@ -24,18 +33,9 @@ namespace WebAPI.Controllers
        
         private ActionResult IndexBase(string year)
         {
-            CommonViewModel commonViewModel;
-            if (ControllerUtils.IsTestMode)
-            {
-                commonViewModel = ControllerUtils.CommonViewModelTestData();
-            }
-            else
-            {
-                int codeCampYearId;
-                commonViewModel = ControllerUtils.UpdateViewModel
-                    (new CommonViewModel(), ControllerUtils.GetCodeCampYearId(year), out codeCampYearId);
-            }
-            return View(commonViewModel);
+            return View(_repositorySponsor.GetDataForYear(year));
         }
     }
+
+   
 }

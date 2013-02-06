@@ -11,12 +11,24 @@ using System.Web.Mvc;
 using System.Xml.Serialization;
 using CodeCampSV;
 using WebAPI.Code;
+using WebAPI.Repositories;
 using WebAPI.ViewModels;
 
 namespace WebAPI.Controllers
 {
     public class SessionController : Controller
     {
+         private readonly IRepositorySession _repositorySession;
+
+        public SessionController(IRepositorySession repository)
+        {
+            _repositorySession = repository;
+        }
+
+        public SessionController()
+        {
+        }
+
         public ActionResult Index(string year)
         {
             return IndexReturn(year);
@@ -38,286 +50,13 @@ namespace WebAPI.Controllers
 
         private ActionResult IndexReturn(string year)
         {
-            CommonViewModel commonViewModel;
-            if (ControllerUtils.IsTestMode)
-            {
-                commonViewModel = ControllerUtils.CommonViewModelTestData();
-            }
-            else
-            {
-                int codeCampYearId;
-                commonViewModel = ControllerUtils.UpdateViewModel
-                    (new CommonViewModel(), ControllerUtils.GetCodeCampYearId(year), out codeCampYearId);
-
-                UpdateCommonViewWithSessions(commonViewModel, codeCampYearId);
-
-                // not needed in production, just needed for generating a full commonview model for development
-                //UpdateCommonViewWithSpeakers(commonViewModel, codeCampYearId);
-
-                if (false)
-                {
-                    // serialize commonViewModel
-                    var ser = new XmlSerializer(typeof (CommonViewModel));
-                    using (var ms = new MemoryStream())
-                    {
-                        ser.Serialize(ms, commonViewModel);
-                        var bytes = ms.ToArray();
-                        var xmlString = System.Text.Encoding.UTF8.GetString(bytes);
-                        // put xmlString in /App_Data/CommonViewModel.xml with debugger (make sure to close file in vs or it locks it)
-                    }
-                }
-            }
-
-            //commonViewModel.Sessions = commonViewModel.Sessions.Take(5).ToList();
-
-            return View(commonViewModel);
+            return View(_repositorySession.GetDataForYear(year));
         }
-
-
 
         public ActionResult Detail(string year, string session)
         {
-            int codeCampYearId = Utils.CurrentCodeCampYear;
-            CommonViewModel commonViewModel;
-            if (ControllerUtils.IsTestMode)
-            {
-                commonViewModel = ControllerUtils.CommonViewModelTestData();
-
-            }
-            else
-            {   
-                commonViewModel = ControllerUtils.UpdateViewModel
-                    (new CommonViewModel(), ControllerUtils.GetCodeCampYearId(year), out codeCampYearId);
-
-                //List<SessionsResult> sessionsTemp;
-                //sessionsTemp = SessionsManager.I.Get(new SessionsQuery()
-                //                                         {
-                //                                             CodeCampYearId = codeCampYearId
-                //                                         });
-            }
-
-            List<SessionsResult> sessionsTemp = commonViewModel.Sessions;
-
-
-            var sessionSlugsDict = new Dictionary<string, int>();
-            foreach (SessionsResult result in sessionsTemp)
-            {
-
-                if (!sessionSlugsDict.ContainsKey(result.SessionSlug))
-                {
-                    sessionSlugsDict.Add(result.SessionSlug, result.Id);
-                }
-            }
-
-            var sessions = new List<SessionsResult>();
-            if (sessionSlugsDict.ContainsKey(session))
-            {
-                SessionsResult sr = sessionsTemp.FirstOrDefault(a => a.Id == sessionSlugsDict[session]);
-                if (sr != null)
-                {
-                    sessions = commonViewModel.Sessions.Where(a => a.Id == sr.Id).ToList();
-
-                    //SessionsManager.I.Get(new SessionsQuery
-                    //                                 {
-                    //                                     Id = sr.Id,
-                    //                                     WithInterestOrPlanToAttend = true,
-                    //                                     WithLectureRoom = true,
-                    //                                     WithSpeakers = true,
-                    //                                     WithTags = true,
-
-                    //                                     //Attendeesid = 1164 // nima
-                    //                                 });
-                }
-            }
-            else
-            {
-                throw new HttpException(404, "NotFound");
-            }
-
-            commonViewModel.Sessions = sessions;
-            commonViewModel.SessionsByTime = ControllerUtils.SessionTimesResultsWithSessionInfo(codeCampYearId,
-                                                                                                sessions);
-            return View(commonViewModel);
+            return View(_repositorySession.Detail(year, session));
         }
 
-        /// <summary>
-        /// only used when creating xml for test data
-        /// </summary>
-        /// <param name="commonViewModel"></param>
-        /// <param name="codeCampYearId"></param>
-        private void UpdateCommonViewWithSpeakers(CommonViewModel commonViewModel, int codeCampYearId)
-        {
-           commonViewModel.Speakers =
-           AttendeesManager.I.GetSpeakerResults(new AttendeesQuery()
-           {
-               CodeCampYearId = codeCampYearId,
-               PresentersOnly = true,
-               IncludeSessions = true
-           });
-        }
-
-        private void UpdateCommonViewWithSessions(CommonViewModel commonViewModel, int codeCampYearId)
-        {
-            var sessions = SessionsManager.I.Get(new SessionsQuery
-            {
-                CodeCampYearId = codeCampYearId,
-                WithInterestOrPlanToAttend = true,
-                WithLectureRoom = true,
-                WithSpeakers = true,
-                WithTags = true,
-                //Attendeesid = 1164 // nima
-            });
-
-            commonViewModel.Sessions = sessions;
-            commonViewModel.SessionsByTime = ControllerUtils.SessionTimesResultsWithSessionInfo(codeCampYearId, sessions);
-            commonViewModel.SessionTimeResults = SessionTimesManager.I.Get(new SessionTimesQuery
-            {
-                CodeCampYearId = codeCampYearId
-            });
-            commonViewModel.TagsResults = TagsManager.I.Get(new TagsQuery
-            {
-                CodeCampYearId = codeCampYearId
-            });
-        }
-
-      
-      
-
-        //private void UpdateSpeakerPictureUrl(SessionsResult rec)
-        //{
-        //    rec.SpeakerPictureUrl =
-        //        String.Format(
-        //            "{0}://{1}/attendeeimage/{2}.jpg", // adding stuff like ?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white is for the client
-        //            Request.IsSecureConnection ? "https" : "http",
-        //            Request.Url.Authority, rec.Attendeesid);
-
-        //    rec.SessionUrl =
-        //        String.Format(
-        //            "{0}://{1}/Session/{2}/{3}",
-        //            Request.IsSecureConnection ? "https" : "http",
-        //            Request.Url.Authority,
-        //            Utils.ConvertCodeCampYearToActualYear(
-        //                rec.CodeCampYearId.ToString(CultureInfo.InvariantCulture)),
-        //            rec.SessionSlug);
-
-
-        //}
-
-        //private void UpdateSponsorPictureUrl(SponsorListResult rec)
-        //{
-        //    rec.ImageURL =
-        //       String.Format(
-        //           "{0}://{1}/sponsorimage/{2}.jpg", // adding stuff like ?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white is for the client
-        //           Request.IsSecureConnection ? "https" : "http",
-        //           Request.Url.Authority, rec.Id);
-        //}
-
-        private static int CodeCampYearId(string year)
-        {
-            var codeCampYears = Utils.GetListCodeCampYear();
-            var dateDict = codeCampYears.ToDictionary(k => k.CampStartDate.Year.ToString(CultureInfo.InvariantCulture),
-                                                      v => v.Id);
-            int codeCampYearId = -1;
-            if (dateDict.ContainsKey(year))
-            {
-                codeCampYearId = dateDict[year];
-            }
-            return codeCampYearId;
-        }
-
-
-        ////
-        //// GET: /Session/
-
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
-
-        ////
-        //// GET: /Session/Details/5
-
-        //public ActionResult Details(int id)
-        //{
-        //    return View();
-        //}
-
-        ////
-        //// GET: /Session/Create
-
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
-
-        ////
-        //// POST: /Session/Create
-
-        //[HttpPost]
-        //public ActionResult Create(FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add insert logic here
-
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
-
-        ////
-        //// GET: /Session/Edit/5
-
-        //public ActionResult Edit(int id)
-        //{
-        //    return View();
-        //}
-
-        ////
-        //// POST: /Session/Edit/5
-
-        //[HttpPost]
-        //public ActionResult Edit(int id, FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add update logic here
-
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
-
-        ////
-        //// GET: /Session/Delete/5
-
-        //public ActionResult Delete(int id)
-        //{
-        //    return View();
-        //}
-
-        ////
-        //// POST: /Session/Delete/5
-
-        //[HttpPost]
-        //public ActionResult Delete(int id, FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add delete logic here
-
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
     }
 }

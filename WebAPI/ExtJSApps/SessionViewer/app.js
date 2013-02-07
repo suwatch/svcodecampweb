@@ -20,7 +20,8 @@ Ext.Loader.setConfig({
 Ext.application({
 
     requires: [
-        'Ext.ux.data.PagingMemoryProxy'
+        'Ext.ux.data.PagingMemoryProxy',
+        'Ext.grid.Panel'
     ],
     models: [
         'SessionModel'

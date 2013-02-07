@@ -8,7 +8,7 @@ Ext.define('SessionApp.store.override.SessionStore1', {
         this.proxy = {
             type: 'memory',
             enablePaging: true
-        },
+        };
         this.callParent(arguments);
     },
     CreateData: function () {

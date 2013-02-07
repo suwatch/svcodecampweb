@@ -1,7 +1,7 @@
 Ext.application({
-    controllers: ["Main"],
+    controllers: ["Main","Main"],
 
-    views: ["Main"],
+    views: ["Main","Main"],
 
 
     name: 'SessionApp',

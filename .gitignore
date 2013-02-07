@@ -8,6 +8,11 @@ WebAPI/bin/DataAccess.*
 WebAPI/bin/LINQToSQL.*
 WebAPI/bin/WebAPI.*
 
+WebAPI/ExtJSApps/SessionViewer/build
+WebAPI/ExtJSApps/SessionViewer/ext
+WebAPI/ExtJSApps/SessionViewer/resources
+
+
 
 
 WebAPI/ext-4.1.1a

@@ -110,7 +110,9 @@ namespace WebAPI
                             {
                                 if (args.VirtualPath.IndexOf(imageDirPrefix, StringComparison.OrdinalIgnoreCase) > -1)
                                 {
-                                    args.QueryString["404"] = "~/Images/404-not-found-error.jpg";
+                                    //args.QueryString["404"] = "~/Images/404-not-found-error.jpg";
+                                    args.QueryString["404"] = "404-not-found-error.jpg"; 
+
                                 }
                             }
                         }

@@ -3538,6 +3538,8 @@
     <Content Include="Views\Sponsor\IndexTest.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ExtJSApps\RegistrationProd\" />
+    <Folder Include="ExtJSApps\Registration\" />
     <Folder Include="ExtJSApps\SessionViewer\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\colorbox-master\" />

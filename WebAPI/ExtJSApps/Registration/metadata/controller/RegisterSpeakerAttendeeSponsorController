@@ -1,0 +1,147 @@
+{
+    "type": "controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "RegisterSpeakerAttendeeSponsorController"
+    },
+    "id": "ExtBox1-ext-gen21249",
+    "designerId": "c1e28fd8-26ea-4392-a260-b19d1915f1d8",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onRbAttendeeChange",
+                "fn": "onRbAttendeeChange",
+                "implHandler": [
+                    "//console.log('onRbAttendeeChange');\r",
+                    "\r",
+                    "if (newValue == true) {\r",
+                    "    this.rbChoice = 'attendee';\r",
+                    "}\r",
+                    "\r",
+                    "this.enableContinueButtonIfDisabled();"
+                ],
+                "name": "change",
+                "scope": "me",
+                "designer|targetType": "Ext.form.field.Radio",
+                "designer|controlQuery": "#rbAttendee"
+            },
+            "designerId": "45439833-c8be-41e5-af97-6dd7123c4531"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onRbSpeakerChange",
+                "fn": "onRbSpeakerChange",
+                "implHandler": [
+                    "\r",
+                    "//console.log('onRbSpeakerChange');\r",
+                    "\r",
+                    "if (newValue == true) {\r",
+                    "    this.rbChoice = 'speaker';\r",
+                    "}\r",
+                    "\r",
+                    "this.enableContinueButtonIfDisabled();"
+                ],
+                "name": "change",
+                "scope": "me",
+                "designer|targetType": "Ext.form.field.Radio",
+                "designer|controlQuery": "#rbSpeaker"
+            },
+            "designerId": "92728ca8-1486-4aa4-8bf6-b42df5d65ae4"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onRbSponsorChange",
+                "fn": "onRbSponsorChange",
+                "implHandler": [
+                    "//console.log('onRbSponsorChange');\r",
+                    "\r",
+                    "if (newValue == true) {\r",
+                    "    this.rbChoice = 'sponsor';\r",
+                    "}\r",
+                    "\r",
+                    "this.enableContinueButtonIfDisabled();"
+                ],
+                "name": "change",
+                "scope": "me",
+                "designer|targetType": "Ext.form.field.Radio",
+                "designer|controlQuery": "#rbSponsor"
+            },
+            "designerId": "8dbe5fc8-1228-4711-abe3-4648b29faa3b"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "enableContinueButtonIfDisabled",
+                "fn": "enableContinueButtonIfDisabled",
+                "implHandler": [
+                    "var continueButton = Ext.ComponentQuery.query('#continueButtonId')[0];\r",
+                    "\r",
+                    "if (continueButton.isDisabled()) {\r",
+                    "    continueButton.enable();\r",
+                    "}   \r",
+                    ""
+                ]
+            },
+            "designerId": "06d92987-4513-4107-8d1c-ee71117740a8"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onContinueButtonIdClick",
+                "fn": "onContinueButtonIdClick",
+                "implHandler": [
+                    "//console.log('continue: ' + this.rbChoice);\r",
+                    "\r",
+                    "var tabWizardPanel = Ext.ComponentQuery.query('#TabWizardId')[0];\r",
+                    "\r",
+                    "if (this.rbChoice === 'speaker' || this.rbChoice == 'attendee') {\r",
+                    "    //console.log('speaker or attendee');\r",
+                    "    tabWizardPanel.setActiveTab(1);\r",
+                    "} else if (this.rbChoice == 'sponsor') {\r",
+                    "    //console.log('sponsor');\r",
+                    "    tabWizardPanel.setActiveTab(2);\r",
+                    "}\r",
+                    "            \r",
+                    ""
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#continueButtonId"
+            },
+            "designerId": "059e244c-f675-40b9-9359-4f3e5336d00b"
+        }
+    ]
+}

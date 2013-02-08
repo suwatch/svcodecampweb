@@ -1,0 +1,138 @@
+{
+    "type": "panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "stretch",
+        "designer|userClassName": "AttendeeSpeakerOrSponsor",
+        "designer|userAlias": "AttendeeSpeakerOrSponsorAlias",
+        "id": "attendeespeakerorsponsorid",
+        "layout": "vbox",
+        "title": "Silicon Valley Code Camp Registration"
+    },
+    "id": "ExtBox1-ext-gen3906",
+    "designerId": "ca5637cc-e4a9-4eb8-b914-8c01593a1781",
+    "cn": [
+        {
+            "type": "radiogroup",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "designer|userClassName": "MyRadioGroup",
+                "itemId": "RadiobuttonGrp",
+                "width": 400,
+                "defaultType": "radio",
+                "layout": "vbox",
+                "fieldLabel": "",
+                "vertical": false
+            },
+            "designerId": "1444c1ef-a14a-4484-afd8-50cd556a2377",
+            "cn": [
+                {
+                    "type": "radiofield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyRadio",
+                        "itemId": "rbAttendee",
+                        "name": "attendeeType",
+                        "fieldLabel": null,
+                        "boxLabel": "Attendee"
+                    },
+                    "designerId": "3bcef708-0fdf-46fa-b8a1-16cabc53f6bc"
+                },
+                {
+                    "type": "radiofield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyRadio1",
+                        "itemId": "rbSpeaker",
+                        "name": "attendeeType",
+                        "fieldLabel": null,
+                        "boxLabel": "Speaker"
+                    },
+                    "designerId": "251b158d-26db-4ca9-8d67-9e51fd908bd2"
+                },
+                {
+                    "type": "radiofield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyRadio1",
+                        "itemId": "rbSponsor",
+                        "name": "attendeeType",
+                        "fieldLabel": null,
+                        "boxLabel": "Interested In Sponsoring"
+                    },
+                    "designerId": "5e37c4ff-36e0-4c8a-8e27-182617e4cd6d"
+                }
+            ]
+        },
+        {
+            "type": "toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|flex": 1,
+                "dock": "bottom",
+                "container|pack": "end",
+                "designer|userClassName": "MyToolbar",
+                "height": 50
+            },
+            "designerId": "dd9dead6-9348-459a-865a-53b5249a6b0f",
+            "cn": [
+                {
+                    "type": "tbseparator",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MySeparator"
+                    },
+                    "designerId": "70683779-5eef-4998-809a-bd7a406aac67"
+                },
+                {
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MyButton",
+                        "disabled": true,
+                        "id": null,
+                        "itemId": "continueButtonId",
+                        "iconAlign": "right",
+                        "text": "Continue"
+                    },
+                    "designerId": "dfce3ae1-a396-400b-bce9-453e83c3aad8"
+                }
+            ]
+        }
+    ]
+}

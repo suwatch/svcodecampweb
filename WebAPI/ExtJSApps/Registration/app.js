@@ -19,8 +19,13 @@ Ext.Loader.setConfig({
 
 Ext.application({
     views: [
-        'MyViewport'
+        'ViewportMain',
+        'AttendeeSpeakerOrSponsor',
+        'AttendeeOrSpeaker'
     ],
     autoCreateViewport: true,
-    name: 'RegistrationApp'
+    name: 'RegistrationApp',
+    controllers: [
+        'RegisterSpeakerAttendeeSponsorController'
+    ]
 });

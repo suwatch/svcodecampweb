@@ -23,20 +23,48 @@
         },
         "2e607d39-4c76-4f8c-a350-e222eedf6e5d": {
             "paths": [
-                "metadata/view/MyViewport",
-                "app/view/override/MyViewport.js",
-                "app/view/MyViewport.js",
+                "metadata/view/ViewportMain",
+                "app/view/override/ViewportMain.js",
+                "app/view/ViewportMain.js",
                 "app/view/Viewport.js"
             ],
-            "className": "MyViewport"
+            "className": "ViewportMain"
+        },
+        "ca5637cc-e4a9-4eb8-b914-8c01593a1781": {
+            "paths": [
+                "metadata/view/AttendeeSpeakerOrSponsor",
+                "app/view/override/AttendeeSpeakerOrSponsor.js",
+                "app/view/AttendeeSpeakerOrSponsor.js"
+            ],
+            "className": "AttendeeSpeakerOrSponsor"
+        },
+        "c1e28fd8-26ea-4392-a260-b19d1915f1d8": {
+            "paths": [
+                "metadata/controller/RegisterSpeakerAttendeeSponsorController",
+                "app/controller/override/RegisterSpeakerAttendeeSponsorController.js",
+                "app/controller/RegisterSpeakerAttendeeSponsorController.js"
+            ],
+            "className": "RegisterSpeakerAttendeeSponsorController"
+        },
+        "f0845701-b108-474a-8062-fac7fa9e8b3a": {
+            "paths": [
+                "metadata/view/AttendeeOrSpeaker",
+                "app/view/override/AttendeeOrSpeaker.js",
+                "app/view/AttendeeOrSpeaker.js"
+            ],
+            "className": "AttendeeOrSpeaker"
         }
     },
     "viewOrderMap": {
         "view": [
-            "2e607d39-4c76-4f8c-a350-e222eedf6e5d"
+            "2e607d39-4c76-4f8c-a350-e222eedf6e5d",
+            "ca5637cc-e4a9-4eb8-b914-8c01593a1781",
+            "f0845701-b108-474a-8062-fac7fa9e8b3a"
         ],
         "store": [],
-        "controller": [],
+        "controller": [
+            "c1e28fd8-26ea-4392-a260-b19d1915f1d8"
+        ],
         "model": [],
         "resource": [
             "01e8660b-7ed7-40e5-b0b9-55c1a36bf025"

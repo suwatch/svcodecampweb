@@ -7,10 +7,15 @@
     "codeClass": null,
     "userConfig": {
         "views": [
-            "MyViewport"
+            "ViewportMain",
+            "AttendeeSpeakerOrSponsor",
+            "AttendeeOrSpeaker"
         ],
         "autoCreateViewport": true,
-        "name": "RegistrationApp"
+        "name": "RegistrationApp",
+        "controllers": [
+            "RegisterSpeakerAttendeeSponsorController"
+        ]
     },
     "id": "ExtBox1-ext-gen1587",
     "designerId": "application"

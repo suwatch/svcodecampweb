@@ -1,0 +1,114 @@
+{
+    "type": "viewport",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "ViewportMain",
+        "designer|initialView": true
+    },
+    "id": "ExtBox1-ext-gen2025",
+    "designerId": "2e607d39-4c76-4f8c-a350-e222eedf6e5d",
+    "cn": [
+        {
+            "type": "tabpanel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyTabPanel",
+                "height": 200,
+                "id": null,
+                "itemId": "TabWizardId",
+                "maxHeight": null,
+                "activeTab": 0
+            },
+            "designerId": "fea6a3af-2d7e-4daa-9f97-09e2da9e54c8",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "AttendeeSpeakerSponsorId",
+                        "itemId": null
+                    },
+                    "designerId": "687e7c89-bd78-4d96-89a0-854427f892bc",
+                    "masterInstanceId": "ExtBox1-ext-gen3906",
+                    "cn": [
+                        {
+                            "type": "tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "TabConfig"
+                            },
+                            "designerId": "48779a32-4047-441d-a3a6-900387dec5ee"
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "designerId": "48459791-55b4-4712-93d9-130f8485d5a4",
+                    "masterInstanceId": "ExtBox1-ext-gen3931",
+                    "cn": [
+                        {
+                            "type": "tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "TabConfig1"
+                            },
+                            "designerId": "6d4e8bd0-a914-476b-a2e1-5381b843db0a"
+                        }
+                    ]
+                },
+                {
+                    "type": "panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyPanel2",
+                        "title": "Sponsor"
+                    },
+                    "designerId": "effc3a6e-578c-415f-8bb6-9972b15b708f",
+                    "cn": [
+                        {
+                            "type": "tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "TabConfig2"
+                            },
+                            "designerId": "74abf9bf-5a6d-433d-b154-381a883f9b39"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

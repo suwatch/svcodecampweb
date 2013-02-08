@@ -11,6 +11,7 @@
         "designer|userAlias": "AttendeeSpeakerOrSponsorAlias",
         "id": "attendeespeakerorsponsorid",
         "layout": "vbox",
+        "bodyPadding": 20,
         "title": "Silicon Valley Code Camp Registration"
     },
     "id": "ExtBox1-ext-gen3906",
@@ -97,7 +98,8 @@
                 "dock": "bottom",
                 "container|pack": "end",
                 "designer|userClassName": "MyToolbar",
-                "height": 50
+                "height": 50,
+                "itemId": "ToolBarAttendeeSpeakerSponsor"
             },
             "designerId": "dd9dead6-9348-459a-865a-53b5249a6b0f",
             "cn": [

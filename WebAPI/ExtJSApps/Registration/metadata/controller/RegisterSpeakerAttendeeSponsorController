@@ -101,7 +101,7 @@
                 "designer|userClassName": "enableContinueButtonIfDisabled",
                 "fn": "enableContinueButtonIfDisabled",
                 "implHandler": [
-                    "var continueButton = Ext.ComponentQuery.query('#continueButtonId')[0];\r",
+                    "var continueButton = Ext.ComponentQuery.query('AttendeeSpeakerOrSponsorAlias #continueButtonId')[0];\r",
                     "\r",
                     "if (continueButton.isDisabled()) {\r",
                     "    continueButton.enable();\r",
@@ -133,7 +133,7 @@
                     "    //console.log('sponsor');\r",
                     "    tabWizardPanel.setActiveTab(2);\r",
                     "}\r",
-                    "            \r",
+                    "\r",
                     ""
                 ],
                 "name": "click",

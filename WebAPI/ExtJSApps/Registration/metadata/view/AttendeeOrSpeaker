@@ -10,8 +10,208 @@
         "designer|userAlias": "AttendeeOrSpeakerAlias",
         "id": "attendeeOrSpeakerId",
         "itemId": "AttendeeOrSpeaker",
+        "bodyPadding": 20,
         "title": "Attendee Or Speaker"
     },
     "id": "ExtBox1-ext-gen3931",
-    "designerId": "f0845701-b108-474a-8062-fac7fa9e8b3a"
+    "designerId": "f0845701-b108-474a-8062-fac7fa9e8b3a",
+    "cn": [
+        {
+            "type": "toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "bottom",
+                "container|pack": "end",
+                "container|padding": null,
+                "designer|userClassName": "MyToolbar",
+                "height": 50,
+                "itemId": "ToolBarAttendeeSpeaker"
+            },
+            "designerId": "b85d19d2-f63e-4185-8ee4-2d216f881ab5",
+            "cn": [
+                {
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MyButton",
+                        "disabled": false,
+                        "id": null,
+                        "itemId": "backButtonId",
+                        "iconAlign": "right",
+                        "text": "Back"
+                    },
+                    "designerId": "223ebf35-7829-421f-a88c-6e3296a53ef3"
+                },
+                {
+                    "type": "tbseparator",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MySeparator"
+                    },
+                    "designerId": "fff971af-6603-44ce-9763-bd2decf74721"
+                },
+                {
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MyButton",
+                        "disabled": true,
+                        "id": null,
+                        "itemId": "continueButtonId",
+                        "iconAlign": "right",
+                        "text": "Continue"
+                    },
+                    "designerId": "28b0fe6f-eb82-4875-b557-7fd1424561ee"
+                }
+            ]
+        },
+        {
+            "type": "textfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyTextField",
+                "itemId": "username",
+                "fieldLabel": "Username",
+                "labelWidth": null,
+                "emptyText": "Username",
+                "maxLength": null,
+                "minLength": null,
+                "minLengthText": null,
+                "vtype": null
+            },
+            "designerId": "15ea77da-cda3-40d7-97d3-2ce3d9636ce9"
+        },
+        {
+            "type": "textfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyTextField1",
+                "itemId": "password",
+                "inputType": "password",
+                "fieldLabel": "Password",
+                "emptyText": "password",
+                "enforceMaxLength": null,
+                "maxLength": null,
+                "minLength": null,
+                "minLengthText": null
+            },
+            "designerId": "55fcbf2f-3a4a-485c-b506-7e68780f5fc8",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "onPasswordChange",
+                        "fn": "onPasswordChange",
+                        "name": "change",
+                        "scope": "me"
+                    },
+                    "designerId": "5138a9a2-fb56-44f6-b011-cdd618b7f799"
+                }
+            ]
+        },
+        {
+            "type": "radiogroup",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "designer|userClassName": "MyRadioGroup1",
+                "itemId": "RadioGroupLoginActions",
+                "width": 400,
+                "layout": "vbox",
+                "fieldLabel": "Actions",
+                "vertical": false
+            },
+            "designerId": "8b5403a4-bfc1-4be2-a0a6-5fa4a7d04e8e",
+            "cn": [
+                {
+                    "type": "radiofield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyRadio3",
+                        "itemId": "haveaccount",
+                        "name": "LoginActions",
+                        "fieldLabel": null,
+                        "labelWidth": 70,
+                        "boxLabel": "I Have a Code Camp Account Already",
+                        "checked": true
+                    },
+                    "designerId": "57a62ad9-c1cf-4fa6-89d4-583cd1816571"
+                },
+                {
+                    "type": "radiofield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyRadio3",
+                        "itemId": "forgot",
+                        "name": "LoginActions",
+                        "fieldLabel": null,
+                        "labelWidth": 70,
+                        "boxLabel": "Forgot Username or Password"
+                    },
+                    "designerId": "6b13a9ed-0469-48e3-bb5f-1831bba1aded"
+                },
+                {
+                    "type": "radiofield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyRadio4",
+                        "itemId": "create",
+                        "name": "LoginActions",
+                        "fieldLabel": null,
+                        "labelWidth": 70,
+                        "boxLabel": "Create a new Account for me"
+                    },
+                    "designerId": "9787d843-d9b9-4db1-b0d6-eb3544e95e46"
+                }
+            ]
+        }
+    ]
 }

@@ -53,17 +53,35 @@
                 "app/view/AttendeeOrSpeaker.js"
             ],
             "className": "AttendeeOrSpeaker"
+        },
+        "649a7ff9-eed4-4a08-8133-fc01c9df011f": {
+            "paths": [
+                "metadata/controller/RegisterSpeakerAttendee",
+                "app/controller/override/RegisterSpeakerAttendee.js",
+                "app/controller/RegisterSpeakerAttendee.js"
+            ],
+            "className": "RegisterSpeakerAttendee"
+        },
+        "28b0fe6f-eb82-4875-b557-7fd1424561ee": {
+            "paths": [
+                "metadata/view/MyButton",
+                "app/view/override/MyButton.js",
+                "app/view/MyButton.js"
+            ],
+            "className": "MyButton"
         }
     },
     "viewOrderMap": {
         "view": [
             "2e607d39-4c76-4f8c-a350-e222eedf6e5d",
             "ca5637cc-e4a9-4eb8-b914-8c01593a1781",
-            "f0845701-b108-474a-8062-fac7fa9e8b3a"
+            "f0845701-b108-474a-8062-fac7fa9e8b3a",
+            "28b0fe6f-eb82-4875-b557-7fd1424561ee"
         ],
         "store": [],
         "controller": [
-            "c1e28fd8-26ea-4392-a260-b19d1915f1d8"
+            "c1e28fd8-26ea-4392-a260-b19d1915f1d8",
+            "649a7ff9-eed4-4a08-8133-fc01c9df011f"
         ],
         "model": [],
         "resource": [

@@ -9,12 +9,14 @@
         "views": [
             "ViewportMain",
             "AttendeeSpeakerOrSponsor",
-            "AttendeeOrSpeaker"
+            "AttendeeOrSpeaker",
+            "MyButton"
         ],
         "autoCreateViewport": true,
         "name": "RegistrationApp",
         "controllers": [
-            "RegisterSpeakerAttendeeSponsorController"
+            "RegisterSpeakerAttendeeSponsorController",
+            "RegisterSpeakerAttendee"
         ]
     },
     "id": "ExtBox1-ext-gen1587",

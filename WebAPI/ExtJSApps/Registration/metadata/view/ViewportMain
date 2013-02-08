@@ -21,7 +21,7 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyTabPanel",
-                "height": 200,
+                "height": 300,
                 "id": null,
                 "itemId": "TabWizardId",
                 "maxHeight": null,

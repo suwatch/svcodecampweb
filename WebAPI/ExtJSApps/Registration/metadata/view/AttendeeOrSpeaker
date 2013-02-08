@@ -122,24 +122,7 @@
                 "minLength": null,
                 "minLengthText": null
             },
-            "designerId": "55fcbf2f-3a4a-485c-b506-7e68780f5fc8",
-            "cn": [
-                {
-                    "type": "basiceventbinding",
-                    "reference": {
-                        "name": "listeners",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "designer|userClassName": "onPasswordChange",
-                        "fn": "onPasswordChange",
-                        "name": "change",
-                        "scope": "me"
-                    },
-                    "designerId": "5138a9a2-fb56-44f6-b011-cdd618b7f799"
-                }
-            ]
+            "designerId": "55fcbf2f-3a4a-485c-b506-7e68780f5fc8"
         },
         {
             "type": "radiogroup",

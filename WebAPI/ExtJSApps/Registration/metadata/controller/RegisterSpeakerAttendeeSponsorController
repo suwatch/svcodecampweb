@@ -33,7 +33,7 @@
                 "name": "change",
                 "scope": "me",
                 "designer|targetType": "Ext.form.field.Radio",
-                "designer|controlQuery": "#rbAttendee"
+                "designer|controlQuery": "AttendeeSpeakerOrSponsorAlias #rbAttendee"
             },
             "designerId": "45439833-c8be-41e5-af97-6dd7123c4531"
         },
@@ -60,7 +60,7 @@
                 "name": "change",
                 "scope": "me",
                 "designer|targetType": "Ext.form.field.Radio",
-                "designer|controlQuery": "#rbSpeaker"
+                "designer|controlQuery": "AttendeeSpeakerOrSponsorAlias  #rbSpeaker"
             },
             "designerId": "92728ca8-1486-4aa4-8bf6-b42df5d65ae4"
         },
@@ -86,7 +86,7 @@
                 "name": "change",
                 "scope": "me",
                 "designer|targetType": "Ext.form.field.Radio",
-                "designer|controlQuery": "#rbSponsor"
+                "designer|controlQuery": "AttendeeSpeakerOrSponsorAlias  #rbSponsor"
             },
             "designerId": "8dbe5fc8-1228-4711-abe3-4648b29faa3b"
         },
@@ -122,16 +122,13 @@
                 "designer|userClassName": "onContinueButtonIdClick",
                 "fn": "onContinueButtonIdClick",
                 "implHandler": [
-                    "//console.log('continue: ' + this.rbChoice);\r",
                     "\r",
-                    "var tabWizardPanel = Ext.ComponentQuery.query('#TabWizardId')[0];\r",
+                    "var tabWizardPanel = Ext.getCmp('TabWizardId')\r",
                     "\r",
                     "if (this.rbChoice === 'speaker' || this.rbChoice == 'attendee') {\r",
-                    "    //console.log('speaker or attendee');\r",
-                    "    tabWizardPanel.setActiveTab(1);\r",
+                    "   tabWizardPanel.setActiveTab(tabWizardPanel.getTabIdByName('attendeeorspeaker'));\r",
                     "} else if (this.rbChoice == 'sponsor') {\r",
-                    "    //console.log('sponsor');\r",
-                    "    tabWizardPanel.setActiveTab(2);\r",
+                    "    tabWizardPanel.setActiveTab(tabWizardPanel.getTabIdByName('Sponsor'));\r",
                     "}\r",
                     "\r",
                     ""
@@ -139,7 +136,7 @@
                 "name": "click",
                 "scope": "me",
                 "designer|targetType": "Ext.button.Button",
-                "designer|controlQuery": "#continueButtonId"
+                "designer|controlQuery": "AttendeeSpeakerOrSponsorAlias #continueButtonId"
             },
             "designerId": "059e244c-f675-40b9-9359-4f3e5336d00b"
         }

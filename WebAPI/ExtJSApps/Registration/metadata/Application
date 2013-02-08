@@ -10,13 +10,15 @@
             "ViewportMain",
             "AttendeeSpeakerOrSponsor",
             "AttendeeOrSpeaker",
-            "MyButton"
+            "MyButton",
+            "ForgotUsernameOrPassword"
         ],
         "autoCreateViewport": true,
         "name": "RegistrationApp",
         "controllers": [
             "RegisterSpeakerAttendeeSponsorController",
-            "RegisterSpeakerAttendee"
+            "RegisterSpeakerAttendee",
+            "ForgotUsername"
         ]
     },
     "id": "ExtBox1-ext-gen1587",

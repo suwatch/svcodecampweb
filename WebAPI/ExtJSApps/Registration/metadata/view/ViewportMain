@@ -7,6 +7,7 @@
     "codeClass": null,
     "userConfig": {
         "designer|userClassName": "ViewportMain",
+        "designer|userAlias": "ViewportMainAlias",
         "designer|initialView": true
     },
     "id": "ExtBox1-ext-gen2025",
@@ -22,8 +23,8 @@
             "userConfig": {
                 "designer|userClassName": "MyTabPanel",
                 "height": 300,
-                "id": null,
-                "itemId": "TabWizardId",
+                "id": "TabWizardId",
+                "itemId": "",
                 "maxHeight": null,
                 "activeTab": 0
             },
@@ -82,6 +83,30 @@
                     ]
                 },
                 {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "designerId": "e5094c35-756f-477d-abe0-50ef5bc39ca5",
+                    "masterInstanceId": "ExtBox1-ext-gen76375",
+                    "cn": [
+                        {
+                            "type": "tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "TabConfig3"
+                            },
+                            "designerId": "75051974-9458-428f-82a2-d94baa740fa0"
+                        }
+                    ]
+                },
+                {
                     "type": "panel",
                     "reference": {
                         "name": "items",
@@ -107,6 +132,37 @@
                             "designerId": "74abf9bf-5a6d-433d-b154-381a883f9b39"
                         }
                     ]
+                },
+                {
+                    "type": "basicfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "getTabIdByName",
+                        "fn": "getTabIdByName",
+                        "designer|params": [
+                            "stepName"
+                        ],
+                        "implHandler": [
+                            "\r",
+                            "var tabId = -1;\r",
+                            "if (stepName === 'AttendeeSpeakerSponsorId') {\r",
+                            "    tabId = 0;\r",
+                            "} else if (stepName === 'attendeeorspeaker') {\r",
+                            "    tabId = 1;\r",
+                            "} else if (stepName === 'forgotusernameorpassword') {\r",
+                            "    tabId = 2;\r",
+                            "} else if (stepName === 'Sponsor') {\r",
+                            "    tabId = 3;\r",
+                            "}\r",
+                            "return tabId;\r",
+                            ""
+                        ]
+                    },
+                    "designerId": "0753039d-4bc5-4d65-81b6-1e35f6445783"
                 }
             ]
         }

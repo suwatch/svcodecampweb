@@ -1,0 +1,140 @@
+{
+    "type": "controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "ForgotUsername"
+    },
+    "id": "ExtBox1-ext-gen82728",
+    "designerId": "f33fc0f3-a22f-4c01-afd3-0da5b64e9925",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onBackButtonIdClick",
+                "fn": "onBackButtonIdClick",
+                "implHandler": [
+                    "console.log('back button on ForgotUsername');"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "ForgotUsernameAlias #backButtonId"
+            },
+            "designerId": "3debd3b4-308c-4cb9-b6b7-5d452c50bea6"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onContinueButtonIdClick",
+                "fn": "onContinueButtonIdClick",
+                "implHandler": [
+                    "console.log('continue button on ForgotUsername');"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "ForgotUsernameAlias #continueButtonId"
+            },
+            "designerId": "0b4d2300-8349-47e3-83eb-965e3c076c07"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "continueButtonCheck",
+                "fn": "continueButtonCheck",
+                "implHandler": [
+                    "\r",
+                    "// if email or username has data then continue\r",
+                    "\r",
+                    "var continuebutton;\r",
+                    "\r",
+                    "var username = Ext.ComponentQuery.query('ForgotUsernameAlias #username')[0].getValue();\r",
+                    "var email = Ext.ComponentQuery.query('ForgotUsernameAlias #email')[0].getValue();\r",
+                    "\r",
+                    "console.log('username: ' + username + ' email: ' + email);\r",
+                    "\r",
+                    "if (username.length > 0 || email.length > 0) {\r",
+                    "    continueButton = Ext.ComponentQuery.query('ForgotUsernameAlias #continueButtonId')[0];\r",
+                    "    if (continueButton.isDisabled()) {\r",
+                    "        continueButton.enable();\r",
+                    "    }\r",
+                    "} else {\r",
+                    "    continueButton = Ext.ComponentQuery.query('ForgotUsernameAlias #continueButtonId')[0];\r",
+                    "    if (!continueButton.isDisabled()) {\r",
+                    "        continueButton.disable();\r",
+                    "    }\r",
+                    "}\r",
+                    "\r",
+                    "var continueEnabledNow = !continueButton.isDisabled();\r",
+                    "\r",
+                    "//console.log('continueEnabled: ' + continueEnabledNow);\r",
+                    "\r",
+                    "return continueEnabledNow;\r",
+                    "\r",
+                    ""
+                ]
+            },
+            "designerId": "11ae6b94-3a11-4176-94bb-a2eb70365ee9"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onEmailChange",
+                "fn": "onEmailChange",
+                "implHandler": [
+                    "this.continueButtonCheck();\r",
+                    ""
+                ],
+                "name": "change",
+                "scope": "me",
+                "designer|targetType": "Ext.form.field.Text",
+                "designer|controlQuery": "ForgotUsernameAlias #email"
+            },
+            "designerId": "9fc9a250-88c8-447a-874c-9009b0e96f6a"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onUsernameChange",
+                "fn": "onUsernameChange",
+                "implHandler": [
+                    "this.continueButtonCheck();"
+                ],
+                "name": "change",
+                "scope": "me",
+                "designer|targetType": "Ext.form.field.Text",
+                "designer|controlQuery": "ForgotUsernameAlias #username"
+            },
+            "designerId": "b03e94c0-a297-4760-a3d0-9c0c05f9c8a2"
+        }
+    ]
+}

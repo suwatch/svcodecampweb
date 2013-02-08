@@ -30,7 +30,7 @@
                     "// if (forgot checked or create new checke must have username)\r",
                     "// if (create new account checked, need both username and password\r",
                     "\r",
-                    "\r",
+                    "var continuebutton;\r",
                     "\r",
                     "var username = Ext.ComponentQuery.query('AttendeeOrSpeakerAlias #username')[0].getValue();\r",
                     "var password = Ext.ComponentQuery.query('AttendeeOrSpeakerAlias #password')[0].getValue();\r",
@@ -43,14 +43,14 @@
                     "\r",
                     "\r",
                     "if ( (username.length > 0 && password.length > 0) ||\r",
-                    "                                      forgot === true || \r",
-                    "                                      create === true) {\r",
-                    "    var continueButton = Ext.ComponentQuery.query('AttendeeOrSpeakerAlias #continueButtonId')[0];\r",
+                    "forgot === true || \r",
+                    "create === true) {\r",
+                    "    continueButton = Ext.ComponentQuery.query('AttendeeOrSpeakerAlias #continueButtonId')[0];\r",
                     "    if (continueButton.isDisabled()) {\r",
                     "        continueButton.enable();\r",
                     "    }\r",
                     "} else {\r",
-                    "    var continueButton = Ext.ComponentQuery.query('AttendeeOrSpeakerAlias #continueButtonId')[0];\r",
+                    "    continueButton = Ext.ComponentQuery.query('AttendeeOrSpeakerAlias #continueButtonId')[0];\r",
                     "    if (!continueButton.isDisabled()) {\r",
                     "        continueButton.disable();\r",
                     "    }\r",
@@ -86,7 +86,7 @@
                 "name": "change",
                 "scope": "me",
                 "designer|targetType": "Ext.form.field.Radio",
-                "designer|controlQuery": "#haveaccount"
+                "designer|controlQuery": "AttendeeOrSpeakerAlias #haveaccount"
             },
             "designerId": "22e98c30-986f-43a9-96a5-6a4d8acd24b9"
         },
@@ -106,7 +106,7 @@
                 "name": "change",
                 "scope": "me",
                 "designer|targetType": "Ext.form.field.Radio",
-                "designer|controlQuery": "#forgot"
+                "designer|controlQuery": "AttendeeOrSpeakerAlias #forgot"
             },
             "designerId": "3d56281d-3cc4-4739-880e-9341da0c990b"
         },
@@ -126,7 +126,7 @@
                 "name": "change",
                 "scope": "me",
                 "designer|targetType": "Ext.form.field.Radio",
-                "designer|controlQuery": "#create"
+                "designer|controlQuery": "AttendeeOrSpeakerAlias #create"
             },
             "designerId": "6364b8c4-ac36-4423-8661-9b38d093ff33"
         },
@@ -148,7 +148,7 @@
                 "name": "change",
                 "scope": "me",
                 "designer|targetType": "Ext.form.field.Text",
-                "designer|controlQuery": "#username"
+                "designer|controlQuery": "AttendeeOrSpeakerAlias #username"
             },
             "designerId": "6aa44ad1-d3f8-4b7c-8791-7e6210fbe819"
         },
@@ -169,7 +169,7 @@
                 "name": "change",
                 "scope": "me",
                 "designer|targetType": "Ext.form.field.Text",
-                "designer|controlQuery": "#password"
+                "designer|controlQuery": "AttendeeOrSpeakerAlias #password"
             },
             "designerId": "e09acd5f-f21d-4dd2-bbc9-dad4f2fa7315"
         },
@@ -189,7 +189,7 @@
                 "name": "click",
                 "scope": "me",
                 "designer|targetType": "Ext.button.Button",
-                "designer|controlQuery": "#backButtonId"
+                "designer|controlQuery": "AttendeeOrSpeakerAlias #backButtonId"
             },
             "designerId": "21f821d5-ddf0-4526-a737-f87e0f7e591a"
         },
@@ -217,6 +217,22 @@
                     "if (haveaccount === true && (username.length < 3 || password.length < 4)) {\r",
                     "    Ext.MessageBox.alert('Problem','username must be at least 3 characters and password must be at least 4 characters');\r",
                     "}\r",
+                    "else {\r",
+                    " \r",
+                    "    var tabWizardPanel = Ext.getCmp('TabWizardId');\r",
+                    "\r",
+                    "    if (forgot === true) {\r",
+                    "       tabWizardPanel.setActiveTab(tabWizardPanel.getTabIdByName('forgotusernameorpassword'));\r",
+                    "    } else if (this.rbChoice == 'create') {\r",
+                    "        tabWizardPanel.setActiveTab(tabWizardPanel.getTabIdByName('createnewaccount'));\r",
+                    "    } else if (this.rbChoice == 'haveaccount') {\r",
+                    "       // try logging person in and if fails, put up message and leave them here,\r",
+                    "       // otherwise redirect to home page\r",
+                    "    }\r",
+                    "\r",
+                    "\r",
+                    "    \r",
+                    "}\r",
                     "\r",
                     "\r",
                     "//"
@@ -224,7 +240,7 @@
                 "name": "click",
                 "scope": "me",
                 "designer|targetType": "Ext.button.Button",
-                "designer|controlQuery": "#continueButtonId"
+                "designer|controlQuery": "AttendeeOrSpeakerAlias #continueButtonId"
             },
             "designerId": "898e5102-a4be-496e-9706-c6651f6a8880"
         }

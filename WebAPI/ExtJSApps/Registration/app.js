@@ -22,12 +22,14 @@ Ext.application({
         'ViewportMain',
         'AttendeeSpeakerOrSponsor',
         'AttendeeOrSpeaker',
-        'MyButton'
+        'MyButton',
+        'ForgotUsernameOrPassword'
     ],
     autoCreateViewport: true,
     name: 'RegistrationApp',
     controllers: [
         'RegisterSpeakerAttendeeSponsorController',
-        'RegisterSpeakerAttendee'
+        'RegisterSpeakerAttendee',
+        'ForgotUsername'
     ]
 });

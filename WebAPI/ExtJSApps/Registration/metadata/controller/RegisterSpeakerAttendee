@@ -1,0 +1,232 @@
+{
+    "type": "controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "RegisterSpeakerAttendee"
+    },
+    "id": "ExtBox1-ext-gen36205",
+    "designerId": "649a7ff9-eed4-4a08-8133-fc01c9df011f",
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "checkEnableContinue",
+                "fn": "checkEnableContinue",
+                "implHandler": [
+                    "\r",
+                    "// we have username, password,haveaccount,forgot,create\r",
+                    "// here are the rules to follow\r",
+                    "//\r",
+                    "// if (username & password have data) enable\r",
+                    "// if (forgot checked or create new checke must have username)\r",
+                    "// if (create new account checked, need both username and password\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "var username = Ext.ComponentQuery.query('AttendeeOrSpeakerAlias #username')[0].getValue();\r",
+                    "var password = Ext.ComponentQuery.query('AttendeeOrSpeakerAlias #password')[0].getValue();\r",
+                    "var haveaccount = Ext.ComponentQuery.query('AttendeeOrSpeakerAlias #haveaccount')[0].checked;\r",
+                    "var forgot = Ext.ComponentQuery.query('AttendeeOrSpeakerAlias #forgot')[0].checked;\r",
+                    "var create = Ext.ComponentQuery.query('AttendeeOrSpeakerAlias #create')[0].checked;\r",
+                    "\r",
+                    "//console.log('username: ' + username + ' password: ' + password);\r",
+                    "//console.log('haveaccount: ' + haveaccount + ' forgot: ' + forgot + ' create: ' + create);\r",
+                    "\r",
+                    "\r",
+                    "if ( (username.length > 0 && password.length > 0) ||\r",
+                    "                                      forgot === true || \r",
+                    "                                      create === true) {\r",
+                    "    var continueButton = Ext.ComponentQuery.query('AttendeeOrSpeakerAlias #continueButtonId')[0];\r",
+                    "    if (continueButton.isDisabled()) {\r",
+                    "        continueButton.enable();\r",
+                    "    }\r",
+                    "} else {\r",
+                    "    var continueButton = Ext.ComponentQuery.query('AttendeeOrSpeakerAlias #continueButtonId')[0];\r",
+                    "    if (!continueButton.isDisabled()) {\r",
+                    "        continueButton.disable();\r",
+                    "    }\r",
+                    "}\r",
+                    "\r",
+                    "var continueEnabledNow = !continueButton.isDisabled();\r",
+                    "\r",
+                    "//console.log('continueEnabled: ' + continueEnabledNow);\r",
+                    "\r",
+                    "return continueEnabledNow;\r",
+                    "\r",
+                    "\r",
+                    ""
+                ]
+            },
+            "designerId": "3fae00cd-ff13-4c45-8767-add21eff5696"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onHaveaccountChange",
+                "fn": "onHaveaccountChange",
+                "implHandler": [
+                    "this.checkEnableContinue();\r",
+                    "\r",
+                    ""
+                ],
+                "name": "change",
+                "scope": "me",
+                "designer|targetType": "Ext.form.field.Radio",
+                "designer|controlQuery": "#haveaccount"
+            },
+            "designerId": "22e98c30-986f-43a9-96a5-6a4d8acd24b9"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onForgotChange",
+                "fn": "onForgotChange",
+                "implHandler": [
+                    "this.checkEnableContinue();"
+                ],
+                "name": "change",
+                "scope": "me",
+                "designer|targetType": "Ext.form.field.Radio",
+                "designer|controlQuery": "#forgot"
+            },
+            "designerId": "3d56281d-3cc4-4739-880e-9341da0c990b"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onCreateChange",
+                "fn": "onCreateChange",
+                "implHandler": [
+                    "this.checkEnableContinue();"
+                ],
+                "name": "change",
+                "scope": "me",
+                "designer|targetType": "Ext.form.field.Radio",
+                "designer|controlQuery": "#create"
+            },
+            "designerId": "6364b8c4-ac36-4423-8661-9b38d093ff33"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onUsernameChange",
+                "fn": "onUsernameChange",
+                "implHandler": [
+                    "\r",
+                    "this.checkEnableContinue();\r",
+                    ""
+                ],
+                "name": "change",
+                "scope": "me",
+                "designer|targetType": "Ext.form.field.Text",
+                "designer|controlQuery": "#username"
+            },
+            "designerId": "6aa44ad1-d3f8-4b7c-8791-7e6210fbe819"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onPasswordChange",
+                "fn": "onPasswordChange",
+                "implHandler": [
+                    "this.checkEnableContinue();\r",
+                    ""
+                ],
+                "name": "change",
+                "scope": "me",
+                "designer|targetType": "Ext.form.field.Text",
+                "designer|controlQuery": "#password"
+            },
+            "designerId": "e09acd5f-f21d-4dd2-bbc9-dad4f2fa7315"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onBackButtonIdClick",
+                "fn": "onBackButtonIdClick",
+                "implHandler": [
+                    "this.checkEnableContinue();"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#backButtonId"
+            },
+            "designerId": "21f821d5-ddf0-4526-a737-f87e0f7e591a"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onContinueButtonIdClick",
+                "fn": "onContinueButtonIdClick",
+                "implHandler": [
+                    "\r",
+                    "var continueEnabled = this.checkEnableContinue();\r",
+                    "\r",
+                    "\r",
+                    "var username = Ext.ComponentQuery.query('AttendeeOrSpeakerAlias #username')[0].getValue();\r",
+                    "var password = Ext.ComponentQuery.query('AttendeeOrSpeakerAlias #password')[0].getValue();\r",
+                    "var haveaccount = Ext.ComponentQuery.query('AttendeeOrSpeakerAlias #haveaccount')[0].checked;\r",
+                    "var forgot = Ext.ComponentQuery.query('AttendeeOrSpeakerAlias #forgot')[0].checked;\r",
+                    "var create = Ext.ComponentQuery.query('AttendeeOrSpeakerAlias #create')[0].checked;\r",
+                    "\r",
+                    "if (haveaccount === true && (username.length < 3 || password.length < 4)) {\r",
+                    "    Ext.MessageBox.alert('Problem','username must be at least 3 characters and password must be at least 4 characters');\r",
+                    "}\r",
+                    "\r",
+                    "\r",
+                    "//"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#continueButtonId"
+            },
+            "designerId": "898e5102-a4be-496e-9706-c6651f6a8880"
+        }
+    ]
+}

@@ -1,0 +1,19 @@
+{
+    "type": "button",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "MyButton",
+        "designer|userAlias": "mybutton",
+        "disabled": true,
+        "id": null,
+        "itemId": "continueButtonId",
+        "iconAlign": "right",
+        "text": "Continue"
+    },
+    "id": "ExtBox1-ext-gen29832",
+    "designerId": "28b0fe6f-eb82-4875-b557-7fd1424561ee"
+}

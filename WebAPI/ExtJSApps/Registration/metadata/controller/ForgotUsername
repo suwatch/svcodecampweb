@@ -22,7 +22,9 @@
                 "designer|userClassName": "onBackButtonIdClick",
                 "fn": "onBackButtonIdClick",
                 "implHandler": [
-                    "console.log('back button on ForgotUsername');"
+                    "var tabWizardPanel = Ext.getCmp('TabWizardId')\r",
+                    "tabWizardPanel.setActiveTab(tabWizardPanel.getTabIdByName('attendeeorspeaker'));\r",
+                    ""
                 ],
                 "name": "click",
                 "scope": "me",

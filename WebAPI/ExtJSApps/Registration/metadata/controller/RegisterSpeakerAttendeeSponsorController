@@ -126,7 +126,7 @@
                     "var tabWizardPanel = Ext.getCmp('TabWizardId')\r",
                     "\r",
                     "if (this.rbChoice === 'speaker' || this.rbChoice == 'attendee') {\r",
-                    "   tabWizardPanel.setActiveTab(tabWizardPanel.getTabIdByName('attendeeorspeaker'));\r",
+                    "    tabWizardPanel.setActiveTab(tabWizardPanel.getTabIdByName('attendeeorspeaker'));\r",
                     "} else if (this.rbChoice == 'sponsor') {\r",
                     "    tabWizardPanel.setActiveTab(tabWizardPanel.getTabIdByName('Sponsor'));\r",
                     "}\r",

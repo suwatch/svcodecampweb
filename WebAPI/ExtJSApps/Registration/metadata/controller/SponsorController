@@ -1,0 +1,167 @@
+{
+    "type": "controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "SponsorController"
+    },
+    "id": "ExtBox1-ext-gen10961",
+    "designerId": "cab99d0f-d5c3-4fde-a0ec-d102368a862f",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onContinueButtonIdClick",
+                "fn": "onContinueButtonIdClick",
+                "implHandler": [
+                    "var continuebutton;\r",
+                    "\r",
+                    "console.log('continue button in sponsor page');\r",
+                    "\r",
+                    "continueButton = Ext.ComponentQuery.query('sponsorAlias #continueButtonId')[0];\r",
+                    "continueButton.enable();\r",
+                    "\r",
+                    "\r",
+                    "/*\r",
+                    "var username = Ext.ComponentQuery.query('ForgotUsernameAlias #username')[0].getValue();\r",
+                    "var email = Ext.ComponentQuery.query('ForgotUsernameAlias #email')[0].getValue();\r",
+                    "\r",
+                    "console.log('username: ' + username + ' email: ' + email);\r",
+                    "\r",
+                    "if (username.length > 0 || email.length > 0) {\r",
+                    "continueButton = Ext.ComponentQuery.query('ForgotUsernameAlias #continueButtonId')[0];\r",
+                    "if (continueButton.isDisabled()) {\r",
+                    "continueButton.enable();\r",
+                    "}\r",
+                    "} else {\r",
+                    "continueButton = Ext.ComponentQuery.query('ForgotUsernameAlias #continueButtonId')[0];\r",
+                    "if (!continueButton.isDisabled()) {\r",
+                    "continueButton.disable();\r",
+                    "}\r",
+                    "}\r",
+                    "\r",
+                    "var continueEnabledNow = !continueButton.isDisabled();\r",
+                    "\r",
+                    "//console.log('continueEnabled: ' + continueEnabledNow);\r",
+                    "\r",
+                    "return continueEnabledNow;\r",
+                    "*/\r",
+                    ""
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "sponsorAlias #continueButtonId"
+            },
+            "designerId": "afcc7ce3-1bfc-4f5e-9cbd-e860cd530b7d"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "continueButtonCheck",
+                "fn": "continueButtonCheck",
+                "implHandler": [
+                    "// if email or username has data then continue\r",
+                    "\r",
+                    "var continuebutton;\r",
+                    "//debugger;\r",
+                    "var name = Ext.ComponentQuery.query('sponsorAlias #name')[0].getValue();\r",
+                    "var email = Ext.ComponentQuery.query('sponsorAlias #email')[0].getValue();\r",
+                    "\r",
+                    "console.log('name: ' + name + ' email: ' + email);\r",
+                    "\r",
+                    "if (name.length > 0 && email.length > 0) {\r",
+                    "    continueButton = Ext.ComponentQuery.query('sponsorAlias #continueButtonId')[0];\r",
+                    "    if (continueButton.isDisabled()) {\r",
+                    "        continueButton.enable();\r",
+                    "    }\r",
+                    "} else {\r",
+                    "    continueButton = Ext.ComponentQuery.query('sponsorAlias #continueButtonId')[0];\r",
+                    "    if (!continueButton.isDisabled()) {\r",
+                    "        continueButton.disable();\r",
+                    "    }\r",
+                    "}\r",
+                    "\r",
+                    "return;\r",
+                    ""
+                ]
+            },
+            "designerId": "65d18970-1188-4743-b0d0-2f12c492225c"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onNameChange",
+                "fn": "onNameChange",
+                "implHandler": [
+                    "this.continueButtonCheck();"
+                ],
+                "name": "change",
+                "scope": "me",
+                "designer|targetType": "Ext.form.field.Text",
+                "designer|controlQuery": "#name"
+            },
+            "designerId": "039026b7-e2ec-4d56-9280-964c22d33a68"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onEmailChange",
+                "fn": "onEmailChange",
+                "implHandler": [
+                    "this.continueButtonCheck();"
+                ],
+                "name": "change",
+                "scope": "me",
+                "designer|targetType": "Ext.form.field.Text",
+                "designer|controlQuery": "#email"
+            },
+            "designerId": "7916877b-20af-4e95-8c8a-3b6b529da01c"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onBackButtonIdClick",
+                "fn": "onBackButtonIdClick",
+                "implHandler": [
+                    "var tabWizardPanel = Ext.getCmp('TabWizardId')\r",
+                    "tabWizardPanel.setActiveTab(tabWizardPanel.getTabIdByName('AttendeeSpeakerSponsorId'));\r",
+                    ""
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#backButtonId"
+            },
+            "designerId": "c4ce42d4-8ccf-49d4-9843-5b9c2dea5639"
+        }
+    ]
+}

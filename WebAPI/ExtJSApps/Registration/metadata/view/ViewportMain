@@ -22,7 +22,7 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyTabPanel",
-                "height": 300,
+                "height": 450,
                 "id": "TabWizardId",
                 "itemId": "",
                 "maxHeight": null,
@@ -107,17 +107,14 @@
                     ]
                 },
                 {
-                    "type": "panel",
+                    "type": "linkedinstance",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
-                    "userConfig": {
-                        "designer|userClassName": "MyPanel2",
-                        "title": "Sponsor"
-                    },
-                    "designerId": "effc3a6e-578c-415f-8bb6-9972b15b708f",
+                    "designerId": "e6ba977e-f92c-48fd-81ea-f4cfe597510a",
+                    "masterInstanceId": "ExtBox1-ext-gen1911",
                     "cn": [
                         {
                             "type": "tab",
@@ -129,7 +126,7 @@
                             "userConfig": {
                                 "designer|userClassName": "TabConfig2"
                             },
-                            "designerId": "74abf9bf-5a6d-433d-b154-381a883f9b39"
+                            "designerId": "83013af9-6786-4608-a545-8c4142eae0fa"
                         }
                     ]
                 },

@@ -1,0 +1,321 @@
+{
+    "type": "panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "sponsor",
+        "designer|userAlias": "sponsorAlias",
+        "itemId": "sponsorId",
+        "bodyBorder": true,
+        "bodyPadding": null,
+        "title": "Sponsor"
+    },
+    "id": "ExtBox1-ext-gen1911",
+    "designerId": "effc3a6e-578c-415f-8bb6-9972b15b708f",
+    "cn": [
+        {
+            "type": "panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "designer|userClassName": "MyPanel4",
+                "layout": "hbox",
+                "title": null
+            },
+            "designerId": "64e19942-36cc-4214-aae7-1e1ebfd058fa",
+            "cn": [
+                {
+                    "type": "panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": 2,
+                        "container|align": "stretch",
+                        "designer|userClassName": "MyPanel5",
+                        "layout": "vbox",
+                        "bodyPadding": 10,
+                        "title": "Interested in Sponsoring Silicon Valley Code Camp?"
+                    },
+                    "designerId": "688a7524-83f6-4aeb-8ccd-b965a5fd7e7f",
+                    "cn": [
+                        {
+                            "type": "textfield",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyTextField4",
+                                "itemId": "name",
+                                "margin": null,
+                                "width": null,
+                                "fieldLabel": "Name"
+                            },
+                            "designerId": "a2b73043-0fb0-41da-b65b-0cc7e841753f"
+                        },
+                        {
+                            "type": "textfield",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyTextField6",
+                                "itemId": "email",
+                                "margin": null,
+                                "width": 300,
+                                "fieldLabel": "Email"
+                            },
+                            "designerId": "da245a26-170e-4de6-b750-641cbaf4a5e7"
+                        },
+                        {
+                            "type": "textfield",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyTextField5",
+                                "itemId": "company",
+                                "margin": null,
+                                "width": null,
+                                "fieldLabel": "Company"
+                            },
+                            "designerId": "72795ad7-61f6-4beb-8dbf-21af0d1be2af"
+                        },
+                        {
+                            "type": "textfield",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyTextField7",
+                                "itemId": "phone",
+                                "margin": null,
+                                "width": 300,
+                                "fieldLabel": "Phone Number"
+                            },
+                            "designerId": "ca646937-408e-4705-89b0-0221b79c0012"
+                        },
+                        {
+                            "type": "label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": 0,
+                                "designer|userClassName": "MyLabel1",
+                                "height": 20,
+                                "text": null
+                            },
+                            "designerId": "0d30e06b-8590-4411-a66a-25c83f2cc9a0"
+                        },
+                        {
+                            "type": "checkboxgroup",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "stretch",
+                                "designer|userClassName": "MyCheckboxGroup",
+                                "border": 1,
+                                "frame": true,
+                                "itemId": "ContactMeCheckboxGroup",
+                                "width": 328,
+                                "layout": "vbox",
+                                "fieldLabel": ""
+                            },
+                            "designerId": "4abbbe8d-ae8f-4145-90a0-8abc17ada15b",
+                            "cn": [
+                                {
+                                    "type": "checkboxfield",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|userClassName": "MyCheckbox",
+                                        "itemId": "emailMeCheckbox",
+                                        "fieldLabel": null,
+                                        "boxLabel": "Please Email Me Information"
+                                    },
+                                    "designerId": "470b075c-1b76-4b9c-a0a0-49373cb9e4d4"
+                                },
+                                {
+                                    "type": "checkboxfield",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|userClassName": "MyCheckbox1",
+                                        "itemId": "contactMeCheckbox",
+                                        "fieldLabel": null,
+                                        "boxLabel": "Please Contact Me By Phone"
+                                    },
+                                    "designerId": "fac9a0bf-639f-4c6d-8c0a-8d5a46bda035"
+                                },
+                                {
+                                    "type": "checkboxfield",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|margins": null,
+                                        "designer|userClassName": "MyCheckbox1",
+                                        "itemId": "alsoAttendingCheckBox",
+                                        "fieldLabel": null,
+                                        "boxLabel": "I Am Also Planning On Attending"
+                                    },
+                                    "designerId": "4ba51baa-3516-4ea2-ac1d-bff7a56bc751"
+                                },
+                                {
+                                    "type": "checkboxfield",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|margins": null,
+                                        "designer|userClassName": "MyCheckbox1",
+                                        "itemId": "sponsoredInPastCheckbox",
+                                        "fieldLabel": null,
+                                        "boxLabel": "Our Company Has Previously Sponsord Code Camp"
+                                    },
+                                    "designerId": "601967a0-98ec-4f4b-8639-c625ff503ced"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": 1,
+                        "designer|userClassName": "MyPanel5",
+                        "height": 287,
+                        "layout": "anchor",
+                        "bodyPadding": 10,
+                        "title": "Special Note or Question?"
+                    },
+                    "designerId": "3fb84fac-7247-4586-96e0-61142bd2dfe1",
+                    "cn": [
+                        {
+                            "type": "textareafield",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyTextArea",
+                                "height": 212,
+                                "itemId": "sponsorNote",
+                                "width": null,
+                                "fieldLabel": ""
+                            },
+                            "designerId": "05812cf2-6083-49ec-b529-ad518f5769a6"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "bottom",
+                "container|pack": "end",
+                "container|padding": null,
+                "designer|userClassName": "MyToolbar",
+                "height": 50,
+                "itemId": "ToolBarForgotUsername"
+            },
+            "designerId": "87d82dcd-4f32-42e0-9ca1-2ab8d1623a25",
+            "cn": [
+                {
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MyButton",
+                        "disabled": false,
+                        "id": null,
+                        "itemId": "backButtonId",
+                        "iconAlign": "right",
+                        "text": "Back"
+                    },
+                    "designerId": "b331d0ac-e2f6-43f6-83a2-b6dd9b461335"
+                },
+                {
+                    "type": "tbseparator",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MySeparator"
+                    },
+                    "designerId": "41f5bfd6-ec71-4366-973b-79ad919deff2"
+                },
+                {
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MyButton",
+                        "disabled": true,
+                        "id": null,
+                        "itemId": "continueButtonId",
+                        "iconAlign": "right",
+                        "text": "Continue"
+                    },
+                    "designerId": "b4a96ec3-1152-4a7c-b5f3-e796e82b4029"
+                }
+            ]
+        }
+    ]
+}

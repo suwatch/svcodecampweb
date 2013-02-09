@@ -3212,6 +3212,7 @@
     <Content Include="RoomAssignments.aspx" />
     <Content Include="Rss.aspx" />
     <Content Include="SaturdayDinnerStatus.aspx" />
+    <None Include="Properties\PublishProfiles\svcc.73rst.com.pubxml" />
     <None Include="Scripts\jquery-1.9.0.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.0.js" />
     <Content Include="Scripts\jquery-1.9.0.min.js" />

@@ -10,7 +10,6 @@
             "ViewportMain",
             "AttendeeSpeakerOrSponsor",
             "AttendeeOrSpeaker",
-            "MyButton",
             "ForgotUsernameOrPassword",
             "sponsor"
         ],

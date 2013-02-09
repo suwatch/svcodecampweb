@@ -1,0 +1,88 @@
+{
+    "type": "viewport",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "MyViewport",
+        "designer|initialView": true
+    },
+    "id": "ExtBox1-ext-gen1952",
+    "designerId": "29db67e1-2ef0-47dc-a0ad-19fd42139bd2",
+    "cn": [
+        {
+            "type": "panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyPanel",
+                "title": "My Panel"
+            },
+            "designerId": "3989d288-f61e-4618-b6e0-7611e976f4ce",
+            "cn": [
+                {
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyButton",
+                        "id": "buttonId",
+                        "itemId": "buttonItemId",
+                        "text": "hits controller"
+                    },
+                    "designerId": "816ff626-52f2-4a50-a91b-2046033aa436"
+                },
+                {
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyButton1",
+                        "text": "Does Compent Query of buttonId"
+                    },
+                    "designerId": "22ccb3ce-81b6-4e19-a95f-4f9cb51bc07f",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "onButtonClick",
+                                "fn": "onButtonClick",
+                                "implHandler": [
+                                    "\r",
+                                    "var componentQueryButtonIdLen = Ext.ComponentQuery.query('#buttonId').length; \r",
+                                    "// returns 0\r",
+                                    "\r",
+                                    "var componentQueryButtonItemIdLen = Ext.ComponentQuery.query('#buttonItemId').length;\r",
+                                    "// returns 1\r",
+                                    "\r",
+                                    "alert(componentQueryButtonIdLen + ',' + componentQueryButtonItemIdLen);\r",
+                                    "\r",
+                                    ""
+                                ],
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "designerId": "6ba7cf6a-31bc-418f-bfac-2e268a475f29"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

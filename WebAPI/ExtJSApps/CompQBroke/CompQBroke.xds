@@ -1,0 +1,58 @@
+{
+    "name": "CompQBroke",
+    "settings": {
+        "urlPrefix": "",
+        "spacesToIndent": 4,
+        "exportPath": "",
+        "sdkPath": "",
+        "lineEnding": "CRLF",
+        "genTimestamps": false,
+        "cacheBust": false
+    },
+    "xdsVersion": "2.1.0",
+    "xdsBuild": 678,
+    "schemaVersion": 1,
+    "upgradeVersion": 210000000498,
+    "framework": "ext41",
+    "topInstanceFileMap": {
+        "63c38373-ddfd-4892-9222-85995c74a832": {
+            "paths": [
+                "metadata/resource/Library"
+            ],
+            "className": "Library"
+        },
+        "29db67e1-2ef0-47dc-a0ad-19fd42139bd2": {
+            "paths": [
+                "metadata/view/MyViewport",
+                "app/view/override/MyViewport.js",
+                "app/view/MyViewport.js",
+                "app/view/Viewport.js"
+            ],
+            "className": "MyViewport"
+        },
+        "216a47f9-f7c7-4774-a861-35d15b9aa589": {
+            "paths": [
+                "metadata/controller/MyController",
+                "app/controller/override/MyController.js",
+                "app/controller/MyController.js"
+            ],
+            "className": "MyController"
+        }
+    },
+    "viewOrderMap": {
+        "view": [
+            "29db67e1-2ef0-47dc-a0ad-19fd42139bd2"
+        ],
+        "store": [],
+        "controller": [
+            "216a47f9-f7c7-4774-a861-35d15b9aa589"
+        ],
+        "model": [],
+        "resource": [
+            "63c38373-ddfd-4892-9222-85995c74a832"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

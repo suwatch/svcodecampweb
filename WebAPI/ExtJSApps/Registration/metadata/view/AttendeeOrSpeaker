@@ -44,12 +44,35 @@
                         "layout|flex": null,
                         "designer|userClassName": "MyButton",
                         "disabled": false,
-                        "id": null,
+                        "id": "backButtonId",
                         "itemId": "backButtonId",
                         "iconAlign": "right",
                         "text": "Back"
                     },
-                    "designerId": "223ebf35-7829-421f-a88c-6e3296a53ef3"
+                    "designerId": "223ebf35-7829-421f-a88c-6e3296a53ef3",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "onBackButtonIdClick",
+                                "fn": "onBackButtonIdClick",
+                                "implHandler": [
+                                    "\r",
+                                    "// this should not be necessary.  works in non-compile but not compile\r",
+                                    "var tabWizardPanel = Ext.getCmp('TabWizardId')\r",
+                                    "tabWizardPanel.setActiveTab(tabWizardPanel.getTabIdByName('AttendeeSpeakerSponsorId'));"
+                                ],
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "designerId": "c86a1283-f2fb-4816-8447-ada69ada2ab3"
+                        }
+                    ]
                 },
                 {
                     "type": "tbseparator",

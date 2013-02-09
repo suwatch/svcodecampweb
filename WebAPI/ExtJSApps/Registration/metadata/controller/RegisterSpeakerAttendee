@@ -185,7 +185,7 @@
                 "fn": "onBackButtonIdClick",
                 "implHandler": [
                     "\r",
-                    "console.log('back button in registerspeakerattendee');\r",
+                    "console.log('back button in registerspeakerattendee controller');\r",
                     "\r",
                     "var tabWizardPanel = Ext.getCmp('TabWizardId')\r",
                     "tabWizardPanel.setActiveTab(tabWizardPanel.getTabIdByName('AttendeeSpeakerSponsorId'));\r",

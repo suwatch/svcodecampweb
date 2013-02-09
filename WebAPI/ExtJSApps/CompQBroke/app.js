@@ -25,5 +25,10 @@ Ext.application({
     name: 'MyApp',
     controllers: [
         'MyController'
-    ]
+    ],
+
+    launch: function() {
+
+    }
+
 });

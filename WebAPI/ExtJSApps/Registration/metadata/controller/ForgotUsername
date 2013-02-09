@@ -67,6 +67,8 @@
                     "\r",
                     "// if email or username has data then continue\r",
                     "\r",
+                    "console.log('continueButtonCheck in ForgotUsername controller');\r",
+                    "\r",
                     "var continuebutton;\r",
                     "\r",
                     "var username = Ext.ComponentQuery.query('ForgotUsernameAlias #username')[0].getValue();\r",
@@ -137,6 +139,27 @@
                 "designer|controlQuery": "ForgotUsernameAlias #username"
             },
             "designerId": "b03e94c0-a297-4760-a3d0-9c0c05f9c8a2"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onEmailChange",
+                "fn": "onEmailChange",
+                "implHandler": [
+                    "//////\r",
+                    "console.log('onEmailchange NEW');"
+                ],
+                "name": "change",
+                "scope": "me",
+                "designer|targetType": "Ext.form.field.Text",
+                "designer|controlQuery": "#emailId"
+            },
+            "designerId": "46d7c637-0d91-420d-915b-b3c8188ef959"
         }
     ]
 }

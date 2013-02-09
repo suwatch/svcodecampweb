@@ -23,43 +23,17 @@ Ext.define('MyApp.view.MyViewport', {
             items: [
                 {
                     xtype: 'panel',
-                    title: 'My Panel',
-                    items: [
-                        {
-                            xtype: 'button',
-                            id: 'buttonId',
-                            itemId: 'buttonItemId',
-                            text: 'hits controller'
-                        },
-                        {
-                            xtype: 'button',
-                            text: 'Does Compent Query of buttonId',
-                            listeners: {
-                                click: {
-                                    fn: me.onButtonClick,
-                                    scope: me
-                                }
-                            }
-                        }
-                    ]
+                    title: 'My Panel'
+                },
+                {
+                    xtype: 'button',
+                    itemId: 'buttonItemId',
+                    text: 'MyButton'
                 }
             ]
         });
 
         me.callParent(arguments);
-    },
-
-    onButtonClick: function(button, e, options) {
-
-        var componentQueryButtonIdLen = Ext.ComponentQuery.query('#buttonId').length; 
-        // returns 0
-
-        var componentQueryButtonItemIdLen = Ext.ComponentQuery.query('#buttonItemId').length;
-        // returns 1
-
-        alert(componentQueryButtonIdLen + ',' + componentQueryButtonItemIdLen);
-
-
     }
 
 });

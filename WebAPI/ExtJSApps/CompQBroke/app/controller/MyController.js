@@ -16,14 +16,14 @@
 Ext.define('MyApp.controller.MyController', {
     extend: 'Ext.app.Controller',
 
-    onButtonIdClick: function(button, e, options) {
-        console.log('button click inside controller');
+    onButtonItemIdClick: function(button, e, options) {
+        console.log('click');
     },
 
     init: function(application) {
         this.control({
             "#buttonItemId": {
-                click: this.onButtonIdClick
+                click: this.onButtonItemIdClick
             }
         });
     }

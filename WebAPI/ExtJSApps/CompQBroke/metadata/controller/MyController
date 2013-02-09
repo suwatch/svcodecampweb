@@ -8,8 +8,8 @@
     "userConfig": {
         "designer|userClassName": "MyController"
     },
-    "id": "ExtBox1-ext-gen3128",
-    "designerId": "216a47f9-f7c7-4774-a861-35d15b9aa589",
+    "id": "ExtBox1-ext-gen2482",
+    "designerId": "93ecbfe1-7b40-46bb-bc73-edc0d98be08e",
     "cn": [
         {
             "type": "controlleraction",
@@ -19,17 +19,17 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|userClassName": "onButtonIdClick",
-                "fn": "onButtonIdClick",
+                "designer|userClassName": "onButtonItemIdClick",
+                "fn": "onButtonItemIdClick",
                 "implHandler": [
-                    "console.log('button click inside controller');"
+                    "console.log('click');"
                 ],
                 "name": "click",
                 "scope": "me",
                 "designer|targetType": "Ext.button.Button",
                 "designer|controlQuery": "#buttonItemId"
             },
-            "designerId": "ad349fad-eda2-4c17-821b-94cf9f158fb1"
+            "designerId": "8b321373-10fc-44f5-9de1-a63995a3af3e"
         }
     ]
 }

@@ -282,29 +282,7 @@
                         "iconAlign": "right",
                         "text": "Back"
                     },
-                    "designerId": "b331d0ac-e2f6-43f6-83a2-b6dd9b461335",
-                    "cn": [
-                        {
-                            "type": "basiceventbinding",
-                            "reference": {
-                                "name": "listeners",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "designer|userClassName": "onBackButtonIdClick",
-                                "fn": "onBackButtonIdClick",
-                                "implHandler": [
-                                    "// this should not be necessary.  works in non-compile but not compile\r",
-                                    "var tabWizardPanel = Ext.getCmp('TabWizardId')\r",
-                                    "tabWizardPanel.setActiveTab(tabWizardPanel.getTabIdByName('AttendeeSpeakerSponsorId'));"
-                                ],
-                                "name": "click",
-                                "scope": "me"
-                            },
-                            "designerId": "dab2d27d-9298-4b08-8065-6f25630fc8c0"
-                        }
-                    ]
+                    "designerId": "b331d0ac-e2f6-43f6-83a2-b6dd9b461335"
                 },
                 {
                     "type": "tbseparator",

@@ -93,6 +93,14 @@
                 "app/controller/SponsorController.js"
             ],
             "className": "SponsorController"
+        },
+        "fea6a3af-2d7e-4daa-9f97-09e2da9e54c8": {
+            "paths": [
+                "metadata/view/TabWizardPanel",
+                "app/view/override/TabWizardPanel.js",
+                "app/view/TabWizardPanel.js"
+            ],
+            "className": "TabWizardPanel"
         }
     },
     "viewOrderMap": {
@@ -101,7 +109,8 @@
             "ca5637cc-e4a9-4eb8-b914-8c01593a1781",
             "f0845701-b108-474a-8062-fac7fa9e8b3a",
             "66303dac-bfdd-47ba-85c5-8e1f3b61e377",
-            "effc3a6e-578c-415f-8bb6-9972b15b708f"
+            "effc3a6e-578c-415f-8bb6-9972b15b708f",
+            "fea6a3af-2d7e-4daa-9f97-09e2da9e54c8"
         ],
         "store": [],
         "controller": [

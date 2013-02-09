@@ -11,7 +11,8 @@
             "AttendeeSpeakerOrSponsor",
             "AttendeeOrSpeaker",
             "ForgotUsernameOrPassword",
-            "sponsor"
+            "sponsor",
+            "TabWizardPanel"
         ],
         "autoCreateViewport": true,
         "name": "RegistrationApp",
@@ -36,8 +37,8 @@
                 "designer|userClassName": "launch",
                 "fn": "launch",
                 "implHandler": [
-                    "var tabPanel = Ext.getCmp('TabWizardId');\r",
-                    "tabPanel.hideTabTitles();"
+                    "//var tabPanel = Ext.getCmp('TabWizardId');\r",
+                    "//tabPanel.hideTabTitles();"
                 ]
             },
             "designerId": "38862b41-1650-45f5-9800-ee081b97eaa2"

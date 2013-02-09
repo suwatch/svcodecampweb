@@ -23,7 +23,8 @@ Ext.application({
         'AttendeeSpeakerOrSponsor',
         'AttendeeOrSpeaker',
         'ForgotUsernameOrPassword',
-        'sponsor'
+        'sponsor',
+        'TabWizardPanel'
     ],
     autoCreateViewport: true,
     name: 'RegistrationApp',
@@ -35,8 +36,8 @@ Ext.application({
     ],
 
     launch: function() {
-        var tabPanel = Ext.getCmp('TabWizardId');
-        tabPanel.hideTabTitles();
+        //var tabPanel = Ext.getCmp('TabWizardId');
+        //tabPanel.hideTabTitles();
     }
 
 });

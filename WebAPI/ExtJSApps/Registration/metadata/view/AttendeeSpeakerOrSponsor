@@ -98,7 +98,7 @@
                 "dock": "top",
                 "container|pack": "end",
                 "designer|userClassName": "MyToolbar",
-                "height": 50,
+                "height": null,
                 "itemId": "ToolBarAttendeeSpeakerSponsor"
             },
             "designerId": "dd9dead6-9348-459a-865a-53b5249a6b0f",

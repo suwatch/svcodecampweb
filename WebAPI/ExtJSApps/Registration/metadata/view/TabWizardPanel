@@ -1,0 +1,171 @@
+{
+    "type": "tabpanel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "TabWizardPanel",
+        "designer|userAlias": "tabWizardPanelAlias",
+        "height": 450,
+        "id": "TabWizardId",
+        "itemId": "",
+        "maxHeight": null,
+        "activeTab": 0
+    },
+    "id": "ExtBox1-ext-gen1924",
+    "designerId": "fea6a3af-2d7e-4daa-9f97-09e2da9e54c8",
+    "cn": [
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "id": "AttendeeSpeakerSponsorId",
+                "itemId": null
+            },
+            "designerId": "687e7c89-bd78-4d96-89a0-854427f892bc",
+            "masterInstanceId": "ExtBox1-ext-gen3906",
+            "cn": [
+                {
+                    "type": "tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "TabConfig"
+                    },
+                    "designerId": "48779a32-4047-441d-a3a6-900387dec5ee"
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "designerId": "48459791-55b4-4712-93d9-130f8485d5a4",
+            "masterInstanceId": "ExtBox1-ext-gen3931",
+            "cn": [
+                {
+                    "type": "tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "TabConfig1"
+                    },
+                    "designerId": "6d4e8bd0-a914-476b-a2e1-5381b843db0a"
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "designerId": "e5094c35-756f-477d-abe0-50ef5bc39ca5",
+            "masterInstanceId": "ExtBox1-ext-gen76375",
+            "cn": [
+                {
+                    "type": "tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "TabConfig3"
+                    },
+                    "designerId": "75051974-9458-428f-82a2-d94baa740fa0"
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "designerId": "e6ba977e-f92c-48fd-81ea-f4cfe597510a",
+            "masterInstanceId": "ExtBox1-ext-gen1911",
+            "cn": [
+                {
+                    "type": "tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "TabConfig2"
+                    },
+                    "designerId": "83013af9-6786-4608-a545-8c4142eae0fa"
+                }
+            ]
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "getTabIdByName",
+                "fn": "getTabIdByName",
+                "designer|params": [
+                    "stepName"
+                ],
+                "implHandler": [
+                    "\r",
+                    "var tabId = -1;\r",
+                    "if (stepName === 'AttendeeSpeakerSponsorId') {\r",
+                    "    tabId = 0;\r",
+                    "} else if (stepName === 'attendeeorspeaker') {\r",
+                    "    tabId = 1;\r",
+                    "} else if (stepName === 'forgotusernameorpassword') {\r",
+                    "    tabId = 2;\r",
+                    "} else if (stepName === 'Sponsor') {\r",
+                    "    tabId = 3;\r",
+                    "}\r",
+                    "return tabId;\r",
+                    ""
+                ]
+            },
+            "designerId": "0753039d-4bc5-4d65-81b6-1e35f6445783"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "hideTabTitles",
+                "fn": "hideTabTitles",
+                "implHandler": [
+                    "console.log('hideTabTitles');\r",
+                    "this.getTabBar().hide();\r",
+                    "this.componentLayout.childrenChanged = true;\r",
+                    "this.doComponentLayout();"
+                ]
+            },
+            "designerId": "cd19273b-8f0c-4df9-be5a-887e816184ac"
+        }
+    ]
+}

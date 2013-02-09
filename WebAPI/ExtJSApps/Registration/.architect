@@ -3,10 +3,11 @@
         "data": true,
         "model": true,
         "component": true,
-        "controller": true,
+        "controller": false,
         "resource": true,
         "2e607d39-4c76-4f8c-a350-e222eedf6e5d": {
             "id": "2e607d39-4c76-4f8c-a350-e222eedf6e5d",
+            "expanded": false,
             "cn": [
                 {
                     "id": "fea6a3af-2d7e-4daa-9f97-09e2da9e54c8",
@@ -85,7 +86,6 @@
         },
         "f0845701-b108-474a-8062-fac7fa9e8b3a": {
             "id": "f0845701-b108-474a-8062-fac7fa9e8b3a",
-            "expanded": false,
             "cn": [
                 {
                     "id": "b85d19d2-f63e-4185-8ee4-2d216f881ab5",
@@ -158,9 +158,11 @@
         },
         "effc3a6e-578c-415f-8bb6-9972b15b708f": {
             "id": "effc3a6e-578c-415f-8bb6-9972b15b708f",
+            "expanded": false,
             "cn": [
                 {
                     "id": "64e19942-36cc-4214-aae7-1e1ebfd058fa",
+                    "expanded": false,
                     "cn": [
                         {
                             "id": "688a7524-83f6-4aeb-8ccd-b965a5fd7e7f",

@@ -24,7 +24,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "dock": "bottom",
+                "dock": "top",
                 "container|pack": "end",
                 "container|padding": null,
                 "designer|userClassName": "MyToolbar",

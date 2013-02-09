@@ -160,6 +160,25 @@
                         ]
                     },
                     "designerId": "0753039d-4bc5-4d65-81b6-1e35f6445783"
+                },
+                {
+                    "type": "basicfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "hideTabTitles",
+                        "fn": "hideTabTitles",
+                        "implHandler": [
+                            "console.log('hideTabTitles');\r",
+                            "this.getTabBar().hide();\r",
+                            "this.componentLayout.childrenChanged = true;\r",
+                            "this.doComponentLayout();"
+                        ]
+                    },
+                    "designerId": "cd19273b-8f0c-4df9-be5a-887e816184ac"
                 }
             ]
         }

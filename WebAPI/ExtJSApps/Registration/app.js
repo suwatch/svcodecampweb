@@ -32,5 +32,11 @@ Ext.application({
         'RegisterSpeakerAttendee',
         'ForgotUsername',
         'SponsorController'
-    ]
+    ],
+
+    launch: function() {
+        var tabPanel = Ext.getCmp('TabWizardId');
+        tabPanel.hideTabTitles();
+    }
+
 });

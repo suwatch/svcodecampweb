@@ -23,5 +23,24 @@
         ]
     },
     "id": "ExtBox1-ext-gen1587",
-    "designerId": "application"
+    "designerId": "application",
+    "cn": [
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "launch",
+                "fn": "launch",
+                "implHandler": [
+                    "var tabPanel = Ext.getCmp('TabWizardId');\r",
+                    "tabPanel.hideTabTitles();"
+                ]
+            },
+            "designerId": "38862b41-1650-45f5-9800-ee081b97eaa2"
+        }
+    ]
 }

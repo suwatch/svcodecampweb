@@ -12,8 +12,8 @@
         "bodyPadding": 15,
         "title": "Speaker After Login"
     },
-    "id": "ExtBox1-ext-gen32669",
-    "designerId": "3fc02c48-e4bb-4115-8115-8e8abbfdd91c",
+    "id": "ExtBox1-ext-gen14927",
+    "designerId": "56e26b45-7fe3-4b60-bbd4-c2b2c6c64e83",
     "cn": [
         {
             "type": "radiogroup",
@@ -28,7 +28,7 @@
                 "layout": "vbox",
                 "fieldLabel": ""
             },
-            "designerId": "6d53c76f-7c10-4c91-b238-2cd5309356c7",
+            "designerId": "ff1a664b-b9e2-4744-83f7-25ff9fe70d13",
             "cn": [
                 {
                     "type": "radiofield",
@@ -43,7 +43,7 @@
                         "fieldLabel": null,
                         "boxLabel": "Can Speak Saturday"
                     },
-                    "designerId": "e19bc0b1-ed4c-4942-9fcb-c4487e7b25e3"
+                    "designerId": "16f76cb4-ca8c-4f2d-9689-63028d610ec8"
                 },
                 {
                     "type": "radiofield",
@@ -58,7 +58,7 @@
                         "fieldLabel": null,
                         "boxLabel": "Can Speak Sunday"
                     },
-                    "designerId": "7c4d7bf9-7f4d-40e4-99ae-7750a341ddd4"
+                    "designerId": "fa65d188-1d90-4cd7-8de1-ded0d6d89813"
                 },
                 {
                     "type": "radiofield",
@@ -74,7 +74,7 @@
                         "boxLabel": "Can Speak Saturday Or Sunday",
                         "checked": true
                     },
-                    "designerId": "addddd0e-70fb-4660-8ac7-fa79b99b8783"
+                    "designerId": "22df0a81-753e-4d92-ad1d-96357ee14008"
                 }
             ]
         },
@@ -92,7 +92,7 @@
                 "name": "FirstName",
                 "fieldLabel": "FirstName"
             },
-            "designerId": "6827e62e-5b41-4557-b4c2-2e6c639bfb36"
+            "designerId": "6d3f0aac-d38a-481f-9c3f-e0c08999e247"
         },
         {
             "type": "textfield",
@@ -108,7 +108,7 @@
                 "name": "LastName",
                 "fieldLabel": "Last Name"
             },
-            "designerId": "9da97953-1a3e-4f49-9ee5-7fa22ce3ad2d"
+            "designerId": "b19124eb-a087-4cd9-9e52-64e424ebc849"
         },
         {
             "type": "textfield",
@@ -123,7 +123,7 @@
                 "itemId": "EmailId",
                 "fieldLabel": "Email"
             },
-            "designerId": "a82ecbea-4275-4db2-96a4-9ac67cac17bf"
+            "designerId": "44590fb8-2862-4725-95b1-8a84e200847f"
         },
         {
             "type": "textfield",
@@ -138,7 +138,7 @@
                 "itemId": "WebSiteId",
                 "fieldLabel": "Web Site"
             },
-            "designerId": "5e0623a2-5b5a-4696-bb7b-d1a650e11220"
+            "designerId": "af539edb-f0b7-49ba-98f4-12a6511bfa29"
         },
         {
             "type": "textfield",
@@ -153,7 +153,7 @@
                 "itemId": "TwitterHandleId",
                 "fieldLabel": "Twitter Handle"
             },
-            "designerId": "933ca0ed-5192-4f6d-8be3-4773babac81d"
+            "designerId": "75fa993a-7e3c-42c2-97c6-0d4d1077622b"
         },
         {
             "type": "filefield",
@@ -168,7 +168,7 @@
                 "itemId": "PictureUploadId",
                 "fieldLabel": "Picture"
             },
-            "designerId": "50447605-c956-4119-acb5-2f5876a09690"
+            "designerId": "651322f2-93ae-4c62-9067-381bb0c31569"
         },
         {
             "type": "textfield",
@@ -183,7 +183,7 @@
                 "itemId": "CityId",
                 "fieldLabel": "City"
             },
-            "designerId": "5bad6404-b5ce-4319-9ab6-d2f4b46827a7"
+            "designerId": "a474b8ec-f4a9-4d8f-bcdb-fca1c59af204"
         },
         {
             "type": "textfield",
@@ -198,7 +198,7 @@
                 "itemId": "StateId",
                 "fieldLabel": "State"
             },
-            "designerId": "d22c09fe-7ce6-4a7e-84de-bbc81caa2143"
+            "designerId": "ae2c83f0-2b76-4f51-8028-9b0440a3182f"
         },
         {
             "type": "textfield",
@@ -213,7 +213,7 @@
                 "itemId": "ZipcodeId",
                 "fieldLabel": "Zipcode"
             },
-            "designerId": "bb2d3d27-eb76-4a39-b408-0ac86480300a"
+            "designerId": "84e97daa-769b-4ec5-b44a-fd5862c7abab"
         },
         {
             "type": "textareafield",
@@ -228,7 +228,7 @@
                 "designer|displayName": "BioId",
                 "fieldLabel": "Bio"
             },
-            "designerId": "697d42ba-51cf-4b4d-a3e9-50c26890c563"
+            "designerId": "06b45703-4e4f-48b7-8ed9-dc38a5ae9844"
         },
         {
             "type": "toolbar",
@@ -245,7 +245,7 @@
                 "height": null,
                 "itemId": "ToolBarAttendeeSpeaker"
             },
-            "designerId": "b9187b73-85c4-47e6-8885-f5213ade32d5",
+            "designerId": "c47bc250-9ca1-45b2-b5c4-3ddcfc77ef92",
             "cn": [
                 {
                     "type": "button",
@@ -263,7 +263,7 @@
                         "iconAlign": "right",
                         "text": "Back"
                     },
-                    "designerId": "de3b46bc-5166-4a9e-8d1b-e29a8256ed2a"
+                    "designerId": "dcb06a2e-3794-4a2a-aef9-b388cad8db3a"
                 },
                 {
                     "type": "tbseparator",
@@ -276,7 +276,7 @@
                         "layout|flex": null,
                         "designer|userClassName": "MySeparator"
                     },
-                    "designerId": "64bd17b2-a2f5-4b2b-b41c-8ea80f652ad9"
+                    "designerId": "4834b1cb-f5df-4bcb-97bf-15e50b022ebe"
                 },
                 {
                     "type": "button",
@@ -294,7 +294,7 @@
                         "iconAlign": "right",
                         "text": "Continue"
                     },
-                    "designerId": "87d83ff1-d072-4210-8f8d-af915b480b2b"
+                    "designerId": "d46295d3-4f8d-432b-b816-597bdc8f7b10"
                 }
             ]
         }

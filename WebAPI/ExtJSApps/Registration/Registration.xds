@@ -30,14 +30,6 @@
             ],
             "className": "ViewportMain"
         },
-        "ca5637cc-e4a9-4eb8-b914-8c01593a1781": {
-            "paths": [
-                "metadata/view/AttendeeSpeakerOrSponsor",
-                "app/view/override/AttendeeSpeakerOrSponsor.js",
-                "app/view/AttendeeSpeakerOrSponsor.js"
-            ],
-            "className": "AttendeeSpeakerOrSponsor"
-        },
         "c1e28fd8-26ea-4392-a260-b19d1915f1d8": {
             "paths": [
                 "metadata/controller/RegisterSpeakerAttendeeSponsorController",
@@ -46,14 +38,6 @@
             ],
             "className": "RegisterSpeakerAttendeeSponsorController"
         },
-        "f0845701-b108-474a-8062-fac7fa9e8b3a": {
-            "paths": [
-                "metadata/view/AttendeeOrSpeaker",
-                "app/view/override/AttendeeOrSpeaker.js",
-                "app/view/AttendeeOrSpeaker.js"
-            ],
-            "className": "AttendeeOrSpeaker"
-        },
         "649a7ff9-eed4-4a08-8133-fc01c9df011f": {
             "paths": [
                 "metadata/controller/RegisterSpeakerAttendee",
@@ -61,14 +45,6 @@
                 "app/controller/RegisterSpeakerAttendee.js"
             ],
             "className": "RegisterSpeakerAttendee"
-        },
-        "66303dac-bfdd-47ba-85c5-8e1f3b61e377": {
-            "paths": [
-                "metadata/view/ForgotUsernameOrPassword",
-                "app/view/override/ForgotUsernameOrPassword.js",
-                "app/view/ForgotUsernameOrPassword.js"
-            ],
-            "className": "ForgotUsernameOrPassword"
         },
         "f33fc0f3-a22f-4c01-afd3-0da5b64e9925": {
             "paths": [
@@ -102,14 +78,6 @@
             ],
             "className": "TabWizardPanel"
         },
-        "a44ec182-a457-4ea5-871a-dac2e4ca7ab9": {
-            "paths": [
-                "metadata/view/AttendeeAfterLogin",
-                "app/view/override/AttendeeAfterLogin.js",
-                "app/view/AttendeeAfterLogin.js"
-            ],
-            "className": "AttendeeAfterLogin"
-        },
         "0c4f878b-eeff-417b-97aa-d7d05129ec73": {
             "paths": [
                 "metadata/controller/AttendeeAfterLoginController",
@@ -117,14 +85,6 @@
                 "app/controller/AttendeeAfterLoginController.js"
             ],
             "className": "AttendeeAfterLoginController"
-        },
-        "3fc02c48-e4bb-4115-8115-8e8abbfdd91c": {
-            "paths": [
-                "metadata/view/SpeakerAfterLogin",
-                "app/view/override/SpeakerAfterLogin.js",
-                "app/view/SpeakerAfterLogin.js"
-            ],
-            "className": "SpeakerAfterLogin"
         },
         "fafbaf9d-46bc-4791-8e9a-7a91c69c6664": {
             "paths": [
@@ -141,18 +101,67 @@
                 "app/controller/CreateAccountController.js"
             ],
             "className": "CreateAccountController"
+        },
+        "9aa5d9d2-b86c-474a-809d-f428070283f5": {
+            "paths": [
+                "metadata/view/AttendeeSpeakerOrSponsor",
+                "app/view/override/AttendeeSpeakerOrSponsor.js",
+                "app/view/AttendeeSpeakerOrSponsor.js"
+            ],
+            "className": "AttendeeSpeakerOrSponsor"
+        },
+        "b2a0a5e7-3db7-4038-ab22-bcee2b77314e": {
+            "paths": [
+                "metadata/view/AttendeeOrSpeaker",
+                "app/view/override/AttendeeOrSpeaker.js",
+                "app/view/AttendeeOrSpeaker.js"
+            ],
+            "className": "AttendeeOrSpeaker"
+        },
+        "39067009-bf72-41d5-adb1-5644d566845c": {
+            "paths": [
+                "metadata/view/ForgotUsernameOrPassword",
+                "app/view/override/ForgotUsernameOrPassword.js",
+                "app/view/ForgotUsernameOrPassword.js"
+            ],
+            "className": "ForgotUsernameOrPassword"
+        },
+        "56e26b45-7fe3-4b60-bbd4-c2b2c6c64e83": {
+            "paths": [
+                "metadata/view/SpeakerAfterLogin",
+                "app/view/override/SpeakerAfterLogin.js",
+                "app/view/SpeakerAfterLogin.js"
+            ],
+            "className": "SpeakerAfterLogin"
+        },
+        "6d82b69b-3f21-447d-9161-8f72c94f975b": {
+            "paths": [
+                "metadata/view/AttendeeAfterLogin",
+                "app/view/override/AttendeeAfterLogin.js",
+                "app/view/AttendeeAfterLogin.js"
+            ],
+            "className": "AttendeeAfterLogin"
+        },
+        "fd7d5df9-3fda-46f2-82cb-9cfeb17ff1e9": {
+            "paths": [
+                "metadata/view/sponsor",
+                "app/view/override/sponsor.js",
+                "app/view/sponsor.js"
+            ],
+            "className": "sponsor"
         }
     },
     "viewOrderMap": {
         "view": [
             "2e607d39-4c76-4f8c-a350-e222eedf6e5d",
             "fea6a3af-2d7e-4daa-9f97-09e2da9e54c8",
-            "ca5637cc-e4a9-4eb8-b914-8c01593a1781",
-            "f0845701-b108-474a-8062-fac7fa9e8b3a",
-            "66303dac-bfdd-47ba-85c5-8e1f3b61e377",
             "effc3a6e-578c-415f-8bb6-9972b15b708f",
-            "a44ec182-a457-4ea5-871a-dac2e4ca7ab9",
-            "3fc02c48-e4bb-4115-8115-8e8abbfdd91c"
+            "9aa5d9d2-b86c-474a-809d-f428070283f5",
+            "b2a0a5e7-3db7-4038-ab22-bcee2b77314e",
+            "39067009-bf72-41d5-adb1-5644d566845c",
+            "56e26b45-7fe3-4b60-bbd4-c2b2c6c64e83",
+            "6d82b69b-3f21-447d-9161-8f72c94f975b",
+            "fd7d5df9-3fda-46f2-82cb-9cfeb17ff1e9"
         ],
         "store": [],
         "controller": [

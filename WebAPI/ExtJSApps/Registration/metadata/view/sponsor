@@ -1,5 +1,5 @@
 {
-    "type": "panel",
+    "type": "form",
     "reference": {
         "name": "items",
         "type": "array"
@@ -13,8 +13,8 @@
         "bodyPadding": null,
         "title": "Sponsor"
     },
-    "id": "ExtBox1-ext-gen1911",
-    "designerId": "effc3a6e-578c-415f-8bb6-9972b15b708f",
+    "id": "ExtBox1-ext-gen3602",
+    "designerId": "fd7d5df9-3fda-46f2-82cb-9cfeb17ff1e9",
     "cn": [
         {
             "type": "panel",
@@ -29,7 +29,7 @@
                 "layout": "hbox",
                 "title": null
             },
-            "designerId": "64e19942-36cc-4214-aae7-1e1ebfd058fa",
+            "designerId": "5e58a1be-fbd2-4a37-bdbb-2f768d8ffce4",
             "cn": [
                 {
                     "type": "panel",
@@ -46,7 +46,7 @@
                         "bodyPadding": 10,
                         "title": "Interested in Sponsoring Silicon Valley Code Camp?"
                     },
-                    "designerId": "688a7524-83f6-4aeb-8ccd-b965a5fd7e7f",
+                    "designerId": "c7c624ad-054f-4681-82dd-bc2a25b305c2",
                     "cn": [
                         {
                             "type": "textfield",
@@ -62,7 +62,7 @@
                                 "width": null,
                                 "fieldLabel": "Name"
                             },
-                            "designerId": "a2b73043-0fb0-41da-b65b-0cc7e841753f"
+                            "designerId": "86ba17f0-85bc-4f6c-91e4-2112347b1786"
                         },
                         {
                             "type": "textfield",
@@ -78,7 +78,7 @@
                                 "width": 300,
                                 "fieldLabel": "Email"
                             },
-                            "designerId": "da245a26-170e-4de6-b750-641cbaf4a5e7"
+                            "designerId": "2c7bfaa6-4677-416e-8bf7-2083486bdddd"
                         },
                         {
                             "type": "textfield",
@@ -94,7 +94,7 @@
                                 "width": null,
                                 "fieldLabel": "Company"
                             },
-                            "designerId": "72795ad7-61f6-4beb-8dbf-21af0d1be2af"
+                            "designerId": "f9ace9bf-7208-4248-ad44-0907b0e8249a"
                         },
                         {
                             "type": "textfield",
@@ -110,7 +110,7 @@
                                 "width": 300,
                                 "fieldLabel": "Phone Number"
                             },
-                            "designerId": "ca646937-408e-4705-89b0-0221b79c0012"
+                            "designerId": "7fcc6a96-077c-4c4d-b9ca-d7a43f683768"
                         },
                         {
                             "type": "label",
@@ -125,7 +125,7 @@
                                 "height": 20,
                                 "text": null
                             },
-                            "designerId": "0d30e06b-8590-4411-a66a-25c83f2cc9a0"
+                            "designerId": "29360f33-3ff9-4ffc-b9be-5d4a997be2dd"
                         },
                         {
                             "type": "checkboxgroup",
@@ -144,7 +144,7 @@
                                 "layout": "vbox",
                                 "fieldLabel": ""
                             },
-                            "designerId": "4abbbe8d-ae8f-4145-90a0-8abc17ada15b",
+                            "designerId": "6834b1e3-cc1c-4f24-bbf1-9d6e48cd6fc5",
                             "cn": [
                                 {
                                     "type": "checkboxfield",
@@ -159,7 +159,7 @@
                                         "fieldLabel": null,
                                         "boxLabel": "Please Email Me Information"
                                     },
-                                    "designerId": "470b075c-1b76-4b9c-a0a0-49373cb9e4d4"
+                                    "designerId": "8615f0ad-47d6-4601-bbfc-b71366efa54d"
                                 },
                                 {
                                     "type": "checkboxfield",
@@ -174,7 +174,7 @@
                                         "fieldLabel": null,
                                         "boxLabel": "Please Contact Me By Phone"
                                     },
-                                    "designerId": "fac9a0bf-639f-4c6d-8c0a-8d5a46bda035"
+                                    "designerId": "97c6df53-cb50-48e4-9719-626e8970deb4"
                                 },
                                 {
                                     "type": "checkboxfield",
@@ -190,7 +190,7 @@
                                         "fieldLabel": null,
                                         "boxLabel": "I Am Also Planning On Attending"
                                     },
-                                    "designerId": "4ba51baa-3516-4ea2-ac1d-bff7a56bc751"
+                                    "designerId": "23746102-d032-4f0f-ab68-48af08c8ae63"
                                 },
                                 {
                                     "type": "checkboxfield",
@@ -206,7 +206,7 @@
                                         "fieldLabel": null,
                                         "boxLabel": "Our Company Has Previously Sponsord Code Camp"
                                     },
-                                    "designerId": "601967a0-98ec-4f4b-8639-c625ff503ced"
+                                    "designerId": "9c4c4153-d215-4963-9744-4135e008f40f"
                                 }
                             ]
                         }
@@ -227,7 +227,7 @@
                         "bodyPadding": 10,
                         "title": "Special Note or Question?"
                     },
-                    "designerId": "3fb84fac-7247-4586-96e0-61142bd2dfe1",
+                    "designerId": "2bb6f16b-5a7f-49fb-a23c-e0fc104853f3",
                     "cn": [
                         {
                             "type": "textareafield",
@@ -243,7 +243,7 @@
                                 "width": null,
                                 "fieldLabel": ""
                             },
-                            "designerId": "05812cf2-6083-49ec-b529-ad518f5769a6"
+                            "designerId": "e12dc3f8-a42f-47ea-a2ae-42c0b4936e8c"
                         }
                     ]
                 }
@@ -264,7 +264,7 @@
                 "height": null,
                 "itemId": "ToolBarForgotUsername"
             },
-            "designerId": "87d82dcd-4f32-42e0-9ca1-2ab8d1623a25",
+            "designerId": "4abfd865-0a35-45a2-b65d-e97051c1466c",
             "cn": [
                 {
                     "type": "button",
@@ -282,7 +282,7 @@
                         "iconAlign": "right",
                         "text": "Back"
                     },
-                    "designerId": "b331d0ac-e2f6-43f6-83a2-b6dd9b461335"
+                    "designerId": "8342b399-c582-4251-86ee-4085c480b1b1"
                 },
                 {
                     "type": "tbseparator",
@@ -295,7 +295,7 @@
                         "layout|flex": null,
                         "designer|userClassName": "MySeparator"
                     },
-                    "designerId": "41f5bfd6-ec71-4366-973b-79ad919deff2"
+                    "designerId": "dd4195d1-e0ef-4db6-ad62-49ce483c915b"
                 },
                 {
                     "type": "button",
@@ -313,7 +313,7 @@
                         "iconAlign": "right",
                         "text": "Continue"
                     },
-                    "designerId": "b4a96ec3-1152-4a7c-b5f3-e796e82b4029"
+                    "designerId": "2dfb66f9-3599-406e-9dc3-d12ed91a1dfc"
                 }
             ]
         }

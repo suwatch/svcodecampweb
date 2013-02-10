@@ -1,5 +1,5 @@
 {
-    "type": "panel",
+    "type": "form",
     "reference": {
         "name": "items",
         "type": "array"
@@ -8,11 +8,12 @@
     "userConfig": {
         "designer|userClassName": "AttendeeAfterLogin",
         "designer|userAlias": "AttendeeAfterLoginAlias",
+        "itemId": null,
         "bodyPadding": 10,
         "title": "Attendee After Login"
     },
-    "id": "ExtBox1-ext-gen17138",
-    "designerId": "a44ec182-a457-4ea5-871a-dac2e4ca7ab9",
+    "id": "ExtBox1-ext-gen19925",
+    "designerId": "6d82b69b-3f21-447d-9161-8f72c94f975b",
     "cn": [
         {
             "type": "radiogroup",
@@ -29,7 +30,7 @@
                 "layout": "vbox",
                 "fieldLabel": ""
             },
-            "designerId": "33902a8e-e7cf-46b7-8b7a-7ba033acef7f",
+            "designerId": "9ebdfb0b-7592-48b9-9b67-75622defc0dc",
             "cn": [
                 {
                     "type": "radiofield",
@@ -45,7 +46,7 @@
                         "fieldLabel": null,
                         "boxLabel": "Attending Saturday"
                     },
-                    "designerId": "69c7ca29-4c37-4e8e-aa4e-1b22be4281ba"
+                    "designerId": "2ba0b5cb-66a3-4a19-a6a3-086247196fbd"
                 },
                 {
                     "type": "radiofield",
@@ -61,7 +62,7 @@
                         "fieldLabel": null,
                         "boxLabel": "Attending Sunday"
                     },
-                    "designerId": "d262fb17-17a7-4382-bc41-0e9b6fd81dc3"
+                    "designerId": "958b56bb-52cb-4a1b-99bb-96f29553d72b"
                 },
                 {
                     "type": "radiofield",
@@ -77,7 +78,7 @@
                         "fieldLabel": null,
                         "boxLabel": "Attending Saturday and Sunday"
                     },
-                    "designerId": "dd7bb80e-24e4-40b3-bb45-f0b3cfd07f58"
+                    "designerId": "6776884e-19a8-411a-bd0c-1b2ed3af6b42"
                 },
                 {
                     "type": "radiofield",
@@ -93,7 +94,7 @@
                         "fieldLabel": null,
                         "boxLabel": "Not Sure Which Days Yet"
                     },
-                    "designerId": "168cc0ad-306f-4b34-9c6c-12428460b589"
+                    "designerId": "a42a552a-d5a8-46f4-8c52-4c302e80cf1b"
                 },
                 {
                     "type": "radiofield",
@@ -109,7 +110,7 @@
                         "fieldLabel": null,
                         "boxLabel": "Can Not Make It This Year"
                     },
-                    "designerId": "a45b0a63-5951-491a-a085-00c758da6720"
+                    "designerId": "8d5533b1-1f0f-4165-b27e-eeaf0ba5df4b"
                 }
             ]
         },
@@ -128,7 +129,7 @@
                 "height": null,
                 "itemId": "ToolBarAttendeeSpeaker"
             },
-            "designerId": "bccd127f-3523-4daf-b60f-6001a564d2d7",
+            "designerId": "f4142d86-7769-4961-a17e-746dfcf8bfad",
             "cn": [
                 {
                     "type": "button",
@@ -146,7 +147,7 @@
                         "iconAlign": "right",
                         "text": "Back"
                     },
-                    "designerId": "d86f797f-cff6-4792-ba70-e503fa2031ed"
+                    "designerId": "31abf85a-67c8-41c9-a5a7-8ade32fd8b90"
                 },
                 {
                     "type": "tbseparator",
@@ -159,7 +160,7 @@
                         "layout|flex": null,
                         "designer|userClassName": "MySeparator"
                     },
-                    "designerId": "cf9c2365-e16e-4f91-a2d2-3d6c64b0f66a"
+                    "designerId": "605740b9-9254-45fd-a8c6-4c492376ebdc"
                 },
                 {
                     "type": "button",
@@ -177,7 +178,7 @@
                         "iconAlign": "right",
                         "text": "Continue"
                     },
-                    "designerId": "89d403f6-4455-448d-a7ab-a8411feaee6d"
+                    "designerId": "38a7fbb3-4b5b-4aa9-a5c7-5be1a13537b7"
                 }
             ]
         },
@@ -192,7 +193,7 @@
                 "designer|userClassName": "MyTextField8",
                 "fieldLabel": "First Name"
             },
-            "designerId": "cdef3f37-84db-44c9-96ef-7776c7480705"
+            "designerId": "0cbf5cd3-2125-4f76-b8c7-10c5f3269098"
         },
         {
             "type": "textfield",
@@ -205,7 +206,7 @@
                 "designer|userClassName": "MyTextField9",
                 "fieldLabel": "Last Name"
             },
-            "designerId": "4d59e1c8-9534-4579-b800-600306419ddb"
+            "designerId": "f23fce8c-9f1f-43b5-a590-80282a45565a"
         },
         {
             "type": "textfield",
@@ -218,7 +219,7 @@
                 "designer|userClassName": "MyTextField9",
                 "fieldLabel": "Email"
             },
-            "designerId": "b366c5a7-0cbf-433f-8169-dd2f9f2ae2b5"
+            "designerId": "14b9be0b-a392-4098-add2-e3e4b85a151b"
         },
         {
             "type": "textfield",
@@ -231,7 +232,7 @@
                 "designer|userClassName": "MyTextField10",
                 "fieldLabel": "Twitter Handle"
             },
-            "designerId": "2110cd15-23e0-42db-9bf5-39d89ac7d065"
+            "designerId": "035633af-a7c5-4bbf-9958-98a64fd6820e"
         },
         {
             "type": "textfield",
@@ -244,7 +245,7 @@
                 "designer|userClassName": "MyTextField11",
                 "fieldLabel": "City"
             },
-            "designerId": "4cbe24a3-888d-43c5-a27f-a09d47fb5b53"
+            "designerId": "db83c009-f15d-426d-8f27-f074afc1c577"
         },
         {
             "type": "textfield",
@@ -257,7 +258,7 @@
                 "designer|userClassName": "MyTextField12",
                 "fieldLabel": "State"
             },
-            "designerId": "eae8066e-564d-434f-91b0-f8e06102a111"
+            "designerId": "94ef2244-fcd7-4ca3-a5de-3caa6178e50b"
         },
         {
             "type": "textfield",
@@ -270,7 +271,7 @@
                 "designer|userClassName": "MyTextField13",
                 "fieldLabel": "Zipcode"
             },
-            "designerId": "9c7e563e-7178-4100-aa6e-577be19f02e3"
+            "designerId": "173e3391-7a97-455e-95e7-28a422208081"
         }
     ]
 }

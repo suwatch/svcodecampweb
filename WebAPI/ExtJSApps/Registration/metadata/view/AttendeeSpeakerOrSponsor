@@ -1,5 +1,5 @@
 {
-    "type": "panel",
+    "type": "form",
     "reference": {
         "name": "items",
         "type": "array"
@@ -9,13 +9,14 @@
         "container|align": "stretch",
         "designer|userClassName": "AttendeeSpeakerOrSponsor",
         "designer|userAlias": "AttendeeSpeakerOrSponsorAlias",
-        "id": "attendeespeakerorsponsorid",
+        "id": "AttendeeSpeakerSponsorId",
+        "itemId": null,
         "layout": "vbox",
         "bodyPadding": 20,
         "title": "Silicon Valley Code Camp Registration"
     },
-    "id": "ExtBox1-ext-gen3906",
-    "designerId": "ca5637cc-e4a9-4eb8-b914-8c01593a1781",
+    "id": "ExtBox1-ext-gen3606",
+    "designerId": "9aa5d9d2-b86c-474a-809d-f428070283f5",
     "cn": [
         {
             "type": "radiogroup",
@@ -34,7 +35,7 @@
                 "fieldLabel": "",
                 "vertical": false
             },
-            "designerId": "1444c1ef-a14a-4484-afd8-50cd556a2377",
+            "designerId": "cb5aec60-534b-4f54-b795-9bfdac711c35",
             "cn": [
                 {
                     "type": "radiofield",
@@ -50,7 +51,7 @@
                         "fieldLabel": null,
                         "boxLabel": "Attendee"
                     },
-                    "designerId": "3bcef708-0fdf-46fa-b8a1-16cabc53f6bc"
+                    "designerId": "f19834ee-7a54-432c-a2f7-24a2226f9f55"
                 },
                 {
                     "type": "radiofield",
@@ -66,7 +67,7 @@
                         "fieldLabel": null,
                         "boxLabel": "Speaker"
                     },
-                    "designerId": "251b158d-26db-4ca9-8d67-9e51fd908bd2"
+                    "designerId": "17503912-2b37-40ee-9ac6-653807e9fb9c"
                 },
                 {
                     "type": "radiofield",
@@ -82,7 +83,7 @@
                         "fieldLabel": null,
                         "boxLabel": "Interested In Sponsoring"
                     },
-                    "designerId": "5e37c4ff-36e0-4c8a-8e27-182617e4cd6d"
+                    "designerId": "166034e4-24ff-4ad7-a098-5b5eaf75c33f"
                 }
             ]
         },
@@ -101,7 +102,7 @@
                 "height": null,
                 "itemId": "ToolBarAttendeeSpeakerSponsor"
             },
-            "designerId": "dd9dead6-9348-459a-865a-53b5249a6b0f",
+            "designerId": "82364899-09a8-4f8b-a5d4-dfb9268391df",
             "cn": [
                 {
                     "type": "tbseparator",
@@ -114,7 +115,7 @@
                         "layout|flex": null,
                         "designer|userClassName": "MySeparator"
                     },
-                    "designerId": "70683779-5eef-4998-809a-bd7a406aac67"
+                    "designerId": "d07862c5-35d6-46ff-b763-43e99c2c83f0"
                 },
                 {
                     "type": "button",
@@ -132,7 +133,7 @@
                         "iconAlign": "right",
                         "text": "Continue"
                     },
-                    "designerId": "dfce3ae1-a396-400b-bce9-453e83c3aad8"
+                    "designerId": "556dd460-086e-4415-95e5-239bbd667706"
                 }
             ]
         }

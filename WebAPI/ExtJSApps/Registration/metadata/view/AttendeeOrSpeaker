@@ -1,5 +1,5 @@
 {
-    "type": "panel",
+    "type": "form",
     "reference": {
         "name": "items",
         "type": "array"
@@ -13,8 +13,8 @@
         "bodyPadding": 20,
         "title": "Attendee Or Speaker"
     },
-    "id": "ExtBox1-ext-gen3931",
-    "designerId": "f0845701-b108-474a-8062-fac7fa9e8b3a",
+    "id": "ExtBox1-ext-gen7942",
+    "designerId": "b2a0a5e7-3db7-4038-ab22-bcee2b77314e",
     "cn": [
         {
             "type": "toolbar",
@@ -31,7 +31,7 @@
                 "height": null,
                 "itemId": "ToolBarAttendeeSpeaker"
             },
-            "designerId": "b85d19d2-f63e-4185-8ee4-2d216f881ab5",
+            "designerId": "cf1b76f8-bbd3-4ae3-8487-b890d84d480b",
             "cn": [
                 {
                     "type": "button",
@@ -49,7 +49,7 @@
                         "iconAlign": "right",
                         "text": "Back"
                     },
-                    "designerId": "223ebf35-7829-421f-a88c-6e3296a53ef3"
+                    "designerId": "0770ca89-51de-4251-adcd-4f09bd211915"
                 },
                 {
                     "type": "tbseparator",
@@ -62,7 +62,7 @@
                         "layout|flex": null,
                         "designer|userClassName": "MySeparator"
                     },
-                    "designerId": "fff971af-6603-44ce-9763-bd2decf74721"
+                    "designerId": "f62b93e7-3f2b-4de9-85ac-4d7872989937"
                 },
                 {
                     "type": "button",
@@ -80,7 +80,7 @@
                         "iconAlign": "right",
                         "text": "Continue"
                     },
-                    "designerId": "28b0fe6f-eb82-4875-b557-7fd1424561ee"
+                    "designerId": "8e4d4e4b-71c9-4510-bd43-11f698645297"
                 }
             ]
         },
@@ -102,7 +102,7 @@
                 "minLengthText": null,
                 "vtype": null
             },
-            "designerId": "15ea77da-cda3-40d7-97d3-2ce3d9636ce9"
+            "designerId": "105ab016-1005-4546-8dee-89b053b8c6d2"
         },
         {
             "type": "textfield",
@@ -122,7 +122,7 @@
                 "minLength": null,
                 "minLengthText": null
             },
-            "designerId": "55fcbf2f-3a4a-485c-b506-7e68780f5fc8"
+            "designerId": "1ac5bd72-4880-4b45-ad9b-9c8608f82a07"
         },
         {
             "type": "radiogroup",
@@ -140,7 +140,7 @@
                 "fieldLabel": "Actions",
                 "vertical": false
             },
-            "designerId": "8b5403a4-bfc1-4be2-a0a6-5fa4a7d04e8e",
+            "designerId": "b0e83847-6175-43d7-98f2-171fb6886342",
             "cn": [
                 {
                     "type": "radiofield",
@@ -158,7 +158,7 @@
                         "boxLabel": "I Have a Code Camp Account Already",
                         "checked": true
                     },
-                    "designerId": "57a62ad9-c1cf-4fa6-89d4-583cd1816571"
+                    "designerId": "c3bb0c36-426f-4780-9b8e-011cc86357da"
                 },
                 {
                     "type": "radiofield",
@@ -175,7 +175,7 @@
                         "labelWidth": 70,
                         "boxLabel": "Forgot Username or Password"
                     },
-                    "designerId": "6b13a9ed-0469-48e3-bb5f-1831bba1aded"
+                    "designerId": "54bd1916-4357-4add-9f6e-3672be7f4257"
                 },
                 {
                     "type": "radiofield",
@@ -192,7 +192,7 @@
                         "labelWidth": 70,
                         "boxLabel": "Create a new Account for me"
                     },
-                    "designerId": "9787d843-d9b9-4db1-b0d6-eb3544e95e46"
+                    "designerId": "c1635131-e2f8-4cdf-b2ea-b488c9844d6b"
                 }
             ]
         }

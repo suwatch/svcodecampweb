@@ -80,12 +80,8 @@
                 "type": "array"
             },
             "codeClass": null,
-            "userConfig": {
-                "id": "AttendeeSpeakerSponsorId",
-                "itemId": null
-            },
-            "designerId": "687e7c89-bd78-4d96-89a0-854427f892bc",
-            "masterInstanceId": "ExtBox1-ext-gen3906",
+            "designerId": "c92f0722-0d38-495a-85ff-1ccbeb8d57b9",
+            "masterInstanceId": "ExtBox1-ext-gen3606",
             "cn": [
                 {
                     "type": "tab",
@@ -95,9 +91,9 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "TabConfig"
+                        "designer|userClassName": "TabConfig6"
                     },
-                    "designerId": "48779a32-4047-441d-a3a6-900387dec5ee"
+                    "designerId": "98e9022b-259c-4c0a-93ee-5180a8acbd26"
                 }
             ]
         },
@@ -108,8 +104,8 @@
                 "type": "array"
             },
             "codeClass": null,
-            "designerId": "48459791-55b4-4712-93d9-130f8485d5a4",
-            "masterInstanceId": "ExtBox1-ext-gen3931",
+            "designerId": "756508a6-96bb-4922-8caf-1df1cb4a2b6b",
+            "masterInstanceId": "ExtBox1-ext-gen7942",
             "cn": [
                 {
                     "type": "tab",
@@ -119,9 +115,9 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "TabConfig1"
+                        "designer|userClassName": "TabConfig7"
                     },
-                    "designerId": "6d4e8bd0-a914-476b-a2e1-5381b843db0a"
+                    "designerId": "4f197dd6-fea5-49c5-93eb-198dd47392f4"
                 }
             ]
         },
@@ -132,8 +128,8 @@
                 "type": "array"
             },
             "codeClass": null,
-            "designerId": "e5094c35-756f-477d-abe0-50ef5bc39ca5",
-            "masterInstanceId": "ExtBox1-ext-gen76375",
+            "designerId": "2d021a29-b8ca-402f-8eb3-cebbc7cee041",
+            "masterInstanceId": "ExtBox1-ext-gen12173",
             "cn": [
                 {
                     "type": "tab",
@@ -143,9 +139,9 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "TabConfig3"
+                        "designer|userClassName": "TabConfig8"
                     },
-                    "designerId": "75051974-9458-428f-82a2-d94baa740fa0"
+                    "designerId": "5bec506b-e9ac-4ead-980b-05e6332f4071"
                 }
             ]
         },
@@ -156,8 +152,8 @@
                 "type": "array"
             },
             "codeClass": null,
-            "designerId": "e6ba977e-f92c-48fd-81ea-f4cfe597510a",
-            "masterInstanceId": "ExtBox1-ext-gen1911",
+            "designerId": "87efcd0e-aad1-410a-bb4a-b3b4443d6043",
+            "masterInstanceId": "ExtBox1-ext-gen3602",
             "cn": [
                 {
                     "type": "tab",
@@ -167,9 +163,9 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "TabConfig2"
+                        "designer|userClassName": "TabConfig6"
                     },
-                    "designerId": "83013af9-6786-4608-a545-8c4142eae0fa"
+                    "designerId": "4fd2684f-7c21-4fff-bf23-98f51e768d66"
                 }
             ]
         },
@@ -181,11 +177,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "itemId": null,
                 "title": null
             },
-            "designerId": "c6568d4b-0384-4193-bf69-5d61bc1bb5ff",
-            "masterInstanceId": "ExtBox1-ext-gen17138",
+            "designerId": "8a004979-12c0-49cf-958c-6931c0cb44ad",
+            "masterInstanceId": "ExtBox1-ext-gen19925",
             "cn": [
                 {
                     "type": "tab",
@@ -195,9 +190,9 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "TabConfig4"
+                        "designer|userClassName": "TabConfig9"
                     },
-                    "designerId": "0aa8e4fc-977f-4258-bac2-b6e588d00d47"
+                    "designerId": "36c43e2b-dd9d-4ad5-8040-5da3a86f0f67"
                 }
             ]
         },
@@ -208,8 +203,8 @@
                 "type": "array"
             },
             "codeClass": null,
-            "designerId": "f4479b69-70b8-4589-881d-f9d982bf00ba",
-            "masterInstanceId": "ExtBox1-ext-gen32669",
+            "designerId": "6f438edc-3cc3-423c-87a7-510973540d26",
+            "masterInstanceId": "ExtBox1-ext-gen14927",
             "cn": [
                 {
                     "type": "tab",
@@ -221,7 +216,7 @@
                     "userConfig": {
                         "designer|userClassName": "TabConfig5"
                     },
-                    "designerId": "8a8debd5-3f53-45fb-af4f-64468bd763a9"
+                    "designerId": "6dbde9b0-d7fa-49fe-b90c-05923798b862"
                 }
             ]
         }

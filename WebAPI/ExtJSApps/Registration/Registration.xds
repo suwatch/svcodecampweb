@@ -117,17 +117,34 @@
                 "app/controller/AttendeeAfterLoginController.js"
             ],
             "className": "AttendeeAfterLoginController"
+        },
+        "3fc02c48-e4bb-4115-8115-8e8abbfdd91c": {
+            "paths": [
+                "metadata/view/SpeakerAfterLogin",
+                "app/view/override/SpeakerAfterLogin.js",
+                "app/view/SpeakerAfterLogin.js"
+            ],
+            "className": "SpeakerAfterLogin"
+        },
+        "fafbaf9d-46bc-4791-8e9a-7a91c69c6664": {
+            "paths": [
+                "metadata/controller/SpeakerAfterLoginController",
+                "app/controller/override/SpeakerAfterLoginController.js",
+                "app/controller/SpeakerAfterLoginController.js"
+            ],
+            "className": "SpeakerAfterLoginController"
         }
     },
     "viewOrderMap": {
         "view": [
             "2e607d39-4c76-4f8c-a350-e222eedf6e5d",
+            "fea6a3af-2d7e-4daa-9f97-09e2da9e54c8",
             "ca5637cc-e4a9-4eb8-b914-8c01593a1781",
             "f0845701-b108-474a-8062-fac7fa9e8b3a",
             "66303dac-bfdd-47ba-85c5-8e1f3b61e377",
             "effc3a6e-578c-415f-8bb6-9972b15b708f",
             "a44ec182-a457-4ea5-871a-dac2e4ca7ab9",
-            "fea6a3af-2d7e-4daa-9f97-09e2da9e54c8"
+            "3fc02c48-e4bb-4115-8115-8e8abbfdd91c"
         ],
         "store": [],
         "controller": [
@@ -135,7 +152,8 @@
             "649a7ff9-eed4-4a08-8133-fc01c9df011f",
             "f33fc0f3-a22f-4c01-afd3-0da5b64e9925",
             "cab99d0f-d5c3-4fde-a0ec-d102368a862f",
-            "0c4f878b-eeff-417b-97aa-d7d05129ec73"
+            "0c4f878b-eeff-417b-97aa-d7d05129ec73",
+            "fafbaf9d-46bc-4791-8e9a-7a91c69c6664"
         ],
         "model": [],
         "resource": [

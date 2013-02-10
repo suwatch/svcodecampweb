@@ -215,6 +215,19 @@
             },
             "codeClass": null,
             "userConfig": {
+                "designer|userClassName": "MyTextField9",
+                "fieldLabel": "Email"
+            },
+            "designerId": "b366c5a7-0cbf-433f-8169-dd2f9f2ae2b5"
+        },
+        {
+            "type": "textfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
                 "designer|userClassName": "MyTextField10",
                 "fieldLabel": "Twitter Handle"
             },

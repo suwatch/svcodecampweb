@@ -64,6 +64,9 @@
                     "else if (stepName === 'AttendeeAfterLogin') {\r",
                     "    tabId = 4;\r",
                     "}\r",
+                    "else if (stepName === 'SpeakerAfterLogin') {\r",
+                    "    tabId = 5;\r",
+                    "}\r",
                     "return tabId;\r",
                     ""
                 ]
@@ -195,6 +198,30 @@
                         "designer|userClassName": "TabConfig4"
                     },
                     "designerId": "0aa8e4fc-977f-4258-bac2-b6e588d00d47"
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "designerId": "f4479b69-70b8-4589-881d-f9d982bf00ba",
+            "masterInstanceId": "ExtBox1-ext-gen32669",
+            "cn": [
+                {
+                    "type": "tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "TabConfig5"
+                    },
+                    "designerId": "8a8debd5-3f53-45fb-af4f-64468bd763a9"
                 }
             ]
         }

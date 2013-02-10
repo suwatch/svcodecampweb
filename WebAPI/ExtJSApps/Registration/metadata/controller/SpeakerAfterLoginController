@@ -6,10 +6,10 @@
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userClassName": "AttendeeAfterLoginController"
+        "designer|userClassName": "SpeakerAfterLoginController"
     },
-    "id": "ExtBox1-ext-gen25289",
-    "designerId": "0c4f878b-eeff-417b-97aa-d7d05129ec73",
+    "id": "ExtBox1-ext-gen45629",
+    "designerId": "fafbaf9d-46bc-4791-8e9a-7a91c69c6664",
     "cn": [
         {
             "type": "controlleraction",
@@ -29,7 +29,7 @@
                 "designer|targetType": "Ext.button.Button",
                 "designer|controlQuery": "#backButtonId"
             },
-            "designerId": "4c2f3619-a003-473f-976d-ec0dc2bb2130"
+            "designerId": "3254df4c-2c6b-4250-9c7c-89bda2bd8609"
         },
         {
             "type": "controlleraction",
@@ -49,7 +49,7 @@
                 "designer|targetType": "Ext.button.Button",
                 "designer|controlQuery": "#continueButtonId"
             },
-            "designerId": "5ed0eb2a-89a6-4f0f-8323-3301fe89fee9"
+            "designerId": "f94d5e5c-9286-44fc-95b5-a7d2d9621cd3"
         }
     ]
 }

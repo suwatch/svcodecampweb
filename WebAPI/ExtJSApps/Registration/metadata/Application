@@ -13,7 +13,8 @@
             "ForgotUsernameOrPassword",
             "sponsor",
             "TabWizardPanel",
-            "AttendeeAfterLogin"
+            "AttendeeAfterLogin",
+            "SpeakerAfterLogin"
         ],
         "autoCreateViewport": true,
         "name": "RegistrationApp",
@@ -22,7 +23,8 @@
             "RegisterSpeakerAttendee",
             "ForgotUsername",
             "SponsorController",
-            "AttendeeAfterLoginController"
+            "AttendeeAfterLoginController",
+            "SpeakerAfterLoginController"
         ]
     },
     "id": "ExtBox1-ext-gen1587",

@@ -25,7 +25,8 @@ Ext.application({
         'ForgotUsernameOrPassword',
         'sponsor',
         'TabWizardPanel',
-        'AttendeeAfterLogin'
+        'AttendeeAfterLogin',
+        'SpeakerAfterLogin'
     ],
     autoCreateViewport: true,
     name: 'RegistrationApp',
@@ -34,7 +35,8 @@ Ext.application({
         'RegisterSpeakerAttendee',
         'ForgotUsername',
         'SponsorController',
-        'AttendeeAfterLoginController'
+        'AttendeeAfterLoginController',
+        'SpeakerAfterLoginController'
     ],
 
     launch: function() {

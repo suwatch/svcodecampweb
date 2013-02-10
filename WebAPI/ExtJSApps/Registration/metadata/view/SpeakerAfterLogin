@@ -1,0 +1,299 @@
+{
+    "type": "form",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "SpeakerAfterLogin",
+        "designer|userAlias": "SpeakerAfterLoginAlias",
+        "bodyPadding": 15,
+        "title": "My Form"
+    },
+    "id": "ExtBox1-ext-gen32669",
+    "designerId": "3fc02c48-e4bb-4115-8115-8e8abbfdd91c",
+    "cn": [
+        {
+            "type": "radiogroup",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "designer|userClassName": "MyRadioGroup3",
+                "layout": "vbox",
+                "fieldLabel": ""
+            },
+            "designerId": "6d53c76f-7c10-4c91-b238-2cd5309356c7",
+            "cn": [
+                {
+                    "type": "radiofield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyRadio11",
+                        "name": "SpeakerCanSpeak",
+                        "fieldLabel": null,
+                        "boxLabel": "Can Speak Saturday"
+                    },
+                    "designerId": "e19bc0b1-ed4c-4942-9fcb-c4487e7b25e3"
+                },
+                {
+                    "type": "radiofield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyRadio12",
+                        "name": "SpeakerCanSpeak",
+                        "fieldLabel": null,
+                        "boxLabel": "Can Speak Sunday"
+                    },
+                    "designerId": "7c4d7bf9-7f4d-40e4-99ae-7750a341ddd4"
+                },
+                {
+                    "type": "radiofield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyRadio12",
+                        "name": "SpeakerCanSpeak",
+                        "fieldLabel": null,
+                        "boxLabel": "Can Speak Saturday Or Sunday",
+                        "checked": true
+                    },
+                    "designerId": "addddd0e-70fb-4660-8ac7-fa79b99b8783"
+                }
+            ]
+        },
+        {
+            "type": "textfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|anchor": "100%",
+                "designer|userClassName": "MyTextField15",
+                "itemId": "FirstNameId",
+                "fieldLabel": "FirstName"
+            },
+            "designerId": "6827e62e-5b41-4557-b4c2-2e6c639bfb36"
+        },
+        {
+            "type": "textfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|anchor": "100%",
+                "designer|userClassName": "MyTextField16",
+                "itemId": "LastNameId",
+                "fieldLabel": "Last Name"
+            },
+            "designerId": "9da97953-1a3e-4f49-9ee5-7fa22ce3ad2d"
+        },
+        {
+            "type": "textfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|anchor": "100%",
+                "designer|userClassName": "MyTextField16",
+                "itemId": "EmailId",
+                "fieldLabel": "Email"
+            },
+            "designerId": "a82ecbea-4275-4db2-96a4-9ac67cac17bf"
+        },
+        {
+            "type": "textfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|anchor": "100%",
+                "designer|userClassName": "MyTextField14",
+                "itemId": "WebSiteId",
+                "fieldLabel": "Web Site"
+            },
+            "designerId": "5e0623a2-5b5a-4696-bb7b-d1a650e11220"
+        },
+        {
+            "type": "textfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|anchor": "100%",
+                "designer|userClassName": "MyTextField17",
+                "itemId": "TwitterHandleId",
+                "fieldLabel": "Twitter Handle"
+            },
+            "designerId": "933ca0ed-5192-4f6d-8be3-4773babac81d"
+        },
+        {
+            "type": "filefield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|anchor": "100%",
+                "designer|userClassName": "MyFileUpload",
+                "itemId": "PictureUploadId",
+                "fieldLabel": "Picture"
+            },
+            "designerId": "50447605-c956-4119-acb5-2f5876a09690"
+        },
+        {
+            "type": "textfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|anchor": "100%",
+                "designer|userClassName": "MyTextField18",
+                "itemId": "CityId",
+                "fieldLabel": "City"
+            },
+            "designerId": "5bad6404-b5ce-4319-9ab6-d2f4b46827a7"
+        },
+        {
+            "type": "textfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|anchor": "100%",
+                "designer|userClassName": "MyTextField19",
+                "itemId": "StateId",
+                "fieldLabel": "State"
+            },
+            "designerId": "d22c09fe-7ce6-4a7e-84de-bbc81caa2143"
+        },
+        {
+            "type": "textfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|anchor": "100%",
+                "designer|userClassName": "MyTextField20",
+                "itemId": "ZipcodeId",
+                "fieldLabel": "Zipcode"
+            },
+            "designerId": "bb2d3d27-eb76-4a39-b408-0ac86480300a"
+        },
+        {
+            "type": "textareafield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|anchor": "100%",
+                "designer|userClassName": "MyTextArea1",
+                "designer|displayName": "BioId",
+                "fieldLabel": "Bio"
+            },
+            "designerId": "697d42ba-51cf-4b4d-a3e9-50c26890c563"
+        },
+        {
+            "type": "toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "container|pack": "end",
+                "container|padding": null,
+                "designer|userClassName": "MyToolbar",
+                "height": null,
+                "itemId": "ToolBarAttendeeSpeaker"
+            },
+            "designerId": "b9187b73-85c4-47e6-8885-f5213ade32d5",
+            "cn": [
+                {
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MyButton",
+                        "disabled": false,
+                        "id": "backButtonId",
+                        "itemId": "backButtonId",
+                        "iconAlign": "right",
+                        "text": "Back"
+                    },
+                    "designerId": "de3b46bc-5166-4a9e-8d1b-e29a8256ed2a"
+                },
+                {
+                    "type": "tbseparator",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MySeparator"
+                    },
+                    "designerId": "64bd17b2-a2f5-4b2b-b41c-8ea80f652ad9"
+                },
+                {
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MyButton",
+                        "disabled": true,
+                        "id": null,
+                        "itemId": "continueButtonId",
+                        "iconAlign": "right",
+                        "text": "Continue"
+                    },
+                    "designerId": "87d83ff1-d072-4210-8f8d-af915b480b2b"
+                }
+            ]
+        }
+    ]
+}

@@ -261,7 +261,7 @@
                 "container|pack": "end",
                 "container|padding": null,
                 "designer|userClassName": "MyToolbar",
-                "height": 50,
+                "height": null,
                 "itemId": "ToolBarForgotUsername"
             },
             "designerId": "87d82dcd-4f32-42e0-9ca1-2ab8d1623a25",

@@ -18,6 +18,59 @@
     "designerId": "fea6a3af-2d7e-4daa-9f97-09e2da9e54c8",
     "cn": [
         {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "hideTabTitles",
+                "fn": "hideTabTitles",
+                "implHandler": [
+                    "console.log('hideTabTitles');\r",
+                    "this.getTabBar().hide();\r",
+                    "this.componentLayout.childrenChanged = true;\r",
+                    "this.doComponentLayout();"
+                ]
+            },
+            "designerId": "cd19273b-8f0c-4df9-be5a-887e816184ac"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "getTabIdByName",
+                "fn": "getTabIdByName",
+                "designer|params": [
+                    "stepName"
+                ],
+                "implHandler": [
+                    "\r",
+                    "var tabId = -1;\r",
+                    "if (stepName === 'AttendeeSpeakerSponsorId') {\r",
+                    "    tabId = 0;\r",
+                    "} else if (stepName === 'attendeeorspeaker') {\r",
+                    "    tabId = 1;\r",
+                    "} else if (stepName === 'forgotusernameorpassword') {\r",
+                    "    tabId = 2;\r",
+                    "} else if (stepName === 'Sponsor') {\r",
+                    "    tabId = 3;\r",
+                    "}\r",
+                    "else if (stepName === 'AttendeeAfterLogin') {\r",
+                    "    tabId = 4;\r",
+                    "}\r",
+                    "return tabId;\r",
+                    ""
+                ]
+            },
+            "designerId": "0753039d-4bc5-4d65-81b6-1e35f6445783"
+        },
+        {
             "type": "linkedinstance",
             "reference": {
                 "name": "items",
@@ -118,54 +171,32 @@
             ]
         },
         {
-            "type": "basicfunction",
+            "type": "linkedinstance",
             "reference": {
                 "name": "items",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "designer|userClassName": "getTabIdByName",
-                "fn": "getTabIdByName",
-                "designer|params": [
-                    "stepName"
-                ],
-                "implHandler": [
-                    "\r",
-                    "var tabId = -1;\r",
-                    "if (stepName === 'AttendeeSpeakerSponsorId') {\r",
-                    "    tabId = 0;\r",
-                    "} else if (stepName === 'attendeeorspeaker') {\r",
-                    "    tabId = 1;\r",
-                    "} else if (stepName === 'forgotusernameorpassword') {\r",
-                    "    tabId = 2;\r",
-                    "} else if (stepName === 'Sponsor') {\r",
-                    "    tabId = 3;\r",
-                    "}\r",
-                    "return tabId;\r",
-                    ""
-                ]
+                "itemId": null,
+                "title": null
             },
-            "designerId": "0753039d-4bc5-4d65-81b6-1e35f6445783"
-        },
-        {
-            "type": "basicfunction",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|userClassName": "hideTabTitles",
-                "fn": "hideTabTitles",
-                "implHandler": [
-                    "console.log('hideTabTitles');\r",
-                    "this.getTabBar().hide();\r",
-                    "this.componentLayout.childrenChanged = true;\r",
-                    "this.doComponentLayout();"
-                ]
-            },
-            "designerId": "cd19273b-8f0c-4df9-be5a-887e816184ac"
+            "designerId": "c6568d4b-0384-4193-bf69-5d61bc1bb5ff",
+            "masterInstanceId": "ExtBox1-ext-gen17138",
+            "cn": [
+                {
+                    "type": "tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "TabConfig4"
+                    },
+                    "designerId": "0aa8e4fc-977f-4258-bac2-b6e588d00d47"
+                }
+            ]
         }
     ]
 }

@@ -28,7 +28,7 @@
                 "container|pack": "end",
                 "container|padding": null,
                 "designer|userClassName": "MyToolbar",
-                "height": 50,
+                "height": null,
                 "itemId": "ToolBarAttendeeSpeaker"
             },
             "designerId": "b85d19d2-f63e-4185-8ee4-2d216f881ab5",

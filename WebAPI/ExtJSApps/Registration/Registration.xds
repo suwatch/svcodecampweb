@@ -101,6 +101,22 @@
                 "app/view/TabWizardPanel.js"
             ],
             "className": "TabWizardPanel"
+        },
+        "a44ec182-a457-4ea5-871a-dac2e4ca7ab9": {
+            "paths": [
+                "metadata/view/AttendeeAfterLogin",
+                "app/view/override/AttendeeAfterLogin.js",
+                "app/view/AttendeeAfterLogin.js"
+            ],
+            "className": "AttendeeAfterLogin"
+        },
+        "0c4f878b-eeff-417b-97aa-d7d05129ec73": {
+            "paths": [
+                "metadata/controller/AttendeeAfterLoginController",
+                "app/controller/override/AttendeeAfterLoginController.js",
+                "app/controller/AttendeeAfterLoginController.js"
+            ],
+            "className": "AttendeeAfterLoginController"
         }
     },
     "viewOrderMap": {
@@ -110,6 +126,7 @@
             "f0845701-b108-474a-8062-fac7fa9e8b3a",
             "66303dac-bfdd-47ba-85c5-8e1f3b61e377",
             "effc3a6e-578c-415f-8bb6-9972b15b708f",
+            "a44ec182-a457-4ea5-871a-dac2e4ca7ab9",
             "fea6a3af-2d7e-4daa-9f97-09e2da9e54c8"
         ],
         "store": [],
@@ -117,7 +134,8 @@
             "c1e28fd8-26ea-4392-a260-b19d1915f1d8",
             "649a7ff9-eed4-4a08-8133-fc01c9df011f",
             "f33fc0f3-a22f-4c01-afd3-0da5b64e9925",
-            "cab99d0f-d5c3-4fde-a0ec-d102368a862f"
+            "cab99d0f-d5c3-4fde-a0ec-d102368a862f",
+            "0c4f878b-eeff-417b-97aa-d7d05129ec73"
         ],
         "model": [],
         "resource": [

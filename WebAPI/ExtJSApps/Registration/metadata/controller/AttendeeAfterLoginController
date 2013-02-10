@@ -1,0 +1,52 @@
+{
+    "type": "controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "AttendeeAfterLoginController"
+    },
+    "id": "ExtBox1-ext-gen25289",
+    "designerId": "0c4f878b-eeff-417b-97aa-d7d05129ec73",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onBackButtonIdClick",
+                "fn": "onBackButtonIdClick",
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#backButtonId"
+            },
+            "designerId": "4c2f3619-a003-473f-976d-ec0dc2bb2130"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onContinueButtonIdClick",
+                "fn": "onContinueButtonIdClick",
+                "implHandler": [
+                    ""
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#continueButtonId"
+            },
+            "designerId": "5ed0eb2a-89a6-4f0f-8323-3301fe89fee9"
+        }
+    ]
+}

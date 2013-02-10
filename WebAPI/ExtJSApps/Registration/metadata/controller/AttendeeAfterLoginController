@@ -27,7 +27,7 @@
                 "name": "click",
                 "scope": "me",
                 "designer|targetType": "Ext.button.Button",
-                "designer|controlQuery": "#backButtonId"
+                "designer|controlQuery": "AttendeeAfterLoginAlias #backButtonId"
             },
             "designerId": "4c2f3619-a003-473f-976d-ec0dc2bb2130"
         },
@@ -47,7 +47,7 @@
                 "name": "click",
                 "scope": "me",
                 "designer|targetType": "Ext.button.Button",
-                "designer|controlQuery": "#continueButtonId"
+                "designer|controlQuery": "AttendeeAfterLoginAlias #continueButtonId"
             },
             "designerId": "5ed0eb2a-89a6-4f0f-8323-3301fe89fee9"
         }

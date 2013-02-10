@@ -133,6 +133,14 @@
                 "app/controller/SpeakerAfterLoginController.js"
             ],
             "className": "SpeakerAfterLoginController"
+        },
+        "65a4b174-5ba2-4812-ba07-d9ff918ccf6e": {
+            "paths": [
+                "metadata/controller/CreateAccountController",
+                "app/controller/override/CreateAccountController.js",
+                "app/controller/CreateAccountController.js"
+            ],
+            "className": "CreateAccountController"
         }
     },
     "viewOrderMap": {
@@ -153,7 +161,8 @@
             "f33fc0f3-a22f-4c01-afd3-0da5b64e9925",
             "cab99d0f-d5c3-4fde-a0ec-d102368a862f",
             "0c4f878b-eeff-417b-97aa-d7d05129ec73",
-            "fafbaf9d-46bc-4791-8e9a-7a91c69c6664"
+            "fafbaf9d-46bc-4791-8e9a-7a91c69c6664",
+            "65a4b174-5ba2-4812-ba07-d9ff918ccf6e"
         ],
         "model": [],
         "resource": [

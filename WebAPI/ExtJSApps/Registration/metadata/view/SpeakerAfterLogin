@@ -8,8 +8,9 @@
     "userConfig": {
         "designer|userClassName": "SpeakerAfterLogin",
         "designer|userAlias": "SpeakerAfterLoginAlias",
+        "itemId": "speakerAfterLoginId",
         "bodyPadding": 15,
-        "title": "My Form"
+        "title": "Speaker After Login"
     },
     "id": "ExtBox1-ext-gen32669",
     "designerId": "3fc02c48-e4bb-4115-8115-8e8abbfdd91c",
@@ -88,6 +89,7 @@
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextField15",
                 "itemId": "FirstNameId",
+                "name": "FirstName",
                 "fieldLabel": "FirstName"
             },
             "designerId": "6827e62e-5b41-4557-b4c2-2e6c639bfb36"
@@ -103,6 +105,7 @@
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextField16",
                 "itemId": "LastNameId",
+                "name": "LastName",
                 "fieldLabel": "Last Name"
             },
             "designerId": "9da97953-1a3e-4f49-9ee5-7fa22ce3ad2d"
@@ -285,7 +288,7 @@
                     "userConfig": {
                         "layout|flex": null,
                         "designer|userClassName": "MyButton",
-                        "disabled": true,
+                        "disabled": false,
                         "id": null,
                         "itemId": "continueButtonId",
                         "iconAlign": "right",

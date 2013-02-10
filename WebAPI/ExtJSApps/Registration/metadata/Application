@@ -24,7 +24,8 @@
             "ForgotUsername",
             "SponsorController",
             "AttendeeAfterLoginController",
-            "SpeakerAfterLoginController"
+            "SpeakerAfterLoginController",
+            "CreateAccountController"
         ]
     },
     "id": "ExtBox1-ext-gen1587",

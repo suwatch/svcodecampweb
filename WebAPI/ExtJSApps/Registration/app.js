@@ -36,7 +36,8 @@ Ext.application({
         'ForgotUsername',
         'SponsorController',
         'AttendeeAfterLoginController',
-        'SpeakerAfterLoginController'
+        'SpeakerAfterLoginController',
+        'CreateAccountController'
     ],
 
     launch: function() {

@@ -18,6 +18,7 @@ Ext.define('SessionApp.store.SessionStore1', {
 
     requires: [
         'SessionApp.store.override.SessionStore1',
+        'Ext.data.writer.Json',
         'SessionApp.model.SessionModel'
     ],
 

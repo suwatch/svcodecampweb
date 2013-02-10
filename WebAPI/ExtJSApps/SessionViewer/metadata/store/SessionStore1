@@ -7,6 +7,9 @@
     "codeClass": null,
     "userConfig": {
         "designer|userClassName": "SessionStore1",
+        "requires": [
+            "Ext.data.writer.Json"
+        ],
         "storeId": "MyArrayStore1",
         "model": "SessionModel",
         "data": null,

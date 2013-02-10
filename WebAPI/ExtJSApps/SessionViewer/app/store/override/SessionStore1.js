@@ -20,9 +20,14 @@ Ext.define('SessionApp.store.override.SessionStore1', {
         //     { name: 'test 4', text: 'record4' }
         //];
         data = [];
-        Ext.Array.each(parent.SessionsDataGlobal, function (value) {
-            data.push(value);
-        });
+        if (typeof parent.SessionsDataGlobal != 'undefined') {
+            console.log('parent.SessionsDataGlobal has value');
+            Ext.Array.each(parent.SessionsDataGlobal, function (value) {
+                data.push(value);
+            });
+        } else {
+             console.log('parent.SessionsDataGlobal has no value');
+        }
         return data;
     }
 });

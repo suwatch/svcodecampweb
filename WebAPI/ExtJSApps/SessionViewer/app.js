@@ -21,7 +21,9 @@ Ext.application({
 
     requires: [
         'Ext.ux.data.PagingMemoryProxy',
-        'Ext.grid.Panel'
+        'Ext.grid.Panel',
+        'Ext.data.reader.Json',
+        'Ext.toolbar.Paging'
     ],
     models: [
         'SessionModel'

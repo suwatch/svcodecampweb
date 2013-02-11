@@ -56,7 +56,7 @@
                     "//form.submit();\r",
                     "\r",
                     "Ext.Ajax.request({ \r",
-                    "    url:'/api/Register/', \r",
+                    "    url:'/api/Register/SpeakerReg', \r",
                     "    actionMethods:'POST', \r",
                     "    scope:this, \r",
                     "    params:form.getValues(), \r",

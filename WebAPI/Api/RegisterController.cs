@@ -33,8 +33,8 @@ namespace WebAPI.Api
         //    return "value";
         //}
 
-        // POST api/session
-        public HttpResponseMessage Post(FormDataCollection formDataCollection)
+        [HttpPost]
+        public HttpResponseMessage SpeakerReg(FormDataCollection formDataCollection)
         {
             var dict = formDataCollection.ToDictionary(k => k.Key, v => v.Value);
 
@@ -64,6 +64,38 @@ namespace WebAPI.Api
 
 
         }
+
+        //// POST api/session
+        //public HttpResponseMessage Post(FormDataCollection formDataCollection)
+        //{
+        //    var dict = formDataCollection.ToDictionary(k => k.Key, v => v.Value);
+
+        //    // check and see if speaker record
+        //    if (dict.ContainsKey("SpeakerCanSpeak"))
+        //    {
+
+        //    }
+        //    else
+        //    {
+
+        //    }
+
+
+
+        //    //return Request.CreateResponse(HttpStatusCode.BadRequest);
+
+        //    Contact contact = new Contact()
+        //    {
+        //        Name = "myname"
+        //    };
+
+
+        //    var response = Request.CreateResponse<Contact>(HttpStatusCode.Created, contact);
+        //    response.Headers.Location = new Uri("http://localhost/");
+        //    return response;
+
+
+        //}
 
         //// PUT api/session/5
         //public void Put(int id, [FromBody]string value)

@@ -54,14 +54,6 @@
             ],
             "className": "ForgotUsername"
         },
-        "effc3a6e-578c-415f-8bb6-9972b15b708f": {
-            "paths": [
-                "metadata/view/sponsor",
-                "app/view/override/sponsor.js",
-                "app/view/sponsor.js"
-            ],
-            "className": "sponsor"
-        },
         "cab99d0f-d5c3-4fde-a0ec-d102368a862f": {
             "paths": [
                 "metadata/controller/SponsorController",
@@ -155,7 +147,6 @@
         "view": [
             "2e607d39-4c76-4f8c-a350-e222eedf6e5d",
             "fea6a3af-2d7e-4daa-9f97-09e2da9e54c8",
-            "effc3a6e-578c-415f-8bb6-9972b15b708f",
             "9aa5d9d2-b86c-474a-809d-f428070283f5",
             "b2a0a5e7-3db7-4038-ab22-bcee2b77314e",
             "39067009-bf72-41d5-adb1-5644d566845c",

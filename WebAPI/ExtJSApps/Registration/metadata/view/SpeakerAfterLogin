@@ -10,7 +10,8 @@
         "designer|userAlias": "SpeakerAfterLoginAlias",
         "itemId": "speakerAfterLoginId",
         "bodyPadding": 15,
-        "title": "Speaker After Login"
+        "title": "Speaker After Login",
+        "url": "/api/Register"
     },
     "id": "ExtBox1-ext-gen14927",
     "designerId": "56e26b45-7fe3-4b60-bbd4-c2b2c6c64e83",
@@ -24,11 +25,20 @@
             "codeClass": null,
             "userConfig": {
                 "container|align": "stretch",
+                "name": "CanSpeakDate",
                 "designer|userClassName": "MyRadioGroup3",
+                "id": "CanSpeakRbGroupId",
                 "layout": "vbox",
                 "fieldLabel": ""
             },
             "designerId": "ff1a664b-b9e2-4744-83f7-25ff9fe70d13",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "name",
+                    "type": "string"
+                }
+            ],
             "cn": [
                 {
                     "type": "radiofield",
@@ -39,6 +49,8 @@
                     "codeClass": null,
                     "userConfig": {
                         "designer|userClassName": "MyRadio11",
+                        "itemId": "speakSaturdayId",
+                        "inputId": "speakSaturday",
                         "name": "SpeakerCanSpeak",
                         "fieldLabel": null,
                         "boxLabel": "Can Speak Saturday"
@@ -54,9 +66,11 @@
                     "codeClass": null,
                     "userConfig": {
                         "designer|userClassName": "MyRadio12",
+                        "itemId": "speakSundayId",
                         "name": "SpeakerCanSpeak",
                         "fieldLabel": null,
-                        "boxLabel": "Can Speak Sunday"
+                        "boxLabel": "Can Speak Sunday",
+                        "inputValue": "speakSunday"
                     },
                     "designerId": "fa65d188-1d90-4cd7-8de1-ded0d6d89813"
                 },
@@ -69,10 +83,12 @@
                     "codeClass": null,
                     "userConfig": {
                         "designer|userClassName": "MyRadio12",
+                        "itemId": "speakSaturdayAndSundayId",
                         "name": "SpeakerCanSpeak",
                         "fieldLabel": null,
                         "boxLabel": "Can Speak Saturday Or Sunday",
-                        "checked": true
+                        "checked": false,
+                        "inputValue": "speakSaturdaySunday"
                     },
                     "designerId": "22df0a81-753e-4d92-ad1d-96357ee14008"
                 }
@@ -121,6 +137,7 @@
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextField16",
                 "itemId": "EmailId",
+                "name": "email",
                 "fieldLabel": "Email"
             },
             "designerId": "44590fb8-2862-4725-95b1-8a84e200847f"
@@ -136,6 +153,7 @@
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextField14",
                 "itemId": "WebSiteId",
+                "name": "website",
                 "fieldLabel": "Web Site"
             },
             "designerId": "af539edb-f0b7-49ba-98f4-12a6511bfa29"
@@ -151,24 +169,10 @@
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextField17",
                 "itemId": "TwitterHandleId",
+                "name": "twitterhandle",
                 "fieldLabel": "Twitter Handle"
             },
             "designerId": "75fa993a-7e3c-42c2-97c6-0d4d1077622b"
-        },
-        {
-            "type": "filefield",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "layout|anchor": "100%",
-                "designer|userClassName": "MyFileUpload",
-                "itemId": "PictureUploadId",
-                "fieldLabel": "Picture"
-            },
-            "designerId": "651322f2-93ae-4c62-9067-381bb0c31569"
         },
         {
             "type": "textfield",
@@ -181,6 +185,7 @@
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextField18",
                 "itemId": "CityId",
+                "name": "city",
                 "fieldLabel": "City"
             },
             "designerId": "a474b8ec-f4a9-4d8f-bcdb-fca1c59af204"
@@ -196,6 +201,7 @@
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextField19",
                 "itemId": "StateId",
+                "name": "state",
                 "fieldLabel": "State"
             },
             "designerId": "ae2c83f0-2b76-4f51-8028-9b0440a3182f"
@@ -211,6 +217,7 @@
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextField20",
                 "itemId": "ZipcodeId",
+                "name": "zipcode",
                 "fieldLabel": "Zipcode"
             },
             "designerId": "84e97daa-769b-4ec5-b44a-fd5862c7abab"
@@ -226,6 +233,7 @@
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextArea1",
                 "designer|displayName": "BioId",
+                "name": "bio",
                 "fieldLabel": "Bio"
             },
             "designerId": "06b45703-4e4f-48b7-8ed9-dc38a5ae9844"

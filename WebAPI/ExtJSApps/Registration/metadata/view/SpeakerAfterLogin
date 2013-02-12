@@ -24,8 +24,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "container|align": "stretch",
                 "name": "CanSpeakDate",
+                "container|align": "stretch",
                 "designer|userClassName": "MyRadioGroup3",
                 "id": "CanSpeakRbGroupId",
                 "layout": "vbox",

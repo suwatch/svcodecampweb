@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using CodeCampSV;
 using System.Net.Http.Formatting;
@@ -11,8 +12,62 @@ namespace WebAPI.Api
 {
     public class AccountController : ApiController
     {
+
+        public class LoginCredentials
+        {
+            public string Username { get; set; }
+            public string Password { get; set; }
+            public bool RememberMe { get; set; }
+        }
+
+        public class LoginReturnStatus
+        {
+            public string Status { get; set; }
+            public string Message { get; set; }
+            public AttendeesResult Data { get; set; }
+        }
+
+
         [HttpPost]
-        public HttpResponseMessage Login(string username,string password)
+        [ActionName("Login")]
+        public HttpResponseMessage PostLogin(LoginCredentials login)
+        {
+            // Create a 201 response.
+            //{
+            //    //Content = new StringContent(update.Status)
+            //};
+            //response.Headers.Location =
+            //    new Uri(Url.Link("DefaultApi", new { action = "status", id = id }));
+
+            var attendeesResult = new AttendeesResult
+                                      {
+                                          Username = "testuser",
+                                          PKID = Guid.NewGuid(),
+                                          UserFirstName = "peter"
+                                      };
+
+            var loginReturnStatus =
+                new LoginReturnStatus
+                    {
+                        Status = "Success",
+                        Message = "",
+                        Data = attendeesResult
+                    };
+
+            HttpResponseMessage response =
+                Request.CreateResponse(HttpStatusCode.OK, loginReturnStatus);
+
+
+            return response;
+
+
+
+        }
+
+
+
+        [HttpPost]
+        public HttpResponseMessage Loginxxx(FormDataCollection formDataCollection)
         {
             //var dict = formDataCollection.ToDictionary(k => k.Key, v => v.Value);
 
@@ -42,8 +97,8 @@ namespace WebAPI.Api
             return Request.CreateResponse(HttpStatusCode.OK);
 
         }
-   
-      
+
+
         //[HttpPost]
         //public HttpResponseMessage SpeakerReg(FormDataCollection formDataCollection)
         //{
@@ -119,22 +174,11 @@ namespace WebAPI.Api
         //}
     }
 
-    public class Contact
-    {
-       
-        public int ContactId { get; set; }
-   
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string Zip { get; set; }
-        public string Email { get; set; }
-        public string Twitter { get; set; }
-       
-        public string Self { get; set; }
-    }
+
+
+
 }
+
 //// GET api/session
 //public IEnumerable<string> Get()
 //{

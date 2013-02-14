@@ -111,6 +111,17 @@ namespace WebAPI.Api
             return response;
         }
 
+        [HttpPost]
+        [ActionName("LogOut")]
+        public HttpResponseMessage PostLogOut(LoginCredentials login)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+               FormsAuthentication.SignOut();
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, "");
+        }
+
         private static AttendeesResult AttendeesResultStripped(AttendeesResult attendeesResultFull)
         {
             var attendeesResult =

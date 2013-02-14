@@ -50,6 +50,51 @@
                 "designer|controlQuery": "AttendeeAfterLoginAlias #continueButtonId"
             },
             "designerId": "5ed0eb2a-89a6-4f0f-8323-3301fe89fee9"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onLogoutButtonIdClick",
+                "fn": "onLogoutButtonIdClick",
+                "implHandler": [
+                    "  var myMask = new Ext.LoadMask(Ext.getBody(), {msg:\"Logging Out...\"});\r",
+                    "  myMask.show();\r",
+                    " \r",
+                    "  Ext.Ajax.request({ \r",
+                    "    url:'/api/Account/LogOut', \r",
+                    "    actionMethods:'POST', \r",
+                    "    scope:this, \r",
+                    "    params:{\r",
+                    "        Username: '',\r",
+                    "        Password: '',\r",
+                    "        RememberMe: true\r",
+                    "    },\r",
+                    "    success: function(r, o) { \r",
+                    "        var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];\r",
+                    "        tabPanel.setActiveTab(tabPanel.getTabIdByName('attendeeorspeaker'));\r",
+                    "        console.log('setting tab to attendeeorspeaker  logout succeeded');\r",
+                    "        myMask.hide();\r",
+                    "    },\r",
+                    "    failure: function(r,o) {\r",
+                    "        var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];\r",
+                    "        tabPanel.setActiveTab(tabPanel.getTabIdByName('attendeeorspeaker'));\r",
+                    "        console.log('setting tab to attendeeorspeaker. logout failed');\r",
+                    "        myMask.hide();\r",
+                    "    } \r",
+                    "   \r",
+                    "  });"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#logoutButtonId"
+            },
+            "designerId": "d7bb7e6c-7b4b-43ff-a091-c7f26c830194"
         }
     ]
 }

@@ -142,10 +142,10 @@
                         "layout|flex": null,
                         "designer|userClassName": "MyButton",
                         "disabled": false,
-                        "id": "backButtonId",
-                        "itemId": "backButtonId",
+                        "id": null,
+                        "itemId": "logoutButtonId",
                         "iconAlign": "right",
-                        "text": "Back"
+                        "text": "Logout"
                     },
                     "designerId": "31abf85a-67c8-41c9-a5a7-8ade32fd8b90"
                 },
@@ -161,6 +161,37 @@
                         "designer|userClassName": "MySeparator"
                     },
                     "designerId": "605740b9-9254-45fd-a8c6-4c492376ebdc"
+                },
+                {
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MyButton",
+                        "disabled": false,
+                        "id": "backButtonId",
+                        "itemId": "backButtonId",
+                        "iconAlign": "right",
+                        "text": "Back"
+                    },
+                    "designerId": "3da106d4-bc47-43de-9299-5871476c1c98"
+                },
+                {
+                    "type": "tbseparator",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MySeparator"
+                    },
+                    "designerId": "cc91c587-551e-42fc-ba1a-a64550e212f5"
                 },
                 {
                     "type": "button",

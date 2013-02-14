@@ -45,19 +45,47 @@ Ext.application({
         //tabPanel.hideTabTitles();
 
 
+        // If #login is at end of URL, then go directly to speaker or user page
         var token = window.location.hash;
-        debugger;
+
         if (token === '#login') {
 
-            /*Ext.define('SVCodeCamp.Data', {
-            singleton: true,
-            startPage: 'login'
-            });  
-            */
-
+            var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Checking Logged In Status..."});
+            myMask.show();
+            // first check to see if person is already logged in.  If they are, then go edit details page as if attendee
             var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];
-            tabPanel.setActiveTab(tabPanel.getTabIdByName('attendeeorspeaker'));
+            Ext.Ajax.request({ 
+                url:'/api/Account/IsLoggedIn', 
+                actionMethods:'POST', 
+                scope:this, 
+                params:{
+                    Username: '',
+                    Password: '',
+                    RememberMe: true
+                },
+                success: function(r, o) { 
+                    //Ext.Msg.alert('Successful Login!');
+
+                    var retData = Ext.JSON.decode(r.responseText);
+                    var attendeePanel = Ext.ComponentQuery.query('AttendeeAfterLoginAlias')[0];
+                    attendeePanel.getForm().setValues({
+                        FirstName: retData.UserFirstName,
+                        LastName: retData.UserLastName
+                    });
+                    var newTabId = tabPanel.getTabIdByName('AttendeeAfterLogin');
+                    tabPanel.setActiveTab(newTabId);
+                    myMask.hide();
+                },
+                failure: function(r,o) {
+                    var newTabId = tabPanel.getTabIdByName('AttendeeOrSpeakerAlias');
+                    tabPanel.setActiveTab(newTabId);
+                    myMask.hide();
+                } 
+
+            });
+
         }
+
     }
 
 });

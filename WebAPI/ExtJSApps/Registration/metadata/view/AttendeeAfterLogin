@@ -191,6 +191,7 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyTextField8",
+                "name": "FirstName",
                 "fieldLabel": "First Name"
             },
             "designerId": "0cbf5cd3-2125-4f76-b8c7-10c5f3269098"
@@ -204,6 +205,7 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyTextField9",
+                "name": "LastName",
                 "fieldLabel": "Last Name"
             },
             "designerId": "f23fce8c-9f1f-43b5-a590-80282a45565a"
@@ -217,6 +219,7 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyTextField9",
+                "name": "Email",
                 "fieldLabel": "Email"
             },
             "designerId": "14b9be0b-a392-4098-add2-e3e4b85a151b"
@@ -230,6 +233,7 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyTextField10",
+                "name": "TwitterHandle",
                 "fieldLabel": "Twitter Handle"
             },
             "designerId": "035633af-a7c5-4bbf-9958-98a64fd6820e"
@@ -243,6 +247,7 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyTextField11",
+                "name": "City",
                 "fieldLabel": "City"
             },
             "designerId": "db83c009-f15d-426d-8f27-f074afc1c577"
@@ -256,6 +261,7 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyTextField12",
+                "name": "State",
                 "fieldLabel": "State"
             },
             "designerId": "94ef2244-fcd7-4ca3-a5de-3caa6178e50b"
@@ -269,6 +275,7 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyTextField13",
+                "name": "Zipcode",
                 "fieldLabel": "Zipcode"
             },
             "designerId": "173e3391-7a97-455e-95e7-28a422208081"

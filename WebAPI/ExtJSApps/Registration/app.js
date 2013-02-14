@@ -41,9 +41,11 @@ Ext.application({
     ],
 
     launch: function() {
-        console.log('top of launch');
+        console.log('top of launch event in Application object');
 
 
+
+        /* THIS DOES NOT WORK COMPILED.  IN  TAB CONSTRUCTOR AT THE MOMENT
         var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Checking Logged In Status..."});
         // always check logged in status when get here
         myMask.show();
@@ -78,7 +80,7 @@ Ext.application({
             } 
         });
 
-
+        */
 
 
 

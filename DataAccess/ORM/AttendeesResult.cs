@@ -39,5 +39,7 @@ namespace CodeCampSV
         [DataMember]
         public string UserBioEllipsized { get; set; }
 
+        public AttendeesCodeCampYearResult AttendeesCodeCampYearResult { get; set; }
+
     }
 }

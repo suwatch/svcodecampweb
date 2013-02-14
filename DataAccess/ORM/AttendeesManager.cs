@@ -155,6 +155,8 @@ namespace CodeCampSV
 
             var meta = new CodeCampDataContext();
 
+            
+
 
             // add to codecampyearids (make sure List is always populated)
             if (query.CodeCampYearId.HasValue)
@@ -172,6 +174,13 @@ namespace CodeCampSV
                 }
             }
             // query.CodeCampYearId should not be used for hear on out, just the array
+
+
+            
+            
+
+
+
 
             IQueryable<Attendees> baseQuery = from myData in meta.Attendees select myData;
 
@@ -250,7 +259,7 @@ namespace CodeCampSV
             IQueryable<AttendeesResult> results = GetBaseResultIQueryable(baseQuery);
 
 
-            var resultList = new List<AttendeesResult>();
+            List<AttendeesResult> resultList;
 
             // NOT NEESSARY BECAUSE CODECAMPYEARS FILTERED ABOVE
             //if (query.CodeCampYearIds != null && query.CodeCampYearIds.Count > 0)
@@ -398,19 +407,34 @@ namespace CodeCampSV
                 }
             }
 
+            // only pull AttendeesCodeCampYearData when current code camp year and attendeeId (Id) is specified.
+            // otherwise, quietly ignore.
+            if (query.CodeCampYearId.HasValue &&
+                query.IncludeAttendeesCodeCampYearResult.HasValue && query.IncludeAttendeesCodeCampYearResult.Value)
+            {
+                List<int> attendeeIds = resultList.Select(a => a.Id).ToList();
 
-            //  Put Stuff Here if you want to load another result
-            //  The following is done AFTER GetFinalResults so that we don't waste machine cycles sucking in all the
-            //  addresses for all results returned, just the ones that are actually being returned.
-            //  if (query.WithAddress != null && query.WithAddress == true)
-            //  {
-            //     foreach (var r in companyResultList)
-            //     {
-            //         r.CompanyAddressResultList =
-            //             CompanyAddressManager.I.Get(new CompanyAddressQuery { CompanyIds = query.Ids, WithAddress = true });
-            //     }
-            //  }
-            //             
+                Dictionary<int, AttendeesCodeCampYearResult> codeCampYearResults = meta.AttendeesCodeCampYear.Where(
+                    data => attendeeIds.Contains(data.Id) &&
+                            data.CodeCampYearId ==
+                            query.CodeCampYearId).Select(a => new AttendeesCodeCampYearResult
+                                                                  {
+                                                                      Id = a.Id,
+                                                                      AttendeesId = a.AttendeesId,
+                                                                      AttendSaturday = a.AttendSaturday,
+                                                                      AttendSunday = a.AttendSunday,
+                                                                      CodeCampYearId = a.CodeCampYearId,
+                                                                      Volunteer = a.Volunteer,
+                                                                      CreateDate = a.CreateDate
+                                                                  })
+                                                                                       .ToDictionary(
+                                                                                           k => k.AttendeesId, v => v);
+                foreach (var rec in resultList)
+                {
+                    rec.AttendeesCodeCampYearResult = codeCampYearResults[rec.Id];
+                }
+            }
+
             return resultList;
         }
 

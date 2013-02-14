@@ -39,5 +39,9 @@ namespace CodeCampSV
         public bool? IncludeSessions { get; set; }
 
         public string SpeakerNameWithId { get; set; }
+
+        public bool? IncludeAttendeesCodeCampYearResult { get; set; }
+
+        
     }
 }

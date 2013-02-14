@@ -90,10 +90,14 @@ namespace WebAPI.Api
 
             if (User.Identity.IsAuthenticated)
             {
-                var attendeesResultFull = AttendeesManager.I.Get(new AttendeesQuery()
-                {
-                    Username = login.Username
-                }).FirstOrDefault();
+                var attendeesResultFull =
+                    AttendeesManager.I.Get(new AttendeesQuery
+                                               {
+                                                   Username = User.Identity.Name,
+                                                   CodeCampYearId = Utils.CurrentCodeCampYear,
+                                                   IncludeAttendeesCodeCampYearResult = true
+                                               }).FirstOrDefault();
+
                 if (attendeesResultFull != null)
                 {
                     var attendeesResult = AttendeesResultStripped(attendeesResultFull);
@@ -138,7 +142,8 @@ namespace WebAPI.Api
                         UserLastName = attendeesResultFull.UserLastName,
                         PKID = attendeesResultFull.PKID,
                         Id = attendeesResultFull.Id,
-                        Email = attendeesResultFull.Email
+                        Email = attendeesResultFull.Email,
+                        AttendeesCodeCampYearResult = attendeesResultFull.AttendeesCodeCampYearResult
                     };
             return attendeesResult;
         }

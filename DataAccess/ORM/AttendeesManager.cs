@@ -217,14 +217,14 @@ namespace CodeCampSV
                                       select sessionPresenter.AttendeeId).ToList();
                     baseQuery = baseQuery.Where(data => speakerIds.Contains(data.Id));
                 }
-                else
-                {
-                    // this may blow up with two many attendees in contains (which translates to sql IN)
-                    var speakerIds = (from data in meta.AttendeesCodeCampYear
-                                      where query.CodeCampYearIds.Contains(data.CodeCampYearId)
-                                      select data.AttendeesId).ToList();
-                    baseQuery = baseQuery.Where(data => speakerIds.Contains(data.Id));
-                }
+                //else
+                //{
+                //    // this may blow up with two many attendees in contains (which translates to sql IN)
+                //    var speakerIds = (from data in meta.AttendeesCodeCampYear
+                //                      where query.CodeCampYearIds.Contains(data.CodeCampYearId)
+                //                      select data.AttendeesId).ToList();
+                //    baseQuery = baseQuery.Where(data => speakerIds.Contains(data.Id));
+                //}
             }
             else
             {
@@ -431,7 +431,10 @@ namespace CodeCampSV
                                                                                            k => k.AttendeesId, v => v);
                 foreach (var rec in resultList)
                 {
-                    rec.AttendeesCodeCampYearResult = codeCampYearResults[rec.Id];
+                    if (codeCampYearResults.ContainsKey(rec.Id))
+                    {
+                        rec.AttendeesCodeCampYearResult = codeCampYearResults[rec.Id];
+                    }
                 }
             }
 

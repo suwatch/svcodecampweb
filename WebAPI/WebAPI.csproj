@@ -2378,6 +2378,7 @@
     <Content Include="ExtJSApps\RegistrationProd\resources\theme\images\window-header\window-header-default-top-sides.gif" />
     <Content Include="ExtJSApps\RegistrationProd\resources\theme\images\window\window-default-corners.gif" />
     <Content Include="ExtJSApps\RegistrationProd\resources\theme\images\window\window-default-sides.gif" />
+    <Content Include="ExtJSApps\Registration\resources\js\Utils.js" />
     <Content Include="ExtJSApps\SessionViewerProd\all-classes.js" />
     <Content Include="ExtJSApps\SessionViewerProd\ext\src\ux\css\CheckHeader.css" />
     <Content Include="ExtJSApps\SessionViewerProd\ext\src\ux\css\GroupTabPanel.css" />
@@ -3431,7 +3432,6 @@
     <Content Include="Views\Sponsor\IndexTest.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ExtJSApps\Registration\" />
     <Folder Include="ExtJSApps\SessionViewer\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\colorbox-master\" />

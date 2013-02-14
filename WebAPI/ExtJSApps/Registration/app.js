@@ -43,6 +43,11 @@ Ext.application({
     launch: function() {
         console.log('top of launch event in Application object');
 
+        //RegistrationApp.view.override.ViewportMain.checkForLoggedInGoToAttendeeProfile();
+
+        //debugger;
+
+        //RegistrationApp.Utils.checkForLoggedInGoToAttendeeProfile();
 
 
         /* THIS DOES NOT WORK COMPILED.  IN  TAB CONSTRUCTOR AT THE MOMENT

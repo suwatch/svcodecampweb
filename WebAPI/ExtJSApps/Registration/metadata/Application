@@ -44,6 +44,11 @@
                 "implHandler": [
                     "console.log('top of launch event in Application object');\r",
                     "\r",
+                    "//RegistrationApp.view.override.ViewportMain.checkForLoggedInGoToAttendeeProfile();\r",
+                    "\r",
+                    "//debugger;\r",
+                    "\r",
+                    "//RegistrationApp.Utils.checkForLoggedInGoToAttendeeProfile();\r",
                     "\r",
                     "\r",
                     "/* THIS DOES NOT WORK COMPILED.  IN  TAB CONSTRUCTOR AT THE MOMENT\r",

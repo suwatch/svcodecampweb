@@ -49,7 +49,8 @@
                         "itemId": "rbAttendee",
                         "name": "attendeeType",
                         "fieldLabel": null,
-                        "boxLabel": "Attendee"
+                        "boxLabel": "Attendee",
+                        "checked": false
                     },
                     "designerId": "f19834ee-7a54-432c-a2f7-24a2226f9f55"
                 },
@@ -127,10 +128,9 @@
                     "userConfig": {
                         "layout|flex": null,
                         "designer|userClassName": "MyButton",
-                        "disabled": true,
+                        "disabled": false,
                         "id": null,
                         "itemId": "continueButtonId",
-                        "iconAlign": "right",
                         "text": "Continue"
                     },
                     "designerId": "556dd460-086e-4415-95e5-239bbd667706"

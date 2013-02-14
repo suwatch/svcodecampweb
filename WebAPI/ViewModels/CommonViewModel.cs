@@ -21,6 +21,9 @@ namespace WebAPI.ViewModels
         public List<SponsorListJobListingResult> JobListings { get; set; }
         public List<RSSItem> FeedItems { get; set; }
 
+        public string LoggedInUsername { get; set; }
+       
+
         public string DaysUntilCodeCampString
         {
             get { return DaysToGoString(); }

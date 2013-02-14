@@ -18,6 +18,9 @@ namespace WebAPI.Controllers
                 Utils.ConvertCodeCampYearToActualYear(
                     Utils.GetCurrentCodeCampYear().ToString(CultureInfo.InvariantCulture));
             var viewModel = GetViewModel(year);
+
+            viewModel.LoggedInUsername = User.Identity.IsAuthenticated ? User.Identity.Name : "NONE";
+
             return View(viewModel);
         }
 

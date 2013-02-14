@@ -132,7 +132,11 @@ namespace WebAPI
 
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
+           
 
+            HttpContext.Current.Response.AddHeader(
+                "p3p",
+                "CP=\"IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT\"");
         }
 
         protected void Application_AuthenticateRequest(object sender, EventArgs e)

@@ -223,6 +223,102 @@
                     "designerId": "6dbde9b0-d7fa-49fe-b90c-05923798b862"
                 }
             ]
+        },
+        {
+            "type": "form",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyForm6",
+                "bodyPadding": 10,
+                "title": "My Form"
+            },
+            "designerId": "98a8cc4b-7db4-4a2e-8aea-8fe5195956e4",
+            "cn": [
+                {
+                    "type": "tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "TabConfig6"
+                    },
+                    "designerId": "e5070294-02a5-4137-9be5-a6d2034a639b"
+                },
+                {
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyButton5",
+                        "text": "MyButton"
+                    },
+                    "designerId": "cee99d51-41ae-4e84-834b-1dd545cc5c65",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "onButtonClick",
+                                "fn": "onButtonClick",
+                                "implHandler": [
+                                    "\r",
+                                    "console.log('checking log in status');\r",
+                                    "\r",
+                                    "var myMask = new Ext.LoadMask(Ext.getBody(), {msg:\"Checking Logged In Status...\"});\r",
+                                    "// always check logged in status when get here\r",
+                                    "myMask.show();\r",
+                                    "// first check to see if person is already logged in.  If they are, then go edit details page as if attendee\r",
+                                    "var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];\r",
+                                    "Ext.Ajax.request({ \r",
+                                    "    url:'/api/Account/IsLoggedIn', \r",
+                                    "    actionMethods:'POST', \r",
+                                    "    scope:this, \r",
+                                    "    params:{\r",
+                                    "        Username: '',\r",
+                                    "        Password: '',\r",
+                                    "        RememberMe: true\r",
+                                    "    },\r",
+                                    "    success: function(r, o) {  \r",
+                                    "        console.log('is logged in from launch');\r",
+                                    "        // logged in, take the person to attendee edit page. NEED TO CHECK IF SPEAKER AND DO SPEAKER PAGE\r",
+                                    "        var retData = Ext.JSON.decode(r.responseText);\r",
+                                    "        var attendeePanel = Ext.ComponentQuery.query('AttendeeAfterLoginAlias')[0];\r",
+                                    "        attendeePanel.getForm().setValues({\r",
+                                    "            FirstName: retData.UserFirstName,\r",
+                                    "            LastName: retData.UserLastName\r",
+                                    "        });\r",
+                                    "        tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeAfterLogin'));\r",
+                                    "        myMask.hide();\r",
+                                    "    },\r",
+                                    "    failure: function(r,o) {\r",
+                                    "        console.log('is NOT logged in from launch');\r",
+                                    "        // not logged in so take them to opening page\r",
+                                    "        tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeSpeakerSponsorId'));\r",
+                                    "        myMask.hide();\r",
+                                    "    } \r",
+                                    "});"
+                                ],
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "designerId": "60d12af9-53c6-40a6-8a49-346d12089ef4"
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }

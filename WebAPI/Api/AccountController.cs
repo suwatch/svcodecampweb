@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using System.Web.Security;
 using CodeCampSV;
 using System.Net.Http.Formatting;
 
@@ -32,172 +33,97 @@ namespace WebAPI.Api
         [ActionName("Login")]
         public HttpResponseMessage PostLogin(LoginCredentials login)
         {
-            // Create a 201 response.
-            //{
-            //    //Content = new StringContent(update.Status)
-            //};
-            //response.Headers.Location =
-            //    new Uri(Url.Link("DefaultApi", new { action = "status", id = id }));
-
-            var attendeesResult = new AttendeesResult
-                                      {
-                                          Username = "testuser",
-                                          PKID = Guid.NewGuid(),
-                                          UserFirstName = "peter"
-                                      };
-
             var loginReturnStatus =
-                new LoginReturnStatus
-                    {
-                        Status = "Success",
-                        Message = "",
-                        Data = attendeesResult
-                    };
+                new LoginReturnStatus();
 
-            HttpResponseMessage response =
-                Request.CreateResponse(HttpStatusCode.OK, loginReturnStatus);
-
+           HttpResponseMessage response;
+           if (!String.IsNullOrEmpty(login.Username) && !String.IsNullOrEmpty(login.Password))
+           {
+               var loginSuccess = Membership.ValidateUser(login.Username, login.Password);
+               if (loginSuccess)
+               {
+                   FormsAuthentication.SetAuthCookie(login.Username,login.RememberMe);
+               }
+               AttendeesResult attendeesResultFull = AttendeesManager.I.Get(new AttendeesQuery()
+                                                                                {
+                                                                                    Username = login.Username
+                                                                                }).FirstOrDefault();
+               if (attendeesResultFull != null)
+               {
+                   var attendeesResult = AttendeesResultStripped(attendeesResultFull);
+                   loginReturnStatus.Data = attendeesResult;
+                   response = Request.CreateResponse(HttpStatusCode.OK, attendeesResult);
+               }
+               else
+               {
+                   response =
+                       Request.CreateErrorResponse(HttpStatusCode.Forbidden,
+                                                   "User Authenticated, but no user record in database found.");
+               }
+           }
+           else
+           {
+               response =
+                  Request.CreateErrorResponse(HttpStatusCode.Forbidden, "Username and Password must both have values");
+               loginReturnStatus.Status = "Failed";
+               loginReturnStatus.Message = "Username and Password must both have values";
+           }
 
             return response;
-
-
-
         }
-
 
 
         [HttpPost]
-        public HttpResponseMessage Loginxxx(FormDataCollection formDataCollection)
+        [ActionName("IsLoggedIn")]
+        public HttpResponseMessage PostIsLoggedIn(LoginCredentials login)
         {
-            //var dict = formDataCollection.ToDictionary(k => k.Key, v => v.Value);
+            var loginReturnStatus =
+                new LoginReturnStatus();
 
-            //// check and see if speaker record
-            //if (dict.ContainsKey("SpeakerCanSpeak"))
-            //{
+            HttpResponseMessage response;
 
-            //}
-            //else
-            //{
-
-            //}
-
-
-
-            ////return Request.CreateResponse(HttpStatusCode.BadRequest);
-
-            //Contact contact = new Contact()
-            //{
-            //    Name = "myname"
-            //};
-
-
-            //var response = Request.CreateResponse<Contact>(HttpStatusCode.Created, contact);
-            //response.Headers.Location = new Uri("http://localhost/");
-            //return response;
-            return Request.CreateResponse(HttpStatusCode.OK);
-
+            if (User.Identity.IsAuthenticated)
+            {
+                var attendeesResultFull = AttendeesManager.I.Get(new AttendeesQuery()
+                {
+                    Username = login.Username
+                }).FirstOrDefault();
+                if (attendeesResultFull != null)
+                {
+                    var attendeesResult = AttendeesResultStripped(attendeesResultFull);
+                    loginReturnStatus.Data = attendeesResult;
+                    response = Request.CreateResponse(HttpStatusCode.OK, attendeesResult);
+                }
+                else
+                {
+                    response =
+                        Request.CreateErrorResponse(HttpStatusCode.Forbidden,
+                                                    "User Authenticated, but no user record in database found.");
+                }
+            }
+            else
+            {
+                response =
+                  Request.CreateErrorResponse(HttpStatusCode.Forbidden, "User Not Authenticated To Server");
+                loginReturnStatus.Status = "Failed";
+                loginReturnStatus.Message = "Not Authenticated";
+            }
+            return response;
         }
 
-
-        //[HttpPost]
-        //public HttpResponseMessage SpeakerReg(FormDataCollection formDataCollection)
-        //{
-        //    var dict = formDataCollection.ToDictionary(k => k.Key, v => v.Value);
-
-        //    // check and see if speaker record
-        //    if (dict.ContainsKey("SpeakerCanSpeak"))
-        //    {
-
-        //    }
-        //    else
-        //    {
-
-        //    }
-
-
-
-        //    //return Request.CreateResponse(HttpStatusCode.BadRequest);
-
-        //    Contact contact = new Contact()
-        //    {
-        //        Name = "myname"
-        //    };
-
-
-        //    var response = Request.CreateResponse<Contact>(HttpStatusCode.Created, contact);
-        //    response.Headers.Location = new Uri("http://localhost/");
-        //    return response;
-
-
-        //}
-
-        //// POST api/session
-        //public HttpResponseMessage Post(FormDataCollection formDataCollection)
-        //{
-        //    var dict = formDataCollection.ToDictionary(k => k.Key, v => v.Value);
-
-        //    // check and see if speaker record
-        //    if (dict.ContainsKey("SpeakerCanSpeak"))
-        //    {
-
-        //    }
-        //    else
-        //    {
-
-        //    }
-
-
-
-        //    //return Request.CreateResponse(HttpStatusCode.BadRequest);
-
-        //    Contact contact = new Contact()
-        //    {
-        //        Name = "myname"
-        //    };
-
-
-        //    var response = Request.CreateResponse<Contact>(HttpStatusCode.Created, contact);
-        //    response.Headers.Location = new Uri("http://localhost/");
-        //    return response;
-
-
-        //}
-
-        //// PUT api/session/5
-        //public void Put(int id, [FromBody]string value)
-        //{
-        //}
-
-        //// DELETE api/session/5
-        //public void Delete(int id)
-        //{
-        //}
+        private static AttendeesResult AttendeesResultStripped(AttendeesResult attendeesResultFull)
+        {
+            var attendeesResult =
+                new AttendeesResult
+                    {
+                        Username = attendeesResultFull.Username,
+                        UserFirstName = attendeesResultFull.UserFirstName,
+                        UserLastName = attendeesResultFull.UserLastName,
+                        PKID = attendeesResultFull.PKID,
+                        Id = attendeesResultFull.Id,
+                        Email = attendeesResultFull.Email
+                    };
+            return attendeesResult;
+        }
     }
-
-
-
-
 }
-
-//// GET api/session
-//public IEnumerable<string> Get()
-//{
-//    return new string[] { "value1", "value2" };
-//}
-
-//// GET api/session/5
-//public string Get(int id)
-//{
-//    return "value";
-//}
-
-
-//[HttpPost]
-//public HttpResponseMessage RegisterSpeaker(FormDataCollection form)
-//{
-
-//    var resp = Request.CreateResponse(HttpStatusCode.OK, string.Empty);
-//    return resp;
-
-//}
-

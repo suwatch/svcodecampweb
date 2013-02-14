@@ -46,7 +46,10 @@ public partial class DefaultNoColumns : System.Web.UI.MasterPage
 
         int codeCampYear = Utils.GetCurrentCodeCampYear();
 
-        if (!Page.IsPostBack)
+        var testMode = ConfigurationManager.AppSettings["TestingDataOnly"] != null &&
+                       ConfigurationManager.AppSettings["TestingDataOnly"].ToLower().Equals("true");
+
+        if (!Page.IsPostBack && !testMode)
         {
             List<CodeCampYearResult> listCodeCampYear = GetListCodeCampYear();
 
@@ -95,7 +98,7 @@ public partial class DefaultNoColumns : System.Web.UI.MasterPage
         int selectedIndex = codeCampStringDictionary.TakeWhile
             (rec => rec.Key != codeCampYear).Count();
 
-        string dateString = Utils.GetCodeCampDateStringByCodeCampYearId(codeCampYear);
+        string dateString = testMode ? "October 35th and 36th, 2099" : Utils.GetCodeCampDateStringByCodeCampYearId(codeCampYear);
         DropDownListCodeCampYearID.SelectedIndex = selectedIndex;
         HeaderId1.Text = String.Format("Saturday and Sunday, {0}", dateString);
 

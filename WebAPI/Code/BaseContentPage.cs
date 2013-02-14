@@ -34,7 +34,7 @@ public class BaseContentPage : Page
 
     //}
 
-   protected override void OnPreInit(EventArgs e)
+    protected override void OnPreInit(EventArgs e)
     {
         //if (_smartInspectEnabled)
         //{
@@ -44,11 +44,14 @@ public class BaseContentPage : Page
 
         base.OnPreInit(e);
 
-        Page.Theme = String.Format("Gray{0}", Utils.GetCurrentCodeCampYearStartDate().Year);
+        Page.Theme = ConfigurationManager.AppSettings["TestingDataOnly"] != null &&
+                     ConfigurationManager.AppSettings["TestingDataOnly"].ToLower().Equals("true")
+                         ? String.Format("Gray{0}", "2012")
+                         : String.Format("Gray{0}", Utils.GetCurrentCodeCampYearStartDate().Year);
 
         //int codeCampYear = Utils.GetCurrentCodeCampYear();
         //string dateString = Utils.GetCodeCampDateStringByCodeCampYearId(codeCampYear);
-       
+
 
         //if (codeCampYear == 3)
         //{
@@ -59,32 +62,32 @@ public class BaseContentPage : Page
         //    Page.Theme = "Gray2009";
         //}
 
-       //const string cacheName = "TrackRedirectsCache";
-       //const int cacheTimeoutSeconds = 0;
+        //const string cacheName = "TrackRedirectsCache";
+        //const int cacheTimeoutSeconds = 0;
 
-       //var alternateUrlsDictionary = (Dictionary<int,string>)Cache[cacheName];
-       //if (alternateUrlsDictionary == null)
-       //{
-       //    alternateUrlsDictionary = new Dictionary<int,string>();
-       //    // Grab all the track custom url's
-       //    var trackResults = TrackManager.I.Get(new TrackQuery());
-       //    foreach (TrackResult trackResult in trackResults)
-       //    {
-       //        if (!String.IsNullOrEmpty(trackResult.AlternateURL))
-       //        {
-       //            alternateUrlsDictionary.Add(trackResult.Id,trackResult.AlternateURL.Trim());
-       //        }
-       //    }
-       //    DateTime cacheExpire = DateTime.Now.AddSeconds(cacheTimeoutSeconds);
-       //    Cache.Insert(cacheName, alternateUrlsDictionary, null, cacheExpire, new TimeSpan(0));
-       //}
+        //var alternateUrlsDictionary = (Dictionary<int,string>)Cache[cacheName];
+        //if (alternateUrlsDictionary == null)
+        //{
+        //    alternateUrlsDictionary = new Dictionary<int,string>();
+        //    // Grab all the track custom url's
+        //    var trackResults = TrackManager.I.Get(new TrackQuery());
+        //    foreach (TrackResult trackResult in trackResults)
+        //    {
+        //        if (!String.IsNullOrEmpty(trackResult.AlternateURL))
+        //        {
+        //            alternateUrlsDictionary.Add(trackResult.Id,trackResult.AlternateURL.Trim());
+        //        }
+        //    }
+        //    DateTime cacheExpire = DateTime.Now.AddSeconds(cacheTimeoutSeconds);
+        //    Cache.Insert(cacheName, alternateUrlsDictionary, null, cacheExpire, new TimeSpan(0));
+        //}
 
-       //foreach (var alternateUrl in alternateUrlsDictionary)
-       //{
-       //    if (Context.Request.RawUrl.ToLower().EndsWith(alternateUrl.Value.ToLower()))
-       //    {
-       //        Response.Redirect(String.Format("~/Sessions.aspx?track={0}", alternateUrl.Key), true);
-       //    }
-       //}
+        //foreach (var alternateUrl in alternateUrlsDictionary)
+        //{
+        //    if (Context.Request.RawUrl.ToLower().EndsWith(alternateUrl.Value.ToLower()))
+        //    {
+        //        Response.Redirect(String.Format("~/Sessions.aspx?track={0}", alternateUrl.Key), true);
+        //    }
+        //}
     }
 }

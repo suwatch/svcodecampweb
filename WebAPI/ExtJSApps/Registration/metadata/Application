@@ -43,7 +43,22 @@
                 "fn": "launch",
                 "implHandler": [
                     "//var tabPanel = Ext.getCmp('TabWizardId');\r",
-                    "//tabPanel.hideTabTitles();"
+                    "//tabPanel.hideTabTitles();\r",
+                    "\r",
+                    "\r",
+                    "var token = window.location.hash;\r",
+                    "debugger;\r",
+                    "if (token === '#login') {\r",
+                    "    \r",
+                    "    /*Ext.define('SVCodeCamp.Data', {\r",
+                    "        singleton: true,\r",
+                    "        startPage: 'login'\r",
+                    "    });  \r",
+                    "    */\r",
+                    "    \r",
+                    "  var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];\r",
+                    "  tabPanel.setActiveTab(tabPanel.getTabIdByName('attendeeorspeaker'));\r",
+                    "}"
                 ]
             },
             "designerId": "38862b41-1650-45f5-9800-ee081b97eaa2"

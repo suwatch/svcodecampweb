@@ -28,7 +28,6 @@
                 "designer|userClassName": "hideTabTitles",
                 "fn": "hideTabTitles",
                 "implHandler": [
-                    "console.log('hideTabTitles');\r",
                     "this.getTabBar().hide();\r",
                     "this.componentLayout.childrenChanged = true;\r",
                     "this.doComponentLayout();"

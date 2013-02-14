@@ -43,6 +43,21 @@ Ext.application({
     launch: function() {
         //var tabPanel = Ext.getCmp('TabWizardId');
         //tabPanel.hideTabTitles();
+
+
+        var token = window.location.hash;
+        debugger;
+        if (token === '#login') {
+
+            /*Ext.define('SVCodeCamp.Data', {
+            singleton: true,
+            startPage: 'login'
+            });  
+            */
+
+            var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];
+            tabPanel.setActiveTab(tabPanel.getTabIdByName('attendeeorspeaker'));
+        }
     }
 
 });

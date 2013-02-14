@@ -42,6 +42,14 @@ public partial class Default : BaseContentPage
     {
         if (!IsPostBack)
         {
+            var testMode = ConfigurationManager.AppSettings["TestingDataOnly"] != null &&
+                       ConfigurationManager.AppSettings["TestingDataOnly"].ToLower().Equals("true");
+
+            if (testMode)
+            {
+                Response.Redirect("~/Session");
+            }
+
 
             if (ConfigurationManager.AppSettings["ChartAttendanceComparedLastYear"] != null &&
                 ConfigurationManager.AppSettings["ChartAttendanceComparedLastYear"].Equals("true"))
@@ -66,7 +74,7 @@ public partial class Default : BaseContentPage
             }
 
 
-            
+
             if (!Context.User.Identity.IsAuthenticated)
             {
                 // not logged in
@@ -82,16 +90,19 @@ public partial class Default : BaseContentPage
             {
                 // logged in
 
-                if (ConfigurationManager.AppSettings["SpeakerShirtSizeForce"] != null &&
-                    ConfigurationManager.AppSettings["SpeakerShirtSizeForce"].Equals("true"))
+                if (!testMode)
                 {
-                    int attendeesId = Utils.GetAttendeesIdFromUsername(Context.User.Identity.Name);
-                    if (Utils.CheckAttendeeIdIsSpeaker(attendeesId))
+                    if (ConfigurationManager.AppSettings["SpeakerShirtSizeForce"] != null &&
+                        ConfigurationManager.AppSettings["SpeakerShirtSizeForce"].Equals("true"))
                     {
-                        bool hasShirtSize = Utils.CheckHasShirtSize(attendeesId);
-                        if (!hasShirtSize)
+                        int attendeesId = Utils.GetAttendeesIdFromUsername(Context.User.Identity.Name);
+                        if (Utils.CheckAttendeeIdIsSpeaker(attendeesId))
                         {
-                            Response.Redirect("~/ShirtSizeSet.aspx");
+                            bool hasShirtSize = Utils.CheckHasShirtSize(attendeesId);
+                            if (!hasShirtSize)
+                            {
+                                Response.Redirect("~/ShirtSizeSet.aspx");
+                            }
                         }
                     }
                 }
@@ -105,7 +116,7 @@ public partial class Default : BaseContentPage
                 {
                     ShowTwitterSessionLinksId.Visible = false;
                 }
-               
+
 
                 CodeCampAnnounceID.Visible = false;
                 TwitterFeed1.Visible = false;
@@ -113,7 +124,7 @@ public partial class Default : BaseContentPage
                 jobsMemorialLogin.Visible = false;
                 jobsMemorialLogout.Visible = false;
                 horizontalDivider.Visible = false;
-               
+
             }
         }
 
@@ -125,10 +136,10 @@ public partial class Default : BaseContentPage
             int numberSessions = Utils.GetNumberSessions();
             string str = String.Format("{0} Sessions,{1} Registered", numberSessions, numberRegistered);
 
-            if (ConfigurationManager.AppSettings["ShowVolunteerJobsToAttendees"] != null && 
+            if (ConfigurationManager.AppSettings["ShowVolunteerJobsToAttendees"] != null &&
                 ConfigurationManager.AppSettings["ShowVolunteerJobsToAttendees"].ToLower().Equals("true"))
             {
-               
+
                 int numberNeeded = Utils.GetNumberVolunteersNeededYear();
                 if (numberNeeded > 0)
                 {
@@ -151,7 +162,7 @@ public partial class Default : BaseContentPage
 
 
 
-   
+
 
 
 }

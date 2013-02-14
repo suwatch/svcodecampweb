@@ -42,23 +42,29 @@ namespace WebAPI.Api
                var loginSuccess = Membership.ValidateUser(login.Username, login.Password);
                if (loginSuccess)
                {
-                   FormsAuthentication.SetAuthCookie(login.Username,login.RememberMe);
-               }
-               AttendeesResult attendeesResultFull = AttendeesManager.I.Get(new AttendeesQuery()
-                                                                                {
-                                                                                    Username = login.Username
-                                                                                }).FirstOrDefault();
-               if (attendeesResultFull != null)
-               {
-                   var attendeesResult = AttendeesResultStripped(attendeesResultFull);
-                   loginReturnStatus.Data = attendeesResult;
-                   response = Request.CreateResponse(HttpStatusCode.OK, attendeesResult);
+                   FormsAuthentication.SetAuthCookie(login.Username, login.RememberMe);
+
+                   AttendeesResult attendeesResultFull = AttendeesManager.I.Get(new AttendeesQuery()
+                                                                                    {
+                                                                                        Username = login.Username
+                                                                                    }).FirstOrDefault();
+                   if (attendeesResultFull != null)
+                   {
+                       var attendeesResult = AttendeesResultStripped(attendeesResultFull);
+                       loginReturnStatus.Data = attendeesResult;
+                       response = Request.CreateResponse(HttpStatusCode.OK, attendeesResult);
+                   }
+                   else
+                   {
+                       response =
+                           Request.CreateErrorResponse(HttpStatusCode.Forbidden,
+                                                       "User Authenticated, but no user record in database found.");
+                   }
                }
                else
                {
                    response =
-                       Request.CreateErrorResponse(HttpStatusCode.Forbidden,
-                                                   "User Authenticated, but no user record in database found.");
+                 Request.CreateErrorResponse(HttpStatusCode.Forbidden, "Username and Password are not valid.  Please Try again");
                }
            }
            else

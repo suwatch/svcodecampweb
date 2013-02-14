@@ -172,37 +172,6 @@
                     "userConfig": {
                         "layout|flex": null,
                         "designer|userClassName": "MyButton",
-                        "disabled": false,
-                        "id": null,
-                        "itemId": "backButtonId",
-                        "iconAlign": "right",
-                        "text": "Back"
-                    },
-                    "designerId": "3da106d4-bc47-43de-9299-5871476c1c98"
-                },
-                {
-                    "type": "tbseparator",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "layout|flex": null,
-                        "designer|userClassName": "MySeparator"
-                    },
-                    "designerId": "cc91c587-551e-42fc-ba1a-a64550e212f5"
-                },
-                {
-                    "type": "button",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "layout|flex": null,
-                        "designer|userClassName": "MyButton",
                         "disabled": true,
                         "id": null,
                         "itemId": "continueButtonId",

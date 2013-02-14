@@ -8,6 +8,11 @@
     "userConfig": {
         "designer|userClassName": "TabWizardPanel",
         "designer|userAlias": "tabWizardPanelAlias",
+        "requires": [
+            "Ext.form.RadioGroup",
+            "Ext.form.field.Radio",
+            "Ext.form.Label"
+        ],
         "height": 450,
         "id": "TabWizardId",
         "itemId": "",

@@ -19,26 +19,6 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|userClassName": "onBackButtonIdClick",
-                "fn": "onBackButtonIdClick",
-                "implHandler": [
-                    ""
-                ],
-                "name": "click",
-                "scope": "me",
-                "designer|targetType": "Ext.button.Button",
-                "designer|controlQuery": "AttendeeAfterLoginAlias #backButtonId"
-            },
-            "designerId": "4c2f3619-a003-473f-976d-ec0dc2bb2130"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
                 "designer|userClassName": "onContinueButtonIdClick",
                 "fn": "onContinueButtonIdClick",
                 "implHandler": [

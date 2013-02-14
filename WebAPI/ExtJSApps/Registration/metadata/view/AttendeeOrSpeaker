@@ -44,7 +44,7 @@
                         "layout|flex": null,
                         "designer|userClassName": "MyButton",
                         "disabled": false,
-                        "id": "backButtonId",
+                        "id": null,
                         "itemId": "backButtonId",
                         "iconAlign": "right",
                         "text": "Back"

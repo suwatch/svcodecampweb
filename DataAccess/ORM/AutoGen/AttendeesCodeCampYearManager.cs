@@ -25,6 +25,7 @@ namespace CodeCampSV
             record.AttendSunday = result.AttendSunday;
             record.Volunteer = result.Volunteer;
             record.CreateDate = result.CreateDate;
+            record.AttendingDaysChoice = result.AttendingDaysChoice;
             // 
             //  Used by Default in Update and Insert Methods.
         }
@@ -42,7 +43,8 @@ namespace CodeCampSV
             AttendSaturday = myData.AttendSaturday,
             AttendSunday = myData.AttendSunday,
             Volunteer = myData.Volunteer,
-            CreateDate = myData.CreateDate == null ? null :  (DateTime?) new DateTime(myData.CreateDate.Value.Ticks,DateTimeKind.Utc)
+            CreateDate = myData.CreateDate == null ? null :  (DateTime?) new DateTime(myData.CreateDate.Value.Ticks,DateTimeKind.Utc),
+            AttendingDaysChoice = myData.AttendingDaysChoice
       });
 		    return results;
         }
@@ -76,7 +78,8 @@ namespace CodeCampSV
                         AttendSaturday = myData.AttendSaturday,
                         AttendSunday = myData.AttendSunday,
                         Volunteer = myData.Volunteer,
-                        CreateDate = myData.CreateDate == null ? null :  (DateTime?) new DateTime(myData.CreateDate.Value.Ticks,DateTimeKind.Utc)
+                        CreateDate = myData.CreateDate == null ? null :  (DateTime?) new DateTime(myData.CreateDate.Value.Ticks,DateTimeKind.Utc),
+                        AttendingDaysChoice = myData.AttendingDaysChoice
             });
             
             List<AttendeesCodeCampYearResult> resultList = GetFinalResults(results, query);
@@ -100,6 +103,7 @@ namespace CodeCampSV
             if (query.AttendSunday != null) baseQuery = baseQuery.Where(a => a.AttendSunday == query.AttendSunday);
             if (query.Volunteer != null) baseQuery = baseQuery.Where(a => a.Volunteer == query.Volunteer);
             if (query.CreateDate != null) baseQuery = baseQuery.Where(a => a.CreateDate.Value.CompareTo(query.CreateDate.Value) == 0);
+            if (query.AttendingDaysChoice != null) baseQuery = baseQuery.Where(a => a.AttendingDaysChoice.ToLower().Equals(query.AttendingDaysChoice.ToLower()));
 
             return baseQuery;
         }

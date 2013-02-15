@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Net.Http.Formatting;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -12,6 +13,8 @@ using System.Web.SessionState;
 using CodeCampSV;
 using Gurock.SmartInspect;
 using ListNanny;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using WebAPI.Code;
 
 namespace WebAPI
@@ -20,8 +23,22 @@ namespace WebAPI
     {
         private bool _smartInspectEnabled;
 
+        void ConfigureApi(HttpConfiguration config)
+        {
+            var index = config.Formatters.IndexOf(config.Formatters.JsonFormatter);
+            config.Formatters[index] = new JsonMediaTypeFormatter
+            {
+                SerializerSettings = new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }
+            };
+        }
+
         protected void Application_Start(object sender, EventArgs e)
         {
+            var config = GlobalConfiguration.Configuration;
+
+           ConfigureApi(config);
+
+
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);

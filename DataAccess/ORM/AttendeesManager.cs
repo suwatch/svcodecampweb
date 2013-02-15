@@ -258,24 +258,7 @@ namespace CodeCampSV
 
             IQueryable<AttendeesResult> results = GetBaseResultIQueryable(baseQuery);
 
-
-            List<AttendeesResult> resultList;
-
-            // NOT NEESSARY BECAUSE CODECAMPYEARS FILTERED ABOVE
-            //if (query.CodeCampYearIds != null && query.CodeCampYearIds.Count > 0)
-            //{
-            //    var attendeeIds = (from data in meta.AttendeesCodeCampYear
-            //                       where query.CodeCampYearIds.Contains(data.CodeCampYearId)
-            //                       select data.AttendeesId).ToList();
-
-            //    // can't use contains because list will be to long. need to do it one by one sadly
-            //    var resultListTemp = GetFinalResults(results, query);
-            //    resultList.AddRange(resultListTemp.Where(rec => attendeeIds.Contains(rec.Id)));
-            //}
-            //else
-            //{
-            resultList = GetFinalResults(results, query);
-            //}
+            List<AttendeesResult> resultList = GetFinalResults(results, query);
 
             var sessionsBySpeakerdict = new Dictionary<int, List<SessionPresentResultSmall>>();
             if (query.IncludeSessions.HasValue && query.IncludeSessions.Value)
@@ -435,6 +418,65 @@ namespace CodeCampSV
                     {
                         rec.AttendeesCodeCampYearResult = codeCampYearResults[rec.Id];
                     }
+                }
+            }
+
+            // need to fill out base record for all current stuff about code camp attendee this year
+            //public bool RegisteredCurrentYear { get; set; }
+            //public bool HasSessionsCurrentYear { get; set; }
+            //public string AttendingDaysChoiceCurrentYear { get; set; }
+            //public bool VolunteeredCurrentYear { get; set; }
+
+            if (query.CodeCampYearId.HasValue)
+            {
+                // avoid to big IN clauses
+                Dictionary<int, AttendeesCodeCampYear> attendeesCodeCampYearResultsDict;
+                List<int> attendeeIdsThatArePresentersThisYear;
+
+                if (resultList.Count < 100)
+                {
+                    List<int> attendeeIds = resultList.Select(a => a.Id).ToList();
+                        attendeesCodeCampYearResultsDict = (from data in meta.AttendeesCodeCampYear
+                                                        where attendeeIds.Contains(data.AttendeesId) && data.CodeCampYearId == query.CodeCampYearId.Value
+                                                        select data).ToDictionary(k => k.AttendeesId, v => v);
+
+                    attendeeIdsThatArePresentersThisYear = (from attendee in meta.Attendees
+                                                            join sessionPresenter in meta.SessionPresenter on attendee.Id equals
+                                                                sessionPresenter.AttendeeId
+                                                            where attendeeIds.Contains(attendee.Id)
+                                                            select attendee.Id).ToList();
+
+
+                }
+                else
+                {
+                    attendeesCodeCampYearResultsDict = (from data in meta.AttendeesCodeCampYear
+                                                        where data.CodeCampYearId == query.CodeCampYearId.Value
+                                                        select data).ToDictionary(k => k.AttendeesId, v => v);
+
+                    attendeeIdsThatArePresentersThisYear = (from attendee in meta.Attendees
+                                                            join sessionPresenter in meta.SessionPresenter on attendee.Id equals
+                                                                sessionPresenter.AttendeeId
+                                                            join session in meta.Sessions on sessionPresenter.SessionId equals
+                                                                session.Id
+                                                            where session.CodeCampYearId == query.CodeCampYearId
+                                                            select attendee.Id).ToList();
+
+                }
+
+                foreach (var attendee in resultList)
+                {
+                   if (attendeesCodeCampYearResultsDict.ContainsKey(attendee.Id))
+                   {
+                       var attendeeCodeCampYear  = attendeesCodeCampYearResultsDict[attendee.Id];
+                       attendee.AttendingDaysChoiceCurrentYear = attendeeCodeCampYear.AttendingDaysChoice;
+                       attendee.HasSessionsCurrentYear = attendeeIdsThatArePresentersThisYear.Contains(attendee.Id);
+                       attendee.RegisteredCurrentYear = attendeesCodeCampYearResultsDict.ContainsKey(attendee.Id);
+                       attendee.VolunteeredCurrentYear = attendeesCodeCampYearResultsDict.ContainsKey(attendee.Id) &&
+                                                         attendeesCodeCampYearResultsDict[attendee.Id].Volunteer
+                                                                                                      .HasValue &&
+                                                         attendeesCodeCampYearResultsDict[attendee.Id].Volunteer.Value;
+                   }
                 }
             }
 

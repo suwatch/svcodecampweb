@@ -1108,6 +1108,16 @@ namespace CodeCampSV
 		
 		private string _TwitterHandle;
 		
+		private string _FacebookId;
+		
+		private string _LinkedInId;
+		
+		private string _GooglePlusId;
+		
+		private System.Nullable<int> _OptInSponsoredMailingsLevel;
+		
+		private System.Nullable<int> _OptInSponsorSpecialsLevel;
+		
 		private EntitySet<AttendeesCodeCampYear> _AttendeesCodeCampYear;
 		
 		private EntitySet<AttendeesTagList> _AttendeesTagList;
@@ -1238,6 +1248,16 @@ namespace CodeCampSV
     partial void OnVolunteerMeetingInterestDateChanged();
     partial void OnTwitterHandleChanging(string value);
     partial void OnTwitterHandleChanged();
+    partial void OnFacebookIdChanging(string value);
+    partial void OnFacebookIdChanged();
+    partial void OnLinkedInIdChanging(string value);
+    partial void OnLinkedInIdChanged();
+    partial void OnGooglePlusIdChanging(string value);
+    partial void OnGooglePlusIdChanged();
+    partial void OnOptInSponsoredMailingsLevelChanging(System.Nullable<int> value);
+    partial void OnOptInSponsoredMailingsLevelChanged();
+    partial void OnOptInSponsorSpecialsLevelChanging(System.Nullable<int> value);
+    partial void OnOptInSponsorSpecialsLevelChanged();
     #endregion
 		
 		public Attendees()
@@ -2353,6 +2373,106 @@ namespace CodeCampSV
 			}
 		}
 		
+		[Column(Storage="_FacebookId", DbType="VarChar(128)")]
+		public string FacebookId
+		{
+			get
+			{
+				return this._FacebookId;
+			}
+			set
+			{
+				if ((this._FacebookId != value))
+				{
+					this.OnFacebookIdChanging(value);
+					this.SendPropertyChanging();
+					this._FacebookId = value;
+					this.SendPropertyChanged("FacebookId");
+					this.OnFacebookIdChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_LinkedInId", DbType="VarChar(128)")]
+		public string LinkedInId
+		{
+			get
+			{
+				return this._LinkedInId;
+			}
+			set
+			{
+				if ((this._LinkedInId != value))
+				{
+					this.OnLinkedInIdChanging(value);
+					this.SendPropertyChanging();
+					this._LinkedInId = value;
+					this.SendPropertyChanged("LinkedInId");
+					this.OnLinkedInIdChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_GooglePlusId", DbType="VarChar(128)")]
+		public string GooglePlusId
+		{
+			get
+			{
+				return this._GooglePlusId;
+			}
+			set
+			{
+				if ((this._GooglePlusId != value))
+				{
+					this.OnGooglePlusIdChanging(value);
+					this.SendPropertyChanging();
+					this._GooglePlusId = value;
+					this.SendPropertyChanged("GooglePlusId");
+					this.OnGooglePlusIdChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_OptInSponsoredMailingsLevel", DbType="Int")]
+		public System.Nullable<int> OptInSponsoredMailingsLevel
+		{
+			get
+			{
+				return this._OptInSponsoredMailingsLevel;
+			}
+			set
+			{
+				if ((this._OptInSponsoredMailingsLevel != value))
+				{
+					this.OnOptInSponsoredMailingsLevelChanging(value);
+					this.SendPropertyChanging();
+					this._OptInSponsoredMailingsLevel = value;
+					this.SendPropertyChanged("OptInSponsoredMailingsLevel");
+					this.OnOptInSponsoredMailingsLevelChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_OptInSponsorSpecialsLevel", DbType="Int")]
+		public System.Nullable<int> OptInSponsorSpecialsLevel
+		{
+			get
+			{
+				return this._OptInSponsorSpecialsLevel;
+			}
+			set
+			{
+				if ((this._OptInSponsorSpecialsLevel != value))
+				{
+					this.OnOptInSponsorSpecialsLevelChanging(value);
+					this.SendPropertyChanging();
+					this._OptInSponsorSpecialsLevel = value;
+					this.SendPropertyChanged("OptInSponsorSpecialsLevel");
+					this.OnOptInSponsorSpecialsLevelChanged();
+				}
+			}
+		}
+		
 		[Association(Name="AttendeesCodeCampYear_fk", Storage="_AttendeesCodeCampYear", ThisKey="Id", OtherKey="AttendeesId", DeleteRule="NO ACTION")]
 		public EntitySet<AttendeesCodeCampYear> AttendeesCodeCampYear
 		{
@@ -2594,6 +2714,8 @@ namespace CodeCampSV
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
+		private string _AttendingDaysChoice;
+		
 		private EntityRef<Attendees> _Attendees;
 		
 		private EntityRef<CodeCampYear> _CodeCampYear;
@@ -2618,6 +2740,8 @@ namespace CodeCampSV
     partial void OnVolunteerChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
+    partial void OnAttendingDaysChoiceChanging(string value);
+    partial void OnAttendingDaysChoiceChanged();
     #endregion
 		
 		public AttendeesCodeCampYear()
@@ -2772,6 +2896,26 @@ namespace CodeCampSV
 					this._CreateDate = value;
 					this.SendPropertyChanged("CreateDate");
 					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_AttendingDaysChoice", DbType="VarChar(32)")]
+		public string AttendingDaysChoice
+		{
+			get
+			{
+				return this._AttendingDaysChoice;
+			}
+			set
+			{
+				if ((this._AttendingDaysChoice != value))
+				{
+					this.OnAttendingDaysChoiceChanging(value);
+					this.SendPropertyChanging();
+					this._AttendingDaysChoice = value;
+					this.SendPropertyChanged("AttendingDaysChoice");
+					this.OnAttendingDaysChoiceChanged();
 				}
 			}
 		}

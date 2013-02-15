@@ -30,5 +30,7 @@ namespace CodeCampSV
         public bool? Volunteer { get; set; }
         [AutoGenColumn]
         public DateTime? CreateDate { get; set; }
+        [AutoGenColumn]
+        public string AttendingDaysChoice { get; set; }
     }
 }

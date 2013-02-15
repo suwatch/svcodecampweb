@@ -16,6 +16,7 @@ namespace CodeCampSV
         [DataMember] public bool AttendSunday { get; set; }
         [DataMember] public bool? Volunteer { get; set; }
         [DataMember] public DateTime? CreateDate { get; set; }
+        [DataMember] public string AttendingDaysChoice { get; set; }
         
         //  
         //  Do not put Id here since it is in ResultBase already

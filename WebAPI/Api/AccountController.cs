@@ -28,6 +28,74 @@ namespace WebAPI.Api
             public AttendeesResult Data { get; set; }
         }
 
+        public class UpdateAttendeeRecord
+        {
+            public string AttendeeGroup { get; set; } // radio button, attend which days. AttendingSaturdaySundayRb;
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public string Email { get; set; }
+            public string TwitterHandle { get; set; }
+            public string City { get; set; }
+            public string State { get; set; }
+            public string Zip { get; set; }
+
+            public bool? QrAllowEmail { get; set; }
+            public bool? QrWebSiteAllow { get; set; }
+            public bool? QrAddressLineAllow { get; set; }
+            public bool? QrZipCodeAllow { get; set; }
+            public bool? QrTwitterAllow { get; set; }
+           
+
+        }
+
+        [HttpPost]
+        [ActionName("UpdateAttendee")]
+        public HttpResponseMessage PostUpdateAttendee(UpdateAttendeeRecord attendeeRecord)
+        {
+            HttpResponseMessage response;
+
+            if (!User.Identity.IsAuthenticated)
+            {
+                response =
+                    Request.CreateErrorResponse(HttpStatusCode.Forbidden,
+                                                "User Not Logged In So Update Forbidden");
+            }
+            else
+            {
+                var attendeesResult =
+                    AttendeesManager.I.Get(new AttendeesQuery
+                                               {
+                                                   Username = User.Identity.Name,
+                                                   CodeCampYearId = Utils.CurrentCodeCampYear,
+                                                   IncludeAttendeesCodeCampYearResult = true
+                                               }).FirstOrDefault();
+                if (attendeesResult != null)
+                {
+                    attendeesResult.Email = attendeeRecord.Email;
+                    attendeesResult.UserFirstName = attendeeRecord.FirstName;
+                    attendeesResult.UserLastName = attendeeRecord.LastName;
+                    attendeesResult.City = attendeeRecord.City;
+                    attendeesResult.State = attendeeRecord.State;
+                    attendeesResult.UserZipCode = attendeeRecord.Zip;
+                    attendeesResult.TwitterHandle = attendeeRecord.TwitterHandle;
+                    AttendeesManager.I.Update(attendeesResult);
+
+                    response = Request.CreateResponse(HttpStatusCode.OK, attendeesResult);
+
+
+                }
+                else
+                {
+                    response =
+                  Request.CreateErrorResponse(HttpStatusCode.Forbidden,
+                                              "User Authenticated but no base attendee record found");
+                }
+
+
+
+            }
+            return response;
+        }
 
         [HttpPost]
         [ActionName("Login")]
@@ -143,6 +211,26 @@ namespace WebAPI.Api
                         PKID = attendeesResultFull.PKID,
                         Id = attendeesResultFull.Id,
                         Email = attendeesResultFull.Email,
+                        City = attendeesResultFull.City,
+                        State = attendeesResultFull.State,
+                        UserZipCode = attendeesResultFull.UserZipCode,
+                        TwitterHandle = attendeesResultFull.TwitterHandle,
+                        FacebookId = attendeesResultFull.FacebookId,
+                        GooglePlusId = attendeesResultFull.GooglePlusId,
+                        LinkedInId = attendeesResultFull.LinkedInId,
+                        EmailEventBoard = attendeesResultFull.EmailEventBoard,
+                        OptInSponsorSpecialsLevel = attendeesResultFull.OptInSponsorSpecialsLevel,
+                        OptInSponsoredMailingsLevel = attendeesResultFull.OptInSponsorSpecialsLevel,
+                        ShirtSize = attendeesResultFull.ShirtSize,
+                        UserBio = attendeesResultFull.UserBio,
+                        
+
+                        QREmailAllow = attendeesResultFull.QREmailAllow,
+                        QRAddressLine1Allow = attendeesResultFull.QRAddressLine1Allow,
+                        QRPhoneAllow = attendeesResultFull.QRPhoneAllow,
+                        QRWebSiteAllow = attendeesResultFull.QRWebSiteAllow,
+                        QRZipCodeAllow = attendeesResultFull.QRZipCodeAllow,
+                        
                         AttendeesCodeCampYearResult = attendeesResultFull.AttendeesCodeCampYearResult
                     };
             return attendeesResult;

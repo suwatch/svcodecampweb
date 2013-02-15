@@ -29,7 +29,9 @@
                 "designer|userClassName": "MyRadioGroup3",
                 "id": "CanSpeakRbGroupId",
                 "layout": "vbox",
-                "fieldLabel": ""
+                "fieldLabel": "",
+                "allowBlank": false,
+                "blankText": "You must choose which day(s) you can speak"
             },
             "designerId": "ff1a664b-b9e2-4744-83f7-25ff9fe70d13",
             "customConfigs": [
@@ -87,7 +89,7 @@
                         "name": "SpeakerCanSpeak",
                         "fieldLabel": null,
                         "boxLabel": "Can Speak Saturday Or Sunday",
-                        "checked": false,
+                        "checked": true,
                         "inputValue": "speakSaturdaySunday"
                     },
                     "designerId": "22df0a81-753e-4d92-ad1d-96357ee14008"
@@ -106,7 +108,8 @@
                 "designer|userClassName": "MyTextField15",
                 "itemId": "FirstNameId",
                 "name": "FirstName",
-                "fieldLabel": "FirstName"
+                "fieldLabel": "FirstName",
+                "allowBlank": false
             },
             "designerId": "6d3f0aac-d38a-481f-9c3f-e0c08999e247"
         },
@@ -122,7 +125,8 @@
                 "designer|userClassName": "MyTextField16",
                 "itemId": "LastNameId",
                 "name": "LastName",
-                "fieldLabel": "Last Name"
+                "fieldLabel": "Last Name",
+                "allowBlank": false
             },
             "designerId": "b19124eb-a087-4cd9-9e52-64e424ebc849"
         },
@@ -138,7 +142,8 @@
                 "designer|userClassName": "MyTextField16",
                 "itemId": "EmailId",
                 "name": "email",
-                "fieldLabel": "Email"
+                "fieldLabel": "Email",
+                "allowBlank": false
             },
             "designerId": "44590fb8-2862-4725-95b1-8a84e200847f"
         },
@@ -186,7 +191,8 @@
                 "designer|userClassName": "MyTextField18",
                 "itemId": "CityId",
                 "name": "city",
-                "fieldLabel": "City"
+                "fieldLabel": "City",
+                "allowBlank": false
             },
             "designerId": "a474b8ec-f4a9-4d8f-bcdb-fca1c59af204"
         },
@@ -202,7 +208,8 @@
                 "designer|userClassName": "MyTextField19",
                 "itemId": "StateId",
                 "name": "state",
-                "fieldLabel": "State"
+                "fieldLabel": "State",
+                "allowBlank": false
             },
             "designerId": "ae2c83f0-2b76-4f51-8028-9b0440a3182f"
         },
@@ -218,7 +225,8 @@
                 "designer|userClassName": "MyTextField20",
                 "itemId": "ZipcodeId",
                 "name": "zipcode",
-                "fieldLabel": "Zipcode"
+                "fieldLabel": "Zipcode",
+                "allowBlank": false
             },
             "designerId": "84e97daa-769b-4ec5-b44a-fd5862c7abab"
         },
@@ -234,7 +242,11 @@
                 "designer|userClassName": "MyTextArea1",
                 "designer|displayName": "BioId",
                 "name": "bio",
-                "fieldLabel": "Bio"
+                "fieldLabel": "Bio",
+                "allowBlank": false,
+                "enforceMaxLength": true,
+                "maxLength": 500,
+                "minLength": 30
             },
             "designerId": "06b45703-4e4f-48b7-8ed9-dc38a5ae9844"
         },

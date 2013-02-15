@@ -64,6 +64,11 @@ namespace CodeCampSV
         [DataMember] public int? VolunteerMeetingStatus { get; set; }
         [DataMember] public DateTime? VolunteerMeetingInterestDate { get; set; }
         [DataMember] public string TwitterHandle { get; set; }
+        [DataMember] public string FacebookId { get; set; }
+        [DataMember] public string LinkedInId { get; set; }
+        [DataMember] public string GooglePlusId { get; set; }
+        [DataMember] public int? OptInSponsoredMailingsLevel { get; set; }
+        [DataMember] public int? OptInSponsorSpecialsLevel { get; set; }
         
         //  
         //  Do not put Id here since it is in ResultBase already

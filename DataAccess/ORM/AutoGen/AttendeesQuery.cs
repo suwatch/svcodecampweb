@@ -126,5 +126,15 @@ namespace CodeCampSV
         public DateTime? VolunteerMeetingInterestDate { get; set; }
         [AutoGenColumn]
         public string TwitterHandle { get; set; }
+        [AutoGenColumn]
+        public string FacebookId { get; set; }
+        [AutoGenColumn]
+        public string LinkedInId { get; set; }
+        [AutoGenColumn]
+        public string GooglePlusId { get; set; }
+        [AutoGenColumn]
+        public int? OptInSponsoredMailingsLevel { get; set; }
+        [AutoGenColumn]
+        public int? OptInSponsorSpecialsLevel { get; set; }
     }
 }

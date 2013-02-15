@@ -28,7 +28,8 @@
                 "designer|userClassName": "MyRadioGroup2",
                 "width": 400,
                 "layout": "vbox",
-                "fieldLabel": ""
+                "fieldLabel": "",
+                "allowBlank": false
             },
             "designerId": "9ebdfb0b-7592-48b9-9b67-75622defc0dc",
             "cn": [
@@ -42,9 +43,10 @@
                     "userConfig": {
                         "designer|userClassName": "MyRadio6",
                         "itemId": "AttendingSaturdayId",
-                        "name": "AttendingGroup",
+                        "name": "attendingDaysChoiceCurrentYear",
                         "fieldLabel": null,
-                        "boxLabel": "Attending Saturday"
+                        "boxLabel": "Attending Saturday",
+                        "inputValue": "AttendingSaturday"
                     },
                     "designerId": "2ba0b5cb-66a3-4a19-a6a3-086247196fbd"
                 },
@@ -58,9 +60,10 @@
                     "userConfig": {
                         "designer|userClassName": "MyRadio7",
                         "itemId": "AttendingSundayId",
-                        "name": "AttendingGroup",
+                        "name": "attendingDaysChoiceCurrentYear",
                         "fieldLabel": null,
-                        "boxLabel": "Attending Sunday"
+                        "boxLabel": "Attending Sunday",
+                        "inputValue": "AttendingSunday"
                     },
                     "designerId": "958b56bb-52cb-4a1b-99bb-96f29553d72b"
                 },
@@ -74,9 +77,10 @@
                     "userConfig": {
                         "designer|userClassName": "MyRadio7",
                         "itemId": "AttendingSaturdayAndSundayId",
-                        "name": "AttendingGroup",
+                        "name": "attendingDaysChoiceCurrentYear",
                         "fieldLabel": null,
-                        "boxLabel": "Attending Saturday and Sunday"
+                        "boxLabel": "Attending Saturday and Sunday",
+                        "inputValue": "AttendingSaturdaySunday"
                     },
                     "designerId": "6776884e-19a8-411a-bd0c-1b2ed3af6b42"
                 },
@@ -90,9 +94,11 @@
                     "userConfig": {
                         "designer|userClassName": "MyRadio7",
                         "itemId": "AttendingNotSureDayYetId",
-                        "name": "AttendingGroup",
+                        "inputId": "AttendingNotSureYetRb",
+                        "name": "attendingDaysChoiceCurrentYear",
                         "fieldLabel": null,
-                        "boxLabel": "Not Sure Which Days Yet"
+                        "boxLabel": "Not Sure Which Days Yet",
+                        "inputValue": "AttendingNotSureDayYet"
                     },
                     "designerId": "a42a552a-d5a8-46f4-8c52-4c302e80cf1b"
                 },
@@ -106,9 +112,11 @@
                     "userConfig": {
                         "designer|userClassName": "MyRadio7",
                         "itemId": "NotAttendingThisYearId",
-                        "name": "AttendingGroup",
+                        "inputId": "NotAttendingRb",
+                        "name": "attendingDaysChoiceCurrentYear",
                         "fieldLabel": null,
-                        "boxLabel": "Can Not Make It This Year"
+                        "boxLabel": "Can Not Make It This Year",
+                        "inputValue": "NotAttendingThisYear"
                     },
                     "designerId": "8d5533b1-1f0f-4165-b27e-eeaf0ba5df4b"
                 }
@@ -171,6 +179,7 @@
                     "codeClass": null,
                     "userConfig": {
                         "layout|flex": null,
+                        "formBind": true,
                         "designer|userClassName": "MyButton",
                         "disabled": true,
                         "id": null,
@@ -191,8 +200,9 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyTextField8",
-                "name": "FirstName",
-                "fieldLabel": "First Name"
+                "name": "userFirstName",
+                "fieldLabel": "First Name",
+                "allowBlank": false
             },
             "designerId": "0cbf5cd3-2125-4f76-b8c7-10c5f3269098"
         },
@@ -205,8 +215,9 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyTextField9",
-                "name": "LastName",
-                "fieldLabel": "Last Name"
+                "name": "userLastName",
+                "fieldLabel": "Last Name",
+                "allowBlank": false
             },
             "designerId": "f23fce8c-9f1f-43b5-a590-80282a45565a"
         },
@@ -219,8 +230,10 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyTextField9",
-                "name": "Email",
-                "fieldLabel": "Email"
+                "name": "email",
+                "fieldLabel": "Email",
+                "allowBlank": false,
+                "vtype": "email"
             },
             "designerId": "14b9be0b-a392-4098-add2-e3e4b85a151b"
         },
@@ -233,7 +246,7 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyTextField10",
-                "name": "TwitterHandle",
+                "name": "twitterHandle",
                 "fieldLabel": "Twitter Handle"
             },
             "designerId": "035633af-a7c5-4bbf-9958-98a64fd6820e"
@@ -247,7 +260,7 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyTextField11",
-                "name": "City",
+                "name": "city",
                 "fieldLabel": "City"
             },
             "designerId": "db83c009-f15d-426d-8f27-f074afc1c577"
@@ -261,7 +274,7 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyTextField12",
-                "name": "State",
+                "name": "state",
                 "fieldLabel": "State"
             },
             "designerId": "94ef2244-fcd7-4ca3-a5de-3caa6178e50b"
@@ -275,7 +288,7 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyTextField13",
-                "name": "Zipcode",
+                "name": "userZipCode",
                 "fieldLabel": "Zipcode"
             },
             "designerId": "173e3391-7a97-455e-95e7-28a422208081"

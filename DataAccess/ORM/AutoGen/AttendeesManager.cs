@@ -73,6 +73,11 @@ namespace CodeCampSV
             record.VolunteerMeetingStatus = result.VolunteerMeetingStatus;
             record.VolunteerMeetingInterestDate = result.VolunteerMeetingInterestDate;
             record.TwitterHandle = result.TwitterHandle;
+            record.FacebookId = result.FacebookId;
+            record.LinkedInId = result.LinkedInId;
+            record.GooglePlusId = result.GooglePlusId;
+            record.OptInSponsoredMailingsLevel = result.OptInSponsoredMailingsLevel;
+            record.OptInSponsorSpecialsLevel = result.OptInSponsorSpecialsLevel;
             // 
             //  Used by Default in Update and Insert Methods.
         }
@@ -138,7 +143,12 @@ namespace CodeCampSV
             EmailBounces = myData.EmailBounces,
             VolunteerMeetingStatus = myData.VolunteerMeetingStatus,
             VolunteerMeetingInterestDate = myData.VolunteerMeetingInterestDate == null ? null :  (DateTime?) new DateTime(myData.VolunteerMeetingInterestDate.Value.Ticks,DateTimeKind.Utc),
-            TwitterHandle = myData.TwitterHandle
+            TwitterHandle = myData.TwitterHandle,
+            FacebookId = myData.FacebookId,
+            LinkedInId = myData.LinkedInId,
+            GooglePlusId = myData.GooglePlusId,
+            OptInSponsoredMailingsLevel = myData.OptInSponsoredMailingsLevel,
+            OptInSponsorSpecialsLevel = myData.OptInSponsorSpecialsLevel
       });
 		    return results;
         }
@@ -220,7 +230,12 @@ namespace CodeCampSV
                         EmailBounces = myData.EmailBounces,
                         VolunteerMeetingStatus = myData.VolunteerMeetingStatus,
                         VolunteerMeetingInterestDate = myData.VolunteerMeetingInterestDate == null ? null :  (DateTime?) new DateTime(myData.VolunteerMeetingInterestDate.Value.Ticks,DateTimeKind.Utc),
-                        TwitterHandle = myData.TwitterHandle
+                        TwitterHandle = myData.TwitterHandle,
+                        FacebookId = myData.FacebookId,
+                        LinkedInId = myData.LinkedInId,
+                        GooglePlusId = myData.GooglePlusId,
+                        OptInSponsoredMailingsLevel = myData.OptInSponsoredMailingsLevel,
+                        OptInSponsorSpecialsLevel = myData.OptInSponsorSpecialsLevel
             });
             
             List<AttendeesResult> resultList = GetFinalResults(results, query);
@@ -289,6 +304,11 @@ namespace CodeCampSV
             if (query.VolunteerMeetingStatus != null) baseQuery = baseQuery.Where(a => a.VolunteerMeetingStatus == query.VolunteerMeetingStatus);
             if (query.VolunteerMeetingInterestDate != null) baseQuery = baseQuery.Where(a => a.VolunteerMeetingInterestDate.Value.CompareTo(query.VolunteerMeetingInterestDate.Value) == 0);
             if (query.TwitterHandle != null) baseQuery = baseQuery.Where(a => a.TwitterHandle.ToLower().Equals(query.TwitterHandle.ToLower()));
+            if (query.FacebookId != null) baseQuery = baseQuery.Where(a => a.FacebookId.ToLower().Equals(query.FacebookId.ToLower()));
+            if (query.LinkedInId != null) baseQuery = baseQuery.Where(a => a.LinkedInId.ToLower().Equals(query.LinkedInId.ToLower()));
+            if (query.GooglePlusId != null) baseQuery = baseQuery.Where(a => a.GooglePlusId.ToLower().Equals(query.GooglePlusId.ToLower()));
+            if (query.OptInSponsoredMailingsLevel != null) baseQuery = baseQuery.Where(a => a.OptInSponsoredMailingsLevel == query.OptInSponsoredMailingsLevel);
+            if (query.OptInSponsorSpecialsLevel != null) baseQuery = baseQuery.Where(a => a.OptInSponsorSpecialsLevel == query.OptInSponsorSpecialsLevel);
 
             return baseQuery;
         }

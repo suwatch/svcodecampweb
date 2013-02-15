@@ -41,5 +41,14 @@ namespace CodeCampSV
 
         public AttendeesCodeCampYearResult AttendeesCodeCampYearResult { get; set; }
 
+          [DataMember]
+        public bool RegisteredCurrentYear { get; set; }
+          [DataMember]
+        public bool HasSessionsCurrentYear { get; set; }
+          [DataMember]
+        public string AttendingDaysChoiceCurrentYear { get; set; }
+          [DataMember]
+        public bool VolunteeredCurrentYear { get; set; }
+
     }
 }

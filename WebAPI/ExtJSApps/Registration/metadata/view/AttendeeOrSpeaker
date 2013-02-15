@@ -73,6 +73,7 @@
                     "codeClass": null,
                     "userConfig": {
                         "layout|flex": null,
+                        "formBind": true,
                         "designer|userClassName": "MyButton",
                         "disabled": true,
                         "id": null,
@@ -96,6 +97,7 @@
                 "itemId": "username",
                 "fieldLabel": "Username",
                 "labelWidth": null,
+                "allowBlank": false,
                 "emptyText": "Username",
                 "maxLength": null,
                 "minLength": null,
@@ -138,6 +140,7 @@
                 "width": 400,
                 "layout": "vbox",
                 "fieldLabel": "Actions",
+                "allowBlank": false,
                 "vertical": false
             },
             "designerId": "b0e83847-6175-43d7-98f2-171fb6886342",

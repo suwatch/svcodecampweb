@@ -55,7 +55,8 @@
                         "inputId": "speakSaturday",
                         "name": "SpeakerCanSpeak",
                         "fieldLabel": null,
-                        "boxLabel": "Can Speak Saturday"
+                        "boxLabel": "Can Speak Saturday",
+                        "inputValue": "AttendingSaturday"
                     },
                     "designerId": "16f76cb4-ca8c-4f2d-9689-63028d610ec8"
                 },
@@ -72,7 +73,7 @@
                         "name": "SpeakerCanSpeak",
                         "fieldLabel": null,
                         "boxLabel": "Can Speak Sunday",
-                        "inputValue": "speakSunday"
+                        "inputValue": "AttendingSunday"
                     },
                     "designerId": "fa65d188-1d90-4cd7-8de1-ded0d6d89813"
                 },
@@ -90,7 +91,7 @@
                         "fieldLabel": null,
                         "boxLabel": "Can Speak Saturday Or Sunday",
                         "checked": true,
-                        "inputValue": "speakSaturdaySunday"
+                        "inputValue": "AttendingSaturdaySunday"
                     },
                     "designerId": "22df0a81-753e-4d92-ad1d-96357ee14008"
                 }
@@ -107,7 +108,7 @@
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextField15",
                 "itemId": "FirstNameId",
-                "name": "FirstName",
+                "name": "userFirstName",
                 "fieldLabel": "FirstName",
                 "allowBlank": false
             },
@@ -124,7 +125,7 @@
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextField16",
                 "itemId": "LastNameId",
-                "name": "LastName",
+                "name": "userLastName",
                 "fieldLabel": "Last Name",
                 "allowBlank": false
             },
@@ -158,7 +159,7 @@
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextField14",
                 "itemId": "WebSiteId",
-                "name": "website",
+                "name": "userWebsite",
                 "fieldLabel": "Web Site"
             },
             "designerId": "af539edb-f0b7-49ba-98f4-12a6511bfa29"
@@ -178,6 +179,54 @@
                 "fieldLabel": "Twitter Handle"
             },
             "designerId": "75fa993a-7e3c-42c2-97c6-0d4d1077622b"
+        },
+        {
+            "type": "textfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|anchor": "100%",
+                "designer|userClassName": "MyTextField17",
+                "itemId": "FacebookId",
+                "name": "facebookId",
+                "fieldLabel": "Facebook"
+            },
+            "designerId": "2cfa16ed-ff54-4f8e-87a9-c846698e50da"
+        },
+        {
+            "type": "textfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|anchor": "100%",
+                "designer|userClassName": "MyTextField17",
+                "itemId": "GooglePlusId",
+                "name": "googlePlusId",
+                "fieldLabel": "Google Plus"
+            },
+            "designerId": "22a6a3a0-6876-4a1e-8ce3-f3645d574f7d"
+        },
+        {
+            "type": "textfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|anchor": "100%",
+                "designer|userClassName": "MyTextField17",
+                "itemId": "LinkedInId",
+                "name": "linkedInId",
+                "fieldLabel": "LinkedIn"
+            },
+            "designerId": "359bbe9c-6e85-479e-9e3e-3bae637618a0"
         },
         {
             "type": "textfield",
@@ -224,7 +273,7 @@
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextField20",
                 "itemId": "ZipcodeId",
-                "name": "zipcode",
+                "name": "userZipCode",
                 "fieldLabel": "Zipcode",
                 "allowBlank": false
             },
@@ -241,7 +290,7 @@
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextArea1",
                 "designer|displayName": "BioId",
-                "name": "bio",
+                "name": "userBio",
                 "fieldLabel": "Bio",
                 "allowBlank": false,
                 "enforceMaxLength": true,
@@ -279,9 +328,9 @@
                         "designer|userClassName": "MyButton",
                         "disabled": false,
                         "id": null,
-                        "itemId": "backButtonId",
+                        "itemId": "logoutButtonId",
                         "iconAlign": "right",
-                        "text": "Back"
+                        "text": "Logout"
                     },
                     "designerId": "dcb06a2e-3794-4a2a-aef9-b388cad8db3a"
                 },

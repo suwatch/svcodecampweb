@@ -19,26 +19,6 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|userClassName": "onBackButtonIdClick",
-                "fn": "onBackButtonIdClick",
-                "implHandler": [
-                    ""
-                ],
-                "name": "click",
-                "scope": "me",
-                "designer|targetType": "Ext.button.Button",
-                "designer|controlQuery": "SpeakerAfterLoginAlias #backButtonId"
-            },
-            "designerId": "3254df4c-2c6b-4250-9c7c-89bda2bd8609"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
                 "designer|userClassName": "onContinueButtonIdClick",
                 "fn": "onContinueButtonIdClick",
                 "implHandler": [
@@ -77,6 +57,51 @@
                 "designer|controlQuery": "SpeakerAfterLoginAlias #continueButtonId"
             },
             "designerId": "f94d5e5c-9286-44fc-95b5-a7d2d9621cd3"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onLogoutButtonIdClick",
+                "fn": "onLogoutButtonIdClick",
+                "implHandler": [
+                    "var myMask = new Ext.LoadMask(Ext.getBody(), {msg:\"Logging Out...\"});\r",
+                    "myMask.show();\r",
+                    "\r",
+                    "Ext.Ajax.request({ \r",
+                    "    url:'/api/Account/LogOut', \r",
+                    "    actionMethods:'POST', \r",
+                    "    scope:this, \r",
+                    "    params:{\r",
+                    "        Username: '',\r",
+                    "        Password: '',\r",
+                    "        RememberMe: true\r",
+                    "    },\r",
+                    "    success: function(r, o) { \r",
+                    "        var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];\r",
+                    "        tabPanel.setActiveTab(tabPanel.getTabIdByName('attendeeorspeaker'));\r",
+                    "        console.log('setting tab to attendeeorspeaker  logout succeeded');\r",
+                    "        myMask.hide();\r",
+                    "    },\r",
+                    "    failure: function(r,o) {\r",
+                    "        var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];\r",
+                    "        tabPanel.setActiveTab(tabPanel.getTabIdByName('attendeeorspeaker'));\r",
+                    "        console.log('setting tab to attendeeorspeaker. logout failed');\r",
+                    "        myMask.hide();\r",
+                    "    } \r",
+                    "\r",
+                    "});"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#logoutButtonId"
+            },
+            "designerId": "351d8bba-72b1-45e1-a019-ec2020a3006a"
         }
     ]
 }

@@ -14,7 +14,8 @@
             "sponsor",
             "TabWizardPanel",
             "AttendeeAfterLogin",
-            "SpeakerAfterLogin"
+            "SpeakerAfterLogin",
+            "createAccount"
         ],
         "autoCreateViewport": true,
         "name": "RegistrationApp",

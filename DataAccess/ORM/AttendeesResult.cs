@@ -24,31 +24,39 @@ namespace CodeCampSV
         //  Or even related datasets like:
         //  public List<CargoResult> Cargos { get; set; }
         // 
-        [DataMember] 
-        public string City { get; set; }
-        [DataMember]
-        public string State { get; set; }
-        [DataMember] 
-        public string SpeakerPictureUrl { get; set; }
-        [DataMember] 
-        public List<int> SessionIds { get; set; } // does not include if marked DoNotShowPrimarySpeaker in session record
 
         [DataMember]
-        public List<SessionPresentResultSmall> Sessions { get; set; } // 
+        public string SpeakerPictureUrl { get; set; }
+
+        [DataMember]
+        public List<int> SessionIds { get; set; }
+
+        // does not include if marked DoNotShowPrimarySpeaker in session record
+
+        [DataMember]
+        public List<SessionPresentResultSmall> Sessions { get; set; }
+
+        // 
 
         [DataMember]
         public string UserBioEllipsized { get; set; }
 
         public AttendeesCodeCampYearResult AttendeesCodeCampYearResult { get; set; }
 
-          [DataMember]
+        [DataMember]
         public bool RegisteredCurrentYear { get; set; }
-          [DataMember]
+
+        [DataMember]
         public bool HasSessionsCurrentYear { get; set; }
-          [DataMember]
+
+        [DataMember]
         public string AttendingDaysChoiceCurrentYear { get; set; }
-          [DataMember]
+
+        [DataMember]
         public bool VolunteeredCurrentYear { get; set; }
+
+        [DataMember]
+        public int? CurrentCodeCampYear { get; set; }
 
     }
 }

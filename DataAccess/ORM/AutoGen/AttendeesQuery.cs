@@ -136,5 +136,9 @@ namespace CodeCampSV
         public int? OptInSponsoredMailingsLevel { get; set; }
         [AutoGenColumn]
         public int? OptInSponsorSpecialsLevel { get; set; }
+        [AutoGenColumn]
+        public string City { get; set; }
+        [AutoGenColumn]
+        public string State { get; set; }
     }
 }

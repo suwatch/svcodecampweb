@@ -28,29 +28,29 @@ namespace WebAPI.Api
             public AttendeesResult Data { get; set; }
         }
 
-        public class UpdateAttendeeRecord
-        {
-            public string AttendeeGroup { get; set; } // radio button, attend which days. AttendingSaturdaySundayRb;
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
-            public string Email { get; set; }
-            public string TwitterHandle { get; set; }
-            public string City { get; set; }
-            public string State { get; set; }
-            public string Zip { get; set; }
+        //public class UpdateAttendeeRecord
+        //{
+        //    public string AttendeeGroup { get; set; } // radio button, attend which days. AttendingSaturdaySundayRb;
+        //    public string FirstName { get; set; }
+        //    public string LastName { get; set; }
+        //    public string Email { get; set; }
+        //    public string TwitterHandle { get; set; }
+        //    public string City { get; set; }
+        //    public string State { get; set; }
+        //    public string Zip { get; set; }
 
-            public bool? QrAllowEmail { get; set; }
-            public bool? QrWebSiteAllow { get; set; }
-            public bool? QrAddressLineAllow { get; set; }
-            public bool? QrZipCodeAllow { get; set; }
-            public bool? QrTwitterAllow { get; set; }
+        //    public bool? QrAllowEmail { get; set; }
+        //    public bool? QrWebSiteAllow { get; set; }
+        //    public bool? QrAddressLineAllow { get; set; }
+        //    public bool? QrZipCodeAllow { get; set; }
+        //    public bool? QrTwitterAllow { get; set; }
            
 
-        }
+        //}
 
         [HttpPost]
         [ActionName("UpdateAttendee")]
-        public HttpResponseMessage PostUpdateAttendee(UpdateAttendeeRecord attendeeRecord)
+        public HttpResponseMessage PostUpdateAttendee(AttendeesResult attendeeRecord)
         {
             HttpResponseMessage response;
 
@@ -72,13 +72,20 @@ namespace WebAPI.Api
                 if (attendeesResult != null)
                 {
                     attendeesResult.Email = attendeeRecord.Email;
-                    attendeesResult.UserFirstName = attendeeRecord.FirstName;
-                    attendeesResult.UserLastName = attendeeRecord.LastName;
+                    attendeesResult.UserFirstName = attendeeRecord.UserFirstName;
+                    attendeesResult.UserLastName = attendeeRecord.UserLastName;
                     attendeesResult.City = attendeeRecord.City;
                     attendeesResult.State = attendeeRecord.State;
-                    attendeesResult.UserZipCode = attendeeRecord.Zip;
+                    attendeesResult.UserZipCode = attendeeRecord.UserZipCode;
                     attendeesResult.TwitterHandle = attendeeRecord.TwitterHandle;
-                    AttendeesManager.I.Update(attendeesResult);
+                    attendeesResult.FacebookId = attendeeRecord.FacebookId;
+                    attendeesResult.GooglePlusId = attendeeRecord.GooglePlusId;
+                    attendeesResult.LinkedInId = attendeeRecord.LinkedInId;
+                    attendeesResult.AttendingDaysChoiceCurrentYear = attendeeRecord.AttendingDaysChoiceCurrentYear;
+                    attendeesResult.RegisteredCurrentYear = attendeeRecord.RegisteredCurrentYear;
+
+                    attendeesResult.CurrentCodeCampYear = Utils.CurrentCodeCampYear;
+                    AttendeesManager.I.UpdateWithAttendeeCCY(attendeesResult);
 
                     response = Request.CreateResponse(HttpStatusCode.OK, attendeesResult);
 
@@ -223,7 +230,8 @@ namespace WebAPI.Api
                         OptInSponsoredMailingsLevel = attendeesResultFull.OptInSponsorSpecialsLevel,
                         ShirtSize = attendeesResultFull.ShirtSize,
                         UserBio = attendeesResultFull.UserBio,
-                        
+                        UserWebsite = attendeesResultFull.UserWebsite,
+                            
 
                         QREmailAllow = attendeesResultFull.QREmailAllow,
                         QRAddressLine1Allow = attendeesResultFull.QRAddressLine1Allow,
@@ -231,7 +239,11 @@ namespace WebAPI.Api
                         QRWebSiteAllow = attendeesResultFull.QRWebSiteAllow,
                         QRZipCodeAllow = attendeesResultFull.QRZipCodeAllow,
                         
-                        AttendeesCodeCampYearResult = attendeesResultFull.AttendeesCodeCampYearResult
+                        AttendeesCodeCampYearResult = attendeesResultFull.AttendeesCodeCampYearResult,
+                        HasSessionsCurrentYear = attendeesResultFull.HasSessionsCurrentYear,
+                        AttendingDaysChoiceCurrentYear = attendeesResultFull.AttendingDaysChoiceCurrentYear,
+                        RegisteredCurrentYear = attendeesResultFull.RegisteredCurrentYear,
+                        VolunteeredCurrentYear = attendeesResultFull.VolunteeredCurrentYear
                     };
             return attendeesResult;
         }

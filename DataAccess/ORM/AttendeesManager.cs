@@ -176,12 +176,6 @@ namespace CodeCampSV
             // query.CodeCampYearId should not be used for hear on out, just the array
 
 
-            
-            
-
-
-
-
             IQueryable<Attendees> baseQuery = from myData in meta.Attendees select myData;
 
             if (query.Emails != null && query.Emails.Count > 0)
@@ -384,9 +378,6 @@ namespace CodeCampSV
                         rec.City = "CityToSet";
                         rec.State = "StateToSet";
                     }
-
-
-
                 }
             }
 
@@ -396,7 +387,6 @@ namespace CodeCampSV
                 query.IncludeAttendeesCodeCampYearResult.HasValue && query.IncludeAttendeesCodeCampYearResult.Value)
             {
                 List<int> attendeeIds = resultList.Select(a => a.Id).ToList();
-
                 Dictionary<int, AttendeesCodeCampYearResult> codeCampYearResults = meta.AttendeesCodeCampYear.Where(
                     data => attendeeIds.Contains(data.Id) &&
                             data.CodeCampYearId ==
@@ -427,7 +417,7 @@ namespace CodeCampSV
             //public string AttendingDaysChoiceCurrentYear { get; set; }
             //public bool VolunteeredCurrentYear { get; set; }
 
-            if (query.CodeCampYearId.HasValue)
+            if (query.CodeCampYearId.HasValue && query.IncludeAttendeesCodeCampYearResult.HasValue && query.IncludeAttendeesCodeCampYearResult.Value)
             {
                 // avoid to big IN clauses
                 Dictionary<int, AttendeesCodeCampYear> attendeesCodeCampYearResultsDict;
@@ -554,5 +544,40 @@ namespace CodeCampSV
             return recs;
         }
 
+        public void UpdateWithAttendeeCCY(AttendeesResult attendeesResult)
+        {
+           base.Update(attendeesResult);
+
+            if (!attendeesResult.CurrentCodeCampYear.HasValue)
+            {
+                throw new ApplicationException("IncludeAttendeesCodeCampYearResult seet on AttendeesManager but CurrentCodeCampYear Not also set and is required");
+            }
+
+            var rec = AttendeesCodeCampYearManager.I.Get(new AttendeesCodeCampYearQuery
+                                                             {
+                                                                 AttendeesId = attendeesResult.Id,
+                                                                 CodeCampYearId = attendeesResult.CurrentCodeCampYear
+                                                             }).FirstOrDefault();
+            if (rec != null)
+            {
+                rec.Volunteer = attendeesResult.VolunteeredCurrentYear;
+                rec.AttendingDaysChoice = attendeesResult.AttendingDaysChoiceCurrentYear;
+                AttendeesCodeCampYearManager.I.Update(rec);
+            }
+            else
+            {
+                var newRec = new AttendeesCodeCampYearResult()
+                                 {
+                                     CreateDate = DateTime.Now,
+                                     CodeCampYearId = attendeesResult.CurrentCodeCampYear.Value,
+                                     Volunteer = attendeesResult.VolunteeredCurrentYear,
+                                     AttendingDaysChoice = attendeesResult.AttendingDaysChoiceCurrentYear,
+                                     AttendeesId = attendeesResult.Id
+                                 };
+                AttendeesCodeCampYearManager.I.Insert(newRec);
+            }
+
+
+        }
     }
 }

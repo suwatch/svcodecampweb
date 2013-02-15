@@ -69,6 +69,8 @@ namespace CodeCampSV
         [DataMember] public string GooglePlusId { get; set; }
         [DataMember] public int? OptInSponsoredMailingsLevel { get; set; }
         [DataMember] public int? OptInSponsorSpecialsLevel { get; set; }
+        [DataMember] public string City { get; set; }
+        [DataMember] public string State { get; set; }
         
         //  
         //  Do not put Id here since it is in ResultBase already

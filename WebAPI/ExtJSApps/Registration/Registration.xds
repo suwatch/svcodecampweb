@@ -141,6 +141,14 @@
                 "app/view/sponsor.js"
             ],
             "className": "sponsor"
+        },
+        "98a8cc4b-7db4-4a2e-8aea-8fe5195956e4": {
+            "paths": [
+                "metadata/view/createAccount",
+                "app/view/override/createAccount.js",
+                "app/view/createAccount.js"
+            ],
+            "className": "createAccount"
         }
     },
     "viewOrderMap": {
@@ -152,7 +160,8 @@
             "39067009-bf72-41d5-adb1-5644d566845c",
             "56e26b45-7fe3-4b60-bbd4-c2b2c6c64e83",
             "6d82b69b-3f21-447d-9161-8f72c94f975b",
-            "fd7d5df9-3fda-46f2-82cb-9cfeb17ff1e9"
+            "fd7d5df9-3fda-46f2-82cb-9cfeb17ff1e9",
+            "98a8cc4b-7db4-4a2e-8aea-8fe5195956e4"
         ],
         "store": [],
         "controller": [

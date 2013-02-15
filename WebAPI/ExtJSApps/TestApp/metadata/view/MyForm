@@ -1,0 +1,95 @@
+{
+    "type": "form",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "MyForm",
+        "designer|initialView": true,
+        "height": 250,
+        "width": 400,
+        "bodyPadding": 10,
+        "title": "My Form"
+    },
+    "id": "ExtBox1-ext-gen22878",
+    "designerId": "f0de1fb8-15ed-428d-b5d2-ed4ef4d7b0ea",
+    "cn": [
+        {
+            "type": "radiogroup",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyRadioGroup",
+                "fieldLabel": "",
+                "allowBlank": false
+            },
+            "designerId": "16098c45-967c-46e3-80a5-8c92da6eec39",
+            "cn": [
+                {
+                    "type": "radiofield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyRadio",
+                        "name": "MyCB",
+                        "fieldLabel": null,
+                        "boxLabel": "CB1"
+                    },
+                    "designerId": "09524b06-89f6-4095-a5c9-2ab38bbbda3f"
+                },
+                {
+                    "type": "radiofield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyRadio1",
+                        "name": "MyCB",
+                        "fieldLabel": null,
+                        "boxLabel": "CB2"
+                    },
+                    "designerId": "da5a055a-2490-4c1a-b909-b8e29ccb977e"
+                }
+            ]
+        },
+        {
+            "type": "button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "formBind": true,
+                "designer|userClassName": "MyButton",
+                "text": "Press Me When Form Validated"
+            },
+            "designerId": "f3e0e293-88c7-40b9-8eb5-347f1c742a05"
+        },
+        {
+            "type": "textfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|anchor": "100%",
+                "designer|userClassName": "MyTextField",
+                "fieldLabel": "Label",
+                "allowBlank": false
+            },
+            "designerId": "88c85a67-a0d6-4abe-8ae8-b0d7fc1c1b0a"
+        }
+    ]
+}

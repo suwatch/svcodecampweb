@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+
+<!-- Auto Generated with Sencha Architect -->
+<!-- Modifications to this file will be overwritten. -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>TestApp</title>
+    <script src="http://extjs.cachefly.net/ext-4.1.1-gpl/ext-all.js"></script>
+    <link rel="stylesheet" href="http://extjs.cachefly.net/ext-4.1.1-gpl/resources/css/ext-all.css">
+    <script type="text/javascript" >
+        Ext.Loader.setConfig({
+            enabled: true
+        });
+
+        Ext.application({
+            views: [
+                'MyForm'
+            ],
+            autoCreateViewport: true,
+            name: 'MyApp'
+        });
+
+
+        Ext.define('MyApp.view.MyForm', {
+            extend: 'Ext.form.Panel',
+
+            height: 250,
+            width: 400,
+            bodyPadding: 10,
+            title: 'My Form',
+
+            initComponent: function () {
+                var me = this;
+
+                Ext.applyIf(me, {
+                    items: [
+                        {
+                            xtype: 'radiogroup',
+                            fieldLabel: '',
+                            allowBlank: false,
+                            items: [
+                                {
+                                    xtype: 'radiofield',
+                                    name: 'MyCB',
+                                    boxLabel: 'CB1'
+                                },
+                                {
+                                    xtype: 'radiofield',
+                                    name: 'MyCB',
+                                    boxLabel: 'CB2'
+                                }
+                            ]
+                        },
+                        {
+                            xtype: 'button',
+                            formBind: true,
+                            text: 'Press Me When Form Validated'
+                        },
+                        {
+                            xtype: 'textfield',
+                            anchor: '100%',
+                            fieldLabel: 'Label',
+                            allowBlank: false
+                        }
+                    ]
+                });
+
+                me.callParent(arguments);
+            }
+
+        });
+    </script>
+</head>
+<body></body>
+</html>

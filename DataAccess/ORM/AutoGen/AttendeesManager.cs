@@ -78,6 +78,8 @@ namespace CodeCampSV
             record.GooglePlusId = result.GooglePlusId;
             record.OptInSponsoredMailingsLevel = result.OptInSponsoredMailingsLevel;
             record.OptInSponsorSpecialsLevel = result.OptInSponsorSpecialsLevel;
+            record.City = result.City;
+            record.State = result.State;
             // 
             //  Used by Default in Update and Insert Methods.
         }
@@ -148,7 +150,9 @@ namespace CodeCampSV
             LinkedInId = myData.LinkedInId,
             GooglePlusId = myData.GooglePlusId,
             OptInSponsoredMailingsLevel = myData.OptInSponsoredMailingsLevel,
-            OptInSponsorSpecialsLevel = myData.OptInSponsorSpecialsLevel
+            OptInSponsorSpecialsLevel = myData.OptInSponsorSpecialsLevel,
+            City = myData.City,
+            State = myData.State
       });
 		    return results;
         }
@@ -235,7 +239,9 @@ namespace CodeCampSV
                         LinkedInId = myData.LinkedInId,
                         GooglePlusId = myData.GooglePlusId,
                         OptInSponsoredMailingsLevel = myData.OptInSponsoredMailingsLevel,
-                        OptInSponsorSpecialsLevel = myData.OptInSponsorSpecialsLevel
+                        OptInSponsorSpecialsLevel = myData.OptInSponsorSpecialsLevel,
+                        City = myData.City,
+                        State = myData.State
             });
             
             List<AttendeesResult> resultList = GetFinalResults(results, query);
@@ -309,6 +315,8 @@ namespace CodeCampSV
             if (query.GooglePlusId != null) baseQuery = baseQuery.Where(a => a.GooglePlusId.ToLower().Equals(query.GooglePlusId.ToLower()));
             if (query.OptInSponsoredMailingsLevel != null) baseQuery = baseQuery.Where(a => a.OptInSponsoredMailingsLevel == query.OptInSponsoredMailingsLevel);
             if (query.OptInSponsorSpecialsLevel != null) baseQuery = baseQuery.Where(a => a.OptInSponsorSpecialsLevel == query.OptInSponsorSpecialsLevel);
+            if (query.City != null) baseQuery = baseQuery.Where(a => a.City.ToLower().Equals(query.City.ToLower()));
+            if (query.State != null) baseQuery = baseQuery.Where(a => a.State.ToLower().Equals(query.State.ToLower()));
 
             return baseQuery;
         }

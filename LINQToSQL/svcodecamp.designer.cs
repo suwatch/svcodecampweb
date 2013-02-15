@@ -1118,6 +1118,10 @@ namespace CodeCampSV
 		
 		private System.Nullable<int> _OptInSponsorSpecialsLevel;
 		
+		private string _City;
+		
+		private string _State;
+		
 		private EntitySet<AttendeesCodeCampYear> _AttendeesCodeCampYear;
 		
 		private EntitySet<AttendeesTagList> _AttendeesTagList;
@@ -1258,6 +1262,10 @@ namespace CodeCampSV
     partial void OnOptInSponsoredMailingsLevelChanged();
     partial void OnOptInSponsorSpecialsLevelChanging(System.Nullable<int> value);
     partial void OnOptInSponsorSpecialsLevelChanged();
+    partial void OnCityChanging(string value);
+    partial void OnCityChanged();
+    partial void OnStateChanging(string value);
+    partial void OnStateChanged();
     #endregion
 		
 		public Attendees()
@@ -2469,6 +2477,46 @@ namespace CodeCampSV
 					this._OptInSponsorSpecialsLevel = value;
 					this.SendPropertyChanged("OptInSponsorSpecialsLevel");
 					this.OnOptInSponsorSpecialsLevelChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_City", DbType="VarChar(128)")]
+		public string City
+		{
+			get
+			{
+				return this._City;
+			}
+			set
+			{
+				if ((this._City != value))
+				{
+					this.OnCityChanging(value);
+					this.SendPropertyChanging();
+					this._City = value;
+					this.SendPropertyChanged("City");
+					this.OnCityChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_State", DbType="VarChar(64)")]
+		public string State
+		{
+			get
+			{
+				return this._State;
+			}
+			set
+			{
+				if ((this._State != value))
+				{
+					this.OnStateChanging(value);
+					this.SendPropertyChanging();
+					this._State = value;
+					this.SendPropertyChanged("State");
+					this.OnStateChanged();
 				}
 			}
 		}

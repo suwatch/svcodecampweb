@@ -2776,6 +2776,7 @@
     <Content Include="ExtJSApps\SessionViewerProd\resources\theme\images\window-header\window-header-default-top-sides.gif" />
     <Content Include="ExtJSApps\SessionViewerProd\resources\theme\images\window\window-default-corners.gif" />
     <Content Include="ExtJSApps\SessionViewerProd\resources\theme\images\window\window-default-sides.gif" />
+    <Content Include="ExtJSApps\TestApp\Test.html" />
     <Content Include="ExtScheduler.aspx" />
     <Content Include="FAQ.aspx" />
     <Content Include="favicon.ico" />

@@ -1,0 +1,17 @@
+{
+    "type": "form",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "createAccount",
+        "designer|userAlias": "createAccountAlias",
+        "itemId": "createAccount",
+        "bodyPadding": 10,
+        "title": "My Form"
+    },
+    "id": "ExtBox1-ext-gen26628",
+    "designerId": "98a8cc4b-7db4-4a2e-8aea-8fe5195956e4"
+}

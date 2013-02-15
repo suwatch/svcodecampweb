@@ -544,6 +544,19 @@ namespace CodeCampSV
             return recs;
         }
 
+        /// <summary>
+        /// simply check if username exissts
+        /// </summary>
+        /// <param name="username"></param>
+        public bool CheckAttendeeExists(string username)
+        {
+            var meta = new CodeCampDataContext();
+            bool userExists = (from data in meta.Attendees
+                     where data.Username.ToLower().Equals(username.ToLower())
+                     select data).Any();
+            return userExists;
+        }
+
         public void UpdateWithAttendeeCCY(AttendeesResult attendeesResult)
         {
            base.Update(attendeesResult);

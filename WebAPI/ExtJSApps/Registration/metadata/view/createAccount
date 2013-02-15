@@ -8,10 +8,141 @@
     "userConfig": {
         "designer|userClassName": "createAccount",
         "designer|userAlias": "createAccountAlias",
-        "itemId": "createAccount",
+        "itemId": "CreateAccount",
         "bodyPadding": 10,
         "title": "My Form"
     },
     "id": "ExtBox1-ext-gen26628",
-    "designerId": "98a8cc4b-7db4-4a2e-8aea-8fe5195956e4"
+    "designerId": "98a8cc4b-7db4-4a2e-8aea-8fe5195956e4",
+    "cn": [
+        {
+            "type": "toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "container|pack": "end",
+                "container|padding": null,
+                "designer|userClassName": "MyToolbar",
+                "height": null,
+                "itemId": "ToolBarAttendeeSpeaker"
+            },
+            "designerId": "dc33763d-742c-479b-bf1a-149d25b5a7f9",
+            "cn": [
+                {
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MyButton",
+                        "disabled": false,
+                        "id": null,
+                        "itemId": "backButtonId",
+                        "iconAlign": "right",
+                        "text": "Back"
+                    },
+                    "designerId": "23635020-f823-44bb-8dcc-7bba6ee94692"
+                },
+                {
+                    "type": "tbseparator",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MySeparator"
+                    },
+                    "designerId": "6449407e-3438-4f45-8a1b-316cd33526ce"
+                },
+                {
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "formBind": true,
+                        "designer|userClassName": "MyButton",
+                        "disabled": true,
+                        "id": null,
+                        "itemId": "continueButtonId",
+                        "iconAlign": "right",
+                        "text": "Continue"
+                    },
+                    "designerId": "986ad5e6-3344-4272-a3ad-21aff7e2ee8b"
+                }
+            ]
+        },
+        {
+            "type": "textfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|anchor": "100%",
+                "designer|userClassName": "MyTextField26",
+                "itemId": "username",
+                "fieldLabel": "Username"
+            },
+            "designerId": "94da1f10-0bd2-4cac-a9b2-393aef15f9e4"
+        },
+        {
+            "type": "textfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|anchor": "100%",
+                "designer|userClassName": "MyTextField27",
+                "itemId": "password",
+                "fieldLabel": "Password"
+            },
+            "designerId": "05bc49b6-8f22-4d61-a456-8936561d8d05"
+        },
+        {
+            "type": "textfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|anchor": "100%",
+                "designer|userClassName": "MyTextField27",
+                "itemId": "passwordConfirm",
+                "fieldLabel": "Confirm Password"
+            },
+            "designerId": "4ddc12b0-b9cd-4b69-aad3-47851dcb058d"
+        },
+        {
+            "type": "textfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|anchor": "100%",
+                "designer|userClassName": "MyTextField29",
+                "itemId": "email",
+                "fieldLabel": "Email Address"
+            },
+            "designerId": "490c45ec-f494-4ad9-9570-a09f9429b02a"
+        }
+    ]
 }

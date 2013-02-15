@@ -80,6 +80,7 @@
                         "name": "attendingDaysChoiceCurrentYear",
                         "fieldLabel": null,
                         "boxLabel": "Attending Saturday and Sunday",
+                        "checked": true,
                         "inputValue": "AttendingSaturdaySunday"
                     },
                     "designerId": "6776884e-19a8-411a-bd0c-1b2ed3af6b42"

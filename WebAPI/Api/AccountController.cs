@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Web;
 using System.Web.Http;
 using System.Web.Security;
@@ -47,6 +48,17 @@ namespace WebAPI.Api
            
 
         //}
+
+        [HttpPost]
+        [ActionName("CheckUsernameExists")]
+        public HttpResponseMessage PostCheckUsernameExists(AttendeesResult attendeeRecord)
+        {
+            Thread.Sleep(300); // try to defend a little against denial of service attack or username searching attack
+            bool attendeeUsernameExists = AttendeesManager.I.CheckAttendeeExists(attendeeRecord.Username);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK,
+                                                                  attendeeUsernameExists ? "Exists" : "NotFound");
+            return response;
+        }
 
         [HttpPost]
         [ActionName("UpdateAttendee")]
@@ -94,8 +106,8 @@ namespace WebAPI.Api
                 else
                 {
                     response =
-                  Request.CreateErrorResponse(HttpStatusCode.Forbidden,
-                                              "User Authenticated but no base attendee record found");
+                        Request.CreateErrorResponse(HttpStatusCode.Forbidden,
+                                                    "User Authenticated but no base attendee record found");
                 }
 
 

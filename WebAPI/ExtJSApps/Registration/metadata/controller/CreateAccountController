@@ -9,5 +9,50 @@
         "designer|userClassName": "CreateAccountController"
     },
     "id": "ExtBox1-ext-gen47977",
-    "designerId": "65a4b174-5ba2-4812-ba07-d9ff918ccf6e"
+    "designerId": "65a4b174-5ba2-4812-ba07-d9ff918ccf6e",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onBackButtonIdClick",
+                "fn": "onBackButtonIdClick",
+                "implHandler": [
+                    "\r",
+                    "var tabWizardPanel = Ext.getCmp('TabWizardId')\r",
+                    "tabWizardPanel.setActiveTab(Ext.getCmp('TabWizardId').getTabIdByName('attendeeorspeaker'));\r",
+                    ""
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#backButtonId"
+            },
+            "designerId": "88b60f9c-9d82-4f2f-9233-440e613b760b"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onContinueButtonIdClick",
+                "fn": "onContinueButtonIdClick",
+                "implHandler": [
+                    ""
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#continueButtonId"
+            },
+            "designerId": "69df807a-afe1-455f-9086-38335fa2f200"
+        }
+    ]
 }

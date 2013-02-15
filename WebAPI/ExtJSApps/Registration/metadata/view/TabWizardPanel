@@ -71,6 +71,9 @@
                     "else if (stepName === 'SpeakerAfterLogin') {\r",
                     "    tabId = 5;\r",
                     "}\r",
+                    "else if (stepName === 'createAccount') {\r",
+                    "    tabId = 6;\r",
+                    "}\r",
                     "return tabId;\r",
                     ""
                 ]
@@ -231,6 +234,9 @@
                 "type": "array"
             },
             "codeClass": null,
+            "userConfig": {
+                "title": null
+            },
             "designerId": "5f83ad9b-f72c-4bc9-99f2-c47a5c5facb0",
             "masterInstanceId": "ExtBox1-ext-gen26628",
             "cn": [

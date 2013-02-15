@@ -1263,6 +1263,7 @@ namespace CodeCampSV
             return listAttendees.Count == 0 ? null : listAttendees[0];
         }
 
+      
         public static bool CheckUserIsAllowRegistration()
         {
             return Roles.IsUserInRole(AllowRegistrationRoleName);

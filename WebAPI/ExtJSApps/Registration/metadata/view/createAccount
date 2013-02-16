@@ -92,10 +92,14 @@
             },
             "codeClass": null,
             "userConfig": {
-                "layout|anchor": "100%",
+                "layout|anchor": null,
                 "designer|userClassName": "MyTextField26",
                 "itemId": "username",
-                "fieldLabel": "Username"
+                "width": null,
+                "inputId": "username",
+                "fieldLabel": "Username",
+                "labelWidth": null,
+                "allowBlank": false
             },
             "designerId": "94da1f10-0bd2-4cac-a9b2-393aef15f9e4"
         },
@@ -107,10 +111,14 @@
             },
             "codeClass": null,
             "userConfig": {
-                "layout|anchor": "100%",
+                "layout|anchor": null,
                 "designer|userClassName": "MyTextField27",
                 "itemId": "password",
-                "fieldLabel": "Password"
+                "width": null,
+                "inputId": "password",
+                "inputType": "password",
+                "fieldLabel": "Password",
+                "allowBlank": false
             },
             "designerId": "05bc49b6-8f22-4d61-a456-8936561d8d05"
         },
@@ -122,25 +130,14 @@
             },
             "codeClass": null,
             "userConfig": {
-                "layout|anchor": "100%",
-                "designer|userClassName": "MyTextField27",
-                "itemId": "passwordConfirm",
-                "fieldLabel": "Confirm Password"
-            },
-            "designerId": "4ddc12b0-b9cd-4b69-aad3-47851dcb058d"
-        },
-        {
-            "type": "textfield",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "layout|anchor": "100%",
+                "layout|anchor": null,
                 "designer|userClassName": "MyTextField29",
                 "itemId": "email",
-                "fieldLabel": "Email Address"
+                "width": null,
+                "inputId": "email",
+                "fieldLabel": "Email Address",
+                "allowBlank": false,
+                "vtype": "email"
             },
             "designerId": "490c45ec-f494-4ad9-9570-a09f9429b02a"
         }

@@ -95,6 +95,7 @@
             "userConfig": {
                 "designer|userClassName": "MyTextField",
                 "itemId": "username",
+                "inputId": "username",
                 "fieldLabel": "Username",
                 "labelWidth": null,
                 "allowBlank": false,
@@ -116,6 +117,7 @@
             "userConfig": {
                 "designer|userClassName": "MyTextField1",
                 "itemId": "password",
+                "inputId": "password",
                 "inputType": "password",
                 "fieldLabel": "Password",
                 "emptyText": "password",

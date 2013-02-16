@@ -545,10 +545,10 @@ namespace CodeCampSV
         }
 
         /// <summary>
-        /// simply check if username exissts
+        /// simply check if username exists
         /// </summary>
         /// <param name="username"></param>
-        public bool CheckAttendeeExists(string username)
+        public bool CheckAttendeeUsernameExists(string username)
         {
             var meta = new CodeCampDataContext();
             bool userExists = (from data in meta.Attendees
@@ -556,6 +556,20 @@ namespace CodeCampSV
                      select data).Any();
             return userExists;
         }
+
+        /// <summary>
+        /// simply check if email exists
+        /// </summary>
+        /// <param name="email"></param>
+        public bool CheckAttendeeEmailExists(string email)
+        {
+            var meta = new CodeCampDataContext();
+            bool userExists = (from data in meta.Attendees
+                               where data.Email.ToLower().Equals(email.ToLower())
+                               select data).Any();
+            return userExists;
+        }
+
 
         public void UpdateWithAttendeeCCY(AttendeesResult attendeesResult)
         {

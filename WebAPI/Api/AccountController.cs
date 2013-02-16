@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading;
 using System.Web;
 using System.Web.Http;
@@ -50,14 +51,54 @@ namespace WebAPI.Api
         //}
 
         [HttpPost]
-        [ActionName("CheckUsernameExists")]
-        public HttpResponseMessage PostCheckUsernameExists(AttendeesResult attendeeRecord)
+        [ActionName("CheckUsernameEmailExists")]
+        public HttpResponseMessage PostCheckUsernameEmailExists(AttendeesResult attendeeRecord)
         {
             Thread.Sleep(300); // try to defend a little against denial of service attack or username searching attack
-            bool attendeeUsernameExists = AttendeesManager.I.CheckAttendeeExists(attendeeRecord.Username);
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK,
-                                                                  attendeeUsernameExists ? "Exists" : "NotFound");
-            return response;
+
+            var errorMessage = new StringBuilder();
+
+            if (String.IsNullOrEmpty(attendeeRecord.Username) && String.IsNullOrEmpty(attendeeRecord.Email))
+            {
+                errorMessage.Append("Failure: Must specify username, email or both in incoming parameters.");
+            }
+            else if (!String.IsNullOrEmpty(attendeeRecord.Username) && String.IsNullOrEmpty(attendeeRecord.Email))
+            {
+                bool attendeeUsernameExists = AttendeesManager.I.CheckAttendeeUsernameExists(attendeeRecord.Username);
+                if (attendeeUsernameExists)
+                {
+                    errorMessage.Append("Failure: Username Exists.");
+                }
+            }
+            else if (String.IsNullOrEmpty(attendeeRecord.Username) && !String.IsNullOrEmpty(attendeeRecord.Email))
+            {
+                bool attendeeEmailExists = AttendeesManager.I.CheckAttendeeEmailExists(attendeeRecord.Username);
+                if (attendeeEmailExists)
+                {
+                    errorMessage.Append("Failure: Email Exists.");
+                }
+            }
+            else if (!String.IsNullOrEmpty(attendeeRecord.Username) && !String.IsNullOrEmpty(attendeeRecord.Email))
+            {
+                bool attendeeUsernameExists = AttendeesManager.I.CheckAttendeeUsernameExists(attendeeRecord.Username);
+                bool attendeeEmailExists = AttendeesManager.I.CheckAttendeeEmailExists(attendeeRecord.Username);
+                if (attendeeEmailExists || attendeeUsernameExists)
+                {
+                    if (attendeeEmailExists)
+                    {
+                        errorMessage.Append("Failure: Email Exists.");
+                    }
+                    if (attendeeUsernameExists)
+                    {
+                        errorMessage.Append("Failure: Username Exists");
+                    }
+                }
+            }
+
+            return errorMessage.Length == 0
+                       ? Request.CreateResponse(HttpStatusCode.OK, "")
+                       : Request.CreateErrorResponse(HttpStatusCode.Forbidden,
+                                                     errorMessage.ToString());
         }
 
         [HttpPost]
@@ -112,6 +153,67 @@ namespace WebAPI.Api
 
 
 
+            }
+            return response;
+        }
+
+        [HttpPost]
+        [ActionName("CreateUser")]
+        public HttpResponseMessage PostCreateUser(AttendeesResult attendee)
+        {
+            HttpResponseMessage response;
+            if (String.IsNullOrEmpty(attendee.Username) ||
+                String.IsNullOrEmpty(attendee.Password) ||
+                String.IsNullOrEmpty(attendee.Email))
+            {
+                response =
+                           Request.CreateErrorResponse(HttpStatusCode.Forbidden,
+                                                       "CreateUser requires non blank Username,Password and Email");
+            }
+            else if (attendee.Password.Length < 4)
+            {
+                response =
+                    Request.CreateErrorResponse(HttpStatusCode.Forbidden,
+                                                "CreateUser requires password at least 4 characters long");
+            }
+            else
+            {
+                // now we have username, password and email
+                bool emailExists = AttendeesManager.I.CheckAttendeeEmailExists(attendee.Email);
+                bool usernameExists = AttendeesManager.I.CheckAttendeeEmailExists(attendee.Username);
+                if (emailExists || usernameExists)
+                {
+                    response =
+                        Request.CreateErrorResponse(HttpStatusCode.Forbidden,
+                                                    string.Format(
+                                                        "CreateUser email or username exists so can not create {0}:{1}",
+                                                        emailExists.ToString(), usernameExists.ToString()));
+                }
+                else
+                {
+                    // create the user! everything should be good
+                    MembershipCreateStatus mStatus;
+                    Membership.CreateUser(
+                        attendee.Username,
+                        attendee.Password,
+                       attendee.Email,
+                        "Question", "Answer",
+                        true,
+                        out mStatus);
+
+                    if (mStatus.Equals(MembershipCreateStatus.Success))
+                    {
+
+                        response = Request.CreateResponse(HttpStatusCode.OK, "");
+
+                    }
+                    else
+                    {
+                        response =
+                            Request.CreateErrorResponse(HttpStatusCode.Forbidden,
+                                                        "CreateUser membership failed " + mStatus.ToString());
+                    }
+                }
             }
             return response;
         }

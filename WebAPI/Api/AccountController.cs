@@ -31,6 +31,9 @@ namespace WebAPI.Api
             public string Status { get; set; }
             public string Message { get; set; }
             public AttendeesResult Data { get; set; }
+            public string File { get; set; }
+
+            public bool Success { get; set; }
         }
 
         /// <summary>
@@ -57,8 +60,6 @@ namespace WebAPI.Api
 
             try
             {
-                StringBuilder sb = new StringBuilder(); // Holds the response body
-
                 // Read the form data and return an async task.
                 await Request.Content.ReadAsMultipartAsync(provider);
 
@@ -116,15 +117,26 @@ namespace WebAPI.Api
                     }
                 }
 
-          
-                return new HttpResponseMessage()
-                {
-                    Content = new StringContent(sb.ToString())
-                };
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, new LoginReturnStatus()
+                                                                                             {
+                                                                                                 Success = true,
+                                                                                                 Status = "success",
+                                                                                                 File="speaker.jpg"
+                                                                                             });
+                return response;
             }
             catch (System.Exception e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+
+                var ret = new LoginReturnStatus()
+                              {
+                                  Success = false,
+                                  Status = "Failure",
+                                  File = "speaker.jpg",
+                                  Message = e.ToString()
+                              };
+
+                return Request.CreateResponse(HttpStatusCode.Forbidden,ret);
             }
         }
 
@@ -318,9 +330,9 @@ namespace WebAPI.Api
                                                                                     }).FirstOrDefault();
                    if (attendeesResultFull != null)
                    {
-                       var attendeesResult = AttendeesResultStripped(attendeesResultFull);
-                       loginReturnStatus.Data = attendeesResult;
-                       response = Request.CreateResponse(HttpStatusCode.OK, attendeesResult);
+                       //var attendeesResult = AttendeesResultStripped(attendeesResultFull);
+                       //loginReturnStatus.Data = attendeesResult;
+                       response = Request.CreateResponse(HttpStatusCode.OK, attendeesResultFull);
                    }
                    else
                    {
@@ -368,9 +380,9 @@ namespace WebAPI.Api
 
                 if (attendeesResultFull != null)
                 {
-                    var attendeesResult = AttendeesResultStripped(attendeesResultFull);
-                    loginReturnStatus.Data = attendeesResult;
-                    response = Request.CreateResponse(HttpStatusCode.OK, attendeesResult);
+                    //var attendeesResult = AttendeesResultStripped(attendeesResultFull);
+                    loginReturnStatus.Data = attendeesResultFull;
+                    response = Request.CreateResponse(HttpStatusCode.OK, attendeesResultFull);
                 }
                 else
                 {
@@ -400,45 +412,45 @@ namespace WebAPI.Api
             return Request.CreateResponse(HttpStatusCode.OK, "");
         }
 
-        private static AttendeesResult AttendeesResultStripped(AttendeesResult attendeesResultFull)
-        {
-            var attendeesResult =
-                new AttendeesResult
-                    {
-                        Username = attendeesResultFull.Username,
-                        UserFirstName = attendeesResultFull.UserFirstName,
-                        UserLastName = attendeesResultFull.UserLastName,
-                        PKID = attendeesResultFull.PKID,
-                        Id = attendeesResultFull.Id,
-                        Email = attendeesResultFull.Email,
-                        City = attendeesResultFull.City,
-                        State = attendeesResultFull.State,
-                        UserZipCode = attendeesResultFull.UserZipCode,
-                        TwitterHandle = attendeesResultFull.TwitterHandle,
-                        FacebookId = attendeesResultFull.FacebookId,
-                        GooglePlusId = attendeesResultFull.GooglePlusId,
-                        LinkedInId = attendeesResultFull.LinkedInId,
-                        EmailEventBoard = attendeesResultFull.EmailEventBoard,
-                        OptInSponsorSpecialsLevel = attendeesResultFull.OptInSponsorSpecialsLevel,
-                        OptInSponsoredMailingsLevel = attendeesResultFull.OptInSponsorSpecialsLevel,
-                        ShirtSize = attendeesResultFull.ShirtSize,
-                        UserBio = attendeesResultFull.UserBio,
-                        UserWebsite = attendeesResultFull.UserWebsite,
+        //private static AttendeesResult AttendeesResultStripped(AttendeesResult attendeesResultFull)
+        //{
+        //    var attendeesResult =
+        //        new AttendeesResult
+        //            {
+        //                Username = attendeesResultFull.Username,
+        //                UserFirstName = attendeesResultFull.UserFirstName,
+        //                UserLastName = attendeesResultFull.UserLastName,
+        //                PKID = attendeesResultFull.PKID,
+        //                Id = attendeesResultFull.Id,
+        //                Email = attendeesResultFull.Email,
+        //                City = attendeesResultFull.City,
+        //                State = attendeesResultFull.State,
+        //                UserZipCode = attendeesResultFull.UserZipCode,
+        //                TwitterHandle = attendeesResultFull.TwitterHandle,
+        //                FacebookId = attendeesResultFull.FacebookId,
+        //                GooglePlusId = attendeesResultFull.GooglePlusId,
+        //                LinkedInId = attendeesResultFull.LinkedInId,
+        //                EmailEventBoard = attendeesResultFull.EmailEventBoard,
+        //                OptInSponsorSpecialsLevel = attendeesResultFull.OptInSponsorSpecialsLevel,
+        //                OptInSponsoredMailingsLevel = attendeesResultFull.OptInSponsorSpecialsLevel,
+        //                ShirtSize = attendeesResultFull.ShirtSize,
+        //                UserBio = attendeesResultFull.UserBio,
+        //                UserWebsite = attendeesResultFull.UserWebsite,
                             
 
-                        QREmailAllow = attendeesResultFull.QREmailAllow,
-                        QRAddressLine1Allow = attendeesResultFull.QRAddressLine1Allow,
-                        QRPhoneAllow = attendeesResultFull.QRPhoneAllow,
-                        QRWebSiteAllow = attendeesResultFull.QRWebSiteAllow,
-                        QRZipCodeAllow = attendeesResultFull.QRZipCodeAllow,
+        //                QREmailAllow = attendeesResultFull.QREmailAllow,
+        //                QRAddressLine1Allow = attendeesResultFull.QRAddressLine1Allow,
+        //                QRPhoneAllow = attendeesResultFull.QRPhoneAllow,
+        //                QRWebSiteAllow = attendeesResultFull.QRWebSiteAllow,
+        //                QRZipCodeAllow = attendeesResultFull.QRZipCodeAllow,
                         
-                        AttendeesCodeCampYearResult = attendeesResultFull.AttendeesCodeCampYearResult,
-                        HasSessionsCurrentYear = attendeesResultFull.HasSessionsCurrentYear,
-                        AttendingDaysChoiceCurrentYear = attendeesResultFull.AttendingDaysChoiceCurrentYear,
-                        RegisteredCurrentYear = attendeesResultFull.RegisteredCurrentYear,
-                        VolunteeredCurrentYear = attendeesResultFull.VolunteeredCurrentYear
-                    };
-            return attendeesResult;
-        }
+        //                AttendeesCodeCampYearResult = attendeesResultFull.AttendeesCodeCampYearResult,
+        //                HasSessionsCurrentYear = attendeesResultFull.HasSessionsCurrentYear,
+        //                AttendingDaysChoiceCurrentYear = attendeesResultFull.AttendingDaysChoiceCurrentYear,
+        //                RegisteredCurrentYear = attendeesResultFull.RegisteredCurrentYear,
+        //                VolunteeredCurrentYear = attendeesResultFull.VolunteeredCurrentYear
+        //            };
+        //    return attendeesResult;
+        //}
     }
 }

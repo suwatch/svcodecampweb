@@ -107,7 +107,8 @@
             "userConfig": {
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextField15",
-                "itemId": "FirstNameId",
+                "itemId": null,
+                "inputId": null,
                 "name": "userFirstName",
                 "fieldLabel": "FirstName",
                 "allowBlank": false
@@ -124,7 +125,8 @@
             "userConfig": {
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextField16",
-                "itemId": "LastNameId",
+                "itemId": null,
+                "inputId": null,
                 "name": "userLastName",
                 "fieldLabel": "Last Name",
                 "allowBlank": false
@@ -141,7 +143,7 @@
             "userConfig": {
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextField16",
-                "itemId": "EmailId",
+                "itemId": null,
                 "name": "email",
                 "fieldLabel": "Email",
                 "allowBlank": false
@@ -158,7 +160,7 @@
             "userConfig": {
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextField14",
-                "itemId": "WebSiteId",
+                "itemId": null,
                 "name": "userWebsite",
                 "fieldLabel": "Web Site"
             },
@@ -174,7 +176,7 @@
             "userConfig": {
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextField17",
-                "itemId": "TwitterHandleId",
+                "itemId": null,
                 "name": "twitterHandle",
                 "fieldLabel": "Twitter Handle"
             },
@@ -190,7 +192,7 @@
             "userConfig": {
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextField17",
-                "itemId": "FacebookId",
+                "itemId": null,
                 "name": "facebookId",
                 "fieldLabel": "Facebook"
             },
@@ -206,7 +208,7 @@
             "userConfig": {
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextField17",
-                "itemId": "GooglePlusId",
+                "itemId": null,
                 "name": "googlePlusId",
                 "fieldLabel": "Google Plus"
             },
@@ -222,7 +224,7 @@
             "userConfig": {
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextField17",
-                "itemId": "LinkedInId",
+                "itemId": null,
                 "name": "linkedInId",
                 "fieldLabel": "LinkedIn"
             },
@@ -238,7 +240,7 @@
             "userConfig": {
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextField18",
-                "itemId": "CityId",
+                "itemId": null,
                 "name": "city",
                 "fieldLabel": "City",
                 "allowBlank": false
@@ -255,7 +257,7 @@
             "userConfig": {
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextField19",
-                "itemId": "StateId",
+                "itemId": null,
                 "name": "state",
                 "fieldLabel": "State",
                 "allowBlank": false
@@ -272,7 +274,7 @@
             "userConfig": {
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextField20",
-                "itemId": "ZipcodeId",
+                "itemId": null,
                 "name": "userZipCode",
                 "fieldLabel": "Zipcode",
                 "allowBlank": false

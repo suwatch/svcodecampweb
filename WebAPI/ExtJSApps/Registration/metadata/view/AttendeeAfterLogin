@@ -201,6 +201,7 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyTextField8",
+                "inputId": null,
                 "name": "userFirstName",
                 "fieldLabel": "First Name",
                 "allowBlank": false
@@ -216,6 +217,7 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyTextField9",
+                "inputId": null,
                 "name": "userLastName",
                 "fieldLabel": "Last Name",
                 "allowBlank": false

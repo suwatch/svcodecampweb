@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -33,12 +34,13 @@ namespace WebAPI.Api
         }
 
         /// <summary>
-        /// http://www.asp.net/web-api/overview/working-with-http/sending-html-form-data,-part-2
+        /// http://www.enterpriseframework.com/post/2012/12/19/Full-Web-Api-Controller-Code-to-Receive-a-Posted-File-Async.aspx
+        /// 
         /// </summary>
         /// <returns></returns>
         [HttpPost]
         [ActionName("FormData")]
-        public Task<HttpResponseMessage> PostFormData()
+        public async Task<HttpResponseMessage> PostFormData()
         {
             // Check if the request contains multipart/form-data.
             if (!Request.Content.IsMimeMultipartContent())
@@ -46,29 +48,87 @@ namespace WebAPI.Api
                 throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
             }
 
-            string root = HttpContext.Current.Server.MapPath("~/App_Data");
-            var provider = new MultipartFormDataStreamProvider(root);
+            //Write to File
+            //string root = HttpContext.Current.Server.MapPath("~/App_Data");
+            //var provider = new MultipartFormDataStreamProvider(root);
 
-            // Read the form data and return an async task.
-            var task = Request.Content.ReadAsMultipartAsync(provider).
-                ContinueWith<HttpResponseMessage>(t =>
+            //Write to Memory
+            var provider = new MultipartMemoryStreamProvider();
+
+            try
+            {
+                StringBuilder sb = new StringBuilder(); // Holds the response body
+
+                // Read the form data and return an async task.
+                await Request.Content.ReadAsMultipartAsync(provider);
+
+                /* THIS WORKS WITH MultipartMemoryStreamProvider UNCOMMENTED ABOVE */
+
+                using (var memoryStream = new MemoryStream())
                 {
-                    if (t.IsFaulted || t.IsCanceled)
+                    //// You could also just use StreamWriter to do "writer.Write(bytes)"
+                    //ms.Write(bytes, 0, bytes.Length);
+
+                    //using (StreamWriter writer = new StreamWriter(ms))
+                    //{
+                    //    writer.Write("Some Data");
+                    //}
+
+                    //File.WriteAllBytes(outFilePath, ms.ToArray());
+
+
+                    foreach (var item in provider.Contents)
                     {
-                        Request.CreateErrorResponse(HttpStatusCode.InternalServerError, t.Exception);
+                        using (Stream stream = item.ReadAsStreamAsync().Result)
+                        {
+                            if (stream != null)
+                            {
+                                //Convert Stream to Bytes or something
+                                var bytes = new byte[stream.Length];
+                                stream.Read(bytes, 0, (int) stream.Length);
+                                memoryStream.Write(bytes, 0, (int) stream.Length);
+                            }
+                        }
                     }
 
-                    // This illustrates how to get the file names.
-                    foreach (MultipartFileData file in provider.FileData)
-                    {
-                        Trace.WriteLine(file.Headers.ContentDisposition.FileName);
-                        Trace.WriteLine("Server file path: " + file.LocalFileName);
-                    }
-                    return Request.CreateResponse(HttpStatusCode.OK);
-                });
+                    //create new Bite Array
+                    var byteArray = new byte[memoryStream.Length];
 
-            return task;
+                    //Set pointer to the beginning of the stream
+                    memoryStream.Position = 0;
+
+                    //Read the entire stream
+                    memoryStream.Read(byteArray, 0, (int)memoryStream.Length);
+
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        var attendeesResult =
+                            AttendeesManager.I.Get(new AttendeesQuery
+                                                       {
+                                                           Username = User.Identity.Name
+                                                       }).FirstOrDefault();
+                        if (attendeesResult != null)
+                        {
+                            attendeesResult.UserImage = new System.Data.Linq.Binary(byteArray);
+                            AttendeesManager.I.Update(attendeesResult);
+                        }
+
+                    }
+                }
+
+          
+                return new HttpResponseMessage()
+                {
+                    Content = new StringContent(sb.ToString())
+                };
+            }
+            catch (System.Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+            }
         }
+
+      
         [HttpPost]
         [ActionName("CheckUsernameEmailExists")]
         public HttpResponseMessage PostCheckUsernameEmailExists(AttendeesResult attendeeRecord)

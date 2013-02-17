@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+
+<!-- Auto Generated with Sencha Architect -->
+<!-- Modifications to this file will be overwritten. -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>CompQBroke</title>
+    <script src="http://extjs.cachefly.net/ext-4.1.1-gpl/ext-all.js"></script>
+    <link rel="stylesheet" href="http://extjs.cachefly.net/ext-4.1.1-gpl/resources/css/ext-all.css">
+    <script type="text/javascript" >
+
+
+        Ext.onReady(function () {
+            // upload example     
+            var fp = new Ext.form.FormPanel({
+                renderTo: Ext.getBody(),
+                fileUpload: true,
+                width: 500,
+                frame: true,
+                title: 'File Upload Form',
+                autoHeight: true,
+                bodyStyle: 'padding: 10px 10px 0 10px;',
+                labelWidth: 50,
+                items: [
+                {
+                    xtype: 'fileuploadfield',
+                    id: 'form-file',
+                    emptyText: 'Select a file',
+                    fieldLabel: 'file',
+                    name: 'uploadfile'
+
+                }
+                ],
+                buttons: [
+                {
+                    text: 'Upload',
+                    handler: function () {
+                        if (fp.getForm().isValid()) {
+                            fp.getForm().submit({
+                                url: '/Upload.ashx',
+                                  waitMsg: 'Uploading your file...',
+
+                                // or using a progress bar 
+                                success: function (form, action) {
+
+                                    alert("OK:" + action.result.message);
+
+                                },
+                                failure: function (form, action) {
+                                    alert("Error:" + action.result.message);
+                                }
+
+                            });
+                        }
+                    }
+                }
+                ]
+
+
+            });
+
+        });
+
+
+
+    </script>
+</head>
+<body></body>
+</html>

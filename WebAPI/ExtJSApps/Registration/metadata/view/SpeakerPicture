@@ -13,7 +13,8 @@
         "padding": null,
         "layout": "vbox",
         "bodyPadding": 20,
-        "title": "Speaker Picture Upload"
+        "title": "Speaker Picture Upload",
+        "url": "/api/Account/FormData"
     },
     "id": "ExtBox1-ext-gen8387",
     "designerId": "99ab335f-8e80-451e-a2c6-ac4d92811303",
@@ -102,6 +103,83 @@
                 "fieldLabel": "Speaker Picture Required Before Submitting Presentation"
             },
             "designerId": "6cd5b015-a5fd-4559-92fd-de5d67368104"
+        },
+        {
+            "type": "button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|flex": 1,
+                "designer|userClassName": "MyButton17",
+                "text": "MyButton"
+            },
+            "designerId": "91a7207c-e58f-4af6-a4d3-281aad4ea5f4",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "onButtonClick",
+                        "fn": "onButtonClick",
+                        "implHandler": [
+                            "\r",
+                            "var speakerForm = Ext.ComponentQuery.query('SpeakerPictureAlias')[0];\r",
+                            "var myMask = new Ext.LoadMask(Ext.getBody(), {msg:\"uploading picture...\"});\r",
+                            "/*\r",
+                            "Ext.Ajax.request({ \r",
+                            "    url:'/api/Account/FormData', \r",
+                            "    actionMethods:'POST', \r",
+                            "    scope:this, \r",
+                            "    params: speakerForm.getForm().getValues(),\r",
+                            "    success: function(r, o) {  \r",
+                            "\r",
+                            "        //var retData = Ext.JSON.decode(r.responseText);\r",
+                            "\r",
+                            "\r",
+                            "        //tabPanel.setActiveTab(tabPanel.getTabIdByName('SpeakerPicture'))\r",
+                            "        Ext.Msg.alert('Picture Uploaded');\r",
+                            "\r",
+                            "\r",
+                            "        myMask.hide();\r",
+                            "    },\r",
+                            "    failure: function(r,o) {\r",
+                            "        //tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeSpeakerSponsorId'));\r",
+                            "        debugger;\r",
+                            "         Ext.Msg.alert('Picture Uploaded Failed');\r",
+                            "        myMask.hide();\r",
+                            "    } \r",
+                            "});\r",
+                            "*/\r",
+                            "\r",
+                            "myMask.show();\r",
+                            "\r",
+                            "if(form.isValid()){\r",
+                            "                    form.submit({\r",
+                            "                        url: 'file-upload.php',\r",
+                            "                        waitMsg: 'Uploading your photo...',\r",
+                            "                        success: function(fp, o) {\r",
+                            "                            msg('Success', 'Processed file \"' + o.result.file + '\" on the server');\r",
+                            "                        }\r",
+                            "                    });\r",
+                            "                }\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            ""
+                        ],
+                        "name": "click",
+                        "scope": "me"
+                    },
+                    "designerId": "f1eb158a-9b32-4112-b43d-703bb4b42ba4"
+                }
+            ]
         },
         {
             "type": "panel",

@@ -1290,6 +1290,7 @@
     <Compile Include="TwitterTimelineUpdate.aspx.designer.cs">
       <DependentUpon>TwitterTimelineUpdate.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Upload.cs" />
     <Compile Include="ViewEvents.aspx.cs">
       <DependentUpon>ViewEvents.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

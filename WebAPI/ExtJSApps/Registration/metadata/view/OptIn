@@ -1,0 +1,86 @@
+{
+    "type": "form",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "OptIn",
+        "designer|userAlias": "OptInAlias",
+        "bodyPadding": 10,
+        "title": "Opt In"
+    },
+    "id": "ExtBox1-ext-gen11166",
+    "designerId": "2ae7e189-6c5e-4718-b828-ca560f5c3fdc",
+    "cn": [
+        {
+            "type": "toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "container|pack": "end",
+                "container|padding": null,
+                "designer|userClassName": "MyToolbar",
+                "height": null,
+                "itemId": "ToolBarForgotUsername"
+            },
+            "designerId": "91fa04ca-d28a-495e-836b-47f9ba2d796c",
+            "cn": [
+                {
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MyButton",
+                        "disabled": false,
+                        "id": null,
+                        "itemId": "backButtonId",
+                        "iconAlign": "right",
+                        "text": "Back"
+                    },
+                    "designerId": "2f39d220-1272-4113-8572-0ec8fbb338b3"
+                },
+                {
+                    "type": "tbseparator",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MySeparator"
+                    },
+                    "designerId": "b7f15cbf-6361-42a7-9bed-b55bd07d9d98"
+                },
+                {
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MyButton",
+                        "disabled": true,
+                        "id": null,
+                        "itemId": "continueButtonId",
+                        "iconAlign": "right",
+                        "text": "Continue"
+                    },
+                    "designerId": "299c556c-5bbb-499c-98a1-01d0ac06907f"
+                }
+            ]
+        }
+    ]
+}

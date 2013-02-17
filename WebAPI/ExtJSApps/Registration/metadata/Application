@@ -15,7 +15,9 @@
             "TabWizardPanel",
             "AttendeeAfterLogin",
             "SpeakerAfterLogin",
-            "createAccount"
+            "createAccount",
+            "SpeakerPicture",
+            "OptIn"
         ],
         "autoCreateViewport": true,
         "name": "RegistrationApp",
@@ -26,7 +28,9 @@
             "SponsorController",
             "AttendeeAfterLoginController",
             "SpeakerAfterLoginController",
-            "CreateAccountController"
+            "CreateAccountController",
+            "SpeakerPictureController",
+            "OptInController"
         ]
     },
     "id": "ExtBox1-ext-gen1587",

@@ -20,9 +20,14 @@ Ext.define('MyApp.view.MyForm', {
     width: 400,
     bodyPadding: 10,
     title: 'My Form',
+    url: 'save.aspx',
 
     initComponent: function() {
         var me = this;
+
+        me.initialConfig = Ext.apply({
+            url: 'save.aspx'
+        }, me.initialConfig);
 
         Ext.applyIf(me, {
             items: [
@@ -34,12 +39,14 @@ Ext.define('MyApp.view.MyForm', {
                         {
                             xtype: 'radiofield',
                             name: 'MyCB',
-                            boxLabel: 'CB1'
+                            boxLabel: 'CB1',
+                            inputValue: 'chb1'
                         },
                         {
                             xtype: 'radiofield',
                             name: 'MyCB',
-                            boxLabel: 'CB2'
+                            boxLabel: 'CB2',
+                            inputValue: 'chb2'
                         }
                     ]
                 },
@@ -53,11 +60,27 @@ Ext.define('MyApp.view.MyForm', {
                     anchor: '100%',
                     fieldLabel: 'Label',
                     allowBlank: false
+                },
+                {
+                    xtype: 'button',
+                    text: 'save',
+                    listeners: {
+                        click: {
+                            fn: me.onButtonClick,
+                            scope: me
+                        }
+                    }
                 }
             ]
         });
 
         me.callParent(arguments);
+    },
+
+    onButtonClick: function(button, e, options) {
+
+        debugger;
+        this.getForm().submit();
     }
 
 });

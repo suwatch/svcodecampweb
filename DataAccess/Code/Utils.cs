@@ -60,9 +60,14 @@ namespace DataAccess.Code
         /// <returns></returns>
         public static string AlphaNumericOnly(string inString)
         {
+            if (String.IsNullOrEmpty(inString))
+            {
+                return "";
+            }
+
             char[] arr = inString.ToCharArray();
             arr = Array.FindAll(arr, (c => (char.IsLetterOrDigit(c))));
-           return new string(arr);
+            return new string(arr);
         }
 
     }

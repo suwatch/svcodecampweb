@@ -1,0 +1,55 @@
+{
+    "type": "controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "OptInController"
+    },
+    "id": "ExtBox1-ext-gen22045",
+    "designerId": "acfeeb68-33a2-44a2-a3be-6a2cfba48df6",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onBackButtonIdClick",
+                "fn": "onBackButtonIdClick",
+                "implHandler": [
+                    ""
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "OptInAlias #backButtonId"
+            },
+            "designerId": "0753d868-bf1a-426c-ab3c-8ffa5650b816"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onContinueButtonIdClick",
+                "fn": "onContinueButtonIdClick",
+                "implHandler": [
+                    ""
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "OptInAlias #continueButtonId"
+            },
+            "designerId": "bcc96eff-997f-4d14-8df2-494f18190cfe"
+        }
+    ]
+}

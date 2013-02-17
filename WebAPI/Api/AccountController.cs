@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Security;
@@ -30,26 +32,43 @@ namespace WebAPI.Api
             public AttendeesResult Data { get; set; }
         }
 
-        //public class UpdateAttendeeRecord
-        //{
-        //    public string AttendeeGroup { get; set; } // radio button, attend which days. AttendingSaturdaySundayRb;
-        //    public string FirstName { get; set; }
-        //    public string LastName { get; set; }
-        //    public string Email { get; set; }
-        //    public string TwitterHandle { get; set; }
-        //    public string City { get; set; }
-        //    public string State { get; set; }
-        //    public string Zip { get; set; }
+        /// <summary>
+        /// http://www.asp.net/web-api/overview/working-with-http/sending-html-form-data,-part-2
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        [ActionName("FormData")]
+        public Task<HttpResponseMessage> PostFormData()
+        {
+            // Check if the request contains multipart/form-data.
+            if (!Request.Content.IsMimeMultipartContent())
+            {
+                throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
+            }
 
-        //    public bool? QrAllowEmail { get; set; }
-        //    public bool? QrWebSiteAllow { get; set; }
-        //    public bool? QrAddressLineAllow { get; set; }
-        //    public bool? QrZipCodeAllow { get; set; }
-        //    public bool? QrTwitterAllow { get; set; }
-           
+            string root = HttpContext.Current.Server.MapPath("~/App_Data");
+            var provider = new MultipartFormDataStreamProvider(root);
 
-        //}
+            // Read the form data and return an async task.
+            var task = Request.Content.ReadAsMultipartAsync(provider).
+                ContinueWith<HttpResponseMessage>(t =>
+                {
+                    if (t.IsFaulted || t.IsCanceled)
+                    {
+                        Request.CreateErrorResponse(HttpStatusCode.InternalServerError, t.Exception);
+                    }
 
+                    // This illustrates how to get the file names.
+                    foreach (MultipartFileData file in provider.FileData)
+                    {
+                        Trace.WriteLine(file.Headers.ContentDisposition.FileName);
+                        Trace.WriteLine("Server file path: " + file.LocalFileName);
+                    }
+                    return Request.CreateResponse(HttpStatusCode.OK);
+                });
+
+            return task;
+        }
         [HttpPost]
         [ActionName("CheckUsernameEmailExists")]
         public HttpResponseMessage PostCheckUsernameEmailExists(AttendeesResult attendeeRecord)

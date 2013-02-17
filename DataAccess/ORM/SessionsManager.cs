@@ -315,8 +315,7 @@ namespace CodeCampSV
 
                     // quick and dirty cleansing of speaker data so just public data will be shown
                     var tempSpeakerResults =
-                        speakerResults.Where(a => speakerIdsForList.Contains(a.Id))
-                                      .OrderBy(a => a.UserLastName.ToUpper());
+                        Enumerable.OrderBy(speakerResults.Where(a => speakerIdsForList.Contains(a.Id)), a => a.UserLastName == null ? string.Empty : a.UserLastName.ToUpper());
                     session.SpeakersList = new List<SpeakerResult>();
                     foreach (var rec in tempSpeakerResults)
                     {

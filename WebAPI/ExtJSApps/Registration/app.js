@@ -27,7 +27,9 @@ Ext.application({
         'TabWizardPanel',
         'AttendeeAfterLogin',
         'SpeakerAfterLogin',
-        'createAccount'
+        'createAccount',
+        'SpeakerPicture',
+        'OptIn'
     ],
     autoCreateViewport: true,
     name: 'RegistrationApp',
@@ -38,7 +40,9 @@ Ext.application({
         'SponsorController',
         'AttendeeAfterLoginController',
         'SpeakerAfterLoginController',
-        'CreateAccountController'
+        'CreateAccountController',
+        'SpeakerPictureController',
+        'OptInController'
     ],
 
     launch: function() {

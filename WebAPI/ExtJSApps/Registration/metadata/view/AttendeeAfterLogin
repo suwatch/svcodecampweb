@@ -60,7 +60,7 @@
                     "userConfig": {
                         "designer|userClassName": "MyRadio7",
                         "itemId": "AttendingSundayId",
-                        "name": "AttendingDaysChoiceCurrentYear",
+                        "name": "attendingDaysChoiceCurrentYear",
                         "fieldLabel": null,
                         "boxLabel": "Attending Sunday",
                         "inputValue": "AttendingSunday"

@@ -1,0 +1,125 @@
+{
+    "type": "form",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "stretch",
+        "container|padding": 10,
+        "designer|userClassName": "SpeakerPicture",
+        "designer|userAlias": "SpeakerPictureAlias",
+        "padding": null,
+        "layout": "vbox",
+        "bodyPadding": 20,
+        "title": "Speaker Picture Upload"
+    },
+    "id": "ExtBox1-ext-gen8387",
+    "designerId": "99ab335f-8e80-451e-a2c6-ac4d92811303",
+    "cn": [
+        {
+            "type": "toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|flex": 1,
+                "dock": "top",
+                "container|pack": "end",
+                "container|padding": null,
+                "designer|userClassName": "MyToolbar",
+                "height": null,
+                "itemId": "ToolBarForgotUsername"
+            },
+            "designerId": "dbd7cb50-a846-451d-8ac7-f7bffd5fee71",
+            "cn": [
+                {
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MyButton",
+                        "disabled": false,
+                        "id": null,
+                        "itemId": "backButtonId",
+                        "iconAlign": "right",
+                        "text": "Back"
+                    },
+                    "designerId": "38ad6664-7a1f-48dd-b433-72f989a6fc06"
+                },
+                {
+                    "type": "tbseparator",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MySeparator"
+                    },
+                    "designerId": "083b14a4-bd35-4dba-888c-d6fc45c34246"
+                },
+                {
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "formBind": true,
+                        "designer|userClassName": "MyButton",
+                        "disabled": true,
+                        "id": null,
+                        "itemId": "continueButtonId",
+                        "iconAlign": "right",
+                        "text": "Continue"
+                    },
+                    "designerId": "76b0a64d-451c-455c-a06f-c826ff5c162d"
+                }
+            ]
+        },
+        {
+            "type": "filefield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|flex": null,
+                "designer|userClassName": "MyFileUpload",
+                "height": 100,
+                "fieldLabel": "Speaker Picture Required Before Submitting Presentation"
+            },
+            "designerId": "6cd5b015-a5fd-4559-92fd-de5d67368104"
+        },
+        {
+            "type": "panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|flex": 2,
+                "designer|userClassName": "MyPanel",
+                "height": null,
+                "html": [
+                    "<img src='http://petersblogcdn1.s3.amazonaws.com/wp/wp-content/themes/focus/images/peterkellner.net-logo.png' alt='image' />"
+                ],
+                "title": null
+            },
+            "designerId": "0100e99f-c88c-4569-b9f5-76731275d87e"
+        }
+    ]
+}

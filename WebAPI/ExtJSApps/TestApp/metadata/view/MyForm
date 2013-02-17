@@ -11,7 +11,8 @@
         "height": 250,
         "width": 400,
         "bodyPadding": 10,
-        "title": "My Form"
+        "title": "My Form",
+        "url": "save.aspx"
     },
     "id": "ExtBox1-ext-gen22878",
     "designerId": "f0de1fb8-15ed-428d-b5d2-ed4ef4d7b0ea",
@@ -39,9 +40,11 @@
                     "codeClass": null,
                     "userConfig": {
                         "designer|userClassName": "MyRadio",
+                        "inputId": null,
                         "name": "MyCB",
                         "fieldLabel": null,
-                        "boxLabel": "CB1"
+                        "boxLabel": "CB1",
+                        "inputValue": "chb1"
                     },
                     "designerId": "09524b06-89f6-4095-a5c9-2ab38bbbda3f"
                 },
@@ -54,9 +57,11 @@
                     "codeClass": null,
                     "userConfig": {
                         "designer|userClassName": "MyRadio1",
+                        "inputId": null,
                         "name": "MyCB",
                         "fieldLabel": null,
-                        "boxLabel": "CB2"
+                        "boxLabel": "CB2",
+                        "inputValue": "chb2"
                     },
                     "designerId": "da5a055a-2490-4c1a-b909-b8e29ccb977e"
                 }
@@ -90,6 +95,41 @@
                 "allowBlank": false
             },
             "designerId": "88c85a67-a0d6-4abe-8ae8-b0d7fc1c1b0a"
+        },
+        {
+            "type": "button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyButton1",
+                "text": "save"
+            },
+            "designerId": "0290e7ce-31bf-4ba2-bce0-e72629458031",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "onButtonClick",
+                        "fn": "onButtonClick",
+                        "implHandler": [
+                            "\r",
+                            "debugger;\r",
+                            "this.getForm().submit();"
+                        ],
+                        "name": "click",
+                        "scope": "me"
+                    },
+                    "designerId": "190a6496-bb92-43d2-be15-fb33cc73989a"
+                }
+            ]
         }
     ]
 }

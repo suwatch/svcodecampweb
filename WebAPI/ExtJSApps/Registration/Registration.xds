@@ -149,6 +149,38 @@
                 "app/view/createAccount.js"
             ],
             "className": "createAccount"
+        },
+        "99ab335f-8e80-451e-a2c6-ac4d92811303": {
+            "paths": [
+                "metadata/view/SpeakerPicture",
+                "app/view/override/SpeakerPicture.js",
+                "app/view/SpeakerPicture.js"
+            ],
+            "className": "SpeakerPicture"
+        },
+        "2ae7e189-6c5e-4718-b828-ca560f5c3fdc": {
+            "paths": [
+                "metadata/view/OptIn",
+                "app/view/override/OptIn.js",
+                "app/view/OptIn.js"
+            ],
+            "className": "OptIn"
+        },
+        "66730eaf-26dc-4b6c-a2f1-3af8f04963c4": {
+            "paths": [
+                "metadata/controller/SpeakerPictureController",
+                "app/controller/override/SpeakerPictureController.js",
+                "app/controller/SpeakerPictureController.js"
+            ],
+            "className": "SpeakerPictureController"
+        },
+        "acfeeb68-33a2-44a2-a3be-6a2cfba48df6": {
+            "paths": [
+                "metadata/controller/OptInController",
+                "app/controller/override/OptInController.js",
+                "app/controller/OptInController.js"
+            ],
+            "className": "OptInController"
         }
     },
     "viewOrderMap": {
@@ -161,7 +193,9 @@
             "56e26b45-7fe3-4b60-bbd4-c2b2c6c64e83",
             "6d82b69b-3f21-447d-9161-8f72c94f975b",
             "fd7d5df9-3fda-46f2-82cb-9cfeb17ff1e9",
-            "98a8cc4b-7db4-4a2e-8aea-8fe5195956e4"
+            "98a8cc4b-7db4-4a2e-8aea-8fe5195956e4",
+            "99ab335f-8e80-451e-a2c6-ac4d92811303",
+            "2ae7e189-6c5e-4718-b828-ca560f5c3fdc"
         ],
         "store": [],
         "controller": [
@@ -171,7 +205,9 @@
             "cab99d0f-d5c3-4fde-a0ec-d102368a862f",
             "0c4f878b-eeff-417b-97aa-d7d05129ec73",
             "fafbaf9d-46bc-4791-8e9a-7a91c69c6664",
-            "65a4b174-5ba2-4812-ba07-d9ff918ccf6e"
+            "65a4b174-5ba2-4812-ba07-d9ff918ccf6e",
+            "66730eaf-26dc-4b6c-a2f1-3af8f04963c4",
+            "acfeeb68-33a2-44a2-a3be-6a2cfba48df6"
         ],
         "model": [],
         "resource": [

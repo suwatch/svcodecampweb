@@ -53,7 +53,7 @@
                         "designer|userClassName": "MyRadio11",
                         "itemId": "speakSaturdayId",
                         "inputId": "speakSaturday",
-                        "name": "SpeakerCanSpeak",
+                        "name": "attendingDaysChoiceCurrentYear",
                         "fieldLabel": null,
                         "boxLabel": "Can Speak Saturday",
                         "inputValue": "AttendingSaturday"
@@ -70,7 +70,7 @@
                     "userConfig": {
                         "designer|userClassName": "MyRadio12",
                         "itemId": "speakSundayId",
-                        "name": "SpeakerCanSpeak",
+                        "name": "attendingDaysChoiceCurrentYear",
                         "fieldLabel": null,
                         "boxLabel": "Can Speak Sunday",
                         "inputValue": "AttendingSunday"
@@ -87,7 +87,7 @@
                     "userConfig": {
                         "designer|userClassName": "MyRadio12",
                         "itemId": "speakSaturdayAndSundayId",
-                        "name": "SpeakerCanSpeak",
+                        "name": "attendingDaysChoiceCurrentYear",
                         "fieldLabel": null,
                         "boxLabel": "Can Speak Saturday Or Sunday",
                         "checked": true,
@@ -175,7 +175,7 @@
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextField17",
                 "itemId": "TwitterHandleId",
-                "name": "twitterhandle",
+                "name": "twitterHandle",
                 "fieldLabel": "Twitter Handle"
             },
             "designerId": "75fa993a-7e3c-42c2-97c6-0d4d1077622b"

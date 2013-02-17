@@ -1,0 +1,85 @@
+{
+    "type": "controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "SpeakerPictureController"
+    },
+    "id": "ExtBox1-ext-gen21939",
+    "designerId": "66730eaf-26dc-4b6c-a2f1-3af8f04963c4",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onBackButtonIdClick",
+                "fn": "onBackButtonIdClick",
+                "implHandler": [
+                    "\r",
+                    "\r",
+                    "\r",
+                    ""
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "speakerPictureAlias #backButtonId"
+            },
+            "designerId": "3634d717-a7fa-4898-8a0b-8aa1c41fda46"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onContinueButtonIdClick",
+                "fn": "onContinueButtonIdClick",
+                "implHandler": [
+                    "\r",
+                    "\r",
+                    "var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];\r",
+                    "var thisPanel = Ext.ComponentQuery.query('SpeakerPictureAlias')[0];\r",
+                    "\r",
+                    "var values = thisPanel.getForm().getValues();\r",
+                    "\r",
+                    "Ext.Ajax.request({ \r",
+                    "    url:'/api/Account/UpdateAttendee', \r",
+                    "    actionMethods:'POST', \r",
+                    "    scope:this, \r",
+                    "    params: thisPanel.getForm().getValues(),\r",
+                    "    success: function(r, o) {  \r",
+                    "\r",
+                    "        //var retData = Ext.JSON.decode(r.responseText);\r",
+                    "\r",
+                    "\r",
+                    "        tabPanel.setActiveTab(tabPanel.getTabIdByName('SpeakerPicture'));\r",
+                    "        //Ext.Msg.alert('take to sponsor opt in page');\r",
+                    "\r",
+                    "\r",
+                    "        myMask.hide();\r",
+                    "    },\r",
+                    "    failure: function(r,o) {\r",
+                    "        tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeSpeakerSponsorId'));\r",
+                    "        myMask.hide();\r",
+                    "    } \r",
+                    "});"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "speakerPictureAlias #continueButtonId"
+            },
+            "designerId": "fc88c58f-6de2-4a25-b209-7492cc055302"
+        }
+    ]
+}

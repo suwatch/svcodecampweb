@@ -158,6 +158,35 @@
             },
             "codeClass": null,
             "userConfig": {
+                "designer|userClassName": "MyTextField10",
+                "name": "phoneNumber",
+                "fieldLabel": "Phone Number"
+            },
+            "designerId": "e78aee43-10c1-4ee9-b4b2-af6a16728f86"
+        },
+        {
+            "type": "combobox",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|anchor": "100%",
+                "designer|userClassName": "MyComboBox",
+                "name": "shirtSize",
+                "fieldLabel": "Speaker Shirt Size"
+            },
+            "designerId": "3e45e01a-525e-4b9b-9dc3-4a3b03a8dbba"
+        },
+        {
+            "type": "textfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextField14",
                 "itemId": null,
@@ -238,6 +267,20 @@
             },
             "codeClass": null,
             "userConfig": {
+                "designer|userClassName": "MyTextField10",
+                "name": "emailEventBoard",
+                "fieldLabel": "Eventboard Email"
+            },
+            "designerId": "846fa1e0-ed79-43e4-b444-8c42a3ef4bf2"
+        },
+        {
+            "type": "textfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextField18",
                 "itemId": null,
@@ -280,6 +323,24 @@
                 "allowBlank": false
             },
             "designerId": "84e97daa-769b-4ec5-b44a-fd5862c7abab"
+        },
+        {
+            "type": "checkboxfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|anchor": "100%",
+                "designer|userClassName": "MyCheckbox4",
+                "name": "volunteeredCurrentYear",
+                "fieldLabel": "Volunteer",
+                "boxLabel": "(Volunteer To Help Day Of)",
+                "inputValue": "true",
+                "uncheckedValue": "false"
+            },
+            "designerId": "5f6ef3af-3020-4d1d-aed8-38335e8be5bb"
         },
         {
             "type": "textareafield",

@@ -22,7 +22,7 @@
                 "designer|userClassName": "onContinueButtonIdClick",
                 "fn": "onContinueButtonIdClick",
                 "implHandler": [
-                    "var myMask = new Ext.LoadMask(Ext.getBody(), {msg:\"Updating Database Record...\"});\r",
+                    "var myMask = new Ext.LoadMask(Ext.getBody(), {msg:\"Updating...\"});\r",
                     "// always check logged in status when get here\r",
                     "myMask.show();\r",
                     "\r",
@@ -31,7 +31,7 @@
                     "\r",
                     "\r",
                     "Ext.Ajax.request({ \r",
-                    "    url:'/api/Account/UpdateAttendee', \r",
+                    "    url:'/api/Account/UpdateSpeaker', \r",
                     "    actionMethods:'POST', \r",
                     "    scope:this, \r",
                     "    params: thisPanel.getForm().getValues(),\r",

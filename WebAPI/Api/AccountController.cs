@@ -12,7 +12,6 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Security;
 using CodeCampSV;
-using System.Net.Http.Formatting;
 
 namespace WebAPI.Api
 {
@@ -193,8 +192,20 @@ namespace WebAPI.Api
         }
 
         [HttpPost]
+        [ActionName("UpdateSpeaker")]
+        public HttpResponseMessage PostUpdateSpeaker(AttendeesResult attendeeRecord)
+        {
+            return UpdateAttendeeOrSpeaker(attendeeRecord, "speaker");
+        }
+
+        [HttpPost]
         [ActionName("UpdateAttendee")]
         public HttpResponseMessage PostUpdateAttendee(AttendeesResult attendeeRecord)
+        {
+            return UpdateAttendeeOrSpeaker(attendeeRecord,"attendee");
+        }
+
+        private HttpResponseMessage UpdateAttendeeOrSpeaker(AttendeesResult attendeeRecord,string attendeeOrSpeaker)
         {
             HttpResponseMessage response;
 
@@ -215,6 +226,8 @@ namespace WebAPI.Api
                                                }).FirstOrDefault();
                 if (attendeesResult != null)
                 {
+                    // These are the only fields that can get updated by the caller (security)
+                    // (for both speaker and attendee)
                     attendeesResult.Email = attendeeRecord.Email;
                     attendeesResult.UserFirstName = attendeeRecord.UserFirstName;
                     attendeesResult.UserLastName = attendeeRecord.UserLastName;
@@ -222,18 +235,28 @@ namespace WebAPI.Api
                     attendeesResult.State = attendeeRecord.State;
                     attendeesResult.UserZipCode = attendeeRecord.UserZipCode;
                     attendeesResult.TwitterHandle = attendeeRecord.TwitterHandle;
-                    attendeesResult.FacebookId = attendeeRecord.FacebookId;
-                    attendeesResult.GooglePlusId = attendeeRecord.GooglePlusId;
-                    attendeesResult.LinkedInId = attendeeRecord.LinkedInId;
                     attendeesResult.AttendingDaysChoiceCurrentYear = attendeeRecord.AttendingDaysChoiceCurrentYear;
                     attendeesResult.RegisteredCurrentYear = attendeeRecord.RegisteredCurrentYear;
+                    attendeesResult.PhoneNumber = attendeeRecord.PhoneNumber;
+                    attendeesResult.EmailEventBoard = attendeeRecord.EmailEventBoard;
+                    attendeesResult.VolunteeredCurrentYear = attendeeRecord.VolunteeredCurrentYear;
+
+
+                    // speaker stuff below
+                    if (attendeeOrSpeaker.ToLower().Equals("speaker"))
+                    {
+                        attendeesResult.FacebookId = attendeeRecord.FacebookId;
+                        attendeesResult.GooglePlusId = attendeeRecord.GooglePlusId;
+                        attendeesResult.LinkedInId = attendeeRecord.LinkedInId;
+                        attendeesResult.ShirtSize = attendeeRecord.ShirtSize;
+                        attendeesResult.UserBio = attendeeRecord.UserBio;
+                    }
+
 
                     attendeesResult.CurrentCodeCampYear = Utils.CurrentCodeCampYear;
                     AttendeesManager.I.UpdateWithAttendeeCCY(attendeesResult);
 
-                    response = Request.CreateResponse(HttpStatusCode.OK, attendeesResult);
-
-
+                    response = Request.CreateResponse(HttpStatusCode.OK, MakeSafeAttendee(attendeesResult));
                 }
                 else
                 {
@@ -241,9 +264,6 @@ namespace WebAPI.Api
                         Request.CreateErrorResponse(HttpStatusCode.Forbidden,
                                                     "User Authenticated but no base attendee record found");
                 }
-
-
-
             }
             return response;
         }
@@ -324,15 +344,16 @@ namespace WebAPI.Api
                {
                    FormsAuthentication.SetAuthCookie(login.Username, login.RememberMe);
 
-                   AttendeesResult attendeesResultFull = AttendeesManager.I.Get(new AttendeesQuery()
-                                                                                    {
-                                                                                        Username = login.Username
-                                                                                    }).FirstOrDefault();
+                   AttendeesResult attendeesResultFull =
+                       AttendeesManager.I.Get(new AttendeesQuery()
+                                                  {
+                                                      CodeCampYearId = Utils.CurrentCodeCampYear,
+                                                      IncludeAttendeesCodeCampYearResult = true,
+                                                      Username = login.Username
+                                                  }).FirstOrDefault();
                    if (attendeesResultFull != null)
                    {
-                       //var attendeesResult = AttendeesResultStripped(attendeesResultFull);
-                       //loginReturnStatus.Data = attendeesResult;
-                       response = Request.CreateResponse(HttpStatusCode.OK, attendeesResultFull);
+                       response = Request.CreateResponse(HttpStatusCode.OK, MakeSafeAttendee(attendeesResultFull));
                    }
                    else
                    {
@@ -358,6 +379,18 @@ namespace WebAPI.Api
             return response;
         }
 
+        private AttendeesResult MakeSafeAttendee(AttendeesResult attendeesResultFull)
+        {
+            attendeesResultFull.ApplicationName = "";
+            attendeesResultFull.FullNameUsernameZipcode = "";
+            attendeesResultFull.PKID = Guid.Empty;
+            attendeesResultFull.Password = "";
+            attendeesResultFull.PasswordAnswer = "";
+            attendeesResultFull.PasswordQuestion = "";
+            attendeesResultFull.UserImage = null;
+            return attendeesResultFull;
+        }
+
 
         [HttpPost]
         [ActionName("IsLoggedIn")]
@@ -370,7 +403,7 @@ namespace WebAPI.Api
 
             if (User.Identity.IsAuthenticated)
             {
-                var attendeesResultFull =
+                AttendeesResult attendeesResultFull =
                     AttendeesManager.I.Get(new AttendeesQuery
                                                {
                                                    Username = User.Identity.Name,
@@ -382,7 +415,7 @@ namespace WebAPI.Api
                 {
                     //var attendeesResult = AttendeesResultStripped(attendeesResultFull);
                     loginReturnStatus.Data = attendeesResultFull;
-                    response = Request.CreateResponse(HttpStatusCode.OK, attendeesResultFull);
+                    response = Request.CreateResponse(HttpStatusCode.OK, MakeSafeAttendee(attendeesResultFull));
                 }
                 else
                 {
@@ -412,45 +445,5 @@ namespace WebAPI.Api
             return Request.CreateResponse(HttpStatusCode.OK, "");
         }
 
-        //private static AttendeesResult AttendeesResultStripped(AttendeesResult attendeesResultFull)
-        //{
-        //    var attendeesResult =
-        //        new AttendeesResult
-        //            {
-        //                Username = attendeesResultFull.Username,
-        //                UserFirstName = attendeesResultFull.UserFirstName,
-        //                UserLastName = attendeesResultFull.UserLastName,
-        //                PKID = attendeesResultFull.PKID,
-        //                Id = attendeesResultFull.Id,
-        //                Email = attendeesResultFull.Email,
-        //                City = attendeesResultFull.City,
-        //                State = attendeesResultFull.State,
-        //                UserZipCode = attendeesResultFull.UserZipCode,
-        //                TwitterHandle = attendeesResultFull.TwitterHandle,
-        //                FacebookId = attendeesResultFull.FacebookId,
-        //                GooglePlusId = attendeesResultFull.GooglePlusId,
-        //                LinkedInId = attendeesResultFull.LinkedInId,
-        //                EmailEventBoard = attendeesResultFull.EmailEventBoard,
-        //                OptInSponsorSpecialsLevel = attendeesResultFull.OptInSponsorSpecialsLevel,
-        //                OptInSponsoredMailingsLevel = attendeesResultFull.OptInSponsorSpecialsLevel,
-        //                ShirtSize = attendeesResultFull.ShirtSize,
-        //                UserBio = attendeesResultFull.UserBio,
-        //                UserWebsite = attendeesResultFull.UserWebsite,
-                            
-
-        //                QREmailAllow = attendeesResultFull.QREmailAllow,
-        //                QRAddressLine1Allow = attendeesResultFull.QRAddressLine1Allow,
-        //                QRPhoneAllow = attendeesResultFull.QRPhoneAllow,
-        //                QRWebSiteAllow = attendeesResultFull.QRWebSiteAllow,
-        //                QRZipCodeAllow = attendeesResultFull.QRZipCodeAllow,
-                        
-        //                AttendeesCodeCampYearResult = attendeesResultFull.AttendeesCodeCampYearResult,
-        //                HasSessionsCurrentYear = attendeesResultFull.HasSessionsCurrentYear,
-        //                AttendingDaysChoiceCurrentYear = attendeesResultFull.AttendingDaysChoiceCurrentYear,
-        //                RegisteredCurrentYear = attendeesResultFull.RegisteredCurrentYear,
-        //                VolunteeredCurrentYear = attendeesResultFull.VolunteeredCurrentYear
-        //            };
-        //    return attendeesResult;
-        //}
     }
 }

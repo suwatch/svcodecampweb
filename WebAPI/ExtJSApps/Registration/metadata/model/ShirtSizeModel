@@ -1,0 +1,28 @@
+{
+    "type": "datamodel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "ShirtSizeModel"
+    },
+    "id": "ExtBox1-ext-gen14322",
+    "designerId": "75d87ed4-5b20-49b1-8096-b6662f06baaa",
+    "cn": [
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field",
+                "name": "shirtSize"
+            },
+            "designerId": "1da1c7ec-45eb-4b46-a935-aa3f88c5aa70"
+        }
+    ]
+}

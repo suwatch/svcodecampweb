@@ -181,6 +181,22 @@
                 "app/controller/OptInController.js"
             ],
             "className": "OptInController"
+        },
+        "2df5fdd0-01fc-4e68-881d-d3c705099d7b": {
+            "paths": [
+                "metadata/store/ShirtSizeStore",
+                "app/store/override/ShirtSizeStore.js",
+                "app/store/ShirtSizeStore.js"
+            ],
+            "className": "ShirtSizeStore"
+        },
+        "75d87ed4-5b20-49b1-8096-b6662f06baaa": {
+            "paths": [
+                "metadata/model/ShirtSizeModel",
+                "app/model/override/ShirtSizeModel.js",
+                "app/model/ShirtSizeModel.js"
+            ],
+            "className": "ShirtSizeModel"
         }
     },
     "viewOrderMap": {
@@ -197,7 +213,9 @@
             "99ab335f-8e80-451e-a2c6-ac4d92811303",
             "2ae7e189-6c5e-4718-b828-ca560f5c3fdc"
         ],
-        "store": [],
+        "store": [
+            "2df5fdd0-01fc-4e68-881d-d3c705099d7b"
+        ],
         "controller": [
             "c1e28fd8-26ea-4392-a260-b19d1915f1d8",
             "649a7ff9-eed4-4a08-8133-fc01c9df011f",
@@ -209,7 +227,9 @@
             "66730eaf-26dc-4b6c-a2f1-3af8f04963c4",
             "acfeeb68-33a2-44a2-a3be-6a2cfba48df6"
         ],
-        "model": [],
+        "model": [
+            "75d87ed4-5b20-49b1-8096-b6662f06baaa"
+        ],
         "resource": [
             "01e8660b-7ed7-40e5-b0b9-55c1a36bf025"
         ],

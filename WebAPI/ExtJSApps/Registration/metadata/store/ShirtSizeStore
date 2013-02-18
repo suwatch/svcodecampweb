@@ -1,0 +1,43 @@
+{
+    "type": "arraystore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "ShirtSizeStore",
+        "storeId": "MyArrayStore",
+        "model": "ShirtSizeModel"
+    },
+    "id": "ExtBox1-ext-gen13864",
+    "designerId": "2df5fdd0-01fc-4e68-881d-d3c705099d7b",
+    "cn": [
+        {
+            "type": "ajaxproxy",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyAjaxProxy"
+            },
+            "designerId": "b418f317-0bf1-408b-bb65-3abd276bca2f",
+            "cn": [
+                {
+                    "type": "arrayreader",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyArrayReader"
+                    },
+                    "designerId": "b6aeb254-79a4-4751-b7b9-bf6e0a137bf1"
+                }
+            ]
+        }
+    ]
+}

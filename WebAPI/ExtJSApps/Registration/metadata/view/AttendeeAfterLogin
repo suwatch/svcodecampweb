@@ -241,6 +241,38 @@
             "designerId": "14b9be0b-a392-4098-add2-e3e4b85a151b"
         },
         {
+            "type": "checkboxfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|anchor": "100%",
+                "designer|userClassName": "MyCheckbox4",
+                "name": "volunteeredCurrentYear",
+                "fieldLabel": "Volunteer",
+                "boxLabel": "(Volunter To Help Day Of)",
+                "inputValue": "true",
+                "uncheckedValue": "false"
+            },
+            "designerId": "adc909df-4183-4375-85c6-f6d8d6f6c538"
+        },
+        {
+            "type": "textfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyTextField10",
+                "name": "phoneNumber",
+                "fieldLabel": "Phone Number (If Volunteer)"
+            },
+            "designerId": "035633af-a7c5-4bbf-9958-98a64fd6820e"
+        },
+        {
             "type": "textfield",
             "reference": {
                 "name": "items",
@@ -252,7 +284,21 @@
                 "name": "twitterHandle",
                 "fieldLabel": "Twitter Handle"
             },
-            "designerId": "035633af-a7c5-4bbf-9958-98a64fd6820e"
+            "designerId": "956fcab5-9c3b-4568-a675-f53511bcb3e5"
+        },
+        {
+            "type": "textfield",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyTextField10",
+                "name": "emailEventBoard",
+                "fieldLabel": "Eventboard Email"
+            },
+            "designerId": "55f5f5b4-2b92-4ab1-96d0-f78f71a5cdef"
         },
         {
             "type": "textfield",

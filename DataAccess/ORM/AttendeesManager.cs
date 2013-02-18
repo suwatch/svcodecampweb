@@ -254,6 +254,11 @@ namespace CodeCampSV
 
             List<AttendeesResult> resultList = GetFinalResults(results, query);
 
+            foreach (var rec in resultList)
+            {
+                rec.AttendeesId = rec.Id;
+            }
+
             var sessionsBySpeakerdict = new Dictionary<int, List<SessionPresentResultSmall>>();
             if (query.IncludeSessions.HasValue && query.IncludeSessions.Value)
             {

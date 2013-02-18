@@ -58,5 +58,8 @@ namespace CodeCampSV
         [DataMember]
         public int? CurrentCodeCampYear { get; set; }
 
+        [DataMember]
+        public int AttendeesId { get; set; }
+
     }
 }

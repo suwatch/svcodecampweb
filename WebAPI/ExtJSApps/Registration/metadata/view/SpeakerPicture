@@ -8,6 +8,7 @@
     "userConfig": {
         "container|align": "stretch",
         "container|padding": 10,
+        "buttons": null,
         "designer|userClassName": "SpeakerPicture",
         "designer|userAlias": "SpeakerPictureAlias",
         "padding": null,
@@ -18,6 +19,13 @@
     },
     "id": "ExtBox1-ext-gen8387",
     "designerId": "99ab335f-8e80-451e-a2c6-ac4d92811303",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "buttons",
+            "type": "string"
+        }
+    ],
     "cn": [
         {
             "type": "toolbar",
@@ -98,82 +106,14 @@
             "codeClass": null,
             "userConfig": {
                 "layout|flex": null,
+                "dock": null,
                 "designer|userClassName": "MyFileUpload",
                 "height": 100,
-                "fieldLabel": "Speaker Picture Required Before Submitting Presentation"
+                "itemId": "SpeakerPictureUploadId",
+                "fieldLabel": "Speaker Picture Required Before Submitting Presentation",
+                "labelWidth": 0
             },
             "designerId": "6cd5b015-a5fd-4559-92fd-de5d67368104"
-        },
-        {
-            "type": "button",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "layout|flex": 1,
-                "designer|userClassName": "MyButton17",
-                "text": "MyButton"
-            },
-            "designerId": "91a7207c-e58f-4af6-a4d3-281aad4ea5f4",
-            "cn": [
-                {
-                    "type": "basiceventbinding",
-                    "reference": {
-                        "name": "listeners",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "designer|userClassName": "onButtonClick",
-                        "fn": "onButtonClick",
-                        "implHandler": [
-                            "\r",
-                            "var speakerForm = Ext.ComponentQuery.query('SpeakerPictureAlias')[0];\r",
-                            "var myMask = new Ext.LoadMask(Ext.getBody(), {msg:\"uploading picture...\"});\r",
-                            "\r",
-                            "\r",
-                            "Ext.Ajax.defaultPostHeader = 'application/json';\r",
-                            "\r",
-                            "myMask.show();\r",
-                            "\r",
-                            "if(speakerForm.isValid()){\r",
-                            "    speakerForm.submit({\r",
-                            "        url: '/api/Account/FormData',\r",
-                            "\r",
-                            "        waitMsg: 'Uploading your photo...',\r",
-                            "        success: function(fp, o) {\r",
-                            "            myMask.hide();\r",
-                            "            //msg('Success', 'Processed file \"' + o.result.file + '\" on the server');\r",
-                            "        },\r",
-                            "\r",
-                            "        failure: function(form, action){\r",
-                            "            //debugger;\r",
-                            "            if (action.failureType === Ext.form.action.Action.CONNECT_FAILURE) {\r",
-                            "                Ext.Msg.alert('Error',\r",
-                            "                'Status:'+action.response.status+': '+\r",
-                            "                action.response.statusText);\r",
-                            "            }\r",
-                            "            if (action.failureType === Ext.form.action.Action.SERVER_INVALID){\r",
-                            "                // server responded with success = false\r",
-                            "                Ext.Msg.alert('Invalid', action.result.errormsg);\r",
-                            "            }\r",
-                            "        }\r",
-                            "    });\r",
-                            "}\r",
-                            "\r",
-                            "\r",
-                            "\r",
-                            "\r",
-                            ""
-                        ],
-                        "name": "click",
-                        "scope": "me"
-                    },
-                    "designerId": "f1eb158a-9b32-4112-b43d-703bb4b42ba4"
-                }
-            ]
         },
         {
             "type": "panel",
@@ -186,12 +126,31 @@
                 "layout|flex": 2,
                 "designer|userClassName": "MyPanel",
                 "height": null,
-                "html": [
-                    "<img src='http://petersblogcdn1.s3.amazonaws.com/wp/wp-content/themes/focus/images/peterkellner.net-logo.png' alt='image' />"
-                ],
+                "itemId": "PicturePanelId",
                 "title": null
             },
-            "designerId": "0100e99f-c88c-4569-b9f5-76731275d87e"
+            "designerId": "0100e99f-c88c-4569-b9f5-76731275d87e",
+            "cn": [
+                {
+                    "type": "image",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyImg",
+                        "height": 201,
+                        "itemId": "SpeakerImgId",
+                        "ui": [
+                            "http://svcodecamp.azurewebsites.net/Content/Images/silicon-valley-code-camp.png"
+                        ],
+                        "width": 201,
+                        "src": "http://svcodecamp.azurewebsites.net/Content/Images/silicon-valley-code-camp.png"
+                    },
+                    "designerId": "6b917543-ebf1-4f54-9080-a8ab971a050a"
+                }
+            ]
         }
     ]
 }

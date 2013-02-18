@@ -35,6 +35,9 @@ namespace WebAPI.Api
             public string File { get; set; }
 
             public bool Success { get; set; }
+
+            public int AttendeeId { get; set; }
+           
         }
 
         public class ShirtSizeRec
@@ -60,6 +63,8 @@ namespace WebAPI.Api
         [ActionName("FormData")]
         public async Task<HttpResponseMessage> PostFormData()
         {
+            int attendeesId = -1;
+
             // Check if the request contains multipart/form-data.
             if (!Request.Content.IsMimeMultipartContent())
             {
@@ -123,9 +128,12 @@ namespace WebAPI.Api
                                                        {
                                                            Username = User.Identity.Name
                                                        }).FirstOrDefault();
+                        
                         if (attendeesResult != null)
                         {
+                            attendeesId = attendeesResult.Id;
                             attendeesResult.UserImage = new System.Data.Linq.Binary(byteArray);
+
                             AttendeesManager.I.Update(attendeesResult);
                         }
 
@@ -134,6 +142,7 @@ namespace WebAPI.Api
 
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, new LoginReturnStatus()
                                                                                              {
+                                                                                                 AttendeeId = attendeesId,
                                                                                                  Success = true,
                                                                                                  Status = "success",
                                                                                                  File="speaker.jpg"

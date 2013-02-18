@@ -6,9 +6,9 @@
     },
     "codeClass": null,
     "userConfig": {
+        "buttons": null,
         "container|align": "stretch",
         "container|padding": 10,
-        "buttons": null,
         "designer|userClassName": "SpeakerPicture",
         "designer|userAlias": "SpeakerPictureAlias",
         "padding": null,

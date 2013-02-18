@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Security;
+using System.Web.UI.WebControls;
 using CodeCampSV;
 
 namespace WebAPI.Api
@@ -32,6 +34,20 @@ namespace WebAPI.Api
             public AttendeesResult Data { get; set; }
             public string File { get; set; }
 
+            public bool Success { get; set; }
+        }
+
+        public class ShirtSizeRec
+        {
+            public string ShirtSize { get; set; }
+        }
+
+        public class ShirtSizeReturn
+        {
+            
+            public string Message { get; set; }
+            public List<ShirtSizeRec> Data { get; set; }  
+            
             public bool Success { get; set; }
         }
 
@@ -139,7 +155,36 @@ namespace WebAPI.Api
             }
         }
 
-      
+        [HttpPost]
+        [ActionName("ShirtSizes")]
+        public HttpResponseMessage PostShirtSizes()
+        {
+            var shirtSizes = new List<string>();
+            shirtSizes.Add("--Please Select From Below");
+            shirtSizes.Add("--No Shirt Please");
+
+            if (ConfigurationManager.AppSettings["SpeakerShirtSizes"] != null)
+            {
+                string list = ConfigurationManager.AppSettings["SpeakerShirtSizes"];
+                char[] splitchar = { ',' };
+                shirtSizes.AddRange(list.Split(splitchar).ToList());
+                foreach (var item in shirtSizes.ToList())
+                {
+                    shirtSizes.Add(item.Trim());
+                }
+            }
+
+            List<ShirtSizeRec> shirtSizeRecs = shirtSizes.Select(recx => new ShirtSizeRec() {ShirtSize = recx}).ToList();
+
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, new ShirtSizeReturn()
+            {
+                Success = true,
+                Data = shirtSizeRecs
+            });
+            return response;
+        }
+
+
         [HttpPost]
         [ActionName("CheckUsernameEmailExists")]
         public HttpResponseMessage PostCheckUsernameEmailExists(AttendeesResult attendeeRecord)

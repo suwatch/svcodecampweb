@@ -6,9 +6,6 @@
     },
     "codeClass": null,
     "userConfig": {
-        "models": [
-            "ShirtSizeModel"
-        ],
         "stores": [
             "ShirtSizeStore"
         ],

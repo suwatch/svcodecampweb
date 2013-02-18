@@ -18,9 +18,6 @@ Ext.Loader.setConfig({
 });
 
 Ext.application({
-    models: [
-        'ShirtSizeModel'
-    ],
     stores: [
         'ShirtSizeStore'
     ],

@@ -175,7 +175,11 @@
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyComboBox",
                 "name": "shirtSize",
-                "fieldLabel": "Speaker Shirt Size"
+                "fieldLabel": "Speaker Shirt Size",
+                "allowBlank": false,
+                "displayField": "shirtSize",
+                "store": "ShirtSizeStore",
+                "valueField": "shirtSize"
             },
             "designerId": "3e45e01a-525e-4b9b-9dc3-4a3b03a8dbba"
         },
@@ -419,6 +423,7 @@
                     "codeClass": null,
                     "userConfig": {
                         "layout|flex": null,
+                        "formBind": true,
                         "designer|userClassName": "MyButton",
                         "disabled": false,
                         "id": null,

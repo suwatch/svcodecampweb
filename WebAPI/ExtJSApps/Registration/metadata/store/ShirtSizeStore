@@ -1,5 +1,5 @@
 {
-    "type": "arraystore",
+    "type": "jsonstore",
     "reference": {
         "name": "items",
         "type": "array"
@@ -7,11 +7,12 @@
     "codeClass": null,
     "userConfig": {
         "designer|userClassName": "ShirtSizeStore",
-        "storeId": "MyArrayStore",
-        "model": "ShirtSizeModel"
+        "autoLoad": true,
+        "storeId": "shirtSizeStoreId",
+        "model": null
     },
-    "id": "ExtBox1-ext-gen13864",
-    "designerId": "2df5fdd0-01fc-4e68-881d-d3c705099d7b",
+    "id": "ExtBox1-ext-gen2478",
+    "designerId": "126b70a4-920e-49ef-8117-21150f082f6d",
     "cn": [
         {
             "type": "ajaxproxy",
@@ -21,23 +22,47 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|userClassName": "MyAjaxProxy"
+                "actionMethods": "{         create : 'POST',         read   : 'POST',         update : 'POST',         destroy: 'POST'     }",
+                "designer|userClassName": "MyAjaxProxy",
+                "api": null,
+                "url": "/api/Account/ShirtSizes"
             },
-            "designerId": "b418f317-0bf1-408b-bb65-3abd276bca2f",
+            "designerId": "8c1d05a3-6008-470b-83d8-8073dcac6fab",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "actionMethods",
+                    "type": "string"
+                }
+            ],
             "cn": [
                 {
-                    "type": "arrayreader",
+                    "type": "jsonreader",
                     "reference": {
                         "name": "reader",
                         "type": "object"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "MyArrayReader"
+                        "designer|userClassName": "MyJsonReader",
+                        "root": "data"
                     },
-                    "designerId": "b6aeb254-79a4-4751-b7b9-bf6e0a137bf1"
+                    "designerId": "6fd93581-7bd6-4288-a210-4f0ac2fa0645"
                 }
             ]
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field1",
+                "name": "shirtSize"
+            },
+            "designerId": "4cb0d962-2d2f-4b95-a1c0-b491f8b654fa"
         }
     ]
 }

@@ -98,7 +98,6 @@
                 "inputId": "username",
                 "fieldLabel": "Username",
                 "labelWidth": null,
-                "allowBlank": false,
                 "emptyText": "Username",
                 "maxLength": null,
                 "minLength": null,

@@ -2,8 +2,8 @@
     "expandedState": {
         "data": true,
         "model": true,
-        "component": false,
-        "controller": false,
+        "component": true,
+        "controller": true,
         "resource": true,
         "2e607d39-4c76-4f8c-a350-e222eedf6e5d": {
             "id": "2e607d39-4c76-4f8c-a350-e222eedf6e5d",
@@ -60,6 +60,7 @@
                 },
                 {
                     "id": "8a004979-12c0-49cf-958c-6931c0cb44ad",
+                    "expanded": false,
                     "cn": [
                         {
                             "id": "36c43e2b-dd9d-4ad5-8040-5da3a86f0f67"
@@ -68,6 +69,7 @@
                 },
                 {
                     "id": "6f438edc-3cc3-423c-87a7-510973540d26",
+                    "expanded": false,
                     "cn": [
                         {
                             "id": "6dbde9b0-d7fa-49fe-b90c-05923798b862"
@@ -84,6 +86,7 @@
                 },
                 {
                     "id": "217776ee-7e32-4bcf-ae15-62fd80938377",
+                    "expanded": false,
                     "cn": [
                         {
                             "id": "92544d6c-65fd-4156-8765-5e300691fa2e"
@@ -92,6 +95,7 @@
                 },
                 {
                     "id": "fbe24a61-113a-4de1-a538-74ce416a8732",
+                    "expanded": false,
                     "cn": [
                         {
                             "id": "89c7e3fd-0d85-45fb-ade7-5fbc6d1e2687"
@@ -133,6 +137,7 @@
         },
         "b2a0a5e7-3db7-4038-ab22-bcee2b77314e": {
             "id": "b2a0a5e7-3db7-4038-ab22-bcee2b77314e",
+            "expanded": false,
             "cn": [
                 {
                     "id": "cf1b76f8-bbd3-4ae3-8487-b890d84d480b",
@@ -172,6 +177,7 @@
         },
         "39067009-bf72-41d5-adb1-5644d566845c": {
             "id": "39067009-bf72-41d5-adb1-5644d566845c",
+            "expanded": false,
             "cn": [
                 {
                     "id": "f3c441c6-6107-40ac-b4be-7e1a37fc6db2"
@@ -201,6 +207,7 @@
         },
         "56e26b45-7fe3-4b60-bbd4-c2b2c6c64e83": {
             "id": "56e26b45-7fe3-4b60-bbd4-c2b2c6c64e83",
+            "expanded": false,
             "cn": [
                 {
                     "id": "ff1a664b-b9e2-4744-83f7-25ff9fe70d13",
@@ -283,6 +290,7 @@
         },
         "6d82b69b-3f21-447d-9161-8f72c94f975b": {
             "id": "6d82b69b-3f21-447d-9161-8f72c94f975b",
+            "expanded": false,
             "cn": [
                 {
                     "id": "9ebdfb0b-7592-48b9-9b67-75622defc0dc",
@@ -438,13 +446,13 @@
                     ]
                 },
                 {
-                    "id": "94da1f10-0bd2-4cac-a9b2-393aef15f9e4"
+                    "id": "38c54f28-03cf-425c-81c3-1305ee277257"
                 },
                 {
-                    "id": "05bc49b6-8f22-4d61-a456-8936561d8d05"
+                    "id": "326cd6e7-4554-4b9f-9052-7cc1e7d2f4c7"
                 },
                 {
-                    "id": "490c45ec-f494-4ad9-9570-a09f9429b02a"
+                    "id": "3cefac3f-73dc-4a9d-8fc0-ee78b335e661"
                 }
             ]
         },
@@ -498,6 +506,9 @@
                 }
             ]
         },
+        "dfdac70e-88ed-4f47-8052-2b4e87dc2118": {
+            "id": "dfdac70e-88ed-4f47-8052-2b4e87dc2118"
+        },
         "126b70a4-920e-49ef-8117-21150f082f6d": {
             "id": "126b70a4-920e-49ef-8117-21150f082f6d",
             "cn": [
@@ -537,7 +548,6 @@
         },
         "649a7ff9-eed4-4a08-8133-fc01c9df011f": {
             "id": "649a7ff9-eed4-4a08-8133-fc01c9df011f",
-            "expanded": false,
             "cn": [
                 {
                     "id": "3fae00cd-ff13-4c45-8767-add21eff5696"
@@ -594,7 +604,6 @@
         },
         "0c4f878b-eeff-417b-97aa-d7d05129ec73": {
             "id": "0c4f878b-eeff-417b-97aa-d7d05129ec73",
-            "expanded": false,
             "cn": [
                 {
                     "id": "5ed0eb2a-89a6-4f0f-8323-3301fe89fee9"

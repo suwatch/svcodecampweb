@@ -92,16 +92,13 @@
             },
             "codeClass": null,
             "userConfig": {
-                "layout|anchor": null,
-                "designer|userClassName": "MyTextField26",
-                "itemId": "username",
-                "width": null,
-                "inputId": "username",
+                "layout|anchor": "100%",
+                "designer|userClassName": "MyTextField35",
+                "name": "username",
                 "fieldLabel": "Username",
-                "labelWidth": null,
                 "allowBlank": false
             },
-            "designerId": "94da1f10-0bd2-4cac-a9b2-393aef15f9e4"
+            "designerId": "38c54f28-03cf-425c-81c3-1305ee277257"
         },
         {
             "type": "textfield",
@@ -111,16 +108,14 @@
             },
             "codeClass": null,
             "userConfig": {
-                "layout|anchor": null,
-                "designer|userClassName": "MyTextField27",
-                "itemId": "password",
-                "width": null,
-                "inputId": "password",
+                "layout|anchor": "100%",
+                "designer|userClassName": "MyTextField36",
                 "inputType": "password",
+                "name": "password",
                 "fieldLabel": "Password",
                 "allowBlank": false
             },
-            "designerId": "05bc49b6-8f22-4d61-a456-8936561d8d05"
+            "designerId": "326cd6e7-4554-4b9f-9052-7cc1e7d2f4c7"
         },
         {
             "type": "textfield",
@@ -130,16 +125,14 @@
             },
             "codeClass": null,
             "userConfig": {
-                "layout|anchor": null,
-                "designer|userClassName": "MyTextField29",
-                "itemId": "email",
-                "width": null,
-                "inputId": "email",
-                "fieldLabel": "Email Address",
+                "layout|anchor": "100%",
+                "designer|userClassName": "MyTextField37",
+                "name": "email",
+                "fieldLabel": "Email",
                 "allowBlank": false,
                 "vtype": "email"
             },
-            "designerId": "490c45ec-f494-4ad9-9570-a09f9429b02a"
+            "designerId": "3cefac3f-73dc-4a9d-8fc0-ee78b335e661"
         }
     ]
 }

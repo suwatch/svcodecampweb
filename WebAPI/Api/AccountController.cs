@@ -14,6 +14,7 @@ using System.Web.Http;
 using System.Web.Security;
 using System.Web.UI.WebControls;
 using CodeCampSV;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebAPI.Api
 {
@@ -22,6 +23,7 @@ namespace WebAPI.Api
 
         public class LoginCredentials
         {
+            [StringLength(15)]
             public string Username { get; set; }
             public string Password { get; set; }
             public bool RememberMe { get; set; }
@@ -387,6 +389,19 @@ namespace WebAPI.Api
         [ActionName("Login")]
         public HttpResponseMessage PostLogin(LoginCredentials login)
         {
+            if (!ModelState.IsValid)
+            {
+                // throw error  (ivalidateable object)
+                // throw httpresponse exce.
+                // webdev blog
+                // webapi pipeline
+                // tracing system?  nuget webapi system diagnostics trace
+                // attribute routing.org
+            }
+            
+
+
+
             var loginReturnStatus =
                 new LoginReturnStatus();
 

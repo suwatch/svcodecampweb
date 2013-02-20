@@ -77,7 +77,7 @@
                     "else if (stepName === 'SpeakerPicture') {\r",
                     "    tabId = 7;\r",
                     "}\r",
-                    "else if (stepName === 'OptIn') {\r",
+                    "else if (stepName === 'optIn') {\r",
                     "    tabId = 8;\r",
                     "}\r",
                     "return tabId;\r",

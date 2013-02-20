@@ -29726,31 +29726,48 @@ Ext.define('RegistrationApp.controller.RegisterSpeakerAttendee', {
             } else if (create === true) {
                 // verify user entered does not exist
 
-                Ext.Ajax.request({ 
-                    url:'/api/Account/CheckUsernameEmailExists', 
-                    actionMethods:'POST', 
-                    scope:this, 
-                    params:{
-                        Username: username,
-                        Password: password
-                    },
-                    success: function(r,o) {
-                        if (r.responseText.length > 2) {  // (this is because it returns "" instead of empty string)
-                            Ext.Msg.alert('Error','Username exists, Try Again or use Forget Username or Password');
-                        } else {
-                            var thisPanel = Ext.ComponentQuery.query('AttendeeOrSpeakerAlias')[0];
-                            var retData = thisPanel.getForm().getValues();
-                            var createPanel = Ext.ComponentQuery.query('createAccountAlias')[0];
-                            createPanel.getForm().setValues({
-                                username: retData.username
-                            });
-                            tabWizardPanel.setActiveTab(tabWizardPanel.getTabIdByName('createAccount'));
+
+                if (username.length > 0) {
+                    Ext.Ajax.request({ 
+                        url:'/api/Account/CheckUsernameEmailExists', 
+                        actionMethods:'POST', 
+                        scope:this, 
+                        params:{
+                            Username: username,
+                            Password: password
+                        },
+                        success: function(r,o) {
+
+
+
+                            if (r.responseText.length > 2
+                            && username.length > 0) {  // (this is because it returns "" instead of empty string)
+                                Ext.Msg.alert('Error','Username exists, Try Again or use Forget Username or Password');
+                            } else {
+                                var thisPanel = Ext.ComponentQuery.query('AttendeeOrSpeakerAlias')[0];
+                                var retData = thisPanel.getForm().getValues();
+                                var createPanel = Ext.ComponentQuery.query('createAccountAlias')[0];
+                                createPanel.getForm().setValues({
+                                    username: retData.username,
+                                    password: retData.password
+                                });
+                                tabWizardPanel.setActiveTab(tabWizardPanel.getTabIdByName('createAccount'));
+                            }
+                        },
+                        failure: function(r,o) {
+
+
+
+                            Ext.Msg.alert('Error','Can not create username because it already exists');
                         }
-                    },
-                    failure: function(r,o) {
-                        Ext.Msg.alert('Error','Can not create username because it already exists');
-                    }
-                });
+                    });
+                } else {
+                    tabWizardPanel.setActiveTab(tabWizardPanel.getTabIdByName('createAccount'));
+                }
+
+
+
+
                 tabWizardPanel.setActiveTab(tabWizardPanel.getTabIdByName('createnewaccount'));
             } else if (haveaccount) {
                 // try logging person in and if fails, put up message and leave them here,
@@ -29772,6 +29789,9 @@ Ext.define('RegistrationApp.controller.RegisterSpeakerAttendee', {
                         RememberMe: true
                     },
                     success: function(r, o) { 
+
+                        //debugger;
+
                         //Ext.Msg.alert('Successful Login!');
 
                         var retData = Ext.JSON.decode(r.responseText);
@@ -30134,13 +30154,24 @@ Ext.define('RegistrationApp.controller.AttendeeAfterLoginController', {
                 var retData = Ext.JSON.decode(r.responseText);
 
                 // take to sponsor opt in next
-                Ext.Msg.alert('take to sponsor opt in page');
+                //Ext.Msg.alert('take to sponsor opt in page');
+
+
+
+
 
 
                 myMask.hide();
+
+                var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];
+                tabPanel.setActiveTab(tabPanel.getTabIdByName('optIn'));
+
+
+
             },
             failure: function(r,o) {
-                tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeSpeakerSponsorId'));
+                //tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeSpeakerSponsorId'));
+                Ext.Msg.alert("Update Record Failed");
                 myMask.hide();
             } 
         });
@@ -30410,34 +30441,13 @@ Ext.define('RegistrationApp.controller.SpeakerPictureController', {
     },
 
     onContinueButtonIdClick: function(button, e, options) {
+        //var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Creating New Account..."});
+        //myMask.show();
 
-
+        //debugger;
         var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];
-        var thisPanel = Ext.ComponentQuery.query('SpeakerPictureAlias')[0];
+        tabPanel.setActiveTab(tabPanel.getTabIdByName('optIn'));
 
-        var values = thisPanel.getForm().getValues();
-
-        Ext.Ajax.request({ 
-            url:'/api/Account/UpdateAttendee', 
-            actionMethods:'POST', 
-            scope:this, 
-            params: thisPanel.getForm().getValues(),
-            success: function(r, o) {  
-
-                //var retData = Ext.JSON.decode(r.responseText);
-
-
-                tabPanel.setActiveTab(tabPanel.getTabIdByName('SpeakerPicture'));
-                //Ext.Msg.alert('take to sponsor opt in page');
-
-
-                myMask.hide();
-            },
-            failure: function(r,o) {
-                tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeSpeakerSponsorId'));
-                myMask.hide();
-            } 
-        });
     },
 
     onSpeakerPictureUploadIdChange: function(filefield, value, options) {
@@ -30465,7 +30475,7 @@ Ext.define('RegistrationApp.controller.SpeakerPictureController', {
                 waitMsg: 'Uploading your photo...',
                 success: function(fp, o) {
                     var attendeesId = o.result.attendeeId;
-                    var imageLocation = '/attendeeimage/' + attendeesId + '.jpg?width=300';
+                    var imageLocation = '/attendeeimage/' + attendeesId + '.jpg?width=300&height=300&scale=both&anchor=topleft&bgcolor=black';
                     var antiCachePart = (new Date()).getTime();
                     var newSrc = imageLocation + '?dc=' + antiCachePart;
                     imgId.setSrc(newSrc); 
@@ -30489,13 +30499,13 @@ Ext.define('RegistrationApp.controller.SpeakerPictureController', {
 
     init: function(application) {
         this.control({
-            "speakerPictureAlias #backButtonId": {
+            "SpeakerPictureAlias #backButtonId": {
                 click: this.onBackButtonIdClick
             },
-            "speakerPictureAlias #continueButtonId": {
+            "SpeakerPictureAlias #continueButtonId": {
                 click: this.onContinueButtonIdClick
             },
-            "#SpeakerPictureUploadId": {
+            "SpeakerPictureAlias #SpeakerPictureUploadId": {
                 change: this.onSpeakerPictureUploadIdChange
             }
         });
@@ -30526,7 +30536,35 @@ Ext.define('RegistrationApp.controller.OptInController', {
     },
 
     onContinueButtonIdClick: function(button, e, options) {
+        var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Checking Logged In Status..."});
 
+        myMask.show();
+        var thisPanel = Ext.ComponentQuery.query('OptInAlias')[0];
+
+        Ext.Ajax.request({ 
+            url:'/api/Account/UpdateOptIn', 
+            actionMethods:'POST', 
+            scope:this, 
+            params: thisPanel.getForm().getValues(),
+            success: function(r, o) {  
+
+                var retData = Ext.JSON.decode(r.responseText);
+
+                // take to sponsor opt in next
+                //Ext.Msg.alert('take to sponsor opt in page');
+                myMask.hide();
+
+                //debugger;
+                //window.location = '../../Session#';
+
+
+            },
+            failure: function(r,o) {
+                //tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeSpeakerSponsorId'));
+                Ext.Msg.alert("Update Record Failed");
+                myMask.hide();
+            } 
+        });
     },
 
     init: function(application) {
@@ -46431,7 +46469,7 @@ Ext.define('RegistrationApp.store.ShirtSizeStore', {
         var me = this;
         cfg = cfg || {};
         me.callParent([Ext.apply({
-            autoLoad: false,
+            autoLoad: true,
             storeId: 'shirtSizeStoreId',
             proxy: {
                 type: 'ajax',
@@ -90754,7 +90792,6 @@ Ext.define('RegistrationApp.view.AttendeeOrSpeaker', {
                     itemId: 'username',
                     inputId: 'username',
                     fieldLabel: 'Username',
-                    allowBlank: false,
                     emptyText: 'Username'
                 },
                 {
@@ -91750,24 +91787,24 @@ Ext.define('RegistrationApp.view.createAccount', {
             items: [
                 {
                     xtype: 'textfield',
-                    itemId: 'username',
-                    inputId: 'username',
+                    anchor: '100%',
+                    name: 'username',
                     fieldLabel: 'Username',
                     allowBlank: false
                 },
                 {
                     xtype: 'textfield',
-                    itemId: 'password',
-                    inputId: 'password',
+                    anchor: '100%',
                     inputType: 'password',
+                    name: 'password',
                     fieldLabel: 'Password',
                     allowBlank: false
                 },
                 {
                     xtype: 'textfield',
-                    itemId: 'email',
-                    inputId: 'email',
-                    fieldLabel: 'Email Address',
+                    anchor: '100%',
+                    name: 'email',
+                    fieldLabel: 'Email',
                     allowBlank: false,
                     vtype: 'email'
                 }
@@ -91797,11 +91834,6 @@ Ext.define('RegistrationApp.view.SpeakerPicture', {
     extend: 'Ext.form.Panel',
     alias: 'widget.SpeakerPictureAlias',
 
-    layout: {
-        align: 'stretch',
-        padding: 10,
-        type: 'vbox'
-    },
     bodyPadding: 20,
     title: 'Speaker Picture Upload',
     url: '/api/Account/FormData',
@@ -91814,10 +91846,39 @@ Ext.define('RegistrationApp.view.SpeakerPicture', {
         }, me.initialConfig);
 
         Ext.applyIf(me, {
+            items: [
+                {
+                    xtype: 'label',
+                    border: false,
+                    height: 140,
+                    text: 'Speaker Picture Required Before Submitting Presentation'
+                },
+                {
+                    xtype: 'filefield',
+                    border: false,
+                    height: 50,
+                    itemId: 'SpeakerPictureUploadId',
+                    fieldLabel: '',
+                    labelWidth: 300
+                },
+                {
+                    xtype: 'panel',
+                    border: false,
+                    itemId: 'PicturePanelId',
+                    items: [
+                        {
+                            xtype: 'image',
+                            border: 1,
+                            height: 300,
+                            itemId: 'SpeakerImgId',
+                            width: 300
+                        }
+                    ]
+                }
+            ],
             dockedItems: [
                 {
                     xtype: 'toolbar',
-                    flex: 1,
                     dock: 'top',
                     itemId: 'ToolBarForgotUsername',
                     layout: {
@@ -91842,30 +91903,6 @@ Ext.define('RegistrationApp.view.SpeakerPicture', {
                             itemId: 'continueButtonId',
                             iconAlign: 'right',
                             text: 'Continue'
-                        }
-                    ]
-                }
-            ],
-            items: [
-                {
-                    xtype: 'filefield',
-                    height: 100,
-                    itemId: 'SpeakerPictureUploadId',
-                    fieldLabel: 'Speaker Picture Required Before Submitting Presentation',
-                    labelWidth: 0
-                },
-                {
-                    xtype: 'panel',
-                    flex: 2,
-                    itemId: 'PicturePanelId',
-                    items: [
-                        {
-                            xtype: 'image',
-                            height: 201,
-                            itemId: 'SpeakerImgId',
-                            ui: 'http://svcodecamp.azurewebsites.net/Content/Images/silicon-valley-code-camp.png',
-                            width: 201,
-                            src: 'http://svcodecamp.azurewebsites.net/Content/Images/silicon-valley-code-camp.png'
                         }
                     ]
                 }
@@ -91895,7 +91932,11 @@ Ext.define('RegistrationApp.view.OptIn', {
     extend: 'Ext.form.Panel',
     alias: 'widget.OptInAlias',
 
-    bodyPadding: 10,
+    layout: {
+        align: 'stretch',
+        type: 'vbox'
+    },
+    bodyPadding: 20,
     title: 'Opt In',
 
     initComponent: function() {
@@ -91924,10 +91965,46 @@ Ext.define('RegistrationApp.view.OptIn', {
                         },
                         {
                             xtype: 'button',
-                            disabled: true,
                             itemId: 'continueButtonId',
                             iconAlign: 'right',
-                            text: 'Continue'
+                            text: 'Finish'
+                        }
+                    ]
+                }
+            ],
+            items: [
+                {
+                    xtype: 'panel',
+                    border: false,
+                    height: 44,
+                    items: [
+                        {
+                            xtype: 'label',
+                            style: 'font-weight:bold;font-size:120%',
+                            text: 'Help Support Our Sponsors.  Opting in supports our event in a big way.  Please Consider not opting out.'
+                        }
+                    ]
+                },
+                {
+                    xtype: 'panel',
+                    border: false,
+                    items: [
+                        {
+                            xtype: 'checkboxfield',
+                            name: 'optInSponsoredMailingsLevel',
+                            fieldLabel: 'Accept Emails From Sponsors Offering Specials Only Available To Code Camp Attendees.  All Email Subjects Include [Sponsored Specials]',
+                            labelWidth: 300,
+                            boxLabel: '',
+                            checked: true
+                        },
+                        {
+                            xtype: 'checkboxfield',
+                            margin: '20 0 0 0 ',
+                            name: 'optInSponsorSpecialsLevel',
+                            fieldLabel: 'Accept Emails From Sponsors (All Subjects Prefixed with [Sponsored Email]',
+                            labelWidth: 300,
+                            boxLabel: '',
+                            checked: true
                         }
                     ]
                 }
@@ -91940,6 +92017,8 @@ Ext.define('RegistrationApp.view.OptIn', {
 });
 Ext.define('RegistrationApp.view.override.TabWizardPanel', {
     override: 'RegistrationApp.view.TabWizardPanel',
+    
+    
      constructor: function () {
         this.callParent(arguments);
         this.hideTabTitles();
@@ -92002,10 +92081,8 @@ Ext.define('RegistrationApp.view.override.TabWizardPanel', {
         });    
         /////////////////////////// above is patch
          
-    }
+     }
 });
-
-
 /**
  * This layout implements the column arrangement for {@link Ext.form.CheckboxGroup} and {@link Ext.form.RadioGroup}.
  * It groups the component's sub-items into columns based on the component's
@@ -94395,7 +94472,7 @@ Ext.define('RegistrationApp.view.TabWizardPanel', {
         else if (stepName === 'SpeakerPicture') {
             tabId = 7;
         }
-        else if (stepName === 'OptIn') {
+        else if (stepName === 'optIn') {
             tabId = 8;
         }
         return tabId;
@@ -96395,6 +96472,62 @@ Ext.define('Ext.app.Application', {
     }
 });
 
+Ext.define('RegistrationApp.view.override.PasswordConfirm', {
+	override: 'RegistrationApp.view.PasswordConfirm',
+	vtype: 'password'
+}, function() {
+	Ext.apply(Ext.form.field.VTypes, {
+		password : function(val, field) {
+			if (field.initialPassField) {
+				var container = field.up('form');
+				if (!container) {
+					container = field.up("container");
+				}
+				var pwd = container.down('#' + field.initialPassField);
+				if (!pwd) {
+					pwd = container.down('[name=' + initialPassField + ']');
+				}
+				return (val == pwd.getValue());
+			}
+			return true;
+		},
+		passwordText : 'Password Confirmation'
+	});
+});
+
+/*
+ * File: app/view/PasswordConfirm.js
+ *
+ * This file was generated by Sencha Architect version 2.1.0.
+ * http://www.sencha.com/products/architect/
+ *
+ * This file requires use of the Ext JS 4.1.x library, under independent license.
+ * License of Sencha Architect does not include license for Ext JS 4.1.x. For more
+ * details see http://www.sencha.com/license or contact license@sencha.com.
+ *
+ * This file will be auto-generated each and everytime you save your project.
+ *
+ * Do NOT hand edit this file.
+ */
+
+Ext.define('RegistrationApp.view.PasswordConfirm', {
+    extend: 'Ext.form.field.Text',
+    alias: 'widget.passwordconfirm',
+
+    requires: [
+        'RegistrationApp.view.override.PasswordConfirm'
+    ],
+
+    initialPassField: 'password',
+    inputType: 'password',
+
+    initComponent: function() {
+        var me = this;
+
+        me.callParent(arguments);
+    }
+
+});
 /*
  * File: app/view/Viewport.js
  *
@@ -96414,7 +96547,8 @@ Ext.define('RegistrationApp.view.Viewport', {
     extend: 'RegistrationApp.view.ViewportMain',
     renderTo: Ext.getBody(),
     requires: [
-        'RegistrationApp.view.ViewportMain'
+        'RegistrationApp.view.ViewportMain',
+        'RegistrationApp.view.PasswordConfirm'
     ]
 });
 /*

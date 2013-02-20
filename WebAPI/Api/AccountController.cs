@@ -251,17 +251,25 @@ namespace WebAPI.Api
         [ActionName("UpdateSpeaker")]
         public HttpResponseMessage PostUpdateSpeaker(AttendeesResult attendeeRecord)
         {
-            return UpdateAttendeeOrSpeaker(attendeeRecord, "speaker");
+            return UpdateAttendeeRecordParts(attendeeRecord, "speaker");
         }
+
+        [HttpPost]
+        [ActionName("UpdateOptIn")]
+        public HttpResponseMessage PostUpdateOptIn(AttendeesResult attendeeRecord)
+        {
+            return UpdateAttendeeRecordParts(attendeeRecord, "optin");
+        }
+
 
         [HttpPost]
         [ActionName("UpdateAttendee")]
         public HttpResponseMessage PostUpdateAttendee(AttendeesResult attendeeRecord)
         {
-            return UpdateAttendeeOrSpeaker(attendeeRecord,"attendee");
+            return UpdateAttendeeRecordParts(attendeeRecord,"attendee");
         }
 
-        private HttpResponseMessage UpdateAttendeeOrSpeaker(AttendeesResult attendeeRecord,string attendeeOrSpeaker)
+        private HttpResponseMessage UpdateAttendeeRecordParts(AttendeesResult attendeeRecord,string attendeeSaveOption)
         {
             HttpResponseMessage response;
 
@@ -282,30 +290,38 @@ namespace WebAPI.Api
                                                }).FirstOrDefault();
                 if (attendeesResult != null)
                 {
-                    // These are the only fields that can get updated by the caller (security)
-                    // (for both speaker and attendee)
-                    attendeesResult.Email = attendeeRecord.Email;
-                    attendeesResult.UserFirstName = attendeeRecord.UserFirstName;
-                    attendeesResult.UserLastName = attendeeRecord.UserLastName;
-                    attendeesResult.City = attendeeRecord.City;
-                    attendeesResult.State = attendeeRecord.State;
-                    attendeesResult.UserZipCode = attendeeRecord.UserZipCode;
-                    attendeesResult.TwitterHandle = attendeeRecord.TwitterHandle;
-                    attendeesResult.AttendingDaysChoiceCurrentYear = attendeeRecord.AttendingDaysChoiceCurrentYear;
-                    attendeesResult.RegisteredCurrentYear = attendeeRecord.RegisteredCurrentYear;
-                    attendeesResult.PhoneNumber = attendeeRecord.PhoneNumber;
-                    attendeesResult.EmailEventBoard = attendeeRecord.EmailEventBoard;
-                    attendeesResult.VolunteeredCurrentYear = attendeeRecord.VolunteeredCurrentYear;
-
-
-                    // speaker stuff below
-                    if (attendeeOrSpeaker.ToLower().Equals("speaker"))
+                    if (attendeeSaveOption.ToLower().Equals("optin"))
                     {
-                        attendeesResult.FacebookId = attendeeRecord.FacebookId;
-                        attendeesResult.GooglePlusId = attendeeRecord.GooglePlusId;
-                        attendeesResult.LinkedInId = attendeeRecord.LinkedInId;
-                        attendeesResult.ShirtSize = attendeeRecord.ShirtSize;
-                        attendeesResult.UserBio = attendeeRecord.UserBio;
+                        attendeesResult.OptInSponsorSpecialsLevel = attendeeRecord.OptInSponsorSpecialsLevel;
+                        attendeesResult.OptInSponsoredMailingsLevel = attendeeRecord.OptInSponsoredMailingsLevel;
+                    }
+                    else
+                    {
+                        // These are the only fields that can get updated by the caller (security)
+                        // (for both speaker and attendee)
+                        attendeesResult.Email = attendeeRecord.Email;
+                        attendeesResult.UserFirstName = attendeeRecord.UserFirstName;
+                        attendeesResult.UserLastName = attendeeRecord.UserLastName;
+                        attendeesResult.City = attendeeRecord.City;
+                        attendeesResult.State = attendeeRecord.State;
+                        attendeesResult.UserZipCode = attendeeRecord.UserZipCode;
+                        attendeesResult.TwitterHandle = attendeeRecord.TwitterHandle;
+                        attendeesResult.AttendingDaysChoiceCurrentYear = attendeeRecord.AttendingDaysChoiceCurrentYear;
+                        attendeesResult.RegisteredCurrentYear = attendeeRecord.RegisteredCurrentYear;
+                        attendeesResult.PhoneNumber = attendeeRecord.PhoneNumber;
+                        attendeesResult.EmailEventBoard = attendeeRecord.EmailEventBoard;
+                        attendeesResult.VolunteeredCurrentYear = attendeeRecord.VolunteeredCurrentYear;
+
+
+                        // speaker stuff below
+                        if (attendeeSaveOption.ToLower().Equals("speaker"))
+                        {
+                            attendeesResult.FacebookId = attendeeRecord.FacebookId;
+                            attendeesResult.GooglePlusId = attendeeRecord.GooglePlusId;
+                            attendeesResult.LinkedInId = attendeeRecord.LinkedInId;
+                            attendeesResult.ShirtSize = attendeeRecord.ShirtSize;
+                            attendeesResult.UserBio = attendeeRecord.UserBio;
+                        }
                     }
 
 

@@ -21,6 +21,33 @@ Ext.define('RegistrationApp.controller.CreateAccountController', {
         var tabWizardPanel = Ext.getCmp('TabWizardId')
         tabWizardPanel.setActiveTab(Ext.getCmp('TabWizardId').getTabIdByName('attendeeorspeaker'));
 
+        /*
+        if (stepName === 'AttendeeSpeakerSponsorId') {
+        tabId = 0;
+        } else if (stepName === 'attendeeorspeaker') {
+        tabId = 1;
+        } else if (stepName === 'forgotusernameorpassword') {
+        tabId = 2;
+        } else if (stepName === 'Sponsor') {
+        tabId = 3;
+        }
+        else if (stepName === 'AttendeeAfterLogin') {
+        tabId = 4;
+        }
+        else if (stepName === 'SpeakerAfterLogin') {
+        tabId = 5;
+        }
+        else if (stepName === 'createAccount') {
+        tabId = 6;
+        }
+        else if (stepName === 'SpeakerPicture') {
+        tabId = 7;
+        }
+        else if (stepName === 'optIn') {
+        tabId = 8;
+        }
+        */
+
     },
 
     onContinueButtonIdClick: function(button, e, options) {

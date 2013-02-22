@@ -1,0 +1,201 @@
+{
+    "type": "datamodel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "SessionsModel",
+        "idProperty": "Id"
+    },
+    "id": "ExtBox1-ext-gen6761",
+    "designerId": "c987d6dc-8b8a-413c-89c5-9887ebb47630",
+    "cn": [
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyField",
+                "name": "CodeCampYearId"
+            },
+            "designerId": "c9bf72df-774c-4dd9-8ad7-e1636241aec4"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyField1",
+                "name": "Attendeesid"
+            },
+            "designerId": "958b4432-db2e-48f8-951b-e8206be9acbc"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyField2",
+                "name": "Title"
+            },
+            "designerId": "384c635c-dad9-458b-bdf8-c89d4e90e252"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyField3",
+                "name": "Description"
+            },
+            "designerId": "61293b43-a29b-4791-8100-7b567b2cbdd5"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyField4",
+                "name": "InterestedCount"
+            },
+            "designerId": "021f3e3b-7331-49ed-9a0f-0c2ff85d2f0c"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyField5",
+                "name": "WillAttendCount"
+            },
+            "designerId": "23c76dc6-001a-43bf-bcfa-fd2df0b8d96b"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyField6",
+                "name": "PresenterName"
+            },
+            "designerId": "c3e78084-18b6-468c-ab6c-b6458e79b018"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyField7",
+                "name": "RoomNumber"
+            },
+            "designerId": "c431d1d7-1603-4391-b824-1affce4e912d"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyField8",
+                "name": "SessionTime"
+            },
+            "designerId": "a390bed2-3a65-4fbc-834b-e04fde6278e1"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyField9",
+                "name": "PresenterUrl"
+            },
+            "designerId": "564e3116-a2e7-4668-bfba-09ba57242c4a"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyField10",
+                "name": "SpeakerPictureUrl"
+            },
+            "designerId": "0970a208-499a-4c81-860e-932b93bad0e9"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyField11",
+                "name": "Id"
+            },
+            "designerId": "c7906c55-2ad5-4aab-8302-11f80bb35073"
+        },
+        {
+            "type": "ajaxproxy",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyAjaxProxy",
+                "url": "../GeneralHandlers/Sessions.ashx?CodeCampYearId=6"
+            },
+            "designerId": "7c944f0f-f040-42f9-9e42-7a4347f326d0",
+            "cn": [
+                {
+                    "type": "jsonreader",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyJsonReader",
+                        "idProperty": "Id",
+                        "rootProperty": "rows"
+                    },
+                    "designerId": "ce11df36-ed16-4742-86a2-0ec811c0b76b"
+                }
+            ]
+        }
+    ]
+}

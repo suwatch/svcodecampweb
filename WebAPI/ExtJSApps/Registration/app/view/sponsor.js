@@ -24,9 +24,14 @@ Ext.define('RegistrationApp.view.sponsor', {
     },
     bodyBorder: true,
     title: 'Sponsor',
+    url: '/api/Account/SponsorRequest',
 
     initComponent: function() {
         var me = this;
+
+        me.initialConfig = Ext.apply({
+            url: '/api/Account/SponsorRequest'
+        }, me.initialConfig);
 
         Ext.applyIf(me, {
             items: [
@@ -42,28 +47,32 @@ Ext.define('RegistrationApp.view.sponsor', {
                         {
                             xtype: 'textfield',
                             itemId: 'name',
-                            name: 'ContactName',
+                            name: 'contactName',
                             fieldLabel: 'Contact Name',
+                            allowBlank: false,
                             minLength: 5
                         },
                         {
                             xtype: 'textfield',
                             itemId: 'email',
                             width: 300,
-                            name: 'ContactEmail',
-                            fieldLabel: 'Email'
+                            name: 'contactEmail',
+                            fieldLabel: 'Email',
+                            allowBlank: false,
+                            vtype: 'email'
                         },
                         {
                             xtype: 'textfield',
                             itemId: 'company',
-                            name: 'Company',
-                            fieldLabel: 'Company'
+                            name: 'company',
+                            fieldLabel: 'Company',
+                            allowBlank: false
                         },
                         {
                             xtype: 'textfield',
                             itemId: 'phone',
                             width: 300,
-                            name: 'PhoneNumber',
+                            name: 'phoneNumber',
                             fieldLabel: 'Phone Number'
                         },
                         {
@@ -87,26 +96,34 @@ Ext.define('RegistrationApp.view.sponsor', {
                                 {
                                     xtype: 'checkboxfield',
                                     itemId: 'emailMeCheckbox',
-                                    name: 'EmailMe',
-                                    boxLabel: 'Please Email Me Information'
+                                    name: 'emailMe',
+                                    boxLabel: 'Please Email Me Information',
+                                    inputValue: 'true',
+                                    uncheckedValue: 'false'
                                 },
                                 {
                                     xtype: 'checkboxfield',
                                     itemId: 'contactMeCheckbox',
-                                    name: 'ContactMe',
-                                    boxLabel: 'Please Contact Me By Phone'
+                                    name: 'contactMeByPhone',
+                                    boxLabel: 'Please Contact Me By Phone',
+                                    inputValue: 'true',
+                                    uncheckedValue: 'false'
                                 },
                                 {
                                     xtype: 'checkboxfield',
                                     itemId: 'alsoAttendingCheckBox',
-                                    name: 'AlsoAttending',
-                                    boxLabel: 'I Am Also Planning On Attending'
+                                    name: 'alsoAttending',
+                                    boxLabel: 'I Am Also Planning On Attending',
+                                    inputValue: 'true',
+                                    uncheckedValue: 'false'
                                 },
                                 {
                                     xtype: 'checkboxfield',
                                     itemId: 'sponsoredInPastCheckbox',
-                                    name: 'PastSponsor',
-                                    boxLabel: 'Our Company Has Previously Sponsord Code Camp'
+                                    name: 'pastSponsor',
+                                    boxLabel: 'Our Company Has Previously Sponsord Code Camp',
+                                    inputValue: 'true',
+                                    uncheckedValue: 'false'
                                 }
                             ]
                         }
@@ -130,7 +147,7 @@ Ext.define('RegistrationApp.view.sponsor', {
                             xtype: 'textareafield',
                             anchor: '100%',
                             height: 200,
-                            name: 'Bio',
+                            name: 'sponsorSpecialNotes',
                             fieldLabel: ''
                         }
                     ]
@@ -158,6 +175,7 @@ Ext.define('RegistrationApp.view.sponsor', {
                         },
                         {
                             xtype: 'button',
+                            formBind: true,
                             disabled: true,
                             itemId: 'continueButtonId',
                             iconAlign: 'right',

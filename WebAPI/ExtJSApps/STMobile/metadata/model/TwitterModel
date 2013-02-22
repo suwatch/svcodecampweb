@@ -1,0 +1,54 @@
+{
+    "type": "datamodel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "TwitterModel"
+    },
+    "id": "ExtBox1-ext-gen45449",
+    "designerId": "3d90a5d1-b62e-41c3-80a1-9d345cc87744",
+    "cn": [
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyField20",
+                "name": "from_user"
+            },
+            "designerId": "b3ce82f4-73f9-45fb-b1d6-bfc313087648"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyField21",
+                "name": "text"
+            },
+            "designerId": "8683d105-fdbc-456b-88ca-eb926702c2ec"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyField22",
+                "name": "profile_image_url"
+            },
+            "designerId": "e04ab52c-a76c-4ad3-b212-e2953b3bd6fb"
+        }
+    ]
+}

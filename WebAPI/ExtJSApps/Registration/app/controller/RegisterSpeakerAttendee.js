@@ -18,7 +18,7 @@ Ext.define('RegistrationApp.controller.RegisterSpeakerAttendee', {
 
     onBackButtonIdClick: function(button, e, options) {
 
-        console.log('back button in registerspeakerattendee controller');
+        //console.log('back button in registerspeakerattendee controller');
 
         var tabWizardPanel = Ext.getCmp('TabWizardId')
         tabWizardPanel.setActiveTab(Ext.getCmp('TabWizardId').getTabIdByName('AttendeeSpeakerSponsorId'));

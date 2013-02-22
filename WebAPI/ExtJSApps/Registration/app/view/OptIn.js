@@ -66,7 +66,7 @@ Ext.define('RegistrationApp.view.OptIn', {
                         {
                             xtype: 'label',
                             style: 'font-weight:bold;font-size:120%',
-                            text: 'Help Support Our Sponsors.  Opting in supports our event in a big way.  Please Consider not opting out.'
+                            text: 'Help keep Silicon Valley Code Camp free for attendees by support our sponsors and Opting.  Please Consider NOT opting out'
                         }
                     ]
                 },
@@ -77,7 +77,7 @@ Ext.define('RegistrationApp.view.OptIn', {
                         {
                             xtype: 'checkboxfield',
                             name: 'optInSponsoredMailingsLevel',
-                            fieldLabel: 'Accept Emails From Sponsors Offering Specials Only Available To Code Camp Attendees.  All Email Subjects Include [Sponsored Specials]',
+                            fieldLabel: 'Accept Emails From Sponsors Offering Specials Only Available To Code Camp Attendees.  <br/>All email to you include in the subjects <i>[Sponsored Specials]</i>',
                             labelWidth: 300,
                             boxLabel: '',
                             checked: true
@@ -86,7 +86,7 @@ Ext.define('RegistrationApp.view.OptIn', {
                             xtype: 'checkboxfield',
                             margin: '20 0 0 0 ',
                             name: 'optInSponsorSpecialsLevel',
-                            fieldLabel: 'Accept Emails From Sponsors (All Subjects Prefixed with [Sponsored Email]',
+                            fieldLabel: 'Accept general emails From Sponsors<br/>All email to you include in the subject <i>[Sponsored Email]</i>',
                             labelWidth: 300,
                             boxLabel: '',
                             checked: true

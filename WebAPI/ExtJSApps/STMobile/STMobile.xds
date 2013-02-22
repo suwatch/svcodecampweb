@@ -1,0 +1,109 @@
+{
+    "name": "STMobile",
+    "settings": {
+        "urlPrefix": "http://localhost:17138/ExtJSApps/STMobile",
+        "spacesToIndent": 4,
+        "exportPath": "",
+        "sdkPath": "",
+        "lineEnding": "CRLF",
+        "genTimestamps": false,
+        "cacheBust": false,
+        "codeGenFormat": "Class",
+        "senchaIoKey": "",
+        "senchaIoPath": "http://extjs.cachefly.net/designer/IO/",
+        "instantiateStore": true,
+        "saveOnDeploy": false,
+        "appName": "MyApp"
+    },
+    "xdsVersion": "2.1.0",
+    "xdsBuild": 678,
+    "schemaVersion": 1,
+    "upgradeVersion": 210000000498,
+    "framework": "touch20",
+    "topInstanceFileMap": {
+        "6d1881ee-21f6-4a83-a812-cdeb4f5b2c95": {
+            "paths": [
+                "metadata/view/TopContainer",
+                "app/view/override/TopContainer.js",
+                "app/view/TopContainer.js"
+            ],
+            "className": "TopContainer"
+        },
+        "c987d6dc-8b8a-413c-89c5-9887ebb47630": {
+            "paths": [
+                "metadata/model/SessionsModel",
+                "app/model/override/SessionsModel.js",
+                "app/model/SessionsModel.js"
+            ],
+            "className": "SessionsModel"
+        },
+        "0b8be46c-2a09-4537-889a-09a4f6fd8149": {
+            "paths": [
+                "metadata/store/JsonPStoreSpeakers",
+                "app/store/override/JsonPStoreSpeakers.js",
+                "app/store/JsonPStoreSpeakers.js"
+            ],
+            "className": "JsonPStoreSpeakers"
+        },
+        "8adf8069-8b5c-44c0-b8f4-4cb4a2e1fc14": {
+            "paths": [
+                "metadata/model/SpeakerModel",
+                "app/model/override/SpeakerModel.js",
+                "app/model/SpeakerModel.js"
+            ],
+            "className": "SpeakerModel"
+        },
+        "dc643f13-0213-433e-adc2-4e40c648310c": {
+            "paths": [
+                "metadata/store/JsonPStoreTwitter",
+                "app/store/override/JsonPStoreTwitter.js",
+                "app/store/JsonPStoreTwitter.js"
+            ],
+            "className": "JsonPStoreTwitter"
+        },
+        "3d90a5d1-b62e-41c3-80a1-9d345cc87744": {
+            "paths": [
+                "metadata/model/TwitterModel",
+                "app/model/override/TwitterModel.js",
+                "app/model/TwitterModel.js"
+            ],
+            "className": "TwitterModel"
+        },
+        "6bd34a38-504e-40f3-b22a-d1debbc3f5d8": {
+            "paths": [
+                "metadata/store/JsonPStoreSessions",
+                "app/store/override/JsonPStoreSessions.js",
+                "app/store/JsonPStoreSessions.js"
+            ],
+            "className": "JsonPStoreSessions"
+        },
+        "43691fc7-b0ce-4faa-8c37-597e69c68e0b": {
+            "paths": [
+                "metadata/resource/Library"
+            ],
+            "className": "Library"
+        }
+    },
+    "viewOrderMap": {
+        "view": [
+            "6d1881ee-21f6-4a83-a812-cdeb4f5b2c95"
+        ],
+        "store": [
+            "0b8be46c-2a09-4537-889a-09a4f6fd8149",
+            "6bd34a38-504e-40f3-b22a-d1debbc3f5d8",
+            "dc643f13-0213-433e-adc2-4e40c648310c"
+        ],
+        "controller": [],
+        "model": [
+            "c987d6dc-8b8a-413c-89c5-9887ebb47630",
+            "8adf8069-8b5c-44c0-b8f4-4cb4a2e1fc14",
+            "3d90a5d1-b62e-41c3-80a1-9d345cc87744"
+        ],
+        "resource": [
+            "43691fc7-b0ce-4faa-8c37-597e69c68e0b"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

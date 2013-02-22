@@ -17,9 +17,35 @@ Ext.define('RegistrationApp.controller.SpeakerPictureController', {
     extend: 'Ext.app.Controller',
 
     onBackButtonIdClick: function(button, e, options) {
+        var tabWizardPanel = Ext.getCmp('TabWizardId')
+        tabWizardPanel.setActiveTab(Ext.getCmp('TabWizardId').getTabIdByName('SpeakerAfterLogin'));
 
-
-
+        /*
+        if (stepName === 'AttendeeSpeakerSponsorId') {
+        tabId = 0;
+        } else if (stepName === 'attendeeorspeaker') {
+        tabId = 1;
+        } else if (stepName === 'forgotusernameorpassword') {
+        tabId = 2;
+        } else if (stepName === 'Sponsor') {
+        tabId = 3;
+        }
+        else if (stepName === 'AttendeeAfterLogin') {
+        tabId = 4;
+        }
+        else if (stepName === 'SpeakerAfterLogin') {
+        tabId = 5;
+        }
+        else if (stepName === 'createAccount') {
+        tabId = 6;
+        }
+        else if (stepName === 'SpeakerPicture') {
+        tabId = 7;
+        }
+        else if (stepName === 'optIn') {
+        tabId = 8;
+        }
+        */
 
     },
 

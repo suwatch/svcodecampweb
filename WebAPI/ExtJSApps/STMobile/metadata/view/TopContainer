@@ -1,0 +1,645 @@
+{
+    "type": "container",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "TopContainer",
+        "designer|initialView": true,
+        "style": "",
+        "styleHtmlCls": "",
+        "ui": "",
+        "layout": "fit"
+    },
+    "id": "ExtBox1-ext-gen5816",
+    "designerId": "6d1881ee-21f6-4a83-a812-cdeb4f5b2c95",
+    "cn": [
+        {
+            "type": "tabpanel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyTabPanel",
+                "id": "TabPanelId",
+                "itemId": "TabPaneIItemId"
+            },
+            "designerId": "5c206127-c68d-4bb8-b82d-4b97ebde74c3",
+            "cn": [
+                {
+                    "type": "list",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "title": "Speakers",
+                        "iconCls": "info",
+                        "designer|userClassName": "MyList1",
+                        "id": "SpeakersDataViewId",
+                        "itemId": "Speakers",
+                        "layout": null,
+                        "store": "SpeakersStoreId",
+                        "onItemDisclosure": true
+                    },
+                    "designerId": "9285f030-5edf-4dd9-878e-65ad1cee835a",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "onSpeakersItemTap",
+                                "fn": "onSpeakersItemTap",
+                                "implHandler": [
+                                    "\r",
+                                    "// get a reference to grid of speaker detail page\r",
+                                    "var speakerDetailTab = Ext.getCmp('SpeakerDetailTabId');\r",
+                                    "var sessionDetailTab = Ext.getCmp('SessionDetailTabId');\r",
+                                    "var sessionDetailDataView = Ext.getCmp('SessionDetailDataView');\r",
+                                    "var speakerTweetsTab = Ext.getCmp('SpeakerTweetsTabId');\r",
+                                    "var speakerTweetsDataView = Ext.getCmp('TwitterDataView');\r",
+                                    "\r",
+                                    "\r",
+                                    "speakerDetailTab.setData(record.data);\r",
+                                    "console.log('record.get(userlastname): ' + record.get('UserLastName') );\r",
+                                    "if (record.data.Sessions.length === 0)\r",
+                                    "{\r",
+                                    "    console.log('sessions array empty');\r",
+                                    "}\r",
+                                    "\r",
+                                    "var sessions = record.get('Sessions');\r",
+                                    "var myStore = Ext.create('Ext.data.Store',{\r",
+                                    "    fields: ['Title','Description','UserFirstName','UserLastName','Id'],\r",
+                                    "    data: sessions\r",
+                                    "});\r",
+                                    "\r",
+                                    "sessionDetailDataView.setStore(myStore);\r",
+                                    "\r",
+                                    "var tweetsStore = speakerTweetsDataView.getStore();\r",
+                                    "var twitterUrl = 'http://search.twitter.com/search.json?q=' + 'xyzzabcd';\r",
+                                    "\r",
+                                    "if (record.data.TwitterHandle)\r",
+                                    "{\r",
+                                    "    twitterUrl = 'http://search.twitter.com/search.json?q=from:' + record.data.TwitterHandle;\r",
+                                    "}\r",
+                                    "tweetsStore.load({url: twitterUrl});\r",
+                                    "\r",
+                                    "\r",
+                                    "var tabPanel = Ext.getCmp(\"TabPanelId\");\r",
+                                    "tabPanel.setActiveItem(1);\r",
+                                    "\r",
+                                    "var tabPanelDetails = Ext.getCmp(\"tabDetailsId\");\r",
+                                    "tabPanelDetails.setActiveItem(1);  // 0: speaker details ; 1: speaker sessions ; 2: twitter\r",
+                                    "\r",
+                                    "\r",
+                                    "\r",
+                                    "\r",
+                                    ""
+                                ],
+                                "name": "itemtap"
+                            },
+                            "designerId": "79686d46-7ff6-44d9-8f2d-c18291a5ce43"
+                        },
+                        {
+                            "type": "toolbar",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyToolbar2",
+                                "docked": "top"
+                            },
+                            "designerId": "3515a9ed-2e64-4331-a14c-c212e01a525d",
+                            "cn": [
+                                {
+                                    "type": "searchfield",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|userClassName": "MySearchField",
+                                        "id": "SearchFieldId",
+                                        "itemId": "mysearchfield",
+                                        "width": 140,
+                                        "label": ""
+                                    },
+                                    "designerId": "3c9d5793-77bc-48df-8fab-d0aa8a8b73ab",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|userClassName": "onSearchFieldIdClearicontap",
+                                                "fn": "onSearchFieldIdClearicontap",
+                                                "implHandler": [
+                                                    "var speakersDataview = Ext.getCmp('SpeakersDataViewId');\r",
+                                                    "var store = speakersDataview.getStore();\r",
+                                                    "store.clearFilter();"
+                                                ],
+                                                "name": "clearicontap"
+                                            },
+                                            "designerId": "e3107e08-c387-4a63-84bd-5cfbd13bdb53"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|userClassName": "MyButton5",
+                                        "itemId": "mybutton5",
+                                        "text": "Search"
+                                    },
+                                    "designerId": "fc3659a7-40f8-464b-8c7b-d083f2cf4bc8",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|userClassName": "onMybutton5Tap",
+                                                "fn": "onMybutton5Tap",
+                                                "implHandler": [
+                                                    "var searchField = Ext.getCmp('SearchFieldId');\r",
+                                                    "var speakersDataview = Ext.getCmp('SpeakersDataViewId');\r",
+                                                    "\r",
+                                                    "var store = speakersDataview.getStore();\r",
+                                                    "\r",
+                                                    "store.filterBy(function(record) {\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "    if (record.getData().UserLastName.toUpperCase().indexOf(searchField.getValue().toUpperCase()) != -1 ||\r",
+                                                    "    record.getData().UserFirstName.toUpperCase().indexOf(searchField.getValue().toUpperCase()) != -1\r",
+                                                    "    )\r",
+                                                    "    {\r",
+                                                    "        return true;\r",
+                                                    "    }\r",
+                                                    "    else\r",
+                                                    "    {\r",
+                                                    "        return false;\r",
+                                                    "    }\r",
+                                                    "});\r",
+                                                    "\r",
+                                                    "store.filter();\r",
+                                                    "\r",
+                                                    "\r",
+                                                    "\r",
+                                                    ""
+                                                ],
+                                                "name": "tap"
+                                            },
+                                            "designerId": "1f6c10de-f847-4d0f-8ccb-8fcd8f8fea7f"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "spacer",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|userClassName": "MySpacer2"
+                                    },
+                                    "designerId": "9fdc3b73-18ef-43db-b20d-cab1aa13e560"
+                                },
+                                {
+                                    "type": "button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|userClassName": "MyButton1",
+                                        "itemId": "mybutton1",
+                                        "ui": "small",
+                                        "iconAlign": "right",
+                                        "iconCls": "info",
+                                        "iconMask": true,
+                                        "text": "APP INFO"
+                                    },
+                                    "designerId": "1c341d90-efa0-4356-9b3d-66f8d5a83556",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|userClassName": "onMybutton1Tap",
+                                                "fn": "onMybutton1Tap",
+                                                "implHandler": [
+                                                    "Ext.Msg.alert('About This App', 'Built By Peter Kellner. For Training or Custom Engineering contact http://peterkellner.net/contact/', Ext.emptyFn);"
+                                                ],
+                                                "name": "tap"
+                                            },
+                                            "designerId": "fd1bca2a-8bf5-4a48-b752-db59ef275c33"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "template",
+                            "reference": {
+                                "name": "itemTpl",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "itemTpl",
+                                "implHandler": [
+                                    "<div>\r",
+                                    "            <div style=\"float: right;\">\r",
+                                    "                 <p>\r",
+                                    "                    {UserBioShort}\r",
+                                    "                </p>\r",
+                                    "              \r",
+                                    "            </div>\r",
+                                    "            <div style=\"margin: 10px 10px 10px 10px;\">\r",
+                                    "                <img src=\"/attendeeimage/{AttendeesId}.jpg?width=50\" \r",
+                                    "                     alt=\"{UserLastName}\" />\r",
+                                    "\r",
+                                    "            </div>\r",
+                                    "       \r",
+                                    "            <div style=\"float:none;font-size: x-large;font-weight: bold;\">\r",
+                                    "                <p>{UserFirstName}&nbsp;{UserLastName}</p>"
+                                ],
+                                "designer|displayName": "itemTpl"
+                            },
+                            "designerId": "66c20860-e38b-4d5d-a349-5579c95c8a0b"
+                        }
+                    ]
+                },
+                {
+                    "type": "container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "title": "Speaker Details",
+                        "iconCls": "info",
+                        "designer|userClassName": "MyContainer1",
+                        "layout": "fit",
+                        "scrollable": null
+                    },
+                    "designerId": "12f8df57-9268-4102-8907-8354fa99381e",
+                    "cn": [
+                        {
+                            "type": "tabpanel",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyTabPanel1",
+                                "id": "tabDetailsId",
+                                "itemId": "mytabpanel1"
+                            },
+                            "designerId": "657b2f9d-ad80-47aa-ada7-e954fe79f216",
+                            "cn": [
+                                {
+                                    "type": "container",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "title": "Details",
+                                        "iconCls": "info",
+                                        "designer|userClassName": "MyContainer",
+                                        "id": "SpeakerDetailTabId"
+                                    },
+                                    "designerId": "e8a972ae-d6fd-48f9-94ad-20affe5b010b",
+                                    "cn": [
+                                        {
+                                            "type": "template",
+                                            "reference": {
+                                                "name": "tpl",
+                                                "type": "object"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|userClassName": "tpl",
+                                                "implHandler": [
+                                                    "<div>\r",
+                                                    "            <div style=\"float: right;\">\r",
+                                                    "                 <p>\r",
+                                                    "                    {UserBio}\r",
+                                                    "                </p>\r",
+                                                    "              \r",
+                                                    "            </div>\r",
+                                                    "            <div style=\"margin: 10px 10px 10px 10px;\">\r",
+                                                    "                <img src=\"http://www.siliconvalley-codecamp.com/DisplayImage.ashx?PKID={PKID}&amp;sizex=75\" style=\"width: 75px;\"\r",
+                                                    "                     alt=\"{UserLastName}\" />\r",
+                                                    "\r",
+                                                    "            </div>\r",
+                                                    "       \r",
+                                                    "            <div style=\"float:none;font-size: x-large;font-weight: bold;\">\r",
+                                                    "                <p>{UserFirstName}&nbsp;{UserLastName}</p>"
+                                                ],
+                                                "designer|displayName": "tpl"
+                                            },
+                                            "designerId": "e4ecbf0a-539a-4aa2-94f7-53ed933e0355"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "container",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "title": "Sessions",
+                                        "iconCls": "info",
+                                        "designer|userClassName": "MyContainer5",
+                                        "id": "SessionDetailTabId",
+                                        "layout": "fit"
+                                    },
+                                    "designerId": "926c3eb6-040b-4023-84da-65a8dd70d3e4",
+                                    "cn": [
+                                        {
+                                            "type": "dataview",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|userClassName": "MyDataView1",
+                                                "id": "SessionDetailDataView",
+                                                "itemId": "mydataview",
+                                                "layout": "fit",
+                                                "store": null
+                                            },
+                                            "designerId": "b72f448a-da17-4292-8bd7-f57659ff1246",
+                                            "cn": [
+                                                {
+                                                    "type": "template",
+                                                    "reference": {
+                                                        "name": "itemTpl",
+                                                        "type": "object"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "designer|userClassName": "itemTpl",
+                                                        "implHandler": [
+                                                            "<div>\r",
+                                                            "Speaker:<b> {UserFirstName}  {UserLastName}</b>\r",
+                                                            "<br/>\r",
+                                                            "<br/>\r",
+                                                            "<b>{Title}</b>\r",
+                                                            "<br/><br/>\r",
+                                                            "<p>\r",
+                                                            "{Description}\r",
+                                                            "</p>\r",
+                                                            "<div>"
+                                                        ],
+                                                        "designer|displayName": "itemTpl"
+                                                    },
+                                                    "designerId": "0b562983-3e26-4b2e-8efc-8a7ba021860e"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "container",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "title": "Tweets",
+                                        "iconCls": "info",
+                                        "designer|userClassName": "MyContainer5",
+                                        "id": "SpeakerTweetsTabId",
+                                        "layout": "fit"
+                                    },
+                                    "designerId": "a2f76550-b6af-404b-8397-cc4c679e2477",
+                                    "cn": [
+                                        {
+                                            "type": "dataview",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|userClassName": "MyDataView1",
+                                                "id": "TwitterDataView",
+                                                "layout": "fit",
+                                                "store": "TwitterStoreId"
+                                            },
+                                            "designerId": "16d8b1e7-cf6a-4448-9709-cb658167281f",
+                                            "cn": [
+                                                {
+                                                    "type": "template",
+                                                    "reference": {
+                                                        "name": "itemTpl",
+                                                        "type": "object"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "designer|userClassName": "itemTpl",
+                                                        "implHandler": [
+                                                            "<div>\r",
+                                                            "<img src=\"{profile_image_url}\" /><h2>\r",
+                                                            "{from_user}</h2><p>{text}</p>\r",
+                                                            "<div style=\"clear: both\">\r",
+                                                            "</div>\r",
+                                                            "</div>"
+                                                        ],
+                                                        "designer|displayName": "itemTpl"
+                                                    },
+                                                    "designerId": "39e47d53-9f03-46c7-8798-65b776efcd12"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "template",
+                                            "reference": {
+                                                "name": "tpl",
+                                                "type": "object"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|userClassName": "tpl",
+                                                "implHandler": [
+                                                    "<div>\r",
+                                                    "Title {Title}\r",
+                                                    "<br/>\r",
+                                                    "{Description}\r",
+                                                    "</div>"
+                                                ],
+                                                "designer|displayName": "tpl"
+                                            },
+                                            "designerId": "6e5e205e-8bf6-4cd2-a530-cc0314841a6c"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "tabbar",
+                                    "reference": {
+                                        "name": "tabBar",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|userClassName": "MyTabBar",
+                                        "docked": "bottom"
+                                    },
+                                    "designerId": "89159b6b-cd11-41dd-ab2d-02f02b370ed0"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "toolbar",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyToolbar1",
+                                "docked": "top"
+                            },
+                            "designerId": "eab0acb5-46d1-4355-8a1c-840e9e04ab78",
+                            "cn": [
+                                {
+                                    "type": "button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|userClassName": "MyButton4",
+                                        "itemId": "ButtonBackId",
+                                        "ui": "back",
+                                        "text": "Back"
+                                    },
+                                    "designerId": "d969d65f-fc64-4593-a3ee-386967e1e02c",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|userClassName": "onMybutton4Tap",
+                                                "fn": "onMybutton4Tap",
+                                                "implHandler": [
+                                                    "\r",
+                                                    "var tabPanel = Ext.getCmp(\"TabPanelId\");\r",
+                                                    "tabPanel.setActiveItem(0);"
+                                                ],
+                                                "name": "tap"
+                                            },
+                                            "designerId": "9a9f3aa0-1b0f-464f-a837-7812abb6c1e3"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "spacer",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|userClassName": "MySpacer2"
+                                    },
+                                    "designerId": "cd5a9aca-84fa-4c74-970b-71c9270ff70a"
+                                },
+                                {
+                                    "type": "spacer",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|userClassName": "MySpacer2"
+                                    },
+                                    "designerId": "8c193aea-e7a1-47ad-b775-8aa06c9314f1"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "tabbar",
+                    "reference": {
+                        "name": "tabBar",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyTabBar",
+                        "docked": "bottom"
+                    },
+                    "designerId": "c91b3169-0b1a-4e4f-8734-87e7875497f6"
+                },
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "onTabPanelIdPainted",
+                        "fn": "onTabPanelIdPainted",
+                        "implHandler": [
+                            "//console.log('onTabPanelIdPaitned');\r",
+                            "\r",
+                            "component.getTabBar().hide();\r",
+                            "//component.componentLayout.childrenChanged = true;\r",
+                            "//component.doComponentLayout();"
+                        ],
+                        "name": "painted"
+                    },
+                    "designerId": "c48e36ad-e31d-49d0-a709-6271fe07dd07"
+                }
+            ]
+        }
+    ]
+}

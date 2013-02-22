@@ -18,6 +18,8 @@ Ext.define('RegistrationApp.controller.SponsorController', {
 
     onContinueButtonIdClick: function(button, e, options) {
         var form =  Ext.ComponentQuery.query('sponsorAlias')[0].getForm();
+
+
         form.submit();
 
 
@@ -65,59 +67,6 @@ Ext.define('RegistrationApp.controller.SponsorController', {
 
     },
 
-    onNameChange: function(field, newValue, oldValue, options) {
-        this.continueButtonCheck();
-    },
-
-    continueButtonCheck: function() {
-        // check for if form is valid, and if so enable continue button.
-
-        var continueButton = Ext.ComponentQuery.query('sponsorAlias #continueButtonId')[0];
-        var form =  Ext.ComponentQuery.query('sponsorAlias')[0].getForm();
-
-        //debugger;
-
-        if (form.isValid()) {
-            if (continueButton.isDisabled()) {
-                continueButton.enable();
-            }
-        } else {
-            if (!continueButton.isDisabled()) {
-                continueButton.enable();
-            }
-        }
-
-
-
-
-
-
-
-
-        /*
-        var continuebutton;
-        var name = Ext.ComponentQuery.query('sponsorAlias #name')[0].getValue();
-        var email = Ext.ComponentQuery.query('sponsorAlias #email')[0].getValue();
-
-        console.log('name: ' + name + ' email: ' + email);
-
-        if (name.length > 0 && email.length > 0) {
-        continueButton = Ext.ComponentQuery.query('sponsorAlias #continueButtonId')[0];
-        if (continueButton.isDisabled()) {
-        continueButton.enable();
-        }
-        } else {
-        continueButton = Ext.ComponentQuery.query('sponsorAlias #continueButtonId')[0];
-        if (!continueButton.isDisabled()) {
-        continueButton.disable();
-        }
-        }
-
-        return;
-        */
-
-    },
-
     init: function(application) {
         this.control({
             "sponsorAlias #continueButtonId": {
@@ -125,9 +74,6 @@ Ext.define('RegistrationApp.controller.SponsorController', {
             },
             "sponsorAlias #backButtonId": {
                 click: this.onBackButtonIdClick
-            },
-            "#name": {
-                change: this.onNameChange
             }
         });
     }

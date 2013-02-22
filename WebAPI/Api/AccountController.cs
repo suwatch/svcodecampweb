@@ -6,11 +6,13 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using System.Web.Mvc;
 using System.Web.Security;
 using System.Web.UI.WebControls;
 using CodeCampSV;
@@ -61,8 +63,8 @@ namespace WebAPI.Api
         /// 
         /// </summary>
         /// <returns></returns>
-        [HttpPost]
-        [ActionName("FormData")]
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.ActionName("FormData")]
         public async Task<HttpResponseMessage> PostFormData()
         {
             int attendeesId = -1;
@@ -166,8 +168,8 @@ namespace WebAPI.Api
             }
         }
 
-        [HttpPost]
-        [ActionName("ShirtSizes")]
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.ActionName("ShirtSizes")]
         public HttpResponseMessage PostShirtSizes()
         {
             var shirtSizes = new List<string>();
@@ -196,8 +198,8 @@ namespace WebAPI.Api
         }
 
 
-        [HttpPost]
-        [ActionName("CheckUsernameEmailExists")]
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.ActionName("CheckUsernameEmailExists")]
         public HttpResponseMessage PostCheckUsernameEmailExists(AttendeesResult attendeeRecord)
         {
             Thread.Sleep(300); // try to defend a little against denial of service attack or username searching attack
@@ -247,23 +249,46 @@ namespace WebAPI.Api
                                                      errorMessage.ToString());
         }
 
-        [HttpPost]
-        [ActionName("UpdateSpeaker")]
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.ActionName("UpdateSpeaker")]
         public HttpResponseMessage PostUpdateSpeaker(AttendeesResult attendeeRecord)
         {
             return UpdateAttendeeRecordParts(attendeeRecord, "speaker");
         }
 
-        [HttpPost]
-        [ActionName("UpdateOptIn")]
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.ActionName("UpdateOptIn")]
         public HttpResponseMessage PostUpdateOptIn(AttendeesResult attendeeRecord)
         {
             return UpdateAttendeeRecordParts(attendeeRecord, "optin");
         }
 
+        //[HttpGet]
+        //[ActionName("RedirectSessions")]
+        //public HttpResponseMessage GetRedirectSessions()
+        //{
+        //    //HTTP/1.1 301 Moved Permanently
+        //    //Location: http://www.example.org/
 
-        [HttpPost]
-        [ActionName("UpdateAttendee")]
+        //    string urlBase = HttpContext.Current.Request.Url.Authority;
+        //    string urlProtocol = HttpContext.Current.Request.IsSecureConnection ? "https" : "http";
+        //    string redirectUrl = String.Format("{0}://{1}/{2}", urlProtocol, urlBase, "Session#");
+        //    var response = Request.CreateResponse(HttpStatusCode.Redirect);
+        //    response.Headers.Add("Location",redirectUrl);
+        //    return response;
+
+        //}
+
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.ActionName("SponsorRequest")]
+        public HttpResponseMessage PostSponsorRequest(FormDataCollection formItems)
+        {
+            return Request.CreateErrorResponse(HttpStatusCode.OK,
+                                               "");
+        }
+
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.ActionName("UpdateAttendee")]
         public HttpResponseMessage PostUpdateAttendee(AttendeesResult attendeeRecord)
         {
             return UpdateAttendeeRecordParts(attendeeRecord,"attendee");
@@ -340,8 +365,8 @@ namespace WebAPI.Api
             return response;
         }
 
-        [HttpPost]
-        [ActionName("CreateUser")]
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.ActionName("CreateUser")]
         public HttpResponseMessage PostCreateUser(AttendeesResult attendee)
         {
             HttpResponseMessage response;
@@ -401,8 +426,8 @@ namespace WebAPI.Api
             return response;
         }
 
-        [HttpPost]
-        [ActionName("Login")]
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.ActionName("Login")]
         public HttpResponseMessage PostLogin(LoginCredentials login)
         {
             if (!ModelState.IsValid)
@@ -477,8 +502,8 @@ namespace WebAPI.Api
         }
 
 
-        [HttpPost]
-        [ActionName("IsLoggedIn")]
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.ActionName("IsLoggedIn")]
         public HttpResponseMessage PostIsLoggedIn(LoginCredentials login)
         {
             var loginReturnStatus =
@@ -519,8 +544,8 @@ namespace WebAPI.Api
             return response;
         }
 
-        [HttpPost]
-        [ActionName("LogOut")]
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.ActionName("LogOut")]
         public HttpResponseMessage PostLogOut(LoginCredentials login)
         {
             if (User.Identity.IsAuthenticated)

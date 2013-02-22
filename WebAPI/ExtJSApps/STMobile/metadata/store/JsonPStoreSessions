@@ -1,0 +1,51 @@
+{
+    "type": "jsonpstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "JsonPStoreSessions",
+        "autoLoad": true,
+        "model": "SessionsModel",
+        "storeId": "JsonPStoreSessions"
+    },
+    "id": "ExtBox1-ext-gen6280",
+    "designerId": "6bd34a38-504e-40f3-b22a-d1debbc3f5d8",
+    "cn": [
+        {
+            "type": "jsonpproxy",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyJsonPProxy",
+                "limitParam": "999",
+                "pageParam": "999",
+                "startParam": "0",
+                "url": "http://www.siliconvalley-codecamp.com/SessionsJSONP.aspx",
+                "callbackKey": "jsonp"
+            },
+            "designerId": "58a22401-d7fd-4811-974e-c6be5abfa269",
+            "cn": [
+                {
+                    "type": "jsonreader",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyJsonReader1",
+                        "idProperty": "AttendeesId",
+                        "rootProperty": "rows"
+                    },
+                    "designerId": "a42236cb-e4d8-4d5b-a8fc-c847cc10e210"
+                }
+            ]
+        }
+    ]
+}

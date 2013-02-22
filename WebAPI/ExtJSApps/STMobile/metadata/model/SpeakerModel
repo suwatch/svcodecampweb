@@ -1,0 +1,133 @@
+{
+    "type": "datamodel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "SpeakerModel",
+        "idProperty": "Id"
+    },
+    "id": "ExtBox1-ext-gen19305",
+    "designerId": "8adf8069-8b5c-44c0-b8f4-4cb4a2e1fc14",
+    "cn": [
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyField12",
+                "name": "AttendeesId"
+            },
+            "designerId": "2c563e6e-b378-41f0-982f-c6998a753983"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyField13",
+                "name": "UserFirstName"
+            },
+            "designerId": "f94c1f61-6948-4890-be5d-51fa036b4433"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyField14",
+                "name": "UserLastName"
+            },
+            "designerId": "a2c3fb7e-c45d-4857-9b85-ba5332e158e3"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyField15",
+                "name": "UserWebSite"
+            },
+            "designerId": "2b3cffa7-f11a-44fd-a7f0-1c8d3f23a93f"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyField16",
+                "name": "UserBio"
+            },
+            "designerId": "7110110b-d2b8-459f-b238-3f2e8e7055b4"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyField18",
+                "name": "Sessions"
+            },
+            "designerId": "396f9284-eb45-4048-9464-f7a9743a0e68"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyField19",
+                "name": "PKID"
+            },
+            "designerId": "a5a43f2b-b5da-4369-a3d6-1b97c31d6067"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyField19",
+                "name": "UserBioShort"
+            },
+            "designerId": "be0bb740-4ed2-4b61-b487-a518c9185552"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyField23",
+                "name": "TwitterHandle"
+            },
+            "designerId": "7ccdf85a-7cc7-454e-84ff-de34798b9a0a"
+        }
+    ]
+}

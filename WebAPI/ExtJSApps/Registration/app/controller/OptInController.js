@@ -17,6 +17,43 @@ Ext.define('RegistrationApp.controller.OptInController', {
     extend: 'Ext.app.Controller',
 
     onBackButtonIdClick: function(button, e, options) {
+        //var attendeeFromFirstPage = Ext.ComponentQuery.query('AttendeeSpeakerOrSponsorAlias #rbAttendee')[0].checked;
+        var speakerFromFirstPage = Ext.ComponentQuery.query('AttendeeSpeakerOrSponsorAlias #rbSpeaker')[0].checked;
+
+        var tabWizardPanel = Ext.getCmp('TabWizardId');
+
+        if (speakerFromFirstPage === true) {
+            tabWizardPanel.setActiveTab(Ext.getCmp('TabWizardId').getTabIdByName('SpeakerPicture'));
+        } else {
+            tabWizardPanel.setActiveTab(Ext.getCmp('TabWizardId').getTabIdByName('AttendeeAfterLogin'));
+        }
+
+        /*
+        if (stepName === 'AttendeeSpeakerSponsorId') {
+        tabId = 0;
+        } else if (stepName === 'attendeeorspeaker') {
+        tabId = 1;
+        } else if (stepName === 'forgotusernameorpassword') {
+        tabId = 2;
+        } else if (stepName === 'Sponsor') {
+        tabId = 3;
+        }
+        else if (stepName === 'AttendeeAfterLogin') {
+        tabId = 4;
+        }
+        else if (stepName === 'SpeakerAfterLogin') {
+        tabId = 5;
+        }
+        else if (stepName === 'createAccount') {
+        tabId = 6;
+        }
+        else if (stepName === 'SpeakerPicture') {
+        tabId = 7;
+        }
+        else if (stepName === 'optIn') {
+        tabId = 8;
+        }
+        */
 
     },
 
@@ -40,7 +77,17 @@ Ext.define('RegistrationApp.controller.OptInController', {
                 myMask.hide();
 
                 //debugger;
-                //window.location = '../../Session#';
+                //Ext.Ajax.request({ 
+                //    url:'/api/Account/RedirectSessions', 
+                //    actionMethods:'GET'
+                //});
+
+
+
+                //RedirectSessions
+
+                //debugger;
+                window.location = '../../Session#';
 
 
             },

@@ -114,7 +114,7 @@
                             "font-weight:bold;font-size:120%"
                         ],
                         "width": null,
-                        "text": "Help Support Our Sponsors.  Opting in supports our event in a big way.  Please Consider not opting out."
+                        "text": "Help keep Silicon Valley Code Camp free for attendees by support our sponsors and Opting.  Please Consider NOT opting out"
                     },
                     "designerId": "b5c4aa0f-362f-4b17-bdf5-0ecc028833de"
                 }
@@ -144,7 +144,7 @@
                     "userConfig": {
                         "designer|userClassName": "MyCheckbox6",
                         "name": "optInSponsoredMailingsLevel",
-                        "fieldLabel": "Accept Emails From Sponsors Offering Specials Only Available To Code Camp Attendees.  All Email Subjects Include [Sponsored Specials]",
+                        "fieldLabel": "Accept Emails From Sponsors Offering Specials Only Available To Code Camp Attendees.  <br/>All email to you include in the subjects <i>[Sponsored Specials]</i>",
                         "labelWidth": 300,
                         "boxLabel": "",
                         "checked": true
@@ -162,7 +162,7 @@
                         "designer|userClassName": "MyCheckbox6",
                         "margin": "20 0 0 0 ",
                         "name": "optInSponsorSpecialsLevel",
-                        "fieldLabel": "Accept Emails From Sponsors (All Subjects Prefixed with [Sponsored Email]",
+                        "fieldLabel": "Accept general emails From Sponsors<br/>All email to you include in the subject <i>[Sponsored Email]</i>",
                         "labelWidth": 300,
                         "boxLabel": "",
                         "checked": true

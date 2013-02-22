@@ -15,8 +15,8 @@ Ext.define('RegistrationApp.view.override.PasswordConfirm', {
 				}
 				return (val == pwd.getValue());
 			}
-			return true;
+			return true
 		},
-		passwordText : 'Password Confirmation'
+		passwordText : 'Password Confirmation',
 	});
 });

@@ -1,0 +1,51 @@
+{
+    "type": "jsonpstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "JsonPStoreSpeakers",
+        "autoLoad": true,
+        "model": "SpeakerModel",
+        "storeId": "SpeakersStoreId"
+    },
+    "id": "ExtBox1-ext-gen20857",
+    "designerId": "0b8be46c-2a09-4537-889a-09a4f6fd8149",
+    "cn": [
+        {
+            "type": "jsonpproxy",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyJsonPProxy",
+                "limitParam": "999",
+                "pageParam": "999",
+                "startParam": "0",
+                "url": "http://www.siliconvalley-codecamp.com/SpeakersJSONP.aspx?biomaxlen=75 ",
+                "callbackKey": "jsonp"
+            },
+            "designerId": "dca2c2bf-25e4-4a61-8872-433bf82c8134",
+            "cn": [
+                {
+                    "type": "jsonreader",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyJsonReader1",
+                        "idProperty": "AttendeesId",
+                        "rootProperty": "rows"
+                    },
+                    "designerId": "d6afefc7-6a4b-43d6-9c21-aaa98c04117f"
+                }
+            ]
+        }
+    ]
+}

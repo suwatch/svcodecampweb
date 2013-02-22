@@ -1,0 +1,46 @@
+{
+    "type": "jsonpstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "JsonPStoreTwitter",
+        "autoLoad": false,
+        "model": "TwitterModel",
+        "storeId": "TwitterStoreId"
+    },
+    "id": "ExtBox1-ext-gen46207",
+    "designerId": "dc643f13-0213-433e-adc2-4e40c648310c",
+    "cn": [
+        {
+            "type": "jsonpproxy",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyJsonPProxy2",
+                "url": "http://search.twitter.com/search.json?q=Sencha Touch"
+            },
+            "designerId": "67cfd74d-7343-4150-ad43-8af1afaa5041",
+            "cn": [
+                {
+                    "type": "jsonreader",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyJsonReader3",
+                        "rootProperty": "results"
+                    },
+                    "designerId": "d8bb670a-f512-4a15-b477-d58cba619f42"
+                }
+            ]
+        }
+    ]
+}

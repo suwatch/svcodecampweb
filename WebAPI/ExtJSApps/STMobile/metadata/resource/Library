@@ -1,0 +1,14 @@
+{
+    "type": "libraryresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "basePath": "../../touch-2.1.1/",
+        "debug": true
+    },
+    "id": "ExtBox1-ext-gen1768",
+    "designerId": "43691fc7-b0ce-4faa-8c37-597e69c68e0b"
+}

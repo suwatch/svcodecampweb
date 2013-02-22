@@ -1,0 +1,26 @@
+{
+    "type": "application",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "models": [
+            "SessionsModel",
+            "SpeakerModel",
+            "TwitterModel"
+        ],
+        "stores": [
+            "JsonPStoreSpeakers",
+            "JsonPStoreTwitter",
+            "JsonPStoreSessions"
+        ],
+        "views": [
+            "TopContainer"
+        ],
+        "name": "MyApp"
+    },
+    "id": "ExtBox1-ext-gen2019",
+    "designerId": "application"
+}

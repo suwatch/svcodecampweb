@@ -38,6 +38,12 @@ namespace WebAPI
                 SerializerSettings = new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }
             };
 
+          //  config.Filters.Add(new ValidationActionFilter());
+
+
+
+
+
           
         }
 

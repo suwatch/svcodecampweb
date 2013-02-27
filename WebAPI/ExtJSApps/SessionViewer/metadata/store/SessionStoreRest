@@ -1,0 +1,31 @@
+{
+    "type": "store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "SessionStoreRest",
+        "autoLoad": true,
+        "storeId": "MyStore",
+        "model": "SessionModel"
+    },
+    "id": "ExtBox1-ext-gen2398",
+    "designerId": "1eadbd14-0cbb-43e3-9110-4dba20190522",
+    "cn": [
+        {
+            "type": "restproxy",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyRestProxy",
+                "url": "/api/Session"
+            },
+            "designerId": "d2645c08-bfb1-4034-9016-ccf5cc1c1c58"
+        }
+    ]
+}

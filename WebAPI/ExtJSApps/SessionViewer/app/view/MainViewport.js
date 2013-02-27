@@ -16,6 +16,10 @@
 Ext.define('SessionApp.view.MainViewport', {
     extend: 'Ext.container.Viewport',
 
+    layout: {
+        type: 'fit'
+    },
+
     initComponent: function() {
         var me = this;
 
@@ -23,46 +27,47 @@ Ext.define('SessionApp.view.MainViewport', {
             items: [
                 {
                     xtype: 'panel',
-                    title: 'SessionPanel',
+                    autoScroll: false,
+                    layout: {
+                        type: 'fit'
+                    },
                     items: [
                         {
                             xtype: 'gridpanel',
                             itemId: 'SessionGrid',
-                            title: 'My Grid Panel',
-                            store: 'SessionStore1',
+                            autoScroll: true,
+                            store: 'SessionStoreRest',
                             viewConfig: {
 
                             },
                             columns: [
                                 {
                                     xtype: 'gridcolumn',
-                                    dataIndex: 'sessionId',
-                                    text: 'Id'
+                                    hidden: true,
+                                    dataIndex: 'id',
+                                    text: 'SessionId'
                                 },
                                 {
                                     xtype: 'gridcolumn',
-                                    dataIndex: 'sessionRoom',
-                                    text: 'Room'
+                                    width: 275,
+                                    dataIndex: 'title',
+                                    text: 'SessionTitle'
                                 },
                                 {
                                     xtype: 'gridcolumn',
+                                    hidden: true,
                                     dataIndex: 'sessionTime',
-                                    text: 'Time'
+                                    text: 'SessionTime'
                                 },
                                 {
                                     xtype: 'gridcolumn',
-                                    width: 401,
-                                    dataIndex: 'sessionTitle',
-                                    text: 'Title'
-                                }
-                            ],
-                            dockedItems: [
+                                    dataIndex: 'interestCount',
+                                    text: 'InterestedCount'
+                                },
                                 {
-                                    xtype: 'pagingtoolbar',
-                                    dock: 'bottom',
-                                    autoScroll: true,
-                                    displayInfo: true,
-                                    store: 'SessionStore1'
+                                    xtype: 'gridcolumn',
+                                    dataIndex: 'planAheadCount',
+                                    text: 'WillAttendCount'
                                 }
                             ]
                         }

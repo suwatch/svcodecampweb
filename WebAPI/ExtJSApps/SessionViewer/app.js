@@ -29,7 +29,8 @@ Ext.application({
         'SessionModel'
     ],
     stores: [
-        'SessionStore1'
+        'SessionStore1',
+        'SessionStoreRest'
     ],
     views: [
         'MainViewport'

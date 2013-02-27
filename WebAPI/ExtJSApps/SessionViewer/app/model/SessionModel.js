@@ -18,16 +18,30 @@ Ext.define('SessionApp.model.SessionModel', {
 
     fields: [
         {
-            name: 'sessionId'
+            name: 'id'
         },
         {
-            name: 'sessionTitle'
+            name: 'title'
         },
         {
             name: 'sessionRoom'
         },
         {
             name: 'sessionTime'
+        },
+        {
+            name: 'presenterURL'
+        },
+        {
+            name: 'interestCount',
+            type: 'int'
+        },
+        {
+            name: 'planAheadCount',
+            type: 'int'
+        },
+        {
+            name: 'descriptionEllipsized'
         }
     ]
 });

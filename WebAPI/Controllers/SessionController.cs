@@ -18,7 +18,12 @@ namespace WebAPI.Controllers
 {
     public class SessionController : Controller
     {
-         private readonly IRepositorySession _repositorySession;
+        private readonly IRepositorySession _repositorySession;
+
+
+
+
+
 
         public SessionController(IRepositorySession repository)
         {
@@ -33,7 +38,7 @@ namespace WebAPI.Controllers
         {
             return IndexReturn(year);
         }
-       
+
         private ActionResult IndexReturn(string year)
         {
             return View(_repositorySession.GetDataForYear(year));

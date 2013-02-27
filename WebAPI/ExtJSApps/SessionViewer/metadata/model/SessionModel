@@ -21,7 +21,7 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "field",
-                "name": "sessionId"
+                "name": "id"
             },
             "designerId": "5ae6f82a-19de-43f4-b332-30667c6df652"
         },
@@ -34,7 +34,7 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "field1",
-                "name": "sessionTitle"
+                "name": "title"
             },
             "designerId": "d0ed66a5-0293-4c65-97ed-ac56ab55952a"
         },
@@ -63,6 +63,60 @@
                 "name": "sessionTime"
             },
             "designerId": "bb3f6293-2d2f-4de4-b317-f47a876db1eb"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field5",
+                "name": "presenterURL"
+            },
+            "designerId": "afc19ba6-ae75-4bbb-85f7-c4c3ab3dcedd"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field6",
+                "name": "interestCount",
+                "type": "int"
+            },
+            "designerId": "285404b2-1bfb-4a35-9b14-8e62360c7b12"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field7",
+                "name": "planAheadCount",
+                "type": "int"
+            },
+            "designerId": "dc228044-c8aa-448a-abbe-4bfea9a62b3c"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field8",
+                "name": "descriptionEllipsized"
+            },
+            "designerId": "fcd7b8dc-4a08-4d74-96cd-ca34efe43272"
         }
     ]
 }

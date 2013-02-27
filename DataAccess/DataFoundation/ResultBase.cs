@@ -12,6 +12,7 @@ namespace CodeCampSV
     public class ResultBase
     {
         [DataObjectField(true, false, false)]
+        [DataMember]
         virtual public int Id
         {
             get;

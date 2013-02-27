@@ -7,7 +7,8 @@
     "codeClass": null,
     "userConfig": {
         "designer|userClassName": "MainViewport",
-        "designer|initialView": true
+        "designer|initialView": true,
+        "layout": "fit"
     },
     "id": "ExtBox1-ext-gen2282",
     "designerId": "86b503a1-4911-407a-9bae-64b4e8804534",
@@ -21,7 +22,9 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyPanel",
-                "title": "SessionPanel"
+                "autoScroll": false,
+                "layout": "fit",
+                "title": null
             },
             "designerId": "8b4da62f-4463-4553-954d-f25d0f694863",
             "cn": [
@@ -35,8 +38,9 @@
                     "userConfig": {
                         "designer|userClassName": "MyGridPanel",
                         "itemId": "SessionGrid",
-                        "title": "My Grid Panel",
-                        "store": "SessionStore1"
+                        "autoScroll": true,
+                        "title": null,
+                        "store": "SessionStoreRest"
                     },
                     "designerId": "eb95f438-b28c-4fac-ae3f-5ef64c4d37ea",
                     "cn": [
@@ -60,11 +64,12 @@
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "designer|userClassName": "MyColumn2",
-                                "dataIndex": "sessionId",
-                                "text": "Id"
+                                "designer|userClassName": "MyColumn",
+                                "hidden": true,
+                                "dataIndex": "id",
+                                "text": "SessionId"
                             },
-                            "designerId": "5b5d5b6d-f526-4934-848f-742c9009b126"
+                            "designerId": "7359669d-3bf0-4371-8261-7e87debea40f"
                         },
                         {
                             "type": "gridcolumn",
@@ -74,25 +79,12 @@
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "designer|userClassName": "MyColumn4",
-                                "dataIndex": "sessionRoom",
-                                "text": "Room"
+                                "designer|userClassName": "MyColumn1",
+                                "width": 275,
+                                "dataIndex": "title",
+                                "text": "SessionTitle"
                             },
-                            "designerId": "77ed0465-9fc6-4d76-b8e7-1df8a1297b8a"
-                        },
-                        {
-                            "type": "gridcolumn",
-                            "reference": {
-                                "name": "columns",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "designer|userClassName": "MyColumn5",
-                                "dataIndex": "sessionTime",
-                                "text": "Time"
-                            },
-                            "designerId": "0d69c3a3-432c-4896-97d5-9f451c80f78a"
+                            "designerId": "03ee7a44-5a4c-4522-8c17-6bf540a2c702"
                         },
                         {
                             "type": "gridcolumn",
@@ -103,28 +95,39 @@
                             "codeClass": null,
                             "userConfig": {
                                 "designer|userClassName": "MyColumn3",
-                                "width": 401,
-                                "dataIndex": "sessionTitle",
-                                "text": "Title"
+                                "hidden": true,
+                                "dataIndex": "sessionTime",
+                                "text": "SessionTime"
                             },
-                            "designerId": "d0b68701-fe9f-43a8-a1e8-cf58cc361c14"
+                            "designerId": "fca087e3-c04c-4ec1-be62-8c7916727e62"
                         },
                         {
-                            "type": "pagingtoolbar",
+                            "type": "gridcolumn",
                             "reference": {
-                                "name": "dockedItems",
+                                "name": "columns",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "dock": "bottom",
-                                "designer|userClassName": "MyPagingToolbar",
-                                "width": null,
-                                "autoScroll": true,
-                                "displayInfo": true,
-                                "store": "SessionStore1"
+                                "designer|userClassName": "MyColumn6",
+                                "dataIndex": "interestCount",
+                                "text": "InterestedCount"
                             },
-                            "designerId": "89700afc-f6f8-4691-bbb5-18d1e0053ccc"
+                            "designerId": "34d02451-2d08-46d2-b1ef-9eabda43889c"
+                        },
+                        {
+                            "type": "gridcolumn",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyColumn7",
+                                "dataIndex": "planAheadCount",
+                                "text": "WillAttendCount"
+                            },
+                            "designerId": "e85e814e-fcc9-45f5-9da8-fdff3c9a76af"
                         }
                     ]
                 }

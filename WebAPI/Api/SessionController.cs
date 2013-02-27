@@ -10,6 +10,10 @@ namespace WebAPI.Api
 {
     public class SessionController : ApiController
     {
+
+
+
+
         [HttpGet]
         // http://localhost:17138/api/Session/GetAll
         public IEnumerable<SessionsResult> GetAll()
@@ -18,7 +22,9 @@ namespace WebAPI.Api
 
             var sessions = SessionsManager.I.Get(new SessionsQuery()
             {
-                CodeCampYearId = 7
+                CodeCampYearId = 7,
+                WithSpeakers = true,
+                WithInterestOrPlanToAttend = true
             });
 
             return sessions.ToList();

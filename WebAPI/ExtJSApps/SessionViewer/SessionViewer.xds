@@ -1,7 +1,7 @@
 {
     "name": "SessionViewer",
     "settings": {
-        "urlPrefix": "",
+        "urlPrefix": "http://localhost:17138/ExtJSApps/SessionViewer/",
         "spacesToIndent": 4,
         "exportPath": "C:/VCProject/SVCodeCampWeb/WebAPI/ExtJSApps/SessionViewerProd",
         "sdkPath": "",
@@ -45,6 +45,14 @@
                 "app/store/SessionStore1.js"
             ],
             "className": "SessionStore1"
+        },
+        "1eadbd14-0cbb-43e3-9110-4dba20190522": {
+            "paths": [
+                "metadata/store/SessionStoreRest",
+                "app/store/override/SessionStoreRest.js",
+                "app/store/SessionStoreRest.js"
+            ],
+            "className": "SessionStoreRest"
         }
     },
     "viewOrderMap": {
@@ -52,7 +60,8 @@
             "86b503a1-4911-407a-9bae-64b4e8804534"
         ],
         "store": [
-            "516e786e-ea6b-464d-853c-6080c1a9169b"
+            "516e786e-ea6b-464d-853c-6080c1a9169b",
+            "1eadbd14-0cbb-43e3-9110-4dba20190522"
         ],
         "controller": [],
         "model": [

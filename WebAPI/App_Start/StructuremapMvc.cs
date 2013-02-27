@@ -22,12 +22,16 @@ using WebAPI.DependencyResolution;
 
 [assembly: WebActivator.PreApplicationStartMethod(typeof(WebAPI.App_Start.StructuremapMvc), "Start")]
 
-namespace WebAPI.App_Start {
-    public static class StructuremapMvc {
-        public static void Start() {
-			IContainer container = IoC.Initialize();
+namespace WebAPI.App_Start
+{
+    public static class StructuremapMvc
+    {
+        public static void Start()
+        {
+            IContainer container = IoC.Initialize();
             DependencyResolver.SetResolver(new StructureMapDependencyResolver(container));
-            GlobalConfiguration.Configuration.DependencyResolver = new StructureMapDependencyResolver(container);
+            GlobalConfiguration.Configuration.DependencyResolver =
+                new StructureMapDependencyResolver(container);
         }
     }
 }

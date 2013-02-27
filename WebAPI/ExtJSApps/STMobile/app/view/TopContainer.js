@@ -283,6 +283,7 @@ Ext.define('MyApp.view.TopContainer', {
             data: sessions
         });
 
+       
         sessionDetailDataView.setStore(myStore);
 
         var tweetsStore = speakerTweetsDataView.getStore();

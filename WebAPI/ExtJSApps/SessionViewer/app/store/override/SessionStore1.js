@@ -11,7 +11,12 @@ Ext.define('SessionApp.store.override.SessionStore1', {
         };
         this.callParent(arguments);
     },
+    
     CreateData: function () {
+
+        // get meta data from breeze AND populate model associated with this store
+
+
 
         //var data = [
         //     { sessionId: 'test 1', sessionTitle: 'record1' },

@@ -16,42 +16,38 @@ using Gurock.SmartInspect;
 using ListNanny;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using WebAPI.App_Start;
 using WebAPI.Code;
 
 namespace WebAPI
 {
     public class Global : System.Web.HttpApplication
     {
-        private bool _smartInspectEnabled;
-
-        void ConfigureApi(HttpConfiguration config)
+        private void ConfigureApi(HttpConfiguration config)
         {
-            // just json formatter
-            //GlobalConfiguration.Configuration.Formatters.Clear();
-            //GlobalConfiguration.Configuration.Formatters.Add(new JsonMediaTypeFormatter());
-
             GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
 
             var index = config.Formatters.IndexOf(config.Formatters.JsonFormatter);
-            config.Formatters[index] = new JsonMediaTypeFormatter
-            {
-                SerializerSettings = new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() }
-            };
+            config.Formatters[index] =
+                new JsonMediaTypeFormatter
+                    {
+                        SerializerSettings =
+                            new JsonSerializerSettings
+                                {
+                                    ContractResolver =
+                                        new CamelCasePropertyNamesContractResolver
+                                        ()
+                                }
+                    };
 
-          //  config.Filters.Add(new ValidationActionFilter());
-
-
-
-
-
-          
+            config.Filters.Add(new ValidationActionFilter());
         }
 
         protected void Application_Start(object sender, EventArgs e)
         {
             var config = GlobalConfiguration.Configuration;
 
-           ConfigureApi(config);
+            ConfigureApi(config);
 
 
             AreaRegistration.RegisterAllAreas();
@@ -62,17 +58,6 @@ namespace WebAPI
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             //RouteDebug.RouteDebugger.RewriteRoutesForTesting(RouteTable.Routes);
-
-
-            //if (_smartInspectEnabled)
-            //{
-            //    string fileName = HttpContext.Current.Server.MapPath("~\\App_Data\\Logging.sic");
-
-            //    SiAuto.Si.LoadConfiguration(fileName);
-            //    SiAuto.Main.EnterProcess();
-            //}
-
-
             string baseDir = HttpContext.Current.Server.MapPath("~\\App_Data\\");
 
             aspNetPOP3.POP3.LoadLicenseFile(string.Format("{0}aspNetPOP3.xml.lic", baseDir));
@@ -82,7 +67,6 @@ namespace WebAPI
 
             if (!ControllerUtils.IsTestMode)
             {
-
                 if (!Roles.RoleExists("superuser")) Roles.CreateRole("superuser");
                 if (!Roles.RoleExists("surveyviewer")) Roles.CreateRole("surveyviewer");
                 if (!Roles.RoleExists("admin")) Roles.CreateRole("admin");
@@ -105,8 +89,6 @@ namespace WebAPI
                 if (!Roles.RoleExists("SubmitSession")) Roles.CreateRole("SubmitSession");
                 if (!Roles.RoleExists("SessionHashTagger")) Roles.CreateRole("SessionHashTagger");
                 if (!Roles.RoleExists("SpeakerAssignOwnMaterialsUrl")) Roles.CreateRole("SpeakerAssignOwnMaterialsUrl");
-
-
 
                 MembershipUser mu = Membership.GetUser("pkellner");
                 if (mu == null)
@@ -143,7 +125,7 @@ namespace WebAPI
                                 if (args.VirtualPath.IndexOf(imageDirPrefix, StringComparison.OrdinalIgnoreCase) > -1)
                                 {
                                     //args.QueryString["404"] = "~/Images/404-not-found-error.jpg";
-                                    args.QueryString["404"] = "404-not-found-error.jpg"; 
+                                    args.QueryString["404"] = "404-not-found-error.jpg";
 
                                 }
                             }
@@ -164,9 +146,9 @@ namespace WebAPI
 
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
-           
 
-         
+
+
         }
 
         protected void Application_AuthenticateRequest(object sender, EventArgs e)

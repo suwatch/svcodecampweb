@@ -11,7 +11,19 @@ namespace WebAPI.Api
     public class SessionController : ApiController
     {
 
-
+        [HttpPut]
+        public void PutSession(SessionsResult sessionResult)
+        {
+            var rec = SessionsManager.I.Get(new SessionsQuery()
+                                                {
+                                                    Id = sessionResult.Id
+                                                }).FirstOrDefault();
+            if (rec != null)
+            {
+                rec.Title = sessionResult.Title;
+                SessionsManager.I.Update(rec);
+            }
+        }
 
 
         [HttpGet]

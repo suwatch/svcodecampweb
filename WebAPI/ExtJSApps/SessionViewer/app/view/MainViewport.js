@@ -17,7 +17,8 @@ Ext.define('SessionApp.view.MainViewport', {
     extend: 'Ext.container.Viewport',
 
     layout: {
-        type: 'fit'
+        align: 'stretch',
+        type: 'hbox'
     },
 
     initComponent: function() {
@@ -27,6 +28,7 @@ Ext.define('SessionApp.view.MainViewport', {
             items: [
                 {
                     xtype: 'panel',
+                    flex: 3,
                     autoScroll: false,
                     layout: {
                         type: 'fit'
@@ -38,7 +40,7 @@ Ext.define('SessionApp.view.MainViewport', {
                             autoScroll: true,
                             store: 'SessionStoreRest',
                             viewConfig: {
-
+                                id: 'sessionGridId'
                             },
                             columns: [
                                 {
@@ -49,9 +51,12 @@ Ext.define('SessionApp.view.MainViewport', {
                                 },
                                 {
                                     xtype: 'gridcolumn',
-                                    width: 275,
                                     dataIndex: 'title',
-                                    text: 'SessionTitle'
+                                    flex: 1,
+                                    text: 'SessionTitle',
+                                    editor: {
+                                        xtype: 'textareafield'
+                                    }
                                 },
                                 {
                                     xtype: 'gridcolumn',
@@ -69,6 +74,29 @@ Ext.define('SessionApp.view.MainViewport', {
                                     dataIndex: 'planAheadCount',
                                     text: 'WillAttendCount'
                                 }
+                            ],
+                            plugins: [
+                                Ext.create('Ext.grid.plugin.RowEditing', {
+                                    ptype: 'rowediting'
+                                })
+                            ]
+                        }
+                    ],
+                    dockedItems: [
+                        {
+                            xtype: 'toolbar',
+                            dock: 'top',
+                            items: [
+                                {
+                                    xtype: 'button',
+                                    text: 'Save',
+                                    listeners: {
+                                        click: {
+                                            fn: me.onButtonClick,
+                                            scope: me
+                                        }
+                                    }
+                                }
                             ]
                         }
                     ]
@@ -77,6 +105,21 @@ Ext.define('SessionApp.view.MainViewport', {
         });
 
         me.callParent(arguments);
+    },
+
+    onButtonClick: function(button, e, options) {
+
+
+
+        var store = Ext.getCmp("sessionGridId").store;
+        store.sync({
+            failure: function(val) {
+                //debugger;
+                Ext.Msg.alert('Validation Error On Update');
+            },
+            scope: this
+
+        });
     }
 
 });

@@ -1,0 +1,76 @@
+{
+    "expandedState": {
+        "data": true,
+        "model": true,
+        "component": true,
+        "controller": true,
+        "resource": true,
+        "86b503a1-4911-407a-9bae-64b4e8804534": {
+            "id": "86b503a1-4911-407a-9bae-64b4e8804534",
+            "cn": [
+                {
+                    "id": "2088c820-8347-405c-ab65-2ae847e1e3cd",
+                    "cn": [
+                        {
+                            "id": "bc1e80b9-cfed-4641-b907-3ef7488769e6"
+                        },
+                        {
+                            "id": "adc25462-57c2-4b60-959c-0e6bd4ac6403"
+                        },
+                        {
+                            "id": "79d4d7ad-39c9-42be-8f99-827e60a898f8"
+                        },
+                        {
+                            "id": "ae2ad2f5-02e7-4be7-896a-a6bfbdfeaff7"
+                        }
+                    ]
+                }
+            ]
+        },
+        "93a97022-b1f8-49ee-806e-90e3a109c638": {
+            "id": "93a97022-b1f8-49ee-806e-90e3a109c638",
+            "cn": [
+                {
+                    "id": "9b7e703d-0356-45b2-9da9-fb86a24c8592"
+                }
+            ]
+        },
+        "3985b65d-6eee-4628-b408-24ace2f8cb67": {
+            "id": "3985b65d-6eee-4628-b408-24ace2f8cb67",
+            "cn": [
+                {
+                    "id": "dfb93b97-ebef-4abb-985e-ebb9cbe8b375"
+                },
+                {
+                    "id": "5385b0be-136c-471b-98de-680b19b92f06"
+                },
+                {
+                    "id": "8cedc90b-492c-4ea5-8d6f-30dde8ae89aa"
+                },
+                {
+                    "id": "35b079c6-7d0e-430c-a5d2-ed13c3297e15"
+                },
+                {
+                    "id": "9978295c-0b90-4f25-9ec8-10b01dc6ac11"
+                }
+            ]
+        },
+        "07c65149-ca7d-487c-ad2c-841517e61cc1": {
+            "id": "07c65149-ca7d-487c-ad2c-841517e61cc1",
+            "cn": [
+                {
+                    "id": "794aff24-bc75-4382-b624-05b3046f2284"
+                },
+                {
+                    "id": "3fd0b241-f45a-40bc-8523-343c21ae6b81"
+                },
+                {
+                    "id": "6016a1d1-44e6-4ad7-8991-f098315030e2"
+                }
+            ]
+        },
+        "c04cffd6-001c-4b6e-8574-ef223f3a3824": {
+            "id": "c04cffd6-001c-4b6e-8574-ef223f3a3824"
+        }
+    }
+}

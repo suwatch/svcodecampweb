@@ -1,0 +1,106 @@
+{
+    "type": "viewport",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "stretch",
+        "designer|userClassName": "MainViewport",
+        "designer|initialView": true,
+        "layout": "hbox"
+    },
+    "id": "ExtBox1-ext-gen2282",
+    "designerId": "86b503a1-4911-407a-9bae-64b4e8804534",
+    "cn": [
+        {
+            "type": "form",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|flex": 1,
+                "designer|userClassName": "MyForm",
+                "id": "LoginId",
+                "itemId": null,
+                "defaults": null,
+                "bodyPadding": 10,
+                "title": "Login ",
+                "url": "/api/Account/Login"
+            },
+            "designerId": "2088c820-8347-405c-ab65-2ae847e1e3cd",
+            "cn": [
+                {
+                    "type": "textfield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "designer|userClassName": "MyTextField1",
+                        "name": "username",
+                        "fieldLabel": "Username",
+                        "allowBlank": false
+                    },
+                    "designerId": "bc1e80b9-cfed-4641-b907-3ef7488769e6"
+                },
+                {
+                    "type": "textfield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "designer|userClassName": "MyTextField2",
+                        "inputType": "password",
+                        "name": "password",
+                        "fieldLabel": "Password",
+                        "allowBlank": false
+                    },
+                    "designerId": "adc25462-57c2-4b60-959c-0e6bd4ac6403"
+                },
+                {
+                    "type": "checkboxfield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "designer|userClassName": "MyCheckbox",
+                        "name": "rememberMe",
+                        "fieldLabel": "Remember Me",
+                        "boxLabel": null,
+                        "checked": true,
+                        "inputValue": "true",
+                        "uncheckedValue": "false"
+                    },
+                    "designerId": "79d4d7ad-39c9-42be-8f99-827e60a898f8"
+                },
+                {
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyButton",
+                        "id": "buttonId",
+                        "itemId": null,
+                        "text": "Login"
+                    },
+                    "designerId": "ae2ad2f5-02e7-4be7-896a-a6bfbdfeaff7"
+                }
+            ]
+        }
+    ]
+}

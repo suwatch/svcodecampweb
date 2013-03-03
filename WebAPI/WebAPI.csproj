@@ -316,7 +316,9 @@
     <Compile Include="AllAttendees.aspx.designer.cs">
       <DependentUpon>AllAttendees.aspx</DependentUpon>
     </Compile>
+    <None Include="Api\AccountControllerWorks.csxxx" />
     <Compile Include="Api\AccountController.cs" />
+    <None Include="Api\AccountController.cs.ORI" />
     <Compile Include="Api\SessionController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -1377,6 +1379,7 @@
     <Compile Include="_test\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
+    <Content Include="Views\Register\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
@@ -3413,9 +3416,8 @@
     <Content Include="WebServiceCodeCamp.ashx" />
     <Content Include="Views\ApiTest\Session.cshtml" />
     <Content Include="Views\ApiTest\Index.cshtml" />
-    <Content Include="Views\Home\Session.cshtml" />
     <Content Include="Views\ApiTest\Index-ori.cshtml" />
-    <Content Include="Views\Home\Copy of Index.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Session\index.cshtml" />
     <Content Include="Views\Session\Detail.cshtml" />
     <Content Include="WebConnectionStrings.config">

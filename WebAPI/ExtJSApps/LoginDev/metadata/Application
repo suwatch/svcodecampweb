@@ -1,0 +1,44 @@
+{
+    "type": "application",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "requires": [
+            "Ext.ux.data.PagingMemoryProxy",
+            "Ext.grid.Panel",
+            "Ext.data.reader.Json",
+            "Ext.toolbar.Paging"
+        ],
+        "views": [
+            "MainViewport"
+        ],
+        "autoCreateViewport": true,
+        "name": "App",
+        "controllers": [
+            "LoginController"
+        ]
+    },
+    "id": "ExtBox1-ext-gen2014",
+    "designerId": "application",
+    "cn": [
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "launch",
+                "fn": "launch",
+                "implHandler": [
+                    ""
+                ]
+            },
+            "designerId": "75d175a9-4763-4164-a033-15d7d86f685d"
+        }
+    ]
+}

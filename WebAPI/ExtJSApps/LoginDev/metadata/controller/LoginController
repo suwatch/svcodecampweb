@@ -1,0 +1,153 @@
+{
+    "type": "controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "LoginController"
+    },
+    "id": "ExtBox1-ext-gen8682",
+    "designerId": "07c65149-ca7d-487c-ad2c-841517e61cc1",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onButtonClick",
+                "fn": "onButtonClick",
+                "implHandler": [
+                    "\r",
+                    "/*\r",
+                    "var form = Ext.getCmp(\"LoginId\").getForm();\r",
+                    "\r",
+                    "if (form.isValid()) {\r",
+                    "form.submit({\r",
+                    "success: function(form, action) {\r",
+                    "Ext.Msg.alert('Success', action.result.message);\r",
+                    "},\r",
+                    "failure: function(form, action) {\r",
+                    "Ext.Msg.alert('Failed', action.result ? action.result.message : 'No response');\r",
+                    "}\r",
+                    "});\r",
+                    "}\r",
+                    "*/\r",
+                    "\r",
+                    "\r",
+                    "var myMask = new Ext.LoadMask(Ext.getBody(), {msg:\"Logging In...\"});\r",
+                    "myMask.show();\r",
+                    "\r",
+                    "var formValues = Ext.getCmp(\"LoginId\").getForm().getValues();\r",
+                    "\r",
+                    "\r",
+                    "Ext.Ajax.request({ \r",
+                    "    url:'/api/Account/Login', \r",
+                    "    actionMethods:'POST', \r",
+                    "    scope:this, \r",
+                    "    params: formValues,\r",
+                    "    success: function(r, o) { \r",
+                    "        myMask.hide();\r",
+                    "\r",
+                    "        //debugger;\r",
+                    "\r",
+                    "        //Ext.Msg.alert('Successful Login!');\r",
+                    "\r",
+                    "        var retData = Ext.JSON.decode(r.responseText);\r",
+                    "\r",
+                    "        Ext.Msg.alert('Success Login!','xxx');\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "    },\r",
+                    "    failure: function(r,o) {\r",
+                    "        myMask.hide();\r",
+                    "        Ext.Msg.alert('Failed Login!','Either Your password or username was not valid.  Please try again.');\r",
+                    "\r",
+                    "    }\r",
+                    "});\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    ""
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#buttonId"
+            },
+            "designerId": "794aff24-bc75-4382-b624-05b3046f2284"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "doLogin",
+                "fn": "doLogin",
+                "implHandler": [
+                    "var myMask = new Ext.LoadMask(Ext.getBody(), {msg:\"Logging In...\"});\r",
+                    "myMask.show();\r",
+                    "\r",
+                    "var formValues = Ext.getCmp(\"LoginId\").getForm().getValues();\r",
+                    "\r",
+                    "\r",
+                    "Ext.Ajax.request({ \r",
+                    "    url:'/api/Account/Login', \r",
+                    "    actionMethods:'POST', \r",
+                    "    scope:this, \r",
+                    "    params: formValues,\r",
+                    "    success: function(r, o) { \r",
+                    "        myMask.hide();\r",
+                    "        var retData = Ext.JSON.decode(r.responseText);\r",
+                    "        //Ext.Msg.alert('Success Login!');\r",
+                    "        parent.window.location = '/Sponsor/'; \r",
+                    "    },\r",
+                    "    failure: function(r,o) {\r",
+                    "        myMask.hide();\r",
+                    "        Ext.Msg.alert('Failed Login!','Either Your password or username was not valid.  Please try again.');\r",
+                    "\r",
+                    "    }\r",
+                    "});"
+                ]
+            },
+            "designerId": "3fd0b241-f45a-40bc-8523-343c21ae6b81"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onButtonIdAfterRender",
+                "fn": "onButtonIdAfterRender",
+                "implHandler": [
+                    "var form = Ext.getCmp(\"LoginId\");\r",
+                    "var that = this;\r",
+                    "form.mon(form.el, {\r",
+                    "    keypress : function(e, t, opts) {\r",
+                    "        if (e.getKey() == e.ENTER) {\r",
+                    "            that.doLogin();\r",
+                    "        }\r",
+                    "    }\r",
+                    "});\r",
+                    ""
+                ],
+                "name": "afterrender",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#buttonId"
+            },
+            "designerId": "6016a1d1-44e6-4ad7-8991-f098315030e2"
+        }
+    ]
+}

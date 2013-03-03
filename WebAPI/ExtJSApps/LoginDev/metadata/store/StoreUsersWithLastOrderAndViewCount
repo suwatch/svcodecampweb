@@ -1,0 +1,34 @@
+{
+    "type": "store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "StoreUsersWithLastOrderAndViewCount",
+        "requires": [
+            "Ext.data.proxy.Rest"
+        ],
+        "autoLoad": false,
+        "storeId": "storeId",
+        "model": "ModelUsersWithLastOrderAndViewCount"
+    },
+    "id": "ExtBox1-ext-gen2958",
+    "designerId": "93a97022-b1f8-49ee-806e-90e3a109c638",
+    "cn": [
+        {
+            "type": "restproxy",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyRestProxy",
+                "url": "/api/Users"
+            },
+            "designerId": "9b7e703d-0356-45b2-9da9-fb86a24c8592"
+        }
+    ]
+}

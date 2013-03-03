@@ -1,3 +1,3 @@
 sencha app build production
-xcopy build\SessionApp\production\*.* ..\SessionViewerProd /s /y
+xcopy build\SessionApp\production\*.* ..\SessionViewerProd /s /y /q
 

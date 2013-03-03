@@ -1,0 +1,78 @@
+{
+    "name": "SessionViewer",
+    "settings": {
+        "urlPrefix": "http://localhost:17138/ExtJSApps/LoginDev/",
+        "spacesToIndent": 4,
+        "exportPath": "C:/VCProject/SVCodeCampWeb/WebAPI/ExtJSApps/Login",
+        "sdkPath": "",
+        "lineEnding": "CRLF",
+        "genTimestamps": false,
+        "cacheBust": true
+    },
+    "xdsVersion": "2.1.0",
+    "xdsBuild": 678,
+    "schemaVersion": 1,
+    "upgradeVersion": 210000000498,
+    "framework": "ext41",
+    "topInstanceFileMap": {
+        "c04cffd6-001c-4b6e-8574-ef223f3a3824": {
+            "paths": [
+                "metadata/resource/Library"
+            ],
+            "className": "Library"
+        },
+        "86b503a1-4911-407a-9bae-64b4e8804534": {
+            "paths": [
+                "metadata/view/MainViewport",
+                "app/view/override/MainViewport.js",
+                "app/view/MainViewport.js",
+                "app/view/Viewport.js"
+            ],
+            "className": "MainViewport"
+        },
+        "93a97022-b1f8-49ee-806e-90e3a109c638": {
+            "paths": [
+                "metadata/store/StoreUsersWithLastOrderAndViewCount",
+                "app/store/override/StoreUsersWithLastOrderAndViewCount.js",
+                "app/store/StoreUsersWithLastOrderAndViewCount.js"
+            ],
+            "className": "StoreUsersWithLastOrderAndViewCount"
+        },
+        "07c65149-ca7d-487c-ad2c-841517e61cc1": {
+            "paths": [
+                "metadata/controller/LoginController",
+                "app/controller/override/LoginController.js",
+                "app/controller/LoginController.js"
+            ],
+            "className": "LoginController"
+        },
+        "3985b65d-6eee-4628-b408-24ace2f8cb67": {
+            "paths": [
+                "metadata/model/ModelUsersWithLastOrderAndViewCount",
+                "app/model/override/ModelUsersWithLastOrderAndViewCount.js",
+                "app/model/ModelUsersWithLastOrderAndViewCount.js"
+            ],
+            "className": "ModelUsersWithLastOrderAndViewCount"
+        }
+    },
+    "viewOrderMap": {
+        "view": [
+            "86b503a1-4911-407a-9bae-64b4e8804534"
+        ],
+        "store": [
+            "93a97022-b1f8-49ee-806e-90e3a109c638"
+        ],
+        "controller": [
+            "07c65149-ca7d-487c-ad2c-841517e61cc1"
+        ],
+        "model": [
+            "3985b65d-6eee-4628-b408-24ace2f8cb67"
+        ],
+        "resource": [
+            "c04cffd6-001c-4b6e-8574-ef223f3a3824"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

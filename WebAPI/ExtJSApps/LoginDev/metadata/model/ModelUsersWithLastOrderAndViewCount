@@ -1,0 +1,85 @@
+{
+    "type": "datamodel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "ModelUsersWithLastOrderAndViewCount"
+    },
+    "id": "ExtBox1-ext-gen3195",
+    "designerId": "3985b65d-6eee-4628-b408-24ace2f8cb67",
+    "cn": [
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field",
+                "name": "userId"
+            },
+            "designerId": "dfb93b97-ebef-4abb-985e-ebb9cbe8b375"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field1",
+                "name": "username"
+            },
+            "designerId": "5385b0be-136c-471b-98de-680b19b92f06"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field2",
+                "name": "lastOrderDate",
+                "dateFormat": "MS"
+            },
+            "designerId": "8cedc90b-492c-4ea5-8d6f-30dde8ae89aa"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field3",
+                "name": "lastOrderAmount",
+                "sortType": "asInt",
+                "type": "int"
+            },
+            "designerId": "35b079c6-7d0e-430c-a5d2-ed13c3297e15"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field4",
+                "name": "articlesViewedCount",
+                "sortType": "asInt",
+                "type": "int"
+            },
+            "designerId": "9978295c-0b90-4f25-9ec8-10b01dc6ac11"
+        }
+    ]
+}

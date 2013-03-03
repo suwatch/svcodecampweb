@@ -52,6 +52,15 @@ namespace WebAPI
             //            });
 
 
+            // LOGIN
+            routes.MapRoute("LoginRoute", "Login",
+                  new
+                  {
+                      /* Your default route */
+                      controller = "Home",
+                      action = "Login"
+                  });
+
             // REGISTER
             routes.MapRoute("RegisterRouteAll", "Register",
                    new

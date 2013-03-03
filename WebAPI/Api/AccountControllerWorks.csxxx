@@ -1,0 +1,143 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Formatting;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Http;
+using System.Web.Mvc;
+using System.Web.Security;
+using System.Web.UI.WebControls;
+using CodeCampSV;
+using System.ComponentModel.DataAnnotations;
+
+namespace WebAPI.Api
+{
+    public class AccountController : ApiController
+    {
+
+        public class LoginCredentials
+        {
+            [StringLength(15)]
+            public string Username { get; set; }
+            public string Password { get; set; }
+            public bool RememberMe { get; set; }
+        }
+
+        public class LoginReturnStatus
+        {
+            public string Status { get; set; }
+            public string Message { get; set; }
+            public AttendeesResult Data { get; set; }
+            public string File { get; set; }
+
+            public bool Success { get; set; }
+
+            public int AttendeeId { get; set; }
+           
+        }
+
+        public class ShirtSizeRec
+        {
+            public string ShirtSize { get; set; }
+        }
+
+        public class ShirtSizeReturn
+        {
+            
+            public string Message { get; set; }
+            public List<ShirtSizeRec> Data { get; set; }  
+            
+            public bool Success { get; set; }
+        }
+
+     
+      
+
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.ActionName("Login")]
+        public HttpResponseMessage PostLogin(LoginCredentials login)
+        {
+            //if (!ModelState.IsValid)
+            //{
+            //    // throw error  (ivalidateable object)
+            //    // throw httpresponse exce.
+            //    // webdev blog
+            //    // webapi pipeline
+            //    // tracing system?  nuget webapi system diagnostics trace
+            //    // attribute routing.org
+            //}
+            
+
+
+
+            var loginReturnStatus =
+                new LoginReturnStatus();
+
+           HttpResponseMessage response;
+           if (!String.IsNullOrEmpty(login.Username) && !String.IsNullOrEmpty(login.Password))
+           {
+               var loginSuccess = Membership.ValidateUser(login.Username, login.Password);
+               if (loginSuccess)
+               {
+                   FormsAuthentication.SetAuthCookie(login.Username, login.RememberMe);
+
+                   AttendeesResult attendeesResultFull =
+                       AttendeesManager.I.Get(new AttendeesQuery()
+                                                  {
+                                                      CodeCampYearId = Utils.CurrentCodeCampYear,
+                                                      IncludeAttendeesCodeCampYearResult = true,
+                                                      Username = login.Username
+                                                  }).FirstOrDefault();
+                   if (attendeesResultFull != null)
+                   {
+                       response = Request.CreateResponse(HttpStatusCode.OK, MakeSafeAttendee(attendeesResultFull));
+                   }
+                   else
+                   {
+                       response =
+                           Request.CreateErrorResponse(HttpStatusCode.Forbidden,
+                                                       "User Authenticated, but no user record in database found.");
+                   }
+               }
+               else
+               {
+                   response =
+                 Request.CreateErrorResponse(HttpStatusCode.Forbidden, "Username and Password are not valid.  Please Try again");
+               }
+           }
+           else
+           {
+               response =
+                  Request.CreateErrorResponse(HttpStatusCode.Forbidden, "Username and Password must both have values");
+               loginReturnStatus.Status = "Failed";
+               loginReturnStatus.Message = "Username and Password must both have values";
+           }
+
+            return response;
+        }
+
+        private AttendeesResult MakeSafeAttendee(AttendeesResult attendeesResultFull)
+        {
+            attendeesResultFull.ApplicationName = "";
+            attendeesResultFull.FullNameUsernameZipcode = "";
+            attendeesResultFull.PKID = Guid.Empty;
+            attendeesResultFull.Password = "";
+            attendeesResultFull.PasswordAnswer = "";
+            attendeesResultFull.PasswordQuestion = "";
+            attendeesResultFull.UserImage = null;
+            return attendeesResultFull;
+        }
+
+
+    
+
+    }
+}

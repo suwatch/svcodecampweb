@@ -41,7 +41,7 @@ namespace WebAPI.Api
             public bool Success { get; set; }
 
             public int AttendeeId { get; set; }
-           
+
         }
 
         public class ShirtSizeRec
@@ -51,12 +51,21 @@ namespace WebAPI.Api
 
         public class ShirtSizeReturn
         {
-            
+
             public string Message { get; set; }
-            public List<ShirtSizeRec> Data { get; set; }  
-            
+            public List<ShirtSizeRec> Data { get; set; }
+
             public bool Success { get; set; }
         }
+
+        //[System.Web.Http.HttpPost]
+        //[System.Web.Http.ActionName("Login")]
+        //public HttpResponseMessage PostLogin(LoginCredentials loginCredentials)
+        //{
+
+        //    return new HttpResponseMessage(HttpStatusCode.OK);
+        //}
+
 
         /// <summary>
         /// http://www.enterpriseframework.com/post/2012/12/19/Full-Web-Api-Controller-Code-to-Receive-a-Posted-File-Async.aspx
@@ -110,8 +119,8 @@ namespace WebAPI.Api
                             {
                                 //Convert Stream to Bytes or something
                                 var bytes = new byte[stream.Length];
-                                stream.Read(bytes, 0, (int) stream.Length);
-                                memoryStream.Write(bytes, 0, (int) stream.Length);
+                                stream.Read(bytes, 0, (int)stream.Length);
+                                memoryStream.Write(bytes, 0, (int)stream.Length);
                             }
                         }
                     }
@@ -129,10 +138,10 @@ namespace WebAPI.Api
                     {
                         var attendeesResult =
                             AttendeesManager.I.Get(new AttendeesQuery
-                                                       {
-                                                           Username = User.Identity.Name
-                                                       }).FirstOrDefault();
-                        
+                            {
+                                Username = User.Identity.Name
+                            }).FirstOrDefault();
+
                         if (attendeesResult != null)
                         {
                             attendeesId = attendeesResult.Id;
@@ -145,26 +154,26 @@ namespace WebAPI.Api
                 }
 
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, new LoginReturnStatus()
-                                                                                             {
-                                                                                                 AttendeeId = attendeesId,
-                                                                                                 Success = true,
-                                                                                                 Status = "success",
-                                                                                                 File="speaker.jpg"
-                                                                                             });
+                {
+                    AttendeeId = attendeesId,
+                    Success = true,
+                    Status = "success",
+                    File = "speaker.jpg"
+                });
                 return response;
             }
             catch (System.Exception e)
             {
 
                 var ret = new LoginReturnStatus()
-                              {
-                                  Success = false,
-                                  Status = "Failure",
-                                  File = "speaker.jpg",
-                                  Message = e.ToString()
-                              };
+                {
+                    Success = false,
+                    Status = "Failure",
+                    File = "speaker.jpg",
+                    Message = e.ToString()
+                };
 
-                return Request.CreateResponse(HttpStatusCode.Forbidden,ret);
+                return Request.CreateResponse(HttpStatusCode.Forbidden, ret);
             }
         }
 
@@ -187,7 +196,7 @@ namespace WebAPI.Api
                 }
             }
 
-            List<ShirtSizeRec> shirtSizeRecs = shirtSizes.Select(recx => new ShirtSizeRec() {ShirtSize = recx}).ToList();
+            List<ShirtSizeRec> shirtSizeRecs = shirtSizes.Select(recx => new ShirtSizeRec() { ShirtSize = recx }).ToList();
 
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, new ShirtSizeReturn()
             {
@@ -291,10 +300,10 @@ namespace WebAPI.Api
         [System.Web.Http.ActionName("UpdateAttendee")]
         public HttpResponseMessage PostUpdateAttendee(AttendeesResult attendeeRecord)
         {
-            return UpdateAttendeeRecordParts(attendeeRecord,"attendee");
+            return UpdateAttendeeRecordParts(attendeeRecord, "attendee");
         }
 
-        private HttpResponseMessage UpdateAttendeeRecordParts(AttendeesResult attendeeRecord,string attendeeSaveOption)
+        private HttpResponseMessage UpdateAttendeeRecordParts(AttendeesResult attendeeRecord, string attendeeSaveOption)
         {
             HttpResponseMessage response;
 
@@ -308,11 +317,11 @@ namespace WebAPI.Api
             {
                 var attendeesResult =
                     AttendeesManager.I.Get(new AttendeesQuery
-                                               {
-                                                   Username = User.Identity.Name,
-                                                   CodeCampYearId = Utils.CurrentCodeCampYear,
-                                                   IncludeAttendeesCodeCampYearResult = true
-                                               }).FirstOrDefault();
+                    {
+                        Username = User.Identity.Name,
+                        CodeCampYearId = Utils.CurrentCodeCampYear,
+                        IncludeAttendeesCodeCampYearResult = true
+                    }).FirstOrDefault();
                 if (attendeesResult != null)
                 {
                     if (attendeeSaveOption.ToLower().Equals("optin"))
@@ -411,7 +420,7 @@ namespace WebAPI.Api
 
                     if (mStatus.Equals(MembershipCreateStatus.Success))
                     {
-                        FormsAuthentication.SetAuthCookie(attendee.Username,true);
+                        FormsAuthentication.SetAuthCookie(attendee.Username, true);
                         response = Request.CreateResponse(HttpStatusCode.OK, "");
 
                     }
@@ -430,61 +439,61 @@ namespace WebAPI.Api
         [System.Web.Http.ActionName("Login")]
         public HttpResponseMessage PostLogin(LoginCredentials login)
         {
-            if (!ModelState.IsValid)
-            {
-                // throw error  (ivalidateable object)
-                // throw httpresponse exce.
-                // webdev blog
-                // webapi pipeline
-                // tracing system?  nuget webapi system diagnostics trace
-                // attribute routing.org
-            }
-            
+            //if (!ModelState.IsValid)
+            //{
+            //    // throw error  (ivalidateable object)
+            //    // throw httpresponse exce.
+            //    // webdev blog
+            //    // webapi pipeline
+            //    // tracing system?  nuget webapi system diagnostics trace
+            //    // attribute routing.org
+            //}
+
 
 
 
             var loginReturnStatus =
                 new LoginReturnStatus();
 
-           HttpResponseMessage response;
-           if (!String.IsNullOrEmpty(login.Username) && !String.IsNullOrEmpty(login.Password))
-           {
-               var loginSuccess = Membership.ValidateUser(login.Username, login.Password);
-               if (loginSuccess)
-               {
-                   FormsAuthentication.SetAuthCookie(login.Username, login.RememberMe);
+            HttpResponseMessage response;
+            if (!String.IsNullOrEmpty(login.Username) && !String.IsNullOrEmpty(login.Password))
+            {
+                var loginSuccess = Membership.ValidateUser(login.Username, login.Password);
+                if (loginSuccess)
+                {
+                    FormsAuthentication.SetAuthCookie(login.Username, login.RememberMe);
 
-                   AttendeesResult attendeesResultFull =
-                       AttendeesManager.I.Get(new AttendeesQuery()
-                                                  {
-                                                      CodeCampYearId = Utils.CurrentCodeCampYear,
-                                                      IncludeAttendeesCodeCampYearResult = true,
-                                                      Username = login.Username
-                                                  }).FirstOrDefault();
-                   if (attendeesResultFull != null)
-                   {
-                       response = Request.CreateResponse(HttpStatusCode.OK, MakeSafeAttendee(attendeesResultFull));
-                   }
-                   else
-                   {
-                       response =
-                           Request.CreateErrorResponse(HttpStatusCode.Forbidden,
-                                                       "User Authenticated, but no user record in database found.");
-                   }
-               }
-               else
-               {
-                   response =
-                 Request.CreateErrorResponse(HttpStatusCode.Forbidden, "Username and Password are not valid.  Please Try again");
-               }
-           }
-           else
-           {
-               response =
-                  Request.CreateErrorResponse(HttpStatusCode.Forbidden, "Username and Password must both have values");
-               loginReturnStatus.Status = "Failed";
-               loginReturnStatus.Message = "Username and Password must both have values";
-           }
+                    AttendeesResult attendeesResultFull =
+                        AttendeesManager.I.Get(new AttendeesQuery()
+                        {
+                            CodeCampYearId = Utils.CurrentCodeCampYear,
+                            IncludeAttendeesCodeCampYearResult = true,
+                            Username = login.Username
+                        }).FirstOrDefault();
+                    if (attendeesResultFull != null)
+                    {
+                        response = Request.CreateResponse(HttpStatusCode.OK, MakeSafeAttendee(attendeesResultFull));
+                    }
+                    else
+                    {
+                        response =
+                            Request.CreateErrorResponse(HttpStatusCode.Forbidden,
+                                                        "User Authenticated, but no user record in database found.");
+                    }
+                }
+                else
+                {
+                    response =
+                  Request.CreateErrorResponse(HttpStatusCode.Forbidden, "Username and Password are not valid.  Please Try again");
+                }
+            }
+            else
+            {
+                response =
+                   Request.CreateErrorResponse(HttpStatusCode.Forbidden, "Username and Password must both have values");
+                loginReturnStatus.Status = "Failed";
+                loginReturnStatus.Message = "Username and Password must both have values";
+            }
 
             return response;
         }
@@ -515,11 +524,11 @@ namespace WebAPI.Api
             {
                 AttendeesResult attendeesResultFull =
                     AttendeesManager.I.Get(new AttendeesQuery
-                                               {
-                                                   Username = User.Identity.Name,
-                                                   CodeCampYearId = Utils.CurrentCodeCampYear,
-                                                   IncludeAttendeesCodeCampYearResult = true
-                                               }).FirstOrDefault();
+                    {
+                        Username = User.Identity.Name,
+                        CodeCampYearId = Utils.CurrentCodeCampYear,
+                        IncludeAttendeesCodeCampYearResult = true
+                    }).FirstOrDefault();
 
                 if (attendeesResultFull != null)
                 {
@@ -550,7 +559,7 @@ namespace WebAPI.Api
         {
             if (User.Identity.IsAuthenticated)
             {
-               FormsAuthentication.SignOut();
+                FormsAuthentication.SignOut();
             }
             return Request.CreateResponse(HttpStatusCode.OK, "");
         }

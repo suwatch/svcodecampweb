@@ -28,63 +28,52 @@ namespace WebAPI.Api
         [ActionName("EmailPreview")]
         public HttpResponseMessage PostEmailPreview(EmailSendDetail emailSendDetail)
         {
-            string url = emailSendDetail.EmailUrl ?? "http://pkellner.site44.com/";
-            string sendTo = emailSendDetail.PreviewEmailSend;
-            HtmlUtility utility = new HtmlUtility();
+            var email =
+                new EmailMessage(true, false)
+                    {
+                        To = emailSendDetail.PreviewEmailSend,
+                        Subject = "Html Utility Test"
+                    };
 
 
-            //convert linked css sheets to inline <style> content
-            utility.CssOption = CssOption.EmbedLinkedSheets;
+            var utility =
+                new HtmlUtility(email)
+                    {
+                        CssOption = CssOption.EmbedLinkedSheets
+                    };
 
-
-            utility.LoadUrl(url);
-
-            //set the UrlContent base
+            utility.LoadUrl(emailSendDetail.EmailUrl ?? "http://pkellner.site44.com/");
             utility.SetUrlContentBase = true;
-
-            //set the basetag in the html
             utility.SetHtmlBaseTag = true;
-
-            //embed the images
             utility.EmbedImageOption = EmbedImageOption.ContentLocation;
 
-            //render the Html so it is properly formatted for email
+
             utility.Render();
 
-            //create an EmailMessage with appropriate text and html parts
-            EmailMessage email = new EmailMessage(true, false);
+            var emailFinal = utility.ToEmailMessage();
 
-            //generate the parts
-            MimeBodyPart textPart = utility.ToPlainTextPart();
-            MimeBodyPart htmlPart = utility.ToHtmlPart();
-
-            email.Subject = "Html Utility Test";
-            email.To = sendTo;
-
-            //add the parts and the embedded images
-            email.AddMimeBodyPart(textPart);
-            email.AddMimeBodyPart(htmlPart);
-            email.EmbedObject(utility.EmbeddedImages);
-
-
-
-            HttpResponseMessage httpResponseMessage;
-            if (email.Send())
-            {
-                httpResponseMessage = new HttpResponseMessage(HttpStatusCode.OK);
-            }
-            else
-            {
-                httpResponseMessage =
-                    Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed,
-                                                email.LastException().Message);
-                //if an error occurred, write it out to the screen
-                //litMsg.Text = "<font color=#FF0033>The following error occurred while sending the email: " + msg.LastException().Message + "</font><br><br>";
-                //litMsg.Text += Server.HtmlEncode( msg.GetLog() ).Replace("\r\n", "<br>");
-            }
+            HttpResponseMessage httpResponseMessage =
+                emailFinal.Send()
+                    ? new HttpResponseMessage(HttpStatusCode.OK)
+                    : Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed,
+                                                  emailFinal.LastException().Message);
 
             return httpResponseMessage;
 
+
+
+
+            //generate the parts
+            //MimeBodyPart textPart = utility.ToPlainTextPart();
+            //MimeBodyPart htmlPart = utility.ToHtmlPart();
+
+
+
+
+            //add the parts and the embedded images
+            //email.AddMimeBodyPart(textPart);
+            //email.AddMimeBodyPart(htmlPart);
+            //email.EmbedObject(utility.EmbeddedImages);
 
 
             //EmailMessage email = new EmailMessage(true, false);
@@ -127,61 +116,61 @@ namespace WebAPI.Api
 
 
 
-           // var utility = new HtmlUtility();
-            
-           // string url = emailSendDetail.EmailUrl ?? "http://pkellner.site44.com/";
+            // var utility = new HtmlUtility();
 
-           // //convert linked css sheets to inline <style> content
-           // utility.CssOption = CssOption.EmbedLinkedSheets;
+            // string url = emailSendDetail.EmailUrl ?? "http://pkellner.site44.com/";
+
+            // //convert linked css sheets to inline <style> content
+            // utility.CssOption = CssOption.EmbedLinkedSheets;
 
 
-           // utility.LoadUrl(url);
+            // utility.LoadUrl(url);
 
-           // //set the UrlContent base
-           // utility.SetUrlContentBase = true;
+            // //set the UrlContent base
+            // utility.SetUrlContentBase = true;
 
-           // //set the basetag in the html
-           // utility.SetHtmlBaseTag = true;
+            // //set the basetag in the html
+            // utility.SetHtmlBaseTag = true;
 
-           // //embed the images
-           // utility.EmbedImageOption = EmbedImageOption.ContentLocation;
+            // //embed the images
+            // utility.EmbedImageOption = EmbedImageOption.ContentLocation;
 
-           
 
-           // //render the Html so it is properly formatted for email
-           // utility.Render();
 
-           //var xx =   utility.RawHtmlContent;
-           // var xxx = utility.RenderedHtmlContent;
+            // //render the Html so it is properly formatted for email
+            // utility.Render();
 
-           // //create an EmailMessage with appropriate text and html parts
-           // EmailMessage email = utility.ToEmailMessage(utility.red
+            //var xx =   utility.RawHtmlContent;
+            // var xxx = utility.RenderedHtmlContent;
 
-           // //load values from the web.config
-           // email.LoadFromConfig();
+            // //create an EmailMessage with appropriate text and html parts
+            // EmailMessage email = utility.ToEmailMessage(utility.red
 
-           // email.Subject = "Html Utility Test";
+            // //load values from the web.config
+            // email.LoadFromConfig();
 
-           // int portNumber = Convert.ToInt32(ConfigurationManager.AppSettings["EmailMessage.Port"].ToString());
-           // email.Port = portNumber;
+            // email.Subject = "Html Utility Test";
 
-           // if (email.Server.Equals("smtp.gmail.com"))
-           // {
-           //     var ssl = new AdvancedIntellect.Ssl.SslSocket();
-           //     email.LoadSslSocket(ssl);
-           //     email.Port = 587;
-           // }
+            // int portNumber = Convert.ToInt32(ConfigurationManager.AppSettings["EmailMessage.Port"].ToString());
+            // email.Port = portNumber;
 
-           // email.FromAddress = "service2012@siliconvalley-codecamp.com";
-           // email.To = emailSendDetail.PreviewEmailSend;
-           // email.Subject = emailSendDetail.Subject;
+            // if (email.Server.Equals("smtp.gmail.com"))
+            // {
+            //     var ssl = new AdvancedIntellect.Ssl.SslSocket();
+            //     email.LoadSslSocket(ssl);
+            //     email.Port = 587;
+            // }
+
+            // email.FromAddress = "service2012@siliconvalley-codecamp.com";
+            // email.To = emailSendDetail.PreviewEmailSend;
+            // email.Subject = emailSendDetail.Subject;
             //msg.Body = emailSendDetail.EmailHtml;
 
-           
+
             //var emailSendDetails = new List<EmailSendDetail>() {emailSendDetail};
 
             //DataTable dt = (DataTable)emailSendDetails;
-           
+
             //var query = from data in emailSendDetails
             //            select new
             //                       {
@@ -190,26 +179,26 @@ namespace WebAPI.Api
             //DataTable table = DataTableExtensions.CopyToDataTable(query);
 
 
-//            // Create a sequence. 
-//            Item[] items = new Item[] 
-//{ new Book{Id = 1, Price = 13.50, Genre = "Comedy", Author = "Gustavo Achong"}, 
-//  new Book{Id = 2, Price = 8.50, Genre = "Drama", Author = "Jessie Zeng"},
-//  new Movie{Id = 1, Price = 22.99, Genre = "Comedy", Director = "Marissa Barnes"},
-//  new Movie{Id = 1, Price = 13.40, Genre = "Action", Director = "Emmanuel Fernandez"}};
+            //            // Create a sequence. 
+            //            Item[] items = new Item[] 
+            //{ new Book{Id = 1, Price = 13.50, Genre = "Comedy", Author = "Gustavo Achong"}, 
+            //  new Book{Id = 2, Price = 8.50, Genre = "Drama", Author = "Jessie Zeng"},
+            //  new Movie{Id = 1, Price = 22.99, Genre = "Comedy", Director = "Marissa Barnes"},
+            //  new Movie{Id = 1, Price = 13.40, Genre = "Action", Director = "Emmanuel Fernandez"}};
 
-//            // Query for items with price greater than 9.99.
-//            var query = from i in items
-//                        where i.Price > 9.99
-//                        orderby i.Price
-//                        select i;
+            //            // Query for items with price greater than 9.99.
+            //            var query = from i in items
+            //                        where i.Price > 9.99
+            //                        orderby i.Price
+            //                        select i;
 
-//            // Load the query results into new DataTable.
-//            DataTable table = query.CopyToDataTable();
+            //            // Load the query results into new DataTable.
+            //            DataTable table = query.CopyToDataTable();
 
 
-           
 
-          
+
+
 
 
 

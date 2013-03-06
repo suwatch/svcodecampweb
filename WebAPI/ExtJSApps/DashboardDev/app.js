@@ -23,7 +23,8 @@ Ext.application({
         'Ext.ux.data.PagingMemoryProxy',
         'Ext.grid.Panel',
         'Ext.data.reader.Json',
-        'Ext.toolbar.Paging'
+        'Ext.toolbar.Paging',
+        'Ext.data.proxy.Rest'
     ],
     models: [
         'ModelAdminUser'

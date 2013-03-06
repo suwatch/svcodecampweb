@@ -6,6 +6,8 @@ using System.Data;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Web.Http;
 using CodeCampSV;
 using aspNetEmail;
@@ -17,8 +19,16 @@ namespace WebAPI.Api
         public string PreviewEmailSend { get; set; }
         public string EmailUrl { get; set; }
         public string Subject { get; set; }
+        public string SubjectHtml { get; set; }
         public string SqlStatement { get; set; }
         public string EmailHtml { get; set; }
+    }
+
+    public class EmailMergeField
+    {
+        public string SubjectHtml { get; set; }
+        public string EmailHtml { get; set; }
+        public string PreviousYearsStatusHtml { get; set; }
     }
 
     public class EmailController : ApiController
@@ -32,7 +42,7 @@ namespace WebAPI.Api
                 new EmailMessage(true, false)
                     {
                         To = emailSendDetail.PreviewEmailSend,
-                        Subject = "Html Utility Test"
+                        Subject = emailSendDetail.Subject
                     };
 
 
@@ -52,157 +62,111 @@ namespace WebAPI.Api
 
             var emailFinal = utility.ToEmailMessage();
 
+            var emailMergeField =
+                new EmailMergeField();
+        
+            if (!String.IsNullOrEmpty(emailSendDetail.SubjectHtml))
+            {
+                emailMergeField.SubjectHtml = emailSendDetail.SubjectHtml;
+            }
+            else
+            {
+                emailMergeField.SubjectHtml = ConvertStringToHtml(emailSendDetail.Subject, 27);
+            }
+
+
+
+            var emailMergeFields =
+                new List<EmailMergeField>
+                    {
+                        emailMergeField
+
+                    };
+
             HttpResponseMessage httpResponseMessage =
-                emailFinal.Send()
-                    ? new HttpResponseMessage(HttpStatusCode.OK)
-                    : Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed,
-                                                  emailFinal.LastException().Message);
+               emailFinal.SendMailMerge(emailMergeFields)
+                   ? new HttpResponseMessage(HttpStatusCode.OK)
+                   : Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed,
+                                                 emailFinal.LastException().Message);
+
+            //HttpResponseMessage httpResponseMessage =
+            //    emailFinal.Send()
+            //        ? new HttpResponseMessage(HttpStatusCode.OK)
+            //        : Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed,
+            //                                      emailFinal.LastException().Message);
 
             return httpResponseMessage;
 
 
-
-
-            //generate the parts
-            //MimeBodyPart textPart = utility.ToPlainTextPart();
-            //MimeBodyPart htmlPart = utility.ToHtmlPart();
-
-
-
-
-            //add the parts and the embedded images
-            //email.AddMimeBodyPart(textPart);
-            //email.AddMimeBodyPart(htmlPart);
-            //email.EmbedObject(utility.EmbeddedImages);
-
-
-            //EmailMessage email = new EmailMessage(true, false);
-            //email.To = emailSendDetail.PreviewEmailSend;
-
-            //email.Subject = "Html Utility test";
-
-            //HtmlUtility utility = new HtmlUtility();
-            //string url = "http://www.google.com";
-            //utility.LoadUrl(url);
-
-            ////set the UrlContent base
-            //utility.SetUrlContentBase = true;
-
-            ////set the basetag in the html
-            //utility.SetHtmlBaseTag = true;
-
-            ////render the Html so it is properly formatted for email
-            //utility.Render();
-
-            ////populate the EmailMessage with RawHtmlContent loaded by LoadUrl()
-            //email = utility.ToEmailMessage(utility.RawHtmlContent, email);
-
-            //HttpResponseMessage httpResponseMessage;
-            //if (email.Send())
-            //{
-            //    httpResponseMessage = new HttpResponseMessage(HttpStatusCode.OK);
-            //}
-            //else
-            //{
-            //    httpResponseMessage =
-            //        Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed,
-            //                                    email.LastException().Message);
-            //    //if an error occurred, write it out to the screen
-            //    //litMsg.Text = "<font color=#FF0033>The following error occurred while sending the email: " + msg.LastException().Message + "</font><br><br>";
-            //    //litMsg.Text += Server.HtmlEncode( msg.GetLog() ).Replace("\r\n", "<br>");
-            //}
-
-            //return httpResponseMessage;
-
-
-
-            // var utility = new HtmlUtility();
-
-            // string url = emailSendDetail.EmailUrl ?? "http://pkellner.site44.com/";
-
-            // //convert linked css sheets to inline <style> content
-            // utility.CssOption = CssOption.EmbedLinkedSheets;
-
-
-            // utility.LoadUrl(url);
-
-            // //set the UrlContent base
-            // utility.SetUrlContentBase = true;
-
-            // //set the basetag in the html
-            // utility.SetHtmlBaseTag = true;
-
-            // //embed the images
-            // utility.EmbedImageOption = EmbedImageOption.ContentLocation;
-
-
-
-            // //render the Html so it is properly formatted for email
-            // utility.Render();
-
-            //var xx =   utility.RawHtmlContent;
-            // var xxx = utility.RenderedHtmlContent;
-
-            // //create an EmailMessage with appropriate text and html parts
-            // EmailMessage email = utility.ToEmailMessage(utility.red
-
-            // //load values from the web.config
-            // email.LoadFromConfig();
-
-            // email.Subject = "Html Utility Test";
-
-            // int portNumber = Convert.ToInt32(ConfigurationManager.AppSettings["EmailMessage.Port"].ToString());
-            // email.Port = portNumber;
-
-            // if (email.Server.Equals("smtp.gmail.com"))
-            // {
-            //     var ssl = new AdvancedIntellect.Ssl.SslSocket();
-            //     email.LoadSslSocket(ssl);
-            //     email.Port = 587;
-            // }
-
-            // email.FromAddress = "service2012@siliconvalley-codecamp.com";
-            // email.To = emailSendDetail.PreviewEmailSend;
-            // email.Subject = emailSendDetail.Subject;
-            //msg.Body = emailSendDetail.EmailHtml;
-
-
-            //var emailSendDetails = new List<EmailSendDetail>() {emailSendDetail};
-
-            //DataTable dt = (DataTable)emailSendDetails;
-
-            //var query = from data in emailSendDetails
-            //            select new
-            //                       {
-            //                           Subject = data.Subject
-            //                       };
-            //DataTable table = DataTableExtensions.CopyToDataTable(query);
-
-
-            //            // Create a sequence. 
-            //            Item[] items = new Item[] 
-            //{ new Book{Id = 1, Price = 13.50, Genre = "Comedy", Author = "Gustavo Achong"}, 
-            //  new Book{Id = 2, Price = 8.50, Genre = "Drama", Author = "Jessie Zeng"},
-            //  new Movie{Id = 1, Price = 22.99, Genre = "Comedy", Director = "Marissa Barnes"},
-            //  new Movie{Id = 1, Price = 13.40, Genre = "Action", Director = "Emmanuel Fernandez"}};
-
-            //            // Query for items with price greater than 9.99.
-            //            var query = from i in items
-            //                        where i.Price > 9.99
-            //                        orderby i.Price
-            //                        select i;
-
-            //            // Load the query results into new DataTable.
-            //            DataTable table = query.CopyToDataTable();
-
-
-
-
-
-
-
-
         }
+
+        protected const string Newline = "<br/>";
+
+        /// <summary>
+        /// convert the string to html with multiple lines if necessary
+        /// http://www.softcircuits.com/Blog/post/2010/01/10/Implementing-Word-Wrap-in-C.aspx
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="margin"></param>
+        /// <returns></returns>
+        private string ConvertStringToHtml(string text,int margin)
+        {
+            //text = text.Replace(" ", "&nbsp;");
+            int start = 0, end;
+            var lines = new List<string>();
+            text = Regex.Replace(text, @"\s", " ").Trim();
+
+            while ((end = start + margin) < text.Length)
+            {
+                while (text[end] != ' ' && end > start)
+                    end -= 1;
+
+                if (end == start)
+                    end = start + margin;
+
+                lines.Add(text.Substring(start, end - start));
+                start = end + 1;
+            }
+
+            if (start < text.Length)
+            {
+                lines.Add(text.Substring(start));
+            }
+
+            /*
+                <!--<span class="style4">SV Code Camp Version 8!</span><br>
+                <span class="style5">October 5th and 6th, 2013</span>-->
+             */
+            StringBuilder sb = new StringBuilder();
+            for (int index = 0; index < lines.Count; index++)
+            {
+                var rec = lines[index];
+                if (index == 0)
+                {
+                    // rec = string.Format("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{0}", rec);
+                    // first line, always style4 and always <br>
+                    rec = String.Format("<span class=\"style4\">{0}</span><br/>", rec);
+                }
+                else
+                {
+                    rec = String.Format("<span class=\"style5\">{0}</span>", rec);
+                    if (index != lines.Count - 1) // if not last line, add <br/>
+                    {
+                        rec = rec + "<br/>";
+                    }
+                }
+
+                
+
+                //sb.Append(rec.Replace(" ", "%nbsp;"));
+                sb.Append(rec);
+            }
+
+            return sb.ToString();
+        }
+
+       
+
 
 
         ///// <summary>

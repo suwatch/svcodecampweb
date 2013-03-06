@@ -169,7 +169,10 @@
                                 "layout|anchor": "100%",
                                 "designer|userClassName": "MyTextField3",
                                 "name": "subject",
-                                "fieldLabel": "Subject",
+                                "value": [
+                                    "Announcing SV Code Camp Version 8! October 5th and 6th, 2013"
+                                ],
+                                "fieldLabel": "Subject (Required)",
                                 "allowBlank": false
                             },
                             "designerId": "99087f50-9a28-4b98-826e-8a82558ab2a7"
@@ -185,13 +188,34 @@
                                 "layout|anchor": "100%",
                                 "designer|userClassName": "MyHTMLEditor",
                                 "height": 150,
+                                "margin": "10 0 0 0",
+                                "style": [
+                                    "background-color: white;"
+                                ],
+                                "name": "subjectHtml",
+                                "fieldLabel": "Subject HTML (optional)"
+                            },
+                            "designerId": "076cf3c4-42f0-41a5-9239-80a0a4a85b51"
+                        },
+                        {
+                            "type": "htmleditor",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|anchor": "100%",
+                                "designer|userClassName": "MyHTMLEditor",
+                                "height": 150,
+                                "margin": "15 0 0 0",
                                 "style": [
                                     "background-color: white;"
                                 ],
                                 "name": "emailHtml",
-                                "fieldLabel": "Label"
+                                "fieldLabel": "Content (HTML)"
                             },
-                            "designerId": "076cf3c4-42f0-41a5-9239-80a0a4a85b51"
+                            "designerId": "50e89030-0abf-46e2-834b-a0187230a43d"
                         },
                         {
                             "type": "textareafield",

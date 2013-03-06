@@ -1,0 +1,69 @@
+﻿<style type="text/css">
+    .title1 {
+        font-family: "HandelGothic","Scada",Arial,"Helvetica Neue",Helvetica,sans-serif;
+        color: rgba(75,73,74,255);
+        font-size: 18px;
+        font-weight: bold;
+        margin-left: 20px;
+    }
+</style>
+
+
+<div style="width: 960px; margin-left: 10px; display: inline-block; background-color: rgba(189,187,188,255); padding: 20px">
+
+    <h1 class="title1">SPONSORS</h1>
+    <br />
+    @{string levels = string.Empty;}
+    @foreach (var sponsor1 in Model.Sponsors)
+    {
+
+        if (!levels.Contains(@sponsor1.SponsorSupportLevel))
+        {
+            levels += @sponsor1.SponsorSupportLevel;
+            
+        
+        <a href="@sponsor1.NavigateURL">
+            <div class="roundBorder section jobPosts" style="float: left; padding: 10px; margin: 15px; border:solid 1px #ccc; background-color: rgba(248,248,248,255);">
+                <h1 class="title1" style="font-size: 16px; margin-top: -30px; margin-left: -12px">@sponsor1.SponsorSupportLevel.ToUpper()</h1>
+                @foreach (var sponsor in Model.Sponsors)
+                {
+
+                    if (@sponsor1.SponsorSupportLevel == @sponsor.SponsorSupportLevel)
+                    {
+                    <span style="float: left;">
+
+                        @*<br />
+                        @sponsor.SponsorName
+                        <br />*@
+
+                        <img style="height:80px; width:130px;" src="@(sponsor.ImageURL)?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white" alt="@sponsor.SponsorName"  />
+
+                        @*<br />
+                        @sponsor.SponsorSupportLevel
+                        <br />
+                        @sponsor.SponsorSupportLevelOrder
+                        <br />*@
+                        @*<img src="@(sponsor.ImageURL)?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white" alt="@sponsor.SponsorName"  />*@
+                        <br />
+
+
+                    </span>}
+                }
+                <br />
+                <br />
+            </div>
+
+        </a>
+
+        
+
+
+    
+
+        }
+    }
+
+
+</div>
+
+

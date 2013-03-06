@@ -76,16 +76,27 @@ Ext.define('App.view.MainViewport', {
                                     xtype: 'textfield',
                                     anchor: '100%',
                                     name: 'subject',
-                                    fieldLabel: 'Subject',
+                                    value: 'Announcing SV Code Camp Version 8! October 5th and 6th, 2013',
+                                    fieldLabel: 'Subject (Required)',
                                     allowBlank: false
                                 },
                                 {
                                     xtype: 'htmleditor',
                                     anchor: '100%',
                                     height: 150,
+                                    margin: '10 0 0 0',
+                                    style: 'background-color: white;',
+                                    name: 'subjectHtml',
+                                    fieldLabel: 'Subject HTML (optional)'
+                                },
+                                {
+                                    xtype: 'htmleditor',
+                                    anchor: '100%',
+                                    height: 150,
+                                    margin: '15 0 0 0',
                                     style: 'background-color: white;',
                                     name: 'emailHtml',
-                                    fieldLabel: 'Label'
+                                    fieldLabel: 'Content (HTML)'
                                 },
                                 {
                                     xtype: 'textareafield',

@@ -33,7 +33,18 @@ namespace WebAPI.Controllers
        
         private ActionResult IndexBase(string year)
         {
-            return View(_repositorySponsor.GetDataForYear(year));
+            var data = _repositorySponsor.GetDataForYear(year);
+
+            for (int index = 0; index < data.Sponsors.Count; index++)
+            {
+                var rec = data.Sponsors[index];
+                rec.ShowFeatured = index%2 == 0;
+                rec.ShowQuestionMark = index%3 == 0;
+            }
+
+
+            data.Sponsors = _repositorySponsor.GetDataForYear(year).Sponsors.OrderBy(sp => sp.SponsorSupportLevelOrder).ToList();
+            return View(data);
         }
     }
 

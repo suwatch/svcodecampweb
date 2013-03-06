@@ -6,17 +6,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    
-   @* <link href="/Content/kendo/2012.3.1114/kendo.common.min.css" rel="stylesheet"/>
+
+    @* <link href="/Content/kendo/2012.3.1114/kendo.common.min.css" rel="stylesheet"/>
     <link href="/Content/kendo/2012.3.1114/kendo.default.min.css" rel="stylesheet"/>*@
-    <link href="/Content/Styles/svcc.css" rel="stylesheet"/>
-    
-    <script src="/Scripts/jquery-1.9.0.min.js"></script>
+    <link href="/Content/Styles/svcc.css" rel="stylesheet" />
+
+    <script src="/Scripts/jquery-1.8.2.min.js"></script>
 
 
-   @* <script src="/Scripts/kendo/2012.3.1114/kendo.web.min.js"></script>*@
+    @* <script src="/Scripts/kendo/2012.3.1114/kendo.web.min.js"></script>*@
 
-       
+
 
     <script type="text/javascript" language="javascript">
         $(document).ready(function () {
@@ -67,6 +67,7 @@
                     <span class="title">FOOTHILL COLLEGE,</span><br />
                     12345 EL MONTE RD.<br />
                     LOS ALTOS HILLS, CA
+               
                 </div>
             </div>
             <div class="menuUserBar">
@@ -123,6 +124,7 @@
                 <div class="userWrap">
                     <div class="loginForm">
                         LOGIN | REGISTER
+                   
                     </div>
                 </div>
             </div>
@@ -156,20 +158,22 @@
                             DAY@(daysAppend) TO GO</h1>
                     </div>
                     <div class="sectionBreak"></div>
-                    <div class="sectionTitle"><span class="luggageIcon"></span>
+                    <div class="sectionTitle">
+                        <span class="luggageIcon"></span>
                         <h2>JOB POSTS</h2>
                     </div>
                     <div class="roundBorder section  jobPosts">
                         <div class="listWrap">
-                            <ul>                          
-                            @foreach (var job in Model.JobListings)
-                            {
-                                <li>
-                                    <span class="date">@job.JobDateFriendly</span><br />
-                                    <a href="@job.JobURL" target="_blank" title="Go to job list - @job.JobName">@job.JobName</a><br />
-                                    @job.JobCompanyName - @job.JobLocation
-                                </li>
-                            }
+                            <ul>
+                                @foreach (var job in Model.JobListings)
+                                {
+
+                                    <li>
+                                        <span class="date">@job.JobDateFriendly</span><br />
+                                        <a href="@job.JobURL" target="_blank" title="Go to job list - @job.JobName">@job.JobName</a><br />
+                                        @job.JobCompanyName - @job.JobLocation
+                                    </li>
+                                }
                             </ul>
                         </div>
                         <div class="buttonWrap">
@@ -178,19 +182,21 @@
                         </div>
                     </div>
                     <div class="sectionBreak"></div>
-                    <div class="sectionTitle"><span class="laptopIcon"></span>
+                    <div class="sectionTitle">
+                        <span class="laptopIcon"></span>
                         <h2>NEWS</h2>
                     </div>
                     <div class="roundBorder section  news">
                         <div class="listWrap">
                             <ul>
-                            @foreach (var feed in Model.FeedItems)
-                             {
-                                <li>
-                                    <span class="date">@feed.PubDateMonthYearOnly</span><br />
-                                    <a href="@feed.PostURL" title="Go to post - @feed.PostTitle">@feed.PostTitle</a>
-                                </li>
-                             }
+                                @foreach (var feed in Model.FeedItems)
+                                {
+
+                                    <li>
+                                        <span class="date">@feed.PubDateMonthYearOnly</span><br />
+                                        <a href="@feed.PostURL" title="Go to post - @feed.PostTitle">@feed.PostTitle</a>
+                                    </li>
+                                }
                             </ul>
                         </div>
                         <div class="buttonWrap">
@@ -234,10 +240,7 @@
                         </ul>
                     </div>
                     <div class="sectionBreak"></div>
-                    <div class="sectionTitle sponsors">OUR<br />
-                        SPONSORS</div>
-                    
-                    <img src="~/Images/WebPreviews/SponsorRightColumn.jpg" width="160" />
+                    @{Html.RenderPartial("_SponsorSideBar");}
 
                     @*  <div class="roundBorder section  sponsors">
                         <div class="topButtonsWrap">
@@ -373,44 +376,23 @@
                 </aside>
             </div>
             <!-- #sideRight -->
-            
-           
-          
+
+
+
 
         </section>
         <!-- #middle-->
-        
-         <br/>
-              <img src="~/Images/WebPreviews/SponsorsBottom.jpg" width="1000" />
-        <br/>
-        <br/>
+
+        <br />
+        <div id="sponsorBottomBar">
+            @{Html.RenderPartial("_SponsorsBottomBar");}
+        </div>
+        <br />
+        <br />
     </div>
     <!-- #wrapper -->
 
-    <footer id="footer">
-        
-        
-        
-   
-        
-
-        <div class="footerWrap">
-             
-
-            <div class="creditsWrap">
-                Copyright © 2013   Silicon Valley Code Camp
-                <br />
-                Site Built with ASP.NET 4.0 by <a href="http://peterkellner.net" target="_blank">PeterKellner.net</a>
-            </div>
-            <div class="linksWrap">
-                <ul>
-                    <li><a href="#">TERMS & CONDITIONS</a></li>
-                    <li><a href="mailto:info@siliconvalley-codecamp.com">CONTACT</a></li>
-                    <li><a href="#">SITE MAP</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
+    @{Html.RenderPartial("_Footer");}
     <!-- #footer -->
 </body>
 

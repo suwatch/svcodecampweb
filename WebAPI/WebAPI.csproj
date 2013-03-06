@@ -1778,6 +1778,9 @@
     <Content Include="ExtJSApps\Dashboard\resources\theme\images\window\window-default-corners.gif" />
     <Content Include="ExtJSApps\Dashboard\resources\theme\images\window\window-default-sides.gif" />
     <Content Include="Views\Register\Login.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_SponsorsBottomBar.cshtml" />
+    <Content Include="Views\Shared\_SponsorSideBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
@@ -3600,6 +3603,7 @@
     <Content Include="_PROBLEMS\README.TXT" />
     <Content Include="_Register.aspx" />
     <Content Include="_test.html" />
+    <Content Include="_test2.html" />
     <Content Include="_test\test\HtmlPage1.html" />
     <Content Include="_test\WebForm1.aspx" />
     <Content Include="MasterPage.master" />

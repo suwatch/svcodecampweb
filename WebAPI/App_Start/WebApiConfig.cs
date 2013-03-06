@@ -14,10 +14,16 @@ namespace WebAPI
         {
 
             config.Routes.MapHttpRoute
-                ("API Default", "api/{controller}/{action}/{id}",
+                ("API Default", "api/{controller}/{id}",
                  new {id = RouteParameter.Optional});
 
-            // config.Routes.MapHttpRoute(
+            config.Routes.MapHttpRoute
+              ("API Default RPC", "rpc/{controller}/{action}/{id}",
+               new { id = RouteParameter.Optional });
+
+
+         
+        // config.Routes.MapHttpRoute(
             //    name: "DefaultApi",
             //    routeTemplate: "api/{controller}/{id}",
             //    defaults: new

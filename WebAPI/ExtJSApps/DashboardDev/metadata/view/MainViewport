@@ -1,0 +1,338 @@
+{
+    "type": "viewport",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "MainViewport",
+        "designer|initialView": true,
+        "layout": "fit"
+    },
+    "id": "ExtBox1-ext-gen2282",
+    "designerId": "86b503a1-4911-407a-9bae-64b4e8804534",
+    "cn": [
+        {
+            "type": "tabpanel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyTabPanel"
+            },
+            "designerId": "ce56a62a-03a6-4513-b316-2691ea6c7885",
+            "cn": [
+                {
+                    "type": "form",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyForm2",
+                        "id": "mailGeneratorFormPanelId",
+                        "padding": "5 5 5 5",
+                        "bodyPadding": "5 5 5 5",
+                        "title": "Mail Generator"
+                    },
+                    "designerId": "eacb144e-2d30-4f07-af64-dc700b6598e4",
+                    "cn": [
+                        {
+                            "type": "tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "TabConfig"
+                            },
+                            "designerId": "3455f8fa-8d83-4f05-80c2-fc975913d186"
+                        },
+                        {
+                            "type": "toolbar",
+                            "reference": {
+                                "name": "dockedItems",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dock": "top",
+                                "designer|userClassName": "MyToolbar"
+                            },
+                            "designerId": "113996d7-5942-4e2d-838a-055e01a4e9df",
+                            "cn": [
+                                {
+                                    "type": "button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|flex": null,
+                                        "designer|userClassName": "MyButton1",
+                                        "id": "GenerateEmailButtonId",
+                                        "text": "Generate"
+                                    },
+                                    "designerId": "af1f4f1f-e750-4f8a-9422-c9cef54f8d0b"
+                                },
+                                {
+                                    "type": "tbseparator",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|flex": null,
+                                        "designer|userClassName": "MySeparator"
+                                    },
+                                    "designerId": "13993138-aac5-47e2-adbb-6eaa65514705"
+                                },
+                                {
+                                    "type": "button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|flex": null,
+                                        "designer|userClassName": "MyButton1",
+                                        "designer|displayName": null,
+                                        "id": "previewLetterButtonId",
+                                        "text": "Preview Letter"
+                                    },
+                                    "designerId": "606582d4-b808-4a6c-af39-d20a036b2e0e",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "click",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "textfield",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|flex": null,
+                                        "designer|userClassName": "MyTextField5",
+                                        "id": "previewEmailToId",
+                                        "width": 332,
+                                        "name": "previewEmailSend",
+                                        "value": [
+                                            "peter@peterkellner.net"
+                                        ],
+                                        "fieldLabel": "Send Preview To"
+                                    },
+                                    "designerId": "c06c9438-875a-400f-81e3-796189ed1942"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "textfield",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|anchor": "100%",
+                                "designer|userClassName": "MyTextField3",
+                                "name": "emailUrl",
+                                "value": [
+                                    "http://pkellner.site44.com/"
+                                ],
+                                "fieldLabel": "URL Of Letter",
+                                "allowBlank": false
+                            },
+                            "designerId": "4a2a2dc0-2db0-45b8-aef4-9778686aa6ea"
+                        },
+                        {
+                            "type": "textfield",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|anchor": "100%",
+                                "designer|userClassName": "MyTextField3",
+                                "name": "subject",
+                                "fieldLabel": "Subject",
+                                "allowBlank": false
+                            },
+                            "designerId": "99087f50-9a28-4b98-826e-8a82558ab2a7"
+                        },
+                        {
+                            "type": "htmleditor",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|anchor": "100%",
+                                "designer|userClassName": "MyHTMLEditor",
+                                "height": 150,
+                                "style": [
+                                    "background-color: white;"
+                                ],
+                                "name": "emailHtml",
+                                "fieldLabel": "Label"
+                            },
+                            "designerId": "076cf3c4-42f0-41a5-9239-80a0a4a85b51"
+                        },
+                        {
+                            "type": "textareafield",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|anchor": "100%",
+                                "designer|userClassName": "MyTextArea",
+                                "height": 230,
+                                "margin": "30 0 0 0",
+                                "name": "sqlStatement",
+                                "value": [
+                                    "select id from attendees where id > 6000 "
+                                ],
+                                "fieldLabel": "Sql Statement",
+                                "allowBlank": false
+                            },
+                            "designerId": "95dad29e-47cf-4024-a776-f12dac9ae25c"
+                        }
+                    ]
+                },
+                {
+                    "type": "panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyPanel3",
+                        "title": "Admin Users"
+                    },
+                    "designerId": "76478911-57ea-437d-8e9f-688b88bd9e12",
+                    "cn": [
+                        {
+                            "type": "tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "TabConfig2"
+                            },
+                            "designerId": "4e6c7899-0c46-4533-9b4d-3a88688145b5"
+                        },
+                        {
+                            "type": "gridpanel",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyGridPanel1",
+                                "id": "GridPanelAdminUsersId",
+                                "title": null,
+                                "store": "StoreAdminUsers"
+                            },
+                            "designerId": "18320cdf-f277-401c-8919-4d4bbdfd604f",
+                            "cn": [
+                                {
+                                    "type": "gridview",
+                                    "reference": {
+                                        "name": "viewConfig",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|userClassName": "MyGridView1"
+                                    },
+                                    "designerId": "f1903a8b-6e86-48ad-8ccf-efdb2d40b16d"
+                                },
+                                {
+                                    "type": "gridcolumn",
+                                    "reference": {
+                                        "name": "columns",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|userClassName": "MyColumn3",
+                                        "width": 181,
+                                        "dataIndex": "username",
+                                        "text": "Username"
+                                    },
+                                    "designerId": "5ed81f49-a584-4875-a2e2-ce00f70d52f7"
+                                },
+                                {
+                                    "type": "gridcolumn",
+                                    "reference": {
+                                        "name": "columns",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|userClassName": "MyColumn4",
+                                        "dataIndex": "roles",
+                                        "flex": 1,
+                                        "text": "Roles"
+                                    },
+                                    "designerId": "1390ea5b-6551-4085-bd08-ff3619638373"
+                                },
+                                {
+                                    "type": "toolbar",
+                                    "reference": {
+                                        "name": "dockedItems",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "dock": "top",
+                                        "designer|userClassName": "MyToolbar1"
+                                    },
+                                    "designerId": "f8d49751-f6bf-4c35-9b2a-c9f22f278768",
+                                    "cn": [
+                                        {
+                                            "type": "button",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "layout|flex": null,
+                                                "designer|userClassName": "MyButton3",
+                                                "id": "ReLoadAdminUsersButton",
+                                                "text": "ReLoadGrid"
+                                            },
+                                            "designerId": "f01246b5-7cfd-46fc-9600-bfa54c3195a9"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,48 @@
+{
+    "name": "SessionViewer",
+    "settings": {
+        "urlPrefix": "http://localhost:17138/ExtJSApps/SessionViewer/",
+        "spacesToIndent": 4,
+        "exportPath": "C:/VCProject/SVCodeCampWeb/WebAPI/ExtJSApps/SessionViewerProd",
+        "sdkPath": "",
+        "lineEnding": "CRLF",
+        "genTimestamps": false,
+        "cacheBust": true
+    },
+    "xdsVersion": "2.1.0",
+    "xdsBuild": 678,
+    "schemaVersion": 1,
+    "upgradeVersion": 210000000498,
+    "framework": "ext41",
+    "topInstanceFileMap": {
+        "c04cffd6-001c-4b6e-8574-ef223f3a3824": {
+            "paths": [
+                "metadata/resource/Library"
+            ],
+            "className": "Library"
+        },
+        "86b503a1-4911-407a-9bae-64b4e8804534": {
+            "paths": [
+                "metadata/view/MainViewport",
+                "app/view/override/MainViewport.js",
+                "app/view/MainViewport.js",
+                "app/view/Viewport.js"
+            ],
+            "className": "MainViewport"
+        }
+    },
+    "viewOrderMap": {
+        "view": [
+            "86b503a1-4911-407a-9bae-64b4e8804534"
+        ],
+        "store": [],
+        "controller": [],
+        "model": [],
+        "resource": [
+            "c04cffd6-001c-4b6e-8574-ef223f3a3824"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

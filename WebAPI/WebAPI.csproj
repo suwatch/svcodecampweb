@@ -319,6 +319,7 @@
     <None Include="Api\AccountControllerWorks.csxxx" />
     <Compile Include="Api\AccountController.cs" />
     <None Include="Api\AccountController.cs.ORI" />
+    <Compile Include="Api\EmailController.cs" />
     <Compile Include="Api\SessionController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />

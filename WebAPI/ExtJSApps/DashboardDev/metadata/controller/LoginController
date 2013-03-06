@@ -1,0 +1,119 @@
+{
+    "type": "controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "LoginController"
+    },
+    "id": "ExtBox1-ext-gen13728",
+    "designerId": "bf44357d-6514-4ae4-80cc-d904bb24f51a",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onLoginButtonIdClick",
+                "fn": "onLoginButtonIdClick",
+                "implHandler": [
+                    "\r",
+                    "// verify login and if success close\r",
+                    "\r",
+                    "var values = Ext.getCmp('loginFormId').getForm().getValues();\r",
+                    "var myMask = new Ext.LoadMask(Ext.getBody(), \r",
+                    "{msg:\"Logging In...\"});\r",
+                    "var task = new Ext.util.DelayedTask(function(){\r",
+                    "    myMask.show();\r",
+                    "});\r",
+                    "\r",
+                    "task.delay(500);\r",
+                    "Ext.Ajax.request({ \r",
+                    "    url:'/rpc/Account/Login', \r",
+                    "    params: values,\r",
+                    "    method: 'POST',\r",
+                    "    success: function(r, o) { \r",
+                    "        task.cancel();\r",
+                    "        if (myMask.isVisible) {\r",
+                    "            myMask.hide();\r",
+                    "        }\r",
+                    "        var win = Ext.getCmp(\"loginWindowId\");\r",
+                    "        win.close();\r",
+                    "\r",
+                    "    },\r",
+                    "    failure: function(r,o) {\r",
+                    "        task.cancel();\r",
+                    "        if (myMask.isVisible) {\r",
+                    "            myMask.hide();\r",
+                    "        }  \r",
+                    "\r",
+                    "        Ext.Msg.alert(\"Login Failed. Please Try Again\");\r",
+                    "    }\r",
+                    "});\r",
+                    "\r",
+                    ""
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#loginButtonId"
+            },
+            "designerId": "a4c27292-f499-4f4b-9ab5-abc3a33208de"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onButtonClick",
+                "fn": "onButtonClick",
+                "implHandler": [
+                    "// logout\r",
+                    "var myMask = new Ext.LoadMask(Ext.getBody(), \r",
+                    "{msg:\"Logging out...\"});\r",
+                    "var task = new Ext.util.DelayedTask(function(){\r",
+                    "    myMask.show();\r",
+                    "});\r",
+                    "\r",
+                    "task.delay(500);\r",
+                    "Ext.Ajax.request({ \r",
+                    "    url:'/rpc/Account/LogOut', \r",
+                    "    params: {},\r",
+                    "    method: 'POST',\r",
+                    "    success: function(r, o) { \r",
+                    "        task.cancel();\r",
+                    "        if (myMask.isVisible) {\r",
+                    "            myMask.hide();\r",
+                    "        }\r",
+                    "        Ext.Msg.alert(\"Logged Out.  Refresh Page To Login again\");\r",
+                    "\r",
+                    "\r",
+                    "    },\r",
+                    "    failure: function(r,o) {\r",
+                    "        task.cancel();\r",
+                    "        if (myMask.isVisible) {\r",
+                    "            myMask.hide();\r",
+                    "        }  \r",
+                    "\r",
+                    "        Ext.Msg.alert(\"Logout Failed\");\r",
+                    "    }\r",
+                    "});\r",
+                    ""
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#logoutButtonId"
+            },
+            "designerId": "fc3cc0ab-8caf-4d05-8ce8-622f545f8d33"
+        }
+    ]
+}

@@ -1,0 +1,98 @@
+{
+    "type": "controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "UserInvoiceArticleController"
+    },
+    "id": "ExtBox1-ext-gen8047",
+    "designerId": "3d453260-e0bc-4ef5-bf7d-2450ca9e1108",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "UserInvoiceArticleController",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onReLoadGridButtonClick",
+                "fn": "onReLoadGridButtonClick",
+                "implHandler": [
+                    "\r",
+                    "this.refreshData();"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#reLoadGridButton"
+            },
+            "designerId": "3a40142a-bcd5-402a-8b21-ec584a2892e9"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "refreshData",
+                "fn": "refreshData",
+                "implHandler": [
+                    "\r",
+                    "var numberDays =  Ext.getCmp('numberDaysId').getValue();\r",
+                    "var searchUsername =  Ext.getCmp('searchNameId').getValue();\r",
+                    "var store = Ext.getCmp('gridId').store;\r",
+                    "store.load({\r",
+                    "    params: {\r",
+                    "        usernameMatch: searchUsername,\r",
+                    "        daysToGoBack: numberDays,\r",
+                    "        maxUsersToReturn: '100'\r",
+                    "    }\r",
+                    "});\r",
+                    ""
+                ]
+            },
+            "designerId": "6f703cef-a981-41bc-b43c-f79b2a734589"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onGridIdAfterRender",
+                "fn": "onGridIdAfterRender",
+                "implHandler": [
+                    "var form = Ext.getCmp(\"UserInvoiceArticleTabId\");\r",
+                    "var that = this;\r",
+                    "form.mon(form.el, {\r",
+                    "    keypress : function(e, t, opts) {\r",
+                    "        if (e.getKey() == e.ENTER) {\r",
+                    "            that.refreshData();\r",
+                    "        }\r",
+                    "    }}\r",
+                    "    );"
+                ],
+                "name": "afterrender",
+                "scope": "me",
+                "designer|targetType": "Ext.grid.Panel",
+                "designer|controlQuery": "#gridId"
+            },
+            "designerId": "385163dc-c3b9-4704-8aae-e2b76cc63d8c"
+        }
+    ]
+}

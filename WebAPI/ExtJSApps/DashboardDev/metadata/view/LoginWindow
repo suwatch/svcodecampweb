@@ -1,0 +1,85 @@
+{
+    "type": "window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "LoginWindow",
+        "height": 156,
+        "id": "loginWindowId",
+        "width": 400,
+        "layout": "fit",
+        "closable": false,
+        "title": null,
+        "modal": true
+    },
+    "id": "ExtBox1-ext-gen12188",
+    "designerId": "dc33688f-b37a-4ad8-865a-bce887285ffa",
+    "cn": [
+        {
+            "type": "form",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyForm",
+                "id": "loginFormId",
+                "bodyPadding": 10,
+                "title": "Login"
+            },
+            "designerId": "9a9a3640-cbed-4f6d-bba4-ca52e1d463cf",
+            "cn": [
+                {
+                    "type": "textfield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyTextField2",
+                        "name": "username",
+                        "fieldLabel": "Username",
+                        "allowBlank": false
+                    },
+                    "designerId": "b68b2f77-9101-4b92-95ea-a38de592002b"
+                },
+                {
+                    "type": "textfield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyTextField2",
+                        "inputType": "password",
+                        "name": "password",
+                        "fieldLabel": "Password",
+                        "allowBlank": false
+                    },
+                    "designerId": "4be71d0d-9c9b-4337-8644-01136e12c5f4"
+                },
+                {
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "formBind": true,
+                        "designer|userClassName": "MyButton1",
+                        "id": "loginButtonId",
+                        "text": "Login"
+                    },
+                    "designerId": "19afc893-a47f-4732-9a56-522e183e34b9"
+                }
+            ]
+        }
+    ]
+}

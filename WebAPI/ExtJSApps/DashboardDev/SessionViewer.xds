@@ -1,0 +1,105 @@
+{
+    "name": "SessionViewer",
+    "settings": {
+        "urlPrefix": "http://localhost:17138/ExtJSApps/SessionViewer/",
+        "spacesToIndent": 4,
+        "exportPath": "C:/VCProject/SVCodeCampWeb/WebAPI/ExtJSApps/SessionViewerProd",
+        "sdkPath": "",
+        "lineEnding": "CRLF",
+        "genTimestamps": false,
+        "cacheBust": true
+    },
+    "xdsVersion": "2.1.0",
+    "xdsBuild": 678,
+    "schemaVersion": 1,
+    "upgradeVersion": 210000000498,
+    "framework": "ext41",
+    "topInstanceFileMap": {
+        "c04cffd6-001c-4b6e-8574-ef223f3a3824": {
+            "paths": [
+                "metadata/resource/Library"
+            ],
+            "className": "Library"
+        },
+        "86b503a1-4911-407a-9bae-64b4e8804534": {
+            "paths": [
+                "metadata/view/MainViewport",
+                "app/view/override/MainViewport.js",
+                "app/view/MainViewport.js",
+                "app/view/Viewport.js"
+            ],
+            "className": "MainViewport"
+        },
+        "dc33688f-b37a-4ad8-865a-bce887285ffa": {
+            "paths": [
+                "metadata/view/LoginWindow",
+                "app/view/override/LoginWindow.js",
+                "app/view/LoginWindow.js"
+            ],
+            "className": "LoginWindow"
+        },
+        "fe57d038-3dcd-4905-9d62-ce528de2dff4": {
+            "paths": [
+                "metadata/store/StoreAdminUsers",
+                "app/store/override/StoreAdminUsers.js",
+                "app/store/StoreAdminUsers.js"
+            ],
+            "className": "StoreAdminUsers"
+        },
+        "ea603ba0-dc16-49a4-99a5-9ab2b7469f89": {
+            "paths": [
+                "metadata/controller/EmailController",
+                "app/controller/override/EmailController.js",
+                "app/controller/EmailController.js"
+            ],
+            "className": "EmailController"
+        },
+        "bf44357d-6514-4ae4-80cc-d904bb24f51a": {
+            "paths": [
+                "metadata/controller/LoginController",
+                "app/controller/override/LoginController.js",
+                "app/controller/LoginController.js"
+            ],
+            "className": "LoginController"
+        },
+        "3d453260-e0bc-4ef5-bf7d-2450ca9e1108": {
+            "paths": [
+                "metadata/controller/UserInvoiceArticleController",
+                "app/controller/override/UserInvoiceArticleController.js",
+                "app/controller/UserInvoiceArticleController.js"
+            ],
+            "className": "UserInvoiceArticleController"
+        },
+        "04ed27c4-e8bc-4bc2-a6d9-43ae87f77e79": {
+            "paths": [
+                "metadata/model/ModelAdminUser",
+                "app/model/override/ModelAdminUser.js",
+                "app/model/ModelAdminUser.js"
+            ],
+            "className": "ModelAdminUser"
+        }
+    },
+    "viewOrderMap": {
+        "view": [
+            "dc33688f-b37a-4ad8-865a-bce887285ffa",
+            "86b503a1-4911-407a-9bae-64b4e8804534"
+        ],
+        "store": [
+            "fe57d038-3dcd-4905-9d62-ce528de2dff4"
+        ],
+        "controller": [
+            "ea603ba0-dc16-49a4-99a5-9ab2b7469f89",
+            "bf44357d-6514-4ae4-80cc-d904bb24f51a",
+            "3d453260-e0bc-4ef5-bf7d-2450ca9e1108"
+        ],
+        "model": [
+            "04ed27c4-e8bc-4bc2-a6d9-43ae87f77e79"
+        ],
+        "resource": [
+            "c04cffd6-001c-4b6e-8574-ef223f3a3824"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

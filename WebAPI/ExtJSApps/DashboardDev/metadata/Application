@@ -1,0 +1,80 @@
+{
+    "type": "application",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "requires": [
+            "Ext.ux.data.PagingMemoryProxy",
+            "Ext.grid.Panel",
+            "Ext.data.reader.Json",
+            "Ext.toolbar.Paging"
+        ],
+        "models": [
+            "ModelAdminUser"
+        ],
+        "stores": [
+            "StoreAdminUsers"
+        ],
+        "views": [
+            "MainViewport",
+            "LoginWindow"
+        ],
+        "autoCreateViewport": true,
+        "name": "App",
+        "controllers": [
+            "UserInvoiceArticleController",
+            "LoginController",
+            "EmailController"
+        ]
+    },
+    "id": "ExtBox1-ext-gen2014",
+    "designerId": "application",
+    "cn": [
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "launch",
+                "fn": "launch",
+                "implHandler": [
+                    "var myMask = new Ext.LoadMask(Ext.getBody(), \r",
+                    "{msg:\"Checking If Logged In...\"});\r",
+                    "var task = new Ext.util.DelayedTask(function(){\r",
+                    "    myMask.show();\r",
+                    "});\r",
+                    "\r",
+                    "task.delay(500);\r",
+                    "Ext.Ajax.request({ \r",
+                    "    url:'/rpc/Account/IsLoggedIn', \r",
+                    "    params: {},\r",
+                    "    method: 'POST',\r",
+                    "    success: function(r, o) { \r",
+                    "        task.cancel();\r",
+                    "        if (myMask.isVisible) {\r",
+                    "            myMask.hide();\r",
+                    "        }\r",
+                    "    },\r",
+                    "    failure: function(r,o) {\r",
+                    "        task.cancel();\r",
+                    "        if (myMask.isVisible) {\r",
+                    "            myMask.hide();\r",
+                    "        }  \r",
+                    "\r",
+                    "        var loginWindow = Ext.create('App.view.LoginWindow',{});\r",
+                    "        loginWindow.showAt(50,130,true);\r",
+                    "\r",
+                    "    }\r",
+                    "});"
+                ]
+            },
+            "designerId": "75d175a9-4763-4164-a033-15d7d86f685d"
+        }
+    ]
+}

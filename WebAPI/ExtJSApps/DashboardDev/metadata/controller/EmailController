@@ -1,0 +1,84 @@
+{
+    "type": "controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "EmailController"
+    },
+    "id": "ExtBox1-ext-gen15061",
+    "designerId": "ea603ba0-dc16-49a4-99a5-9ab2b7469f89",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onPreviewLetterButtonIdClick",
+                "fn": "onPreviewLetterButtonIdClick",
+                "implHandler": [
+                    "var formValues = Ext.getCmp(\"mailGeneratorFormPanelId\").getForm().getValues();\r",
+                    "\r",
+                    "var myMask = new Ext.LoadMask(Ext.getBody(), \r",
+                    "{msg:\"Generating Email Preview...\"});\r",
+                    "var task = new Ext.util.DelayedTask(function(){\r",
+                    "    myMask.show();\r",
+                    "});\r",
+                    "\r",
+                    "task.delay(500);\r",
+                    "Ext.Ajax.request({ \r",
+                    "    url:'/rpc/Email/EmailPreview', \r",
+                    "    params: formValues,\r",
+                    "    method: 'POST',\r",
+                    "    success: function(r, o) { \r",
+                    "        task.cancel();\r",
+                    "        if (myMask.isVisible) {\r",
+                    "            myMask.hide();\r",
+                    "        }\r",
+                    "        Ext.Msg.alert('Success to ' + formValues.previewEmailSend);\r",
+                    "    },\r",
+                    "    failure: function(r,o) {\r",
+                    "        task.cancel();\r",
+                    "        if (myMask.isVisible) {\r",
+                    "            myMask.hide();\r",
+                    "        }  \r",
+                    "\r",
+                    "        Ext.Msg.alert(\"Login Failed. Please Try Again\");\r",
+                    "    }\r",
+                    "});\r",
+                    ""
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#previewLetterButtonId"
+            },
+            "designerId": "4888d276-bb7b-4b8d-8637-66884e050b3f"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onGenerateEmailButtonIdClick",
+                "fn": "onGenerateEmailButtonIdClick",
+                "implHandler": [
+                    ""
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#GenerateEmailButtonId"
+            },
+            "designerId": "d586439a-c140-4ef6-b97b-2365dd84ba7c"
+        }
+    ]
+}

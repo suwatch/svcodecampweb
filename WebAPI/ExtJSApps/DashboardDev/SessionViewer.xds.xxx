@@ -1,0 +1,123 @@
+{
+    "name": "SessionViewer",
+    "settings": {
+        "urlPrefix": "http://localhost:5173/ExtJSApps/DashboardDev/",
+        "spacesToIndent": 4,
+        "exportPath": "C:/VCProject/SVCodeCampWeb/WebAPI/ExtJSApps/SessionViewerProd",
+        "sdkPath": "",
+        "lineEnding": "CRLF",
+        "genTimestamps": false,
+        "cacheBust": true
+    },
+    "xdsVersion": "2.1.0",
+    "xdsBuild": 678,
+    "schemaVersion": 1,
+    "upgradeVersion": 210000000498,
+    "framework": "ext41",
+    "topInstanceFileMap": {
+        "c04cffd6-001c-4b6e-8574-ef223f3a3824": {
+            "paths": [
+                "metadata/resource/Library"
+            ],
+            "className": "Library"
+        },
+        "86b503a1-4911-407a-9bae-64b4e8804534": {
+            "paths": [
+                "metadata/view/MainViewport",
+                "app/view/override/MainViewport.js",
+                "app/view/MainViewport.js",
+                "app/view/Viewport.js"
+            ],
+            "className": "MainViewport"
+        },
+        "93a97022-b1f8-49ee-806e-90e3a109c638": {
+            "paths": [
+                "metadata/store/StoreUsersWithLastOrderAndViewCount",
+                "app/store/override/StoreUsersWithLastOrderAndViewCount.js",
+                "app/store/StoreUsersWithLastOrderAndViewCount.js"
+            ],
+            "className": "StoreUsersWithLastOrderAndViewCount"
+        },
+        "3985b65d-6eee-4628-b408-24ace2f8cb67": {
+            "paths": [
+                "metadata/model/ModelUsersWithLastOrderAndViewCount",
+                "app/model/override/ModelUsersWithLastOrderAndViewCount.js",
+                "app/model/ModelUsersWithLastOrderAndViewCount.js"
+            ],
+            "className": "ModelUsersWithLastOrderAndViewCount"
+        },
+        "3d453260-e0bc-4ef5-bf7d-2450ca9e1108": {
+            "paths": [
+                "metadata/controller/UserInvoiceArticleController",
+                "app/controller/override/UserInvoiceArticleController.js",
+                "app/controller/UserInvoiceArticleController.js"
+            ],
+            "className": "UserInvoiceArticleController"
+        },
+        "dc33688f-b37a-4ad8-865a-bce887285ffa": {
+            "paths": [
+                "metadata/view/LoginWindow",
+                "app/view/override/LoginWindow.js",
+                "app/view/LoginWindow.js"
+            ],
+            "className": "LoginWindow"
+        },
+        "bf44357d-6514-4ae4-80cc-d904bb24f51a": {
+            "paths": [
+                "metadata/controller/LoginController",
+                "app/controller/override/LoginController.js",
+                "app/controller/LoginController.js"
+            ],
+            "className": "LoginController"
+        },
+        "fe57d038-3dcd-4905-9d62-ce528de2dff4": {
+            "paths": [
+                "metadata/store/StoreAdminUsers",
+                "app/store/override/StoreAdminUsers.js",
+                "app/store/StoreAdminUsers.js"
+            ],
+            "className": "StoreAdminUsers"
+        },
+        "04ed27c4-e8bc-4bc2-a6d9-43ae87f77e79": {
+            "paths": [
+                "metadata/model/ModelAdminUser",
+                "app/model/override/ModelAdminUser.js",
+                "app/model/ModelAdminUser.js"
+            ],
+            "className": "ModelAdminUser"
+        },
+        "f16b70b8-414f-4f88-9b6d-481e8e42a818": {
+            "paths": [
+                "metadata/controller/AdminUsersController",
+                "app/controller/override/AdminUsersController.js",
+                "app/controller/AdminUsersController.js"
+            ],
+            "className": "AdminUsersController"
+        }
+    },
+    "viewOrderMap": {
+        "view": [
+            "86b503a1-4911-407a-9bae-64b4e8804534",
+            "dc33688f-b37a-4ad8-865a-bce887285ffa"
+        ],
+        "store": [
+            "93a97022-b1f8-49ee-806e-90e3a109c638",
+            "fe57d038-3dcd-4905-9d62-ce528de2dff4"
+        ],
+        "controller": [
+            "3d453260-e0bc-4ef5-bf7d-2450ca9e1108",
+            "bf44357d-6514-4ae4-80cc-d904bb24f51a",
+            "f16b70b8-414f-4f88-9b6d-481e8e42a818"
+        ],
+        "model": [
+            "3985b65d-6eee-4628-b408-24ace2f8cb67",
+            "04ed27c4-e8bc-4bc2-a6d9-43ae87f77e79"
+        ],
+        "resource": [
+            "c04cffd6-001c-4b6e-8574-ef223f3a3824"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

@@ -32,7 +32,7 @@ namespace CodeCampSV
 
         public List<SponsorListResult> GetAllCurrentYear7()
         {
-            return Get(new SponsorListQuery() { CodeCampYearId = 7 });
+            return Get(new SponsorListQuery { CodeCampYearId = 7 });
         }
 
         public List<SponsorListResult> Get(SponsorListQuery query)
@@ -188,6 +188,11 @@ namespace CodeCampSV
                             {
                                 rec.SponsorSupportLevel = "Community";
                                 rec.SponsorSupportLevelOrder = 4;
+                            }
+                            else
+                            {
+                                rec.SponsorSupportLevel = "Unknown";
+                                rec.SponsorSupportLevelOrder = 999;
                             }
                         }
                     }

@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using CodeCampSV;
 using WebAPI.Code;
 using WebAPI.ViewModels;
+using System.Web.Security;
 
 namespace WebAPI.Controllers
 {
@@ -23,6 +24,16 @@ namespace WebAPI.Controllers
 
         public ActionResult Login()
         {
+            string year =
+               Utils.ConvertCodeCampYearToActualYear(
+                   Utils.GetCurrentCodeCampYear().ToString(CultureInfo.InvariantCulture));
+            var viewModel = GetViewModel(year);
+            return View(viewModel);
+        }
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
             string year =
                Utils.ConvertCodeCampYearToActualYear(
                    Utils.GetCurrentCodeCampYear().ToString(CultureInfo.InvariantCulture));

@@ -1,9 +1,9 @@
 {
     "name": "SessionViewer",
     "settings": {
-        "urlPrefix": "http://localhost:17138/ExtJSApps/",
+        "urlPrefix": "http://localhost:17138/ExtJSApps/LoginDev/",
         "spacesToIndent": 4,
-        "exportPath": "",
+        "exportPath": "C:/VCProject/SVCodeCampWeb/WebAPI/ExtJSApps/Login",
         "sdkPath": "",
         "lineEnding": "CRLF",
         "genTimestamps": false,

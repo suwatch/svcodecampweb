@@ -61,6 +61,15 @@ namespace WebAPI
                       action = "Login"
                   });
 
+            // LOGOUT
+            routes.MapRoute("LogOutRoute", "Logout",
+                  new
+                  {
+                      /* Your default route */
+                      controller = "Home",
+                      action = "Logout"
+                  });
+
             // REGISTER
             routes.MapRoute("RegisterRouteAll", "Register",
                    new

@@ -50,16 +50,12 @@ namespace WebAPI.Api
     {
         [HttpGet]
         [ActionName("UsersBySql")]
+        [Authorize(Roles = "admin")]
         public HttpResponseMessage GetUsersBySql(string sqlFilter)
         {
-
-
             List<AttendeesShortForEmail> attendeesShorts = Utils.GetAttendeesShortBySql(sqlFilter);
-
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, attendeesShorts);
             return response;
-
-           
         }
 
 

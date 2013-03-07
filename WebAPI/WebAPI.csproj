@@ -3834,6 +3834,7 @@
     <Content Include="Views\Session\indexTest2.cshtml" />
     <Content Include="Views\Sponsor\Index.cshtml" />
     <Content Include="Views\Sponsor\IndexTest.cshtml" />
+    <Content Include="Views\Home\Logout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ExtJSApps\Registration\resources\" />

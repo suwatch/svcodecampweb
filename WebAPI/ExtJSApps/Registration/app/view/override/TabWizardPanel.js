@@ -15,7 +15,7 @@ Ext.define('RegistrationApp.view.override.TabWizardPanel', {
         // first check to see if person is already logged in.  If they are, then go edit details page as if attendee
         var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];
         Ext.Ajax.request({ 
-            url:'/api/Account/IsLoggedIn', 
+            url:'/rpc/Account/IsLoggedIn', 
             actionMethods:'POST', 
             scope:this, 
             params:{

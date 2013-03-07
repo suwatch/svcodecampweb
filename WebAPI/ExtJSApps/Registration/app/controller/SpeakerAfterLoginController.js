@@ -26,7 +26,7 @@ Ext.define('RegistrationApp.controller.SpeakerAfterLoginController', {
 
 
         Ext.Ajax.request({ 
-            url:'/api/Account/UpdateSpeaker', 
+            url:'/rpc/Account/UpdateSpeaker', 
             actionMethods:'POST', 
             scope:this, 
             params: thisPanel.getForm().getValues(),
@@ -54,7 +54,7 @@ Ext.define('RegistrationApp.controller.SpeakerAfterLoginController', {
         myMask.show();
 
         Ext.Ajax.request({ 
-            url:'/api/Account/LogOut', 
+            url:'/rpc/Account/LogOut', 
             actionMethods:'POST', 
             scope:this, 
             params:{

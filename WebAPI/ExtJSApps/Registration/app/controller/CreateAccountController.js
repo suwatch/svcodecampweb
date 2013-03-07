@@ -72,7 +72,7 @@ Ext.define('RegistrationApp.controller.CreateAccountController', {
         myMask.show();
 
         Ext.Ajax.request({ 
-            url:'/api/Account/CreateUser', 
+            url:'/rpc/Account/CreateUser', 
             actionMethods:'POST', 
             scope:this, 
             params: localValues,

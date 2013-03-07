@@ -79,7 +79,7 @@ Ext.define('RegistrationApp.controller.SpeakerPictureController', {
 
         if(speakerForm.isValid()){
             speakerForm.submit({
-                url: '/api/Account/FormData',
+                url: '/rpc/Account/FormData',
 
                 waitMsg: 'Uploading your photo...',
                 success: function(fp, o) {

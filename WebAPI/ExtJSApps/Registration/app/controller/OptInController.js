@@ -64,7 +64,7 @@ Ext.define('RegistrationApp.controller.OptInController', {
         var thisPanel = Ext.ComponentQuery.query('OptInAlias')[0];
 
         Ext.Ajax.request({ 
-            url:'/api/Account/UpdateOptIn', 
+            url:'/rpc/Account/UpdateOptIn', 
             actionMethods:'POST', 
             scope:this, 
             params: thisPanel.getForm().getValues(),
@@ -87,7 +87,7 @@ Ext.define('RegistrationApp.controller.OptInController', {
                 //RedirectSessions
 
                 //debugger;
-                window.location = '../../Session#';
+                window.parent.location.href = '../../Session#';
 
 
             },

@@ -25,7 +25,7 @@
                 "actionMethods": "{         create : 'POST',         read   : 'POST',         update : 'POST',         destroy: 'POST'     }",
                 "designer|userClassName": "MyAjaxProxy",
                 "api": null,
-                "url": "/api/Account/ShirtSizes"
+                "url": "/rpc/Account/ShirtSizes"
             },
             "designerId": "8c1d05a3-6008-470b-83d8-8073dcac6fab",
             "customConfigs": [

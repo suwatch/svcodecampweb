@@ -61,7 +61,7 @@ Ext.define('RegistrationApp.controller.RegisterSpeakerAttendee', {
 
                 if (username.length > 0) {
                     Ext.Ajax.request({ 
-                        url:'/api/Account/CheckUsernameEmailExists', 
+                        url:'/rpc/Account/CheckUsernameEmailExists', 
                         actionMethods:'POST', 
                         scope:this, 
                         params:{
@@ -72,8 +72,7 @@ Ext.define('RegistrationApp.controller.RegisterSpeakerAttendee', {
 
 
 
-                            if (r.responseText.length > 2
-                            && username.length > 0) {  // (this is because it returns "" instead of empty string)
+                            if (r.responseText.length > 2 && username.length > 0) {  // (this is because it returns "" instead of empty string)
                                 Ext.Msg.alert('Error','Username exists, Try Again or use Forget Username or Password');
                             } else {
                                 var thisPanel = Ext.ComponentQuery.query('AttendeeOrSpeakerAlias')[0];
@@ -112,7 +111,7 @@ Ext.define('RegistrationApp.controller.RegisterSpeakerAttendee', {
                 myMask.show();
 
                 Ext.Ajax.request({ 
-                    url:'/api/Account/Login', 
+                    url:'/rpc/Account/Login', 
                     actionMethods:'POST', 
                     scope:this, 
                     params:{

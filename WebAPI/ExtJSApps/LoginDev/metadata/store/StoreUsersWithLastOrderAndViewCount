@@ -26,7 +26,7 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyRestProxy",
-                "url": "/api/Users"
+                "url": "/rpc/Users"
             },
             "designerId": "9b7e703d-0356-45b2-9da9-fb86a24c8592"
         }

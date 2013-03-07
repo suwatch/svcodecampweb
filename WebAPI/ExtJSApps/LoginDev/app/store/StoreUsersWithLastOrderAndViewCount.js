@@ -30,7 +30,7 @@ Ext.define('App.store.StoreUsersWithLastOrderAndViewCount', {
             model: 'App.model.ModelUsersWithLastOrderAndViewCount',
             proxy: {
                 type: 'rest',
-                url: '/api/Users'
+                url: '/rpc/Users'
             }
         }, cfg)]);
     }

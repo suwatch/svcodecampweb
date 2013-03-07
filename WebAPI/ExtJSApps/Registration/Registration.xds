@@ -1,7 +1,7 @@
 {
     "name": "Registration",
     "settings": {
-        "urlPrefix": "",
+        "urlPrefix": "http://localhost:17138/ExtJSApps/Registration/",
         "spacesToIndent": 4,
         "exportPath": "",
         "sdkPath": "",

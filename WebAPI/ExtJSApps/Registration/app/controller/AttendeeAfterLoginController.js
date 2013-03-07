@@ -27,7 +27,7 @@ Ext.define('RegistrationApp.controller.AttendeeAfterLoginController', {
         var tabPanel = Ext.ComponentQuery.query('AttendeeAfterLoginAlias')[0];
 
         Ext.Ajax.request({ 
-            url:'/api/Account/UpdateAttendee', 
+            url:'/rpc/Account/UpdateAttendee', 
             actionMethods:'POST', 
             scope:this, 
             params: tabPanel.getForm().getValues(),
@@ -65,7 +65,7 @@ Ext.define('RegistrationApp.controller.AttendeeAfterLoginController', {
         myMask.show();
 
         Ext.Ajax.request({ 
-            url:'/api/Account/LogOut', 
+            url:'/rpc/Account/LogOut', 
             actionMethods:'POST', 
             scope:this, 
             params:{

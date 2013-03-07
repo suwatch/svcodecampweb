@@ -25,7 +25,7 @@ Ext.define('RegistrationApp.store.ShirtSizeStore', {
             proxy: {
                 type: 'ajax',
                 actionMethods: '{         create : \'POST\',         read   : \'POST\',         update : \'POST\',         destroy: \'POST\'     }',
-                url: '/api/Account/ShirtSizes',
+                url: '/rpc/Account/ShirtSizes',
                 reader: {
                     type: 'json',
                     root: 'data'

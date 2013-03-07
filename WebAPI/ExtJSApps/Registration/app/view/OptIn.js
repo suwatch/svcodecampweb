@@ -80,7 +80,9 @@ Ext.define('RegistrationApp.view.OptIn', {
                             fieldLabel: 'Accept Emails From Sponsors Offering Specials Only Available To Code Camp Attendees.  <br/>All email to you include in the subjects <i>[Sponsored Specials]</i>',
                             labelWidth: 300,
                             boxLabel: '',
-                            checked: true
+                            checked: true,
+                            inputValue: '1',
+                            uncheckedValue: '0'
                         },
                         {
                             xtype: 'checkboxfield',
@@ -89,7 +91,9 @@ Ext.define('RegistrationApp.view.OptIn', {
                             fieldLabel: 'Accept general emails From Sponsors<br/>All email to you include in the subject <i>[Sponsored Email]</i>',
                             labelWidth: 300,
                             boxLabel: '',
-                            checked: true
+                            checked: true,
+                            inputValue: '1',
+                            uncheckedValue: '0'
                         }
                     ]
                 }

@@ -79,6 +79,40 @@
                 "designer|controlQuery": "#GenerateEmailButtonId"
             },
             "designerId": "d586439a-c140-4ef6-b97b-2365dd84ba7c"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onLoadAttendeesButtonIdClick",
+                "fn": "onLoadAttendeesButtonIdClick",
+                "implHandler": [
+                    "\r",
+                    "gridPanel = Ext.getCmp(\"attendeesListGridPanelId\");\r",
+                    "var store = gridPanel.store;\r",
+                    "var form = Ext.getCmp(\"mailGeneratorFormPanelId\").getForm();\r",
+                    "\r",
+                    "var cntLabel = Ext.getCmp(\"attendeeListToolBarCntId\");\r",
+                    "cntLabel.setText('Total: *');\r",
+                    "\r",
+                    "store.load({\r",
+                    "    scope: this,\r",
+                    "    callback: function(records,operation,success) {\r",
+                    "        cntLabel.setText('Total: ' + records.length);\r",
+                    "    },\r",
+                    "    params: form.getValues()\r",
+                    "});"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#loadAttendeesButtonId"
+            },
+            "designerId": "cad692d0-ca0a-4d19-9352-6a71211e70e8"
         }
     ]
 }

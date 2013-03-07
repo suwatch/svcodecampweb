@@ -4925,6 +4925,62 @@ namespace CodeCampSV
 
         //    return cleanTailRegex.Replace(text.Substring(0, characterCount + 1), "") + ellipsis;
         //}
+
+        public static List<AttendeesShortForEmail> GetAttendeesShortBySql(string sqlFilter)
+        {
+            var recs = new List<AttendeesShortForEmail>();
+            using (
+                    var sqlConnection =
+                        new SqlConnection(ConfigurationManager.ConnectionStrings["CodeCampSV06"].ConnectionString))
+            {
+                sqlConnection.Open();
+                string sqlSelect = String.Format(@"
+                    SELECT 
+                       attendees.Username,
+                      attendees.UserFirstName,
+                      attendees.UserLastName,
+                      attendees.Email,
+                      attendees.Id
+                    FROM
+                      attendees
+                    WHERE
+                      Id IN ({0}) ORDER BY attendees.Id", sqlFilter);
+
+
+
+
+
+                using (var sqlCommand = new SqlCommand(sqlSelect, sqlConnection))
+                {
+                    using (var reader1 = sqlCommand.ExecuteReader())
+                    {
+                        while (reader1.Read())
+                        {
+                            AttendeesShortForEmail rec = new AttendeesShortForEmail();
+                            rec.Username = reader1.IsDBNull(0) ? "" : reader1.GetString(0);
+                            rec.UserFirstName = reader1.IsDBNull(1) ? "" : reader1.GetString(1);
+                            rec.UserLastName = reader1.IsDBNull(2) ? "" : reader1.GetString(2);
+                            rec.Email = reader1.IsDBNull(3) ? "" : reader1.GetString(3);
+                            rec.Id = reader1.IsDBNull(4) ? -1 : reader1.GetInt32(4);
+                            recs.Add(rec);
+                        }
+                    }
+                }
+            }
+
+            return recs;
+
+        }
+    }
+
+    public class AttendeesShortForEmail
+    {
+        public bool Selected { get; set; }
+        public int Id { get; set; }
+        public string Email { set; get; }
+        public string Username { get; set; }
+        public string UserFirstName { set; get; }
+        public string UserLastName { set; get; }
     }
 
 

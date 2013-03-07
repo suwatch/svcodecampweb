@@ -21,6 +21,12 @@ namespace CodeCampSV
         [AutoGenColumn]
         public int? AttendeesId { get; set; }
         [AutoGenColumn]
+        public int? EmailDetailTopicId { get; set; }
+        [AutoGenColumn]
+        public Guid? EmailDetailsGuid { get; set; }
+        [AutoGenColumn]
+        public int? EmailReadCount { get; set; }
+        [AutoGenColumn]
         public string MessageUniqueId { get; set; }
         [AutoGenColumn]
         public string EmailSendStatus { get; set; }

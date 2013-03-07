@@ -17,7 +17,7 @@ Ext.define('App.view.MainViewport', {
     extend: 'Ext.container.Viewport',
 
     layout: {
-        type: 'fit'
+        type: 'border'
     },
 
     initComponent: function() {
@@ -27,11 +27,14 @@ Ext.define('App.view.MainViewport', {
             items: [
                 {
                     xtype: 'tabpanel',
+                    flex: 5,
+                    region: 'center',
                     items: [
                         {
                             xtype: 'form',
                             id: 'mailGeneratorFormPanelId',
                             padding: '5 5 5 5',
+                            autoScroll: true,
                             bodyPadding: '5 5 5 5',
                             title: 'Mail Generator',
                             dockedItems: [
@@ -81,9 +84,16 @@ Ext.define('App.view.MainViewport', {
                                     allowBlank: false
                                 },
                                 {
+                                    xtype: 'textfield',
+                                    anchor: '100%',
+                                    name: 'mailBatchLabel',
+                                    fieldLabel: 'Mail Batch Label',
+                                    allowBlank: false
+                                },
+                                {
                                     xtype: 'htmleditor',
                                     anchor: '100%',
-                                    height: 150,
+                                    height: 89,
                                     margin: '10 0 0 0',
                                     style: 'background-color: white;',
                                     name: 'subjectHtml',
@@ -101,10 +111,10 @@ Ext.define('App.view.MainViewport', {
                                 {
                                     xtype: 'textareafield',
                                     anchor: '100%',
-                                    height: 230,
+                                    height: 158,
                                     margin: '30 0 0 0',
-                                    name: 'sqlStatement',
-                                    value: 'select id from attendees where id > 6000',
+                                    name: 'sqlFilter',
+                                    value: 'select id from attendees where id > 900 and id < 1000',
                                     fieldLabel: 'Sql Statement',
                                     allowBlank: false
                                 }
@@ -152,6 +162,107 @@ Ext.define('App.view.MainViewport', {
                             ]
                         }
                     ]
+                },
+                {
+                    xtype: 'gridpanel',
+                    flex: 2,
+                    region: 'east',
+                    id: 'attendeesListGridPanelId',
+                    width: 150,
+                    autoScroll: true,
+                    title: 'Attendee List',
+                    store: 'StoreEmailSelection',
+                    viewConfig: {
+                        autoScroll: false
+                    },
+                    dockedItems: [
+                        {
+                            xtype: 'toolbar',
+                            dock: 'top',
+                            items: [
+                                {
+                                    xtype: 'button',
+                                    id: 'loadAttendeesButtonId',
+                                    text: 'Load Attendees'
+                                },
+                                {
+                                    xtype: 'tbfill'
+                                },
+                                {
+                                    xtype: 'label',
+                                    margins: '0 10 0 0',
+                                    id: 'attendeeListToolBarCntId',
+                                    text: 'Cnt'
+                                }
+                            ]
+                        }
+                    ],
+                    columns: [
+                        {
+                            xtype: 'gridcolumn',
+                            width: 41,
+                            dataIndex: 'id',
+                            text: 'Id'
+                        },
+                        {
+                            xtype: 'gridcolumn',
+                            width: 150,
+                            dataIndex: 'email',
+                            text: 'Email'
+                        },
+                        {
+                            xtype: 'gridcolumn',
+                            dataIndex: 'userFirstName',
+                            text: 'UserFirstName'
+                        },
+                        {
+                            xtype: 'gridcolumn',
+                            dataIndex: 'userLastName',
+                            text: 'UserLastName'
+                        },
+                        {
+                            xtype: 'gridcolumn',
+                            dataIndex: 'username',
+                            text: 'Username'
+                        }
+                    ],
+                    plugins: [
+                        Ext.create('Ext.grid.plugin.CellEditing', {
+                            ptype: 'cellediting'
+                        })
+                    ]
+                },
+                {
+                    xtype: 'gridpanel',
+                    region: 'south',
+                    height: 200,
+                    title: 'Email Batches',
+                    columns: [
+                        {
+                            xtype: 'gridcolumn',
+                            dataIndex: 'string',
+                            text: 'String'
+                        },
+                        {
+                            xtype: 'numbercolumn',
+                            dataIndex: 'number',
+                            text: 'Number'
+                        },
+                        {
+                            xtype: 'datecolumn',
+                            dataIndex: 'date',
+                            text: 'Date'
+                        },
+                        {
+                            xtype: 'booleancolumn',
+                            dataIndex: 'bool',
+                            text: 'Boolean'
+                        }
+                    ],
+                    viewConfig: {
+                        height: 400,
+                        autoScroll: true
+                    }
                 }
             ]
         });

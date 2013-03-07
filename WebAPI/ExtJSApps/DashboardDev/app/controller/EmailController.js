@@ -53,6 +53,24 @@ Ext.define('App.controller.EmailController', {
 
     },
 
+    onLoadAttendeesButtonIdClick: function(button, e, options) {
+
+        gridPanel = Ext.getCmp("attendeesListGridPanelId");
+        var store = gridPanel.store;
+        var form = Ext.getCmp("mailGeneratorFormPanelId").getForm();
+
+        var cntLabel = Ext.getCmp("attendeeListToolBarCntId");
+        cntLabel.setText('Total: *');
+
+        store.load({
+            scope: this,
+            callback: function(records,operation,success) {
+                cntLabel.setText('Total: ' + records.length);
+            },
+            params: form.getValues()
+        });
+    },
+
     init: function(application) {
         this.control({
             "#previewLetterButtonId": {
@@ -60,6 +78,9 @@ Ext.define('App.controller.EmailController', {
             },
             "#GenerateEmailButtonId": {
                 click: this.onGenerateEmailButtonIdClick
+            },
+            "#loadAttendeesButtonId": {
+                click: this.onLoadAttendeesButtonIdClick
             }
         });
     }

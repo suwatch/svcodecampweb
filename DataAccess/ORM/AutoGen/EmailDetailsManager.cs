@@ -20,6 +20,9 @@ namespace CodeCampSV
         protected override void ApplyToDataModel(EmailDetails record, EmailDetailsResult result)
         {
             record.AttendeesId = result.AttendeesId;
+            record.EmailDetailTopicId = result.EmailDetailTopicId;
+            record.EmailDetailsGuid = result.EmailDetailsGuid;
+            record.EmailReadCount = result.EmailReadCount;
             record.MessageUniqueId = result.MessageUniqueId;
             record.EmailSendStatus = result.EmailSendStatus;
             record.EmailSendStartTime = result.EmailSendStartTime;
@@ -43,6 +46,9 @@ namespace CodeCampSV
         {
       IQueryable<EmailDetailsResult> results = (from myData in baseQuery orderby myData.Id select new EmailDetailsResult { Id= myData.Id,
             AttendeesId = myData.AttendeesId,
+            EmailDetailTopicId = myData.EmailDetailTopicId,
+            EmailDetailsGuid = myData.EmailDetailsGuid,
+            EmailReadCount = myData.EmailReadCount,
             MessageUniqueId = myData.MessageUniqueId,
             EmailSendStatus = myData.EmailSendStatus,
             EmailSendStartTime = myData.EmailSendStartTime == null ? null :  (DateTime?) new DateTime(myData.EmailSendStartTime.Value.Ticks,DateTimeKind.Utc),
@@ -82,6 +88,9 @@ namespace CodeCampSV
             
             IQueryable<EmailDetailsResult> results = (from myData in baseQuery orderby myData.Id select new EmailDetailsResult { Id= myData.Id,
                         AttendeesId = myData.AttendeesId,
+                        EmailDetailTopicId = myData.EmailDetailTopicId,
+                        EmailDetailsGuid = myData.EmailDetailsGuid,
+                        EmailReadCount = myData.EmailReadCount,
                         MessageUniqueId = myData.MessageUniqueId,
                         EmailSendStatus = myData.EmailSendStatus,
                         EmailSendStartTime = myData.EmailSendStartTime == null ? null :  (DateTime?) new DateTime(myData.EmailSendStartTime.Value.Ticks,DateTimeKind.Utc),
@@ -110,6 +119,8 @@ namespace CodeCampSV
             
             //  Generate Queries for Each type of data
             if (query.AttendeesId != null) baseQuery = baseQuery.Where(a => a.AttendeesId == query.AttendeesId);
+            if (query.EmailDetailTopicId != null) baseQuery = baseQuery.Where(a => a.EmailDetailTopicId == query.EmailDetailTopicId);
+            if (query.EmailReadCount != null) baseQuery = baseQuery.Where(a => a.EmailReadCount == query.EmailReadCount);
             if (query.MessageUniqueId != null) baseQuery = baseQuery.Where(a => a.MessageUniqueId.ToLower().Equals(query.MessageUniqueId.ToLower()));
             if (query.EmailSendStatus != null) baseQuery = baseQuery.Where(a => a.EmailSendStatus.ToLower().Equals(query.EmailSendStatus.ToLower()));
             if (query.EmailSendStartTime != null) baseQuery = baseQuery.Where(a => a.EmailSendStartTime.Value.CompareTo(query.EmailSendStartTime.Value) == 0);

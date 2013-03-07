@@ -77,6 +77,22 @@
                 "app/model/ModelAdminUser.js"
             ],
             "className": "ModelAdminUser"
+        },
+        "9bcf7333-6b5b-4bba-895b-6650a2ee4b2b": {
+            "paths": [
+                "metadata/store/StoreEmailSelection",
+                "app/store/override/StoreEmailSelection.js",
+                "app/store/StoreEmailSelection.js"
+            ],
+            "className": "StoreEmailSelection"
+        },
+        "e5ca90e0-e863-46c0-8cd1-4e795ae88328": {
+            "paths": [
+                "metadata/model/ModelEmailSelection",
+                "app/model/override/ModelEmailSelection.js",
+                "app/model/ModelEmailSelection.js"
+            ],
+            "className": "ModelEmailSelection"
         }
     },
     "viewOrderMap": {
@@ -85,7 +101,8 @@
             "86b503a1-4911-407a-9bae-64b4e8804534"
         ],
         "store": [
-            "fe57d038-3dcd-4905-9d62-ce528de2dff4"
+            "fe57d038-3dcd-4905-9d62-ce528de2dff4",
+            "9bcf7333-6b5b-4bba-895b-6650a2ee4b2b"
         ],
         "controller": [
             "ea603ba0-dc16-49a4-99a5-9ab2b7469f89",
@@ -93,7 +110,8 @@
             "3d453260-e0bc-4ef5-bf7d-2450ca9e1108"
         ],
         "model": [
-            "04ed27c4-e8bc-4bc2-a6d9-43ae87f77e79"
+            "04ed27c4-e8bc-4bc2-a6d9-43ae87f77e79",
+            "e5ca90e0-e863-46c0-8cd1-4e795ae88328"
         ],
         "resource": [
             "c04cffd6-001c-4b6e-8574-ef223f3a3824"

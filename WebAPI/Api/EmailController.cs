@@ -31,8 +31,38 @@ namespace WebAPI.Api
         public string PreviousYearsStatusHtml { get; set; }
     }
 
+   
+
+    public class MailCriteria
+    {
+        public string SqlFilter { get; set; }
+
+    }
+
+    public class MailReturn
+    {
+        public List<AttendeesShortForEmail> Data { get; set; }
+        public bool Success { get; set; }
+    }
+
+
     public class EmailController : ApiController
     {
+        [HttpGet]
+        [ActionName("UsersBySql")]
+        public HttpResponseMessage GetUsersBySql(string sqlFilter)
+        {
+
+
+            List<AttendeesShortForEmail> attendeesShorts = Utils.GetAttendeesShortBySql(sqlFilter);
+
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, attendeesShorts);
+            return response;
+
+           
+        }
+
+
 
         [HttpPost]
         [ActionName("EmailPreview")]
@@ -53,6 +83,7 @@ namespace WebAPI.Api
                     };
 
             utility.LoadUrl(emailSendDetail.EmailUrl ?? "http://pkellner.site44.com/");
+
             utility.SetUrlContentBase = true;
             utility.SetHtmlBaseTag = true;
             utility.EmbedImageOption = EmbedImageOption.ContentLocation;
@@ -62,17 +93,17 @@ namespace WebAPI.Api
 
             var emailFinal = utility.ToEmailMessage();
 
+            emailFinal.SaveToFile("e:\\temp\\mailSave.txt", true);
+
             var emailMergeField =
                 new EmailMergeField();
-        
-            if (!String.IsNullOrEmpty(emailSendDetail.SubjectHtml))
-            {
-                emailMergeField.SubjectHtml = emailSendDetail.SubjectHtml;
-            }
-            else
-            {
-                emailMergeField.SubjectHtml = ConvertStringToHtml(emailSendDetail.Subject, 27);
-            }
+
+            emailMergeField.SubjectHtml = !String.IsNullOrEmpty(emailSendDetail.SubjectHtml)
+                                              ? emailSendDetail.SubjectHtml
+                                              : ConvertStringToHtml(emailSendDetail.Subject, 27);
+
+            emailMergeField.EmailHtml = emailSendDetail.EmailHtml;
+            emailMergeField.PreviousYearsStatusHtml = "";
 
 
 
@@ -80,7 +111,6 @@ namespace WebAPI.Api
                 new List<EmailMergeField>
                     {
                         emailMergeField
-
                     };
 
             HttpResponseMessage httpResponseMessage =

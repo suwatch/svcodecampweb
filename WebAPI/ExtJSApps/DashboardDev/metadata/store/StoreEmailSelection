@@ -1,0 +1,30 @@
+{
+    "type": "store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "StoreEmailSelection",
+        "storeId": "MyStore1",
+        "model": "ModelEmailSelection"
+    },
+    "id": "ExtBox1-ext-gen8758",
+    "designerId": "9bcf7333-6b5b-4bba-895b-6650a2ee4b2b",
+    "cn": [
+        {
+            "type": "restproxy",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyRestProxy1",
+                "url": "/rpc/Email/UsersBySql"
+            },
+            "designerId": "5b679f73-20a4-4568-be69-da3fc535e8c0"
+        }
+    ]
+}

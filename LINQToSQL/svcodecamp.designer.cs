@@ -63,6 +63,9 @@ namespace CodeCampSV
     partial void InsertEmailOptOut(EmailOptOut instance);
     partial void UpdateEmailOptOut(EmailOptOut instance);
     partial void DeleteEmailOptOut(EmailOptOut instance);
+    partial void InsertGuidRouter(GuidRouter instance);
+    partial void UpdateGuidRouter(GuidRouter instance);
+    partial void DeleteGuidRouter(GuidRouter instance);
     partial void InsertLectureRooms(LectureRooms instance);
     partial void UpdateLectureRooms(LectureRooms instance);
     partial void DeleteLectureRooms(LectureRooms instance);
@@ -273,6 +276,14 @@ namespace CodeCampSV
 			}
 		}
 		
+		public System.Data.Linq.Table<EmailDetailsTopic> EmailDetailsTopic
+		{
+			get
+			{
+				return this.GetTable<EmailDetailsTopic>();
+			}
+		}
+		
 		public System.Data.Linq.Table<EmailOptIn> EmailOptIn
 		{
 			get
@@ -286,6 +297,14 @@ namespace CodeCampSV
 			get
 			{
 				return this.GetTable<EmailOptOut>();
+			}
+		}
+		
+		public System.Data.Linq.Table<GuidRouter> GuidRouter
+		{
+			get
+			{
+				return this.GetTable<GuidRouter>();
 			}
 		}
 		
@@ -5360,6 +5379,12 @@ namespace CodeCampSV
 		
 		private int _AttendeesId;
 		
+		private int _EmailDetailTopicId;
+		
+		private System.Guid _EmailDetailsGuid;
+		
+		private System.Nullable<int> _EmailReadCount;
+		
 		private string _MessageUniqueId;
 		
 		private string _EmailSendStatus;
@@ -5412,6 +5437,54 @@ namespace CodeCampSV
 				if ((this._AttendeesId != value))
 				{
 					this._AttendeesId = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_EmailDetailTopicId", DbType="Int NOT NULL")]
+		public int EmailDetailTopicId
+		{
+			get
+			{
+				return this._EmailDetailTopicId;
+			}
+			set
+			{
+				if ((this._EmailDetailTopicId != value))
+				{
+					this._EmailDetailTopicId = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_EmailDetailsGuid", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid EmailDetailsGuid
+		{
+			get
+			{
+				return this._EmailDetailsGuid;
+			}
+			set
+			{
+				if ((this._EmailDetailsGuid != value))
+				{
+					this._EmailDetailsGuid = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_EmailReadCount", DbType="Int")]
+		public System.Nullable<int> EmailReadCount
+		{
+			get
+			{
+				return this._EmailReadCount;
+			}
+			set
+			{
+				if ((this._EmailReadCount != value))
+				{
+					this._EmailReadCount = value;
 				}
 			}
 		}
@@ -5577,6 +5650,141 @@ namespace CodeCampSV
 		}
 	}
 	
+	[Table(Name="dbo.EmailDetailsTopic")]
+	public partial class EmailDetailsTopic
+	{
+		
+		private int _Id;
+		
+		private System.DateTime _CreateDate;
+		
+		private string _Title;
+		
+		private System.Nullable<System.DateTime> _FirstRunDate;
+		
+		private string _Notes;
+		
+		private string _EmailSubject;
+		
+		private string _EmailMime;
+		
+		public EmailDetailsTopic()
+		{
+		}
+		
+		[Column(Storage="_Id", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_CreateDate", DbType="DateTime NOT NULL")]
+		public System.DateTime CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this._CreateDate = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_Title", DbType="VarChar(128)")]
+		public string Title
+		{
+			get
+			{
+				return this._Title;
+			}
+			set
+			{
+				if ((this._Title != value))
+				{
+					this._Title = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_FirstRunDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> FirstRunDate
+		{
+			get
+			{
+				return this._FirstRunDate;
+			}
+			set
+			{
+				if ((this._FirstRunDate != value))
+				{
+					this._FirstRunDate = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_Notes", DbType="VarChar(512)")]
+		public string Notes
+		{
+			get
+			{
+				return this._Notes;
+			}
+			set
+			{
+				if ((this._Notes != value))
+				{
+					this._Notes = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_EmailSubject", DbType="VarChar(512)")]
+		public string EmailSubject
+		{
+			get
+			{
+				return this._EmailSubject;
+			}
+			set
+			{
+				if ((this._EmailSubject != value))
+				{
+					this._EmailSubject = value;
+				}
+			}
+		}
+		
+		[Column(Storage="_EmailMime", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string EmailMime
+		{
+			get
+			{
+				return this._EmailMime;
+			}
+			set
+			{
+				if ((this._EmailMime != value))
+				{
+					this._EmailMime = value;
+				}
+			}
+		}
+	}
+	
 	[Table(Name="dbo.EmailOptIn")]
 	public partial class EmailOptIn
 	{
@@ -5731,6 +5939,116 @@ namespace CodeCampSV
 					this._Comment = value;
 					this.SendPropertyChanged("Comment");
 					this.OnCommentChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.GuidRouter")]
+	public partial class GuidRouter : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _RouterType;
+		
+		private System.Guid _GuidItself;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnRouterTypeChanging(string value);
+    partial void OnRouterTypeChanged();
+    partial void OnGuidItselfChanging(System.Guid value);
+    partial void OnGuidItselfChanged();
+    #endregion
+		
+		public GuidRouter()
+		{
+			OnCreated();
+		}
+		
+		[Column(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_RouterType", DbType="NVarChar(1) NOT NULL", CanBeNull=false)]
+		public string RouterType
+		{
+			get
+			{
+				return this._RouterType;
+			}
+			set
+			{
+				if ((this._RouterType != value))
+				{
+					this.OnRouterTypeChanging(value);
+					this.SendPropertyChanging();
+					this._RouterType = value;
+					this.SendPropertyChanged("RouterType");
+					this.OnRouterTypeChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_GuidItself", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid GuidItself
+		{
+			get
+			{
+				return this._GuidItself;
+			}
+			set
+			{
+				if ((this._GuidItself != value))
+				{
+					this.OnGuidItselfChanging(value);
+					this.SendPropertyChanging();
+					this._GuidItself = value;
+					this.SendPropertyChanged("GuidItself");
+					this.OnGuidItselfChanged();
 				}
 			}
 		}

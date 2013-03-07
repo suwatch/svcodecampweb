@@ -27,10 +27,12 @@ Ext.application({
         'Ext.data.proxy.Rest'
     ],
     models: [
-        'ModelAdminUser'
+        'ModelAdminUser',
+        'ModelEmailSelection'
     ],
     stores: [
-        'StoreAdminUsers'
+        'StoreAdminUsers',
+        'StoreEmailSelection'
     ],
     views: [
         'MainViewport',

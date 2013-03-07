@@ -79,7 +79,9 @@ namespace WebAPI.DependencyResolution
         /// <returns>
         /// The System.Object.
         /// </returns>
+#pragma warning disable 108,114
         public object GetService(Type serviceType)
+#pragma warning restore 108,114
         {
             if (serviceType == null)
             {

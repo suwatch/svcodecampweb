@@ -316,9 +316,7 @@
     <Compile Include="AllAttendees.aspx.designer.cs">
       <DependentUpon>AllAttendees.aspx</DependentUpon>
     </Compile>
-    <None Include="Api\AccountControllerWorks.csxxx" />
     <Compile Include="Api\AccountController.cs" />
-    <None Include="Api\AccountController.cs.ORI" />
     <Compile Include="Api\EmailController.cs" />
     <Compile Include="Api\SessionController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />

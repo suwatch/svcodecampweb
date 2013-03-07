@@ -5,7 +5,6 @@ using System;
 using System.Data.SqlTypes;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
-using System.ComponentModel.DataAnnotations;
 
 namespace CodeCampSV
 {
@@ -16,13 +15,7 @@ namespace CodeCampSV
         [DataMember] public int? SessionLevel_id { get; set; }
         [DataMember] public int? SponsorId { get; set; }
         [DataMember] public string Username { get; set; }
-
-        [DataMember] 
-        [StringLength(50, ErrorMessage="Title cannot be more than 50 characters!")] 
-        public string Title { get; set; }
-
-
-
+        [DataMember] public string Title { get; set; }
         [DataMember] public string Description { get; set; }
         [DataMember] public bool? Approved { get; set; }
         [DataMember] public DateTime? Createdate { get; set; }

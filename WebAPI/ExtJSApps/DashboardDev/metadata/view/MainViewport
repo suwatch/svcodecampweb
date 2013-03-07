@@ -8,7 +8,7 @@
     "userConfig": {
         "designer|userClassName": "MainViewport",
         "designer|initialView": true,
-        "layout": "fit"
+        "layout": "border"
     },
     "id": "ExtBox1-ext-gen2282",
     "designerId": "86b503a1-4911-407a-9bae-64b4e8804534",
@@ -21,6 +21,8 @@
             },
             "codeClass": null,
             "userConfig": {
+                "layout|flex": 5,
+                "layout|region": "center",
                 "designer|userClassName": "MyTabPanel"
             },
             "designerId": "ce56a62a-03a6-4513-b316-2691ea6c7885",
@@ -36,6 +38,7 @@
                         "designer|userClassName": "MyForm2",
                         "id": "mailGeneratorFormPanelId",
                         "padding": "5 5 5 5",
+                        "autoScroll": true,
                         "bodyPadding": "5 5 5 5",
                         "title": "Mail Generator"
                     },
@@ -178,6 +181,22 @@
                             "designerId": "99087f50-9a28-4b98-826e-8a82558ab2a7"
                         },
                         {
+                            "type": "textfield",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|anchor": "100%",
+                                "designer|userClassName": "MyTextField3",
+                                "name": "mailBatchLabel",
+                                "fieldLabel": "Mail Batch Label",
+                                "allowBlank": false
+                            },
+                            "designerId": "323c87e0-091a-41f4-9d1d-f0a7b2364ca0"
+                        },
+                        {
                             "type": "htmleditor",
                             "reference": {
                                 "name": "items",
@@ -187,7 +206,7 @@
                             "userConfig": {
                                 "layout|anchor": "100%",
                                 "designer|userClassName": "MyHTMLEditor",
-                                "height": 150,
+                                "height": 89,
                                 "margin": "10 0 0 0",
                                 "style": [
                                     "background-color: white;"
@@ -227,11 +246,11 @@
                             "userConfig": {
                                 "layout|anchor": "100%",
                                 "designer|userClassName": "MyTextArea",
-                                "height": 230,
+                                "height": 158,
                                 "margin": "30 0 0 0",
-                                "name": "sqlStatement",
+                                "name": "sqlFilter",
                                 "value": [
-                                    "select id from attendees where id > 6000 "
+                                    "select id from attendees where id > 900 and id < 1000"
                                 ],
                                 "fieldLabel": "Sql Statement",
                                 "allowBlank": false
@@ -355,6 +374,270 @@
                             ]
                         }
                     ]
+                }
+            ]
+        },
+        {
+            "type": "gridpanel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|flex": 2,
+                "layout|region": "east",
+                "designer|userClassName": "MyGridPanel1",
+                "id": "attendeesListGridPanelId",
+                "width": 150,
+                "autoScroll": true,
+                "title": "Attendee List",
+                "store": "StoreEmailSelection"
+            },
+            "designerId": "bf4ab4ed-fd75-465f-a586-c1a621e71365",
+            "cn": [
+                {
+                    "type": "gridview",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyGridView1",
+                        "autoScroll": false
+                    },
+                    "designerId": "dfb0ed53-d072-4389-adae-66149a6c345d"
+                },
+                {
+                    "type": "toolbar",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dock": "top",
+                        "designer|userClassName": "MyToolbar2"
+                    },
+                    "designerId": "3d686173-b427-47a6-963f-4489c7cdf18b",
+                    "cn": [
+                        {
+                            "type": "button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "designer|userClassName": "MyButton4",
+                                "id": "loadAttendeesButtonId",
+                                "text": "Load Attendees"
+                            },
+                            "designerId": "b43ca12e-6c4e-49bc-9206-cfa94f824c82"
+                        },
+                        {
+                            "type": "tbfill",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "designer|userClassName": "MyFill"
+                            },
+                            "designerId": "14324854-54e6-4b27-958d-a6494330766a"
+                        },
+                        {
+                            "type": "label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "layout|margins": "0 10 0 0",
+                                "designer|userClassName": "MyLabel",
+                                "id": "attendeeListToolBarCntId",
+                                "text": "Cnt"
+                            },
+                            "designerId": "d2c17322-0a7e-4d84-8e55-58cfec141320"
+                        }
+                    ]
+                },
+                {
+                    "type": "gridcolumn",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyColumn10",
+                        "width": 41,
+                        "dataIndex": "id",
+                        "text": "Id"
+                    },
+                    "designerId": "edc80c9a-2408-4919-9fd2-92765536a6e9"
+                },
+                {
+                    "type": "gridcolumn",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyColumn9",
+                        "width": 150,
+                        "dataIndex": "email",
+                        "text": "Email"
+                    },
+                    "designerId": "9c30bff7-ccdd-4e61-8f16-78d54dae3c69"
+                },
+                {
+                    "type": "gridcolumn",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyColumn2",
+                        "dataIndex": "userFirstName",
+                        "text": "UserFirstName"
+                    },
+                    "designerId": "f253a68c-6a80-48a8-b67c-42cdff29fe92"
+                },
+                {
+                    "type": "gridcolumn",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyColumn7",
+                        "dataIndex": "userLastName",
+                        "text": "UserLastName"
+                    },
+                    "designerId": "30ca8817-d4ea-4f40-b2f8-d0775342ad72"
+                },
+                {
+                    "type": "gridcolumn",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyColumn8",
+                        "dataIndex": "username",
+                        "text": "Username"
+                    },
+                    "designerId": "23a91ab4-f1be-4402-907e-32ace095665b"
+                },
+                {
+                    "type": "gridcelleditingplugin",
+                    "reference": {
+                        "name": "plugins",
+                        "type": "array"
+                    },
+                    "codeClass": "Ext.grid.plugin.CellEditing",
+                    "userConfig": {
+                        "designer|userClassName": "MyCellEditingPlugin"
+                    },
+                    "designerId": "4d803661-9b50-4682-8dd7-d206e8aa866d"
+                }
+            ]
+        },
+        {
+            "type": "gridpanel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|region": "south",
+                "designer|userClassName": "MyGridPanel2",
+                "height": 200,
+                "title": "Email Batches"
+            },
+            "designerId": "bb1fe360-49cd-4220-8021-1df49668939f",
+            "cn": [
+                {
+                    "type": "gridcolumn",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyColumn3",
+                        "dataIndex": "string",
+                        "text": "String"
+                    },
+                    "designerId": "56423719-75e3-40f3-9c4d-22d8414c58cc"
+                },
+                {
+                    "type": "numbercolumn",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyNumberColumn",
+                        "dataIndex": "number",
+                        "text": "Number"
+                    },
+                    "designerId": "0acef306-0031-4a0f-b802-023a92c15b33"
+                },
+                {
+                    "type": "datecolumn",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyDateColumn",
+                        "dataIndex": "date",
+                        "text": "Date"
+                    },
+                    "designerId": "24551f45-8950-466b-8792-92226cfd337b"
+                },
+                {
+                    "type": "booleancolumn",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyBooleanColumn",
+                        "dataIndex": "bool",
+                        "text": "Boolean"
+                    },
+                    "designerId": "5556492a-330b-4803-b865-9e9e9564d05e"
+                },
+                {
+                    "type": "gridview",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyGridView2",
+                        "height": 400,
+                        "autoScroll": true
+                    },
+                    "designerId": "6336c9a9-f759-47f7-bf98-575b64abd251"
                 }
             ]
         }

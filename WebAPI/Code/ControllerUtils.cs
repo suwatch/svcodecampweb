@@ -65,7 +65,7 @@ namespace WebAPI.Code
         /// <returns></returns>
         public static List<SessionTimesResult> SessionTimesResultsWithSessionInfo(int codeCampYearId, List<SessionsResult> sessions)
         {
-             string retStr = "";
+            // string retStr = "";
             List<SessionTimesResult> sessionTimesResults;
             if (IsTestMode)
             {

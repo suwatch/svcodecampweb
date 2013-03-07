@@ -7,7 +7,7 @@
     "codeClass": null,
     "userConfig": {
         "designer|userClassName": "StoreEmailSelection",
-        "storeId": "MyStore1",
+        "storeId": "StoreEmailSelection",
         "model": "ModelEmailSelection"
     },
     "id": "ExtBox1-ext-gen8758",

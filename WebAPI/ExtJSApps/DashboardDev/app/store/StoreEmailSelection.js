@@ -24,7 +24,7 @@ Ext.define('App.store.StoreEmailSelection', {
         var me = this;
         cfg = cfg || {};
         me.callParent([Ext.apply({
-            storeId: 'MyStore1',
+            storeId: 'StoreEmailSelection',
             model: 'App.model.ModelEmailSelection',
             proxy: {
                 type: 'rest',

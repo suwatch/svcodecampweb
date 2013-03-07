@@ -60,6 +60,12 @@ namespace CodeCampSV
     partial void InsertConfigurationData(ConfigurationData instance);
     partial void UpdateConfigurationData(ConfigurationData instance);
     partial void DeleteConfigurationData(ConfigurationData instance);
+    partial void InsertEmailDetails(EmailDetails instance);
+    partial void UpdateEmailDetails(EmailDetails instance);
+    partial void DeleteEmailDetails(EmailDetails instance);
+    partial void InsertEmailDetailsTopic(EmailDetailsTopic instance);
+    partial void UpdateEmailDetailsTopic(EmailDetailsTopic instance);
+    partial void DeleteEmailDetailsTopic(EmailDetailsTopic instance);
     partial void InsertEmailOptOut(EmailOptOut instance);
     partial void UpdateEmailOptOut(EmailOptOut instance);
     partial void DeleteEmailOptOut(EmailOptOut instance);
@@ -5372,8 +5378,10 @@ namespace CodeCampSV
 	}
 	
 	[Table(Name="dbo.EmailDetails")]
-	public partial class EmailDetails
+	public partial class EmailDetails : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _Id;
 		
@@ -5405,11 +5413,48 @@ namespace CodeCampSV
 		
 		private string _EmailTo;
 		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnAttendeesIdChanging(int value);
+    partial void OnAttendeesIdChanged();
+    partial void OnEmailDetailTopicIdChanging(int value);
+    partial void OnEmailDetailTopicIdChanged();
+    partial void OnEmailDetailsGuidChanging(System.Guid value);
+    partial void OnEmailDetailsGuidChanged();
+    partial void OnEmailReadCountChanging(System.Nullable<int> value);
+    partial void OnEmailReadCountChanged();
+    partial void OnMessageUniqueIdChanging(string value);
+    partial void OnMessageUniqueIdChanged();
+    partial void OnEmailSendStatusChanging(string value);
+    partial void OnEmailSendStatusChanged();
+    partial void OnEmailSendStartTimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnEmailSendStartTimeChanged();
+    partial void OnEmailSendFinishTimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnEmailSendFinishTimeChanged();
+    partial void OnEmailSendLogMessageChanging(string value);
+    partial void OnEmailSendLogMessageChanged();
+    partial void OnSubjectChanging(string value);
+    partial void OnSubjectChanged();
+    partial void OnBodyTextChanging(string value);
+    partial void OnBodyTextChanged();
+    partial void OnSentDateTimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnSentDateTimeChanged();
+    partial void OnEmailFromChanging(string value);
+    partial void OnEmailFromChanged();
+    partial void OnEmailToChanging(string value);
+    partial void OnEmailToChanged();
+    #endregion
+		
 		public EmailDetails()
 		{
+			OnCreated();
 		}
 		
-		[Column(Storage="_Id", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		[Column(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int Id
 		{
 			get
@@ -5420,7 +5465,11 @@ namespace CodeCampSV
 			{
 				if ((this._Id != value))
 				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
 					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
 				}
 			}
 		}
@@ -5436,7 +5485,11 @@ namespace CodeCampSV
 			{
 				if ((this._AttendeesId != value))
 				{
+					this.OnAttendeesIdChanging(value);
+					this.SendPropertyChanging();
 					this._AttendeesId = value;
+					this.SendPropertyChanged("AttendeesId");
+					this.OnAttendeesIdChanged();
 				}
 			}
 		}
@@ -5452,7 +5505,11 @@ namespace CodeCampSV
 			{
 				if ((this._EmailDetailTopicId != value))
 				{
+					this.OnEmailDetailTopicIdChanging(value);
+					this.SendPropertyChanging();
 					this._EmailDetailTopicId = value;
+					this.SendPropertyChanged("EmailDetailTopicId");
+					this.OnEmailDetailTopicIdChanged();
 				}
 			}
 		}
@@ -5468,7 +5525,11 @@ namespace CodeCampSV
 			{
 				if ((this._EmailDetailsGuid != value))
 				{
+					this.OnEmailDetailsGuidChanging(value);
+					this.SendPropertyChanging();
 					this._EmailDetailsGuid = value;
+					this.SendPropertyChanged("EmailDetailsGuid");
+					this.OnEmailDetailsGuidChanged();
 				}
 			}
 		}
@@ -5484,7 +5545,11 @@ namespace CodeCampSV
 			{
 				if ((this._EmailReadCount != value))
 				{
+					this.OnEmailReadCountChanging(value);
+					this.SendPropertyChanging();
 					this._EmailReadCount = value;
+					this.SendPropertyChanged("EmailReadCount");
+					this.OnEmailReadCountChanged();
 				}
 			}
 		}
@@ -5500,7 +5565,11 @@ namespace CodeCampSV
 			{
 				if ((this._MessageUniqueId != value))
 				{
+					this.OnMessageUniqueIdChanging(value);
+					this.SendPropertyChanging();
 					this._MessageUniqueId = value;
+					this.SendPropertyChanged("MessageUniqueId");
+					this.OnMessageUniqueIdChanged();
 				}
 			}
 		}
@@ -5516,7 +5585,11 @@ namespace CodeCampSV
 			{
 				if ((this._EmailSendStatus != value))
 				{
+					this.OnEmailSendStatusChanging(value);
+					this.SendPropertyChanging();
 					this._EmailSendStatus = value;
+					this.SendPropertyChanged("EmailSendStatus");
+					this.OnEmailSendStatusChanged();
 				}
 			}
 		}
@@ -5532,7 +5605,11 @@ namespace CodeCampSV
 			{
 				if ((this._EmailSendStartTime != value))
 				{
+					this.OnEmailSendStartTimeChanging(value);
+					this.SendPropertyChanging();
 					this._EmailSendStartTime = value;
+					this.SendPropertyChanged("EmailSendStartTime");
+					this.OnEmailSendStartTimeChanged();
 				}
 			}
 		}
@@ -5548,7 +5625,11 @@ namespace CodeCampSV
 			{
 				if ((this._EmailSendFinishTime != value))
 				{
+					this.OnEmailSendFinishTimeChanging(value);
+					this.SendPropertyChanging();
 					this._EmailSendFinishTime = value;
+					this.SendPropertyChanged("EmailSendFinishTime");
+					this.OnEmailSendFinishTimeChanged();
 				}
 			}
 		}
@@ -5564,7 +5645,11 @@ namespace CodeCampSV
 			{
 				if ((this._EmailSendLogMessage != value))
 				{
+					this.OnEmailSendLogMessageChanging(value);
+					this.SendPropertyChanging();
 					this._EmailSendLogMessage = value;
+					this.SendPropertyChanged("EmailSendLogMessage");
+					this.OnEmailSendLogMessageChanged();
 				}
 			}
 		}
@@ -5580,7 +5665,11 @@ namespace CodeCampSV
 			{
 				if ((this._Subject != value))
 				{
+					this.OnSubjectChanging(value);
+					this.SendPropertyChanging();
 					this._Subject = value;
+					this.SendPropertyChanged("Subject");
+					this.OnSubjectChanged();
 				}
 			}
 		}
@@ -5596,7 +5685,11 @@ namespace CodeCampSV
 			{
 				if ((this._BodyText != value))
 				{
+					this.OnBodyTextChanging(value);
+					this.SendPropertyChanging();
 					this._BodyText = value;
+					this.SendPropertyChanged("BodyText");
+					this.OnBodyTextChanged();
 				}
 			}
 		}
@@ -5612,7 +5705,11 @@ namespace CodeCampSV
 			{
 				if ((this._SentDateTime != value))
 				{
+					this.OnSentDateTimeChanging(value);
+					this.SendPropertyChanging();
 					this._SentDateTime = value;
+					this.SendPropertyChanged("SentDateTime");
+					this.OnSentDateTimeChanged();
 				}
 			}
 		}
@@ -5628,7 +5725,11 @@ namespace CodeCampSV
 			{
 				if ((this._EmailFrom != value))
 				{
+					this.OnEmailFromChanging(value);
+					this.SendPropertyChanging();
 					this._EmailFrom = value;
+					this.SendPropertyChanged("EmailFrom");
+					this.OnEmailFromChanged();
 				}
 			}
 		}
@@ -5644,15 +5745,41 @@ namespace CodeCampSV
 			{
 				if ((this._EmailTo != value))
 				{
+					this.OnEmailToChanging(value);
+					this.SendPropertyChanging();
 					this._EmailTo = value;
+					this.SendPropertyChanged("EmailTo");
+					this.OnEmailToChanged();
 				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
 	
 	[Table(Name="dbo.EmailDetailsTopic")]
-	public partial class EmailDetailsTopic
+	public partial class EmailDetailsTopic : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _Id;
 		
@@ -5668,11 +5795,32 @@ namespace CodeCampSV
 		
 		private string _EmailMime;
 		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnCreateDateChanging(System.DateTime value);
+    partial void OnCreateDateChanged();
+    partial void OnTitleChanging(string value);
+    partial void OnTitleChanged();
+    partial void OnFirstRunDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnFirstRunDateChanged();
+    partial void OnNotesChanging(string value);
+    partial void OnNotesChanged();
+    partial void OnEmailSubjectChanging(string value);
+    partial void OnEmailSubjectChanged();
+    partial void OnEmailMimeChanging(string value);
+    partial void OnEmailMimeChanged();
+    #endregion
+		
 		public EmailDetailsTopic()
 		{
+			OnCreated();
 		}
 		
-		[Column(Storage="_Id", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		[Column(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int Id
 		{
 			get
@@ -5683,7 +5831,11 @@ namespace CodeCampSV
 			{
 				if ((this._Id != value))
 				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
 					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
 				}
 			}
 		}
@@ -5699,7 +5851,11 @@ namespace CodeCampSV
 			{
 				if ((this._CreateDate != value))
 				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
 					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
 				}
 			}
 		}
@@ -5715,7 +5871,11 @@ namespace CodeCampSV
 			{
 				if ((this._Title != value))
 				{
+					this.OnTitleChanging(value);
+					this.SendPropertyChanging();
 					this._Title = value;
+					this.SendPropertyChanged("Title");
+					this.OnTitleChanged();
 				}
 			}
 		}
@@ -5731,7 +5891,11 @@ namespace CodeCampSV
 			{
 				if ((this._FirstRunDate != value))
 				{
+					this.OnFirstRunDateChanging(value);
+					this.SendPropertyChanging();
 					this._FirstRunDate = value;
+					this.SendPropertyChanged("FirstRunDate");
+					this.OnFirstRunDateChanged();
 				}
 			}
 		}
@@ -5747,7 +5911,11 @@ namespace CodeCampSV
 			{
 				if ((this._Notes != value))
 				{
+					this.OnNotesChanging(value);
+					this.SendPropertyChanging();
 					this._Notes = value;
+					this.SendPropertyChanged("Notes");
+					this.OnNotesChanged();
 				}
 			}
 		}
@@ -5763,7 +5931,11 @@ namespace CodeCampSV
 			{
 				if ((this._EmailSubject != value))
 				{
+					this.OnEmailSubjectChanging(value);
+					this.SendPropertyChanging();
 					this._EmailSubject = value;
+					this.SendPropertyChanged("EmailSubject");
+					this.OnEmailSubjectChanged();
 				}
 			}
 		}
@@ -5779,8 +5951,32 @@ namespace CodeCampSV
 			{
 				if ((this._EmailMime != value))
 				{
+					this.OnEmailMimeChanging(value);
+					this.SendPropertyChanging();
 					this._EmailMime = value;
+					this.SendPropertyChanged("EmailMime");
+					this.OnEmailMimeChanged();
 				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

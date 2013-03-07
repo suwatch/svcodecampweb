@@ -41,7 +41,7 @@ Ext.define('App.controller.LoginController', {
 
 
         Ext.Ajax.request({ 
-            url:'/api/Account/Login', 
+            url:'/rpc/Account/Login', 
             actionMethods:'POST', 
             scope:this, 
             params: formValues,
@@ -92,7 +92,7 @@ Ext.define('App.controller.LoginController', {
 
 
         Ext.Ajax.request({ 
-            url:'/api/Account/Login', 
+            url:'/rpc/Account/Login', 
             actionMethods:'POST', 
             scope:this, 
             params: formValues,

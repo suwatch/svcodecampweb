@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -20,6 +21,7 @@ namespace WebAPI.Api
         public string EmailUrl { get; set; }
         public string Subject { get; set; }
         public string SubjectHtml { get; set; }
+        public string MailBatchLabel { get; set; }
         public string SqlStatement { get; set; }
         public string EmailHtml { get; set; }
     }
@@ -30,8 +32,6 @@ namespace WebAPI.Api
         public string EmailHtml { get; set; }
         public string PreviousYearsStatusHtml { get; set; }
     }
-
-   
 
     public class MailCriteria
     {
@@ -59,10 +59,11 @@ namespace WebAPI.Api
         }
 
 
+        private static readonly Encoding LocalEncoding = Encoding.UTF8;
 
         [HttpPost]
-        [ActionName("EmailPreview")]
-        public HttpResponseMessage PostEmailPreview(EmailSendDetail emailSendDetail)
+        [ActionName("EmailGenerate")]
+        public HttpResponseMessage PostEmailGenerate(EmailSendDetail emailSendDetail)
         {
             var email =
                 new EmailMessage(true, false)
@@ -77,6 +78,92 @@ namespace WebAPI.Api
                     {
                         CssOption = CssOption.EmbedLinkedSheets
                     };
+
+            utility.LoadUrl(emailSendDetail.EmailUrl ?? "http://pkellner.site44.com/");
+
+            utility.SetUrlContentBase = true;
+            utility.SetHtmlBaseTag = true;
+            utility.EmbedImageOption = EmbedImageOption.ContentLocation;
+
+
+            utility.Render();
+
+            var emailFinal = utility.ToEmailMessage();
+
+            var memoryStream = new MemoryStream();
+            emailFinal.SaveToStream(memoryStream);
+            string emailString = LocalEncoding.GetString(memoryStream.ToArray());
+
+            var emailDetailTopic = new EmailDetailsTopicResult()
+                                       {
+                                           CreateDate = DateTime.UtcNow,
+                                           Title = emailSendDetail.MailBatchLabel,
+                                           EmailMime = emailString,
+                                           EmailSubject = !String.IsNullOrEmpty(emailSendDetail.SubjectHtml)
+                                                              ? emailSendDetail.SubjectHtml
+                                                              : ConvertStringToHtml(emailSendDetail.Subject,
+                                                                                    27)
+
+                                       };
+           EmailDetailsTopicManager.I.Insert(emailDetailTopic);
+
+            var emailDetails = new EmailDetailsResult()
+                               {
+                                   EmailDetailTopicId = emailDetailTopic.Id,
+                                   AttendeesId = -1,
+                                   EmailDetailsGuid = Guid.NewGuid(),
+                                   EmailTo = emailSendDetail.PreviewEmailSend
+                               };
+            EmailDetailsManager.I.Insert(emailDetails);
+
+
+            //emailFinal.SaveToFile("e:\\temp\\mailSave.txt", true);
+
+            var emailMergeField =
+                new EmailMergeField
+                    {
+                        SubjectHtml = !String.IsNullOrEmpty(emailSendDetail.SubjectHtml)
+                                          ? emailSendDetail.SubjectHtml
+                                          : ConvertStringToHtml(emailSendDetail.Subject, 27),
+                        EmailHtml = emailSendDetail.EmailHtml,
+                        PreviousYearsStatusHtml = ""
+                    };
+
+
+            var emailMergeFields =
+                new List<EmailMergeField>
+                    {
+                        emailMergeField
+                    };
+
+            HttpResponseMessage httpResponseMessage =
+               emailFinal.SendMailMerge(emailMergeFields)
+                   ? new HttpResponseMessage(HttpStatusCode.OK)
+                   : Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed,
+                                                 emailFinal.LastException().Message);
+
+            return httpResponseMessage;
+
+
+        }
+
+        [HttpPost]
+        [ActionName("EmailPreview")]
+        public HttpResponseMessage PostEmailPreview(EmailSendDetail emailSendDetail)
+        {
+            var email =
+                new EmailMessage(true, false)
+                {
+                    To = emailSendDetail.PreviewEmailSend,
+                    Subject = emailSendDetail.Subject
+                };
+
+
+            var utility =
+                new HtmlUtility(email)
+                {
+                    CssOption = CssOption.EmbedLinkedSheets
+                };
 
             utility.LoadUrl(emailSendDetail.EmailUrl ?? "http://pkellner.site44.com/");
 
@@ -163,7 +250,7 @@ namespace WebAPI.Api
                 <!--<span class="style4">SV Code Camp Version 8!</span><br>
                 <span class="style5">October 5th and 6th, 2013</span>-->
              */
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             for (int index = 0; index < lines.Count; index++)
             {
                 var rec = lines[index];
@@ -190,35 +277,6 @@ namespace WebAPI.Api
 
             return sb.ToString();
         }
-
-       
-
-
-
-        ///// <summary>
-        ///// http://stackoverflow.com/questions/564366/convert-generic-list-enumerable-to-datatable
-        ///// </summary>
-        ///// <typeparam name="T"></typeparam>
-        ///// <param name="data"></param>
-        ///// <returns></returns>
-        //public static DataTable ToDataTable<T>(IList<T> data)
-        //{
-        //    PropertyDescriptorCollection properties =
-        //        TypeDescriptor.GetProperties(typeof(T));
-        //    DataTable table = new DataTable();
-        //    foreach (PropertyDescriptor prop in properties)
-        //        table.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
-        //    foreach (T item in data)
-        //    {
-        //        DataRow row = table.NewRow();
-        //        foreach (PropertyDescriptor prop in properties)
-        //            row[prop.Name] = prop.GetValue(item) ?? DBNull.Value;
-        //        table.Rows.Add(row);
-        //    }
-        //    return table;
-        //}
-
-
     }
 
 

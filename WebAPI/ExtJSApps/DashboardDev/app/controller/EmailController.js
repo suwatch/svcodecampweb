@@ -50,6 +50,35 @@ Ext.define('App.controller.EmailController', {
     },
 
     onGenerateEmailButtonIdClick: function(button, e, options) {
+        var formValues = Ext.getCmp("mailGeneratorFormPanelId").getForm().getValues();
+
+        var myMask = new Ext.LoadMask(Ext.getBody(), 
+        {msg:"Generating Email To DB..."});
+        var task = new Ext.util.DelayedTask(function(){
+            myMask.show();
+        });
+
+        task.delay(500);
+        Ext.Ajax.request({ 
+            url:'/rpc/Email/EmailGenerate', 
+            params: formValues,
+            method: 'POST',
+            success: function(r, o) { 
+                task.cancel();
+                if (myMask.isVisible) {
+                    myMask.hide();
+                }
+                Ext.Msg.alert('Success generated ' + formValues.previewEmailSend);
+            },
+            failure: function(r,o) {
+                task.cancel();
+                if (myMask.isVisible) {
+                    myMask.hide();
+                }  
+
+                Ext.Msg.alert("Login Failed. Please Try Again");
+            }
+        });
 
     },
 

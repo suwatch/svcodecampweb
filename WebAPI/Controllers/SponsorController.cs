@@ -43,7 +43,10 @@ namespace WebAPI.Controllers
             }
 
 
-            data.Sponsors = _repositorySponsor.GetDataForYear(year).Sponsors.OrderBy(sp => sp.SponsorSupportLevelOrder).ToList();
+            data.Sponsors = _repositorySponsor.GetDataForYear(year).Sponsors.
+                OrderBy(sp => sp.SponsorSupportLevelOrder).
+                ThenBy(a=>a.SponsorName).
+                ToList();
             return View(data);
         }
     }

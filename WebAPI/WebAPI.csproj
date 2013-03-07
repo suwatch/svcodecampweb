@@ -1378,6 +1378,9 @@
     <Compile Include="_test\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
+    <Content Include="attachments\bg.png" />
+    <Content Include="attachments\footer.png" />
+    <Content Include="attachments\header.jpg" />
     <Content Include="ExtJSApps\Dashboard\all-classes.js" />
     <Content Include="ExtJSApps\Dashboard\ext\src\ux\css\CheckHeader.css" />
     <Content Include="ExtJSApps\Dashboard\ext\src\ux\css\GroupTabPanel.css" />

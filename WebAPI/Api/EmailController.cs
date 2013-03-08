@@ -83,7 +83,7 @@ namespace WebAPI.Api
 
             utility.SetUrlContentBase = true;
             utility.SetHtmlBaseTag = true;
-            utility.EmbedImageOption = EmbedImageOption.ContentLocation;
+            utility.EmbedImageOption = EmbedImageOption.ConvertToAbsoluteUrl;
 
 
             utility.Render();
@@ -96,8 +96,8 @@ namespace WebAPI.Api
 
             var emailDetailTopic = new EmailDetailsTopicResult()
                                        {
+                                           Title = emailSendDetail.MailBatchLabel ?? DateTime.Now.ToString(),
                                            CreateDate = DateTime.UtcNow,
-                                           Title = emailSendDetail.MailBatchLabel,
                                            EmailMime = emailString,
                                            EmailSubject = !String.IsNullOrEmpty(emailSendDetail.SubjectHtml)
                                                               ? emailSendDetail.SubjectHtml
@@ -107,40 +107,49 @@ namespace WebAPI.Api
                                        };
            EmailDetailsTopicManager.I.Insert(emailDetailTopic);
 
-            var emailDetails = new EmailDetailsResult()
-                               {
-                                   EmailDetailTopicId = emailDetailTopic.Id,
-                                   AttendeesId = -1,
-                                   EmailDetailsGuid = Guid.NewGuid(),
-                                   EmailTo = emailSendDetail.PreviewEmailSend
-                               };
-            EmailDetailsManager.I.Insert(emailDetails);
+           List<AttendeesShortForEmail> attendeesShorts = Utils.GetAttendeesShortBySql(emailSendDetail.SqlStatement);
+            foreach (var rec in attendeesShorts)
+            {
+                var emailDetails = new EmailDetailsResult()
+                {
+                    EmailDetailTopicId = emailDetailTopic.Id,
+                    AttendeesId = rec.Id,
+                    EmailDetailsGuid = Guid.NewGuid(),
+                    EmailTo = rec.Email
+                };
+                EmailDetailsManager.I.Insert(emailDetails);
+            }
 
+
+           
+
+
+            HttpResponseMessage httpResponseMessage = new HttpResponseMessage(HttpStatusCode.OK);
 
             //emailFinal.SaveToFile("e:\\temp\\mailSave.txt", true);
 
-            var emailMergeField =
-                new EmailMergeField
-                    {
-                        SubjectHtml = !String.IsNullOrEmpty(emailSendDetail.SubjectHtml)
-                                          ? emailSendDetail.SubjectHtml
-                                          : ConvertStringToHtml(emailSendDetail.Subject, 27),
-                        EmailHtml = emailSendDetail.EmailHtml,
-                        PreviousYearsStatusHtml = ""
-                    };
+            //var emailMergeField =
+            //    new EmailMergeField
+            //        {
+            //            SubjectHtml = !String.IsNullOrEmpty(emailSendDetail.SubjectHtml)
+            //                              ? emailSendDetail.SubjectHtml
+            //                              : ConvertStringToHtml(emailSendDetail.Subject, 27),
+            //            EmailHtml = emailSendDetail.EmailHtml,
+            //            PreviousYearsStatusHtml = ""
+            //        };
 
 
-            var emailMergeFields =
-                new List<EmailMergeField>
-                    {
-                        emailMergeField
-                    };
+            //var emailMergeFields =
+            //    new List<EmailMergeField>
+            //        {
+            //            emailMergeField
+            //        };
 
-            HttpResponseMessage httpResponseMessage =
-               emailFinal.SendMailMerge(emailMergeFields)
-                   ? new HttpResponseMessage(HttpStatusCode.OK)
-                   : Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed,
-                                                 emailFinal.LastException().Message);
+            //HttpResponseMessage httpResponseMessage =
+            //   emailFinal.SendMailMerge(emailMergeFields)
+            //       ? new HttpResponseMessage(HttpStatusCode.OK)
+            //       : Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed,
+            //                                     emailFinal.LastException().Message);
 
             return httpResponseMessage;
 
@@ -218,8 +227,8 @@ namespace WebAPI.Api
                         emailMergeField
                     };
 
-            emailFinal.Logging = true;
-            emailFinal.LogInMemory = true;
+            //emailFinal.Logging = true;
+            //emailFinal.LogInMemory = true;
 
           
 
@@ -230,7 +239,7 @@ namespace WebAPI.Api
                    : Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed,
                                                  emailFinal.LastException().Message);
 
-            var str = emailFinal.Log.ToString();
+           // var str = emailFinal.Log.ToString();
 
             //System.IO.File.AppendAllText("e:\\temp\\_log.txt", str);
 

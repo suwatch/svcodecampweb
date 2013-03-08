@@ -33,6 +33,8 @@ Ext.define('App.controller.LoginController', {
         }
         */
 
+        debugger;
+
 
         var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Logging In..."});
         myMask.show();

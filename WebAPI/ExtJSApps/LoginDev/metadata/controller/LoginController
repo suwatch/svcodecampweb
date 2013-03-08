@@ -38,6 +38,8 @@
                     "}\r",
                     "*/\r",
                     "\r",
+                    "debugger;\r",
+                    "\r",
                     "\r",
                     "var myMask = new Ext.LoadMask(Ext.getBody(), {msg:\"Logging In...\"});\r",
                     "myMask.show();\r",

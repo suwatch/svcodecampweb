@@ -165,29 +165,51 @@ namespace WebAPI.Api
                     CssOption = CssOption.EmbedLinkedSheets
                 };
 
-            utility.LoadUrl(emailSendDetail.EmailUrl ?? "http://pkellner.site44.com/");
+            string siteUrl = emailSendDetail.EmailUrl ??
+                "http://pkellner.site44.com/";
+            utility.LoadUrl(siteUrl);
 
             utility.SetUrlContentBase = true;
             utility.SetHtmlBaseTag = true;
-            utility.EmbedImageOption = EmbedImageOption.ContentLocation;
+            utility.EmbedImageOption = EmbedImageOption.ConvertToAbsoluteUrl;
+
+            // note from dave on removing objects embedded image collection
+            //If you are using utility.ToEmailMessage(), it should be created for you, automatically. If not, then I need to do some quick testing.
+
+            //As far as the embedded images, there is a msg.EmbeddedObjects collection.
+
+            //You can loop through that collection, check image names, and simply remove them. Off the top of my head:
+
+            //If( msg.EmbeddedObjects != null ) && ( msg.EmbeddedObjects.Count > 0) ){
+            //For( int i=msg.EmbeddedObjects.Count -1;i>=0;i--)
+            //{
+            //EmbeddedObject eo = msg.EmbeddedObjects[i] as EmbeddedObject.
+            //If( eo.Name == “Whatever”)
+            //{
+            //  //remove the object
+            //Msg.EmbeddedObjects.RemoveAt(i);
+            //}
+            //}
+            //}
 
 
             utility.Render();
-
             var emailFinal = utility.ToEmailMessage();
 
-            emailFinal.SaveToFile("e:\\temp\\mailSave.txt", true);
+
+  
+
+            //emailFinal.SaveToFile("e:\\temp\\mailSave.txt", true);
 
             var emailMergeField =
-                new EmailMergeField();
-
-            emailMergeField.SubjectHtml = !String.IsNullOrEmpty(emailSendDetail.SubjectHtml)
-                                              ? emailSendDetail.SubjectHtml
-                                              : ConvertStringToHtml(emailSendDetail.Subject, 27);
-
-            emailMergeField.EmailHtml = emailSendDetail.EmailHtml;
-            emailMergeField.PreviousYearsStatusHtml = "";
-
+                new EmailMergeField
+                    {
+                        SubjectHtml = !String.IsNullOrEmpty(emailSendDetail.SubjectHtml)
+                                          ? emailSendDetail.SubjectHtml
+                                          : ConvertStringToHtml(emailSendDetail.Subject, 27),
+                        EmailHtml = emailSendDetail.EmailHtml,
+                        PreviousYearsStatusHtml = ""
+                    };
 
 
             var emailMergeFields =
@@ -196,11 +218,21 @@ namespace WebAPI.Api
                         emailMergeField
                     };
 
+            emailFinal.Logging = true;
+            emailFinal.LogInMemory = true;
+
+          
+
+
             HttpResponseMessage httpResponseMessage =
                emailFinal.SendMailMerge(emailMergeFields)
                    ? new HttpResponseMessage(HttpStatusCode.OK)
                    : Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed,
                                                  emailFinal.LastException().Message);
+
+            var str = emailFinal.Log.ToString();
+
+            //System.IO.File.AppendAllText("e:\\temp\\_log.txt", str);
 
             //HttpResponseMessage httpResponseMessage =
             //    emailFinal.Send()

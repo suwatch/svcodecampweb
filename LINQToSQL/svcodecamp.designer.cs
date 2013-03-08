@@ -5387,7 +5387,7 @@ namespace CodeCampSV
 		
 		private int _AttendeesId;
 		
-		private int _EmailDetailTopicId;
+		private int _EmailDetailsTopicId;
 		
 		private System.Guid _EmailDetailsGuid;
 		
@@ -5413,6 +5413,8 @@ namespace CodeCampSV
 		
 		private string _EmailTo;
 		
+		private System.Nullable<System.DateTime> _EmailReadDate;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -5421,8 +5423,8 @@ namespace CodeCampSV
     partial void OnIdChanged();
     partial void OnAttendeesIdChanging(int value);
     partial void OnAttendeesIdChanged();
-    partial void OnEmailDetailTopicIdChanging(int value);
-    partial void OnEmailDetailTopicIdChanged();
+    partial void OnEmailDetailsTopicIdChanging(int value);
+    partial void OnEmailDetailsTopicIdChanged();
     partial void OnEmailDetailsGuidChanging(System.Guid value);
     partial void OnEmailDetailsGuidChanged();
     partial void OnEmailReadCountChanging(System.Nullable<int> value);
@@ -5447,6 +5449,8 @@ namespace CodeCampSV
     partial void OnEmailFromChanged();
     partial void OnEmailToChanging(string value);
     partial void OnEmailToChanged();
+    partial void OnEmailReadDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnEmailReadDateChanged();
     #endregion
 		
 		public EmailDetails()
@@ -5494,22 +5498,22 @@ namespace CodeCampSV
 			}
 		}
 		
-		[Column(Storage="_EmailDetailTopicId", DbType="Int NOT NULL")]
-		public int EmailDetailTopicId
+		[Column(Storage="_EmailDetailsTopicId", DbType="Int NOT NULL")]
+		public int EmailDetailsTopicId
 		{
 			get
 			{
-				return this._EmailDetailTopicId;
+				return this._EmailDetailsTopicId;
 			}
 			set
 			{
-				if ((this._EmailDetailTopicId != value))
+				if ((this._EmailDetailsTopicId != value))
 				{
-					this.OnEmailDetailTopicIdChanging(value);
+					this.OnEmailDetailsTopicIdChanging(value);
 					this.SendPropertyChanging();
-					this._EmailDetailTopicId = value;
-					this.SendPropertyChanged("EmailDetailTopicId");
-					this.OnEmailDetailTopicIdChanged();
+					this._EmailDetailsTopicId = value;
+					this.SendPropertyChanged("EmailDetailsTopicId");
+					this.OnEmailDetailsTopicIdChanged();
 				}
 			}
 		}
@@ -5750,6 +5754,26 @@ namespace CodeCampSV
 					this._EmailTo = value;
 					this.SendPropertyChanged("EmailTo");
 					this.OnEmailToChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_EmailReadDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> EmailReadDate
+		{
+			get
+			{
+				return this._EmailReadDate;
+			}
+			set
+			{
+				if ((this._EmailReadDate != value))
+				{
+					this.OnEmailReadDateChanging(value);
+					this.SendPropertyChanging();
+					this._EmailReadDate = value;
+					this.SendPropertyChanged("EmailReadDate");
+					this.OnEmailReadDateChanged();
 				}
 			}
 		}

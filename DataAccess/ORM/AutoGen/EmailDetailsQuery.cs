@@ -21,7 +21,7 @@ namespace CodeCampSV
         [AutoGenColumn]
         public int? AttendeesId { get; set; }
         [AutoGenColumn]
-        public int? EmailDetailTopicId { get; set; }
+        public int? EmailDetailsTopicId { get; set; }
         [AutoGenColumn]
         public Guid? EmailDetailsGuid { get; set; }
         [AutoGenColumn]
@@ -46,5 +46,7 @@ namespace CodeCampSV
         public string EmailFrom { get; set; }
         [AutoGenColumn]
         public string EmailTo { get; set; }
+        [AutoGenColumn]
+        public DateTime? EmailReadDate { get; set; }
     }
 }

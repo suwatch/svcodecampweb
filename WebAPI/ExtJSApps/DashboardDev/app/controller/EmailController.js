@@ -58,8 +58,12 @@ Ext.define('App.controller.EmailController', {
             myMask.show();
         });
 
+        //debugger;
+        //Ext.Ajax.timeout = 90000
+
         task.delay(500);
         Ext.Ajax.request({ 
+            timeout: 300000,
             url:'/rpc/Email/EmailGenerate', 
             params: formValues,
             method: 'POST',

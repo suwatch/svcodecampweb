@@ -20,7 +20,7 @@ namespace CodeCampSV
         protected override void ApplyToDataModel(EmailDetails record, EmailDetailsResult result)
         {
             record.AttendeesId = result.AttendeesId;
-            record.EmailDetailTopicId = result.EmailDetailTopicId;
+            record.EmailDetailsTopicId = result.EmailDetailsTopicId;
             record.EmailDetailsGuid = result.EmailDetailsGuid;
             record.EmailReadCount = result.EmailReadCount;
             record.MessageUniqueId = result.MessageUniqueId;
@@ -33,6 +33,7 @@ namespace CodeCampSV
             record.SentDateTime = result.SentDateTime;
             record.EmailFrom = result.EmailFrom;
             record.EmailTo = result.EmailTo;
+            record.EmailReadDate = result.EmailReadDate;
             // 
             //  Used by Default in Update and Insert Methods.
         }
@@ -46,7 +47,7 @@ namespace CodeCampSV
         {
       IQueryable<EmailDetailsResult> results = (from myData in baseQuery orderby myData.Id select new EmailDetailsResult { Id= myData.Id,
             AttendeesId = myData.AttendeesId,
-            EmailDetailTopicId = myData.EmailDetailTopicId,
+            EmailDetailsTopicId = myData.EmailDetailsTopicId,
             EmailDetailsGuid = myData.EmailDetailsGuid,
             EmailReadCount = myData.EmailReadCount,
             MessageUniqueId = myData.MessageUniqueId,
@@ -58,7 +59,8 @@ namespace CodeCampSV
             BodyText = myData.BodyText,
             SentDateTime = myData.SentDateTime == null ? null :  (DateTime?) new DateTime(myData.SentDateTime.Value.Ticks,DateTimeKind.Utc),
             EmailFrom = myData.EmailFrom,
-            EmailTo = myData.EmailTo
+            EmailTo = myData.EmailTo,
+            EmailReadDate = myData.EmailReadDate == null ? null :  (DateTime?) new DateTime(myData.EmailReadDate.Value.Ticks,DateTimeKind.Utc)
       });
 		    return results;
         }
@@ -88,7 +90,7 @@ namespace CodeCampSV
             
             IQueryable<EmailDetailsResult> results = (from myData in baseQuery orderby myData.Id select new EmailDetailsResult { Id= myData.Id,
                         AttendeesId = myData.AttendeesId,
-                        EmailDetailTopicId = myData.EmailDetailTopicId,
+                        EmailDetailsTopicId = myData.EmailDetailsTopicId,
                         EmailDetailsGuid = myData.EmailDetailsGuid,
                         EmailReadCount = myData.EmailReadCount,
                         MessageUniqueId = myData.MessageUniqueId,
@@ -100,7 +102,8 @@ namespace CodeCampSV
                         BodyText = myData.BodyText,
                         SentDateTime = myData.SentDateTime == null ? null :  (DateTime?) new DateTime(myData.SentDateTime.Value.Ticks,DateTimeKind.Utc),
                         EmailFrom = myData.EmailFrom,
-                        EmailTo = myData.EmailTo
+                        EmailTo = myData.EmailTo,
+                        EmailReadDate = myData.EmailReadDate == null ? null :  (DateTime?) new DateTime(myData.EmailReadDate.Value.Ticks,DateTimeKind.Utc)
             });
             
             List<EmailDetailsResult> resultList = GetFinalResults(results, query);
@@ -119,7 +122,7 @@ namespace CodeCampSV
             
             //  Generate Queries for Each type of data
             if (query.AttendeesId != null) baseQuery = baseQuery.Where(a => a.AttendeesId == query.AttendeesId);
-            if (query.EmailDetailTopicId != null) baseQuery = baseQuery.Where(a => a.EmailDetailTopicId == query.EmailDetailTopicId);
+            if (query.EmailDetailsTopicId != null) baseQuery = baseQuery.Where(a => a.EmailDetailsTopicId == query.EmailDetailsTopicId);
             if (query.EmailReadCount != null) baseQuery = baseQuery.Where(a => a.EmailReadCount == query.EmailReadCount);
             if (query.MessageUniqueId != null) baseQuery = baseQuery.Where(a => a.MessageUniqueId.ToLower().Equals(query.MessageUniqueId.ToLower()));
             if (query.EmailSendStatus != null) baseQuery = baseQuery.Where(a => a.EmailSendStatus.ToLower().Equals(query.EmailSendStatus.ToLower()));
@@ -131,6 +134,7 @@ namespace CodeCampSV
             if (query.SentDateTime != null) baseQuery = baseQuery.Where(a => a.SentDateTime.Value.CompareTo(query.SentDateTime.Value) == 0);
             if (query.EmailFrom != null) baseQuery = baseQuery.Where(a => a.EmailFrom.ToLower().Equals(query.EmailFrom.ToLower()));
             if (query.EmailTo != null) baseQuery = baseQuery.Where(a => a.EmailTo.ToLower().Equals(query.EmailTo.ToLower()));
+            if (query.EmailReadDate != null) baseQuery = baseQuery.Where(a => a.EmailReadDate.Value.CompareTo(query.EmailReadDate.Value) == 0);
 
             return baseQuery;
         }

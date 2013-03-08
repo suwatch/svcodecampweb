@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -31,6 +32,9 @@ namespace WebAPI.Api
         public string SubjectHtml { get; set; }
         public string EmailHtml { get; set; }
         public string PreviousYearsStatusHtml { get; set; }
+        public string UnsubscribeLink { get; set; }
+        public string ToEmailAddress { get; set; }
+        public string EmailTrackingGif { get; set; }
     }
 
     public class MailCriteria
@@ -51,9 +55,9 @@ namespace WebAPI.Api
         [HttpGet]
         [ActionName("UsersBySql")]
         [Authorize(Roles = "admin")]
-        public HttpResponseMessage GetUsersBySql(string sqlFilter)
+        public HttpResponseMessage GetUsersBySql(string sqlStatement)
         {
-            List<AttendeesShortForEmail> attendeesShorts = Utils.GetAttendeesShortBySql(sqlFilter);
+            List<AttendeesShortForEmail> attendeesShorts = Utils.GetAttendeesShortBySql(sqlStatement);
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, attendeesShorts);
             return response;
         }
@@ -65,28 +69,7 @@ namespace WebAPI.Api
         [ActionName("EmailGenerate")]
         public HttpResponseMessage PostEmailGenerate(EmailSendDetail emailSendDetail)
         {
-            var email =
-                new EmailMessage(true, false)
-                    {
-                        To = emailSendDetail.PreviewEmailSend,
-                        Subject = emailSendDetail.Subject
-                    };
-
-
-            var utility =
-                new HtmlUtility(email)
-                    {
-                        CssOption = CssOption.EmbedLinkedSheets
-                    };
-
-            utility.LoadUrl(emailSendDetail.EmailUrl ?? "http://pkellner.site44.com/");
-
-            utility.SetUrlContentBase = true;
-            utility.SetHtmlBaseTag = true;
-            utility.EmbedImageOption = EmbedImageOption.ConvertToAbsoluteUrl;
-
-
-            utility.Render();
+            HtmlUtility utility = HtmlUtilityReturn(emailSendDetail);
 
             var emailFinal = utility.ToEmailMessage();
 
@@ -94,25 +77,26 @@ namespace WebAPI.Api
             emailFinal.SaveToStream(memoryStream);
             string emailString = LocalEncoding.GetString(memoryStream.ToArray());
 
-            var emailDetailTopic = new EmailDetailsTopicResult()
+            var emailDetailsTopicResult = new EmailDetailsTopicResult()
                                        {
-                                           Title = emailSendDetail.MailBatchLabel ?? DateTime.Now.ToString(),
+                                           Title =
+                                               emailSendDetail.MailBatchLabel ??
+                                               DateTime.Now.ToString(CultureInfo.InvariantCulture),
                                            CreateDate = DateTime.UtcNow,
                                            EmailMime = emailString,
                                            EmailSubject = !String.IsNullOrEmpty(emailSendDetail.SubjectHtml)
                                                               ? emailSendDetail.SubjectHtml
-                                                              : ConvertStringToHtml(emailSendDetail.Subject,
-                                                                                    27)
+                                                              : ConvertStringToHtml(emailSendDetail.Subject)
 
                                        };
-           EmailDetailsTopicManager.I.Insert(emailDetailTopic);
+           EmailDetailsTopicManager.I.Insert(emailDetailsTopicResult);
 
            List<AttendeesShortForEmail> attendeesShorts = Utils.GetAttendeesShortBySql(emailSendDetail.SqlStatement);
             foreach (var rec in attendeesShorts)
             {
                 var emailDetails = new EmailDetailsResult()
                 {
-                    EmailDetailTopicId = emailDetailTopic.Id,
+                    EmailDetailsTopicId = emailDetailsTopicResult.Id,
                     AttendeesId = rec.Id,
                     EmailDetailsGuid = Guid.NewGuid(),
                     EmailTo = rec.Email
@@ -121,10 +105,8 @@ namespace WebAPI.Api
             }
 
 
-           
-
-
-            HttpResponseMessage httpResponseMessage = new HttpResponseMessage(HttpStatusCode.OK);
+          
+            var httpResponseMessage = new HttpResponseMessage(HttpStatusCode.OK);
 
             //emailFinal.SaveToFile("e:\\temp\\mailSave.txt", true);
 
@@ -156,31 +138,30 @@ namespace WebAPI.Api
 
         }
 
-        [HttpPost]
-        [ActionName("EmailPreview")]
-        public HttpResponseMessage PostEmailPreview(EmailSendDetail emailSendDetail)
+        private static HtmlUtility HtmlUtilityReturn(EmailSendDetail emailSendDetail)
         {
             var email =
                 new EmailMessage(true, false)
-                {
-                    To = emailSendDetail.PreviewEmailSend,
-                    Subject = emailSendDetail.Subject
-                };
+                    {
+                        To = emailSendDetail.PreviewEmailSend,
+                        Subject = emailSendDetail.Subject
+                    };
 
 
             var utility =
                 new HtmlUtility(email)
-                {
-                    CssOption = CssOption.EmbedLinkedSheets
-                };
+                    {
+                        CssOption = CssOption.EmbedLinkedSheets
+                    };
 
-            string siteUrl = emailSendDetail.EmailUrl ??
-                "http://pkellner.site44.com/";
-            utility.LoadUrl(siteUrl);
+            utility.LoadUrl(emailSendDetail.EmailUrl ?? "http://pkellner.site44.com/");
 
             utility.SetUrlContentBase = true;
             utility.SetHtmlBaseTag = true;
             utility.EmbedImageOption = EmbedImageOption.ConvertToAbsoluteUrl;
+
+            utility.Render();
+            return utility;
 
             // note from dave on removing objects embedded image collection
             //If you are using utility.ToEmailMessage(), it should be created for you, automatically. If not, then I need to do some quick testing.
@@ -200,24 +181,59 @@ namespace WebAPI.Api
             //}
             //}
             //}
+        }
+
+        [HttpPost]
+        [ActionName("EmailPreview")]
+        public HttpResponseMessage PostEmailPreview(EmailSendDetail emailSendDetail)
+        {
+           
+
+          
 
 
-            utility.Render();
+            HtmlUtility utility = HtmlUtilityReturn(emailSendDetail);
+
             var emailFinal = utility.ToEmailMessage();
-
-
-  
-
             //emailFinal.SaveToFile("e:\\temp\\mailSave.txt", true);
+
+
+
+
+
+            string baseUnSubscribeUrl = "http://localhost:17138";
+            //string baseUnSubscribeUrl = "http://svcodecamp.azurewebsites.com";
+
+            List<EmailDetailsTopicResult> emailDetailsTopicResult =
+                EmailDetailsTopicManager.I.GetAll().OrderByDescending(a => a.Id).ToList();
+           var emailDetails = new EmailDetailsResult()
+           {
+               EmailDetailsTopicId = 
+               emailDetailsTopicResult.Count > 0 ? emailDetailsTopicResult[0].Id : -1,
+               AttendeesId = 99999,
+               EmailDetailsGuid = Guid.NewGuid(),
+               EmailTo = emailSendDetail.PreviewEmailSend,
+               EmailFrom = emailFinal.FromAddress,
+               SentDateTime = DateTime.UtcNow,
+               EmailReadCount = 0
+           };
+           EmailDetailsManager.I.Insert(emailDetails);
 
             var emailMergeField =
                 new EmailMergeField
                     {
                         SubjectHtml = !String.IsNullOrEmpty(emailSendDetail.SubjectHtml)
                                           ? emailSendDetail.SubjectHtml
-                                          : ConvertStringToHtml(emailSendDetail.Subject, 27),
-                        EmailHtml = emailSendDetail.EmailHtml,
-                        PreviousYearsStatusHtml = ""
+                                          : ConvertStringToHtml(emailSendDetail.Subject),
+                        UnsubscribeLink =
+                            String.Format("{0}/u/{0}", baseUnSubscribeUrl,
+                                          "00000000-0000-0000-0000-000000000001"),
+                        EmailHtml = emailSendDetail.
+                            EmailHtml,
+                        PreviousYearsStatusHtml = "",
+                        ToEmailAddress = emailSendDetail.PreviewEmailSend,
+                        EmailTrackingGif = String.Format("m/{0}.gif",
+                                                         "00000000-0000-0000-0000-000000000002")
                     };
 
 
@@ -230,93 +246,25 @@ namespace WebAPI.Api
             //emailFinal.Logging = true;
             //emailFinal.LogInMemory = true;
 
-          
-
-
             HttpResponseMessage httpResponseMessage =
                emailFinal.SendMailMerge(emailMergeFields)
                    ? new HttpResponseMessage(HttpStatusCode.OK)
                    : Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed,
                                                  emailFinal.LastException().Message);
 
-           // var str = emailFinal.Log.ToString();
-
+            // var str = emailFinal.Log.ToString();
             //System.IO.File.AppendAllText("e:\\temp\\_log.txt", str);
-
-            //HttpResponseMessage httpResponseMessage =
-            //    emailFinal.Send()
-            //        ? new HttpResponseMessage(HttpStatusCode.OK)
-            //        : Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed,
-            //                                      emailFinal.LastException().Message);
 
             return httpResponseMessage;
 
 
         }
 
-        protected const string Newline = "<br/>";
-
-        /// <summary>
-        /// convert the string to html with multiple lines if necessary
-        /// http://www.softcircuits.com/Blog/post/2010/01/10/Implementing-Word-Wrap-in-C.aspx
-        /// </summary>
-        /// <param name="text"></param>
-        /// <param name="margin"></param>
-        /// <returns></returns>
-        private string ConvertStringToHtml(string text,int margin)
+        private string ConvertStringToHtml(string subject)
         {
-            //text = text.Replace(" ", "&nbsp;");
-            int start = 0, end;
-            var lines = new List<string>();
-            text = Regex.Replace(text, @"\s", " ").Trim();
-
-            while ((end = start + margin) < text.Length)
-            {
-                while (text[end] != ' ' && end > start)
-                    end -= 1;
-
-                if (end == start)
-                    end = start + margin;
-
-                lines.Add(text.Substring(start, end - start));
-                start = end + 1;
-            }
-
-            if (start < text.Length)
-            {
-                lines.Add(text.Substring(start));
-            }
-
-            /*
-                <!--<span class="style4">SV Code Camp Version 8!</span><br>
-                <span class="style5">October 5th and 6th, 2013</span>-->
-             */
-            var sb = new StringBuilder();
-            for (int index = 0; index < lines.Count; index++)
-            {
-                var rec = lines[index];
-                if (index == 0)
-                {
-                    // rec = string.Format("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{0}", rec);
-                    // first line, always style4 and always <br>
-                    rec = String.Format("<span class=\"style4\">{0}</span><br/>", rec);
-                }
-                else
-                {
-                    rec = String.Format("<span class=\"style5\">{0}</span>", rec);
-                    if (index != lines.Count - 1) // if not last line, add <br/>
-                    {
-                        rec = rec + "<br/>";
-                    }
-                }
-
-                
-
-                //sb.Append(rec.Replace(" ", "%nbsp;"));
-                sb.Append(rec);
-            }
-
-            return sb.ToString();
+            return String.IsNullOrEmpty(subject)
+                       ? ""
+                       : String.Format("<span>{0}</span>", subject);
         }
     }
 

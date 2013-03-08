@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using WebAPI.App_Start;
+using WebAPI.Code;
 
 namespace WebAPI
 {
@@ -51,6 +53,23 @@ namespace WebAPI
             //                action = "Detail"
             //            });
 
+
+            // DASHBOARD
+            routes.Add(new Route("Dashboarddev", new RedirectRouteHandler("/ExtJSApps/DashboardDev/app.html")));
+            routes.Add(new Route("Dashboard", new RedirectRouteHandler("/ExtJSApps/Dashboard/index.html")));
+            
+            // add handler to track email guids being read
+            routes.Add(new Route("m/{0}.gif", new MailGuidHandlerRoute()));
+
+            // PRESENTERS
+            routes.MapRoute("UnsubscribeRouteAll", "u/{guidVal}",
+                            new
+                                {
+                                    /* Your default route */
+                                    controller = "Account",
+                                    action = "Unsubscribe"
+                                });
+          
 
             // LOGIN
             routes.MapRoute("LoginRoute", "Login",
@@ -187,7 +206,35 @@ namespace WebAPI
                 defaults: new {controller = "Home", action = "Index", id = UrlParameter.Optional}
                 );
 
+
+        
+
            
+        }
+    }
+
+    public class MailGuidHandlerRoute : IRouteHandler
+    {
+        public IHttpHandler GetHttpHandler(RequestContext requestContext)
+        {
+            //   /g/000000000.gif
+            var path = requestContext.HttpContext.Request.Path;
+            var guidStr = path.Replace("/m/", "").Replace(".gif", "");
+            Guid guid;
+            if (Guid.TryParse(guidStr, out guid))
+            {
+                var rec = EmailDetailsManager.I.Get(new EmailDetailsQuery()
+                                                        {
+                                                            EmailDetailsGuid = guid
+                                                        }).FirstOrDefault();
+                if (rec != null)
+                {
+                    rec.EmailReadCount++;
+                    rec.EmailReadDate = DateTime.UtcNow;
+                    EmailDetailsManager.I.Update(rec);
+                }
+            }
+            return new GuidTracker();
         }
     }
 }

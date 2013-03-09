@@ -32,15 +32,16 @@ namespace WebAPI.Api
         public string SubjectHtml { get; set; }
         public string EmailHtml { get; set; }
         public string PreviousYearsStatusHtml { get; set; }
-        public string UnsubscribeLink { get; set; }
         public string ToEmailAddress { get; set; }
-        public string EmailTrackingGif { get; set; }
+        public string FromEmailAddress { get; set; }
+        public string BaseUrlEmailPage { get; set; }
+        public string BaseUrlSvcc { get; set; }
+        public string EmailTrackingId { get; set; }
     }
 
     public class MailCriteria
     {
         public string SqlFilter { get; set; }
-
     }
 
     public class MailReturn
@@ -48,7 +49,6 @@ namespace WebAPI.Api
         public List<AttendeesShortForEmail> Data { get; set; }
         public bool Success { get; set; }
     }
-
 
     public class EmailController : ApiController
     {
@@ -61,7 +61,6 @@ namespace WebAPI.Api
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, attendeesShorts);
             return response;
         }
-
 
         private static readonly Encoding LocalEncoding = Encoding.UTF8;
 
@@ -78,17 +77,17 @@ namespace WebAPI.Api
             string emailString = LocalEncoding.GetString(memoryStream.ToArray());
 
             var emailDetailsTopicResult = new EmailDetailsTopicResult()
-                                       {
-                                           Title =
-                                               emailSendDetail.MailBatchLabel ??
-                                               DateTime.Now.ToString(CultureInfo.InvariantCulture),
-                                           CreateDate = DateTime.UtcNow,
-                                           EmailMime = emailString,
-                                           EmailSubject = !String.IsNullOrEmpty(emailSendDetail.SubjectHtml)
-                                                              ? emailSendDetail.SubjectHtml
-                                                              : ConvertStringToHtml(emailSendDetail.Subject)
+                                              {
+                                                  Title =
+                                                      emailSendDetail.MailBatchLabel ??
+                                                      DateTime.Now.ToString(CultureInfo.InvariantCulture),
+                                                  CreateDate = DateTime.UtcNow,
+                                                  EmailMime = emailString,
+                                                  EmailSubject = !String.IsNullOrEmpty(emailSendDetail.SubjectHtml)
+                                                                     ? emailSendDetail.SubjectHtml
+                                                                     : ConvertStringToHtml(emailSendDetail.Subject)
 
-                                       };
+                                              };
            EmailDetailsTopicManager.I.Insert(emailDetailsTopicResult);
 
            List<AttendeesShortForEmail> attendeesShorts = Utils.GetAttendeesShortBySql(emailSendDetail.SqlStatement);
@@ -156,9 +155,9 @@ namespace WebAPI.Api
 
             utility.LoadUrl(emailSendDetail.EmailUrl ?? "http://pkellner.site44.com/");
 
-            utility.SetUrlContentBase = true;
-            utility.SetHtmlBaseTag = true;
-            utility.EmbedImageOption = EmbedImageOption.ConvertToAbsoluteUrl;
+            utility.SetUrlContentBase = false;
+            utility.SetHtmlBaseTag = false;
+            utility.EmbedImageOption = EmbedImageOption.None;
 
             utility.Render();
             return utility;
@@ -201,8 +200,8 @@ namespace WebAPI.Api
 
 
 
-            string baseUnSubscribeUrl = "http://localhost:17138";
-            //string baseUnSubscribeUrl = "http://svcodecamp.azurewebsites.com";
+            //string baseUnSubscribeUrl = "http://localhost:17138/";
+            //string baseUnSubscribeUrl = "http://svcodecamp.azurewebsites.com/";
 
             List<EmailDetailsTopicResult> emailDetailsTopicResult =
                 EmailDetailsTopicManager.I.GetAll().OrderByDescending(a => a.Id).ToList();
@@ -219,21 +218,26 @@ namespace WebAPI.Api
            };
            EmailDetailsManager.I.Insert(emailDetails);
 
+            // make sure these do not end in /
+            const string baseUrlEmailPage = "http://pkellner.site44.com";
+            const string baseUrlSvcc = "http://svcodecamp.azurewebsites.com";
+
             var emailMergeField =
                 new EmailMergeField
                     {
                         SubjectHtml = !String.IsNullOrEmpty(emailSendDetail.SubjectHtml)
                                           ? emailSendDetail.SubjectHtml
                                           : ConvertStringToHtml(emailSendDetail.Subject),
-                        UnsubscribeLink =
-                            String.Format("{0}/u/{0}", baseUnSubscribeUrl,
-                                          "00000000-0000-0000-0000-000000000001"),
+                        //UnsubscribeLink =
+                        //    String.Format("u/{0}", emailDetails.EmailDetailsGuid.ToString()),
                         EmailHtml = emailSendDetail.
                             EmailHtml,
                         PreviousYearsStatusHtml = "",
                         ToEmailAddress = emailSendDetail.PreviewEmailSend,
-                        EmailTrackingGif = String.Format("m/{0}.gif",
-                                                         "00000000-0000-0000-0000-000000000002")
+                        FromEmailAddress = emailFinal.FromAddress,
+                        EmailTrackingId = emailDetails.EmailDetailsGuid.ToString(),
+                        BaseUrlEmailPage = baseUrlEmailPage,
+                        BaseUrlSvcc = baseUrlSvcc
                     };
 
 
@@ -243,8 +247,8 @@ namespace WebAPI.Api
                         emailMergeField
                     };
 
-            //emailFinal.Logging = true;
-            //emailFinal.LogInMemory = true;
+            emailFinal.Logging = true;
+            emailFinal.LogInMemory = true;
 
             HttpResponseMessage httpResponseMessage =
                emailFinal.SendMailMerge(emailMergeFields)

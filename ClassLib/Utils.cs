@@ -4971,6 +4971,26 @@ namespace CodeCampSV
             return recs;
 
         }
+
+        public static void UpdateEmailDetailsStatus(Guid guid)
+        {
+            //UPDATE TheTable SET RevisionId = RevisionId + 1 WHERE Id=@id
+            using (
+                    var sqlConnection =
+                        new SqlConnection(ConfigurationManager.ConnectionStrings["CodeCampSV06"].ConnectionString))
+            {
+                sqlConnection.Open();
+                const string sqlSelect = @"
+                   UPDATE EmailDetails SET EmailReadCount = EmailReadCount + 1,EmailReadDate=SYSUTCDATETIME() 
+                   WHERE EmailDetailsGuid = @Guid";
+
+                using (var sqlCommand = new SqlCommand(sqlSelect, sqlConnection))
+                {
+                    sqlCommand.Parameters.Add("@Guid", SqlDbType.UniqueIdentifier).Value = guid;
+                    sqlCommand.ExecuteNonQuery();
+                }
+            }
+        }
     }
 
     public class AttendeesShortForEmail

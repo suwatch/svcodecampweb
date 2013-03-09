@@ -32,7 +32,7 @@ namespace WebAPI.Controllers
             return View(viewModel);
         }
 
-        public ActionResult Unsubscribe()
+        public ActionResult Unsubscribe(string id)
         {
             string year = Utils.ConvertCodeCampYearToActualYear
                 (Utils.GetCurrentCodeCampYear().ToString(CultureInfo.InvariantCulture));

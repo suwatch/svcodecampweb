@@ -62,11 +62,11 @@ namespace WebAPI
             routes.Add(new Route("m/{0}.gif", new MailGuidHandlerRoute()));
 
             // PRESENTERS
-            routes.MapRoute("UnsubscribeRouteAll", "u/{guidVal}",
+            routes.MapRoute("UnsubscribeRouteAll", "Register",
                             new
                                 {
                                     /* Your default route */
-                                    controller = "Account",
+                                    controller = "Register",
                                     action = "Unsubscribe"
                                 });
           
@@ -223,15 +223,33 @@ namespace WebAPI
             Guid guid;
             if (Guid.TryParse(guidStr, out guid))
             {
-                var rec = EmailDetailsManager.I.Get(new EmailDetailsQuery()
-                                                        {
-                                                            EmailDetailsGuid = guid
-                                                        }).FirstOrDefault();
-                if (rec != null)
+                try
                 {
-                    rec.EmailReadCount++;
-                    rec.EmailReadDate = DateTime.UtcNow;
-                    EmailDetailsManager.I.Update(rec);
+                    Utils.UpdateEmailDetailsStatus(guid);
+
+
+                    //var rec = EmailDetailsManager.I.Get(new EmailDetailsQuery()
+                    //                                                {
+                    //                                                    EmailDetailsGuid = guid
+                    //                                                }).FirstOrDefault();
+                    //if (rec != null)
+                    //{
+                    //    if (rec.EmailReadCount.HasValue)
+                    //    {
+                    //        rec.EmailReadCount++;
+                    //    }
+                    //    else
+                    //    {
+                    //        rec.EmailReadCount = 1;
+                    //    }
+                        
+                    //    rec.EmailReadDate = DateTime.UtcNow;
+                    //    EmailDetailsManager.I.Update(rec);
+                    //}
+                }
+                catch (Exception)
+                {
+                    // do nothing. not that important. I've seen this skip a beat when two come in quickly in a row for the same row
                 }
             }
             return new GuidTracker();

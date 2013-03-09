@@ -46,6 +46,14 @@
             ],
             "className": "StoreAdminUsers"
         },
+        "9bcf7333-6b5b-4bba-895b-6650a2ee4b2b": {
+            "paths": [
+                "metadata/store/StoreEmailSelection",
+                "app/store/override/StoreEmailSelection.js",
+                "app/store/StoreEmailSelection.js"
+            ],
+            "className": "StoreEmailSelection"
+        },
         "ea603ba0-dc16-49a4-99a5-9ab2b7469f89": {
             "paths": [
                 "metadata/controller/EmailController",
@@ -77,14 +85,6 @@
                 "app/model/ModelAdminUser.js"
             ],
             "className": "ModelAdminUser"
-        },
-        "9bcf7333-6b5b-4bba-895b-6650a2ee4b2b": {
-            "paths": [
-                "metadata/store/StoreEmailSelection",
-                "app/store/override/StoreEmailSelection.js",
-                "app/store/StoreEmailSelection.js"
-            ],
-            "className": "StoreEmailSelection"
         },
         "e5ca90e0-e863-46c0-8cd1-4e795ae88328": {
             "paths": [

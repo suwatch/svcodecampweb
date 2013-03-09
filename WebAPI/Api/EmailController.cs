@@ -201,7 +201,7 @@ namespace WebAPI.Api
 
 
             //string baseUnSubscribeUrl = "http://localhost:17138/";
-            //string baseUnSubscribeUrl = "http://svcodecamp.azurewebsites.com/";
+            //string baseUnSubscribeUrl = "http://svcodecamp.azurewebsites.net/";
 
             List<EmailDetailsTopicResult> emailDetailsTopicResult =
                 EmailDetailsTopicManager.I.GetAll().OrderByDescending(a => a.Id).ToList();
@@ -220,7 +220,7 @@ namespace WebAPI.Api
 
             // make sure these do not end in /
             const string baseUrlEmailPage = "http://pkellner.site44.com";
-            const string baseUrlSvcc = "http://svcodecamp.azurewebsites.com";
+            const string baseUrlSvcc = "http://svcodecamp.azurewebsites.net";
 
             var emailMergeField =
                 new EmailMergeField

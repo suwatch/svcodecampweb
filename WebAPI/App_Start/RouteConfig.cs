@@ -178,6 +178,16 @@ namespace WebAPI
 
 
             // SPONSORS
+
+            routes.MapRoute("SponsorRouteTest", "Sponsor/Test",
+               new
+               {
+                   /* Your default route */
+                   controller = "Sponsor",
+                   action = "IndexTest",
+                   year = currentYear
+               });
+
             routes.MapRoute("SponsorRouteAll", "Sponsor/{year}",
                       new
                       {
@@ -187,14 +197,7 @@ namespace WebAPI
                           year = currentYear
                       });
 
-            routes.MapRoute("SponsorRouteTest", "Sponsor/Test",
-                new
-                {
-                    /* Your default route */
-                    controller = "Sponsor",
-                    action = "IndexTest",
-                    year = currentYear
-                });
+           
          
 
           

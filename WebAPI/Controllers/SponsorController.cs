@@ -30,6 +30,11 @@ namespace WebAPI.Controllers
         {
             return IndexBase(year);
         }
+
+        public ActionResult IndexTest1(string year)
+        {
+            return IndexBase(year);
+        }
        
         private ActionResult IndexBase(string year)
         {
@@ -42,11 +47,21 @@ namespace WebAPI.Controllers
                 rec.ShowQuestionMark = index%3 == 0;
             }
 
-
+           
             data.Sponsors = _repositorySponsor.GetDataForYear(year).Sponsors.
                 OrderBy(sp => sp.SponsorSupportLevelOrder).
                 ThenBy(a=>a.SponsorName).
                 ToList();
+
+            // move community sponsors to end
+            foreach (var rec in data.Sponsors)
+            {
+                if (rec.SponsorSupportLevelOrder == 0)
+                {
+                    rec.SponsorSupportLevelOrder = 99; // move community to bottom
+                }
+            }
+
             return View(data);
         }
     }

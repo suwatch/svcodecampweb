@@ -235,8 +235,8 @@ namespace WebAPI.Api
                         EmailHtml = emailSendDetail.
                             EmailHtml,
                         PreviousYearsStatusHtml = "",
-                        ToEmailAddress = emailSendDetail.PreviewEmailSend,
-                        FromEmailAddress = emailFinal.FromAddress,
+                        ToEmailAddress = emailSendDetail.PreviewEmailSend.Replace("@"," @ "),
+                        FromEmailAddress = emailFinal.FromAddress.Replace("@", " @ "),
                         EmailTrackingId = emailDetails.EmailDetailsGuid.ToString(),
                         BaseUrlEmailPage = baseUrlEmailPage,
                         BaseUrlSvcc = baseUrlSvcc

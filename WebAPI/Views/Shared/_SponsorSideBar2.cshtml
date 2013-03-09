@@ -1,0 +1,222 @@
+﻿<div class="roundBorder section jobPosts"
+    style="font-size: 16px; font-style: normal; color: #2e363d; font-family: Calibri; padding: 10px; width: 160px; max-height: 600px">
+
+    <table>
+        <tr>
+
+            <td>
+
+                <a href="#">
+                    <div class="round blue"
+                        style="font-size: 14px;">
+                        <span style="cursor: pointer; width: 150px; font-size: 16px; height: 40px">BECAME A
+                        
+                        SPONSOR</span>
+                    </div>
+                </a>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+                <div style="width: 150px;">
+
+                    <br />
+                    @{string levels = string.Empty; int j = 0;}
+                    @for (int i = 0; i < Model.Sponsors.Count; i++)
+                    {
+                        if (@Model.Sponsors[i].SponsorSupportLevel != "Platinum")
+                        {
+                            continue;
+                        }
+                        if (!levels.Contains(@Model.Sponsors[i].SponsorSupportLevel))
+                        {
+                            levels += @Model.Sponsors[i].SponsorSupportLevel;
+                            j = j + 1;
+            
+                        <div id="item-wrapper" style="float: left; padding: 10px; margin: 15px;">
+                            <h1 class="title1" style="font-size: 16px; margin-top: -30px; margin-left: 0px">@Model.Sponsors[i].SponsorSupportLevel.ToUpper()</h1>
+                            <ul>
+
+                                @foreach (var sponsor in Model.Sponsors)
+                                {
+                                    <li>
+                                        @if (@Model.Sponsors[i].SponsorSupportLevel == "Platinum")
+                                        {                   
+
+                                        <span style="float: left;">
+
+                                            <a href="@sponsor.NavigateURL">
+                                                <img src="@(sponsor.ImageURL)?format=gif&w=60&h=60&scale=both&mode=pad&bgcolor=white" alt="@sponsor.SponsorName"  />
+                                                @*<img src="../Images/Sponsors/adobe-logo.jpg" style="height: 40px; width: 80px; margin-left: 10px" />*@
+
+                                            </a>
+                                            <br />
+
+
+                                        </span>}
+                                    </li>
+                                               
+                                }
+                            </ul>
+                            <br />
+
+                        </div>
+
+                        
+                        <div class="page_navigation">
+                            <a id="prev" class="button round blue" 
+                                style="cursor:pointer; border-bottom-left-radius:0px; border-top-right-radius:0px; font-size:20px;"><</a>
+                            <a id="next" class="button round blue" style="cursor:pointer;border-bottom-left-radius:0px; border-top-right-radius:0px;font-size:20px">></a> 
+
+                        </div>
+                        
+                        
+                        
+@*<span id="@MvcHtmlString.Create("btn" + (j))" style=" margin-left:20px; width: 10px; height: 10px; background-color:#25aae1; float:left"></span>
+                        <p style="float: left">&nbsp;</p>*@
+
+
+                        }
+                    }
+
+
+                </div>
+
+            </td>
+        </tr>
+        <tr>
+
+            <td>
+                <br />
+                <a href="/Job#" class="button round" style="font-size: 14px; margin-left: 30px; color: gray; box-shadow: none; background-color: #f2f2f2; border: solid 1px #ccc; height: 60px; cursor: pointer; width: 150px;">VIEW ALL</a>
+
+            </td>
+        </tr>
+
+        <tr>
+
+            <td>
+                <br />
+                <a href="#">
+                    <div class="round blue"
+                        style="font-size: 14px;">
+                        <span style="cursor: pointer; width: 150px; font-size: 16px; height: 40px">BECAME A
+                        
+                        SPONSOR</span>
+                    </div>
+                </a>
+
+            </td>
+        </tr>
+
+    </table>
+
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var itemsNumber = 8;
+        var min = 0;
+        var max = itemsNumber;
+
+        function pagination(action) {
+            //alert($("#item-wrapper").find("li").length);
+
+            var totalItems = $("#item-wrapper").find("li").length;
+
+            
+
+            if (max < totalItems) { //Stop action if max reaches more than total items               
+                if (action == "next") {
+                    min = min + itemsNumber;
+                    max = max + itemsNumber;
+                }
+            }
+
+            if (min > 0) { //Stop action if min reaches less than 0              
+                if (action == "prev") {
+                    min = min - itemsNumber;
+                    max = max - itemsNumber;
+                }
+            }
+            else {
+            }
+
+            $("#item-wrapper").find("li").hide("slow").fadeOut("slow");
+            $("#item-wrapper").find("li").slice(min, max).show("slow").fadeIn("slow");
+
+            if (action == "next") {
+                if (max < totalItems) {
+                    $("#prev").removeClass("previous_link_gray");
+                    $("#prev").addClass("previous_link");
+                }
+                else {
+                    $("#next").removeClass("next_link");
+                    $("#next").addClass("next_link_gray");
+                }
+            }
+
+            if (action == "prev") {
+                if (min > 0) {
+                    $("#next").removeClass("next_link_gray");
+                    $("#next").addClass("next_link");
+                }
+                else {
+                    $("#prev").removeClass("previous_link");
+                    $("#prev").addClass("previous_link_gray");
+                }
+            }
+            // alert(min + ' ' + max + ' ' + totalItems);
+
+            var mymax = max;
+            if (parseInt(max) > parseInt(totalItems)) {
+                mymax = totalItems;
+            }
+
+
+
+        }
+
+        pagination();
+
+        //Next
+        $("#next").click(function () {
+            action = "next";
+            pagination(action);
+
+        })
+
+        //Previous
+        $("#prev").click(function () {
+            action = "prev";
+            pagination(action);
+        })
+
+
+    });
+
+</script>
+
+<style>
+    
+    .page_navigation {
+        position: relative;
+        float: right;
+        height:40px; width:150px;
+        text-align:center;
+        
+    }
+
+    .next_link_gray {
+        background-color:#ccc;
+    }
+    .previous_link_gray {
+        background-color:#ccc;
+
+    }
+
+</style>

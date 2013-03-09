@@ -62,7 +62,7 @@ namespace WebAPI
             routes.Add(new Route("m/{0}.gif", new MailGuidHandlerRoute()));
 
             // PRESENTERS
-            routes.MapRoute("UnsubscribeRouteAll", "Register",
+            routes.MapRoute("UnsubscribeRouteAll", "Register/Unsubscribe",
                             new
                                 {
                                     /* Your default route */

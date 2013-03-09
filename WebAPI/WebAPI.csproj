@@ -1781,6 +1781,7 @@
     <Content Include="ExtJSApps\Dashboard\resources\theme\images\window-header\window-header-default-top-sides.gif" />
     <Content Include="ExtJSApps\Dashboard\resources\theme\images\window\window-default-corners.gif" />
     <Content Include="ExtJSApps\Dashboard\resources\theme\images\window\window-default-sides.gif" />
+    <Content Include="Images\Featured.png" />
     <Content Include="Views\Register\Login.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_SponsorsBottomBar.cshtml" />
@@ -3445,6 +3446,7 @@
     <Content Include="Views\Sponsor\IndexTest.cshtml" />
     <Content Include="Views\Home\Logout.cshtml" />
     <Content Include="Views\Register\Unsubscribe.cshtml" />
+    <Content Include="Views\Shared\_SponsorSideBar2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ExtJSApps\Registration\resources\" />

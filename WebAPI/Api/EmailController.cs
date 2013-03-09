@@ -150,7 +150,8 @@ namespace WebAPI.Api
             var utility =
                 new HtmlUtility(email)
                     {
-                        CssOption = CssOption.EmbedLinkedSheets
+                        CssOption = CssOption.None
+                        
                     };
 
             utility.LoadUrl(emailSendDetail.EmailUrl ?? "http://pkellner.site44.com/");
@@ -158,6 +159,7 @@ namespace WebAPI.Api
             utility.SetUrlContentBase = false;
             utility.SetHtmlBaseTag = false;
             utility.EmbedImageOption = EmbedImageOption.None;
+            
 
             utility.Render();
             return utility;

@@ -18,9 +18,13 @@
     <br />
     @sponsor.SponsorSupportLevelOrder
     <br />
-    @(sponsor.ImageURL)
+    <span>ShowFeatured:</span>  @sponsor.ShowFeatured
     <br />
-    <img src="@(sponsor.ImageURL)?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white" alt="@sponsor.SponsorName"  />
+     <span>ShowQuestionMark:</span>  @sponsor.ShowQuestionMark
+    <br />
+    @(sponsor.ImageURL)
+
+       <img src="@(sponsor.ImageURL)?format=gif&w=50&h=50&scale=both&mode=pad&bgcolor=white" alt="@sponsor.SponsorName"  />
     <hr />
 }
 

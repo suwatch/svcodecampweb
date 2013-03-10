@@ -40,12 +40,7 @@ namespace WebAPI.Controllers
         {
             var data = _repositorySponsor.GetDataForYear(year);
 
-            for (int index = 0; index < data.Sponsors.Count; index++)
-            {
-                var rec = data.Sponsors[index];
-                rec.ShowFeatured = index%2 == 0;
-                rec.ShowQuestionMark = index%3 == 0;
-            }
+           
 
            
             data.Sponsors = _repositorySponsor.GetDataForYear(year).Sponsors.
@@ -53,12 +48,14 @@ namespace WebAPI.Controllers
                 ThenBy(a=>a.SponsorName).
                 ToList();
 
-            // move community sponsors to end
-            foreach (var rec in data.Sponsors)
+            for (int index = 0; index < data.Sponsors.Count; index++)
             {
-                if (rec.SponsorSupportLevelOrder == 0)
+                var rec = data.Sponsors[index];
+                rec.ShowFeatured = index % 2 == 0;
+                rec.ShowQuestionMark = index % 3 == 0;
+                if (rec.SponsorSupportLevelOrder == 4)
                 {
-                    rec.SponsorSupportLevelOrder = 99; // move community to bottom
+                    rec.SponsorSupportLevelOrder = 99;// move community to bottom
                 }
             }
 

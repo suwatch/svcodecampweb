@@ -181,7 +181,7 @@ namespace CodeCampSV
                             }
                             else if (dollarAmount >= bronze)
                             {
-                                rec.SponsorSupportLevel = "Gold";
+                                rec.SponsorSupportLevel = "Bronze";
                                 rec.SponsorSupportLevelOrder = 3;
                             }
                             else if (Math.Abs(dollarAmount - 0.0) < .01)

@@ -17,6 +17,7 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
     extend: 'Ext.panel.Panel',
     alias: 'widget.SpeakerAfterLoginAlias',
 
+    autoShow: false,
     id: 'speakerAfterLoginId',
     itemId: 'speakerAfterLogin',
     layout: {
@@ -33,8 +34,10 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
                 {
                     xtype: 'form',
                     flex: 5,
+                    autoShow: false,
                     id: 'speakerAfterLoginProfileId',
                     itemId: '',
+                    autoScroll: true,
                     defaults: {
                         width: 330
                     },

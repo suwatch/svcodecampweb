@@ -9,6 +9,7 @@
         "container|align": "stretch",
         "designer|userClassName": "SpeakerAfterLoginNotDup",
         "designer|userAlias": "SpeakerAfterLoginAlias",
+        "autoShow": false,
         "id": "speakerAfterLoginId",
         "itemId": "speakerAfterLogin",
         "layout": "hbox",
@@ -28,8 +29,10 @@
                 "layout|flex": 5,
                 "designer|userClassName": "SpeakerAfterLogin",
                 "designer|userAlias": "SpeakerAfterLoginAlias",
+                "autoShow": false,
                 "id": "speakerAfterLoginProfileId",
                 "itemId": "",
+                "autoScroll": true,
                 "defaults": [
                     "{\r",
                     "        width: 330\r",

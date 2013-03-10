@@ -25,7 +25,6 @@ Ext.define('RegistrationApp.view.TabWizardPanel', {
         'RegistrationApp.view.AttendeeAfterLogin',
         'RegistrationApp.view.SpeakerAfterLoginNotDup',
         'RegistrationApp.view.createAccount',
-        'RegistrationApp.view.SpeakerPicture',
         'RegistrationApp.view.OptIn',
         'RegistrationApp.view.override.TabWizardPanel',
         'Ext.form.RadioGroup',
@@ -59,13 +58,10 @@ Ext.define('RegistrationApp.view.TabWizardPanel', {
                     xtype: 'AttendeeAfterLoginAlias'
                 },
                 {
-                    xtype: 'SpeakerAfterLoginAlias'
+                    xtype: 'SpeakerAfterLoginAlias2'
                 },
                 {
                     xtype: 'createAccountAlias'
-                },
-                {
-                    xtype: 'SpeakerPictureAlias'
                 },
                 {
                     xtype: 'OptInAlias'

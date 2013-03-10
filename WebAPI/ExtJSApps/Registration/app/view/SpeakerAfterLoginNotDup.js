@@ -15,14 +15,13 @@
 
 Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
     extend: 'Ext.panel.Panel',
-    alias: 'widget.SpeakerAfterLoginAlias',
+    alias: 'widget.SpeakerAfterLoginAlias2',
 
     autoShow: false,
     id: 'speakerAfterLoginId',
     itemId: 'speakerAfterLogin',
     layout: {
-        align: 'stretch',
-        type: 'hbox'
+        type: 'border'
     },
 
     initComponent: function() {
@@ -31,181 +30,253 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
         Ext.applyIf(me, {
             items: [
                 {
-                    xtype: 'form',
+                    xtype: 'panel',
                     flex: 5,
-                    autoShow: false,
-                    id: 'speakerAfterLoginProfileId',
-                    itemId: '',
-                    autoScroll: true,
-                    defaults: {
-                        width: 330
+                    region: 'west',
+                    split: true,
+                    width: 150,
+                    layout: {
+                        align: 'stretch',
+                        type: 'vbox'
                     },
-                    bodyPadding: 15,
-                    title: 'Speaker After Login',
-                    url: '/api/Register',
                     items: [
                         {
-                            xtype: 'radiogroup',
-                            name: 'CanSpeakDate',
-                            id: 'CanSpeakRbGroupId',
-                            layout: {
-                                align: 'stretch',
-                                type: 'vbox'
+                            xtype: 'form',
+                            flex: 4,
+                            autoShow: false,
+                            id: 'speakerAfterLoginProfileId',
+                            itemId: '',
+                            autoScroll: true,
+                            defaults: {
+                                anchor: '95%'
                             },
-                            fieldLabel: '',
-                            allowBlank: false,
-                            blankText: 'You must choose which day(s) you can speak',
+                            bodyPadding: 15,
+                            title: 'Speaker After Login',
+                            url: '/api/Register',
                             items: [
                                 {
-                                    xtype: 'radiofield',
-                                    itemId: 'speakSaturdayId',
-                                    inputId: 'speakSaturday',
-                                    name: 'attendingDaysChoiceCurrentYear',
-                                    boxLabel: 'Can Speak Saturday',
-                                    inputValue: 'AttendingSaturday'
+                                    xtype: 'radiogroup',
+                                    name: 'CanSpeakDate',
+                                    id: 'CanSpeakRbGroupId',
+                                    layout: {
+                                        align: 'stretch',
+                                        type: 'vbox'
+                                    },
+                                    fieldLabel: '',
+                                    allowBlank: false,
+                                    blankText: 'You must choose which day(s) you can speak',
+                                    items: [
+                                        {
+                                            xtype: 'radiofield',
+                                            flex: 1,
+                                            itemId: 'speakSaturdayAndSundayId',
+                                            name: 'attendingDaysChoiceCurrentYear',
+                                            boxLabel: 'Can Speak Saturday Or Sunday',
+                                            checked: true,
+                                            inputValue: 'AttendingSaturdaySunday'
+                                        },
+                                        {
+                                            xtype: 'radiofield',
+                                            itemId: 'speakSaturdayId',
+                                            inputId: 'speakSaturday',
+                                            name: 'attendingDaysChoiceCurrentYear',
+                                            boxLabel: 'Can Speak Saturday',
+                                            inputValue: 'AttendingSaturday'
+                                        },
+                                        {
+                                            xtype: 'radiofield',
+                                            itemId: 'speakSundayId',
+                                            name: 'attendingDaysChoiceCurrentYear',
+                                            boxLabel: 'Can Speak Sunday',
+                                            inputValue: 'AttendingSunday'
+                                        }
+                                    ]
                                 },
                                 {
-                                    xtype: 'radiofield',
-                                    itemId: 'speakSundayId',
-                                    name: 'attendingDaysChoiceCurrentYear',
-                                    boxLabel: 'Can Speak Sunday',
-                                    inputValue: 'AttendingSunday'
+                                    xtype: 'textfield',
+                                    name: 'userFirstName',
+                                    fieldLabel: 'FirstName',
+                                    allowBlank: false
                                 },
                                 {
-                                    xtype: 'radiofield',
-                                    itemId: 'speakSaturdayAndSundayId',
-                                    name: 'attendingDaysChoiceCurrentYear',
-                                    boxLabel: 'Can Speak Saturday Or Sunday',
-                                    checked: true,
-                                    inputValue: 'AttendingSaturdaySunday'
+                                    xtype: 'textfield',
+                                    name: 'userLastName',
+                                    fieldLabel: 'Last Name',
+                                    allowBlank: false
+                                },
+                                {
+                                    xtype: 'textfield',
+                                    name: 'email',
+                                    fieldLabel: 'Email',
+                                    allowBlank: false
+                                },
+                                {
+                                    xtype: 'textfield',
+                                    name: 'phoneNumber',
+                                    fieldLabel: 'Phone Number'
+                                },
+                                {
+                                    xtype: 'combobox',
+                                    name: 'shirtSize',
+                                    fieldLabel: 'Speaker Shirt Size',
+                                    allowBlank: false,
+                                    displayField: 'shirtSize',
+                                    store: 'ShirtSizeStore',
+                                    valueField: 'shirtSize'
+                                },
+                                {
+                                    xtype: 'textfield',
+                                    name: 'userWebsite',
+                                    fieldLabel: 'Web Site'
+                                },
+                                {
+                                    xtype: 'textfield',
+                                    name: 'twitterHandle',
+                                    fieldLabel: 'Twitter Handle'
+                                },
+                                {
+                                    xtype: 'textfield',
+                                    name: 'facebookId',
+                                    fieldLabel: 'Facebook'
+                                },
+                                {
+                                    xtype: 'textfield',
+                                    name: 'googlePlusId',
+                                    fieldLabel: 'Google Plus'
+                                },
+                                {
+                                    xtype: 'textfield',
+                                    name: 'linkedInId',
+                                    fieldLabel: 'LinkedIn'
+                                },
+                                {
+                                    xtype: 'textfield',
+                                    name: 'emailEventBoard',
+                                    fieldLabel: 'Eventboard Email'
+                                },
+                                {
+                                    xtype: 'textfield',
+                                    name: 'city',
+                                    fieldLabel: 'City',
+                                    allowBlank: false
+                                },
+                                {
+                                    xtype: 'textfield',
+                                    name: 'state',
+                                    fieldLabel: 'State',
+                                    allowBlank: false
+                                },
+                                {
+                                    xtype: 'textfield',
+                                    name: 'userZipCode',
+                                    fieldLabel: 'Zipcode',
+                                    allowBlank: false
+                                },
+                                {
+                                    xtype: 'checkboxfield',
+                                    name: 'volunteeredCurrentYear',
+                                    fieldLabel: 'Volunteer',
+                                    boxLabel: '(Volunteer To Help Day Of)',
+                                    inputValue: 'true',
+                                    uncheckedValue: 'false'
+                                },
+                                {
+                                    xtype: 'textareafield',
+                                    name: 'userBio',
+                                    fieldLabel: 'Bio',
+                                    allowBlank: false,
+                                    enforceMaxLength: true,
+                                    maxLength: 500,
+                                    minLength: 30
+                                }
+                            ],
+                            dockedItems: [
+                                {
+                                    xtype: 'toolbar',
+                                    dock: 'top',
+                                    itemId: 'ToolBarAttendeeSpeaker',
+                                    layout: {
+                                        pack: 'end',
+                                        type: 'hbox'
+                                    },
+                                    items: [
+                                        {
+                                            xtype: 'button',
+                                            disabled: false,
+                                            itemId: 'logoutButtonId',
+                                            iconAlign: 'right',
+                                            text: 'Logout'
+                                        },
+                                        {
+                                            xtype: 'tbseparator'
+                                        },
+                                        {
+                                            xtype: 'button',
+                                            formBind: true,
+                                            disabled: false,
+                                            itemId: 'continueButtonId',
+                                            iconAlign: 'right',
+                                            text: 'Continue'
+                                        }
+                                    ]
                                 }
                             ]
                         },
                         {
-                            xtype: 'textfield',
-                            name: 'userFirstName',
-                            fieldLabel: 'FirstName',
-                            allowBlank: false
-                        },
-                        {
-                            xtype: 'textfield',
-                            name: 'userLastName',
-                            fieldLabel: 'Last Name',
-                            allowBlank: false
-                        },
-                        {
-                            xtype: 'textfield',
-                            name: 'email',
-                            fieldLabel: 'Email',
-                            allowBlank: false
-                        },
-                        {
-                            xtype: 'textfield',
-                            name: 'phoneNumber',
-                            fieldLabel: 'Phone Number'
-                        },
-                        {
-                            xtype: 'combobox',
-                            name: 'shirtSize',
-                            fieldLabel: 'Speaker Shirt Size',
-                            allowBlank: false,
-                            displayField: 'shirtSize',
-                            store: 'ShirtSizeStore',
-                            valueField: 'shirtSize'
-                        },
-                        {
-                            xtype: 'textfield',
-                            name: 'userWebsite',
-                            fieldLabel: 'Web Site'
-                        },
-                        {
-                            xtype: 'textfield',
-                            name: 'twitterHandle',
-                            fieldLabel: 'Twitter Handle'
-                        },
-                        {
-                            xtype: 'textfield',
-                            name: 'facebookId',
-                            fieldLabel: 'Facebook'
-                        },
-                        {
-                            xtype: 'textfield',
-                            name: 'googlePlusId',
-                            fieldLabel: 'Google Plus'
-                        },
-                        {
-                            xtype: 'textfield',
-                            name: 'linkedInId',
-                            fieldLabel: 'LinkedIn'
-                        },
-                        {
-                            xtype: 'textfield',
-                            name: 'emailEventBoard',
-                            fieldLabel: 'Eventboard Email'
-                        },
-                        {
-                            xtype: 'textfield',
-                            name: 'city',
-                            fieldLabel: 'City',
-                            allowBlank: false
-                        },
-                        {
-                            xtype: 'textfield',
-                            name: 'state',
-                            fieldLabel: 'State',
-                            allowBlank: false
-                        },
-                        {
-                            xtype: 'textfield',
-                            name: 'userZipCode',
-                            fieldLabel: 'Zipcode',
-                            allowBlank: false
-                        },
-                        {
-                            xtype: 'checkboxfield',
-                            name: 'volunteeredCurrentYear',
-                            fieldLabel: 'Volunteer',
-                            boxLabel: '(Volunteer To Help Day Of)',
-                            inputValue: 'true',
-                            uncheckedValue: 'false'
-                        },
-                        {
-                            xtype: 'textareafield',
-                            name: 'userBio',
-                            fieldLabel: 'Bio',
-                            allowBlank: false,
-                            enforceMaxLength: true,
-                            maxLength: 500,
-                            minLength: 30
-                        }
-                    ],
-                    dockedItems: [
-                        {
-                            xtype: 'toolbar',
-                            dock: 'top',
-                            itemId: 'ToolBarAttendeeSpeaker',
-                            layout: {
-                                pack: 'end',
-                                type: 'hbox'
-                            },
+                            xtype: 'form',
+                            flex: 3,
+                            id: 'speakerPictureUploadFormId',
+                            bodyPadding: 20,
+                            collapsible: true,
+                            title: 'Speaker Picture Upload',
+                            url: '/api/Account/FormData',
                             items: [
                                 {
-                                    xtype: 'button',
-                                    disabled: false,
-                                    itemId: 'logoutButtonId',
-                                    iconAlign: 'right',
-                                    text: 'Logout'
-                                },
-                                {
-                                    xtype: 'tbseparator'
-                                },
-                                {
-                                    xtype: 'button',
-                                    formBind: true,
-                                    disabled: false,
-                                    itemId: 'continueButtonId',
-                                    iconAlign: 'right',
-                                    text: 'Continue'
+                                    xtype: 'fieldset',
+                                    layout: {
+                                        align: 'stretch',
+                                        type: 'hbox'
+                                    },
+                                    title: 'Picture Required Before Submitting Sessions',
+                                    items: [
+                                        {
+                                            xtype: 'filefield',
+                                            flex: 1,
+                                            border: false,
+                                            height: 50,
+                                            id: 'SpeakerPictureUploadXId',
+                                            itemId: 'SpeakerPictureUploadId',
+                                            minWidth: 150,
+                                            padding: 10,
+                                            fieldLabel: '',
+                                            hideLabel: true,
+                                            labelPad: 0,
+                                            listeners: {
+                                                change: {
+                                                    fn: me.onSpeakerPictureUploadXIdChange,
+                                                    scope: me
+                                                }
+                                            }
+                                        },
+                                        {
+                                            xtype: 'panel',
+                                            flex: 7,
+                                            border: false,
+                                            itemId: 'PicturePanelId',
+                                            padding: 10,
+                                            items: [
+                                                {
+                                                    xtype: 'image',
+                                                    border: 1,
+                                                    height: 150,
+                                                    id: 'SpeakerImageId',
+                                                    itemId: 'SpeakerImgId',
+                                                    width: 150,
+                                                    src: '/image/none.jpg'
+                                                }
+                                            ]
+                                        }
+                                    ]
                                 }
                             ]
                         }
@@ -214,11 +285,13 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
                 {
                     xtype: 'form',
                     flex: 3,
+                    region: 'center',
                     autoShow: true,
                     itemId: 'speakerSessionsId',
                     layout: {
                         type: 'fit'
                     },
+                    collapsible: false,
                     title: 'Speaker Sessions',
                     dockedItems: [
                         {
@@ -264,6 +337,38 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
         });
 
         me.callParent(arguments);
+    },
+
+    onSpeakerPictureUploadXIdChange: function(filefield, value, options) {
+        // FOR SOME REASON THIS WILL NOT GET CALLED IN CONTROLLER
+
+        var speakerForm = Ext.getCmp('speakerPictureUploadFormId');
+        var imgId = Ext.getCmp('SpeakerImageId');
+        if(speakerForm.isValid()){
+            speakerForm.submit({
+                url: '/rpc/Account/FormData',
+                waitMsg: 'Uploading your photo...',
+                success: function(fp, o) {
+                    var attendeesId = o.result.attendeeId;
+                    var imageLocation = '/attendeeimage/' + attendeesId + '.jpg?width=175&height=175&scale=both&anchor=topleft&bgcolor=black';
+                    var antiCachePart = (new Date()).getTime();
+                    var newSrc = imageLocation + '?dc=' + antiCachePart;
+                    imgId.setSrc(newSrc); 
+                },
+                failure: function(form, action){
+                    //debugger;
+                    if (action.failureType === Ext.form.action.Action.CONNECT_FAILURE) {
+                        Ext.Msg.alert('Error',
+                        'Status:'+action.response.status+': '+
+                        action.response.statusText);
+                    }
+                    if (action.failureType === Ext.form.action.Action.SERVER_INVALID){
+                        // server responded with success = false
+                        Ext.Msg.alert('Invalid', action.result.errormsg);
+                    }
+                }
+            });
+        }
     }
 
 });

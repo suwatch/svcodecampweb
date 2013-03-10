@@ -59,53 +59,6 @@ Ext.define('RegistrationApp.controller.SpeakerPictureController', {
 
     },
 
-    onSpeakerPictureUploadIdChange: function(filefield, value, options) {
-        var speakerForm = Ext.ComponentQuery.query('SpeakerPictureAlias')[0];
-
-
-        var picturePanel = Ext.ComponentQuery.query('#PicturePanelId')[0];
-
-        var imgId = Ext.ComponentQuery.query('#SpeakerImgId')[0];
-
-
-
-
-        //var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"uploading picture..."});
-
-
-        //Ext.Ajax.defaultPostHeader = 'application/json';
-
-        //myMask.show();
-
-        if(speakerForm.isValid()){
-            speakerForm.submit({
-                url: '/rpc/Account/FormData',
-
-                waitMsg: 'Uploading your photo...',
-                success: function(fp, o) {
-                    var attendeesId = o.result.attendeeId;
-                    var imageLocation = '/attendeeimage/' + attendeesId + '.jpg?width=300&height=300&scale=both&anchor=topleft&bgcolor=black';
-                    var antiCachePart = (new Date()).getTime();
-                    var newSrc = imageLocation + '?dc=' + antiCachePart;
-                    imgId.setSrc(newSrc); 
-                },
-
-                failure: function(form, action){
-                    //debugger;
-                    if (action.failureType === Ext.form.action.Action.CONNECT_FAILURE) {
-                        Ext.Msg.alert('Error',
-                        'Status:'+action.response.status+': '+
-                        action.response.statusText);
-                    }
-                    if (action.failureType === Ext.form.action.Action.SERVER_INVALID){
-                        // server responded with success = false
-                        Ext.Msg.alert('Invalid', action.result.errormsg);
-                    }
-                }
-            });
-        }
-    },
-
     init: function(application) {
         this.control({
             "SpeakerPictureAlias #backButtonId": {
@@ -113,9 +66,6 @@ Ext.define('RegistrationApp.controller.SpeakerPictureController', {
             },
             "SpeakerPictureAlias #continueButtonId": {
                 click: this.onContinueButtonIdClick
-            },
-            "SpeakerPictureAlias #SpeakerPictureUploadId": {
-                change: this.onSpeakerPictureUploadIdChange
             }
         });
     }

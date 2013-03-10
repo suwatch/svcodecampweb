@@ -6,6 +6,9 @@
     },
     "codeClass": null,
     "userConfig": {
+        "requires": [
+            "Ext.data.proxy.Rest"
+        ],
         "models": [
             "Sessions"
         ],
@@ -23,7 +26,6 @@
             "AttendeeAfterLogin",
             "SpeakerAfterLogin",
             "createAccount",
-            "SpeakerPicture",
             "OptIn",
             "PasswordConfirm",
             "SpeakerAfterLoginNotDup"

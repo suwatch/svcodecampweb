@@ -85,69 +85,6 @@
                 "designer|controlQuery": "SpeakerPictureAlias #continueButtonId"
             },
             "designerId": "fc88c58f-6de2-4a25-b209-7492cc055302"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|userClassName": "onSpeakerPictureUploadIdChange",
-                "fn": "onSpeakerPictureUploadIdChange",
-                "implHandler": [
-                    "var speakerForm = Ext.ComponentQuery.query('SpeakerPictureAlias')[0];\r",
-                    "\r",
-                    "\r",
-                    "var picturePanel = Ext.ComponentQuery.query('#PicturePanelId')[0];\r",
-                    "\r",
-                    "var imgId = Ext.ComponentQuery.query('#SpeakerImgId')[0];\r",
-                    "\r",
-                    "\r",
-                    "\r",
-                    "\r",
-                    "//var myMask = new Ext.LoadMask(Ext.getBody(), {msg:\"uploading picture...\"});\r",
-                    "\r",
-                    "\r",
-                    "//Ext.Ajax.defaultPostHeader = 'application/json';\r",
-                    "\r",
-                    "//myMask.show();\r",
-                    "\r",
-                    "if(speakerForm.isValid()){\r",
-                    "    speakerForm.submit({\r",
-                    "        url: '/rpc/Account/FormData',\r",
-                    "\r",
-                    "        waitMsg: 'Uploading your photo...',\r",
-                    "        success: function(fp, o) {\r",
-                    "            var attendeesId = o.result.attendeeId;\r",
-                    "            var imageLocation = '/attendeeimage/' + attendeesId + '.jpg?width=300&height=300&scale=both&anchor=topleft&bgcolor=black';\r",
-                    "            var antiCachePart = (new Date()).getTime();\r",
-                    "            var newSrc = imageLocation + '?dc=' + antiCachePart;\r",
-                    "            imgId.setSrc(newSrc); \r",
-                    "        },\r",
-                    "\r",
-                    "        failure: function(form, action){\r",
-                    "            //debugger;\r",
-                    "            if (action.failureType === Ext.form.action.Action.CONNECT_FAILURE) {\r",
-                    "                Ext.Msg.alert('Error',\r",
-                    "                'Status:'+action.response.status+': '+\r",
-                    "                action.response.statusText);\r",
-                    "            }\r",
-                    "            if (action.failureType === Ext.form.action.Action.SERVER_INVALID){\r",
-                    "                // server responded with success = false\r",
-                    "                Ext.Msg.alert('Invalid', action.result.errormsg);\r",
-                    "            }\r",
-                    "        }\r",
-                    "    });\r",
-                    "}"
-                ],
-                "name": "change",
-                "scope": "me",
-                "designer|targetType": "Ext.form.field.File",
-                "designer|controlQuery": "SpeakerPictureAlias #SpeakerPictureUploadId"
-            },
-            "designerId": "aeeeb4e3-7988-4bef-9545-4a8efcd015bb"
         }
     ]
 }

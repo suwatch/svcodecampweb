@@ -150,14 +150,6 @@
             ],
             "className": "createAccount"
         },
-        "99ab335f-8e80-451e-a2c6-ac4d92811303": {
-            "paths": [
-                "metadata/view/SpeakerPicture",
-                "app/view/override/SpeakerPicture.js",
-                "app/view/SpeakerPicture.js"
-            ],
-            "className": "SpeakerPicture"
-        },
         "2ae7e189-6c5e-4718-b828-ca560f5c3fdc": {
             "paths": [
                 "metadata/view/OptIn",
@@ -234,7 +226,6 @@
             "6d82b69b-3f21-447d-9161-8f72c94f975b",
             "fd7d5df9-3fda-46f2-82cb-9cfeb17ff1e9",
             "98a8cc4b-7db4-4a2e-8aea-8fe5195956e4",
-            "99ab335f-8e80-451e-a2c6-ac4d92811303",
             "2ae7e189-6c5e-4718-b828-ca560f5c3fdc",
             "dfdac70e-88ed-4f47-8052-2b4e87dc2118",
             "1a1e24e7-e981-4728-b958-9dcf746faf54"

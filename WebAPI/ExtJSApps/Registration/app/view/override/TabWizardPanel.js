@@ -55,7 +55,7 @@ Ext.define('RegistrationApp.view.override.TabWizardPanel', {
                 //debugger;
                 // set picture string
                 var imgId = Ext.ComponentQuery.query('#SpeakerImgId')[0];
-                var imageLocation = '/attendeeimage/' + retData.attendeesId + '.jpg?width=300';
+                var imageLocation = '/attendeeimage/' + retData.attendeesId + '.jpg?width=175';
                 var antiCachePart = (new Date()).getTime();
                 var newSrc = imageLocation + '?dc=' + antiCachePart;
                 imgId.setSrc(newSrc); 

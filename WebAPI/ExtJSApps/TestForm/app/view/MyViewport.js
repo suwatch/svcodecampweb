@@ -30,7 +30,7 @@ Ext.define('MyApp.view.MyViewport', {
                     flex: 5,
                     region: 'west',
                     defaults: {
-                        width: 400
+                        anchor: '95%'
                     },
                     title: 'My Panel',
                     items: [

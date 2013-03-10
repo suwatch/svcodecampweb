@@ -27,7 +27,7 @@
                 "width": null,
                 "defaults": [
                     "{\r",
-                    "    width: 400\r",
+                    "        anchor: '95%'\r",
                     "}"
                 ],
                 "title": "My Panel"

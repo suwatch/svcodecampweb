@@ -18,6 +18,10 @@ Ext.Loader.setConfig({
 });
 
 Ext.application({
+
+    requires: [
+        'Ext.data.proxy.Rest'
+    ],
     models: [
         'Sessions'
     ],
@@ -35,7 +39,6 @@ Ext.application({
         'AttendeeAfterLogin',
         'SpeakerAfterLogin',
         'createAccount',
-        'SpeakerPicture',
         'OptIn',
         'PasswordConfirm',
         'SpeakerAfterLoginNotDup'

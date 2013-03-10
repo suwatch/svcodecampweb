@@ -22,7 +22,8 @@ Ext.define('RegistrationApp.controller.SpeakerAfterLoginController', {
         myMask.show();
 
         var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];
-        var thisPanel = Ext.ComponentQuery.query('SpeakerAfterLoginAlias')[0];
+        //var thisPanel = Ext.ComponentQuery.query('SpeakerAfterLoginAlias')[0];
+        var thisPanel = Ext.getCmp("speakerAfterLoginProfileId");
 
 
         Ext.Ajax.request({ 

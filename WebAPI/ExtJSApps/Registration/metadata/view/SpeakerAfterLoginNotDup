@@ -13,7 +13,7 @@
         "id": "speakerAfterLoginId",
         "itemId": "speakerAfterLogin",
         "layout": "hbox",
-        "title": "Speaker After Login"
+        "title": null
     },
     "id": "ExtBox1-ext-gen5032",
     "designerId": "1a1e24e7-e981-4728-b958-9dcf746faf54",
@@ -462,15 +462,117 @@
             "userConfig": {
                 "layout|flex": 3,
                 "designer|userClassName": "MyForm10",
-                "html": [
-                    "<b>this will be the speaker list</b>"
-                ],
+                "autoShow": true,
+                "html": null,
                 "itemId": "speakerSessionsId",
                 "layout": "fit",
-                "bodyPadding": 10,
+                "bodyPadding": null,
                 "title": "Speaker Sessions"
             },
-            "designerId": "37755e67-4a68-4d80-b6cf-414426f77d02"
+            "designerId": "37755e67-4a68-4d80-b6cf-414426f77d02",
+            "cn": [
+                {
+                    "type": "toolbar",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dock": "top",
+                        "designer|userClassName": "MyToolbar10"
+                    },
+                    "designerId": "cf3ecd81-a330-4b6a-94f8-ba2e66a79fe2",
+                    "cn": [
+                        {
+                            "type": "button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "designer|userClassName": "MyButton19",
+                                "text": "Edit Selected Session"
+                            },
+                            "designerId": "49e6224b-dda2-4ea4-8a2e-77bafcb20042"
+                        },
+                        {
+                            "type": "button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": null,
+                                "designer|userClassName": "MyButton19",
+                                "text": "Add New Session"
+                            },
+                            "designerId": "c491f9f3-be04-4c42-8dcc-8f7c514ff89d"
+                        }
+                    ]
+                },
+                {
+                    "type": "gridpanel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyGridPanel",
+                        "id": "sessionsBySpeakerGridPanelId",
+                        "title": null,
+                        "store": "StoreSessions"
+                    },
+                    "designerId": "165343d6-0697-44d4-a45f-b97ad0c09c1b",
+                    "cn": [
+                        {
+                            "type": "gridview",
+                            "reference": {
+                                "name": "viewConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyGridView"
+                            },
+                            "designerId": "0e95ce2b-480a-4f3c-99cf-4422e06e22be"
+                        },
+                        {
+                            "type": "gridcolumn",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyColumn2",
+                                "dataIndex": "title",
+                                "flex": 1,
+                                "text": "Title"
+                            },
+                            "designerId": "94486bf6-8df9-4590-b007-d0cb49e04fca"
+                        },
+                        {
+                            "type": "gridcolumn",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyColumn1",
+                                "dataIndex": "id",
+                                "text": "Id"
+                            },
+                            "designerId": "1ba61b6a-127f-4329-ad2d-94d1f24fa21a"
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }

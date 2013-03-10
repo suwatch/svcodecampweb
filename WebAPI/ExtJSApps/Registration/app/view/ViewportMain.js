@@ -28,7 +28,7 @@ Ext.define('RegistrationApp.view.ViewportMain', {
             items: [
                 {
                     xtype: 'tabWizardPanelAlias',
-                    height: 600,
+                    height: 700,
                     itemId: 'TabWizard'
                 }
             ]

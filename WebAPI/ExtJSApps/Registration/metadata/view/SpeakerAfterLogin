@@ -50,6 +50,25 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "layout|flex": 1,
+                        "designer|userClassName": "MyRadio12",
+                        "itemId": "speakSaturdayAndSundayId",
+                        "name": "attendingDaysChoiceCurrentYear",
+                        "fieldLabel": null,
+                        "boxLabel": "Can Speak Saturday Or Sunday",
+                        "checked": true,
+                        "inputValue": "AttendingSaturdaySunday"
+                    },
+                    "designerId": "22df0a81-753e-4d92-ad1d-96357ee14008"
+                },
+                {
+                    "type": "radiofield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
                         "designer|userClassName": "MyRadio11",
                         "itemId": "speakSaturdayId",
                         "inputId": "speakSaturday",
@@ -76,24 +95,6 @@
                         "inputValue": "AttendingSunday"
                     },
                     "designerId": "fa65d188-1d90-4cd7-8de1-ded0d6d89813"
-                },
-                {
-                    "type": "radiofield",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "designer|userClassName": "MyRadio12",
-                        "itemId": "speakSaturdayAndSundayId",
-                        "name": "attendingDaysChoiceCurrentYear",
-                        "fieldLabel": null,
-                        "boxLabel": "Can Speak Saturday Or Sunday",
-                        "checked": true,
-                        "inputValue": "AttendingSaturdaySunday"
-                    },
-                    "designerId": "22df0a81-753e-4d92-ad1d-96357ee14008"
                 }
             ]
         },
@@ -110,7 +111,7 @@
                 "itemId": null,
                 "inputId": null,
                 "name": "userFirstName",
-                "fieldLabel": "FirstName",
+                "fieldLabel": "First Name",
                 "allowBlank": false
             },
             "designerId": "6d3f0aac-d38a-481f-9c3f-e0c08999e247"

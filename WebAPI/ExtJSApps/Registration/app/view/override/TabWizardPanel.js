@@ -33,12 +33,18 @@ Ext.define('RegistrationApp.view.override.TabWizardPanel', {
                     //debugger;
                     nextPanel =  Ext.getCmp('speakerAfterLoginProfileId');
                     
-                
-                    
-                    
-                    // need to load sessions also
-                    
+                    // load left side speaker profile data
                     nextPanel.getForm().setValues(retData);
+                    
+                    // need to load sessions also for this attendee (who is speaker)
+                    var sessionsBySpeakerStore = Ext.getCmp("sessionsBySpeakerGridPanelId").store;
+                    sessionsBySpeakerStore.load({
+                        params: {
+                            codeCampYearId: -1,
+                            attendeesId: retData.attendeesId
+                        }
+                    });
+ 
                     tabPanel.setActiveTab(tabPanel.getTabIdByName('SpeakerAfterLogin'));
                 } else {
                     nextPanel = Ext.ComponentQuery.query('AttendeeAfterLoginAlias')[0];
@@ -53,9 +59,6 @@ Ext.define('RegistrationApp.view.override.TabWizardPanel', {
                 var antiCachePart = (new Date()).getTime();
                 var newSrc = imageLocation + '?dc=' + antiCachePart;
                 imgId.setSrc(newSrc); 
-                
-                
-                
                 
                 myMask.hide();
             },

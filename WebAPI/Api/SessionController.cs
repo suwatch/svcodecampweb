@@ -34,7 +34,7 @@ namespace WebAPI.Api
 
             var sessions = SessionsManager.I.Get(new SessionsQuery()
             {
-                CodeCampYearId = 7,
+                CodeCampYearId = Utils.CurrentCodeCampYear,
                 WithSpeakers = true,
                 WithInterestOrPlanToAttend = true
             });
@@ -44,16 +44,41 @@ namespace WebAPI.Api
 
         public SessionsResult Get(int year,string session)
         {
-
+          
 
             var sessionInstance = SessionsManager.I.Get(new SessionsQuery()
                                                      {
-                                                         CodeCampYearId = 7
+                                                         CodeCampYearId = year
                                                      }).FirstOrDefault();
 
             return sessionInstance;
 
 
+        }
+
+        /// <summary>
+        /// get speakers based on code camp year and attendeesId. No reason to protect this, sessions by speaker is public info
+        /// </summary>
+        /// <param name="codeCampYearId"></param>
+        /// <param name="attendeesId"></param>
+        /// <returns></returns>
+        public HttpResponseMessage GetBySpeaker(int codeCampYearId, int attendeesId)
+        {
+
+            if (codeCampYearId == -1)
+            {
+                codeCampYearId = Utils.CurrentCodeCampYear;
+            }
+
+            var sessions =
+                SessionsManager.I.Get(new SessionsQuery
+                                          {
+                                              CodeCampYearId =codeCampYearId,
+                                              Attendeesid = attendeesId
+                                          });
+
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, sessions);
+            return response;
         }
 
 

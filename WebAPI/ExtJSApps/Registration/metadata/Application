@@ -6,8 +6,12 @@
     },
     "codeClass": null,
     "userConfig": {
+        "models": [
+            "Sessions"
+        ],
         "stores": [
-            "ShirtSizeStore"
+            "ShirtSizeStore",
+            "StoreSessions"
         ],
         "views": [
             "ViewportMain",

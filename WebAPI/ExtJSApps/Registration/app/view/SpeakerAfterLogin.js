@@ -45,6 +45,15 @@ Ext.define('RegistrationApp.view.SpeakerAfterLogin', {
                     items: [
                         {
                             xtype: 'radiofield',
+                            flex: 1,
+                            itemId: 'speakSaturdayAndSundayId',
+                            name: 'attendingDaysChoiceCurrentYear',
+                            boxLabel: 'Can Speak Saturday Or Sunday',
+                            checked: true,
+                            inputValue: 'AttendingSaturdaySunday'
+                        },
+                        {
+                            xtype: 'radiofield',
                             itemId: 'speakSaturdayId',
                             inputId: 'speakSaturday',
                             name: 'attendingDaysChoiceCurrentYear',
@@ -57,14 +66,6 @@ Ext.define('RegistrationApp.view.SpeakerAfterLogin', {
                             name: 'attendingDaysChoiceCurrentYear',
                             boxLabel: 'Can Speak Sunday',
                             inputValue: 'AttendingSunday'
-                        },
-                        {
-                            xtype: 'radiofield',
-                            itemId: 'speakSaturdayAndSundayId',
-                            name: 'attendingDaysChoiceCurrentYear',
-                            boxLabel: 'Can Speak Saturday Or Sunday',
-                            checked: true,
-                            inputValue: 'AttendingSaturdaySunday'
                         }
                     ]
                 },
@@ -72,7 +73,7 @@ Ext.define('RegistrationApp.view.SpeakerAfterLogin', {
                     xtype: 'textfield',
                     anchor: '100%',
                     name: 'userFirstName',
-                    fieldLabel: 'FirstName',
+                    fieldLabel: 'First Name',
                     allowBlank: false
                 },
                 {

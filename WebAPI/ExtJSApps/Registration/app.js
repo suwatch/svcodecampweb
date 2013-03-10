@@ -18,8 +18,12 @@ Ext.Loader.setConfig({
 });
 
 Ext.application({
+    models: [
+        'Sessions'
+    ],
     stores: [
-        'ShirtSizeStore'
+        'ShirtSizeStore',
+        'StoreSessions'
     ],
     views: [
         'ViewportMain',

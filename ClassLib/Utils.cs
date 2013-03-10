@@ -621,6 +621,17 @@ namespace CodeCampSV
             return allSpeakers;
         }
 
+        /// <summary>
+        /// get the speaker hyperlink in the pre SEO friendly way
+        /// <a href=\"Speakers.aspx?AttendeeId={0}\">{1} {2} {3}</a>
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <param name="speakerId"></param>
+        /// <param name="saturdayClasses"></param>
+        /// <param name="sundayClasses"></param>
+        /// <param name="showSpeakerHyperLinks"></param>
+        /// <returns></returns>
         public static string FormatSpeakerHyperlink(
             string firstName, string lastName, int speakerId,
             bool? saturdayClasses, bool? sundayClasses, bool showSpeakerHyperLinks)

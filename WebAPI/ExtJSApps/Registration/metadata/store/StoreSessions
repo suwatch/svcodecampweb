@@ -1,0 +1,30 @@
+{
+    "type": "store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "StoreSessions",
+        "storeId": "StoreSessionId",
+        "model": "Sessions"
+    },
+    "id": "ExtBox1-ext-gen37530",
+    "designerId": "d5a9bf2f-3afa-48c4-abf2-d72af15e4cfb",
+    "cn": [
+        {
+            "type": "restproxy",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyRestProxy",
+                "url": "/rpc/Session/GetBySpeaker"
+            },
+            "designerId": "74a97021-6f8b-4b83-81cf-e581eba9e636"
+        }
+    ]
+}

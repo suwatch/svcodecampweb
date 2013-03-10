@@ -24,7 +24,6 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
         align: 'stretch',
         type: 'hbox'
     },
-    title: 'Speaker After Login',
 
     initComponent: function() {
         var me = this;
@@ -215,13 +214,51 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
                 {
                     xtype: 'form',
                     flex: 3,
-                    html: '<b>this will be the speaker list</b>',
+                    autoShow: true,
                     itemId: 'speakerSessionsId',
                     layout: {
                         type: 'fit'
                     },
-                    bodyPadding: 10,
-                    title: 'Speaker Sessions'
+                    title: 'Speaker Sessions',
+                    dockedItems: [
+                        {
+                            xtype: 'toolbar',
+                            dock: 'top',
+                            items: [
+                                {
+                                    xtype: 'button',
+                                    text: 'Edit Selected Session'
+                                },
+                                {
+                                    xtype: 'button',
+                                    text: 'Add New Session'
+                                }
+                            ]
+                        }
+                    ],
+                    items: [
+                        {
+                            xtype: 'gridpanel',
+                            id: 'sessionsBySpeakerGridPanelId',
+                            store: 'StoreSessions',
+                            viewConfig: {
+
+                            },
+                            columns: [
+                                {
+                                    xtype: 'gridcolumn',
+                                    dataIndex: 'title',
+                                    flex: 1,
+                                    text: 'Title'
+                                },
+                                {
+                                    xtype: 'gridcolumn',
+                                    dataIndex: 'id',
+                                    text: 'Id'
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         });

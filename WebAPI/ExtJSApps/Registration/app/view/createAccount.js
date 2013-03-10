@@ -19,7 +19,7 @@ Ext.define('RegistrationApp.view.createAccount', {
 
     itemId: 'CreateAccount',
     bodyPadding: 10,
-    title: 'My Form',
+    title: 'Create Account',
 
     initComponent: function() {
         var me = this;

@@ -15,7 +15,7 @@
 
 Ext.define('RegistrationApp.view.SpeakerAfterLogin', {
     extend: 'Ext.form.Panel',
-    alias: 'widget.SpeakerAfterLoginAlias',
+    alias: 'widget.SpeakerAfterLoginAlias1',
 
     itemId: 'speakerAfterLoginId',
     bodyPadding: 15,

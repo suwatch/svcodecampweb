@@ -1,0 +1,96 @@
+{
+    "type": "viewport",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "MyViewport",
+        "designer|initialView": true,
+        "layout": "border"
+    },
+    "id": "ExtBox1-ext-gen18904",
+    "designerId": "4b402cb5-ec70-412b-8a97-3fc3d37d65e9",
+    "cn": [
+        {
+            "type": "panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|flex": 5,
+                "layout|region": "west",
+                "designer|userClassName": "MyPanel",
+                "width": null,
+                "defaults": [
+                    "{\r",
+                    "    width: 400\r",
+                    "}"
+                ],
+                "title": "My Panel"
+            },
+            "designerId": "f80d4099-ea3d-45f6-ac9b-876c9be08065",
+            "cn": [
+                {
+                    "type": "textfield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyTextField",
+                        "fieldLabel": "Label"
+                    },
+                    "designerId": "807ea107-1fb5-45fe-b9e6-ccc83584f3fa"
+                },
+                {
+                    "type": "textfield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyTextField",
+                        "fieldLabel": "Label"
+                    },
+                    "designerId": "8c5153e5-9a2d-412d-b29e-f39b937b6e71"
+                }
+            ]
+        },
+        {
+            "type": "panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|flex": 2,
+                "layout|region": "center",
+                "designer|userClassName": "MyPanel",
+                "title": "My Panel"
+            },
+            "designerId": "9ba87c2e-0f3b-436c-bc55-03785f3e3ce9",
+            "cn": [
+                {
+                    "type": "textfield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyTextField1",
+                        "fieldLabel": "Label"
+                    },
+                    "designerId": "4e01b4d5-e327-4096-b5db-24e4d131624f"
+                }
+            ]
+        }
+    ]
+}

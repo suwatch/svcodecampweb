@@ -33,7 +33,8 @@ Ext.application({
         'createAccount',
         'SpeakerPicture',
         'OptIn',
-        'PasswordConfirm'
+        'PasswordConfirm',
+        'SpeakerAfterLoginNotDup'
     ],
     autoCreateViewport: true,
     name: 'RegistrationApp',

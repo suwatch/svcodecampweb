@@ -217,8 +217,12 @@
                 "type": "array"
             },
             "codeClass": null,
-            "designerId": "6f438edc-3cc3-423c-87a7-510973540d26",
-            "masterInstanceId": "ExtBox1-ext-gen14927",
+            "userConfig": {
+                "layout": null,
+                "title": null
+            },
+            "designerId": "af3426cb-f9d7-4f43-b79d-627519c76647",
+            "masterInstanceId": "ExtBox1-ext-gen5032",
             "cn": [
                 {
                     "type": "tab",
@@ -230,7 +234,7 @@
                     "userConfig": {
                         "designer|userClassName": "TabConfig5"
                     },
-                    "designerId": "6dbde9b0-d7fa-49fe-b90c-05923798b862"
+                    "designerId": "9df95789-3a32-4d07-89ac-28d4a7245b8a"
                 }
             ]
         },

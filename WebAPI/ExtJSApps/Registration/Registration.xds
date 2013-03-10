@@ -197,6 +197,14 @@
                 "app/view/PasswordConfirm.js"
             ],
             "className": "PasswordConfirm"
+        },
+        "1a1e24e7-e981-4728-b958-9dcf746faf54": {
+            "paths": [
+                "metadata/view/SpeakerAfterLoginNotDup",
+                "app/view/override/SpeakerAfterLoginNotDup.js",
+                "app/view/SpeakerAfterLoginNotDup.js"
+            ],
+            "className": "SpeakerAfterLoginNotDup"
         }
     },
     "viewOrderMap": {
@@ -212,7 +220,8 @@
             "98a8cc4b-7db4-4a2e-8aea-8fe5195956e4",
             "99ab335f-8e80-451e-a2c6-ac4d92811303",
             "2ae7e189-6c5e-4718-b828-ca560f5c3fdc",
-            "dfdac70e-88ed-4f47-8052-2b4e87dc2118"
+            "dfdac70e-88ed-4f47-8052-2b4e87dc2118",
+            "1a1e24e7-e981-4728-b958-9dcf746faf54"
         ],
         "store": [
             "126b70a4-920e-49ef-8117-21150f082f6d"

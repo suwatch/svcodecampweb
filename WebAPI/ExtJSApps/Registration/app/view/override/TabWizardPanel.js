@@ -26,14 +26,18 @@ Ext.define('RegistrationApp.view.override.TabWizardPanel', {
             success: function(r, o) {  
                 console.log('is logged in from launch');
                 
-              
-                
-                
-                //debugger;
-                // logged in, take the person to attendee edit page. NEED TO CHECK IF SPEAKER AND DO SPEAKER PAGE
+                // logged in, take the person to attendee edit page. 
                 var retData = Ext.JSON.decode(r.responseText);
                 if (retData.hasSessionsCurrentYear === true) {
-                    nextPanel = Ext.ComponentQuery.query('SpeakerAfterLoginAlias')[0];
+                    
+                    //debugger;
+                    nextPanel =  Ext.getCmp('speakerAfterLoginProfileId');
+                    
+                
+                    
+                    
+                    // need to load sessions also
+                    
                     nextPanel.getForm().setValues(retData);
                     tabPanel.setActiveTab(tabPanel.getTabIdByName('SpeakerAfterLogin'));
                 } else {

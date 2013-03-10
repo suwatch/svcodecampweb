@@ -10,6 +10,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Web;
 using System.Web.Http;
 using CodeCampSV;
 using aspNetEmail;
@@ -188,20 +189,16 @@ namespace WebAPI.Api
         [ActionName("EmailPreview")]
         public HttpResponseMessage PostEmailPreview(EmailSendDetail emailSendDetail)
         {
-           
-
-          
+            string httpProtocol = HttpContext.Current.Request.IsSecureConnection
+                                      ? "https://"
+                                      : "http://";
+            var baseUrl = string.Format("{0}{1}", httpProtocol, HttpContext.Current.Request.Url.Authority);
 
 
             HtmlUtility utility = HtmlUtilityReturn(emailSendDetail);
 
             var emailFinal = utility.ToEmailMessage();
             //emailFinal.SaveToFile("e:\\temp\\mailSave.txt", true);
-
-
-
-
-
             //string baseUnSubscribeUrl = "http://localhost:17138/";
             //string baseUnSubscribeUrl = "http://svcodecamp.azurewebsites.net/";
 
@@ -221,8 +218,10 @@ namespace WebAPI.Api
            EmailDetailsManager.I.Insert(emailDetails);
 
             // make sure these do not end in /
-            const string baseUrlEmailPage = "http://pkellner.site44.com";
-            const string baseUrlSvcc = "http://svcodecamp.azurewebsites.net";
+            //const string baseUrlEmailPage = "http://pkellner.site44.com";
+            //const string baseUrlSvcc = "http://svcodecamp.azurewebsites.net";
+
+
 
             var emailMergeField =
                 new EmailMergeField
@@ -235,11 +234,11 @@ namespace WebAPI.Api
                         EmailHtml = emailSendDetail.
                             EmailHtml,
                         PreviousYearsStatusHtml = "",
-                        ToEmailAddress = emailSendDetail.PreviewEmailSend.Replace("@"," @ "),
+                        ToEmailAddress = emailSendDetail.PreviewEmailSend.Replace("@"," @ "), // add spaces so these emails don't get hyperlinked
                         FromEmailAddress = emailFinal.FromAddress.Replace("@", " @ "),
                         EmailTrackingId = emailDetails.EmailDetailsGuid.ToString(),
-                        BaseUrlEmailPage = baseUrlEmailPage,
-                        BaseUrlSvcc = baseUrlSvcc
+                        BaseUrlEmailPage = emailSendDetail.EmailUrl,
+                        BaseUrlSvcc = baseUrl
                     };
 
 

@@ -18,6 +18,7 @@ Ext.define('RegistrationApp.view.Viewport', {
     renderTo: Ext.getBody(),
     requires: [
         'RegistrationApp.view.ViewportMain',
+        'RegistrationApp.view.SpeakerAfterLogin',
         'RegistrationApp.view.PasswordConfirm'
     ]
 });

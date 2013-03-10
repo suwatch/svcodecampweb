@@ -7,7 +7,7 @@
     "codeClass": null,
     "userConfig": {
         "designer|userClassName": "SpeakerAfterLogin",
-        "designer|userAlias": "SpeakerAfterLoginAlias",
+        "designer|userAlias": "SpeakerAfterLoginAlias1",
         "itemId": "speakerAfterLoginId",
         "bodyPadding": 15,
         "title": "Speaker After Login",

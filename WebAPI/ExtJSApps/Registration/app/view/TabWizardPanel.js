@@ -23,7 +23,7 @@ Ext.define('RegistrationApp.view.TabWizardPanel', {
         'RegistrationApp.view.ForgotUsernameOrPassword',
         'RegistrationApp.view.sponsor',
         'RegistrationApp.view.AttendeeAfterLogin',
-        'RegistrationApp.view.SpeakerAfterLogin',
+        'RegistrationApp.view.SpeakerAfterLoginNotDup',
         'RegistrationApp.view.createAccount',
         'RegistrationApp.view.SpeakerPicture',
         'RegistrationApp.view.OptIn',

@@ -23012,6 +23012,8 @@
       <NavigateURL>http://html.adobe.com</NavigateURL>
       <HoverOverText>Adobe</HoverOverText>
       <UnderLogoText>Adobe</UnderLogoText>
+      <ShowQuestionMark>true</ShowQuestionMark>
+       <ShowFeatured>true</ShowFeatured>
       <Comment>email sent to aaron and Liz 7/9/2012</Comment>
       <CompanyDescriptionShort>x</CompanyDescriptionShort>
       <CompanyDescriptionLong>x</CompanyDescriptionLong>
@@ -23397,7 +23399,7 @@
       <CreationDate xsi:nil="true" />
       <ModifiedDate xsi:nil="true" />
       <SponsorSupportLevelOrder>3</SponsorSupportLevelOrder>
-      <SponsorSupportLevel>Gold</SponsorSupportLevel>
+      <SponsorSupportLevel>Bronze</SponsorSupportLevel>
       <HasCurrentCodeCampYear xsi:nil="true" />
       <SponsorListContactResults />
       <SponsorListNoteResults />
@@ -23746,7 +23748,7 @@
       <CreationDate xsi:nil="true" />
       <ModifiedDate xsi:nil="true" />
       <SponsorSupportLevelOrder>3</SponsorSupportLevelOrder>
-      <SponsorSupportLevel>Gold</SponsorSupportLevel>
+      <SponsorSupportLevel>Bronze</SponsorSupportLevel>
       <HasCurrentCodeCampYear xsi:nil="true" />
       <SponsorListContactResults />
       <SponsorListNoteResults />

@@ -22,44 +22,44 @@ Ext.define('RegistrationApp.controller.CreateAccountController', {
         tabWizardPanel.setActiveTab(Ext.getCmp('TabWizardId').getTabIdByName('attendeeorspeaker'));
 
         /*
+
+        // THIS IS IN getTabIdByName function name
+
         if (stepName === 'AttendeeSpeakerSponsorId') {
-        tabId = 0;
+            tabId = 0;
         } else if (stepName === 'attendeeorspeaker') {
-        tabId = 1;
+            tabId = 1;
         } else if (stepName === 'forgotusernameorpassword') {
-        tabId = 2;
+            tabId = 2;
         } else if (stepName === 'Sponsor') {
-        tabId = 3;
+            tabId = 3;
         }
         else if (stepName === 'AttendeeAfterLogin') {
-        tabId = 4;
+            tabId = 4;
         }
         else if (stepName === 'SpeakerAfterLogin') {
-        tabId = 5;
+            tabId = 5;
         }
         else if (stepName === 'createAccount') {
-        tabId = 6;
+            tabId = 6;
         }
         else if (stepName === 'SpeakerPicture') {
-        tabId = 7;
+            tabId = 7;
         }
         else if (stepName === 'optIn') {
-        tabId = 8;
+            tabId = 8;
         }
         */
 
     },
 
     onContinueButtonIdClick: function(button, e, options) {
-
         // verify that password matches
         // verify username does not exist
         // verify email does not exist
         // Then, Create user and take to either speaker or attendee details page
 
-        //debugger;
         var localValues =  Ext.ComponentQuery.query('createAccountAlias')[0].getForm().getValues();
-
 
         //if (localValues.password === localValues.passwordConfirm) {
 
@@ -81,13 +81,9 @@ Ext.define('RegistrationApp.controller.CreateAccountController', {
                 //var attendeeFromFirstPage = Ext.ComponentQuery.query('AttendeeSpeakerOrSponsorAlias #rbAttendee')[0].checked;
                 var speakerFromFirstPage = Ext.ComponentQuery.query('AttendeeSpeakerOrSponsorAlias #rbSpeaker')[0].checked;
                 if (speakerFromFirstPage === true) {
-
-
-                    //debugger;
-
+                    var speakerPanel = Ext.getCmp('speakerAfterLoginProfileId');
+                    speakerPanel.getForm().setValues(localValues);
                 } else {
-
-                    //debugger;
                     var attendeePanel = Ext.ComponentQuery.query('AttendeeAfterLoginAlias')[0];
                     attendeePanel.getForm().setValues(localValues);
 
@@ -100,18 +96,9 @@ Ext.define('RegistrationApp.controller.CreateAccountController', {
                 Ext.Msg.alert('Creating User Failed','');
                 console.log('Creating User Failed ' + r);
                 myMask.hide();
-
-
             } 
 
         });
-
-
-
-
-        //} else {
-        //    Ext.Msg.alert("error","Passwords do not match.  Correct and try again");
-        //}
     },
 
     init: function(application) {

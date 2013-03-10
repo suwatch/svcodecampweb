@@ -17,30 +17,19 @@ Ext.define('RegistrationApp.controller.RegisterSpeakerAttendee', {
     extend: 'Ext.app.Controller',
 
     onBackButtonIdClick: function(button, e, options) {
-
-        //console.log('back button in registerspeakerattendee controller');
-
         var tabWizardPanel = Ext.getCmp('TabWizardId')
         tabWizardPanel.setActiveTab(Ext.getCmp('TabWizardId').getTabIdByName('AttendeeSpeakerSponsorId'));
 
     },
 
     onContinueButtonIdClick: function(button, e, options) {
-
-        //var continueEnabled = this.checkEnableContinue();
-
-
-
         var username = Ext.ComponentQuery.query('AttendeeOrSpeakerAlias #username')[0].getValue();
         var password = Ext.ComponentQuery.query('AttendeeOrSpeakerAlias #password')[0].getValue();
         var haveaccount = Ext.ComponentQuery.query('AttendeeOrSpeakerAlias #haveaccount')[0].checked;
         var forgot = Ext.ComponentQuery.query('AttendeeOrSpeakerAlias #forgot')[0].checked;
         var create = Ext.ComponentQuery.query('AttendeeOrSpeakerAlias #create')[0].checked;
 
-
-        //debugger;
         var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Logging In..."});
-
         var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];
 
         var attendeeFromFirstPage = Ext.ComponentQuery.query('AttendeeSpeakerOrSponsorAlias #rbAttendee')[0].checked;
@@ -52,13 +41,10 @@ Ext.define('RegistrationApp.controller.RegisterSpeakerAttendee', {
         }
         else {
             var tabWizardPanel = Ext.getCmp('TabWizardId');
-
             if (forgot === true) {
                 tabWizardPanel.setActiveTab(tabWizardPanel.getTabIdByName('forgotusernameorpassword'));
             } else if (create === true) {
                 // verify user entered does not exist
-
-
                 if (username.length > 0) {
                     Ext.Ajax.request({ 
                         url:'/rpc/Account/CheckUsernameEmailExists', 
@@ -69,9 +55,6 @@ Ext.define('RegistrationApp.controller.RegisterSpeakerAttendee', {
                             Password: password
                         },
                         success: function(r,o) {
-
-
-
                             if (r.responseText.length > 2 && username.length > 0) {  // (this is because it returns "" instead of empty string)
                                 Ext.Msg.alert('Error','Username exists, Try Again or use Forget Username or Password');
                             } else {
@@ -86,19 +69,12 @@ Ext.define('RegistrationApp.controller.RegisterSpeakerAttendee', {
                             }
                         },
                         failure: function(r,o) {
-
-
-
                             Ext.Msg.alert('Error','Can not create username because it already exists');
                         }
                     });
                 } else {
                     tabWizardPanel.setActiveTab(tabWizardPanel.getTabIdByName('createAccount'));
                 }
-
-
-
-
                 tabWizardPanel.setActiveTab(tabWizardPanel.getTabIdByName('createnewaccount'));
             } else if (haveaccount) {
                 // try logging person in and if fails, put up message and leave them here,
@@ -120,27 +96,38 @@ Ext.define('RegistrationApp.controller.RegisterSpeakerAttendee', {
                         RememberMe: true
                     },
                     success: function(r, o) { 
-
-                        //debugger;
-
-                        //Ext.Msg.alert('Successful Login!');
-
                         var retData = Ext.JSON.decode(r.responseText);
-
                         if (attendeeFromFirstPage === false) {
                             // must be speaker
-                            var speakerPanel = Ext.ComponentQuery.query('SpeakerAfterLoginAlias')[0];
+                            var speakerPanel = Ext.getCmp('speakerAfterLoginProfileId');
                             speakerPanel.getForm().setValues(retData);
-
-
                             tabPanel.setActiveTab(tabPanel.getTabIdByName('SpeakerAfterLogin'));
 
                         } else {
                             // must be sponsor or attendee
                             var attendeePanel = Ext.ComponentQuery.query('AttendeeAfterLoginAlias')[0];
                             attendeePanel.getForm().setValues(retData);
-                            tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeAfterLogin'));
+                            // at this point, we need to check and see if they have any sessions registered. If they do,
+                            // then we need to make there first choice "speaker" and send them to the speaker page regardless of what they said
+                            var sessionStore = Ext.StoreMgr.lookup("StoreSessions");
+                            sessionStore.load({
+                                params: {
+                                    codeCampYearId: -1,
+                                    attendeesId: retData.attendeesId
+                                },
+                                callback: function(records,operation,success) {
+                                    var sessionCount = sessionStore.getTotalCount();
+                                    if (sessionCount > 0) {
+                                        // force first radio button to be speaker. otherwise make it attendee
+                                        speakerFromFirstPage.checked = true;
+                                        tabPanel.setActiveTab(tabPanel.getTabIdByName('SpeakerAfterLogin'));
+                                    } else {
+                                        attendeeFromFirstPage.checked = true;
+                                        tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeAfterLogin'));
+                                    }
+                                }
 
+                            });
                         }
                         myMask.hide();
 
@@ -175,7 +162,6 @@ Ext.define('RegistrationApp.controller.RegisterSpeakerAttendee', {
         //console.log('username: ' + username + ' password: ' + password);
         //console.log('haveaccount: ' + haveaccount + ' forgot: ' + forgot + ' create: ' + create);
 
-
         if ( (username.length > 0 && password.length > 0) ||
         forgot === true || 
         create === true) {
@@ -191,8 +177,6 @@ Ext.define('RegistrationApp.controller.RegisterSpeakerAttendee', {
         }
 
         var continueEnabledNow = !continueButton.isDisabled();
-
-        //console.log('continueEnabled: ' + continueEnabledNow);
 
         return continueEnabledNow;
 

@@ -18,11 +18,9 @@ Ext.define('RegistrationApp.controller.SpeakerAfterLoginController', {
 
     onContinueButtonIdClick: function(button, e, options) {
         var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Updating..."});
-        // always check logged in status when get here
         myMask.show();
 
         var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];
-        //var thisPanel = Ext.ComponentQuery.query('SpeakerAfterLoginAlias')[0];
         var thisPanel = Ext.getCmp("speakerAfterLoginProfileId");
 
 
@@ -32,14 +30,7 @@ Ext.define('RegistrationApp.controller.SpeakerAfterLoginController', {
             scope:this, 
             params: thisPanel.getForm().getValues(),
             success: function(r, o) {  
-
-                //var retData = Ext.JSON.decode(r.responseText);
-
-
                 tabPanel.setActiveTab(tabPanel.getTabIdByName('SpeakerPicture'))
-                //Ext.Msg.alert('take to sponsor opt in page');
-
-
                 myMask.hide();
             },
             failure: function(r,o) {

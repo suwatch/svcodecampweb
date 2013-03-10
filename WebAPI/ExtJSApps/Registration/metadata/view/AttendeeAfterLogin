@@ -41,6 +41,25 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "layout|flex": 1,
+                        "designer|userClassName": "MyRadio7",
+                        "itemId": "AttendingSaturdayAndSundayId",
+                        "name": "attendingDaysChoiceCurrentYear",
+                        "fieldLabel": null,
+                        "boxLabel": "Attending Saturday and Sunday",
+                        "checked": true,
+                        "inputValue": "AttendingSaturdaySunday"
+                    },
+                    "designerId": "6776884e-19a8-411a-bd0c-1b2ed3af6b42"
+                },
+                {
+                    "type": "radiofield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
                         "designer|userClassName": "MyRadio6",
                         "itemId": "AttendingSaturdayId",
                         "name": "attendingDaysChoiceCurrentYear",
@@ -66,24 +85,6 @@
                         "inputValue": "AttendingSunday"
                     },
                     "designerId": "958b56bb-52cb-4a1b-99bb-96f29553d72b"
-                },
-                {
-                    "type": "radiofield",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "designer|userClassName": "MyRadio7",
-                        "itemId": "AttendingSaturdayAndSundayId",
-                        "name": "attendingDaysChoiceCurrentYear",
-                        "fieldLabel": null,
-                        "boxLabel": "Attending Saturday and Sunday",
-                        "checked": true,
-                        "inputValue": "AttendingSaturdaySunday"
-                    },
-                    "designerId": "6776884e-19a8-411a-bd0c-1b2ed3af6b42"
                 },
                 {
                     "type": "radiofield",

@@ -17,9 +17,6 @@ Ext.define('RegistrationApp.controller.AttendeeAfterLoginController', {
     extend: 'Ext.app.Controller',
 
     onContinueButtonIdClick: function(button, e, options) {
-
-
-
         var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Checking Logged In Status..."});
         // always check logged in status when get here
         myMask.show();
@@ -32,27 +29,12 @@ Ext.define('RegistrationApp.controller.AttendeeAfterLoginController', {
             scope:this, 
             params: tabPanel.getForm().getValues(),
             success: function(r, o) {  
-
                 var retData = Ext.JSON.decode(r.responseText);
-
-                // take to sponsor opt in next
-                //Ext.Msg.alert('take to sponsor opt in page');
-
-
-
-
-
-
                 myMask.hide();
-
                 var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];
                 tabPanel.setActiveTab(tabPanel.getTabIdByName('optIn'));
-
-
-
             },
             failure: function(r,o) {
-                //tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeSpeakerSponsorId'));
                 Ext.Msg.alert("Update Record Failed");
                 myMask.hide();
             } 

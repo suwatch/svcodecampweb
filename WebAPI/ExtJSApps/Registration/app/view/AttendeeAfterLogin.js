@@ -38,6 +38,15 @@ Ext.define('RegistrationApp.view.AttendeeAfterLogin', {
                     items: [
                         {
                             xtype: 'radiofield',
+                            flex: 1,
+                            itemId: 'AttendingSaturdayAndSundayId',
+                            name: 'attendingDaysChoiceCurrentYear',
+                            boxLabel: 'Attending Saturday and Sunday',
+                            checked: true,
+                            inputValue: 'AttendingSaturdaySunday'
+                        },
+                        {
+                            xtype: 'radiofield',
                             itemId: 'AttendingSaturdayId',
                             name: 'attendingDaysChoiceCurrentYear',
                             boxLabel: 'Attending Saturday',
@@ -49,14 +58,6 @@ Ext.define('RegistrationApp.view.AttendeeAfterLogin', {
                             name: 'attendingDaysChoiceCurrentYear',
                             boxLabel: 'Attending Sunday',
                             inputValue: 'AttendingSunday'
-                        },
-                        {
-                            xtype: 'radiofield',
-                            itemId: 'AttendingSaturdayAndSundayId',
-                            name: 'attendingDaysChoiceCurrentYear',
-                            boxLabel: 'Attending Saturday and Sunday',
-                            checked: true,
-                            inputValue: 'AttendingSaturdaySunday'
                         },
                         {
                             xtype: 'radiofield',

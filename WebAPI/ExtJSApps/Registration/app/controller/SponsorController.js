@@ -18,47 +18,7 @@ Ext.define('RegistrationApp.controller.SponsorController', {
 
     onContinueButtonIdClick: function(button, e, options) {
         var form =  Ext.ComponentQuery.query('sponsorAlias')[0].getForm();
-
-
         form.submit();
-
-
-
-
-        /*
-        var continuebutton;
-
-        console.log('continue button in sponsor page');
-
-        continueButton = Ext.ComponentQuery.query('sponsorAlias #continueButtonId')[0];
-        continueButton.enable();
-
-
-
-        var username = Ext.ComponentQuery.query('ForgotUsernameAlias #username')[0].getValue();
-        var email = Ext.ComponentQuery.query('ForgotUsernameAlias #email')[0].getValue();
-
-        console.log('username: ' + username + ' email: ' + email);
-
-        if (username.length > 0 || email.length > 0) {
-        continueButton = Ext.ComponentQuery.query('ForgotUsernameAlias #continueButtonId')[0];
-        if (continueButton.isDisabled()) {
-        continueButton.enable();
-        }
-        } else {
-        continueButton = Ext.ComponentQuery.query('ForgotUsernameAlias #continueButtonId')[0];
-        if (!continueButton.isDisabled()) {
-        continueButton.disable();
-        }
-        }
-
-        var continueEnabledNow = !continueButton.isDisabled();
-
-        //console.log('continueEnabled: ' + continueEnabledNow);
-
-        return continueEnabledNow;
-        */
-
     },
 
     onBackButtonIdClick: function(button, e, options) {

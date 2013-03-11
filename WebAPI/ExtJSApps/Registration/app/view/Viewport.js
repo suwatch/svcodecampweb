@@ -19,6 +19,7 @@ Ext.define('RegistrationApp.view.Viewport', {
     requires: [
         'RegistrationApp.view.ViewportMain',
         'RegistrationApp.view.SpeakerAfterLogin',
-        'RegistrationApp.view.PasswordConfirm'
+        'RegistrationApp.view.PasswordConfirm',
+        'RegistrationApp.view.WindowSession'
     ]
 });

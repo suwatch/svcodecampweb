@@ -41,7 +41,8 @@ Ext.application({
         'createAccount',
         'OptIn',
         'PasswordConfirm',
-        'SpeakerAfterLoginNotDup'
+        'SpeakerAfterLoginNotDup',
+        'WindowSession'
     ],
     autoCreateViewport: true,
     name: 'RegistrationApp',

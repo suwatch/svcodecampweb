@@ -205,6 +205,14 @@
                 "app/store/StoreSessions.js"
             ],
             "className": "StoreSessions"
+        },
+        "dba1adeb-4f72-49c6-a8d3-c3143110e49c": {
+            "paths": [
+                "metadata/view/WindowSession",
+                "app/view/override/WindowSession.js",
+                "app/view/WindowSession.js"
+            ],
+            "className": "WindowSession"
         }
     },
     "viewOrderMap": {
@@ -220,7 +228,8 @@
             "98a8cc4b-7db4-4a2e-8aea-8fe5195956e4",
             "2ae7e189-6c5e-4718-b828-ca560f5c3fdc",
             "dfdac70e-88ed-4f47-8052-2b4e87dc2118",
-            "1a1e24e7-e981-4728-b958-9dcf746faf54"
+            "1a1e24e7-e981-4728-b958-9dcf746faf54",
+            "dba1adeb-4f72-49c6-a8d3-c3143110e49c"
         ],
         "store": [
             "126b70a4-920e-49ef-8117-21150f082f6d",

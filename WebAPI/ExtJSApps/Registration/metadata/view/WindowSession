@@ -1,0 +1,222 @@
+{
+    "type": "window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "WindowSession",
+        "height": 517,
+        "width": 578,
+        "layout": "fit",
+        "title": "Session Editor"
+    },
+    "id": "ExtBox1-ext-gen59574",
+    "designerId": "dba1adeb-4f72-49c6-a8d3-c3143110e49c",
+    "cn": [
+        {
+            "type": "panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyPanel5",
+                "id": "MainPanel",
+                "layout": "border",
+                "title": null
+            },
+            "designerId": "49da3cfc-de72-4613-a17b-56a502a515fe",
+            "cn": [
+                {
+                    "type": "form",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": 6,
+                        "layout|region": "center",
+                        "designer|userClassName": "MyForm11",
+                        "id": "sessionFormPanelEditorId",
+                        "bodyPadding": 10,
+                        "title": null
+                    },
+                    "designerId": "2634b1e3-90d4-4f6f-bfcc-ecc8258421ce",
+                    "cn": [
+                        {
+                            "type": "fieldset",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyFieldSet1",
+                                "height": null,
+                                "itemId": "FieldSetSessionEditorItemId",
+                                "width": null,
+                                "title": "Basic Session Information"
+                            },
+                            "designerId": "0f9ad0fb-ea3e-4758-b1c9-93b83fede49b",
+                            "cn": [
+                                {
+                                    "type": "textfield",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|anchor": "100%",
+                                        "designer|userClassName": "MyTextField48",
+                                        "width": 150,
+                                        "name": "title",
+                                        "fieldLabel": "Title"
+                                    },
+                                    "designerId": "4427f98e-f8d0-4527-9085-7a2239bce9d7"
+                                },
+                                {
+                                    "type": "textfield",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|anchor": "100%",
+                                        "designer|userClassName": "MyTextField48",
+                                        "width": 150,
+                                        "name": "title",
+                                        "fieldLabel": "Hash Tags For Twitter"
+                                    },
+                                    "designerId": "a5a3c928-4eec-4e4c-bc69-b290d3d12ffb"
+                                },
+                                {
+                                    "type": "combobox",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|anchor": "100%",
+                                        "designer|userClassName": "MyComboBox2",
+                                        "fieldLabel": "Session Level"
+                                    },
+                                    "designerId": "32a579d1-1f56-4d67-b829-2225d16f603f"
+                                },
+                                {
+                                    "type": "textareafield",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|anchor": "100%",
+                                        "designer|userClassName": "MyTextArea3",
+                                        "height": 100,
+                                        "fieldLabel": "Session Description (just text, no html please)"
+                                    },
+                                    "designerId": "48434577-15b0-48ea-b8af-af92b2991aa0"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "gridpanel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": 2,
+                        "layout|region": "east",
+                        "designer|userClassName": "MyGridPanel1",
+                        "id": "SessionTagsGridPanelId",
+                        "width": 150,
+                        "autoScroll": true,
+                        "title": "My Grid Panel"
+                    },
+                    "designerId": "3c327de4-3d32-47e0-8c62-627f60585318",
+                    "cn": [
+                        {
+                            "type": "gridcolumn",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyColumn2",
+                                "dataIndex": "string",
+                                "text": "String"
+                            },
+                            "designerId": "db40960e-5ec9-48aa-ae79-6acd35b5be70"
+                        },
+                        {
+                            "type": "numbercolumn",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyNumberColumn",
+                                "dataIndex": "number",
+                                "text": "Number"
+                            },
+                            "designerId": "8fd7d342-5938-4a05-a07d-8eabb3e5f1d5"
+                        },
+                        {
+                            "type": "datecolumn",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyDateColumn",
+                                "dataIndex": "date",
+                                "text": "Date"
+                            },
+                            "designerId": "a18c1e3f-9b78-4d8d-84c6-8a0828a6ce42"
+                        },
+                        {
+                            "type": "booleancolumn",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyBooleanColumn",
+                                "dataIndex": "bool",
+                                "text": "Boolean"
+                            },
+                            "designerId": "be5408d0-b9d3-4f20-8aa8-f8d70a882a9a"
+                        },
+                        {
+                            "type": "gridview",
+                            "reference": {
+                                "name": "viewConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyGridView1"
+                            },
+                            "designerId": "a1bed852-5aa1-484f-bf3f-5e09d5be71f7"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

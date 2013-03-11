@@ -22,9 +22,8 @@ Ext.define('RegistrationApp.controller.SponsorController', {
     },
 
     onBackButtonIdClick: function(button, e, options) {
-        var tabWizardPanel = Ext.getCmp('TabWizardId')
+        var tabWizardPanel = Ext.getCmp('TabWizardId');
         tabWizardPanel.setActiveTab(tabWizardPanel.getTabIdByName('AttendeeSpeakerSponsorId'));
-
     },
 
     init: function(application) {

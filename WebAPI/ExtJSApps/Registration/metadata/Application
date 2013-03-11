@@ -40,7 +40,6 @@
             "AttendeeAfterLoginController",
             "SpeakerAfterLoginController",
             "CreateAccountController",
-            "SpeakerPictureController",
             "OptInController"
         ]
     },

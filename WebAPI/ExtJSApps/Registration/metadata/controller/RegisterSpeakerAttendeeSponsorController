@@ -24,7 +24,7 @@
                 "implHandler": [
                     "//console.log('onRbAttendeeChange');\r",
                     "\r",
-                    "if (newValue == true) {\r",
+                    "if (newValue === true) {\r",
                     "    this.rbChoice = 'attendee';\r",
                     "}\r",
                     "\r",
@@ -51,7 +51,7 @@
                     "\r",
                     "//console.log('onRbSpeakerChange');\r",
                     "\r",
-                    "if (newValue == true) {\r",
+                    "if (newValue === true) {\r",
                     "    this.rbChoice = 'speaker';\r",
                     "}\r",
                     "\r",
@@ -77,7 +77,7 @@
                 "implHandler": [
                     "//console.log('onRbSponsorChange');\r",
                     "\r",
-                    "if (newValue == true) {\r",
+                    "if (newValue === true) {\r",
                     "    this.rbChoice = 'sponsor';\r",
                     "}\r",
                     "\r",
@@ -123,15 +123,13 @@
                 "fn": "onContinueButtonIdClick",
                 "implHandler": [
                     "\r",
-                    "var tabWizardPanel = Ext.getCmp('TabWizardId')\r",
+                    "var tabWizardPanel = Ext.getCmp('TabWizardId');\r",
                     "\r",
                     "if (this.rbChoice === 'speaker' || this.rbChoice == 'attendee') {\r",
                     "    tabWizardPanel.setActiveTab(tabWizardPanel.getTabIdByName('attendeeorspeaker'));\r",
                     "} else if (this.rbChoice == 'sponsor') {\r",
                     "    tabWizardPanel.setActiveTab(tabWizardPanel.getTabIdByName('Sponsor'));\r",
-                    "}\r",
-                    "\r",
-                    ""
+                    "}"
                 ],
                 "name": "click",
                 "scope": "me",

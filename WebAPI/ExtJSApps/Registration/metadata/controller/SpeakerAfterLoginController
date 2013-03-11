@@ -28,14 +28,13 @@
                     "var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];\r",
                     "var thisPanel = Ext.getCmp(\"speakerAfterLoginProfileId\");\r",
                     "\r",
-                    "\r",
                     "Ext.Ajax.request({ \r",
                     "    url:'/rpc/Account/UpdateSpeaker', \r",
                     "    actionMethods:'POST', \r",
                     "    scope:this, \r",
                     "    params: thisPanel.getForm().getValues(),\r",
                     "    success: function(r, o) {  \r",
-                    "        tabPanel.setActiveTab(tabPanel.getTabIdByName('SpeakerPicture'))\r",
+                    "        tabPanel.setActiveTab(tabPanel.getTabIdByName('optIn'));\r",
                     "        myMask.hide();\r",
                     "    },\r",
                     "    failure: function(r,o) {\r",
@@ -48,7 +47,7 @@
                 "name": "click",
                 "scope": "me",
                 "designer|targetType": "Ext.button.Button",
-                "designer|controlQuery": "SpeakerAfterLoginAlias #continueButtonId"
+                "designer|controlQuery": "SpeakerAfterLoginAlias2 #continueButtonId"
             },
             "designerId": "f94d5e5c-9286-44fc-95b5-a7d2d9621cd3"
         },
@@ -93,9 +92,57 @@
                 "name": "click",
                 "scope": "me",
                 "designer|targetType": "Ext.button.Button",
-                "designer|controlQuery": "#logoutButtonId"
+                "designer|controlQuery": "SpeakerAfterLoginAlias2 #logoutButtonId"
             },
             "designerId": "351d8bba-72b1-45e1-a019-ec2020a3006a"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onSpeakerPictureUploadXIdChange",
+                "fn": "onSpeakerPictureUploadXIdChange",
+                "implHandler": [
+                    "// FOR SOME REASON THIS WILL NOT GET CALLED IN CONTROLLER\r",
+                    "\r",
+                    "var speakerForm = Ext.getCmp('speakerPictureUploadFormId');\r",
+                    "var imgId = Ext.getCmp('SpeakerImageId');\r",
+                    "if(speakerForm.isValid()){\r",
+                    "    speakerForm.submit({\r",
+                    "        url: '/rpc/Account/FormData',\r",
+                    "        waitMsg: 'Uploading your photo...',\r",
+                    "        success: function(fp, o) {\r",
+                    "            var attendeesId = o.result.attendeeId;\r",
+                    "            var imageLocation = '/attendeeimage/' + attendeesId + '.jpg?width=175&height=175&scale=both&anchor=topleft&bgcolor=black';\r",
+                    "            var antiCachePart = (new Date()).getTime();\r",
+                    "            var newSrc = imageLocation + '?dc=' + antiCachePart;\r",
+                    "            imgId.setSrc(newSrc); \r",
+                    "        },\r",
+                    "        failure: function(form, action){\r",
+                    "            //debugger;\r",
+                    "            if (action.failureType === Ext.form.action.Action.CONNECT_FAILURE) {\r",
+                    "                Ext.Msg.alert('Error',\r",
+                    "                'Status:'+action.response.status+': '+\r",
+                    "                action.response.statusText);\r",
+                    "            }\r",
+                    "            if (action.failureType === Ext.form.action.Action.SERVER_INVALID){\r",
+                    "                // server responded with success = false\r",
+                    "                Ext.Msg.alert('Invalid', action.result.errormsg);\r",
+                    "            }\r",
+                    "        }\r",
+                    "    });\r",
+                    "}"
+                ],
+                "name": "change",
+                "scope": "me",
+                "designer|targetType": "Ext.form.field.File",
+                "designer|controlQuery": "SpeakerAfterLoginAlias2  #SpeakerPictureUploadXId"
+            },
+            "designerId": "8f0f3cb2-e90a-45d0-9011-a14a60d4e1f1"
         }
     ]
 }

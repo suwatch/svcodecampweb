@@ -17,7 +17,7 @@ Ext.define('RegistrationApp.controller.RegisterSpeakerAttendee', {
     extend: 'Ext.app.Controller',
 
     onBackButtonIdClick: function(button, e, options) {
-        var tabWizardPanel = Ext.getCmp('TabWizardId')
+        var tabWizardPanel = Ext.getCmp('TabWizardId');
         tabWizardPanel.setActiveTab(Ext.getCmp('TabWizardId').getTabIdByName('AttendeeSpeakerSponsorId'));
 
     },
@@ -32,8 +32,8 @@ Ext.define('RegistrationApp.controller.RegisterSpeakerAttendee', {
         var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Logging In..."});
         var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];
 
-        var attendeeFromFirstPage = Ext.ComponentQuery.query('AttendeeSpeakerOrSponsorAlias #rbAttendee')[0].checked;
-        var speakerFromFirstPage = Ext.ComponentQuery.query('AttendeeSpeakerOrSponsorAlias #rbSpeaker')[0].checked;
+        var attendeeFromFirstPage = Ext.ComponentQuery.query('AttendeeSpeakerOrSponsorAlias #rbAttendee')[0];
+        var speakerFromFirstPage = Ext.ComponentQuery.query('AttendeeSpeakerOrSponsorAlias #rbSpeaker')[0];
         // (THIS IS SPEAKER OR ATTENDEE PAGE ONLY) var sponsorFromFirstPage = Ext.ComponentQuery.query('AttendeeOrSpeakerAlias #rbSponsor')[0].checked;
 
         if (haveaccount === true && (username.length < 3 || password.length < 4)) {
@@ -79,9 +79,6 @@ Ext.define('RegistrationApp.controller.RegisterSpeakerAttendee', {
             } else if (haveaccount) {
                 // try logging person in and if fails, put up message and leave them here,
                 // otherwise redirect to home page
-
-                //debugger;
-
                 // attempt to login.  only move to next page if login is successful.
                 // if successful, then get data and load it into form before moving
                 myMask.show();
@@ -97,16 +94,14 @@ Ext.define('RegistrationApp.controller.RegisterSpeakerAttendee', {
                     },
                     success: function(r, o) { 
                         var retData = Ext.JSON.decode(r.responseText);
-                        if (attendeeFromFirstPage === false) {
+                        tabPanel.updateAllPanelsWithData(retData);
+                        // regardless of whether they have other sessions, if they chose speaker, take them to speaker page
+                        if (attendeeFromFirstPage.checked === false) {
                             // must be speaker
-                            var speakerPanel = Ext.getCmp('speakerAfterLoginProfileId');
-                            speakerPanel.getForm().setValues(retData);
                             tabPanel.setActiveTab(tabPanel.getTabIdByName('SpeakerAfterLogin'));
 
                         } else {
-                            // must be sponsor or attendee
-                            var attendeePanel = Ext.ComponentQuery.query('AttendeeAfterLoginAlias')[0];
-                            attendeePanel.getForm().setValues(retData);
+                            // now, this says they checked attendee, but might want to be speaker.
                             // at this point, we need to check and see if they have any sessions registered. If they do,
                             // then we need to make there first choice "speaker" and send them to the speaker page regardless of what they said
                             var sessionStore = Ext.StoreMgr.lookup("StoreSessions");

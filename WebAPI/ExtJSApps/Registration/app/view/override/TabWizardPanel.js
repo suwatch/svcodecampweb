@@ -8,6 +8,10 @@ Ext.define('RegistrationApp.view.override.TabWizardPanel', {
          
         /////////////////////////// below is patch, this should really be in open event someplace else
         console.log('checking log in status from constructor of RegistrationApp.view.override.TabWizardPanel');
+         
+        var attendeeFromFirstPage = Ext.ComponentQuery.query('AttendeeSpeakerOrSponsorAlias #rbAttendee')[0];
+        var speakerFromFirstPage = Ext.ComponentQuery.query('AttendeeSpeakerOrSponsorAlias #rbSpeaker')[0];
+         
         var nextPanel;
         var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Checking Logged In Status..."});
         // always check logged in status when get here
@@ -23,37 +27,27 @@ Ext.define('RegistrationApp.view.override.TabWizardPanel', {
                 Password: '',
                 RememberMe: true
             },
-            success: function(r, o) {  
-                console.log('is logged in from launch');
-                
-                // logged in, take the person to attendee edit page. 
+            success: function(r, o) {
                 var retData = Ext.JSON.decode(r.responseText);
+                tabPanel.updateAllPanelsWithData(retData);
                 if (retData.hasSessionsCurrentYear === true) {
-                    
-                    //debugger;
-                    nextPanel =  Ext.getCmp('speakerAfterLoginProfileId');
-                    
-                    // load left side speaker profile data
-                    nextPanel.getForm().setValues(retData);
-                    
+                    speakerFromFirstPage.checked = true;
                     // need to load sessions also for this attendee (who is speaker)
                     var sessionsBySpeakerStore = Ext.getCmp("sessionsBySpeakerGridPanelId").store;
                     sessionsBySpeakerStore.load({
                         params: {
                             codeCampYearId: -1,
                             attendeesId: retData.attendeesId
+                        },
+                        callback: function(records,operation,success) {
+                            tabPanel.setActiveTab(tabPanel.getTabIdByName('SpeakerAfterLogin'));  
                         }
                     });
- 
-                    tabPanel.setActiveTab(tabPanel.getTabIdByName('SpeakerAfterLogin'));
                 } else {
-                    nextPanel = Ext.ComponentQuery.query('AttendeeAfterLoginAlias')[0];
-                    nextPanel.getForm().setValues(retData);
+                    attendeeFromFirstPage.checked = true;
                     tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeAfterLogin'));
                 }
                 
-                //debugger;
-                // set picture string
                 var imgId = Ext.ComponentQuery.query('#SpeakerImgId')[0];
                 var imageLocation = '/attendeeimage/' + retData.attendeesId + '.jpg?width=175';
                 var antiCachePart = (new Date()).getTime();

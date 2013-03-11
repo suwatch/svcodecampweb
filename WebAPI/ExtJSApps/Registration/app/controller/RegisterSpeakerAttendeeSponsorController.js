@@ -19,7 +19,7 @@ Ext.define('RegistrationApp.controller.RegisterSpeakerAttendeeSponsorController'
     onRbAttendeeChange: function(field, newValue, oldValue, options) {
         //console.log('onRbAttendeeChange');
 
-        if (newValue == true) {
+        if (newValue === true) {
             this.rbChoice = 'attendee';
         }
 
@@ -30,7 +30,7 @@ Ext.define('RegistrationApp.controller.RegisterSpeakerAttendeeSponsorController'
 
         //console.log('onRbSpeakerChange');
 
-        if (newValue == true) {
+        if (newValue === true) {
             this.rbChoice = 'speaker';
         }
 
@@ -40,7 +40,7 @@ Ext.define('RegistrationApp.controller.RegisterSpeakerAttendeeSponsorController'
     onRbSponsorChange: function(field, newValue, oldValue, options) {
         //console.log('onRbSponsorChange');
 
-        if (newValue == true) {
+        if (newValue === true) {
             this.rbChoice = 'sponsor';
         }
 
@@ -49,15 +49,13 @@ Ext.define('RegistrationApp.controller.RegisterSpeakerAttendeeSponsorController'
 
     onContinueButtonIdClick: function(button, e, options) {
 
-        var tabWizardPanel = Ext.getCmp('TabWizardId')
+        var tabWizardPanel = Ext.getCmp('TabWizardId');
 
         if (this.rbChoice === 'speaker' || this.rbChoice == 'attendee') {
             tabWizardPanel.setActiveTab(tabWizardPanel.getTabIdByName('attendeeorspeaker'));
         } else if (this.rbChoice == 'sponsor') {
             tabWizardPanel.setActiveTab(tabWizardPanel.getTabIdByName('Sponsor'));
         }
-
-
     },
 
     enableContinueButtonIfDisabled: function() {

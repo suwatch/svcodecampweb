@@ -53,7 +53,6 @@ Ext.application({
         'AttendeeAfterLoginController',
         'SpeakerAfterLoginController',
         'CreateAccountController',
-        'SpeakerPictureController',
         'OptInController'
     ],
 

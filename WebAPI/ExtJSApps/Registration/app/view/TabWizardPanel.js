@@ -58,7 +58,8 @@ Ext.define('RegistrationApp.view.TabWizardPanel', {
                     xtype: 'AttendeeAfterLoginAlias'
                 },
                 {
-                    xtype: 'SpeakerAfterLoginAlias2'
+                    xtype: 'SpeakerAfterLoginAlias2',
+                    title: 'Speaker After Login'
                 },
                 {
                     xtype: 'createAccountAlias'
@@ -99,15 +100,30 @@ Ext.define('RegistrationApp.view.TabWizardPanel', {
         else if (stepName === 'createAccount') {
             tabId = 6;
         }
-        else if (stepName === 'SpeakerPicture') {
+        else if (stepName === 'optIn') {
             tabId = 7;
         }
-        else if (stepName === 'optIn') {
-            tabId = 8;
+        else {
+            console.log('getTabIdByName called with no match ' + stepName);
         }
+
         return tabId;
 
 
+    },
+
+    updateAllPanelsWithData: function(retData) {
+        // Update all form pages with data coming back from server
+
+
+        var speakerProfilePanel =  Ext.getCmp('speakerAfterLoginProfileId');
+        speakerProfilePanel.getForm().setValues(retData);
+
+        var attendeePanel = Ext.ComponentQuery.query('AttendeeAfterLoginAlias')[0];
+        attendeePanel.getForm().setValues(retData);
+
+        var optInPanel = Ext.ComponentQuery.query('OptInAlias')[0];
+        optInPanel.getForm().setValues(retData);
     }
 
 });

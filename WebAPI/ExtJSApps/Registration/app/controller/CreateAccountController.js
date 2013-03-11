@@ -17,40 +17,8 @@ Ext.define('RegistrationApp.controller.CreateAccountController', {
     extend: 'Ext.app.Controller',
 
     onBackButtonIdClick: function(button, e, options) {
-
-        var tabWizardPanel = Ext.getCmp('TabWizardId')
+        var tabWizardPanel = Ext.getCmp('TabWizardId');
         tabWizardPanel.setActiveTab(Ext.getCmp('TabWizardId').getTabIdByName('attendeeorspeaker'));
-
-        /*
-
-        // THIS IS IN getTabIdByName function name
-
-        if (stepName === 'AttendeeSpeakerSponsorId') {
-            tabId = 0;
-        } else if (stepName === 'attendeeorspeaker') {
-            tabId = 1;
-        } else if (stepName === 'forgotusernameorpassword') {
-            tabId = 2;
-        } else if (stepName === 'Sponsor') {
-            tabId = 3;
-        }
-        else if (stepName === 'AttendeeAfterLogin') {
-            tabId = 4;
-        }
-        else if (stepName === 'SpeakerAfterLogin') {
-            tabId = 5;
-        }
-        else if (stepName === 'createAccount') {
-            tabId = 6;
-        }
-        else if (stepName === 'SpeakerPicture') {
-            tabId = 7;
-        }
-        else if (stepName === 'optIn') {
-            tabId = 8;
-        }
-        */
-
     },
 
     onContinueButtonIdClick: function(button, e, options) {
@@ -77,17 +45,15 @@ Ext.define('RegistrationApp.controller.CreateAccountController', {
             scope:this, 
             params: localValues,
             success: function(r, o) { 
+                var retData = Ext.JSON.decode(r.responseText);
+                tabPanel.updateAllPanelsWithData(retData);
+
                 // need to figure out if speaker or attendee selected
                 //var attendeeFromFirstPage = Ext.ComponentQuery.query('AttendeeSpeakerOrSponsorAlias #rbAttendee')[0].checked;
                 var speakerFromFirstPage = Ext.ComponentQuery.query('AttendeeSpeakerOrSponsorAlias #rbSpeaker')[0].checked;
                 if (speakerFromFirstPage === true) {
-                    var speakerPanel = Ext.getCmp('speakerAfterLoginProfileId');
-                    speakerPanel.getForm().setValues(localValues);
+                    tabPanel.setActiveTab(tabPanel.getTabIdByName('SpeakerAfterLogin'));
                 } else {
-                    var attendeePanel = Ext.ComponentQuery.query('AttendeeAfterLoginAlias')[0];
-                    attendeePanel.getForm().setValues(localValues);
-
-                    var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];
                     tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeAfterLogin'));
                 }
                 myMask.hide();

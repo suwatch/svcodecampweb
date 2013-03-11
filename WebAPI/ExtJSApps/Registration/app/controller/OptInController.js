@@ -19,47 +19,17 @@ Ext.define('RegistrationApp.controller.OptInController', {
     onBackButtonIdClick: function(button, e, options) {
         //var attendeeFromFirstPage = Ext.ComponentQuery.query('AttendeeSpeakerOrSponsorAlias #rbAttendee')[0].checked;
         var speakerFromFirstPage = Ext.ComponentQuery.query('AttendeeSpeakerOrSponsorAlias #rbSpeaker')[0].checked;
-
         var tabWizardPanel = Ext.getCmp('TabWizardId');
 
         if (speakerFromFirstPage === true) {
-            tabWizardPanel.setActiveTab(Ext.getCmp('TabWizardId').getTabIdByName('SpeakerPicture'));
+            tabWizardPanel.setActiveTab(Ext.getCmp('TabWizardId').getTabIdByName('SpeakerAfterLogin'));
         } else {
             tabWizardPanel.setActiveTab(Ext.getCmp('TabWizardId').getTabIdByName('AttendeeAfterLogin'));
         }
-
-        /*
-        if (stepName === 'AttendeeSpeakerSponsorId') {
-        tabId = 0;
-        } else if (stepName === 'attendeeorspeaker') {
-        tabId = 1;
-        } else if (stepName === 'forgotusernameorpassword') {
-        tabId = 2;
-        } else if (stepName === 'Sponsor') {
-        tabId = 3;
-        }
-        else if (stepName === 'AttendeeAfterLogin') {
-        tabId = 4;
-        }
-        else if (stepName === 'SpeakerAfterLogin') {
-        tabId = 5;
-        }
-        else if (stepName === 'createAccount') {
-        tabId = 6;
-        }
-        else if (stepName === 'SpeakerPicture') {
-        tabId = 7;
-        }
-        else if (stepName === 'optIn') {
-        tabId = 8;
-        }
-        */
-
     },
 
     onContinueButtonIdClick: function(button, e, options) {
         var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Checking Logged In Status..."});
-
         myMask.show();
         var thisPanel = Ext.ComponentQuery.query('OptInAlias')[0];
 
@@ -69,27 +39,9 @@ Ext.define('RegistrationApp.controller.OptInController', {
             scope:this, 
             params: thisPanel.getForm().getValues(),
             success: function(r, o) {  
-
                 var retData = Ext.JSON.decode(r.responseText);
-
-                // take to sponsor opt in next
-                //Ext.Msg.alert('take to sponsor opt in page');
                 myMask.hide();
-
-                //debugger;
-                //Ext.Ajax.request({ 
-                //    url:'/api/Account/RedirectSessions', 
-                //    actionMethods:'GET'
-                //});
-
-
-
-                //RedirectSessions
-
-                //debugger;
                 window.parent.location.href = '../../Session#';
-
-
             },
             failure: function(r,o) {
                 //tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeSpeakerSponsorId'));

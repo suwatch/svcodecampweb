@@ -34,6 +34,7 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
                     flex: 5,
                     region: 'west',
                     split: true,
+                    id: 'SpeakerPanelDetailProfPictId',
                     width: 150,
                     layout: {
                         align: 'stretch',
@@ -250,13 +251,7 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
                                             padding: 10,
                                             fieldLabel: '',
                                             hideLabel: true,
-                                            labelPad: 0,
-                                            listeners: {
-                                                change: {
-                                                    fn: me.onSpeakerPictureUploadXIdChange,
-                                                    scope: me
-                                                }
-                                            }
+                                            labelPad: 0
                                         },
                                         {
                                             xtype: 'panel',
@@ -337,38 +332,6 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
         });
 
         me.callParent(arguments);
-    },
-
-    onSpeakerPictureUploadXIdChange: function(filefield, value, options) {
-        // FOR SOME REASON THIS WILL NOT GET CALLED IN CONTROLLER
-
-        var speakerForm = Ext.getCmp('speakerPictureUploadFormId');
-        var imgId = Ext.getCmp('SpeakerImageId');
-        if(speakerForm.isValid()){
-            speakerForm.submit({
-                url: '/rpc/Account/FormData',
-                waitMsg: 'Uploading your photo...',
-                success: function(fp, o) {
-                    var attendeesId = o.result.attendeeId;
-                    var imageLocation = '/attendeeimage/' + attendeesId + '.jpg?width=175&height=175&scale=both&anchor=topleft&bgcolor=black';
-                    var antiCachePart = (new Date()).getTime();
-                    var newSrc = imageLocation + '?dc=' + antiCachePart;
-                    imgId.setSrc(newSrc); 
-                },
-                failure: function(form, action){
-                    //debugger;
-                    if (action.failureType === Ext.form.action.Action.CONNECT_FAILURE) {
-                        Ext.Msg.alert('Error',
-                        'Status:'+action.response.status+': '+
-                        action.response.statusText);
-                    }
-                    if (action.failureType === Ext.form.action.Action.SERVER_INVALID){
-                        // server responded with success = false
-                        Ext.Msg.alert('Invalid', action.result.errormsg);
-                    }
-                }
-            });
-        }
     }
 
 });

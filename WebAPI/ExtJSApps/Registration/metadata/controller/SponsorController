@@ -43,9 +43,8 @@
                 "designer|userClassName": "onBackButtonIdClick",
                 "fn": "onBackButtonIdClick",
                 "implHandler": [
-                    "var tabWizardPanel = Ext.getCmp('TabWizardId')\r",
-                    "tabWizardPanel.setActiveTab(tabWizardPanel.getTabIdByName('AttendeeSpeakerSponsorId'));\r",
-                    ""
+                    "var tabWizardPanel = Ext.getCmp('TabWizardId');\r",
+                    "tabWizardPanel.setActiveTab(tabWizardPanel.getTabIdByName('AttendeeSpeakerSponsorId'));"
                 ],
                 "name": "click",
                 "scope": "me",

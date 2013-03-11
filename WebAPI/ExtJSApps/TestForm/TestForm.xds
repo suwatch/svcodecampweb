@@ -29,6 +29,22 @@
                 "app/view/Viewport.js"
             ],
             "className": "MyViewport"
+        },
+        "14aca3fc-7cf7-4f19-9476-2d509748084d": {
+            "paths": [
+                "metadata/controller/MyController1",
+                "app/controller/override/MyController1.js",
+                "app/controller/MyController1.js"
+            ],
+            "className": "MyController1"
+        },
+        "c4ad7786-870f-464f-a6af-467f1ed79057": {
+            "paths": [
+                "metadata/controller/MyController",
+                "app/controller/override/MyController.js",
+                "app/controller/MyController.js"
+            ],
+            "className": "MyController"
         }
     },
     "viewOrderMap": {
@@ -36,7 +52,10 @@
             "4b402cb5-ec70-412b-8a97-3fc3d37d65e9"
         ],
         "store": [],
-        "controller": [],
+        "controller": [
+            "14aca3fc-7cf7-4f19-9476-2d509748084d",
+            "c4ad7786-870f-464f-a6af-467f1ed79057"
+        ],
         "model": [],
         "resource": [
             "b6cb77a3-5ec0-42f3-b714-23dc33762b12"

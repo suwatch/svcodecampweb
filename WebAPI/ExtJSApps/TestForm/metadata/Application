@@ -10,7 +10,11 @@
             "MyViewport"
         ],
         "autoCreateViewport": true,
-        "name": "MyApp"
+        "name": "MyApp",
+        "controllers": [
+            "MyController1",
+            "MyController"
+        ]
     },
     "id": "ExtBox1-ext-gen18616",
     "designerId": "application"

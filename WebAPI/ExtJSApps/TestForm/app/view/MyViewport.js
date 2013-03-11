@@ -27,32 +27,25 @@ Ext.define('MyApp.view.MyViewport', {
             items: [
                 {
                     xtype: 'panel',
-                    flex: 5,
-                    region: 'west',
-                    defaults: {
-                        anchor: '95%'
-                    },
-                    title: 'My Panel',
-                    items: [
-                        {
-                            xtype: 'textfield',
-                            fieldLabel: 'Label'
-                        },
-                        {
-                            xtype: 'textfield',
-                            fieldLabel: 'Label'
-                        }
-                    ]
-                },
-                {
-                    xtype: 'panel',
                     flex: 2,
                     region: 'center',
                     title: 'My Panel',
                     items: [
                         {
-                            xtype: 'textfield',
-                            fieldLabel: 'Label'
+                            xtype: 'button',
+                            id: 'buttonId',
+                            text: 'MyButton'
+                        },
+                        {
+                            xtype: 'panel',
+                            title: 'My Panel',
+                            items: [
+                                {
+                                    xtype: 'button',
+                                    id: 'buttonPanelNestedId',
+                                    text: 'MyButton'
+                                }
+                            ]
                         }
                     ]
                 }

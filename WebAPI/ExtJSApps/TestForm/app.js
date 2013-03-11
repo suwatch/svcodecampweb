@@ -22,5 +22,9 @@ Ext.application({
         'MyViewport'
     ],
     autoCreateViewport: true,
-    name: 'MyApp'
+    name: 'MyApp',
+    controllers: [
+        'MyController1',
+        'MyController'
+    ]
 });

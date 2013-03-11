@@ -23,14 +23,13 @@ Ext.define('RegistrationApp.controller.SpeakerAfterLoginController', {
         var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];
         var thisPanel = Ext.getCmp("speakerAfterLoginProfileId");
 
-
         Ext.Ajax.request({ 
             url:'/rpc/Account/UpdateSpeaker', 
             actionMethods:'POST', 
             scope:this, 
             params: thisPanel.getForm().getValues(),
             success: function(r, o) {  
-                tabPanel.setActiveTab(tabPanel.getTabIdByName('SpeakerPicture'))
+                tabPanel.setActiveTab(tabPanel.getTabIdByName('optIn'));
                 myMask.hide();
             },
             failure: function(r,o) {
@@ -70,13 +69,48 @@ Ext.define('RegistrationApp.controller.SpeakerAfterLoginController', {
         });
     },
 
+    onSpeakerPictureUploadXIdChange: function(filefield, value, options) {
+        // FOR SOME REASON THIS WILL NOT GET CALLED IN CONTROLLER
+
+        var speakerForm = Ext.getCmp('speakerPictureUploadFormId');
+        var imgId = Ext.getCmp('SpeakerImageId');
+        if(speakerForm.isValid()){
+            speakerForm.submit({
+                url: '/rpc/Account/FormData',
+                waitMsg: 'Uploading your photo...',
+                success: function(fp, o) {
+                    var attendeesId = o.result.attendeeId;
+                    var imageLocation = '/attendeeimage/' + attendeesId + '.jpg?width=175&height=175&scale=both&anchor=topleft&bgcolor=black';
+                    var antiCachePart = (new Date()).getTime();
+                    var newSrc = imageLocation + '?dc=' + antiCachePart;
+                    imgId.setSrc(newSrc); 
+                },
+                failure: function(form, action){
+                    //debugger;
+                    if (action.failureType === Ext.form.action.Action.CONNECT_FAILURE) {
+                        Ext.Msg.alert('Error',
+                        'Status:'+action.response.status+': '+
+                        action.response.statusText);
+                    }
+                    if (action.failureType === Ext.form.action.Action.SERVER_INVALID){
+                        // server responded with success = false
+                        Ext.Msg.alert('Invalid', action.result.errormsg);
+                    }
+                }
+            });
+        }
+    },
+
     init: function(application) {
         this.control({
-            "SpeakerAfterLoginAlias #continueButtonId": {
+            "SpeakerAfterLoginAlias2 #continueButtonId": {
                 click: this.onContinueButtonIdClick
             },
-            "#logoutButtonId": {
+            "SpeakerAfterLoginAlias2 #logoutButtonId": {
                 click: this.onLogoutButtonIdClick
+            },
+            "SpeakerAfterLoginAlias2  #SpeakerPictureUploadXId": {
+                change: this.onSpeakerPictureUploadXIdChange
             }
         });
     }

@@ -30,6 +30,7 @@
                 "layout|region": "west",
                 "layout|split": true,
                 "designer|userClassName": "MyPanel4",
+                "id": "SpeakerPanelDetailProfPictId",
                 "width": 150,
                 "layout": "vbox",
                 "title": null
@@ -539,55 +540,7 @@
                                         "labelPad": 0,
                                         "labelWidth": null
                                     },
-                                    "designerId": "6cd5b015-a5fd-4559-92fd-de5d67368104",
-                                    "cn": [
-                                        {
-                                            "type": "basiceventbinding",
-                                            "reference": {
-                                                "name": "listeners",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "designer|userClassName": "onSpeakerPictureUploadXIdChange",
-                                                "fn": "onSpeakerPictureUploadXIdChange",
-                                                "implHandler": [
-                                                    "// FOR SOME REASON THIS WILL NOT GET CALLED IN CONTROLLER\r",
-                                                    "\r",
-                                                    "var speakerForm = Ext.getCmp('speakerPictureUploadFormId');\r",
-                                                    "var imgId = Ext.getCmp('SpeakerImageId');\r",
-                                                    "if(speakerForm.isValid()){\r",
-                                                    "    speakerForm.submit({\r",
-                                                    "        url: '/rpc/Account/FormData',\r",
-                                                    "        waitMsg: 'Uploading your photo...',\r",
-                                                    "        success: function(fp, o) {\r",
-                                                    "            var attendeesId = o.result.attendeeId;\r",
-                                                    "            var imageLocation = '/attendeeimage/' + attendeesId + '.jpg?width=175&height=175&scale=both&anchor=topleft&bgcolor=black';\r",
-                                                    "            var antiCachePart = (new Date()).getTime();\r",
-                                                    "            var newSrc = imageLocation + '?dc=' + antiCachePart;\r",
-                                                    "            imgId.setSrc(newSrc); \r",
-                                                    "        },\r",
-                                                    "        failure: function(form, action){\r",
-                                                    "            //debugger;\r",
-                                                    "            if (action.failureType === Ext.form.action.Action.CONNECT_FAILURE) {\r",
-                                                    "                Ext.Msg.alert('Error',\r",
-                                                    "                'Status:'+action.response.status+': '+\r",
-                                                    "                action.response.statusText);\r",
-                                                    "            }\r",
-                                                    "            if (action.failureType === Ext.form.action.Action.SERVER_INVALID){\r",
-                                                    "                // server responded with success = false\r",
-                                                    "                Ext.Msg.alert('Invalid', action.result.errormsg);\r",
-                                                    "            }\r",
-                                                    "        }\r",
-                                                    "    });\r",
-                                                    "}"
-                                                ],
-                                                "name": "change",
-                                                "scope": "me"
-                                            },
-                                            "designerId": "7a8b5daf-8d61-40d8-92a4-70add9f248c1"
-                                        }
-                                    ]
+                                    "designerId": "6cd5b015-a5fd-4559-92fd-de5d67368104"
                                 },
                                 {
                                     "type": "panel",

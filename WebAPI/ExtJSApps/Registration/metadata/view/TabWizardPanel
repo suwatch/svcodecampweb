@@ -74,12 +74,13 @@
                     "else if (stepName === 'createAccount') {\r",
                     "    tabId = 6;\r",
                     "}\r",
-                    "else if (stepName === 'SpeakerPicture') {\r",
+                    "else if (stepName === 'optIn') {\r",
                     "    tabId = 7;\r",
                     "}\r",
-                    "else if (stepName === 'optIn') {\r",
-                    "    tabId = 8;\r",
+                    "else {\r",
+                    "    console.log('getTabIdByName called with no match ' + stepName);\r",
                     "}\r",
+                    "\r",
                     "return tabId;\r",
                     "\r",
                     ""
@@ -219,7 +220,7 @@
             "codeClass": null,
             "userConfig": {
                 "layout": null,
-                "title": null
+                "title": "Speaker After Login"
             },
             "designerId": "af3426cb-f9d7-4f43-b79d-627519c76647",
             "masterInstanceId": "ExtBox1-ext-gen5032",
@@ -288,6 +289,35 @@
                     "designerId": "89c7e3fd-0d85-45fb-ade7-5fbc6d1e2687"
                 }
             ]
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "updateAllPanelsWithData",
+                "fn": "updateAllPanelsWithData",
+                "designer|params": [
+                    "retData"
+                ],
+                "implHandler": [
+                    "// Update all form pages with data coming back from server\r",
+                    "\r",
+                    "\r",
+                    "var speakerProfilePanel =  Ext.getCmp('speakerAfterLoginProfileId');\r",
+                    "speakerProfilePanel.getForm().setValues(retData);\r",
+                    "\r",
+                    "var attendeePanel = Ext.ComponentQuery.query('AttendeeAfterLoginAlias')[0];\r",
+                    "attendeePanel.getForm().setValues(retData);\r",
+                    "\r",
+                    "var optInPanel = Ext.ComponentQuery.query('OptInAlias')[0];\r",
+                    "optInPanel.getForm().setValues(retData);"
+                ]
+            },
+            "designerId": "74984a7b-52a1-451c-aaa0-06fb43901342"
         }
     ]
 }

@@ -21,5 +21,8 @@ namespace CodeCampSV
         //  public List<int> PlanIds { get; set; }
 
         public int? CodeCampYearId { get; set; }
+
+        // if true, then set boolean column for each tag
+        public int? SessionId { get; set; }
     }
 }

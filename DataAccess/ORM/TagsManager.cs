@@ -50,6 +50,14 @@ namespace CodeCampSV
                   baseQuery = baseQuery.Where(data => tagsIds.Contains(data.Id));
               }
 
+            List<int> tagIdsTagged = null;
+            if (query.SessionId.HasValue)
+            {
+                tagIdsTagged = (from data in meta.SessionTags
+                                        where data.SessionId == query.SessionId.Value && data.SessionId.HasValue
+                                        select data.TagId).ToList();
+            }
+
 
 
             IQueryable<TagsResult> results = GetBaseResultIQueryable(baseQuery);
@@ -58,6 +66,14 @@ namespace CodeCampSV
 
 
             List<TagsResult> resultList = GetFinalResults(results, query);
+
+            if (tagIdsTagged != null && tagIdsTagged.Count > 0)
+            {
+                foreach (var rec in resultList)
+                {
+                    rec.TaggedInSession = tagIdsTagged.Contains(rec.Id);
+                }
+            }
 
             //  Put Stuff Here if you want to load another result
             //  The following is done AFTER GetFinalResults so that we don't waste machine cycles sucking in all the

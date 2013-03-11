@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace CodeCampSV
 {
@@ -23,5 +24,9 @@ namespace CodeCampSV
         //  Or even related datasets like:
         //  public List<CargoResult> Cargos { get; set; }
         // 
+
+        [DataMember]
+        public bool TaggedInSession { get; set; }
+
     }
 }

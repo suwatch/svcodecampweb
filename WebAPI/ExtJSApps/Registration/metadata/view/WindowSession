@@ -7,14 +7,43 @@
     "codeClass": null,
     "userConfig": {
         "designer|userClassName": "WindowSession",
-        "height": 517,
-        "width": 578,
+        "height": 630,
+        "width": 836,
         "layout": "fit",
         "title": "Session Editor"
     },
     "id": "ExtBox1-ext-gen59574",
     "designerId": "dba1adeb-4f72-49c6-a8d3-c3143110e49c",
     "cn": [
+        {
+            "type": "toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "designer|userClassName": "MyToolbar5"
+            },
+            "designerId": "2e559b97-3001-465f-9317-38da3d4936ea",
+            "cn": [
+                {
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MyButton9",
+                        "text": "Save"
+                    },
+                    "designerId": "1cd3c844-ffa0-438f-ad3a-1e5056ff63b6"
+                }
+            ]
+        },
         {
             "type": "panel",
             "reference": {
@@ -24,7 +53,7 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyPanel5",
-                "id": "MainPanel",
+                "id": "SessionEditorPanelId",
                 "layout": "border",
                 "title": null
             },
@@ -142,66 +171,11 @@
                         "id": "SessionTagsGridPanelId",
                         "width": 150,
                         "autoScroll": true,
-                        "title": "My Grid Panel"
+                        "title": "Session Tags",
+                        "store": "TagStore"
                     },
                     "designerId": "3c327de4-3d32-47e0-8c62-627f60585318",
                     "cn": [
-                        {
-                            "type": "gridcolumn",
-                            "reference": {
-                                "name": "columns",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "designer|userClassName": "MyColumn2",
-                                "dataIndex": "string",
-                                "text": "String"
-                            },
-                            "designerId": "db40960e-5ec9-48aa-ae79-6acd35b5be70"
-                        },
-                        {
-                            "type": "numbercolumn",
-                            "reference": {
-                                "name": "columns",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "designer|userClassName": "MyNumberColumn",
-                                "dataIndex": "number",
-                                "text": "Number"
-                            },
-                            "designerId": "8fd7d342-5938-4a05-a07d-8eabb3e5f1d5"
-                        },
-                        {
-                            "type": "datecolumn",
-                            "reference": {
-                                "name": "columns",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "designer|userClassName": "MyDateColumn",
-                                "dataIndex": "date",
-                                "text": "Date"
-                            },
-                            "designerId": "a18c1e3f-9b78-4d8d-84c6-8a0828a6ce42"
-                        },
-                        {
-                            "type": "booleancolumn",
-                            "reference": {
-                                "name": "columns",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "designer|userClassName": "MyBooleanColumn",
-                                "dataIndex": "bool",
-                                "text": "Boolean"
-                            },
-                            "designerId": "be5408d0-b9d3-4f20-8aa8-f8d70a882a9a"
-                        },
                         {
                             "type": "gridview",
                             "reference": {
@@ -213,6 +187,83 @@
                                 "designer|userClassName": "MyGridView1"
                             },
                             "designerId": "a1bed852-5aa1-484f-bf3f-5e09d5be71f7"
+                        },
+                        {
+                            "type": "gridcolumn",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyColumn3",
+                                "width": 160,
+                                "dataIndex": "tagName",
+                                "flex": 1,
+                                "text": "TagName"
+                            },
+                            "designerId": "a0dfdef7-f83d-48ab-ab18-262d1f361d8a"
+                        },
+                        {
+                            "type": "booleancolumn",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyBooleanColumn1",
+                                "width": 60,
+                                "dataIndex": "taggedInSession",
+                                "text": "Tagged"
+                            },
+                            "designerId": "934ec198-c70c-4e8d-b3bf-54f28040a2d8",
+                            "cn": [
+                                {
+                                    "type": "checkboxfield",
+                                    "reference": {
+                                        "name": "editor",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|userClassName": "MyCheckbox3",
+                                        "boxLabel": null
+                                    },
+                                    "designerId": "277ba0f5-ecbf-4091-8cba-7412398e01e2"
+                                },
+                                {
+                                    "type": "basicfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|userClassName": "rendererxxx",
+                                        "fn": "rendererxxx",
+                                        "designer|params": [
+                                            "value"
+                                        ],
+                                        "implHandler": [
+                                            "return \"<input type='checkbox'\" + (value ? \"checked='checked'\" : \"\") + \">\";"
+                                        ]
+                                    },
+                                    "designerId": "3d8a822b-b62d-4a35-85fa-37d26d9675a2"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "gridcelleditingplugin",
+                            "reference": {
+                                "name": "plugins",
+                                "type": "array"
+                            },
+                            "codeClass": "Ext.grid.plugin.CellEditing",
+                            "userConfig": {
+                                "designer|userClassName": "MyCellEditingPlugin"
+                            },
+                            "designerId": "2db2d411-4146-4f21-9bed-88d954c49471"
                         }
                     ]
                 }

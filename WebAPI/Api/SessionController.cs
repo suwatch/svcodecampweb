@@ -83,21 +83,16 @@ namespace WebAPI.Api
 
         public HttpResponseMessage GetTagsBySession(int sessionId)
         {
-            var sessionTags =
-                SessionTagsManager.I.Get(new SessionTagsQuery
+            var tags =
+                TagsManager.I.Get(new TagsQuery
                                              {
-                                                 SessionId = sessionId,
-                                                 WithTagDescription = true,
-                                                 WithAllTagsAllYears = true
+                                                 SessionId = sessionId
                                              });
 
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, sessionTags);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, tags);
             return response;
         }
 
-
-
-        //// GET api/session
         //public IEnumerable<string> Get()
         //{
         //    return new string[] { "value1", "value2" };

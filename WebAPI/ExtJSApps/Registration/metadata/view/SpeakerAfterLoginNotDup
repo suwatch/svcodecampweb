@@ -646,6 +646,7 @@
                             "userConfig": {
                                 "layout|flex": null,
                                 "designer|userClassName": "MyButton19",
+                                "id": "AddNewSessionButtonId",
                                 "text": "Add New Session"
                             },
                             "designerId": "c491f9f3-be04-4c42-8dcc-8f7c514ff89d"

@@ -1,0 +1,43 @@
+{
+    "type": "datamodel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "TagsModel",
+        "idProperty": "id"
+    },
+    "id": "ExtBox1-ext-gen69924",
+    "designerId": "09f95399-73c3-48fc-988b-99bac7d316f9",
+    "cn": [
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field3",
+                "name": "tagName"
+            },
+            "designerId": "de987d96-8c54-4e01-a15a-221612a53872"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "field4",
+                "name": "taggedInSession",
+                "type": "boolean"
+            },
+            "designerId": "84774122-5927-48ce-ad59-5be481031c63"
+        }
+    ]
+}

@@ -23,11 +23,13 @@ Ext.application({
         'Ext.data.proxy.Rest'
     ],
     models: [
-        'Sessions'
+        'Sessions',
+        'TagsModel'
     ],
     stores: [
         'ShirtSizeStore',
-        'StoreSessions'
+        'StoreSessions',
+        'TagStore'
     ],
     views: [
         'ViewportMain',
@@ -37,7 +39,6 @@ Ext.application({
         'sponsor',
         'TabWizardPanel',
         'AttendeeAfterLogin',
-        'SpeakerAfterLogin',
         'createAccount',
         'OptIn',
         'PasswordConfirm',
@@ -54,7 +55,8 @@ Ext.application({
         'AttendeeAfterLoginController',
         'SpeakerAfterLoginController',
         'CreateAccountController',
-        'OptInController'
+        'OptInController',
+        'SessionEditorController'
     ],
 
     launch: function() {

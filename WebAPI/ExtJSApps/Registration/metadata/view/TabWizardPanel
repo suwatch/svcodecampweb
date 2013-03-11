@@ -81,9 +81,9 @@
                     "    console.log('getTabIdByName called with no match ' + stepName);\r",
                     "}\r",
                     "\r",
-                    "return tabId;\r",
                     "\r",
-                    ""
+                    "\r",
+                    "return tabId;"
                 ]
             },
             "designerId": "0753039d-4bc5-4d65-81b6-1e35f6445783"

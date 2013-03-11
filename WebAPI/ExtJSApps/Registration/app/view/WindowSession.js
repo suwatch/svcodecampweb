@@ -16,8 +16,8 @@
 Ext.define('RegistrationApp.view.WindowSession', {
     extend: 'Ext.window.Window',
 
-    height: 517,
-    width: 578,
+    height: 630,
+    width: 836,
     layout: {
         type: 'fit'
     },
@@ -27,10 +27,22 @@ Ext.define('RegistrationApp.view.WindowSession', {
         var me = this;
 
         Ext.applyIf(me, {
+            dockedItems: [
+                {
+                    xtype: 'toolbar',
+                    dock: 'top',
+                    items: [
+                        {
+                            xtype: 'button',
+                            text: 'Save'
+                        }
+                    ]
+                }
+            ],
             items: [
                 {
                     xtype: 'panel',
-                    id: 'MainPanel',
+                    id: 'SessionEditorPanelId',
                     layout: {
                         type: 'border'
                     },
@@ -83,32 +95,37 @@ Ext.define('RegistrationApp.view.WindowSession', {
                             id: 'SessionTagsGridPanelId',
                             width: 150,
                             autoScroll: true,
-                            title: 'My Grid Panel',
+                            title: 'Session Tags',
+                            store: 'TagStore',
+                            viewConfig: {
+
+                            },
                             columns: [
                                 {
                                     xtype: 'gridcolumn',
-                                    dataIndex: 'string',
-                                    text: 'String'
-                                },
-                                {
-                                    xtype: 'numbercolumn',
-                                    dataIndex: 'number',
-                                    text: 'Number'
-                                },
-                                {
-                                    xtype: 'datecolumn',
-                                    dataIndex: 'date',
-                                    text: 'Date'
+                                    width: 160,
+                                    dataIndex: 'tagName',
+                                    flex: 1,
+                                    text: 'TagName'
                                 },
                                 {
                                     xtype: 'booleancolumn',
-                                    dataIndex: 'bool',
-                                    text: 'Boolean'
+                                    rendererxxx: function(value) {
+                                        return "<input type='checkbox'" + (value ? "checked='checked'" : "") + ">";
+                                    },
+                                    width: 60,
+                                    dataIndex: 'taggedInSession',
+                                    text: 'Tagged',
+                                    editor: {
+                                        xtype: 'checkboxfield'
+                                    }
                                 }
                             ],
-                            viewConfig: {
-
-                            }
+                            plugins: [
+                                Ext.create('Ext.grid.plugin.CellEditing', {
+                                    ptype: 'cellediting'
+                                })
+                            ]
                         }
                     ]
                 }

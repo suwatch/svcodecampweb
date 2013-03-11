@@ -10,11 +10,13 @@
             "Ext.data.proxy.Rest"
         ],
         "models": [
-            "Sessions"
+            "Sessions",
+            "TagsModel"
         ],
         "stores": [
             "ShirtSizeStore",
-            "StoreSessions"
+            "StoreSessions",
+            "TagStore"
         ],
         "views": [
             "ViewportMain",
@@ -24,7 +26,6 @@
             "sponsor",
             "TabWizardPanel",
             "AttendeeAfterLogin",
-            "SpeakerAfterLogin",
             "createAccount",
             "OptIn",
             "PasswordConfirm",
@@ -41,7 +42,8 @@
             "AttendeeAfterLoginController",
             "SpeakerAfterLoginController",
             "CreateAccountController",
-            "OptInController"
+            "OptInController",
+            "SessionEditorController"
         ]
     },
     "id": "ExtBox1-ext-gen1587",

@@ -1,0 +1,69 @@
+{
+    "type": "controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "SessionEditorController"
+    },
+    "id": "ExtBox1-ext-gen73129",
+    "designerId": "5662fda6-ed94-4bbb-ac24-9d3977b18139",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onSessionEditorPanelIdAfterRender",
+                "fn": "onSessionEditorPanelIdAfterRender",
+                "implHandler": [
+                    "var tagList = Ext.getCmp(\"SessionTagsGridPanelId\");\r",
+                    "var tagListStore = tagList.store;\r",
+                    "tagListStore.load({\r",
+                    "   \r",
+                    "    params: {\r",
+                    "        sessionId: 871\r",
+                    "    }\r",
+                    "    \r",
+                    "});"
+                ],
+                "name": "afterrender",
+                "scope": "me",
+                "designer|targetType": "Ext.panel.Panel",
+                "designer|controlQuery": "#SessionEditorPanelId"
+            },
+            "designerId": "c7902fe8-7745-4135-8b23-bb8927bc4da1"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onButtonClick",
+                "fn": "onButtonClick",
+                "implHandler": [
+                    "\r",
+                    "Ext.create('RegistrationApp.view.WindowSession').show();\r",
+                    "\r",
+                    "\r",
+                    "//SessionTagsGridPanelId\r",
+                    "    \r",
+                    "    "
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#AddNewSessionButtonId"
+            },
+            "designerId": "3440085d-453f-4d66-a9ef-a54023aba726"
+        }
+    ]
+}

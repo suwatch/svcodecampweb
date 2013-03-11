@@ -107,9 +107,9 @@ Ext.define('RegistrationApp.view.TabWizardPanel', {
             console.log('getTabIdByName called with no match ' + stepName);
         }
 
+
+
         return tabId;
-
-
     },
 
     updateAllPanelsWithData: function(retData) {

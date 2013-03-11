@@ -299,6 +299,7 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
                                 },
                                 {
                                     xtype: 'button',
+                                    id: 'AddNewSessionButtonId',
                                     text: 'Add New Session'
                                 }
                             ]

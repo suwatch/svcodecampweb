@@ -1,0 +1,30 @@
+{
+    "type": "store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "TagStore",
+        "storeId": "MyStore1",
+        "model": "TagsModel"
+    },
+    "id": "ExtBox1-ext-gen70528",
+    "designerId": "e6e2035e-259d-4233-95b4-291a5a6a41a6",
+    "cn": [
+        {
+            "type": "restproxy",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyRestProxy1",
+                "url": "/rpc/Session/GetTagsBySession"
+            },
+            "designerId": "d26e09eb-f64a-4faa-8cec-656a2364b4d7"
+        }
+    ]
+}

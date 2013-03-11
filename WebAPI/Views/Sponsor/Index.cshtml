@@ -3,7 +3,7 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<script src="~/Scripts/image-scale-min.js"></script>
 
 <h1 class="title">Sponsors</h1>
 
@@ -67,7 +67,7 @@
                     </td>
                     <td>
                         <div style="vertical-align: top;">
-                            <span style="font-weight: bold">&nbsp;&nbsp;Platinum sponsors</span> will receive additional benefits which include being able to set up a table at our Registration area where these sponsors can give out material about their company as well as discuss employment opportunities with Code Camp attendees
+                            <span style="font-weight: bold">&nbsp;&nbsp;Platinum sponsors</span> will receive additional benefits which include being able to set up a table at our Registration area where these sponsors can give out material about their company as well as discuss employment opportunities with Code Camp attendees.
                        
                         </div>
                     </td>
@@ -80,7 +80,7 @@
 
     <br />
     <br />
-    <span>Contact <span style="font-weight: bold; text-decoration: underline"><a href="#">info@siliconvalley-codecamp.com</a></span> if you are interested in being a sponsor or you would like to make a raffle prize donation.  </span>
+    <span>Contact <span style="font-weight: bold; text-decoration: underline"><a href="#">sponsorship@siliconvalley-codecamp.com</a></span> if you are interested in being a sponsor or you would like to make a raffle prize donation.  </span>
 
     <br />
     <br />
@@ -140,7 +140,9 @@
                     if (@sponsor1.SponsorSupportLevel == @sponsor.SponsorSupportLevel)
                     {
 
-                    <div class="roundBorder section jobPosts" style="background-color: rgba(247,247,247,255); border: solid 1px #ccc; float: left; max-height: 110px; width: 170px; margin: 7px; margin-top: 25px;">
+                        <a href="@sponsor.NavigateURL">
+                    <div id="sponsorDiv" class="roundBorder section jobPosts" style="background-color: white; border: solid 1px #ccc; float: left; 
+                        max-height: 60%; max-width: 80%; margin-left:10px; margin-top: 25px;background-image:url(@(sponsor.ImageURL)?format=gif&w=100&h=60&scale=both&mode=pad&bgcolor=white); background-repeat: no-repeat; background-position-x:center;">
 
                         <table>
                             <tr>
@@ -148,22 +150,18 @@
                                 <td style="vertical-align: top;">
                                     @if (sponsor.ShowQuestionMark == true)
                                     {
-                                    <div class="roundBorder section jobPosts" style="margin-left: 5px; margin-top: 10px; border: solid 1px #bbb; color: #fff; background-color: #dbdbdb; height: 28px; width: 28px; font-size: 20px; box-shadow:none; text-align:center; padding-top:4px; font-weight:bold;"><span style="text-shadow:#aaa 1px 1px">?</span></div>
+                                    <div class="roundBorder section jobPosts" style="margin-left: 5px; margin-top: 5px; border: solid 1px #bbb; color: #fff; background-color: #dbdbdb; height: 28px; width: 28px; font-size: 20px; box-shadow:none; text-align:center; padding-top:4px; font-weight:bold;"><span style="text-shadow:#aaa 1px 1px">?</span></div>
                                     }
                                     else
                                     {
-                                        <div style="height:30px; width:30px"></div>
+                                        <div style="padding-top:4px;margin-left: 5px; margin-top: 10px;height:30px; width:30px"></div>
                                     }
 
                                 </td>
                                 <td>
-                                    <a href="@sponsor.NavigateURL">
-                                    <img style="height:60px; width:100px; margin:10px" src="@(sponsor.ImageURL)?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white" alt="@sponsor.SponsorName"  />
-                                        @*<img src="../Images/Sponsors/adobe-logo.jpg" style="height:50px; width:100px; margin-top:10px"  />*@
-
-                                        </a>
+                                    <div id="sponsorImage" style="height:60px; width:100px; margin-top:3px"  />
                                 </td>
-                                <td>
+                                <td style="text-align:right">
                                     @if (sponsor.ShowFeatured == true)
                                     {
                                         <img src="../Images/Featured.png" style="height:45px; width:50px; margin-top:-20px; margin-left:-15px"  />
@@ -171,22 +169,22 @@
                                     }
                                     else
                                     {
-                                        <div style="height:30px; width:30px">Test</div>
+                                        <div style="height:30px; width:30px"></div>
                                     }
                                 </td>
                             </tr>
                         </table>
 
                         <br />
-                        <div style="min-height: 25px; width: 170px; font-weight: bold; background-color: #25aae1; color: #fff; text-align: center; 
-font-family: Calibri; font-size: 14px; vertical-align: middle; padding-top: 5px; margin-top: 20px; border-bottom-left-radius: 10px; max-height: 50px">@sponsor.SponsorName
+                        <div style="min-height: 30px; width: 170px; font-weight: bold; background-color: #25aae1; color: #fff; text-align: center; 
+font-family: Calibri; font-size: 14px; vertical-align:bottom; padding-top: 5px; opacity:0.9; margin-top: 40%; border-bottom-left-radius: 10px; max-height: 50px">@sponsor.SponsorName
                         </div>
 
-                        <br />
-                        <br />
+                        
+                    </div>
+                            </a>
 
-
-                    </div>}
+                            }
                 }
                 <br />
                 <br />
@@ -210,6 +208,11 @@ font-family: Calibri; font-size: 14px; vertical-align: middle; padding-top: 5px;
 
         $("#sponsorBottomBar").hide();
         $("#sponsorSideBar2").hide();
+
+        
+        $('#sponsorDiv').imagefit();
+
+                   
 
     });
 

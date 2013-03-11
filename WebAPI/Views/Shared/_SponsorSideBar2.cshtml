@@ -1,5 +1,5 @@
 ﻿<div class="roundBorder section jobPosts"
-    style="font-size: 16px; font-style: normal; color: #2e363d; font-family: Calibri; padding: 10px; width: 160px; max-height: 600px">
+    style="font-size: 16px; font-style: normal; color: #2e363d; font-family: Calibri; padding: 10px; width: 160px; max-height: 100%">
 
     <table>
         <tr>
@@ -9,7 +9,7 @@
                 <a href="#">
                     <div class="round blue"
                         style="font-size: 14px;">
-                        <span style="cursor: pointer; width: 150px; font-size: 16px; height: 40px">BECAME A
+                        <span style="cursor: pointer; width: 150px; font-size: 16px; height: 40px">BECOME A
                         
                         SPONSOR</span>
                     </div>
@@ -45,11 +45,10 @@
                                         @if (@Model.Sponsors[i].SponsorSupportLevel == "Platinum")
                                         {                   
 
-                                        <span style="float: left;">
-
+                                        <span style="float: left; text-align:center">                                            
                                             <a href="@sponsor.NavigateURL">
-                                                <img src="@(sponsor.ImageURL)?format=gif&w=60&h=60&scale=both&mode=pad&bgcolor=white" alt="@sponsor.SponsorName"  />
-                                                @*<img src="../Images/Sponsors/adobe-logo.jpg" style="height: 40px; width: 80px; margin-left: 10px" />*@
+                                                @*<img src="@(sponsor.ImageURL)?format=gif&w=60&h=60&scale=both&mode=pad&bgcolor=white" alt="@sponsor.SponsorName"  />*@
+                                                <img src="@(sponsor.ImageURL)?format=gif&w=160&h=160&scale=both&mode=pad&bgcolor=white" alt="@sponsor.SponsorName" style="height:40%; width:80%" />
 
                                             </a>
                                             <br />
@@ -102,7 +101,7 @@
                 <a href="#">
                     <div class="round blue"
                         style="font-size: 14px;">
-                        <span style="cursor: pointer; width: 150px; font-size: 16px; height: 40px">BECAME A
+                        <span style="cursor: pointer; width: 150px; font-size: 16px; height: 40px">BECOME A
                         
                         SPONSOR</span>
                     </div>
@@ -119,7 +118,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
 
-        var itemsNumber = 8;
+        var itemsNumber = 5;
         var min = 0;
         var max = itemsNumber;
 
@@ -128,7 +127,7 @@
 
             var totalItems = $("#item-wrapper").find("li").length;
 
-            
+
 
             if (max < totalItems) { //Stop action if max reaches more than total items               
                 if (action == "next") {

@@ -12,13 +12,5 @@ namespace CodeCampSV
     {
         [DataMember] public int TagId { get; set; }
         [DataMember] public int? SessionId { get; set; }
-        
-        //  
-        //  Do not put Id here since it is in ResultBase already
-        //  
-        //  Might include other classes here such as:
-        //  public List<PhoneResult> AssociatedPhoneResult { get; set; }
-        //  or
-        //  public List<SegmentResult> Segments { get; set; }
     }
 }

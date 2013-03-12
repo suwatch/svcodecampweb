@@ -26,9 +26,9 @@
             "codeClass": null,
             "userConfig": {
                 "layout|flex": 5,
-                "container|align": "stretch",
                 "layout|region": "west",
                 "layout|split": true,
+                "container|align": "stretch",
                 "designer|userClassName": "MyPanel4",
                 "id": "SpeakerPanelDetailProfPictId",
                 "width": 150,

@@ -1384,6 +1384,10 @@
     <Content Include="attachments\footer.png" />
     <Content Include="attachments\header.jpg" />
     <Content Include="Content\Images\1.gif" />
+    <Content Include="Content\Images\became.jpg" />
+    <Content Include="Content\Images\bullet.jpg" />
+    <Content Include="Content\Images\featured.jpg" />
+    <Content Include="Content\Images\showSpecial.jpg" />
     <Content Include="ExtJSApps\Dashboard\all-classes.js" />
     <Content Include="ExtJSApps\Dashboard\ext\src\ux\css\CheckHeader.css" />
     <Content Include="ExtJSApps\Dashboard\ext\src\ux\css\GroupTabPanel.css" />

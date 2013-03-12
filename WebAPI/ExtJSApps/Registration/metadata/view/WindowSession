@@ -254,16 +254,16 @@
                             ]
                         },
                         {
-                            "type": "gridcelleditingplugin",
+                            "type": "checkboxselectionmodel",
                             "reference": {
-                                "name": "plugins",
-                                "type": "array"
+                                "name": "selModel",
+                                "type": "object"
                             },
-                            "codeClass": "Ext.grid.plugin.CellEditing",
+                            "codeClass": "Ext.selection.CheckboxModel",
                             "userConfig": {
-                                "designer|userClassName": "MyCellEditingPlugin"
+                                "designer|userClassName": "MyCheckboxSelectionModel"
                             },
-                            "designerId": "2db2d411-4146-4f21-9bed-88d954c49471"
+                            "designerId": "ad97062d-2f09-4982-96dc-2e647f60699e"
                         }
                     ]
                 }

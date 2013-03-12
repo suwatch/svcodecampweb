@@ -121,11 +121,9 @@ Ext.define('RegistrationApp.view.WindowSession', {
                                     }
                                 }
                             ],
-                            plugins: [
-                                Ext.create('Ext.grid.plugin.CellEditing', {
-                                    ptype: 'cellediting'
-                                })
-                            ]
+                            selModel: Ext.create('Ext.selection.CheckboxModel', {
+
+                            })
                         }
                     ]
                 }

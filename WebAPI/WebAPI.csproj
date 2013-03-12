@@ -3454,7 +3454,6 @@
     <Content Include="dlls\ImageResizer.Plugins.SqlReader.dll" />
     <Content Include="dlls\Kendo.Mvc.dll" />
     <Content Include="dlls\Newtonsoft.Json.dll" />
-    <Content Include="dlls\Newtonsoft.Json.pdb" />
     <Content Include="dlls\Newtonsoft.Json.xml" />
     <Content Include="dlls\RouteDebug.dll" />
     <Content Include="dlls\SpreadsheetGear.dll" />

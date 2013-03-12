@@ -17,11 +17,16 @@ Ext.define('RegistrationApp.controller.SessionEditorController', {
     extend: 'Ext.app.Controller',
 
     onSessionEditorPanelIdAfterRender: function(abstractcomponent, options) {
+        var speakerProfilePanel =  Ext.getCmp('speakerAfterLoginProfileId');
+        var retData = speakerProfilePanel.getForm().getValues();
+
+        //debugger;
+
         var tagList = Ext.getCmp("SessionTagsGridPanelId");
         var tagListStore = tagList.store;
         tagListStore.load({
             params: {
-                sessionId: 871
+                sessionId: retData.attendeesId
             },
             callback: function(records,operation,success) {
                 // get selection model of grid
@@ -45,7 +50,9 @@ Ext.define('RegistrationApp.controller.SessionEditorController', {
 
     onButtonClick: function(button, e, options) {
 
-        Ext.create('RegistrationApp.view.WindowSession').show();
+        Ext.create('RegistrationApp.view.WindowSession',{
+
+        }).show();
 
 
         //SessionTagsGridPanelId

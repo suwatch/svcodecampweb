@@ -174,6 +174,13 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
                                     allowBlank: false
                                 },
                                 {
+                                    xtype: 'textfield',
+                                    hidden: true,
+                                    name: 'attendeesId',
+                                    fieldLabel: 'Attendees Id',
+                                    allowBlank: false
+                                },
+                                {
                                     xtype: 'checkboxfield',
                                     name: 'volunteeredCurrentYear',
                                     fieldLabel: 'Volunteer',
@@ -222,13 +229,67 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
                                     ]
                                 }
                             ]
+                        }
+                    ]
+                },
+                {
+                    xtype: 'form',
+                    flex: 3,
+                    region: 'center',
+                    autoShow: true,
+                    itemId: 'speakerSessionsId',
+                    layout: {
+                        align: 'stretch',
+                        type: 'vbox'
+                    },
+                    collapsible: false,
+                    title: 'Speaker Sessions',
+                    dockedItems: [
+                        {
+                            xtype: 'toolbar',
+                            dock: 'top',
+                            items: [
+                                {
+                                    xtype: 'button',
+                                    text: 'Edit Selected Session'
+                                },
+                                {
+                                    xtype: 'button',
+                                    id: 'AddNewSessionButtonId',
+                                    text: 'Add New Session'
+                                }
+                            ]
+                        }
+                    ],
+                    items: [
+                        {
+                            xtype: 'gridpanel',
+                            flex: 2,
+                            id: 'sessionsBySpeakerGridPanelId',
+                            store: 'StoreSessions',
+                            viewConfig: {
+
+                            },
+                            columns: [
+                                {
+                                    xtype: 'gridcolumn',
+                                    dataIndex: 'title',
+                                    flex: 1,
+                                    text: 'Title'
+                                },
+                                {
+                                    xtype: 'gridcolumn',
+                                    dataIndex: 'id',
+                                    text: 'Id'
+                                }
+                            ]
                         },
                         {
                             xtype: 'form',
-                            flex: 3,
+                            flex: 9,
                             id: 'speakerPictureUploadFormId',
                             bodyPadding: 20,
-                            collapsible: true,
+                            collapsible: false,
                             title: 'Speaker Picture Upload',
                             url: '/api/Account/FormData',
                             items: [
@@ -272,58 +333,6 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
                                             ]
                                         }
                                     ]
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    xtype: 'form',
-                    flex: 3,
-                    region: 'center',
-                    autoShow: true,
-                    itemId: 'speakerSessionsId',
-                    layout: {
-                        type: 'fit'
-                    },
-                    collapsible: false,
-                    title: 'Speaker Sessions',
-                    dockedItems: [
-                        {
-                            xtype: 'toolbar',
-                            dock: 'top',
-                            items: [
-                                {
-                                    xtype: 'button',
-                                    text: 'Edit Selected Session'
-                                },
-                                {
-                                    xtype: 'button',
-                                    id: 'AddNewSessionButtonId',
-                                    text: 'Add New Session'
-                                }
-                            ]
-                        }
-                    ],
-                    items: [
-                        {
-                            xtype: 'gridpanel',
-                            id: 'sessionsBySpeakerGridPanelId',
-                            store: 'StoreSessions',
-                            viewConfig: {
-
-                            },
-                            columns: [
-                                {
-                                    xtype: 'gridcolumn',
-                                    dataIndex: 'title',
-                                    flex: 1,
-                                    text: 'Title'
-                                },
-                                {
-                                    xtype: 'gridcolumn',
-                                    dataIndex: 'id',
-                                    text: 'Id'
                                 }
                             ]
                         }

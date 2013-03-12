@@ -186,28 +186,7 @@
                             "userConfig": {
                                 "designer|userClassName": "MyGridView1"
                             },
-                            "designerId": "a1bed852-5aa1-484f-bf3f-5e09d5be71f7",
-                            "cn": [
-                                {
-                                    "type": "basiceventbinding",
-                                    "reference": {
-                                        "name": "listeners",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "designer|userClassName": "onGridviewAfterRender",
-                                        "fn": "onGridviewAfterRender",
-                                        "implHandler": [
-                                            "\r",
-                                            ""
-                                        ],
-                                        "name": "afterrender",
-                                        "scope": "me"
-                                    },
-                                    "designerId": "903fce8a-fdb3-4d13-85c4-157be04ff486"
-                                }
-                            ]
+                            "designerId": "a1bed852-5aa1-484f-bf3f-5e09d5be71f7"
                         },
                         {
                             "type": "gridcolumn",
@@ -260,50 +239,14 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "designer|userClassName": "onCheckboxselectionmodelDeselect",
-                                        "fn": "onCheckboxselectionmodelDeselect",
-                                        "implHandler": [
-                                            ""
-                                        ],
-                                        "name": "deselect",
-                                        "scope": "me"
-                                    },
-                                    "designerId": "5d3d5500-b132-481d-9300-c2422c90caf3"
-                                },
-                                {
-                                    "type": "basiceventbinding",
-                                    "reference": {
-                                        "name": "listeners",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "designer|userClassName": "onCheckboxselectionmodelSelect",
-                                        "fn": "onCheckboxselectionmodelSelect",
-                                        "implHandler": [
-                                            ""
-                                        ],
-                                        "name": "select",
-                                        "scope": "me"
-                                    },
-                                    "designerId": "c0b61a59-f314-4701-ad32-00d49f5a320e"
-                                },
-                                {
-                                    "type": "basiceventbinding",
-                                    "reference": {
-                                        "name": "listeners",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
                                         "designer|userClassName": "onCheckboxselectionmodelSelectionChange",
                                         "fn": "onCheckboxselectionmodelSelectionChange",
                                         "implHandler": [
                                             "// all records that are selected are passed in here.  we need to run through the store\r",
                                             "// itself and verify that is what we think we should have.\r",
-                                            "var tagsSelected = [];\r",
+                                            "var tagsSelected1 = [];\r",
                                             "Ext.each(selected,function(rec) {\r",
-                                            "    tagsSelected.push(rec.getData().tagName); \r",
+                                            "    tagsSelected1.push(rec.getData().tagName); \r",
                                             "});\r",
                                             "\r",
                                             "\r",
@@ -314,7 +257,7 @@
                                             "tagListStore.each(function(storeRec) {\r",
                                             "    var storeRecTagName = storeRec.getData().tagName;\r",
                                             "    var storeRecTaggedInSession = storeRec.getData().taggedInSession;\r",
-                                            "    var gridPanelTagged = Ext.Array.contains(tagsSelected,storeRecTagName);\r",
+                                            "    var gridPanelTagged = Ext.Array.contains(tagsSelected1,storeRecTagName);\r",
                                             "    \r",
                                             "    if (storeRecTaggedInSession != gridPanelTagged) {\r",
                                             "        storeRec.set(\"taggedInSession\",gridPanelTagged);\r",

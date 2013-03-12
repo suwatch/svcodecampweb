@@ -103,13 +103,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>dlls\Gurock.SmartInspect.dll</HintPath>
     </Reference>
-    <Reference Include="ImageResizer, Version=3.2.4.698, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ImageResizer, Version=3.3.3.123, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>dlls\ImageResizer.dll</HintPath>
+      <HintPath>packages\ImageResizer.3.3.3\lib\ImageResizer.dll</HintPath>
     </Reference>
-    <Reference Include="ImageResizer.Mvc, Version=3.2.4.698, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ImageResizer.Mvc, Version=3.3.3.123, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>dlls\ImageResizer.Mvc.dll</HintPath>
+      <HintPath>packages\ImageResizer.Mvc.3.3.3\lib\ImageResizer.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="ImageResizer.Plugins.DiskCache, Version=3.2.4.698, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

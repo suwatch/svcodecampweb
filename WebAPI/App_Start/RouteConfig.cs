@@ -25,6 +25,9 @@ namespace WebAPI
 
             routes.IgnoreRoute("ExtJSApps/SessionViewer");
 
+            routes.IgnoreRoute("resizer.debug");
+            routes.IgnoreRoute("resizer.debug.ashx");
+
 
 
             // SPEAKERS

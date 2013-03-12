@@ -98,12 +98,7 @@ Ext.define('RegistrationApp.view.WindowSession', {
                             title: 'Session Tags',
                             store: 'TagStore',
                             viewConfig: {
-                                listeners: {
-                                    afterrender: {
-                                        fn: me.onGridviewAfterRender,
-                                        scope: me
-                                    }
-                                }
+
                             },
                             columns: [
                                 {
@@ -122,14 +117,6 @@ Ext.define('RegistrationApp.view.WindowSession', {
                             ],
                             selModel: Ext.create('Ext.selection.CheckboxModel', {
                                 listeners: {
-                                    deselect: {
-                                        fn: me.onCheckboxselectionmodelDeselect,
-                                        scope: me
-                                    },
-                                    select: {
-                                        fn: me.onCheckboxselectionmodelSelect,
-                                        scope: me
-                                    },
                                     selectionchange: {
                                         fn: me.onCheckboxselectionmodelSelectionChange,
                                         scope: me
@@ -145,25 +132,12 @@ Ext.define('RegistrationApp.view.WindowSession', {
         me.callParent(arguments);
     },
 
-    onGridviewAfterRender: function(abstractcomponent, options) {
-
-
-    },
-
-    onCheckboxselectionmodelDeselect: function(rowmodel, record, index, options) {
-
-    },
-
-    onCheckboxselectionmodelSelect: function(rowmodel, record, index, options) {
-
-    },
-
     onCheckboxselectionmodelSelectionChange: function(model, selected, options) {
         // all records that are selected are passed in here.  we need to run through the store
         // itself and verify that is what we think we should have.
-        var tagsSelected = [];
+        var tagsSelected1 = [];
         Ext.each(selected,function(rec) {
-            tagsSelected.push(rec.getData().tagName); 
+            tagsSelected1.push(rec.getData().tagName); 
         });
 
 
@@ -174,7 +148,7 @@ Ext.define('RegistrationApp.view.WindowSession', {
         tagListStore.each(function(storeRec) {
             var storeRecTagName = storeRec.getData().tagName;
             var storeRecTaggedInSession = storeRec.getData().taggedInSession;
-            var gridPanelTagged = Ext.Array.contains(tagsSelected,storeRecTagName);
+            var gridPanelTagged = Ext.Array.contains(tagsSelected1,storeRecTagName);
 
             if (storeRecTaggedInSession != gridPanelTagged) {
                 storeRec.set("taggedInSession",gridPanelTagged);

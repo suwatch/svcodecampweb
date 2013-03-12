@@ -20,11 +20,26 @@ Ext.define('RegistrationApp.controller.SessionEditorController', {
         var tagList = Ext.getCmp("SessionTagsGridPanelId");
         var tagListStore = tagList.store;
         tagListStore.load({
-
             params: {
                 sessionId: 871
-            }
+            },
+            callback: function(records,operation,success) {
+                // get selection model of grid
 
+
+                var sm = tagList.getSelectionModel();
+                //sm.bindStore(tagListStore);
+
+
+                var recs = [];
+                Ext.each(records,function(rec) {
+                    if (rec.get("taggedInSession") === true) {
+                        recs.push(rec);
+                    }
+                });
+                sm.select(recs);
+                // would like to scroll to top now
+            }
         });
     },
 

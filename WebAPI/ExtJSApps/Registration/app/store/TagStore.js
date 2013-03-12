@@ -24,7 +24,7 @@ Ext.define('RegistrationApp.store.TagStore', {
         var me = this;
         cfg = cfg || {};
         me.callParent([Ext.apply({
-            storeId: 'MyStore1',
+            storeId: 'tagStoreId',
             model: 'RegistrationApp.model.TagsModel',
             proxy: {
                 type: 'rest',

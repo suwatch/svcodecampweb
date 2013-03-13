@@ -150,23 +150,15 @@ Ext.define('RegistrationApp.view.WindowSession', {
         var store = panel.getStore();
 
         //debugger;
-        if (sessionList.length > 0) {
-
+        if (sessionList.length > 0) {    
             var sessionEditForm = Ext.getCmp("sessionFormPanelEditorId").getForm();
             sessionEditForm.updateRecord(sessionList[0]);
-
-            //var recordFromStore = sessionList[0]; 
-
-            //var dataFromForm = sessionEdit.getForm().getValues();
-
-            //Ext.apply(dataFromStore,dataFromForm);
-
-
-
             store.sync();
 
-
+            var tagListPanelStore = Ext.getCmp("SessionTagsGridPanelId").getStore();
+            tagListPanelStore.sync();
         }
+
     },
 
     onCheckboxselectionmodelSelectionChange: function(model, selected, eOpts) {

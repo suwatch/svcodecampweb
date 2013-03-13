@@ -67,7 +67,8 @@ Ext.application({
         'SpeakerAfterLoginController',
         'CreateAccountController',
         'OptInController',
-        'SessionEditorController'
+        'SessionEditorController',
+        'WindowSessionController'
     ],
     name: 'RegistrationApp',
 

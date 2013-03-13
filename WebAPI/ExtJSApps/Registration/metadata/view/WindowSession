@@ -36,10 +36,52 @@
                     "codeClass": null,
                     "userConfig": {
                         "layout|flex": null,
+                        "id": "WindowSessionSaveButtonId",
                         "designer|userClassName": "MyButton9",
                         "text": "Save"
                     },
-                    "designerId": "1cd3c844-ffa0-438f-ad3a-1e5056ff63b6"
+                    "designerId": "1cd3c844-ffa0-438f-ad3a-1e5056ff63b6",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "onButtonClick",
+                                "fn": "onButtonClick",
+                                "implHandler": [
+                                    "var panel = Ext.getCmp(\"sessionsBySpeakerGridPanelId\");\r",
+                                    "var sessionList = panel.getSelectionModel().getSelection();\r",
+                                    "var store = panel.getStore();\r",
+                                    "\r",
+                                    "//debugger;\r",
+                                    "if (sessionList.length > 0) {\r",
+                                    "    \r",
+                                    "    var sessionEditForm = Ext.getCmp(\"sessionFormPanelEditorId\").getForm();\r",
+                                    "    sessionEditForm.updateRecord(sessionList[0]);\r",
+                                    "    \r",
+                                    " \t//var recordFromStore = sessionList[0]; \r",
+                                    "    \r",
+                                    "    //var dataFromForm = sessionEdit.getForm().getValues();\r",
+                                    "    \r",
+                                    "    //Ext.apply(dataFromStore,dataFromForm);\r",
+                                    "    \r",
+                                    "   \r",
+                                    "    \r",
+                                    "    store.sync();\r",
+                                    "    \r",
+                                    "    \r",
+                                    "}"
+                                ],
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "designerId": "96168842-8ed5-4499-ba9f-e61779816be7"
+                        }
+                    ]
                 }
             ]
         },
@@ -119,7 +161,7 @@
                                         "width": 150,
                                         "designer|userClassName": "MyTextField48",
                                         "fieldLabel": "Hash Tags For Twitter",
-                                        "name": "title"
+                                        "name": "twitterHashTags"
                                     },
                                     "designerId": "a5a3c928-4eec-4e4c-bc69-b290d3d12ffb"
                                 },
@@ -133,7 +175,8 @@
                                     "userConfig": {
                                         "layout|anchor": "100%",
                                         "designer|userClassName": "MyComboBox2",
-                                        "fieldLabel": "Session Level"
+                                        "fieldLabel": "Session Level",
+                                        "name": "sessionLevel"
                                     },
                                     "designerId": "32a579d1-1f56-4d67-b829-2225d16f603f"
                                 },
@@ -316,13 +359,22 @@
                     "        tagList.getView().focusRow(0);\r",
                     "    }\r",
                     "});\r",
+                    "//debugger;\r",
                     "\r",
-                    "\r",
-                    "\r",
-                    "\r",
-                    "\r",
-                    "var sessionEditForm = Ext.getCmp(\"sessionFormPanelEditorId\").getForm();\r",
-                    "sessionEditForm.setValues(this.sessionData);"
+                    "// get data from SpeakerSessions Panel on previous page (get selected row and data associated, use that to set values in this form)\r",
+                    "var sessionList = Ext.getCmp(\"sessionsBySpeakerGridPanelId\").getSelectionModel().getSelection();\r",
+                    "if (sessionList.length > 0) {\r",
+                    "    \r",
+                    "    var sessionEditForm = Ext.getCmp(\"sessionFormPanelEditorId\").getForm();\r",
+                    "    sessionEditForm.loadRecord(sessionList[0]);\r",
+                    "    \r",
+                    "    \r",
+                    "    \r",
+                    " \t//var data = sessionList[0].getData();   \r",
+                    "    //var sessionEditForm = Ext.getCmp(\"sessionFormPanelEditorId\").getForm();\r",
+                    "\t//sessionEditForm.setValues(data);\r",
+                    "}\r",
+                    ""
                 ],
                 "name": "afterrender",
                 "scope": "me"

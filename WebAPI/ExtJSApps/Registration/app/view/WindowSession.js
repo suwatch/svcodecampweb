@@ -34,7 +34,14 @@ Ext.define('RegistrationApp.view.WindowSession', {
                     items: [
                         {
                             xtype: 'button',
-                            text: 'Save'
+                            id: 'WindowSessionSaveButtonId',
+                            text: 'Save',
+                            listeners: {
+                                click: {
+                                    fn: me.onButtonClick,
+                                    scope: me
+                                }
+                            }
                         }
                     ]
                 }
@@ -71,12 +78,13 @@ Ext.define('RegistrationApp.view.WindowSession', {
                                             anchor: '100%',
                                             width: 150,
                                             fieldLabel: 'Hash Tags For Twitter',
-                                            name: 'title'
+                                            name: 'twitterHashTags'
                                         },
                                         {
                                             xtype: 'combobox',
                                             anchor: '100%',
-                                            fieldLabel: 'Session Level'
+                                            fieldLabel: 'Session Level',
+                                            name: 'sessionLevel'
                                         },
                                         {
                                             xtype: 'textareafield',
@@ -136,6 +144,31 @@ Ext.define('RegistrationApp.view.WindowSession', {
         me.callParent(arguments);
     },
 
+    onButtonClick: function(button, e, eOpts) {
+        var panel = Ext.getCmp("sessionsBySpeakerGridPanelId");
+        var sessionList = panel.getSelectionModel().getSelection();
+        var store = panel.getStore();
+
+        //debugger;
+        if (sessionList.length > 0) {
+
+            var sessionEditForm = Ext.getCmp("sessionFormPanelEditorId").getForm();
+            sessionEditForm.updateRecord(sessionList[0]);
+
+            //var recordFromStore = sessionList[0]; 
+
+            //var dataFromForm = sessionEdit.getForm().getValues();
+
+            //Ext.apply(dataFromStore,dataFromForm);
+
+
+
+            store.sync();
+
+
+        }
+    },
+
     onCheckboxselectionmodelSelectionChange: function(model, selected, eOpts) {
         // all records that are selected are passed in here.  we need to run through the store
         // itself and verify that is what we think we should have.
@@ -191,13 +224,22 @@ Ext.define('RegistrationApp.view.WindowSession', {
                 tagList.getView().focusRow(0);
             }
         });
+        //debugger;
+
+        // get data from SpeakerSessions Panel on previous page (get selected row and data associated, use that to set values in this form)
+        var sessionList = Ext.getCmp("sessionsBySpeakerGridPanelId").getSelectionModel().getSelection();
+        if (sessionList.length > 0) {
+
+            var sessionEditForm = Ext.getCmp("sessionFormPanelEditorId").getForm();
+            sessionEditForm.loadRecord(sessionList[0]);
 
 
 
+            //var data = sessionList[0].getData();   
+            //var sessionEditForm = Ext.getCmp("sessionFormPanelEditorId").getForm();
+            //sessionEditForm.setValues(data);
+        }
 
-
-        var sessionEditForm = Ext.getCmp("sessionFormPanelEditorId").getForm();
-        sessionEditForm.setValues(this.sessionData);
     }
 
 });

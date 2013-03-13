@@ -8,7 +8,7 @@ using CodeCampSV;
 
 namespace WebAPI.Api
 {
-    public class SessionController : ApiController
+    public class TagRestxxController : ApiController
     {
 
         [HttpPut]
@@ -93,7 +93,6 @@ namespace WebAPI.Api
             return response;
         }
 
-        //public IEnumerable<string> Get()
         //public IEnumerable<string> Get()
         //{
         //    return new string[] { "value1", "value2" };

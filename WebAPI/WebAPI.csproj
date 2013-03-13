@@ -317,8 +317,10 @@
       <DependentUpon>AllAttendees.aspx</DependentUpon>
     </Compile>
     <Compile Include="Api\AccountController.cs" />
+    <Compile Include="Api\TagRestxxController.cs" />
     <Compile Include="Api\EmailController.cs" />
     <Compile Include="Api\SessionController.cs" />
+    <Compile Include="Api\TagsRestController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RedirectRouteHandler.cs" />

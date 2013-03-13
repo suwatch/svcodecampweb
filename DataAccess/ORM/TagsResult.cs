@@ -28,5 +28,8 @@ namespace CodeCampSV
         [DataMember]
         public bool TaggedInSession { get; set; }
 
+        [DataMember]
+        public int? SessionId { get; set; }
+
     }
 }

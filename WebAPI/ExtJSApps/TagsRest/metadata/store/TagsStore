@@ -1,0 +1,30 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": true,
+        "model": "TagsModel",
+        "storeId": "tagsStoreId",
+        "designer|userClassName": "TagsStore"
+    },
+    "designerId": "956f2589-c3c5-44e1-8f35-7d070c23122f",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Rest",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyRestProxy",
+                "url": "/api/TagsRest"
+            },
+            "designerId": "cab14bc1-4331-401b-8b29-c147acf81b64"
+        }
+    ]
+}

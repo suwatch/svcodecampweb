@@ -1,0 +1,175 @@
+{
+    "type": "Ext.container.Viewport",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "MyViewport",
+        "designer|initialView": true
+    },
+    "designerId": "0e7548ab-3e52-4a5f-855b-af1d30343b68",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyToolbar"
+            },
+            "designerId": "f6e64d73-add8-479d-98a9-2432d090164a",
+            "cn": [
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MyButton",
+                        "text": "Save"
+                    },
+                    "designerId": "f266f4e0-98d6-49ed-8475-6b2ce57c425b",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "onButtonClick",
+                                "fn": "onButtonClick",
+                                "implHandler": [
+                                    "Ext.getCmp('gridPanelId').getStore().sync();"
+                                ],
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "designerId": "aa964541-cc64-4e14-bfd5-83b25d6adc86"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "id": "gridPanelId",
+                "designer|userClassName": "MyGridPanel",
+                "title": null,
+                "store": "TagsStore"
+            },
+            "designerId": "22bc0906-2c06-41f8-94cd-ae7a6fa8a657",
+            "cn": [
+                {
+                    "type": "Ext.grid.View",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyGridView"
+                    },
+                    "designerId": "aa8f1a1a-8c8d-4c2b-82c8-a8bc8aae5e97"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyColumn1",
+                        "dataIndex": "id",
+                        "text": "Id"
+                    },
+                    "designerId": "a99645e0-bb76-4011-83c8-e84b67992b8a"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyColumn2",
+                        "dataIndex": "sessionId",
+                        "text": "SessionId"
+                    },
+                    "designerId": "fb87edd6-e419-4841-97da-28530a836002"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyColumn3",
+                        "dataIndex": "tagName",
+                        "text": "TagName",
+                        "flex": 1
+                    },
+                    "designerId": "49d79cf8-4622-43ca-ac54-42f8e9edaf17",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "editor",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyTextField"
+                            },
+                            "designerId": "fc99bf71-11da-4935-89b8-0f337bc6456f"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyColumn4",
+                        "dataIndex": "taggedInSession",
+                        "text": "TaggedInSession"
+                    },
+                    "designerId": "71eb5535-c28d-4b58-b004-8b15d13d1017"
+                },
+                {
+                    "type": "Ext.grid.plugin.CellEditing",
+                    "reference": {
+                        "name": "plugins",
+                        "type": "array"
+                    },
+                    "codeClass": "Ext.grid.plugin.CellEditing",
+                    "userConfig": {
+                        "designer|userClassName": "MyCellEditingPlugin"
+                    },
+                    "designerId": "52276ca4-0139-40da-ad9a-8791245e7b79"
+                }
+            ]
+        }
+    ]
+}

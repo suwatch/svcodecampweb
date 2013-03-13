@@ -1,0 +1,60 @@
+{
+    "name": "TagsRest",
+    "settings": {},
+    "xdsVersion": "2.2.0",
+    "xdsBuild": 894,
+    "schemaVersion": 1,
+    "upgradeVersion": 210000000499,
+    "framework": "ext42",
+    "topInstanceFileMap": {
+        "9b1f06be-3399-48ca-bff5-d682a6ca6002": {
+            "paths": [
+                "metadata/resource/Library"
+            ],
+            "className": "Library"
+        },
+        "0e7548ab-3e52-4a5f-855b-af1d30343b68": {
+            "paths": [
+                "metadata/view/MyViewport",
+                "app/view/override/MyViewport.js",
+                "app/view/MyViewport.js",
+                "app/view/Viewport.js"
+            ],
+            "className": "MyViewport"
+        },
+        "956f2589-c3c5-44e1-8f35-7d070c23122f": {
+            "paths": [
+                "metadata/store/TagsStore",
+                "app/store/override/TagsStore.js",
+                "app/store/TagsStore.js"
+            ],
+            "className": "TagsStore"
+        },
+        "ba969495-8115-401e-a918-70c18d24a4f4": {
+            "paths": [
+                "metadata/model/TagsModel",
+                "app/model/override/TagsModel.js",
+                "app/model/TagsModel.js"
+            ],
+            "className": "TagsModel"
+        }
+    },
+    "viewOrderMap": {
+        "view": [
+            "0e7548ab-3e52-4a5f-855b-af1d30343b68"
+        ],
+        "store": [
+            "956f2589-c3c5-44e1-8f35-7d070c23122f"
+        ],
+        "controller": [],
+        "model": [
+            "ba969495-8115-401e-a918-70c18d24a4f4"
+        ],
+        "resource": [
+            "9b1f06be-3399-48ca-bff5-d682a6ca6002"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

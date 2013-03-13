@@ -57,16 +57,11 @@ namespace CodeCampSV
                                         where data.SessionId == query.SessionId.Value && data.SessionId.HasValue
                                         select data.TagId).ToList();
             }
-
-
-
             IQueryable<TagsResult> results = GetBaseResultIQueryable(baseQuery);
-
-          
-
-
             List<TagsResult> resultList = GetFinalResults(results, query);
 
+
+            // query.SessionId may be true but if not tags for session, this will not execute
             if (tagIdsTagged != null && tagIdsTagged.Count > 0)
             {
                 foreach (var rec in resultList)
@@ -75,18 +70,13 @@ namespace CodeCampSV
                 }
             }
 
-            //  Put Stuff Here if you want to load another result
-            //  The following is done AFTER GetFinalResults so that we don't waste machine cycles sucking in all the
-            //  addresses for all results returned, just the ones that are actually being returned.
-            //  if (query.WithAddress != null && query.WithAddress == true)
-            //  {
-            //     foreach (var r in companyResultList)
-            //     {
-            //         r.CompanyAddressResultList =
-            //             CompanyAddressManager.I.Get(new CompanyAddressQuery { CompanyIds = query.Ids, WithAddress = true });
-            //     }
-            //  }
-            //             
+            if (query.SessionId.HasValue)
+            {
+                foreach (var rec in resultList)
+                {
+                    rec.SessionId = query.SessionId.Value;
+                }
+            }
             return resultList;
         }
 

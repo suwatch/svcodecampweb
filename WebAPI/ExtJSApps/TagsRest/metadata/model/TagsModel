@@ -8,7 +8,7 @@
     "userConfig": {
         "designer|userClassName": "TagsModel"
     },
-    "designerId": "09f95399-73c3-48fc-988b-99bac7d316f9",
+    "designerId": "ba969495-8115-401e-a918-70c18d24a4f4",
     "cn": [
         {
             "type": "Ext.data.Field",
@@ -18,24 +18,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "tagName",
-                "designer|userClassName": "field3"
+                "name": "id",
+                "designer|userClassName": "MyField"
             },
-            "designerId": "de987d96-8c54-4e01-a15a-221612a53872"
-        },
-        {
-            "type": "Ext.data.Field",
-            "reference": {
-                "name": "fields",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "name": "taggedInSession",
-                "type": "boolean",
-                "designer|userClassName": "field4"
-            },
-            "designerId": "84774122-5927-48ce-ad59-5be481031c63"
+            "designerId": "dba13d98-4074-493e-a6da-67dd8d2b06dc"
         },
         {
             "type": "Ext.data.Field",
@@ -46,9 +32,35 @@
             "codeClass": null,
             "userConfig": {
                 "name": "sessionId",
-                "designer|userClassName": "MyField14"
+                "designer|userClassName": "MyField1"
             },
-            "designerId": "f3d913f7-0d44-4bc7-bd14-453c6c7f49f4"
+            "designerId": "703a12e3-b780-4cfd-adc0-d07cc832828e"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "tagName",
+                "designer|userClassName": "MyField2"
+            },
+            "designerId": "44e88efb-c9f6-4c59-a63c-00b1ef581fea"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "taggedInSession",
+                "designer|userClassName": "MyField3"
+            },
+            "designerId": "a90d4f50-0295-41c9-a27a-7d268453eebe"
         }
     ]
 }

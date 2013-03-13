@@ -1,5 +1,5 @@
 {
-    "type": "viewport",
+    "type": "Ext.container.Viewport",
     "reference": {
         "name": "items",
         "type": "array"
@@ -10,7 +10,6 @@
         "designer|userAlias": "ViewportMainAlias",
         "designer|initialView": true
     },
-    "id": "ExtBox1-ext-gen2025",
     "designerId": "2e607d39-4c76-4f8c-a350-e222eedf6e5d",
     "cn": [
         {
@@ -25,7 +24,7 @@
                 "itemId": "TabWizard"
             },
             "designerId": "e50d67d0-1f6b-4bd4-bf29-a6c1cc6d5b97",
-            "masterInstanceId": "ExtBox1-ext-gen1924"
+            "masterInstanceId": "fea6a3af-2d7e-4daa-9f97-09e2da9e54c8"
         }
     ]
 }

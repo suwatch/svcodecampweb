@@ -1,22 +1,21 @@
 {
-    "type": "window",
+    "type": "Ext.window.Window",
     "reference": {
         "name": "items",
         "type": "array"
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userClassName": "WindowSession",
         "height": 630,
         "width": 836,
+        "designer|userClassName": "WindowSession",
         "layout": "fit",
         "title": "Session Editor"
     },
-    "id": "ExtBox1-ext-gen59574",
     "designerId": "dba1adeb-4f72-49c6-a8d3-c3143110e49c",
     "cn": [
         {
-            "type": "toolbar",
+            "type": "Ext.toolbar.Toolbar",
             "reference": {
                 "name": "dockedItems",
                 "type": "array"
@@ -29,7 +28,7 @@
             "designerId": "2e559b97-3001-465f-9317-38da3d4936ea",
             "cn": [
                 {
-                    "type": "button",
+                    "type": "Ext.button.Button",
                     "reference": {
                         "name": "items",
                         "type": "array"
@@ -45,22 +44,22 @@
             ]
         },
         {
-            "type": "panel",
+            "type": "Ext.panel.Panel",
             "reference": {
                 "name": "items",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "designer|userClassName": "MyPanel5",
                 "id": "SessionEditorPanelId",
+                "designer|userClassName": "MyPanel5",
                 "layout": "border",
                 "title": null
             },
             "designerId": "49da3cfc-de72-4613-a17b-56a502a515fe",
             "cn": [
                 {
-                    "type": "form",
+                    "type": "Ext.form.Panel",
                     "reference": {
                         "name": "items",
                         "type": "array"
@@ -69,31 +68,31 @@
                     "userConfig": {
                         "layout|flex": 6,
                         "layout|region": "center",
-                        "designer|userClassName": "MyForm11",
                         "id": "sessionFormPanelEditorId",
+                        "designer|userClassName": "MyForm11",
                         "bodyPadding": 10,
                         "title": null
                     },
                     "designerId": "2634b1e3-90d4-4f6f-bfcc-ecc8258421ce",
                     "cn": [
                         {
-                            "type": "fieldset",
+                            "type": "Ext.form.FieldSet",
                             "reference": {
                                 "name": "items",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "designer|userClassName": "MyFieldSet1",
                                 "height": null,
                                 "itemId": "FieldSetSessionEditorItemId",
                                 "width": null,
+                                "designer|userClassName": "MyFieldSet1",
                                 "title": "Basic Session Information"
                             },
                             "designerId": "0f9ad0fb-ea3e-4758-b1c9-93b83fede49b",
                             "cn": [
                                 {
-                                    "type": "textfield",
+                                    "type": "Ext.form.field.Text",
                                     "reference": {
                                         "name": "items",
                                         "type": "array"
@@ -101,15 +100,15 @@
                                     "codeClass": null,
                                     "userConfig": {
                                         "layout|anchor": "100%",
-                                        "designer|userClassName": "MyTextField48",
                                         "width": 150,
-                                        "name": "title",
-                                        "fieldLabel": "Title"
+                                        "designer|userClassName": "MyTextField48",
+                                        "fieldLabel": "Title",
+                                        "name": "title"
                                     },
                                     "designerId": "4427f98e-f8d0-4527-9085-7a2239bce9d7"
                                 },
                                 {
-                                    "type": "textfield",
+                                    "type": "Ext.form.field.Text",
                                     "reference": {
                                         "name": "items",
                                         "type": "array"
@@ -117,15 +116,15 @@
                                     "codeClass": null,
                                     "userConfig": {
                                         "layout|anchor": "100%",
-                                        "designer|userClassName": "MyTextField48",
                                         "width": 150,
-                                        "name": "title",
-                                        "fieldLabel": "Hash Tags For Twitter"
+                                        "designer|userClassName": "MyTextField48",
+                                        "fieldLabel": "Hash Tags For Twitter",
+                                        "name": "title"
                                     },
                                     "designerId": "a5a3c928-4eec-4e4c-bc69-b290d3d12ffb"
                                 },
                                 {
-                                    "type": "combobox",
+                                    "type": "Ext.form.field.ComboBox",
                                     "reference": {
                                         "name": "items",
                                         "type": "array"
@@ -139,7 +138,7 @@
                                     "designerId": "32a579d1-1f56-4d67-b829-2225d16f603f"
                                 },
                                 {
-                                    "type": "textareafield",
+                                    "type": "Ext.form.field.TextArea",
                                     "reference": {
                                         "name": "items",
                                         "type": "array"
@@ -147,9 +146,10 @@
                                     "codeClass": null,
                                     "userConfig": {
                                         "layout|anchor": "100%",
-                                        "designer|userClassName": "MyTextArea3",
                                         "height": 100,
-                                        "fieldLabel": "Session Description (just text, no html please)"
+                                        "designer|userClassName": "MyTextArea3",
+                                        "fieldLabel": "Session Description (just text, no html please)",
+                                        "name": "description"
                                     },
                                     "designerId": "48434577-15b0-48ea-b8af-af92b2991aa0"
                                 }
@@ -158,7 +158,7 @@
                     ]
                 },
                 {
-                    "type": "gridpanel",
+                    "type": "Ext.grid.Panel",
                     "reference": {
                         "name": "items",
                         "type": "array"
@@ -167,9 +167,9 @@
                     "userConfig": {
                         "layout|flex": 2,
                         "layout|region": "east",
-                        "designer|userClassName": "MyGridPanel1",
                         "id": "SessionTagsGridPanelId",
                         "width": 150,
+                        "designer|userClassName": "MyGridPanel1",
                         "autoScroll": true,
                         "title": "Session Tags",
                         "store": "TagStore"
@@ -177,7 +177,7 @@
                     "designerId": "3c327de4-3d32-47e0-8c62-627f60585318",
                     "cn": [
                         {
-                            "type": "gridview",
+                            "type": "Ext.grid.View",
                             "reference": {
                                 "name": "viewConfig",
                                 "type": "object"
@@ -189,38 +189,38 @@
                             "designerId": "a1bed852-5aa1-484f-bf3f-5e09d5be71f7"
                         },
                         {
-                            "type": "gridcolumn",
+                            "type": "Ext.grid.column.Column",
                             "reference": {
                                 "name": "columns",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "designer|userClassName": "MyColumn3",
                                 "width": 160,
+                                "designer|userClassName": "MyColumn3",
                                 "dataIndex": "tagName",
-                                "flex": 1,
-                                "text": "TagName"
+                                "text": "TagName",
+                                "flex": 1
                             },
                             "designerId": "a0dfdef7-f83d-48ab-ab18-262d1f361d8a"
                         },
                         {
-                            "type": "booleancolumn",
+                            "type": "Ext.grid.column.Boolean",
                             "reference": {
                                 "name": "columns",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "designer|userClassName": "MyBooleanColumn1",
                                 "width": 60,
+                                "designer|userClassName": "MyBooleanColumn1",
                                 "dataIndex": "taggedInSession",
                                 "text": "Tagged"
                             },
                             "designerId": "934ec198-c70c-4e8d-b3bf-54f28040a2d8"
                         },
                         {
-                            "type": "checkboxselectionmodel",
+                            "type": "Ext.selection.CheckboxModel",
                             "reference": {
                                 "name": "selModel",
                                 "type": "object"
@@ -258,7 +258,7 @@
                                             "    var storeRecTagName = storeRec.getData().tagName;\r",
                                             "    var storeRecTaggedInSession = storeRec.getData().taggedInSession;\r",
                                             "    var gridPanelTagged = Ext.Array.contains(tagsSelected1,storeRecTagName);\r",
-                                            "    \r",
+                                            "\r",
                                             "    if (storeRecTaggedInSession != gridPanelTagged) {\r",
                                             "        storeRec.set(\"taggedInSession\",gridPanelTagged);\r",
                                             "    }\r",
@@ -275,6 +275,59 @@
                     ]
                 }
             ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onWindowAfterRender",
+                "fn": "onWindowAfterRender",
+                "implHandler": [
+                    "/*\r",
+                    "var sessionEditForm = Ext.getCmp(\"sessionFormPanelEditorId\").getForm();\r",
+                    "    \r",
+                    "sessionEditForm.setValues(this.sessionData);\r",
+                    "*/\r",
+                    "\r",
+                    "var speakerProfilePanel =  Ext.getCmp('speakerAfterLoginProfileId');\r",
+                    "var retData = speakerProfilePanel.getForm().getValues();\r",
+                    "\r",
+                    "//debugger;\r",
+                    "\r",
+                    "var tagList = Ext.getCmp(\"SessionTagsGridPanelId\");\r",
+                    "var tagListStore = tagList.store;\r",
+                    "tagListStore.load({\r",
+                    "    params: {\r",
+                    "        sessionId: retData.attendeesId\r",
+                    "    },\r",
+                    "    callback: function(records,operation,success) {\r",
+                    "        var sm = tagList.getSelectionModel();\r",
+                    "        var recs = [];\r",
+                    "        Ext.each(records,function(rec) {\r",
+                    "            if (rec.get(\"taggedInSession\") === true) {\r",
+                    "                recs.push(rec);\r",
+                    "            }\r",
+                    "        });\r",
+                    "        sm.select(recs);\r",
+                    "        tagList.getView().focusRow(0);\r",
+                    "    }\r",
+                    "});\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "\r",
+                    "var sessionEditForm = Ext.getCmp(\"sessionFormPanelEditorId\").getForm();\r",
+                    "sessionEditForm.setValues(this.sessionData);"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "designerId": "ffae8ddf-e1f0-4b8c-aeb8-804425e5f27d"
         }
     ]
 }

@@ -1,22 +1,21 @@
 {
-    "type": "form",
+    "type": "Ext.form.Panel",
     "reference": {
         "name": "items",
         "type": "array"
     },
     "codeClass": null,
     "userConfig": {
+        "itemId": "CreateAccount",
         "designer|userClassName": "createAccount",
         "designer|userAlias": "createAccountAlias",
-        "itemId": "CreateAccount",
         "bodyPadding": 10,
         "title": "Create Account"
     },
-    "id": "ExtBox1-ext-gen26628",
     "designerId": "98a8cc4b-7db4-4a2e-8aea-8fe5195956e4",
     "cn": [
         {
-            "type": "toolbar",
+            "type": "Ext.toolbar.Toolbar",
             "reference": {
                 "name": "dockedItems",
                 "type": "array"
@@ -26,14 +25,14 @@
                 "dock": "top",
                 "container|pack": "end",
                 "container|padding": null,
-                "designer|userClassName": "MyToolbar",
                 "height": null,
-                "itemId": "ToolBarAttendeeSpeaker"
+                "itemId": "ToolBarAttendeeSpeaker",
+                "designer|userClassName": "MyToolbar"
             },
             "designerId": "dc33763d-742c-479b-bf1a-149d25b5a7f9",
             "cn": [
                 {
-                    "type": "button",
+                    "type": "Ext.button.Button",
                     "reference": {
                         "name": "items",
                         "type": "array"
@@ -41,17 +40,16 @@
                     "codeClass": null,
                     "userConfig": {
                         "layout|flex": null,
-                        "designer|userClassName": "MyButton",
-                        "disabled": false,
                         "id": null,
                         "itemId": "backButtonId",
+                        "designer|userClassName": "MyButton",
                         "iconAlign": "right",
                         "text": "Back"
                     },
                     "designerId": "23635020-f823-44bb-8dcc-7bba6ee94692"
                 },
                 {
-                    "type": "tbseparator",
+                    "type": "Ext.toolbar.Separator",
                     "reference": {
                         "name": "items",
                         "type": "array"
@@ -64,7 +62,7 @@
                     "designerId": "6449407e-3438-4f45-8a1b-316cd33526ce"
                 },
                 {
-                    "type": "button",
+                    "type": "Ext.button.Button",
                     "reference": {
                         "name": "items",
                         "type": "array"
@@ -73,10 +71,10 @@
                     "userConfig": {
                         "layout|flex": null,
                         "formBind": true,
-                        "designer|userClassName": "MyButton",
                         "disabled": true,
                         "id": null,
                         "itemId": "continueButtonId",
+                        "designer|userClassName": "MyButton",
                         "iconAlign": "right",
                         "text": "Continue"
                     },
@@ -85,7 +83,7 @@
             ]
         },
         {
-            "type": "textfield",
+            "type": "Ext.form.field.Text",
             "reference": {
                 "name": "items",
                 "type": "array"
@@ -94,14 +92,14 @@
             "userConfig": {
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextField35",
-                "name": "username",
                 "fieldLabel": "Username",
+                "name": "username",
                 "allowBlank": false
             },
             "designerId": "38c54f28-03cf-425c-81c3-1305ee277257"
         },
         {
-            "type": "textfield",
+            "type": "Ext.form.field.Text",
             "reference": {
                 "name": "items",
                 "type": "array"
@@ -110,15 +108,15 @@
             "userConfig": {
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextField36",
-                "inputType": "password",
-                "name": "password",
                 "fieldLabel": "Password",
+                "name": "password",
+                "inputType": "password",
                 "allowBlank": false
             },
             "designerId": "326cd6e7-4554-4b9f-9052-7cc1e7d2f4c7"
         },
         {
-            "type": "textfield",
+            "type": "Ext.form.field.Text",
             "reference": {
                 "name": "items",
                 "type": "array"
@@ -127,8 +125,8 @@
             "userConfig": {
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyTextField37",
-                "name": "email",
                 "fieldLabel": "Email",
+                "name": "email",
                 "allowBlank": false,
                 "vtype": "email"
             },

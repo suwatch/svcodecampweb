@@ -1,51 +1,46 @@
 {
-    "type": "form",
+    "type": "Ext.form.Panel",
     "reference": {
         "name": "items",
         "type": "array"
     },
     "codeClass": null,
     "userConfig": {
+        "itemId": null,
         "designer|userClassName": "AttendeeAfterLogin",
         "designer|userAlias": "AttendeeAfterLoginAlias",
-        "itemId": null,
         "bodyPadding": 10,
         "title": "Attendee After Login"
     },
-    "id": "ExtBox1-ext-gen19925",
     "designerId": "6d82b69b-3f21-447d-9161-8f72c94f975b",
     "cn": [
         {
-            "type": "radiogroup",
+            "type": "Ext.form.RadioGroup",
             "reference": {
                 "name": "items",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "container|align": "stretch",
-                "container|padding": 10,
-                "designer|userClassName": "MyRadioGroup2",
                 "width": 400,
-                "layout": "vbox",
+                "designer|userClassName": "MyRadioGroup2",
                 "fieldLabel": "",
                 "allowBlank": false
             },
             "designerId": "9ebdfb0b-7592-48b9-9b67-75622defc0dc",
             "cn": [
                 {
-                    "type": "radiofield",
+                    "type": "Ext.form.field.Radio",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "layout|flex": 1,
-                        "designer|userClassName": "MyRadio7",
                         "itemId": "AttendingSaturdayAndSundayId",
-                        "name": "attendingDaysChoiceCurrentYear",
+                        "designer|userClassName": "MyRadio7",
                         "fieldLabel": null,
+                        "name": "attendingDaysChoiceCurrentYear",
                         "boxLabel": "Attending Saturday and Sunday",
                         "checked": true,
                         "inputValue": "AttendingSaturdaySunday"
@@ -53,70 +48,70 @@
                     "designerId": "6776884e-19a8-411a-bd0c-1b2ed3af6b42"
                 },
                 {
-                    "type": "radiofield",
+                    "type": "Ext.form.field.Radio",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "MyRadio6",
                         "itemId": "AttendingSaturdayId",
-                        "name": "attendingDaysChoiceCurrentYear",
+                        "designer|userClassName": "MyRadio6",
                         "fieldLabel": null,
+                        "name": "attendingDaysChoiceCurrentYear",
                         "boxLabel": "Attending Saturday",
                         "inputValue": "AttendingSaturday"
                     },
                     "designerId": "2ba0b5cb-66a3-4a19-a6a3-086247196fbd"
                 },
                 {
-                    "type": "radiofield",
+                    "type": "Ext.form.field.Radio",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "MyRadio7",
                         "itemId": "AttendingSundayId",
-                        "name": "attendingDaysChoiceCurrentYear",
+                        "designer|userClassName": "MyRadio7",
                         "fieldLabel": null,
+                        "name": "attendingDaysChoiceCurrentYear",
                         "boxLabel": "Attending Sunday",
                         "inputValue": "AttendingSunday"
                     },
                     "designerId": "958b56bb-52cb-4a1b-99bb-96f29553d72b"
                 },
                 {
-                    "type": "radiofield",
+                    "type": "Ext.form.field.Radio",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "MyRadio7",
                         "itemId": "AttendingNotSureDayYetId",
-                        "inputId": "AttendingNotSureYetRb",
-                        "name": "attendingDaysChoiceCurrentYear",
+                        "designer|userClassName": "MyRadio7",
                         "fieldLabel": null,
+                        "name": "attendingDaysChoiceCurrentYear",
+                        "inputId": "AttendingNotSureYetRb",
                         "boxLabel": "Not Sure Which Days Yet",
                         "inputValue": "AttendingNotSureDayYet"
                     },
                     "designerId": "a42a552a-d5a8-46f4-8c52-4c302e80cf1b"
                 },
                 {
-                    "type": "radiofield",
+                    "type": "Ext.form.field.Radio",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "MyRadio7",
                         "itemId": "NotAttendingThisYearId",
-                        "inputId": "NotAttendingRb",
-                        "name": "attendingDaysChoiceCurrentYear",
+                        "designer|userClassName": "MyRadio7",
                         "fieldLabel": null,
+                        "name": "attendingDaysChoiceCurrentYear",
+                        "inputId": "NotAttendingRb",
                         "boxLabel": "Can Not Make It This Year",
                         "inputValue": "NotAttendingThisYear"
                     },
@@ -125,7 +120,7 @@
             ]
         },
         {
-            "type": "toolbar",
+            "type": "Ext.toolbar.Toolbar",
             "reference": {
                 "name": "dockedItems",
                 "type": "array"
@@ -135,14 +130,14 @@
                 "dock": "top",
                 "container|pack": "end",
                 "container|padding": null,
-                "designer|userClassName": "MyToolbar",
                 "height": null,
-                "itemId": "ToolBarAttendeeSpeaker"
+                "itemId": "ToolBarAttendeeSpeaker",
+                "designer|userClassName": "MyToolbar"
             },
             "designerId": "f4142d86-7769-4961-a17e-746dfcf8bfad",
             "cn": [
                 {
-                    "type": "button",
+                    "type": "Ext.button.Button",
                     "reference": {
                         "name": "items",
                         "type": "array"
@@ -150,17 +145,16 @@
                     "codeClass": null,
                     "userConfig": {
                         "layout|flex": null,
-                        "designer|userClassName": "MyButton",
-                        "disabled": false,
                         "id": null,
                         "itemId": "logoutButtonId",
+                        "designer|userClassName": "MyButton",
                         "iconAlign": "right",
                         "text": "Logout"
                     },
                     "designerId": "31abf85a-67c8-41c9-a5a7-8ade32fd8b90"
                 },
                 {
-                    "type": "tbseparator",
+                    "type": "Ext.toolbar.Separator",
                     "reference": {
                         "name": "items",
                         "type": "array"
@@ -173,7 +167,7 @@
                     "designerId": "605740b9-9254-45fd-a8c6-4c492376ebdc"
                 },
                 {
-                    "type": "button",
+                    "type": "Ext.button.Button",
                     "reference": {
                         "name": "items",
                         "type": "array"
@@ -182,10 +176,10 @@
                     "userConfig": {
                         "layout|flex": null,
                         "formBind": true,
-                        "designer|userClassName": "MyButton",
                         "disabled": true,
                         "id": null,
                         "itemId": "continueButtonId",
+                        "designer|userClassName": "MyButton",
                         "iconAlign": "right",
                         "text": "Continue"
                     },
@@ -194,7 +188,7 @@
             ]
         },
         {
-            "type": "textfield",
+            "type": "Ext.form.field.Text",
             "reference": {
                 "name": "items",
                 "type": "array"
@@ -202,15 +196,15 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyTextField8",
-                "inputId": null,
-                "name": "userFirstName",
                 "fieldLabel": "First Name",
+                "name": "userFirstName",
+                "inputId": null,
                 "allowBlank": false
             },
             "designerId": "0cbf5cd3-2125-4f76-b8c7-10c5f3269098"
         },
         {
-            "type": "textfield",
+            "type": "Ext.form.field.Text",
             "reference": {
                 "name": "items",
                 "type": "array"
@@ -218,15 +212,15 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyTextField9",
-                "inputId": null,
-                "name": "userLastName",
                 "fieldLabel": "Last Name",
+                "name": "userLastName",
+                "inputId": null,
                 "allowBlank": false
             },
             "designerId": "f23fce8c-9f1f-43b5-a590-80282a45565a"
         },
         {
-            "type": "textfield",
+            "type": "Ext.form.field.Text",
             "reference": {
                 "name": "items",
                 "type": "array"
@@ -234,15 +228,15 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyTextField9",
-                "name": "email",
                 "fieldLabel": "Email",
+                "name": "email",
                 "allowBlank": false,
                 "vtype": "email"
             },
             "designerId": "14b9be0b-a392-4098-add2-e3e4b85a151b"
         },
         {
-            "type": "checkboxfield",
+            "type": "Ext.form.field.Checkbox",
             "reference": {
                 "name": "items",
                 "type": "array"
@@ -251,8 +245,8 @@
             "userConfig": {
                 "layout|anchor": "100%",
                 "designer|userClassName": "MyCheckbox4",
-                "name": "volunteeredCurrentYear",
                 "fieldLabel": "Volunteer",
+                "name": "volunteeredCurrentYear",
                 "boxLabel": "(Volunter To Help Day Of)",
                 "inputValue": "true",
                 "uncheckedValue": "false"
@@ -260,7 +254,7 @@
             "designerId": "adc909df-4183-4375-85c6-f6d8d6f6c538"
         },
         {
-            "type": "textfield",
+            "type": "Ext.form.field.Text",
             "reference": {
                 "name": "items",
                 "type": "array"
@@ -268,13 +262,13 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyTextField10",
-                "name": "phoneNumber",
-                "fieldLabel": "Phone Number (If Volunteer)"
+                "fieldLabel": "Phone Number (If Volunteer)",
+                "name": "phoneNumber"
             },
             "designerId": "035633af-a7c5-4bbf-9958-98a64fd6820e"
         },
         {
-            "type": "textfield",
+            "type": "Ext.form.field.Text",
             "reference": {
                 "name": "items",
                 "type": "array"
@@ -282,13 +276,13 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyTextField10",
-                "name": "twitterHandle",
-                "fieldLabel": "Twitter Handle"
+                "fieldLabel": "Twitter Handle",
+                "name": "twitterHandle"
             },
             "designerId": "956fcab5-9c3b-4568-a675-f53511bcb3e5"
         },
         {
-            "type": "textfield",
+            "type": "Ext.form.field.Text",
             "reference": {
                 "name": "items",
                 "type": "array"
@@ -296,13 +290,13 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyTextField10",
-                "name": "emailEventBoard",
-                "fieldLabel": "Eventboard Email"
+                "fieldLabel": "Eventboard Email",
+                "name": "emailEventBoard"
             },
             "designerId": "55f5f5b4-2b92-4ab1-96d0-f78f71a5cdef"
         },
         {
-            "type": "textfield",
+            "type": "Ext.form.field.Text",
             "reference": {
                 "name": "items",
                 "type": "array"
@@ -310,13 +304,13 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyTextField11",
-                "name": "city",
-                "fieldLabel": "City"
+                "fieldLabel": "City",
+                "name": "city"
             },
             "designerId": "db83c009-f15d-426d-8f27-f074afc1c577"
         },
         {
-            "type": "textfield",
+            "type": "Ext.form.field.Text",
             "reference": {
                 "name": "items",
                 "type": "array"
@@ -324,13 +318,13 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyTextField12",
-                "name": "state",
-                "fieldLabel": "State"
+                "fieldLabel": "State",
+                "name": "state"
             },
             "designerId": "94ef2244-fcd7-4ca3-a5de-3caa6178e50b"
         },
         {
-            "type": "textfield",
+            "type": "Ext.form.field.Text",
             "reference": {
                 "name": "items",
                 "type": "array"
@@ -338,8 +332,8 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyTextField13",
-                "name": "userZipCode",
-                "fieldLabel": "Zipcode"
+                "fieldLabel": "Zipcode",
+                "name": "userZipCode"
             },
             "designerId": "173e3391-7a97-455e-95e7-28a422208081"
         }

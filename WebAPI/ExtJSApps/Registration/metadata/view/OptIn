@@ -1,5 +1,5 @@
 {
-    "type": "form",
+    "type": "Ext.form.Panel",
     "reference": {
         "name": "items",
         "type": "array"
@@ -13,11 +13,10 @@
         "bodyPadding": 20,
         "title": "Opt In"
     },
-    "id": "ExtBox1-ext-gen11166",
     "designerId": "2ae7e189-6c5e-4718-b828-ca560f5c3fdc",
     "cn": [
         {
-            "type": "toolbar",
+            "type": "Ext.toolbar.Toolbar",
             "reference": {
                 "name": "dockedItems",
                 "type": "array"
@@ -27,14 +26,14 @@
                 "dock": "top",
                 "container|pack": "end",
                 "container|padding": null,
-                "designer|userClassName": "MyToolbar",
                 "height": null,
-                "itemId": "ToolBarForgotUsername"
+                "itemId": "ToolBarForgotUsername",
+                "designer|userClassName": "MyToolbar"
             },
             "designerId": "91fa04ca-d28a-495e-836b-47f9ba2d796c",
             "cn": [
                 {
-                    "type": "button",
+                    "type": "Ext.button.Button",
                     "reference": {
                         "name": "items",
                         "type": "array"
@@ -42,17 +41,16 @@
                     "codeClass": null,
                     "userConfig": {
                         "layout|flex": null,
-                        "designer|userClassName": "MyButton",
-                        "disabled": false,
                         "id": null,
                         "itemId": "backButtonId",
+                        "designer|userClassName": "MyButton",
                         "iconAlign": "right",
                         "text": "Back"
                     },
                     "designerId": "2f39d220-1272-4113-8572-0ec8fbb338b3"
                 },
                 {
-                    "type": "tbseparator",
+                    "type": "Ext.toolbar.Separator",
                     "reference": {
                         "name": "items",
                         "type": "array"
@@ -65,7 +63,7 @@
                     "designerId": "b7f15cbf-6361-42a7-9bed-b55bd07d9d98"
                 },
                 {
-                    "type": "button",
+                    "type": "Ext.button.Button",
                     "reference": {
                         "name": "items",
                         "type": "array"
@@ -73,10 +71,10 @@
                     "codeClass": null,
                     "userConfig": {
                         "layout|flex": null,
-                        "designer|userClassName": "MyButton",
                         "disabled": null,
                         "id": null,
                         "itemId": "continueButtonId",
+                        "designer|userClassName": "MyButton",
                         "iconAlign": "right",
                         "text": "Finish"
                     },
@@ -85,35 +83,35 @@
             ]
         },
         {
-            "type": "panel",
+            "type": "Ext.panel.Panel",
             "reference": {
                 "name": "items",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "designer|userClassName": "MyPanel1",
                 "border": false,
                 "height": 44,
                 "html": null,
+                "designer|userClassName": "MyPanel1",
                 "title": null
             },
             "designerId": "62df5fdb-add2-41e0-855c-c74eb2c04bb1",
             "cn": [
                 {
-                    "type": "label",
+                    "type": "Ext.form.Label",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "MyLabel3",
                         "maxWidth": null,
                         "style": [
                             "font-weight:bold;font-size:120%"
                         ],
                         "width": null,
+                        "designer|userClassName": "MyLabel3",
                         "text": "Help keep Silicon Valley Code Camp free for attendees by support our sponsors and Opting.  Please Consider NOT opting out"
                     },
                     "designerId": "b5c4aa0f-362f-4b17-bdf5-0ecc028833de"
@@ -121,21 +119,21 @@
             ]
         },
         {
-            "type": "panel",
+            "type": "Ext.panel.Panel",
             "reference": {
                 "name": "items",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "designer|userClassName": "MyPanel2",
                 "border": false,
+                "designer|userClassName": "MyPanel2",
                 "title": null
             },
             "designerId": "333dac9c-46fa-44b8-99cb-681d64709a27",
             "cn": [
                 {
-                    "type": "checkboxfield",
+                    "type": "Ext.form.field.Checkbox",
                     "reference": {
                         "name": "items",
                         "type": "array"
@@ -143,9 +141,9 @@
                     "codeClass": null,
                     "userConfig": {
                         "designer|userClassName": "MyCheckbox6",
-                        "name": "optInSponsoredMailingsLevel",
                         "fieldLabel": "Accept Emails From Sponsors Offering Specials Only Available To Code Camp Attendees.  <br/>All email to you include in the subjects <i>[Sponsored Specials]</i>",
                         "labelWidth": 300,
+                        "name": "optInSponsoredMailingsLevel",
                         "boxLabel": "",
                         "checked": true,
                         "inputValue": "1",
@@ -154,18 +152,18 @@
                     "designerId": "9f035b99-672f-4d8e-94c8-accfae68e0b9"
                 },
                 {
-                    "type": "checkboxfield",
+                    "type": "Ext.form.field.Checkbox",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "MyCheckbox6",
                         "margin": "20 0 0 0 ",
-                        "name": "optInSponsorSpecialsLevel",
+                        "designer|userClassName": "MyCheckbox6",
                         "fieldLabel": "Accept general emails From Sponsors<br/>All email to you include in the subject <i>[Sponsored Email]</i>",
                         "labelWidth": 300,
+                        "name": "optInSponsorSpecialsLevel",
                         "boxLabel": "",
                         "checked": true,
                         "inputValue": "1",

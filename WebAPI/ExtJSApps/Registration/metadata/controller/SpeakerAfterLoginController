@@ -1,5 +1,5 @@
 {
-    "type": "controller",
+    "type": "Ext.app.Controller",
     "reference": {
         "name": "items",
         "type": "array"
@@ -8,7 +8,6 @@
     "userConfig": {
         "designer|userClassName": "SpeakerAfterLoginController"
     },
-    "id": "ExtBox1-ext-gen45629",
     "designerId": "fafbaf9d-46bc-4791-8e9a-7a91c69c6664",
     "cn": [
         {
@@ -104,45 +103,30 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|userClassName": "onSpeakerPictureUploadXIdChange",
-                "fn": "onSpeakerPictureUploadXIdChange",
+                "designer|userClassName": "onEditSelectedSessionButtonIdClick",
+                "fn": "onEditSelectedSessionButtonIdClick",
                 "implHandler": [
-                    "// FOR SOME REASON THIS WILL NOT GET CALLED IN CONTROLLER\r",
+                    "var sessionsSpeakerPanel = Ext.getCmp(\"sessionsBySpeakerGridPanelId\");\r",
+                    "//var storeSessions = sessionsSpeakerPanel.getStore();\r",
                     "\r",
-                    "var speakerForm = Ext.getCmp('speakerPictureUploadFormId');\r",
-                    "var imgId = Ext.getCmp('SpeakerImageId');\r",
-                    "if(speakerForm.isValid()){\r",
-                    "    speakerForm.submit({\r",
-                    "        url: '/rpc/Account/FormData',\r",
-                    "        waitMsg: 'Uploading your photo...',\r",
-                    "        success: function(fp, o) {\r",
-                    "            var attendeesId = o.result.attendeeId;\r",
-                    "            var imageLocation = '/attendeeimage/' + attendeesId + '.jpg?width=175&height=175&scale=both&anchor=topleft&bgcolor=black';\r",
-                    "            var antiCachePart = (new Date()).getTime();\r",
-                    "            var newSrc = imageLocation + '?dc=' + antiCachePart;\r",
-                    "            imgId.setSrc(newSrc); \r",
-                    "        },\r",
-                    "        failure: function(form, action){\r",
-                    "            //debugger;\r",
-                    "            if (action.failureType === Ext.form.action.Action.CONNECT_FAILURE) {\r",
-                    "                Ext.Msg.alert('Error',\r",
-                    "                'Status:'+action.response.status+': '+\r",
-                    "                action.response.statusText);\r",
-                    "            }\r",
-                    "            if (action.failureType === Ext.form.action.Action.SERVER_INVALID){\r",
-                    "                // server responded with success = false\r",
-                    "                Ext.Msg.alert('Invalid', action.result.errormsg);\r",
-                    "            }\r",
-                    "        }\r",
-                    "    });\r",
-                    "}"
+                    "var selectedRecs = sessionsSpeakerPanel.getSelectionModel().getSelection();\r",
+                    "if (selectedRecs.length > 0) {\r",
+                    " \tvar sessionId = selectedRecs[0].getId();\r",
+                    "    Ext.create('RegistrationApp.view.WindowSession',{\r",
+                    "        sessionData: {\r",
+                    "            title: \"my title\",\r",
+                    "            description: \"myu description\"\r",
+                    "    \t}\r",
+                    "\t}).show();\r",
+                    "}\r",
+                    ""
                 ],
-                "name": "change",
+                "name": "click",
                 "scope": "me",
-                "designer|targetType": "Ext.form.field.File",
-                "designer|controlQuery": "SpeakerAfterLoginAlias2  #SpeakerPictureUploadXId"
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#editSelectedSessionButtonId"
             },
-            "designerId": "8f0f3cb2-e90a-45d0-9011-a14a60d4e1f1"
+            "designerId": "43fade13-265e-4a9e-bd34-944d753cecdf"
         }
     ]
 }

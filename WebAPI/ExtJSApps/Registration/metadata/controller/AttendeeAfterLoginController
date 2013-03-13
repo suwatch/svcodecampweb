@@ -1,5 +1,5 @@
 {
-    "type": "controller",
+    "type": "Ext.app.Controller",
     "reference": {
         "name": "items",
         "type": "array"
@@ -8,7 +8,6 @@
     "userConfig": {
         "designer|userClassName": "AttendeeAfterLoginController"
     },
-    "id": "ExtBox1-ext-gen25289",
     "designerId": "0c4f878b-eeff-417b-97aa-d7d05129ec73",
     "cn": [
         {

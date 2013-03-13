@@ -6,16 +6,15 @@
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userClassName": "ShirtSizeStore",
         "autoLoad": true,
+        "model": null,
         "storeId": "shirtSizeStoreId",
-        "model": null
+        "designer|userClassName": "ShirtSizeStore"
     },
-    "id": "ExtBox1-ext-gen2478",
     "designerId": "126b70a4-920e-49ef-8117-21150f082f6d",
     "cn": [
         {
-            "type": "ajaxproxy",
+            "type": "Ext.data.proxy.Ajax",
             "reference": {
                 "name": "proxy",
                 "type": "object"
@@ -37,30 +36,30 @@
             ],
             "cn": [
                 {
-                    "type": "jsonreader",
+                    "type": "Ext.data.reader.Json",
                     "reference": {
                         "name": "reader",
                         "type": "object"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "MyJsonReader",
-                        "root": "data"
+                        "root": "data",
+                        "designer|userClassName": "MyJsonReader"
                     },
                     "designerId": "6fd93581-7bd6-4288-a210-4f0ac2fa0645"
                 }
             ]
         },
         {
-            "type": "datafield",
+            "type": "Ext.data.Field",
             "reference": {
                 "name": "fields",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "designer|userClassName": "field1",
-                "name": "shirtSize"
+                "name": "shirtSize",
+                "designer|userClassName": "field1"
             },
             "designerId": "4cb0d962-2d2f-4b95-a1c0-b491f8b654fa"
         }

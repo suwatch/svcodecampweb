@@ -1,20 +1,19 @@
 {
-    "type": "store",
+    "type": "Ext.data.Store",
     "reference": {
         "name": "items",
         "type": "array"
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userClassName": "TagStore",
+        "model": "TagsModel",
         "storeId": "tagStoreId",
-        "model": "TagsModel"
+        "designer|userClassName": "TagStore"
     },
-    "id": "ExtBox1-ext-gen70528",
     "designerId": "e6e2035e-259d-4233-95b4-291a5a6a41a6",
     "cn": [
         {
-            "type": "restproxy",
+            "type": "Ext.data.proxy.Rest",
             "reference": {
                 "name": "proxy",
                 "type": "object"

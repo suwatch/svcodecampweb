@@ -1,23 +1,22 @@
 {
-    "type": "form",
+    "type": "Ext.form.Panel",
     "reference": {
         "name": "items",
         "type": "array"
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userClassName": "AttendeeOrSpeaker",
-        "designer|userAlias": "AttendeeOrSpeakerAlias",
         "id": "attendeeOrSpeakerId",
         "itemId": "AttendeeOrSpeaker",
+        "designer|userClassName": "AttendeeOrSpeaker",
+        "designer|userAlias": "AttendeeOrSpeakerAlias",
         "bodyPadding": 20,
         "title": "Attendee Or Speaker"
     },
-    "id": "ExtBox1-ext-gen7942",
     "designerId": "b2a0a5e7-3db7-4038-ab22-bcee2b77314e",
     "cn": [
         {
-            "type": "toolbar",
+            "type": "Ext.toolbar.Toolbar",
             "reference": {
                 "name": "dockedItems",
                 "type": "array"
@@ -27,14 +26,14 @@
                 "dock": "top",
                 "container|pack": "end",
                 "container|padding": null,
-                "designer|userClassName": "MyToolbar",
                 "height": null,
-                "itemId": "ToolBarAttendeeSpeaker"
+                "itemId": "ToolBarAttendeeSpeaker",
+                "designer|userClassName": "MyToolbar"
             },
             "designerId": "cf1b76f8-bbd3-4ae3-8487-b890d84d480b",
             "cn": [
                 {
-                    "type": "button",
+                    "type": "Ext.button.Button",
                     "reference": {
                         "name": "items",
                         "type": "array"
@@ -42,17 +41,16 @@
                     "codeClass": null,
                     "userConfig": {
                         "layout|flex": null,
-                        "designer|userClassName": "MyButton",
-                        "disabled": false,
                         "id": null,
                         "itemId": "backButtonId",
+                        "designer|userClassName": "MyButton",
                         "iconAlign": "right",
                         "text": "Back"
                     },
                     "designerId": "0770ca89-51de-4251-adcd-4f09bd211915"
                 },
                 {
-                    "type": "tbseparator",
+                    "type": "Ext.toolbar.Separator",
                     "reference": {
                         "name": "items",
                         "type": "array"
@@ -65,7 +63,7 @@
                     "designerId": "f62b93e7-3f2b-4de9-85ac-4d7872989937"
                 },
                 {
-                    "type": "button",
+                    "type": "Ext.button.Button",
                     "reference": {
                         "name": "items",
                         "type": "array"
@@ -74,10 +72,10 @@
                     "userConfig": {
                         "layout|flex": null,
                         "formBind": true,
-                        "designer|userClassName": "MyButton",
                         "disabled": true,
                         "id": null,
                         "itemId": "continueButtonId",
+                        "designer|userClassName": "MyButton",
                         "iconAlign": "right",
                         "text": "Continue"
                     },
@@ -86,18 +84,18 @@
             ]
         },
         {
-            "type": "textfield",
+            "type": "Ext.form.field.Text",
             "reference": {
                 "name": "items",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "designer|userClassName": "MyTextField",
                 "itemId": "username",
-                "inputId": "username",
+                "designer|userClassName": "MyTextField",
                 "fieldLabel": "Username",
                 "labelWidth": null,
+                "inputId": "username",
                 "emptyText": "Username",
                 "maxLength": null,
                 "minLength": null,
@@ -107,18 +105,18 @@
             "designerId": "105ab016-1005-4546-8dee-89b053b8c6d2"
         },
         {
-            "type": "textfield",
+            "type": "Ext.form.field.Text",
             "reference": {
                 "name": "items",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "designer|userClassName": "MyTextField1",
                 "itemId": "password",
+                "designer|userClassName": "MyTextField1",
+                "fieldLabel": "Password",
                 "inputId": "password",
                 "inputType": "password",
-                "fieldLabel": "Password",
                 "emptyText": "password",
                 "enforceMaxLength": null,
                 "maxLength": null,
@@ -128,72 +126,69 @@
             "designerId": "1ac5bd72-4880-4b45-ad9b-9c8608f82a07"
         },
         {
-            "type": "radiogroup",
+            "type": "Ext.form.RadioGroup",
             "reference": {
                 "name": "items",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "container|align": "stretch",
-                "designer|userClassName": "MyRadioGroup1",
                 "itemId": "RadioGroupLoginActions",
                 "width": 400,
-                "layout": "vbox",
+                "designer|userClassName": "MyRadioGroup1",
                 "fieldLabel": "Actions",
-                "allowBlank": false,
-                "vertical": false
+                "allowBlank": false
             },
             "designerId": "b0e83847-6175-43d7-98f2-171fb6886342",
             "cn": [
                 {
-                    "type": "radiofield",
+                    "type": "Ext.form.field.Radio",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "MyRadio3",
                         "itemId": "haveaccount",
-                        "name": "LoginActions",
+                        "designer|userClassName": "MyRadio3",
                         "fieldLabel": null,
                         "labelWidth": 70,
+                        "name": "LoginActions",
                         "boxLabel": "I Have a Code Camp Account Already",
                         "checked": true
                     },
                     "designerId": "c3bb0c36-426f-4780-9b8e-011cc86357da"
                 },
                 {
-                    "type": "radiofield",
+                    "type": "Ext.form.field.Radio",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "MyRadio3",
                         "itemId": "forgot",
-                        "name": "LoginActions",
+                        "designer|userClassName": "MyRadio3",
                         "fieldLabel": null,
                         "labelWidth": 70,
+                        "name": "LoginActions",
                         "boxLabel": "Forgot Username or Password"
                     },
                     "designerId": "54bd1916-4357-4add-9f6e-3672be7f4257"
                 },
                 {
-                    "type": "radiofield",
+                    "type": "Ext.form.field.Radio",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "MyRadio4",
                         "itemId": "create",
-                        "name": "LoginActions",
+                        "designer|userClassName": "MyRadio4",
                         "fieldLabel": null,
                         "labelWidth": 70,
+                        "name": "LoginActions",
                         "boxLabel": "Create a new Account for me"
                     },
                     "designerId": "c1635131-e2f8-4cdf-b2ea-b488c9844d6b"

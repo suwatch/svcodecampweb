@@ -1,5 +1,5 @@
 {
-    "type": "form",
+    "type": "Ext.form.Panel",
     "reference": {
         "name": "items",
         "type": "array"
@@ -7,20 +7,19 @@
     "codeClass": null,
     "userConfig": {
         "container|align": "stretch",
+        "itemId": "sponsorId",
         "designer|userClassName": "sponsor",
         "designer|userAlias": "sponsorAlias",
-        "itemId": "sponsorId",
         "layout": "hbox",
         "bodyBorder": true,
         "bodyPadding": null,
         "title": "Sponsor",
         "url": "/api/Account/SponsorRequest"
     },
-    "id": "ExtBox1-ext-gen3602",
     "designerId": "fd7d5df9-3fda-46f2-82cb-9cfeb17ff1e9",
     "cn": [
         {
-            "type": "container",
+            "type": "Ext.container.Container",
             "reference": {
                 "name": "items",
                 "type": "array"
@@ -36,81 +35,81 @@
             "designerId": "c7c624ad-054f-4681-82dd-bc2a25b305c2",
             "cn": [
                 {
-                    "type": "textfield",
+                    "type": "Ext.form.field.Text",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "MyTextField4",
                         "itemId": "name",
                         "margin": null,
                         "width": null,
-                        "name": "contactName",
+                        "designer|userClassName": "MyTextField4",
                         "fieldLabel": "Contact Name",
+                        "name": "contactName",
                         "allowBlank": false,
                         "minLength": 5
                     },
                     "designerId": "86ba17f0-85bc-4f6c-91e4-2112347b1786"
                 },
                 {
-                    "type": "textfield",
+                    "type": "Ext.form.field.Text",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "MyTextField6",
                         "itemId": "email",
                         "margin": null,
                         "width": 300,
-                        "name": "contactEmail",
+                        "designer|userClassName": "MyTextField6",
                         "fieldLabel": "Email",
+                        "name": "contactEmail",
                         "allowBlank": false,
                         "vtype": "email"
                     },
                     "designerId": "2c7bfaa6-4677-416e-8bf7-2083486bdddd"
                 },
                 {
-                    "type": "textfield",
+                    "type": "Ext.form.field.Text",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "MyTextField5",
-                        "designer|displayName": null,
                         "itemId": "company",
                         "margin": null,
                         "width": null,
-                        "name": "company",
+                        "designer|userClassName": "MyTextField5",
+                        "designer|displayName": null,
                         "fieldLabel": "Company",
+                        "name": "company",
                         "allowBlank": false
                     },
                     "designerId": "f9ace9bf-7208-4248-ad44-0907b0e8249a"
                 },
                 {
-                    "type": "textfield",
+                    "type": "Ext.form.field.Text",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "MyTextField7",
                         "itemId": "phone",
                         "margin": null,
                         "width": 300,
-                        "name": "phoneNumber",
-                        "fieldLabel": "Phone Number"
+                        "designer|userClassName": "MyTextField7",
+                        "fieldLabel": "Phone Number",
+                        "name": "phoneNumber"
                     },
                     "designerId": "7fcc6a96-077c-4c4d-b9ca-d7a43f683768"
                 },
                 {
-                    "type": "label",
+                    "type": "Ext.form.Label",
                     "reference": {
                         "name": "items",
                         "type": "array"
@@ -118,44 +117,41 @@
                     "codeClass": null,
                     "userConfig": {
                         "layout|flex": 0,
-                        "designer|userClassName": "MyLabel1",
                         "height": 20,
+                        "designer|userClassName": "MyLabel1",
                         "text": null
                     },
                     "designerId": "29360f33-3ff9-4ffc-b9be-5d4a997be2dd"
                 },
                 {
-                    "type": "checkboxgroup",
+                    "type": "Ext.form.CheckboxGroup",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "container|align": "stretch",
-                        "designer|userClassName": "MyCheckboxGroup",
                         "border": 1,
                         "frame": true,
                         "itemId": "ContactMeCheckboxGroup",
                         "width": 328,
-                        "layout": "vbox",
-                        "fieldLabel": "",
-                        "name": "InfoWantedType"
+                        "designer|userClassName": "MyCheckboxGroup",
+                        "fieldLabel": ""
                     },
                     "designerId": "6834b1e3-cc1c-4f24-bbf1-9d6e48cd6fc5",
                     "cn": [
                         {
-                            "type": "checkboxfield",
+                            "type": "Ext.form.field.Checkbox",
                             "reference": {
                                 "name": "items",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "designer|userClassName": "MyCheckbox",
                                 "itemId": "emailMeCheckbox",
-                                "name": "emailMe",
+                                "designer|userClassName": "MyCheckbox",
                                 "fieldLabel": null,
+                                "name": "emailMe",
                                 "boxLabel": "Please Email Me Information",
                                 "inputValue": "true",
                                 "uncheckedValue": "false"
@@ -163,17 +159,17 @@
                             "designerId": "8615f0ad-47d6-4601-bbfc-b71366efa54d"
                         },
                         {
-                            "type": "checkboxfield",
+                            "type": "Ext.form.field.Checkbox",
                             "reference": {
                                 "name": "items",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "designer|userClassName": "MyCheckbox1",
                                 "itemId": "contactMeCheckbox",
-                                "name": "contactMeByPhone",
+                                "designer|userClassName": "MyCheckbox1",
                                 "fieldLabel": null,
+                                "name": "contactMeByPhone",
                                 "boxLabel": "Please Contact Me By Phone",
                                 "inputValue": "true",
                                 "uncheckedValue": "false"
@@ -181,18 +177,17 @@
                             "designerId": "97c6df53-cb50-48e4-9719-626e8970deb4"
                         },
                         {
-                            "type": "checkboxfield",
+                            "type": "Ext.form.field.Checkbox",
                             "reference": {
                                 "name": "items",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "layout|margins": null,
-                                "designer|userClassName": "MyCheckbox1",
                                 "itemId": "alsoAttendingCheckBox",
-                                "name": "alsoAttending",
+                                "designer|userClassName": "MyCheckbox1",
                                 "fieldLabel": null,
+                                "name": "alsoAttending",
                                 "boxLabel": "I Am Also Planning On Attending",
                                 "inputValue": "true",
                                 "uncheckedValue": "false"
@@ -200,18 +195,17 @@
                             "designerId": "23746102-d032-4f0f-ab68-48af08c8ae63"
                         },
                         {
-                            "type": "checkboxfield",
+                            "type": "Ext.form.field.Checkbox",
                             "reference": {
                                 "name": "items",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "layout|margins": null,
-                                "designer|userClassName": "MyCheckbox1",
                                 "itemId": "sponsoredInPastCheckbox",
-                                "name": "pastSponsor",
+                                "designer|userClassName": "MyCheckbox1",
                                 "fieldLabel": null,
+                                "name": "pastSponsor",
                                 "boxLabel": "Our Company Has Previously Sponsord Code Camp",
                                 "inputValue": "true",
                                 "uncheckedValue": "false"
@@ -223,7 +217,7 @@
             ]
         },
         {
-            "type": "container",
+            "type": "Ext.container.Container",
             "reference": {
                 "name": "items",
                 "type": "array"
@@ -231,29 +225,29 @@
             "codeClass": null,
             "userConfig": {
                 "layout|flex": 1,
-                "designer|userClassName": "MyContainer1",
                 "height": 287,
                 "padding": 15,
+                "designer|userClassName": "MyContainer1",
                 "layout": "anchor"
             },
             "designerId": "2bb6f16b-5a7f-49fb-a23c-e0fc104853f3",
             "cn": [
                 {
-                    "type": "label",
+                    "type": "Ext.form.Label",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "MyLabel3",
                         "padding": 15,
+                        "designer|userClassName": "MyLabel3",
                         "text": "Special Notes To Code Camp"
                     },
                     "designerId": "42aec365-5cec-4505-99aa-d8f3aa4e2009"
                 },
                 {
-                    "type": "textareafield",
+                    "type": "Ext.form.field.TextArea",
                     "reference": {
                         "name": "items",
                         "type": "array"
@@ -261,17 +255,17 @@
                     "codeClass": null,
                     "userConfig": {
                         "layout|anchor": "100%",
-                        "designer|userClassName": "MyTextArea1",
                         "height": 200,
-                        "name": "sponsorSpecialNotes",
-                        "fieldLabel": ""
+                        "designer|userClassName": "MyTextArea1",
+                        "fieldLabel": "",
+                        "name": "sponsorSpecialNotes"
                     },
                     "designerId": "36669d37-3ccd-4907-85b4-d77f4f89295d"
                 }
             ]
         },
         {
-            "type": "toolbar",
+            "type": "Ext.toolbar.Toolbar",
             "reference": {
                 "name": "dockedItems",
                 "type": "array"
@@ -281,14 +275,14 @@
                 "dock": "top",
                 "container|pack": "end",
                 "container|padding": null,
-                "designer|userClassName": "MyToolbar",
                 "height": null,
-                "itemId": "ToolBarForgotUsername"
+                "itemId": "ToolBarForgotUsername",
+                "designer|userClassName": "MyToolbar"
             },
             "designerId": "4abfd865-0a35-45a2-b65d-e97051c1466c",
             "cn": [
                 {
-                    "type": "button",
+                    "type": "Ext.button.Button",
                     "reference": {
                         "name": "items",
                         "type": "array"
@@ -296,17 +290,16 @@
                     "codeClass": null,
                     "userConfig": {
                         "layout|flex": null,
-                        "designer|userClassName": "MyButton",
-                        "disabled": false,
                         "id": null,
                         "itemId": "backButtonId",
+                        "designer|userClassName": "MyButton",
                         "iconAlign": "right",
                         "text": "Back"
                     },
                     "designerId": "8342b399-c582-4251-86ee-4085c480b1b1"
                 },
                 {
-                    "type": "tbseparator",
+                    "type": "Ext.toolbar.Separator",
                     "reference": {
                         "name": "items",
                         "type": "array"
@@ -319,7 +312,7 @@
                     "designerId": "dd4195d1-e0ef-4db6-ad62-49ce483c915b"
                 },
                 {
-                    "type": "button",
+                    "type": "Ext.button.Button",
                     "reference": {
                         "name": "items",
                         "type": "array"
@@ -328,10 +321,10 @@
                     "userConfig": {
                         "layout|flex": null,
                         "formBind": true,
-                        "designer|userClassName": "MyButton",
                         "disabled": true,
                         "id": null,
                         "itemId": "continueButtonId",
+                        "designer|userClassName": "MyButton",
                         "iconAlign": "right",
                         "text": "Continue"
                     },

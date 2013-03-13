@@ -1,14 +1,11 @@
 {
-    "type": "application",
+    "type": "Ext.app.Application",
     "reference": {
         "name": "items",
         "type": "array"
     },
     "codeClass": null,
     "userConfig": {
-        "requires": [
-            "Ext.data.proxy.Rest"
-        ],
         "models": [
             "Sessions",
             "TagsModel"
@@ -32,8 +29,10 @@
             "SpeakerAfterLoginNotDup",
             "WindowSession"
         ],
+        "requires": [
+            "Ext.data.proxy.Rest"
+        ],
         "autoCreateViewport": true,
-        "name": "RegistrationApp",
         "controllers": [
             "RegisterSpeakerAttendeeSponsorController",
             "RegisterSpeakerAttendee",
@@ -44,9 +43,9 @@
             "CreateAccountController",
             "OptInController",
             "SessionEditorController"
-        ]
+        ],
+        "name": "RegistrationApp"
     },
-    "id": "ExtBox1-ext-gen1587",
     "designerId": "application",
     "cn": [
         {

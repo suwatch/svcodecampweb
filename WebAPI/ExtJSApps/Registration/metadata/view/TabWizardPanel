@@ -1,11 +1,15 @@
 {
-    "type": "tabpanel",
+    "type": "Ext.tab.Panel",
     "reference": {
         "name": "items",
         "type": "array"
     },
     "codeClass": null,
     "userConfig": {
+        "height": 450,
+        "id": "TabWizardId",
+        "itemId": "",
+        "maxHeight": null,
         "designer|userClassName": "TabWizardPanel",
         "designer|userAlias": "tabWizardPanelAlias",
         "requires": [
@@ -13,13 +17,8 @@
             "Ext.form.field.Radio",
             "Ext.form.Label"
         ],
-        "height": 450,
-        "id": "TabWizardId",
-        "itemId": "",
-        "maxHeight": null,
         "activeTab": 0
     },
-    "id": "ExtBox1-ext-gen1924",
     "designerId": "fea6a3af-2d7e-4daa-9f97-09e2da9e54c8",
     "cn": [
         {
@@ -96,10 +95,10 @@
             },
             "codeClass": null,
             "designerId": "c92f0722-0d38-495a-85ff-1ccbeb8d57b9",
-            "masterInstanceId": "ExtBox1-ext-gen3606",
+            "masterInstanceId": "9aa5d9d2-b86c-474a-809d-f428070283f5",
             "cn": [
                 {
-                    "type": "tab",
+                    "type": "Ext.tab.Tab",
                     "reference": {
                         "name": "tabConfig",
                         "type": "object"
@@ -120,10 +119,10 @@
             },
             "codeClass": null,
             "designerId": "756508a6-96bb-4922-8caf-1df1cb4a2b6b",
-            "masterInstanceId": "ExtBox1-ext-gen7942",
+            "masterInstanceId": "b2a0a5e7-3db7-4038-ab22-bcee2b77314e",
             "cn": [
                 {
-                    "type": "tab",
+                    "type": "Ext.tab.Tab",
                     "reference": {
                         "name": "tabConfig",
                         "type": "object"
@@ -144,10 +143,10 @@
             },
             "codeClass": null,
             "designerId": "2d021a29-b8ca-402f-8eb3-cebbc7cee041",
-            "masterInstanceId": "ExtBox1-ext-gen12173",
+            "masterInstanceId": "39067009-bf72-41d5-adb1-5644d566845c",
             "cn": [
                 {
-                    "type": "tab",
+                    "type": "Ext.tab.Tab",
                     "reference": {
                         "name": "tabConfig",
                         "type": "object"
@@ -168,10 +167,10 @@
             },
             "codeClass": null,
             "designerId": "87efcd0e-aad1-410a-bb4a-b3b4443d6043",
-            "masterInstanceId": "ExtBox1-ext-gen3602",
+            "masterInstanceId": "fd7d5df9-3fda-46f2-82cb-9cfeb17ff1e9",
             "cn": [
                 {
-                    "type": "tab",
+                    "type": "Ext.tab.Tab",
                     "reference": {
                         "name": "tabConfig",
                         "type": "object"
@@ -195,10 +194,10 @@
                 "title": null
             },
             "designerId": "8a004979-12c0-49cf-958c-6931c0cb44ad",
-            "masterInstanceId": "ExtBox1-ext-gen19925",
+            "masterInstanceId": "6d82b69b-3f21-447d-9161-8f72c94f975b",
             "cn": [
                 {
-                    "type": "tab",
+                    "type": "Ext.tab.Tab",
                     "reference": {
                         "name": "tabConfig",
                         "type": "object"
@@ -223,10 +222,10 @@
                 "title": "Speaker After Login"
             },
             "designerId": "af3426cb-f9d7-4f43-b79d-627519c76647",
-            "masterInstanceId": "ExtBox1-ext-gen5032",
+            "masterInstanceId": "1a1e24e7-e981-4728-b958-9dcf746faf54",
             "cn": [
                 {
-                    "type": "tab",
+                    "type": "Ext.tab.Tab",
                     "reference": {
                         "name": "tabConfig",
                         "type": "object"
@@ -250,10 +249,10 @@
                 "title": null
             },
             "designerId": "5f83ad9b-f72c-4bc9-99f2-c47a5c5facb0",
-            "masterInstanceId": "ExtBox1-ext-gen26628",
+            "masterInstanceId": "98a8cc4b-7db4-4a2e-8aea-8fe5195956e4",
             "cn": [
                 {
-                    "type": "tab",
+                    "type": "Ext.tab.Tab",
                     "reference": {
                         "name": "tabConfig",
                         "type": "object"
@@ -274,10 +273,10 @@
             },
             "codeClass": null,
             "designerId": "fbe24a61-113a-4de1-a538-74ce416a8732",
-            "masterInstanceId": "ExtBox1-ext-gen11166",
+            "masterInstanceId": "2ae7e189-6c5e-4718-b828-ca560f5c3fdc",
             "cn": [
                 {
-                    "type": "tab",
+                    "type": "Ext.tab.Tab",
                     "reference": {
                         "name": "tabConfig",
                         "type": "object"

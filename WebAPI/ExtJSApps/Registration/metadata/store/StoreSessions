@@ -1,20 +1,19 @@
 {
-    "type": "store",
+    "type": "Ext.data.Store",
     "reference": {
         "name": "items",
         "type": "array"
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userClassName": "StoreSessions",
+        "model": "Sessions",
         "storeId": "StoreSessionId",
-        "model": "Sessions"
+        "designer|userClassName": "StoreSessions"
     },
-    "id": "ExtBox1-ext-gen37530",
     "designerId": "d5a9bf2f-3afa-48c4-abf2-d72af15e4cfb",
     "cn": [
         {
-            "type": "restproxy",
+            "type": "Ext.data.proxy.Rest",
             "reference": {
                 "name": "proxy",
                 "type": "object"

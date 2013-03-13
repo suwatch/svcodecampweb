@@ -1,5 +1,5 @@
 {
-    "type": "controller",
+    "type": "Ext.app.Controller",
     "reference": {
         "name": "items",
         "type": "array"
@@ -8,7 +8,6 @@
     "userConfig": {
         "designer|userClassName": "SessionEditorController"
     },
-    "id": "ExtBox1-ext-gen73129",
     "designerId": "5662fda6-ed94-4bbb-ac24-9d3977b18139",
     "cn": [
         {
@@ -22,6 +21,7 @@
                 "designer|userClassName": "onSessionEditorPanelIdAfterRender",
                 "fn": "onSessionEditorPanelIdAfterRender",
                 "implHandler": [
+                    "/*\r",
                     "var speakerProfilePanel =  Ext.getCmp('speakerAfterLoginProfileId');\r",
                     "var retData = speakerProfilePanel.getForm().getValues();\r",
                     "\r",
@@ -48,9 +48,19 @@
                     "            }\r",
                     "        });\r",
                     "        sm.select(recs);\r",
+                    "        \r",
                     "        // would like to scroll to top now\r",
+                    "        \r",
+                    "        \r",
                     "    }\r",
-                    "});"
+                    "});\r",
+                    "\r",
+                    "\r",
+                    "var sessionEditForm = Ext.getCmp(\"sessionFormPanelEditorId\").getForm();\r",
+                    "sessionEditForm.setValues(this.sessionData);\r",
+                    "\r",
+                    "\r",
+                    "*/"
                 ],
                 "name": "afterrender",
                 "scope": "me",
@@ -72,7 +82,7 @@
                 "implHandler": [
                     "\r",
                     "Ext.create('RegistrationApp.view.WindowSession',{\r",
-                    "        \r",
+                    "\r",
                     "}).show();\r",
                     "\r",
                     "\r",

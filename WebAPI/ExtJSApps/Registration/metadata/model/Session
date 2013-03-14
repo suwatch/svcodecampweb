@@ -6,7 +6,7 @@
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userClassName": "Sessions"
+        "designer|userClassName": "Session"
     },
     "designerId": "f78b581d-7971-41d4-8de5-81fee1e696fe",
     "cn": [
@@ -152,6 +152,19 @@
                 "designer|userClassName": "MyField13"
             },
             "designerId": "e0b9a70d-17b9-44ea-97d9-33b0c1e32108"
+        },
+        {
+            "type": "Ext.data.proxy.Rest",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyRestProxy",
+                "url": "/rest/Session/"
+            },
+            "designerId": "60c0a9eb-9b11-45d2-ad15-115cf0affc9b"
         }
     ]
 }

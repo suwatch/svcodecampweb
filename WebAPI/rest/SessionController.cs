@@ -32,14 +32,35 @@ namespace WebAPI.REST
             else if (option.ToLower().Equals("byspeaker") && !String.IsNullOrEmpty(param1))
             {
                 int attendeesId;
-                if (!Int32.TryParse(param2, out attendeesId))
+                if (!Int32.TryParse(param1, out attendeesId))
                 {
                     attendeesId = -2;
                 }
+
+                int codeCampYearId; // current year
+                if (!Int32.TryParse(param2, out codeCampYearId))
+                {
+                    codeCampYearId = -1;
+                }
+
+                if (codeCampYearId == -1)
+                {
+                    codeCampYearId = Utils.GetCurrentCodeCampYear();
+                }
+
+
+                List<int> sessionIds = SessionPresenterManager.I.Get(new SessionPresenterQuery
+                                                                                {
+                                                                                    AttendeeId = attendeesId,
+                                                                                    CodeCampYearId = codeCampYearId
+                                                                                }).Select(a => a.SessionId).ToList();
+
                 sessionQuery = new SessionsQuery
                                    {
-                                       Attendeesid = attendeesId
+                                      Ids = sessionIds
                                    };
+
+
             }
 
             var session = new List<SessionsResult>();

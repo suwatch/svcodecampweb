@@ -23,14 +23,14 @@ Ext.application({
         'Ext.data.proxy.Rest'
     ],
     models: [
-        'Sessions',
+        'Session',
         'TagsModel',
         'SessionPresenterModel',
         'SessionLevelModel'
     ],
     stores: [
         'ShirtSizeStore',
-        'StoreSessions',
+        'SessionStore',
         'TagStore',
         'SessionPresenterStore',
         'SessionLevelStore'

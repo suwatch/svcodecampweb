@@ -14,7 +14,12 @@ namespace CodeCampSV
     {
         [DataMember]
         public string Title { get; set; }
+
+        [DataMember]
         public string Description { get; set; }
+
+        [DataMember]
+        public AttendeesResult Presenter { get; set; }
 
         // 
     }

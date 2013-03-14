@@ -36,9 +36,10 @@ Ext.define('RegistrationApp.view.override.TabWizardPanel', {
                     var sessionsBySpeakerStore = Ext.getCmp("sessionsBySpeakerGridPanelId").store;
                     sessionsBySpeakerStore.load({
                         params: {
-                            codeCampYearId: -1,
-                            sessionId: -1,
-                            attendeesId: retData.attendeesId
+                            option: 'byspeaker',
+                            param1: retData.attendeesId,
+                            param2: '-1',
+                            param3: '-1'
                         },
                         callback: function(records,operation,success) {
                             tabPanel.setActiveTab(tabPanel.getTabIdByName('SpeakerAfterLogin'));  

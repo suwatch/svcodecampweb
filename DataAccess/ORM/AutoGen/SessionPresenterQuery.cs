@@ -22,5 +22,9 @@ namespace CodeCampSV
         public int? AttendeeId { get; set; }
         [AutoGenColumn]
         public int? SessionId { get; set; }
+        [AutoGenColumn]
+        public bool? DoNotShow { get; set; }
+        [AutoGenColumn]
+        public bool? Primary { get; set; }
     }
 }

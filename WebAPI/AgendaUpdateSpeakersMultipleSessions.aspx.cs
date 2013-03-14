@@ -43,15 +43,15 @@ public partial class AgendaUpdateSpeakersMultipleSessions : System.Web.UI.Page
     private void LoadAttendees()
     {
         // get list of speakers with more than one session
-        Dictionary<int, int> recs = Utils.GetSpeakerIdsWithMultipleSessions(Utils.CurrentCodeCampYear);
+        Dictionary<int, int> speakersWithMultipleSessionsDict = Utils.GetSpeakerIdsWithMultipleSessions(Utils.CurrentCodeCampYear);
 
         // get list of individual speakers
-        List<int> attendeesIdList = recs.Select(a => a.Value).Distinct().ToList();
+        List<int> attendeesIdList = speakersWithMultipleSessionsDict.Select(a => a.Value).Distinct().ToList();
 
         List<int> attendeesIdTargetsList = new List<int>();
         foreach (var attendeeId in attendeesIdList)
         {
-            GetEm(recs, attendeesIdTargetsList, attendeeId);
+            GetEm(speakersWithMultipleSessionsDict, attendeesIdTargetsList, attendeeId);
         }
 
         if (attendeesIdTargetsList.Count > 0)
@@ -98,7 +98,16 @@ public partial class AgendaUpdateSpeakersMultipleSessions : System.Web.UI.Page
             WithSchedule = true,
             RoomIds = new List<int>() { Utils.RoomNotAssigned }
         }).
-            Where(a => a.SessionTimesResult != null).OrderBy(a => a.SessionTimesResult.StartTime.Value).ToList();
+            Where(a => a.SessionTimesResult != null).OrderBy(a => a.SessionTimesResult.StartTime != null ? a.SessionTimesResult.StartTime.Value : new DateTime()).ToList();
+
+        // GRAB FIRST SPEAKER HERE BUT I THINK THIS WILL CAUSE A BUG. FIXING FOR REMOVING ATTENDEESID FROM SESSION
+        var speakerSessionFirstId =
+            SessionPresenterManager.I.Get(new SessionPresenterQuery()
+                                              {
+                                                  SessionId = sessionIds[0]
+                                              }).Select(a => a.AttendeeId).FirstOrDefault();
+
+
 
         // calculate smallest gap between sessions (there should be at least 2 for every speaker or we should not be here)
         for (int i = 0; i < speakerSessions.Count - 1; i++)
@@ -107,10 +116,16 @@ public partial class AgendaUpdateSpeakersMultipleSessions : System.Web.UI.Page
             if (ts.Hours < 2)
             {
                 // we are adding the attendeesId so the [0] is not a bug (thought it may smell like one)
-                if (!attendeesIdTargetsList.Contains(speakerSessions[0].Attendeesid))
+
+                if (!attendeesIdTargetsList.Contains(speakerSessionFirstId))
                 {
-                    attendeesIdTargetsList.Add(speakerSessions[0].Attendeesid);
+                    attendeesIdTargetsList.Add(speakerSessionFirstId);
                 }
+
+                //if (!attendeesIdTargetsList.Contains(speakerSessions[0].Attendeesid))
+                //{
+                //    attendeesIdTargetsList.Add(speakerSessions[0].Attendeesid);
+                //}
             }
         }
     }
@@ -118,15 +133,21 @@ public partial class AgendaUpdateSpeakersMultipleSessions : System.Web.UI.Page
     {
         int attendeeId = Convert.ToInt32(e.CommandArgument);
 
+        var sessionIds = SessionPresenterManager.I.Get(new SessionPresenterQuery()
+                                                           {
+                                                               AttendeeId = attendeeId
+                                                           }).Select(a => a.SessionId).ToList();
+
+
         var sessions = SessionsManager.I.Get(new SessionsQuery()
         {
-            Attendeesid = attendeeId,
+            Ids = sessionIds,
             WithSchedule = true,
             RoomIds = new List<int>() { Utils.RoomNotAssigned }
         });
 
         var ids = sessions.Select(a => a.Id);
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         foreach (var id in ids)
         {
             sb.Append(id.ToString());

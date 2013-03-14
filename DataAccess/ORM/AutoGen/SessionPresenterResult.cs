@@ -12,6 +12,8 @@ namespace CodeCampSV
     {
         [DataMember] public int AttendeeId { get; set; }
         [DataMember] public int SessionId { get; set; }
+        [DataMember] public bool? DoNotShow { get; set; }
+        [DataMember] public bool? Primary { get; set; }
         
         //  
         //  Do not put Id here since it is in ResultBase already

@@ -21,8 +21,6 @@ namespace CodeCampSV
         [AutoGenColumn]
         public int? CodeCampYearId { get; set; }
         [AutoGenColumn]
-        public int? Attendeesid { get; set; }
-        [AutoGenColumn]
         public int? SessionLevel_id { get; set; }
         [AutoGenColumn]
         public int? SponsorId { get; set; }

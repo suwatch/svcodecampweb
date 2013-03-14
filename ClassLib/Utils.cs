@@ -3446,15 +3446,23 @@ namespace CodeCampSV
             int currentYear = GetCurrentCodeCampYear();
             int attendeeId = GetAttendeesIdFromUsername(HttpContext.Current.User.Identity.Name);
 
-            int cnt =
-                (ManagerBase<SessionsManager, SessionsResult, Sessions, CodeCampDataContext>.I.Get(new SessionsQuery()
-                                                                                                       {
-                                                                                                           Attendeesid =
-                                                                                                               attendeeId,
-                                                                                                           CodeCampYearId
-                                                                                                               =
-                                                                                                               currentYear
-                                                                                                       })).Count;
+            int cnt = SessionPresenterManager.I.Get(new SessionPresenterQuery()
+                                                        {
+                                                            CodeCampYearId = currentYear,
+                                                            AttendeeId = attendeeId
+                                                        }).Count;
+
+
+
+            //int cnt =
+            //    (ManagerBase<SessionsManager, SessionsResult, Sessions, CodeCampDataContext>.I.Get(new SessionsQuery()
+            //                                                                                           {
+            //                                                                                               Attendeesid =
+            //                                                                                                   attendeeId,
+            //                                                                                               CodeCampYearId
+            //                                                                                                   =
+            //                                                                                                   currentYear
+            //                                                                                           })).Count;
             return cnt;
         }
 
@@ -4413,8 +4421,10 @@ namespace CodeCampSV
                             {
                                 int attendeeId = reader.IsDBNull(0) ? -1 : reader.GetInt32(0);
                                 int sessionId = reader.IsDBNull(1) ? -1 : reader.GetInt32(1);
-
-                                dict.Add(sessionId, attendeeId);
+                                if (!dict.ContainsKey(sessionId))
+                                {
+                                    dict.Add(sessionId, attendeeId);
+                                }
                             }
                         }
                         catch (Exception eee1)

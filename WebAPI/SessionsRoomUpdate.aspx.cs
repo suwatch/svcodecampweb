@@ -23,11 +23,26 @@ public partial class SessionsRoomUpdate : System.Web.UI.Page
 
     }
 
+    /// <summary>
+    /// this is now really get primary session presenter
+    /// </summary>
+    /// <param name="sessionId"></param>
+    /// <returns></returns>
     protected string GetSessionPresenter(int sessionId)
     {
-        var recSessions = SessionsManager.I.Get(new SessionsQuery() { Id = sessionId });
-        var recAttendees = AttendeesManager.I.Get(new AttendeesQuery() {Id = recSessions[0].Attendeesid});
-        return recAttendees[0].UserFirstName + " " + recAttendees[0].UserLastName;
+        var x = SessionPresenterManager.I.Get(new SessionPresenterQuery()
+                                                  {
+                                                      SessionId = sessionId,
+                                                      Primary = true,
+                                                      WithSpeaker = true
+                                                  }).FirstOrDefault();
+        return x != null && x.Presenter != null
+                   ? string.Format("{0} {1}", x.Presenter.UserFirstName, x.Presenter.UserLastName)
+                   : "GetSessionPresenter Did Not Find Presenter";
+
+        //var recSessions = SessionsManager.I.Get(new SessionsQuery() { Id = sessionId });
+        //var recAttendees = AttendeesManager.I.Get(new AttendeesQuery() {Id = recSessions[0].Attendeesid});
+        //return recAttendees[0].UserFirstName + " " + recAttendees[0].UserLastName;
     }
 
     protected string GetSessionRoom(int sessionId)

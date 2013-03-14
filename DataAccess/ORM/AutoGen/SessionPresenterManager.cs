@@ -21,6 +21,8 @@ namespace CodeCampSV
         {
             record.AttendeeId = result.AttendeeId;
             record.SessionId = result.SessionId;
+            record.DoNotShow = result.DoNotShow;
+            record.Primary = result.Primary;
             // 
             //  Used by Default in Update and Insert Methods.
         }
@@ -34,7 +36,9 @@ namespace CodeCampSV
         {
       IQueryable<SessionPresenterResult> results = (from myData in baseQuery orderby myData.Id select new SessionPresenterResult { Id= myData.Id,
             AttendeeId = myData.AttendeeId,
-            SessionId = myData.SessionId
+            SessionId = myData.SessionId,
+            DoNotShow = myData.DoNotShow,
+            Primary = myData.Primary
       });
 		    return results;
         }
@@ -64,7 +68,9 @@ namespace CodeCampSV
             
             IQueryable<SessionPresenterResult> results = (from myData in baseQuery orderby myData.Id select new SessionPresenterResult { Id= myData.Id,
                         AttendeeId = myData.AttendeeId,
-                        SessionId = myData.SessionId
+                        SessionId = myData.SessionId,
+                        DoNotShow = myData.DoNotShow,
+                        Primary = myData.Primary
             });
             
             List<SessionPresenterResult> resultList = GetFinalResults(results, query);
@@ -84,6 +90,8 @@ namespace CodeCampSV
             //  Generate Queries for Each type of data
             if (query.AttendeeId != null) baseQuery = baseQuery.Where(a => a.AttendeeId == query.AttendeeId);
             if (query.SessionId != null) baseQuery = baseQuery.Where(a => a.SessionId == query.SessionId);
+            if (query.DoNotShow != null) baseQuery = baseQuery.Where(a => a.DoNotShow == query.DoNotShow);
+            if (query.Primary != null) baseQuery = baseQuery.Where(a => a.Primary == query.Primary);
 
             return baseQuery;
         }

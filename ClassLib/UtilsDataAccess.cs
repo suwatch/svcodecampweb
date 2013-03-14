@@ -7,21 +7,21 @@ namespace CodeCampSV
 {
     public class UtilsDataAccess
     {
-        public void UpdateAttendeesIdInSession()
-        {
-            AttendeesManager attendeesManager = new AttendeesManager();
-            SessionsManager sessionsManager = new SessionsManager();
+        //public void UpdateAttendeesIdInSession()
+        //{
+        //    AttendeesManager attendeesManager = new AttendeesManager();
+        //    SessionsManager sessionsManager = new SessionsManager();
 
-            List<SessionsResult> listSessions = sessionsManager.GetJustBaseTableColumns(new SessionsQuery());
+        //    List<SessionsResult> listSessions = sessionsManager.GetJustBaseTableColumns(new SessionsQuery());
 
-            foreach (var sessionResult in listSessions)
-            {
-                List<AttendeesResult> listAttendees =
-                    attendeesManager.GetJustBaseTableColumns(new AttendeesQuery() {Username = sessionResult.Username});
-                sessionResult.Attendeesid = listAttendees[0].Id;
-                sessionsManager.Update(sessionResult);
-            }
-        }
+        //    foreach (var sessionResult in listSessions)
+        //    {
+        //        List<AttendeesResult> listAttendees =
+        //            attendeesManager.GetJustBaseTableColumns(new AttendeesQuery() {Username = sessionResult.Username});
+        //        sessionResult.Attendeesid = listAttendees[0].Id;
+        //        sessionsManager.Update(sessionResult);
+        //    }
+        //}
 
 
         public void SetAllAttendeesToYear2008()

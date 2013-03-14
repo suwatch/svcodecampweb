@@ -7,14 +7,14 @@
     "codeClass": null,
     "userConfig": {
         "models": [
-            "Sessions",
+            "Session",
             "TagsModel",
             "SessionPresenterModel",
             "SessionLevelModel"
         ],
         "stores": [
             "ShirtSizeStore",
-            "StoreSessions",
+            "SessionStore",
             "TagStore",
             "SessionPresenterStore",
             "SessionLevelStore"

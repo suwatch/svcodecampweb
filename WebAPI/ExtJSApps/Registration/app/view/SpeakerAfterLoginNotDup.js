@@ -259,7 +259,7 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
                             xtype: 'gridpanel',
                             flex: 2,
                             id: 'sessionsBySpeakerGridPanelId',
-                            store: 'SessionPresenterStore',
+                            store: 'SessionStore',
                             columns: [
                                 {
                                     xtype: 'gridcolumn',

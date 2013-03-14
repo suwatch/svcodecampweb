@@ -184,19 +184,19 @@
         },
         "f78b581d-7971-41d4-8de5-81fee1e696fe": {
             "paths": [
-                "metadata/model/Sessions",
-                "app/model/override/Sessions.js",
-                "app/model/Sessions.js"
+                "metadata/model/Session",
+                "app/model/override/Session.js",
+                "app/model/Session.js"
             ],
-            "className": "Sessions"
+            "className": "Session"
         },
         "d5a9bf2f-3afa-48c4-abf2-d72af15e4cfb": {
             "paths": [
-                "metadata/store/StoreSessions",
-                "app/store/override/StoreSessions.js",
-                "app/store/StoreSessions.js"
+                "metadata/store/SessionStore",
+                "app/store/override/SessionStore.js",
+                "app/store/SessionStore.js"
             ],
-            "className": "StoreSessions"
+            "className": "SessionStore"
         },
         "dba1adeb-4f72-49c6-a8d3-c3143110e49c": {
             "paths": [

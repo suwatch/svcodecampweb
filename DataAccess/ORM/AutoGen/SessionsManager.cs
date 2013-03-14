@@ -20,7 +20,6 @@ namespace CodeCampSV
         protected override void ApplyToDataModel(Sessions record, SessionsResult result)
         {
             record.CodeCampYearId = result.CodeCampYearId;
-            record.Attendeesid = result.Attendeesid;
             record.SessionLevel_id = result.SessionLevel_id;
             record.SponsorId = result.SponsorId;
             record.Username = result.Username;
@@ -62,7 +61,6 @@ namespace CodeCampSV
         {
       IQueryable<SessionsResult> results = (from myData in baseQuery orderby myData.Id select new SessionsResult { Id= myData.Id,
             CodeCampYearId = myData.CodeCampYearId,
-            Attendeesid = myData.Attendeesid,
             SessionLevel_id = myData.SessionLevel_id,
             SponsorId = myData.SponsorId,
             Username = myData.Username,
@@ -120,7 +118,6 @@ namespace CodeCampSV
             
             IQueryable<SessionsResult> results = (from myData in baseQuery orderby myData.Id select new SessionsResult { Id= myData.Id,
                         CodeCampYearId = myData.CodeCampYearId,
-                        Attendeesid = myData.Attendeesid,
                         SessionLevel_id = myData.SessionLevel_id,
                         SponsorId = myData.SponsorId,
                         Username = myData.Username,
@@ -167,7 +164,6 @@ namespace CodeCampSV
             
             //  Generate Queries for Each type of data
             if (query.CodeCampYearId != null) baseQuery = baseQuery.Where(a => a.CodeCampYearId == query.CodeCampYearId);
-            if (query.Attendeesid != null) baseQuery = baseQuery.Where(a => a.Attendeesid == query.Attendeesid);
             if (query.SessionLevel_id != null) baseQuery = baseQuery.Where(a => a.SessionLevel_id == query.SessionLevel_id);
             if (query.SponsorId != null) baseQuery = baseQuery.Where(a => a.SponsorId == query.SponsorId);
             if (query.Username != null) baseQuery = baseQuery.Where(a => a.Username.ToLower().Equals(query.Username.ToLower()));

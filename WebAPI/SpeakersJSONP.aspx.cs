@@ -35,13 +35,6 @@ public partial class SpeakersJSONP : System.Web.UI.Page
                 Int32.TryParse(HttpContext.Current.Request["biomaxlen"] ?? "", out bioMaxLen);
             }
 
-
-            //if (HttpContext.Current.Request["start"] != null && HttpContext.Current.Request["limit"] != null)
-            //{
-            //    attendeesQuery.Start = Convert.ToInt32(HttpContext.Current.Request["start"]);
-            //    attendeesQuery.Limit = Convert.ToInt32(HttpContext.Current.Request["limit"]);
-            //}
-
             var attendeesManager = new AttendeesManager();
             var listDataSpeakers = attendeesManager.Get(attendeesQuery);
 
@@ -51,9 +44,9 @@ public partial class SpeakersJSONP : System.Web.UI.Page
                 CodeCampYearId = Utils.CurrentCodeCampYear
             });
 
-            var xxx = listDataSpeakers.Where(a => a.Id == 6061).ToList();
+            //var xxx = listDataSpeakers.Where(a => a.Id == 6061).ToList();
 
-            var yyy = sessionsResults.Where(a => a.Attendeesid == 6061).ToList();
+            //var yyy = sessionsResults.Where(a => a.Attendeesid == 6061).ToList();
 
 
             var listDataResults = (from data in listDataSpeakers
@@ -68,22 +61,25 @@ public partial class SpeakersJSONP : System.Web.UI.Page
                                        UserBio = TruncateStringWithEllipse(data.UserBio,4090),
                                        UserBioShort = TruncateStringWithEllipse(data.UserBio, bioMaxLen),
                                        data.SpeakerPictureUrl,
-                                       data.TwitterHandle,
-                                       Sessions = (from data1 in sessionsResults
-                                                  where data1.Attendeesid == data.Id &&
-                                                        data1.CodeCampYearId == Utils.CurrentCodeCampYear
-                                                  select new
-                                                  {
-                                                      data1.Id,
-                                                      data1.Title,
-                                                      data1.Description,
-                                                      data.UserFirstName,
-                                                      data.UserLastName
-                                                  }).ToList()
+                                       data.TwitterHandle
+
+                                       // AFTER REMOVING ATTENDEESID FROM SESSION THIS BROKE. NEED TO FIX IF WE WANT TO
+                                       // MAKE JSONP WORK AGAIN CORRECTLY
+                                       //Sessions = (from data1 in sessionsResults
+                                       //           where data1.Attendeesid == data.Id &&
+                                       //                 data1.CodeCampYearId == Utils.CurrentCodeCampYear
+                                       //           select new
+                                       //           {
+                                       //               data1.Id,
+                                       //               data1.Title,
+                                       //               data1.Description,
+                                       //               data.UserFirstName,
+                                       //               data.UserLastName
+                                       //           }).ToList()
 
                                    }).ToList();
 
-            var xx = listDataResults.Where(a => a.AttendeesId == 6061).ToList();
+            //var xx = listDataResults.Where(a => a.AttendeesId == 6061).ToList();
 
             //foreach (var rec in listDataResults)
             //{

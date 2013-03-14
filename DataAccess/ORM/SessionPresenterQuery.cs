@@ -25,5 +25,7 @@ namespace CodeCampSV
         public List<int> CodeCampYearIds { get; set; }
 
         public bool? WithTitle { get; set; }
+
+        public bool? WithSpeaker { get; set; }
     }
 }

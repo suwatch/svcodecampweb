@@ -11,7 +11,6 @@ namespace CodeCampSV
     public partial class SessionsResult : ResultBase
     {
         [DataMember] public int CodeCampYearId { get; set; }
-        [DataMember] public int Attendeesid { get; set; }
         [DataMember] public int? SessionLevel_id { get; set; }
         [DataMember] public int? SponsorId { get; set; }
         [DataMember] public string Username { get; set; }

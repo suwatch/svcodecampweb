@@ -153,7 +153,7 @@ public partial class SubmitSession : BaseContentPage
                                                        TweetLineTweetedDate = new DateTime(1960,1,1),
                                                        Approved = true,
                                                        CodeCampYearId = Utils.GetCurrentCodeCampYear(),
-                                                       Attendeesid = attendeeId,
+                                                       //Attendeesid = attendeeId,
                                                        Createdate = DateTime.Now,
                                                        Description = TextBoxDescription.Text.Trim(),
                                                        InterentAccessRequired = CheckBoxInternetAccess.Checked,
@@ -169,6 +169,7 @@ public partial class SubmitSession : BaseContentPage
                 SessionsManager.I.Insert(sessionResult);
                 idSessionNew = sessionResult.Id;
 
+                // THIS SHOULD NOT BE USED BECAUSE IT DOES NOT CONTAIN DEFAULTS FOR NEW SESSIONPRESENTER TABLE
 
                 const string sqlInsertSessionPresenter = "INSERT INTO  SessionPresenter (AttendeeId,SessionId) VALUES (@AttendeeId,@SessionId)";
                 using (var sqlCommandInsertSessionPresenter = new SqlCommand(sqlInsertSessionPresenter, sqlConnection))

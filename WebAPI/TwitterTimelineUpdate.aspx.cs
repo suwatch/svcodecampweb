@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -35,26 +36,30 @@ public partial class TwitterTimelineUpdate : System.Web.UI.Page
              select tweet)
             .SingleOrDefault();
 
-        List<LinqToTwitter.AtomEntry> recs = search.Entries.ToList();
+        List<AtomEntry> recs = search.Entries.ToList();
 
         int cnt = 0;
         foreach (var rec in recs)
         {
             // check and see if we have it already
-            var tweetRecFound = twitterUpdateResults.Where(a=>a.AlternateTweet.Equals(rec.Alternate)).FirstOrDefault();
+            var tweetRecFound = twitterUpdateResults.FirstOrDefault(a => a.AlternateTweet.Equals(rec.Alternate));
             if (tweetRecFound == null)
             {
                 cnt++;
                 LinqToTwitter.AtomAuthor atomAuthor = rec.Author;
 
                 string authorHandle = string.Empty;
-                if (atomAuthor.Name.IndexOf("(") > 0)
+                if (atomAuthor.Name.IndexOf("(", StringComparison.Ordinal) > 0)
                 {
-                    authorHandle = atomAuthor.Name.Substring(0, atomAuthor.Name.IndexOf("(") - 1).Trim();
+                    authorHandle = atomAuthor.Name.Substring(0, atomAuthor.Name.IndexOf("(", StringComparison.Ordinal) - 1).Trim();
                 }
 
                 // get all attendeeIds that are speakers
-                var speakerIds = (SessionsManager.I.Get(new SessionsQuery() { CodeCampYearId = Utils.CurrentCodeCampYear }).Select(a => a.Attendeesid).ToList());
+                //var speakerIds = (SessionsManager.I.Get(new SessionsQuery() { CodeCampYearId = Utils.CurrentCodeCampYear }).Select(a => a.Attendeesid).ToList());
+                List<int> speakerIds = SessionPresenterManager.I.Get(new SessionPresenterQuery
+                                                                         {
+                                                                             CodeCampYearId = Utils.GetCurrentCodeCampYear()
+                                                                         }).Select(a => a.AttendeeId).ToList();
 
                 // Let's see if this person is a code camp speaker.
                 string codeCampSessionsUrl = String.Empty;
@@ -67,6 +72,7 @@ public partial class TwitterTimelineUpdate : System.Web.UI.Page
                 }).FirstOrDefault();
                 if (speaker != null && speakerIds.Contains(speaker.Id))
                 {
+                    // NEED TO REVISIT TO FIX FOR PROPER URL'S TODO:
                     codeCampSessionsUrl = String.Format("http://www.siliconvalley-codecamp.com/Sessions.aspx?ForceSortBySessionTime=true&AttendeeId={0}", speaker.Id);
                     codeCampSpeakerUrl = String.Format("http://www.siliconvalley-codecamp.com/Speakers.aspx?AttendeeId={0}", speaker.Id);
                 }
@@ -90,7 +96,7 @@ public partial class TwitterTimelineUpdate : System.Web.UI.Page
 
         }
 
-      TextBox1.Text = cnt.ToString() + " Records inserted;";
+      TextBox1.Text = cnt.ToString(CultureInfo.InvariantCulture) + " Records inserted;";
 
     }
     protected void Button1_Click(object sender, EventArgs e)

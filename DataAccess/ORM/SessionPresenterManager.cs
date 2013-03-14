@@ -61,6 +61,22 @@ namespace CodeCampSV
                     }
                 }
             }
+
+            if (query.WithSpeaker.HasValue && query.WithSpeaker.Value)
+            {
+                var speakerDict = (AttendeesManager.I.Get(new AttendeesQuery()
+                                                              {
+                                                                  Ids = results.Select(a => a.AttendeeId).ToList()
+                                                              })).ToDictionary(k => k.Id, v => v);
+                foreach (var result in results)
+                {
+                    result.Presenter = speakerDict.ContainsKey(result.AttendeeId)
+                                           ? speakerDict[result.AttendeeId]
+                                           : new AttendeesResult();
+                }
+            }
+
+
             return resultList;
         }
 

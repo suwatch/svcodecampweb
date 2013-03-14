@@ -11,8 +11,8 @@ namespace CodeCampSV
     public partial class EmailDetailsResult : ResultBase
     {
         [DataMember] public int AttendeesId { get; set; }
-        [DataMember] public int EmailDetailsTopicId { get; set; }
-        [DataMember] public Guid EmailDetailsGuid { get; set; }
+        [DataMember] public int? EmailDetailsTopicId { get; set; }
+        [DataMember] public Guid? EmailDetailsGuid { get; set; }
         [DataMember] public int? EmailReadCount { get; set; }
         [DataMember] public DateTime? EmailReadDate { get; set; }
         [DataMember] public string MessageUniqueId { get; set; }

@@ -272,7 +272,7 @@ namespace CodeCampSV
                                    SessionId = session.Id,
                                    CodeCampYearId = session.CodeCampYearId,
                                    AttendeeId = sessionPresenter.AttendeeId,
-                                   PrimarySpeakerId = session.Attendeesid,
+                                   PrimarySpeakerId = sessionPresenter.AttendeeId, // PROBLEM, THIS NOW PICKS FIRST AS PRIMARY, WILL BE WRONG  3/14/2013
                                    DoNotShowPrimarySpeaker = session.DoNotShowPrimarySpeaker,
                                    Title = session.Title,
                                    TitleEllipsized = Utils.GetEllipsized(session.Title, 45, "..."),

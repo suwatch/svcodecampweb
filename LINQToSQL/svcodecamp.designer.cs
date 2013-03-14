@@ -69,9 +69,6 @@ namespace CodeCampSV
     partial void InsertEmailOptOut(EmailOptOut instance);
     partial void UpdateEmailOptOut(EmailOptOut instance);
     partial void DeleteEmailOptOut(EmailOptOut instance);
-    partial void InsertGuidRouter(GuidRouter instance);
-    partial void UpdateGuidRouter(GuidRouter instance);
-    partial void DeleteGuidRouter(GuidRouter instance);
     partial void InsertLectureRooms(LectureRooms instance);
     partial void UpdateLectureRooms(LectureRooms instance);
     partial void DeleteLectureRooms(LectureRooms instance);
@@ -290,27 +287,11 @@ namespace CodeCampSV
 			}
 		}
 		
-		public System.Data.Linq.Table<EmailOptIn> EmailOptIn
-		{
-			get
-			{
-				return this.GetTable<EmailOptIn>();
-			}
-		}
-		
 		public System.Data.Linq.Table<EmailOptOut> EmailOptOut
 		{
 			get
 			{
 				return this.GetTable<EmailOptOut>();
-			}
-		}
-		
-		public System.Data.Linq.Table<GuidRouter> GuidRouter
-		{
-			get
-			{
-				return this.GetTable<GuidRouter>();
 			}
 		}
 		
@@ -1159,8 +1140,6 @@ namespace CodeCampSV
 		
 		private EntitySet<SessionPresenter> _SessionPresenter;
 		
-		private EntitySet<Sessions> _Sessions;
-		
 		private EntitySet<Track> _Track;
 		
     #region Extensibility Method Definitions
@@ -1301,7 +1280,6 @@ namespace CodeCampSV
 			this._AttendeeVideo = new EntitySet<AttendeeVideo>(new Action<AttendeeVideo>(this.attach_AttendeeVideo), new Action<AttendeeVideo>(this.detach_AttendeeVideo));
 			this._AttendeeVolunteer = new EntitySet<AttendeeVolunteer>(new Action<AttendeeVolunteer>(this.attach_AttendeeVolunteer), new Action<AttendeeVolunteer>(this.detach_AttendeeVolunteer));
 			this._SessionPresenter = new EntitySet<SessionPresenter>(new Action<SessionPresenter>(this.attach_SessionPresenter), new Action<SessionPresenter>(this.detach_SessionPresenter));
-			this._Sessions = new EntitySet<Sessions>(new Action<Sessions>(this.attach_Sessions), new Action<Sessions>(this.detach_Sessions));
 			this._Track = new EntitySet<Track>(new Action<Track>(this.attach_Track), new Action<Track>(this.detach_Track));
 			OnCreated();
 		}
@@ -2624,19 +2602,6 @@ namespace CodeCampSV
 			}
 		}
 		
-		[Association(Name="Sessions_fk", Storage="_Sessions", ThisKey="Id", OtherKey="Attendeesid", DeleteRule="NO ACTION")]
-		public EntitySet<Sessions> Sessions
-		{
-			get
-			{
-				return this._Sessions;
-			}
-			set
-			{
-				this._Sessions.Assign(value);
-			}
-		}
-		
 		[Association(Name="Track_fk2", Storage="_Track", ThisKey="Id", OtherKey="OwnerAttendeeId", DeleteRule="NO ACTION")]
 		public EntitySet<Track> Track
 		{
@@ -2737,18 +2702,6 @@ namespace CodeCampSV
 		}
 		
 		private void detach_SessionPresenter(SessionPresenter entity)
-		{
-			this.SendPropertyChanging();
-			entity.Attendees = null;
-		}
-		
-		private void attach_Sessions(Sessions entity)
-		{
-			this.SendPropertyChanging();
-			entity.Attendees = this;
-		}
-		
-		private void detach_Sessions(Sessions entity)
 		{
 			this.SendPropertyChanging();
 			entity.Attendees = null;
@@ -5387,9 +5340,9 @@ namespace CodeCampSV
 		
 		private int _AttendeesId;
 		
-		private int _EmailDetailsTopicId;
+		private System.Nullable<int> _EmailDetailsTopicId;
 		
-		private System.Guid _EmailDetailsGuid;
+		private System.Nullable<System.Guid> _EmailDetailsGuid;
 		
 		private System.Nullable<int> _EmailReadCount;
 		
@@ -5423,9 +5376,9 @@ namespace CodeCampSV
     partial void OnIdChanged();
     partial void OnAttendeesIdChanging(int value);
     partial void OnAttendeesIdChanged();
-    partial void OnEmailDetailsTopicIdChanging(int value);
+    partial void OnEmailDetailsTopicIdChanging(System.Nullable<int> value);
     partial void OnEmailDetailsTopicIdChanged();
-    partial void OnEmailDetailsGuidChanging(System.Guid value);
+    partial void OnEmailDetailsGuidChanging(System.Nullable<System.Guid> value);
     partial void OnEmailDetailsGuidChanged();
     partial void OnEmailReadCountChanging(System.Nullable<int> value);
     partial void OnEmailReadCountChanged();
@@ -5498,8 +5451,8 @@ namespace CodeCampSV
 			}
 		}
 		
-		[Column(Storage="_EmailDetailsTopicId", DbType="Int NOT NULL")]
-		public int EmailDetailsTopicId
+		[Column(Storage="_EmailDetailsTopicId", DbType="Int")]
+		public System.Nullable<int> EmailDetailsTopicId
 		{
 			get
 			{
@@ -5518,8 +5471,8 @@ namespace CodeCampSV
 			}
 		}
 		
-		[Column(Storage="_EmailDetailsGuid", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid EmailDetailsGuid
+		[Column(Storage="_EmailDetailsGuid", DbType="UniqueIdentifier")]
+		public System.Nullable<System.Guid> EmailDetailsGuid
 		{
 			get
 			{
@@ -6005,51 +5958,6 @@ namespace CodeCampSV
 		}
 	}
 	
-	[Table(Name="dbo.EmailOptIn")]
-	public partial class EmailOptIn
-	{
-		
-		private int _Id;
-		
-		private string _Description;
-		
-		public EmailOptIn()
-		{
-		}
-		
-		[Column(Storage="_Id", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this._Id = value;
-				}
-			}
-		}
-		
-		[Column(Storage="_Description", DbType="NVarChar(128) NOT NULL", CanBeNull=false)]
-		public string Description
-		{
-			get
-			{
-				return this._Description;
-			}
-			set
-			{
-				if ((this._Description != value))
-				{
-					this._Description = value;
-				}
-			}
-		}
-	}
-	
 	[Table(Name="dbo.EmailOptOut")]
 	public partial class EmailOptOut : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -6159,116 +6067,6 @@ namespace CodeCampSV
 					this._Comment = value;
 					this.SendPropertyChanged("Comment");
 					this.OnCommentChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[Table(Name="dbo.GuidRouter")]
-	public partial class GuidRouter : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _RouterType;
-		
-		private System.Guid _GuidItself;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnRouterTypeChanging(string value);
-    partial void OnRouterTypeChanged();
-    partial void OnGuidItselfChanging(System.Guid value);
-    partial void OnGuidItselfChanged();
-    #endregion
-		
-		public GuidRouter()
-		{
-			OnCreated();
-		}
-		
-		[Column(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_RouterType", DbType="NVarChar(1) NOT NULL", CanBeNull=false)]
-		public string RouterType
-		{
-			get
-			{
-				return this._RouterType;
-			}
-			set
-			{
-				if ((this._RouterType != value))
-				{
-					this.OnRouterTypeChanging(value);
-					this.SendPropertyChanging();
-					this._RouterType = value;
-					this.SendPropertyChanged("RouterType");
-					this.OnRouterTypeChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_GuidItself", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid GuidItself
-		{
-			get
-			{
-				return this._GuidItself;
-			}
-			set
-			{
-				if ((this._GuidItself != value))
-				{
-					this.OnGuidItselfChanging(value);
-					this.SendPropertyChanging();
-					this._GuidItself = value;
-					this.SendPropertyChanged("GuidItself");
-					this.OnGuidItselfChanged();
 				}
 			}
 		}
@@ -8867,6 +8665,10 @@ namespace CodeCampSV
 		
 		private int _SessionId;
 		
+		private System.Nullable<bool> _DoNotShow;
+		
+		private System.Nullable<bool> _Primary;
+		
 		private EntityRef<Attendees> _Attendees;
 		
 		private EntityRef<Sessions> _Sessions;
@@ -8881,6 +8683,10 @@ namespace CodeCampSV
     partial void OnAttendeeIdChanged();
     partial void OnSessionIdChanging(int value);
     partial void OnSessionIdChanged();
+    partial void OnDoNotShowChanging(System.Nullable<bool> value);
+    partial void OnDoNotShowChanged();
+    partial void OnPrimaryChanging(System.Nullable<bool> value);
+    partial void OnPrimaryChanged();
     #endregion
 		
 		public SessionPresenter()
@@ -8954,6 +8760,46 @@ namespace CodeCampSV
 					this._SessionId = value;
 					this.SendPropertyChanged("SessionId");
 					this.OnSessionIdChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_DoNotShow", DbType="Bit")]
+		public System.Nullable<bool> DoNotShow
+		{
+			get
+			{
+				return this._DoNotShow;
+			}
+			set
+			{
+				if ((this._DoNotShow != value))
+				{
+					this.OnDoNotShowChanging(value);
+					this.SendPropertyChanging();
+					this._DoNotShow = value;
+					this.SendPropertyChanged("DoNotShow");
+					this.OnDoNotShowChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Primary", DbType="Bit")]
+		public System.Nullable<bool> Primary
+		{
+			get
+			{
+				return this._Primary;
+			}
+			set
+			{
+				if ((this._Primary != value))
+				{
+					this.OnPrimaryChanging(value);
+					this.SendPropertyChanging();
+					this._Primary = value;
+					this.SendPropertyChanged("Primary");
+					this.OnPrimaryChanged();
 				}
 			}
 		}
@@ -9057,8 +8903,6 @@ namespace CodeCampSV
 		
 		private int _CodeCampYearId;
 		
-		private int _Attendeesid;
-		
 		private System.Nullable<int> _SessionLevel_id;
 		
 		private System.Nullable<int> _SponsorId;
@@ -9119,8 +8963,6 @@ namespace CodeCampSV
 		
 		private EntitySet<SessionPresenter> _SessionPresenter;
 		
-		private EntityRef<Attendees> _Attendees;
-		
 		private EntityRef<CodeCampYear> _CodeCampYear;
 		
 		private EntityRef<SessionLevels> _SessionLevels;
@@ -9139,8 +8981,6 @@ namespace CodeCampSV
     partial void OnIdChanged();
     partial void OnCodeCampYearIdChanging(int value);
     partial void OnCodeCampYearIdChanged();
-    partial void OnAttendeesidChanging(int value);
-    partial void OnAttendeesidChanged();
     partial void OnSessionLevel_idChanging(System.Nullable<int> value);
     partial void OnSessionLevel_idChanged();
     partial void OnSponsorIdChanging(System.Nullable<int> value);
@@ -9203,7 +9043,6 @@ namespace CodeCampSV
 		{
 			this._SessionPictures = new EntitySet<SessionPictures>(new Action<SessionPictures>(this.attach_SessionPictures), new Action<SessionPictures>(this.detach_SessionPictures));
 			this._SessionPresenter = new EntitySet<SessionPresenter>(new Action<SessionPresenter>(this.attach_SessionPresenter), new Action<SessionPresenter>(this.detach_SessionPresenter));
-			this._Attendees = default(EntityRef<Attendees>);
 			this._CodeCampYear = default(EntityRef<CodeCampYear>);
 			this._SessionLevels = default(EntityRef<SessionLevels>);
 			this._SessionTags = new EntitySet<SessionTags>(new Action<SessionTags>(this.attach_SessionTags), new Action<SessionTags>(this.detach_SessionTags));
@@ -9252,30 +9091,6 @@ namespace CodeCampSV
 					this._CodeCampYearId = value;
 					this.SendPropertyChanged("CodeCampYearId");
 					this.OnCodeCampYearIdChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Attendeesid", DbType="Int NOT NULL")]
-		public int Attendeesid
-		{
-			get
-			{
-				return this._Attendeesid;
-			}
-			set
-			{
-				if ((this._Attendeesid != value))
-				{
-					if (this._Attendees.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnAttendeesidChanging(value);
-					this.SendPropertyChanging();
-					this._Attendeesid = value;
-					this.SendPropertyChanged("Attendeesid");
-					this.OnAttendeesidChanged();
 				}
 			}
 		}
@@ -9867,40 +9682,6 @@ namespace CodeCampSV
 			set
 			{
 				this._SessionPresenter.Assign(value);
-			}
-		}
-		
-		[Association(Name="Sessions_fk", Storage="_Attendees", ThisKey="Attendeesid", OtherKey="Id", IsForeignKey=true)]
-		public Attendees Attendees
-		{
-			get
-			{
-				return this._Attendees.Entity;
-			}
-			set
-			{
-				Attendees previousValue = this._Attendees.Entity;
-				if (((previousValue != value) 
-							|| (this._Attendees.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Attendees.Entity = null;
-						previousValue.Sessions.Remove(this);
-					}
-					this._Attendees.Entity = value;
-					if ((value != null))
-					{
-						value.Sessions.Add(this);
-						this._Attendeesid = value.Id;
-					}
-					else
-					{
-						this._Attendeesid = default(int);
-					}
-					this.SendPropertyChanged("Attendees");
-				}
 			}
 		}
 		

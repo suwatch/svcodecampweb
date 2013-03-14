@@ -5,23 +5,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace CodeCampSV
 {
     [Serializable]
     public partial class SessionPresenterResult
     {
-        //  Put things here that may not come from the table directly
-        //  For example, you may have StatusTypeId in your Result, however
-        //  you want to return the StatusTypeName so you would be the
-        //  following here:
-        //  public string StatusTypeName { get; set; }
-        // 
-        //  You can also put computed type columns like
-        //  public bool? IsStar { get; set; }
-        // 
-        //  Or even related datasets like:
-        //  public List<CargoResult> Cargos { get; set; }
+        [DataMember]
+        public string Title { get; set; }
+        public string Description { get; set; }
+
         // 
     }
 }

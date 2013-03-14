@@ -8,12 +8,14 @@
     "userConfig": {
         "models": [
             "Sessions",
-            "TagsModel"
+            "TagsModel",
+            "SessionPresenterModel"
         ],
         "stores": [
             "ShirtSizeStore",
             "StoreSessions",
-            "TagStore"
+            "TagStore",
+            "SessionPresenterStore"
         ],
         "views": [
             "ViewportMain",

@@ -5393,6 +5393,8 @@ namespace CodeCampSV
 		
 		private System.Nullable<int> _EmailReadCount;
 		
+		private System.Nullable<System.DateTime> _EmailReadDate;
+		
 		private string _MessageUniqueId;
 		
 		private string _EmailSendStatus;
@@ -5413,8 +5415,6 @@ namespace CodeCampSV
 		
 		private string _EmailTo;
 		
-		private System.Nullable<System.DateTime> _EmailReadDate;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -5429,6 +5429,8 @@ namespace CodeCampSV
     partial void OnEmailDetailsGuidChanged();
     partial void OnEmailReadCountChanging(System.Nullable<int> value);
     partial void OnEmailReadCountChanged();
+    partial void OnEmailReadDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnEmailReadDateChanged();
     partial void OnMessageUniqueIdChanging(string value);
     partial void OnMessageUniqueIdChanged();
     partial void OnEmailSendStatusChanging(string value);
@@ -5449,8 +5451,6 @@ namespace CodeCampSV
     partial void OnEmailFromChanged();
     partial void OnEmailToChanging(string value);
     partial void OnEmailToChanged();
-    partial void OnEmailReadDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnEmailReadDateChanged();
     #endregion
 		
 		public EmailDetails()
@@ -5554,6 +5554,26 @@ namespace CodeCampSV
 					this._EmailReadCount = value;
 					this.SendPropertyChanged("EmailReadCount");
 					this.OnEmailReadCountChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_EmailReadDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> EmailReadDate
+		{
+			get
+			{
+				return this._EmailReadDate;
+			}
+			set
+			{
+				if ((this._EmailReadDate != value))
+				{
+					this.OnEmailReadDateChanging(value);
+					this.SendPropertyChanging();
+					this._EmailReadDate = value;
+					this.SendPropertyChanged("EmailReadDate");
+					this.OnEmailReadDateChanged();
 				}
 			}
 		}
@@ -5754,26 +5774,6 @@ namespace CodeCampSV
 					this._EmailTo = value;
 					this.SendPropertyChanged("EmailTo");
 					this.OnEmailToChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_EmailReadDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> EmailReadDate
-		{
-			get
-			{
-				return this._EmailReadDate;
-			}
-			set
-			{
-				if ((this._EmailReadDate != value))
-				{
-					this.OnEmailReadDateChanging(value);
-					this.SendPropertyChanging();
-					this._EmailReadDate = value;
-					this.SendPropertyChanged("EmailReadDate");
-					this.OnEmailReadDateChanged();
 				}
 			}
 		}

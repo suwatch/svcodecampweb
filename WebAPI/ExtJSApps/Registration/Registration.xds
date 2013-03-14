@@ -13,7 +13,7 @@
     "xdsBuild": 894,
     "schemaVersion": 1,
     "upgradeVersion": 210000000499,
-    "framework": "ext41",
+    "framework": "ext42",
     "topInstanceFileMap": {
         "01e8660b-7ed7-40e5-b0b9-55c1a36bf025": {
             "paths": [
@@ -237,6 +237,22 @@
                 "app/controller/WindowSessionController.js"
             ],
             "className": "WindowSessionController"
+        },
+        "d318c215-0d99-4497-acc5-54d15da0bc5f": {
+            "paths": [
+                "metadata/store/SessionPresenterStore",
+                "app/store/override/SessionPresenterStore.js",
+                "app/store/SessionPresenterStore.js"
+            ],
+            "className": "SessionPresenterStore"
+        },
+        "35c2c130-f748-41b2-b618-119063231972": {
+            "paths": [
+                "metadata/model/SessionPresenterModel",
+                "app/model/override/SessionPresenterModel.js",
+                "app/model/SessionPresenterModel.js"
+            ],
+            "className": "SessionPresenterModel"
         }
     },
     "viewOrderMap": {
@@ -257,7 +273,8 @@
         "store": [
             "126b70a4-920e-49ef-8117-21150f082f6d",
             "d5a9bf2f-3afa-48c4-abf2-d72af15e4cfb",
-            "e6e2035e-259d-4233-95b4-291a5a6a41a6"
+            "e6e2035e-259d-4233-95b4-291a5a6a41a6",
+            "d318c215-0d99-4497-acc5-54d15da0bc5f"
         ],
         "controller": [
             "c1e28fd8-26ea-4392-a260-b19d1915f1d8",
@@ -273,7 +290,8 @@
         ],
         "model": [
             "f78b581d-7971-41d4-8de5-81fee1e696fe",
-            "09f95399-73c3-48fc-988b-99bac7d316f9"
+            "09f95399-73c3-48fc-988b-99bac7d316f9",
+            "35c2c130-f748-41b2-b618-119063231972"
         ],
         "resource": [
             "01e8660b-7ed7-40e5-b0b9-55c1a36bf025"

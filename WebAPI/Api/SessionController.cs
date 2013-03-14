@@ -44,8 +44,6 @@ namespace WebAPI.Api
 
         public SessionsResult Get(int year,string session)
         {
-          
-
             var sessionInstance = SessionsManager.I.Get(new SessionsQuery()
                                                      {
                                                          CodeCampYearId = year
@@ -54,6 +52,16 @@ namespace WebAPI.Api
             return sessionInstance;
 
 
+        }
+
+        public SessionsResult Get(int year,int attendeesId)
+        {
+            var sessionInstance = SessionsManager.I.Get(new SessionsQuery()
+            {
+                CodeCampYearId = year
+            }).FirstOrDefault();
+
+            return sessionInstance;
         }
 
         /// <summary>

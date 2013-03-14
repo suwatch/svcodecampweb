@@ -28,7 +28,10 @@
                 "itemId": "RadiobuttonGrp",
                 "width": 400,
                 "designer|userClassName": "MyRadioGroup",
-                "fieldLabel": ""
+                "fieldLabel": "",
+                "columns": [
+                    "1\t"
+                ]
             },
             "designerId": "cb5aec60-534b-4f54-b795-9bfdac711c35",
             "cn": [

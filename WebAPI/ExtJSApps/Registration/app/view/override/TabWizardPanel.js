@@ -37,6 +37,7 @@ Ext.define('RegistrationApp.view.override.TabWizardPanel', {
                     sessionsBySpeakerStore.load({
                         params: {
                             codeCampYearId: -1,
+                            sessionId: -1,
                             attendeesId: retData.attendeesId
                         },
                         callback: function(records,operation,success) {

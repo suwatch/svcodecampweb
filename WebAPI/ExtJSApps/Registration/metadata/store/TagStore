@@ -21,7 +21,7 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyRestProxy1",
-                "url": "/rpc/Session/GetTagsBySession"
+                "url": "/rest/Tags"
             },
             "designerId": "d26e09eb-f64a-4faa-8cec-656a2364b4d7"
         }

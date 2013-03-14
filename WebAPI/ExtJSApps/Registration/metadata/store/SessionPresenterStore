@@ -1,0 +1,29 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "model": "SessionPresenterModel",
+        "storeId": "MyStore2",
+        "designer|userClassName": "SessionPresenterStore"
+    },
+    "designerId": "d318c215-0d99-4497-acc5-54d15da0bc5f",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Rest",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyRestProxy2",
+                "url": "/rest/SessionPresenter"
+            },
+            "designerId": "d48aacf3-d4a0-4162-81e8-af6de36bf6d3"
+        }
+    ]
+}

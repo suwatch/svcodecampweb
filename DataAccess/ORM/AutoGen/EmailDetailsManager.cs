@@ -23,6 +23,7 @@ namespace CodeCampSV
             record.EmailDetailsTopicId = result.EmailDetailsTopicId;
             record.EmailDetailsGuid = result.EmailDetailsGuid;
             record.EmailReadCount = result.EmailReadCount;
+            record.EmailReadDate = result.EmailReadDate;
             record.MessageUniqueId = result.MessageUniqueId;
             record.EmailSendStatus = result.EmailSendStatus;
             record.EmailSendStartTime = result.EmailSendStartTime;
@@ -33,7 +34,6 @@ namespace CodeCampSV
             record.SentDateTime = result.SentDateTime;
             record.EmailFrom = result.EmailFrom;
             record.EmailTo = result.EmailTo;
-            record.EmailReadDate = result.EmailReadDate;
             // 
             //  Used by Default in Update and Insert Methods.
         }
@@ -50,6 +50,7 @@ namespace CodeCampSV
             EmailDetailsTopicId = myData.EmailDetailsTopicId,
             EmailDetailsGuid = myData.EmailDetailsGuid,
             EmailReadCount = myData.EmailReadCount,
+            EmailReadDate = myData.EmailReadDate == null ? null :  (DateTime?) new DateTime(myData.EmailReadDate.Value.Ticks,DateTimeKind.Utc),
             MessageUniqueId = myData.MessageUniqueId,
             EmailSendStatus = myData.EmailSendStatus,
             EmailSendStartTime = myData.EmailSendStartTime == null ? null :  (DateTime?) new DateTime(myData.EmailSendStartTime.Value.Ticks,DateTimeKind.Utc),
@@ -59,8 +60,7 @@ namespace CodeCampSV
             BodyText = myData.BodyText,
             SentDateTime = myData.SentDateTime == null ? null :  (DateTime?) new DateTime(myData.SentDateTime.Value.Ticks,DateTimeKind.Utc),
             EmailFrom = myData.EmailFrom,
-            EmailTo = myData.EmailTo,
-            EmailReadDate = myData.EmailReadDate == null ? null :  (DateTime?) new DateTime(myData.EmailReadDate.Value.Ticks,DateTimeKind.Utc)
+            EmailTo = myData.EmailTo
       });
 		    return results;
         }
@@ -93,6 +93,7 @@ namespace CodeCampSV
                         EmailDetailsTopicId = myData.EmailDetailsTopicId,
                         EmailDetailsGuid = myData.EmailDetailsGuid,
                         EmailReadCount = myData.EmailReadCount,
+                        EmailReadDate = myData.EmailReadDate == null ? null :  (DateTime?) new DateTime(myData.EmailReadDate.Value.Ticks,DateTimeKind.Utc),
                         MessageUniqueId = myData.MessageUniqueId,
                         EmailSendStatus = myData.EmailSendStatus,
                         EmailSendStartTime = myData.EmailSendStartTime == null ? null :  (DateTime?) new DateTime(myData.EmailSendStartTime.Value.Ticks,DateTimeKind.Utc),
@@ -102,8 +103,7 @@ namespace CodeCampSV
                         BodyText = myData.BodyText,
                         SentDateTime = myData.SentDateTime == null ? null :  (DateTime?) new DateTime(myData.SentDateTime.Value.Ticks,DateTimeKind.Utc),
                         EmailFrom = myData.EmailFrom,
-                        EmailTo = myData.EmailTo,
-                        EmailReadDate = myData.EmailReadDate == null ? null :  (DateTime?) new DateTime(myData.EmailReadDate.Value.Ticks,DateTimeKind.Utc)
+                        EmailTo = myData.EmailTo
             });
             
             List<EmailDetailsResult> resultList = GetFinalResults(results, query);
@@ -124,6 +124,7 @@ namespace CodeCampSV
             if (query.AttendeesId != null) baseQuery = baseQuery.Where(a => a.AttendeesId == query.AttendeesId);
             if (query.EmailDetailsTopicId != null) baseQuery = baseQuery.Where(a => a.EmailDetailsTopicId == query.EmailDetailsTopicId);
             if (query.EmailReadCount != null) baseQuery = baseQuery.Where(a => a.EmailReadCount == query.EmailReadCount);
+            if (query.EmailReadDate != null) baseQuery = baseQuery.Where(a => a.EmailReadDate.Value.CompareTo(query.EmailReadDate.Value) == 0);
             if (query.MessageUniqueId != null) baseQuery = baseQuery.Where(a => a.MessageUniqueId.ToLower().Equals(query.MessageUniqueId.ToLower()));
             if (query.EmailSendStatus != null) baseQuery = baseQuery.Where(a => a.EmailSendStatus.ToLower().Equals(query.EmailSendStatus.ToLower()));
             if (query.EmailSendStartTime != null) baseQuery = baseQuery.Where(a => a.EmailSendStartTime.Value.CompareTo(query.EmailSendStartTime.Value) == 0);
@@ -134,7 +135,6 @@ namespace CodeCampSV
             if (query.SentDateTime != null) baseQuery = baseQuery.Where(a => a.SentDateTime.Value.CompareTo(query.SentDateTime.Value) == 0);
             if (query.EmailFrom != null) baseQuery = baseQuery.Where(a => a.EmailFrom.ToLower().Equals(query.EmailFrom.ToLower()));
             if (query.EmailTo != null) baseQuery = baseQuery.Where(a => a.EmailTo.ToLower().Equals(query.EmailTo.ToLower()));
-            if (query.EmailReadDate != null) baseQuery = baseQuery.Where(a => a.EmailReadDate.Value.CompareTo(query.EmailReadDate.Value) == 0);
 
             return baseQuery;
         }

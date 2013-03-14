@@ -14,6 +14,7 @@ namespace CodeCampSV
         [DataMember] public int EmailDetailsTopicId { get; set; }
         [DataMember] public Guid EmailDetailsGuid { get; set; }
         [DataMember] public int? EmailReadCount { get; set; }
+        [DataMember] public DateTime? EmailReadDate { get; set; }
         [DataMember] public string MessageUniqueId { get; set; }
         [DataMember] public string EmailSendStatus { get; set; }
         [DataMember] public DateTime? EmailSendStartTime { get; set; }
@@ -24,7 +25,6 @@ namespace CodeCampSV
         [DataMember] public DateTime? SentDateTime { get; set; }
         [DataMember] public string EmailFrom { get; set; }
         [DataMember] public string EmailTo { get; set; }
-        [DataMember] public DateTime? EmailReadDate { get; set; }
         
         //  
         //  Do not put Id here since it is in ResultBase already

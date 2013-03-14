@@ -840,6 +840,9 @@
     <Compile Include="Repositories\Presenter.cs" />
     <Compile Include="Repositories\SponsorTest.cs" />
     <Compile Include="Repositories\Sponsor.cs" />
+    <Compile Include="rest\SessionController.cs" />
+    <Compile Include="rest\SessionPresenterController.cs" />
+    <Compile Include="rest\TagsController.cs" />
     <Compile Include="RightNote.master.cs">
       <DependentUpon>RightNote.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

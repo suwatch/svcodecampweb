@@ -1,0 +1,79 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "SessionPresenterModel"
+    },
+    "designerId": "35c2c130-f748-41b2-b618-119063231972",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "id",
+                "designer|userClassName": "MyField15"
+            },
+            "designerId": "c2dc5c59-4ab3-4f74-acb4-9a2ffd0727fa"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "sessionId",
+                "designer|userClassName": "MyField16"
+            },
+            "designerId": "5535f15e-c835-4145-b2e5-9d49b4ccb07a"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "attendeesId",
+                "designer|userClassName": "MyField17"
+            },
+            "designerId": "62ec1fb8-626e-4169-bada-f883bd50c3eb"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "title",
+                "designer|userClassName": "MyField18"
+            },
+            "designerId": "e64820b5-a45d-4a2f-a974-44560d69debb"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "description",
+                "designer|userClassName": "MyField19"
+            },
+            "designerId": "9896b2d6-63c0-4db3-8d4b-c5addf68660e"
+        }
+    ]
+}

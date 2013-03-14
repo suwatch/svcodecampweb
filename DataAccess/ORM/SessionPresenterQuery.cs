@@ -22,6 +22,8 @@ namespace CodeCampSV
 
         public int? CodeCampYearId { get; set; }
 
-        public List<int> CodeCampYearIds { get; set; } 
+        public List<int> CodeCampYearIds { get; set; }
+
+        public bool? WithTitle { get; set; }
     }
 }

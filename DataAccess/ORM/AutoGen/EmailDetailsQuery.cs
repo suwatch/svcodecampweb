@@ -27,6 +27,8 @@ namespace CodeCampSV
         [AutoGenColumn]
         public int? EmailReadCount { get; set; }
         [AutoGenColumn]
+        public DateTime? EmailReadDate { get; set; }
+        [AutoGenColumn]
         public string MessageUniqueId { get; set; }
         [AutoGenColumn]
         public string EmailSendStatus { get; set; }
@@ -46,7 +48,5 @@ namespace CodeCampSV
         public string EmailFrom { get; set; }
         [AutoGenColumn]
         public string EmailTo { get; set; }
-        [AutoGenColumn]
-        public DateTime? EmailReadDate { get; set; }
     }
 }

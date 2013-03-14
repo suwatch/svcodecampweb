@@ -21,7 +21,7 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyRestProxy",
-                "url": "/rpc/Session/GetBySpeaker"
+                "url": "/api/Session/Get"
             },
             "designerId": "74a97021-6f8b-4b83-81cf-e581eba9e636"
         }

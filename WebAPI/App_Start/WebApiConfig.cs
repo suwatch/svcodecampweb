@@ -13,9 +13,13 @@ namespace WebAPI
         public static void Register(HttpConfiguration config)
         {
 
+            //config.Routes.MapHttpRoute
+            //    ("API Default", "api/{controller}/{id}",
+            //     new {id = RouteParameter.Optional});
+
             config.Routes.MapHttpRoute
-                ("API Default", "api/{controller}/{id}",
-                 new {id = RouteParameter.Optional});
+               ("API Default Rest", "rest/{controller}/{id}",
+                new { id = RouteParameter.Optional });
 
             config.Routes.MapHttpRoute
               ("API Default RPC", "rpc/{controller}/{action}/{id}",

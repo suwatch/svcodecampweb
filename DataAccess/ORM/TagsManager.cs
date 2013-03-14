@@ -70,6 +70,7 @@ namespace CodeCampSV
                 }
             }
 
+            // mark sessionId in all records to make REST updates easier
             if (query.SessionId.HasValue)
             {
                 foreach (var rec in resultList)

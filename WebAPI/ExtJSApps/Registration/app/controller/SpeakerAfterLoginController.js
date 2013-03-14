@@ -75,15 +75,12 @@ Ext.define('RegistrationApp.controller.SpeakerAfterLoginController', {
 
         var selectedRecs = sessionsSpeakerPanel.getSelectionModel().getSelection();
         if (selectedRecs.length > 0) {
-            var sessionId = selectedRecs[0].getId();
             Ext.create('RegistrationApp.view.WindowSession',{
-                sessionData: {
-                    title: "my title",
-                    description: "myu description"
-                }
             }).show();
         }
-
+        else {
+            Ext.Msg.alert('Must Have Current Sessions and Select One In Order To Edit');   
+        }
     },
 
     init: function(application) {

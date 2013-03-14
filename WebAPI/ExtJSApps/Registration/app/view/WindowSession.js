@@ -161,11 +161,16 @@ Ext.define('RegistrationApp.view.WindowSession', {
     },
 
     onButtonClick: function(button, e, eOpts) {
-
         Ext.getCmp("SessionTagsGridPanelId").getStore().sync();
         var panel = Ext.getCmp("sessionFormPanelEditorId");
         var form = panel.getForm();
-        var formValues = panel.getForm().getValues();
+        panel.getForm().updateRecord();
+
+
+        /*
+
+
+
         // the formValues are what I want to use to update my REST store
 
 
@@ -194,24 +199,24 @@ Ext.define('RegistrationApp.view.WindowSession', {
                     store.sync();
 
 
-                    /*
+
                     var sessionsBySpeakerStore = Ext.getCmp("sessionsBySpeakerGridPanelId").store;
                     sessionsBySpeakerStore.load({
-                    params: {
-                    codeCampYearId: -1,
-                    sessionId: -1,
-                    attendeesId: formValues.attendeeId // no s here, boo boo on table sessionspeakers
-                    }
+                        params: {
+                            codeCampYearId: -1,
+                            sessionId: -1,
+                            attendeesId: formValues.attendeeId // no s here, boo boo on table sessionspeakers
+                        }
 
                     });
-                    */
+
 
                 }
             }
         });
 
 
-
+        */
 
 
 

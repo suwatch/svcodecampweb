@@ -161,65 +161,18 @@ Ext.define('RegistrationApp.view.WindowSession', {
     },
 
     onButtonClick: function(button, e, eOpts) {
+        // update the grid panel with the tags.
         Ext.getCmp("SessionTagsGridPanelId").getStore().sync();
-        var panel = Ext.getCmp("sessionFormPanelEditorId");
-        var form = panel.getForm();
-        panel.getForm().updateRecord();
 
 
-        /*
+        var sessionForm = Ext.getCmp("sessionFormPanelEditorId").getForm();
+        sessionForm.updateRecord();     // with no parameters, this pushes the data from the form to the fields
+        var rec = sessionForm.getRecord();
+        rec.save();
+        rec.commit();
 
-
-
-        // the formValues are what I want to use to update my REST store
-
-
-        var store = Ext.create("RegistrationApp.store.StoreSessions",{});
-        store.load({
-            params: {
-                id: formValues.sessionId
-            },
-            scope: this,
-            callback: function(records,operation,success) {
-
-                if (records.length == 1) {
-
-
-                    // what I really want to do is some kind of "Ext.apply(" that will
-                    //   apply all fields in my formValues to the record rather than one 
-                    //   at a time here
-                    records[0].set("description",formValues.description);
-                    records[0].set("title",formValues.title);
-
-                    // how do I stuff the record back into the store as a uncommitted record?
-                    store.add(records[0]);
-
-
-                    // force the REST store to PUT
-                    store.sync();
-
-
-
-                    var sessionsBySpeakerStore = Ext.getCmp("sessionsBySpeakerGridPanelId").store;
-                    sessionsBySpeakerStore.load({
-                        params: {
-                            codeCampYearId: -1,
-                            sessionId: -1,
-                            attendeesId: formValues.attendeeId // no s here, boo boo on table sessionspeakers
-                        }
-
-                    });
-
-
-                }
-            }
-        });
-
-
-        */
-
-
-
+        // now we need to clear the red dirty markes from the underlying grid because we took care of the save here
+        //var sessionPresenterGridPanel = Ext.getCmp('SessionTagsGridPanelId');
 
 
     },

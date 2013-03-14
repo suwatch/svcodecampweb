@@ -2860,6 +2860,7 @@
     <Content Include="ExtJSApps\tests\SiestaLite\tests\senchatouch\010_performsetup.t.js" />
     <Content Include="ExtJSApps\tests\SiestaLite\tests\senchatouch\701_sencha_touch_form.t.js" />
     <Content Include="Images\Featured.png" />
+    <Content Include="Images\loadingAnimation.gif" />
     <Content Include="Views\Register\Login.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_SponsorsBottomBar.cshtml" />

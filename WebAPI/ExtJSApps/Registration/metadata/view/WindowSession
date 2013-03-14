@@ -54,19 +54,61 @@
                                 "designer|userClassName": "onButtonClick",
                                 "fn": "onButtonClick",
                                 "implHandler": [
-                                    "var panel = Ext.getCmp(\"sessionsBySpeakerGridPanelId\");\r",
-                                    "var sessionList = panel.getSelectionModel().getSelection();\r",
-                                    "var store = panel.getStore();\r",
                                     "\r",
-                                    "//debugger;\r",
-                                    "if (sessionList.length > 0) {    \r",
-                                    "    var sessionEditForm = Ext.getCmp(\"sessionFormPanelEditorId\").getForm();\r",
-                                    "    sessionEditForm.updateRecord(sessionList[0]);\r",
-                                    "    store.sync();\r",
-                                    "    \r",
-                                    "    var tagListPanelStore = Ext.getCmp(\"SessionTagsGridPanelId\").getStore();\r",
-                                    "    tagListPanelStore.sync();\r",
-                                    "}\r",
+                                    "Ext.getCmp(\"SessionTagsGridPanelId\").getStore().sync();\r",
+                                    "var panel = Ext.getCmp(\"sessionFormPanelEditorId\");\r",
+                                    "var form = panel.getForm();\r",
+                                    "var formValues = panel.getForm().getValues();\r",
+                                    "// the formValues are what I want to use to update my REST store\r",
+                                    "\r",
+                                    "\r",
+                                    "var store = Ext.create(\"RegistrationApp.store.StoreSessions\",{});\r",
+                                    "store.load({\r",
+                                    "    params: {\r",
+                                    "        id: formValues.sessionId\r",
+                                    "    },\r",
+                                    "    scope: this,\r",
+                                    "    callback: function(records,operation,success) {\r",
+                                    "\r",
+                                    "        if (records.length == 1) {\r",
+                                    "\r",
+                                    "\r",
+                                    "            // what I really want to do is some kind of \"Ext.apply(\" that will\r",
+                                    "            //   apply all fields in my formValues to the record rather than one \r",
+                                    "            //   at a time here\r",
+                                    "            records[0].set(\"description\",formValues.description);\r",
+                                    "            records[0].set(\"title\",formValues.title);\r",
+                                    "\r",
+                                    "            // how do I stuff the record back into the store as a uncommitted record?\r",
+                                    "            store.add(records[0]);\r",
+                                    "\r",
+                                    "\r",
+                                    "            // force the REST store to PUT\r",
+                                    "            store.sync();\r",
+                                    "\r",
+                                    "\r",
+                                    "/*\r",
+                                    "            var sessionsBySpeakerStore = Ext.getCmp(\"sessionsBySpeakerGridPanelId\").store;\r",
+                                    "            sessionsBySpeakerStore.load({\r",
+                                    "                params: {\r",
+                                    "                    codeCampYearId: -1,\r",
+                                    "                    sessionId: -1,\r",
+                                    "                    attendeesId: formValues.attendeeId // no s here, boo boo on table sessionspeakers\r",
+                                    "                }\r",
+                                    "\r",
+                                    "            });\r",
+                                    "*/\r",
+                                    "            \r",
+                                    "          }\r",
+                                    "        }\r",
+                                    "    });\r",
+                                    "\r",
+                                    "\r",
+                                    "\r",
+                                    "\r",
+                                    "\r",
+                                    "\r",
+                                    "\r",
                                     ""
                                 ],
                                 "name": "click",
@@ -169,7 +211,10 @@
                                         "layout|anchor": "100%",
                                         "designer|userClassName": "MyComboBox2",
                                         "fieldLabel": "Session Level",
-                                        "name": "sessionLevel"
+                                        "name": "sessionLevel",
+                                        "displayField": "description",
+                                        "store": "SessionLevelStore",
+                                        "valueField": "id"
                                     },
                                     "designerId": "32a579d1-1f56-4d67-b829-2225d16f603f"
                                 },
@@ -188,6 +233,38 @@
                                         "name": "description"
                                     },
                                     "designerId": "48434577-15b0-48ea-b8af-af92b2991aa0"
+                                },
+                                {
+                                    "type": "Ext.form.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|anchor": "100%",
+                                        "id": null,
+                                        "designer|userClassName": "MyTextField37",
+                                        "fieldLabel": "sessionId",
+                                        "name": "sessionId"
+                                    },
+                                    "designerId": "fc929937-0657-4b86-a738-c7af38fa9259"
+                                },
+                                {
+                                    "type": "Ext.form.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|anchor": "100%",
+                                        "id": null,
+                                        "designer|userClassName": "MyTextField37",
+                                        "fieldLabel": "attendeesId",
+                                        "name": "id"
+                                    },
+                                    "designerId": "6c2097d4-f255-49a9-a6db-fdc6054671cc"
                                 }
                             ]
                         }

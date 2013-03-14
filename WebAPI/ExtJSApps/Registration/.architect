@@ -99,6 +99,7 @@
         },
         "9aa5d9d2-b86c-474a-809d-f428070283f5": {
             "id": "9aa5d9d2-b86c-474a-809d-f428070283f5",
+            "expanded": false,
             "cn": [
                 {
                     "id": "cb5aec60-534b-4f54-b795-9bfdac711c35",
@@ -527,6 +528,12 @@
                                 },
                                 {
                                     "id": "1ba61b6a-127f-4329-ad2d-94d1f24fa21a"
+                                },
+                                {
+                                    "id": "b4852e59-d96e-41fb-99ee-ed43d55179c5"
+                                },
+                                {
+                                    "id": "73570d59-01cb-4bdf-8020-4c7c7b1bb663"
                                 }
                             ]
                         },
@@ -583,6 +590,7 @@
                     "cn": [
                         {
                             "id": "2634b1e3-90d4-4f6f-bfcc-ecc8258421ce",
+                            "expanded": false,
                             "cn": [
                                 {
                                     "id": "0f9ad0fb-ea3e-4758-b1c9-93b83fede49b",
@@ -598,6 +606,12 @@
                                         },
                                         {
                                             "id": "48434577-15b0-48ea-b8af-af92b2991aa0"
+                                        },
+                                        {
+                                            "id": "fc929937-0657-4b86-a738-c7af38fa9259"
+                                        },
+                                        {
+                                            "id": "6c2097d4-f255-49a9-a6db-fdc6054671cc"
                                         }
                                     ]
                                 }
@@ -651,7 +665,6 @@
         },
         "d5a9bf2f-3afa-48c4-abf2-d72af15e4cfb": {
             "id": "d5a9bf2f-3afa-48c4-abf2-d72af15e4cfb",
-            "expanded": false,
             "cn": [
                 {
                     "id": "74a97021-6f8b-4b83-81cf-e581eba9e636"
@@ -671,6 +684,14 @@
             "cn": [
                 {
                     "id": "d48aacf3-d4a0-4162-81e8-af6de36bf6d3"
+                }
+            ]
+        },
+        "918ac3fc-a06d-4cab-88ae-dc2cd95e24b4": {
+            "id": "918ac3fc-a06d-4cab-88ae-dc2cd95e24b4",
+            "cn": [
+                {
+                    "id": "7a8b627d-b498-46d4-9a49-25bcd1e71c4e"
                 }
             ]
         },
@@ -744,6 +765,17 @@
                 },
                 {
                     "id": "9896b2d6-63c0-4db3-8d4b-c5addf68660e"
+                }
+            ]
+        },
+        "87d65cd4-8a0d-4e58-a7d1-2c716e744478": {
+            "id": "87d65cd4-8a0d-4e58-a7d1-2c716e744478",
+            "cn": [
+                {
+                    "id": "b4106b05-8e76-45ef-8796-99056bd0f09a"
+                },
+                {
+                    "id": "45020cae-3a8d-425c-957c-02b4b4393d67"
                 }
             ]
         },
@@ -891,18 +923,22 @@
     "tabState": {
         "openTabs": [
             "dba1adeb-4f72-49c6-a8d3-c3143110e49c",
-            "e6e2035e-259d-4233-95b4-291a5a6a41a6"
+            "d5a9bf2f-3afa-48c4-abf2-d72af15e4cfb",
+            "1a1e24e7-e981-4728-b958-9dcf746faf54",
+            "fea6a3af-2d7e-4daa-9f97-09e2da9e54c8",
+            "d318c215-0d99-4497-acc5-54d15da0bc5f",
+            "35c2c130-f748-41b2-b618-119063231972"
         ]
     },
     "canvasState": {
-        "topInstance": "dba1adeb-4f72-49c6-a8d3-c3143110e49c"
-    },
-    "inspectorState": {
-        "topInstance": "e6e2035e-259d-4233-95b4-291a5a6a41a6",
-        "selectedInstance": "d26e09eb-f64a-4faa-8cec-656a2364b4d7"
-    },
-    "codeState": {
         "topInstance": null
     },
-    "editMode": "design"
+    "inspectorState": {
+        "topInstance": "dba1adeb-4f72-49c6-a8d3-c3143110e49c",
+        "selectedInstance": "96168842-8ed5-4499-ba9f-e61779816be7"
+    },
+    "codeState": {
+        "topInstance": "dba1adeb-4f72-49c6-a8d3-c3143110e49c"
+    },
+    "editMode": "code"
 }

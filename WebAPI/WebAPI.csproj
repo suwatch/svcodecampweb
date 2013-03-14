@@ -317,7 +317,6 @@
       <DependentUpon>AllAttendees.aspx</DependentUpon>
     </Compile>
     <Compile Include="Api\AccountController.cs" />
-    <Compile Include="Api\TagRestxxController.cs" />
     <Compile Include="Api\EmailController.cs" />
     <Compile Include="Api\SessionController.cs" />
     <Compile Include="Api\TagsRestController.cs" />
@@ -840,6 +839,7 @@
     <Compile Include="Repositories\Presenter.cs" />
     <Compile Include="Repositories\SponsorTest.cs" />
     <Compile Include="Repositories\Sponsor.cs" />
+    <Compile Include="rest\SessionLevelController.cs" />
     <Compile Include="rest\SessionController.cs" />
     <Compile Include="rest\SessionPresenterController.cs" />
     <Compile Include="rest\TagsController.cs" />

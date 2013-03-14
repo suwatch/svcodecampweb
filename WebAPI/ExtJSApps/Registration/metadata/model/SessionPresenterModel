@@ -44,7 +44,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "attendeesId",
+                "name": "attendeeId",
                 "designer|userClassName": "MyField17"
             },
             "designerId": "62ec1fb8-626e-4169-bada-f883bd50c3eb"

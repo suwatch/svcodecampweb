@@ -6,11 +6,12 @@
     },
     "codeClass": null,
     "userConfig": {
-        "model": "Sessions",
-        "storeId": "StoreSessionId",
-        "designer|userClassName": "StoreSessions"
+        "autoLoad": true,
+        "model": "SessionLevelModel",
+        "storeId": "MyStore3",
+        "designer|userClassName": "SessionLevelStore"
     },
-    "designerId": "d5a9bf2f-3afa-48c4-abf2-d72af15e4cfb",
+    "designerId": "918ac3fc-a06d-4cab-88ae-dc2cd95e24b4",
     "cn": [
         {
             "type": "Ext.data.proxy.Rest",
@@ -21,9 +22,9 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyRestProxy",
-                "url": "/rest/Session/"
+                "url": "/rest/SessionLevel"
             },
-            "designerId": "74a97021-6f8b-4b83-81cf-e581eba9e636"
+            "designerId": "7a8b627d-b498-46d4-9a49-25bcd1e71c4e"
         }
     ]
 }

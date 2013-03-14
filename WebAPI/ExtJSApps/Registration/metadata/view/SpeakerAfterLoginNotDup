@@ -613,6 +613,36 @@
                                 "text": "Id"
                             },
                             "designerId": "1ba61b6a-127f-4329-ad2d-94d1f24fa21a"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "width": 50,
+                                "designer|userClassName": "MyColumn1",
+                                "dataIndex": "attendeeId",
+                                "text": "attendeesId"
+                            },
+                            "designerId": "b4852e59-d96e-41fb-99ee-ed43d55179c5"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "width": 50,
+                                "designer|userClassName": "MyColumn1",
+                                "dataIndex": "sessionId",
+                                "text": "sessionsId"
+                            },
+                            "designerId": "73570d59-01cb-4bdf-8020-4c7c7b1bb663"
                         }
                     ]
                 },

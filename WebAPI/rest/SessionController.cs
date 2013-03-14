@@ -4,36 +4,63 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using CodeCampSV;
 
 namespace WebAPI.REST
 {
     public class SessionController : ApiController
     {
-        // GET api/session
-        public IEnumerable<string> Get()
+       
+
+        public HttpResponseMessage Get(int id)
         {
-            return new string[] { "value1", "value2" };
+            var session =
+                SessionsManager.I.Get(new SessionsQuery
+                                               {
+                                                   Id = id
+                                               }).FirstOrDefault();
+
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, session);
+            return response;
         }
 
-        // GET api/session/5
-        public string Get(int id)
+        //// POST api/session
+        //public void Post([FromBody]string value)
+        //{
+        //}
+
+        /// <summary>
+        ///  only let this update some safe fields.
+        /// </summary>
+        /// <param name="sessionsResult"></param>
+        /// <returns></returns>
+        public HttpResponseMessage Put(SessionsResult sessionsResult)
         {
-            return "value";
+            var session =
+              SessionsManager.I.Get(new SessionsQuery
+              {
+                  Id = sessionsResult.Id
+              }).FirstOrDefault();
+
+            session.Title = sessionsResult.Title;
+            session.Description = sessionsResult.Description;
+
+
+
+            SessionsManager.I.Update(session);
+
+
+
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, sessionsResult);
+            return response;
+
+
+
         }
 
-        // POST api/session
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/session/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/session/5
-        public void Delete(int id)
-        {
-        }
+        //// DELETE api/session/5
+        //public void Delete(int id)
+        //{
+        //}
     }
 }

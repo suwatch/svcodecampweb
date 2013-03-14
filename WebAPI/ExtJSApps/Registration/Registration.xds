@@ -253,6 +253,22 @@
                 "app/model/SessionPresenterModel.js"
             ],
             "className": "SessionPresenterModel"
+        },
+        "918ac3fc-a06d-4cab-88ae-dc2cd95e24b4": {
+            "paths": [
+                "metadata/store/SessionLevelStore",
+                "app/store/override/SessionLevelStore.js",
+                "app/store/SessionLevelStore.js"
+            ],
+            "className": "SessionLevelStore"
+        },
+        "87d65cd4-8a0d-4e58-a7d1-2c716e744478": {
+            "paths": [
+                "metadata/model/SessionLevelModel",
+                "app/model/override/SessionLevelModel.js",
+                "app/model/SessionLevelModel.js"
+            ],
+            "className": "SessionLevelModel"
         }
     },
     "viewOrderMap": {
@@ -274,7 +290,8 @@
             "126b70a4-920e-49ef-8117-21150f082f6d",
             "d5a9bf2f-3afa-48c4-abf2-d72af15e4cfb",
             "e6e2035e-259d-4233-95b4-291a5a6a41a6",
-            "d318c215-0d99-4497-acc5-54d15da0bc5f"
+            "d318c215-0d99-4497-acc5-54d15da0bc5f",
+            "918ac3fc-a06d-4cab-88ae-dc2cd95e24b4"
         ],
         "controller": [
             "c1e28fd8-26ea-4392-a260-b19d1915f1d8",
@@ -291,7 +308,8 @@
         "model": [
             "f78b581d-7971-41d4-8de5-81fee1e696fe",
             "09f95399-73c3-48fc-988b-99bac7d316f9",
-            "35c2c130-f748-41b2-b618-119063231972"
+            "35c2c130-f748-41b2-b618-119063231972",
+            "87d65cd4-8a0d-4e58-a7d1-2c716e744478"
         ],
         "resource": [
             "01e8660b-7ed7-40e5-b0b9-55c1a36bf025"

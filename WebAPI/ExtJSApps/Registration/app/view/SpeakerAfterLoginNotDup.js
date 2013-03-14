@@ -272,6 +272,18 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
                                     width: 50,
                                     dataIndex: 'id',
                                     text: 'Id'
+                                },
+                                {
+                                    xtype: 'gridcolumn',
+                                    width: 50,
+                                    dataIndex: 'attendeeId',
+                                    text: 'attendeesId'
+                                },
+                                {
+                                    xtype: 'gridcolumn',
+                                    width: 50,
+                                    dataIndex: 'sessionId',
+                                    text: 'sessionsId'
                                 }
                             ]
                         },

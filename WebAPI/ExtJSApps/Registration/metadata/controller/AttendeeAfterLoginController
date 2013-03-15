@@ -35,7 +35,7 @@
                     "    scope:this, \r",
                     "    params: tabPanel.getForm().getValues(),\r",
                     "    success: function(r, o) {  \r",
-                    "        \r",
+                    "\r",
                     "        var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];\r",
                     "        tabPanel.setActiveTab(tabPanel.getTabIdByName('optIn'));\r",
                     "        myMask.hide();\r",

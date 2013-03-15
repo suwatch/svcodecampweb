@@ -106,16 +106,16 @@
                 "designer|userClassName": "onEditSelectedSessionButtonIdClick",
                 "fn": "onEditSelectedSessionButtonIdClick",
                 "implHandler": [
-                    "var sessionsSpeakerPanel = Ext.getCmp(\"sessionsBySpeakerGridPanelId\");\r",
-                    "//var storeSessions = sessionsSpeakerPanel.getStore();\r",
+                    "debugger;\r",
                     "\r",
+                    "var sessionsSpeakerPanel = Ext.getCmp(\"sessionsBySpeakerGridPanelId\");\r",
                     "var selectedRecs = sessionsSpeakerPanel.getSelectionModel().getSelection();\r",
                     "if (selectedRecs.length > 0) {\r",
                     "    Ext.create('RegistrationApp.view.WindowSession',{\r",
                     "    }).show();\r",
                     "}\r",
                     "else {\r",
-                    " \tExt.Msg.alert('Must Have Current Sessions and Select One In Order To Edit');   \r",
+                    "    Ext.Msg.alert('Must Have Current Sessions and Select One In Order To Edit');   \r",
                     "}"
                 ],
                 "name": "click",
@@ -124,6 +124,38 @@
                 "designer|controlQuery": "#editSelectedSessionButtonId"
             },
             "designerId": "43fade13-265e-4a9e-bd34-944d753cecdf"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onAddNewSessionButtonIdClick",
+                "fn": "onAddNewSessionButtonIdClick",
+                "implHandler": [
+                    "\r",
+                    "var sessionsSpeakerPanel = Ext.getCmp(\"sessionsBySpeakerGridPanelId\");\r",
+                    "var store = sessionsSpeakerPanel.getStore();\r",
+                    "var newRecord = Ext.create('RegistrationApp.model.Session',{\r",
+                    "    title: 'my title',\r",
+                    "    description: 'my descr'\r",
+                    "});\r",
+                    "store.add(newRecord);\r",
+                    "\r",
+                    "debugger;\r",
+                    "\r",
+                    "Ext.create('RegistrationApp.view.WindowSession',{\r",
+                    "}).show();"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#AddNewSessionButtonId"
+            },
+            "designerId": "30e66e36-8a86-488b-96c7-866c2a374624"
         }
     ]
 }

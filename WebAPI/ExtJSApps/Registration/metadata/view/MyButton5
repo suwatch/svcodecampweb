@@ -1,0 +1,13 @@
+{
+    "type": "Ext.button.Button",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "MyButton5",
+        "text": "MyButton"
+    },
+    "designerId": "4f837ad4-57a8-4eef-8dd7-88faa0b3a8b3"
+}

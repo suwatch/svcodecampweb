@@ -1,5 +1,5 @@
 {
-    "type": "controller",
+    "type": "Ext.app.Controller",
     "reference": {
         "name": "items",
         "type": "array"
@@ -8,7 +8,6 @@
     "userConfig": {
         "designer|userClassName": "MyController"
     },
-    "id": "ExtBox1-ext-gen7077",
     "designerId": "c4ad7786-870f-464f-a6af-467f1ed79057",
     "cn": [
         {

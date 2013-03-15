@@ -47,7 +47,8 @@ Ext.application({
         'OptIn',
         'PasswordConfirm',
         'SpeakerAfterLoginNotDup',
-        'WindowSession'
+        'WindowSession',
+        'MyButton5'
     ],
     autoCreateViewport: true,
     controllers: [

@@ -86,10 +86,10 @@ namespace WebAPI.REST
             return response;
         }
 
-        //// POST api/session
-        //public void Post([FromBody]string value)
-        //{
-        //}
+        // POST api/session
+        public void Post(SessionsResult sessionsResult)
+        {
+        }
 
         /// <summary>
         ///  only let this update some safe fields.
@@ -104,20 +104,21 @@ namespace WebAPI.REST
                   Id = sessionsResult.Id
               }).FirstOrDefault();
 
-            session.Title = sessionsResult.Title;
-            session.Description = sessionsResult.Description;
+            HttpResponseMessage response;
+            if (session != null)
+            {
+                session.Title = sessionsResult.Title;
+                session.Description = sessionsResult.Description;
+                SessionsManager.I.Update(session);
+               
+                response = Request.CreateResponse(HttpStatusCode.OK, sessionsResult);
+            }
+            else
+            {
+                response = Request.CreateResponse(HttpStatusCode.ExpectationFailed, "No SessionId Found For Update");
+            }
 
-
-
-            SessionsManager.I.Update(session);
-
-
-
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, sessionsResult);
             return response;
-
-
-
         }
 
         //// DELETE api/session/5

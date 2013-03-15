@@ -269,6 +269,14 @@
                 "app/model/SessionLevelModel.js"
             ],
             "className": "SessionLevelModel"
+        },
+        "4f837ad4-57a8-4eef-8dd7-88faa0b3a8b3": {
+            "paths": [
+                "metadata/view/MyButton5",
+                "app/view/override/MyButton5.js",
+                "app/view/MyButton5.js"
+            ],
+            "className": "MyButton5"
         }
     },
     "viewOrderMap": {
@@ -284,7 +292,8 @@
             "2ae7e189-6c5e-4718-b828-ca560f5c3fdc",
             "dfdac70e-88ed-4f47-8052-2b4e87dc2118",
             "1a1e24e7-e981-4728-b958-9dcf746faf54",
-            "dba1adeb-4f72-49c6-a8d3-c3143110e49c"
+            "dba1adeb-4f72-49c6-a8d3-c3143110e49c",
+            "4f837ad4-57a8-4eef-8dd7-88faa0b3a8b3"
         ],
         "store": [
             "126b70a4-920e-49ef-8117-21150f082f6d",

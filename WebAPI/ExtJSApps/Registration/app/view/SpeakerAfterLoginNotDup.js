@@ -250,6 +250,17 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
                                     xtype: 'button',
                                     id: 'AddNewSessionButtonId',
                                     text: 'Add New Session'
+                                },
+                                {
+                                    xtype: 'button',
+                                    itemId: 'AddNewSessionItemIdButton',
+                                    text: 'MyButton',
+                                    listeners: {
+                                        click: {
+                                            fn: me.onAddNewSessionItemIdButtonClick,
+                                            scope: me
+                                        }
+                                    }
                                 }
                             ]
                         }
@@ -350,6 +361,21 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
         });
 
         me.callParent(arguments);
+    },
+
+    onAddNewSessionItemIdButtonClick: function(button, e, eOpts) {
+        var sessionsSpeakerPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
+        var store = sessionsSpeakerPanel.getStore();
+        var newRecord = Ext.create('RegistrationApp.model.Session',{
+            title: 'my title',
+            description: 'my descr'
+        });
+        store.add(newRecord);
+
+        //debugger;
+
+        Ext.create('RegistrationApp.view.WindowSession',{
+        }).show();
     },
 
     onSpeakerPictureUploadXIdChange: function(filefield, value, eOpts) {

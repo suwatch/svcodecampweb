@@ -9,10 +9,10 @@
         "genTimestamps": false,
         "cacheBust": false
     },
-    "xdsVersion": "2.1.0",
-    "xdsBuild": 678,
+    "xdsVersion": "2.2.0",
+    "xdsBuild": 894,
     "schemaVersion": 1,
-    "upgradeVersion": 210000000498,
+    "upgradeVersion": 210000000499,
     "framework": "ext41",
     "topInstanceFileMap": {
         "b6cb77a3-5ec0-42f3-b714-23dc33762b12": {
@@ -45,11 +45,20 @@
                 "app/controller/MyController.js"
             ],
             "className": "MyController"
+        },
+        "89c61820-14a6-4e0f-816b-6e62cd14fec8": {
+            "paths": [
+                "metadata/view/MyWindow",
+                "app/view/override/MyWindow.js",
+                "app/view/MyWindow.js"
+            ],
+            "className": "MyWindow"
         }
     },
     "viewOrderMap": {
         "view": [
-            "4b402cb5-ec70-412b-8a97-3fc3d37d65e9"
+            "4b402cb5-ec70-412b-8a97-3fc3d37d65e9",
+            "89c61820-14a6-4e0f-816b-6e62cd14fec8"
         ],
         "store": [],
         "controller": [

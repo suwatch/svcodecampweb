@@ -31,7 +31,8 @@
             "OptIn",
             "PasswordConfirm",
             "SpeakerAfterLoginNotDup",
-            "WindowSession"
+            "WindowSession",
+            "MyButton5"
         ],
         "requires": [
             "Ext.data.proxy.Rest"

@@ -1,5 +1,5 @@
 {
-    "type": "viewport",
+    "type": "Ext.container.Viewport",
     "reference": {
         "name": "items",
         "type": "array"
@@ -10,11 +10,10 @@
         "designer|initialView": true,
         "layout": "border"
     },
-    "id": "ExtBox1-ext-gen18904",
     "designerId": "4b402cb5-ec70-412b-8a97-3fc3d37d65e9",
     "cn": [
         {
-            "type": "panel",
+            "type": "Ext.panel.Panel",
             "reference": {
                 "name": "items",
                 "type": "array"
@@ -29,47 +28,119 @@
             "designerId": "9ba87c2e-0f3b-436c-bc55-03785f3e3ce9",
             "cn": [
                 {
-                    "type": "button",
+                    "type": "Ext.toolbar.Toolbar",
                     "reference": {
-                        "name": "items",
+                        "name": "dockedItems",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "MyButton",
-                        "id": "buttonId",
-                        "text": "MyButton"
+                        "dock": "top",
+                        "designer|userClassName": "MyToolbar"
                     },
-                    "designerId": "c46e7b0f-d1b0-49fb-b74f-e907aac3cd41"
-                },
-                {
-                    "type": "panel",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "designer|userClassName": "MyPanel",
-                        "title": "My Panel"
-                    },
-                    "designerId": "808e8319-2f46-406d-a4bc-1ced5eaf8ec1",
+                    "designerId": "99a13e0b-1c42-4730-8b1a-3f499acae738",
                     "cn": [
                         {
-                            "type": "button",
+                            "type": "Ext.button.Button",
                             "reference": {
                                 "name": "items",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "designer|userClassName": "MyButton1",
-                                "id": "buttonPanelNestedId",
+                                "layout|flex": null,
+                                "designer|userClassName": "MyButton",
                                 "text": "MyButton"
                             },
-                            "designerId": "1c842625-6bf4-43f8-8cf0-a6a0ea87d82d"
+                            "designerId": "a82e1700-91ff-41b9-a7a9-584e972fedfd",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|userClassName": "onButtonClick",
+                                        "fn": "onButtonClick",
+                                        "implHandler": [
+                                            "\r",
+                                            "Ext.define('MyApp.view.MyWindow', {\r",
+                                            "    extend: 'Ext.window.Window',\r",
+                                            "\r",
+                                            "    height: 250,\r",
+                                            "    width: 400,\r",
+                                            "    title: 'My Window',\r",
+                                            "\r",
+                                            "    initComponent: function() {\r",
+                                            "        var me = this;\r",
+                                            "\r",
+                                            "        Ext.applyIf(me, {\r",
+                                            "            items: [\r",
+                                            "                {\r",
+                                            "                    xtype: 'button',\r",
+                                            "                    text: 'Want to get link to my component in window that opened this',\r",
+                                            "                    listeners: {\r",
+                                            "                        click: {\r",
+                                            "                            fn: me.onButtonClick,\r",
+                                            "                            scope: me\r",
+                                            "                        }\r",
+                                            "                    }\r",
+                                            "                }\r",
+                                            "            ]\r",
+                                            "        });\r",
+                                            "\r",
+                                            "        me.callParent(arguments);\r",
+                                            "    },\r",
+                                            "\r",
+                                            "    onButtonClick: function(button, e, eOpts) {\r",
+                                            "\r",
+                                            "        // I would like to set the html property of the \r",
+                                            "        //   component in the window below\r",
+                                            "        //   I would like to do this efficintly\r",
+                                            "        //   user itemId?\r",
+                                            "        //   use componentquery?\r",
+                                            "        //   use up/down/etc.\r",
+                                            "        //   \r",
+                                            "        //   Need help with componentquery, extjs help is not helpful for me\r",
+                                            "        //   I need more basics I think.\r",
+                                            "\r",
+                                            "\r",
+                                            "        this.up('panel').up('panel').down('component').html = '<i>set from button</i>';\r",
+                                            "        console.log(this.up('panel').up('panel').down('component'));\r",
+                                            "    }\r",
+                                            "\r",
+                                            "});\r",
+                                            "\r",
+                                            "var win = Ext.create('MyApp1.view.MyWindow',{});\r",
+                                            "win.show();\r",
+                                            "\r",
+                                            ""
+                                        ],
+                                        "name": "click",
+                                        "scope": "me"
+                                    },
+                                    "designerId": "3b616fa9-b0fc-4182-9879-2622bb410607"
+                                }
+                            ]
                         }
                     ]
+                },
+                {
+                    "type": "Ext.Component",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "html": [
+                            "<b>my component</b>"
+                        ],
+                        "designer|userClassName": "MyComponent"
+                    },
+                    "designerId": "d5f929f7-d3f9-4c7c-8ad7-7c36336413dd"
                 }
             ]
         }

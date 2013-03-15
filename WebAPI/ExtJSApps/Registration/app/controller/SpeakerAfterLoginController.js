@@ -70,9 +70,9 @@ Ext.define('RegistrationApp.controller.SpeakerAfterLoginController', {
     },
 
     onEditSelectedSessionButtonIdClick: function(button, e, eOpts) {
-        var sessionsSpeakerPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
-        //var storeSessions = sessionsSpeakerPanel.getStore();
+        debugger;
 
+        var sessionsSpeakerPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
         var selectedRecs = sessionsSpeakerPanel.getSelectionModel().getSelection();
         if (selectedRecs.length > 0) {
             Ext.create('RegistrationApp.view.WindowSession',{
@@ -81,6 +81,22 @@ Ext.define('RegistrationApp.controller.SpeakerAfterLoginController', {
         else {
             Ext.Msg.alert('Must Have Current Sessions and Select One In Order To Edit');   
         }
+    },
+
+    onAddNewSessionButtonIdClick: function(button, e, eOpts) {
+
+        var sessionsSpeakerPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
+        var store = sessionsSpeakerPanel.getStore();
+        var newRecord = Ext.create('RegistrationApp.model.Session',{
+            title: 'my title',
+            description: 'my descr'
+        });
+        store.add(newRecord);
+
+        debugger;
+
+        Ext.create('RegistrationApp.view.WindowSession',{
+        }).show();
     },
 
     init: function(application) {
@@ -93,6 +109,9 @@ Ext.define('RegistrationApp.controller.SpeakerAfterLoginController', {
             },
             "#editSelectedSessionButtonId": {
                 click: this.onEditSelectedSessionButtonIdClick
+            },
+            "#AddNewSessionButtonId": {
+                click: this.onAddNewSessionButtonIdClick
             }
         });
     }

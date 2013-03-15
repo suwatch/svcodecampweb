@@ -153,6 +153,10 @@ Ext.define('RegistrationApp.view.WindowSession', {
                 afterrender: {
                     fn: me.onWindowAfterRender,
                     scope: me
+                },
+                close: {
+                    fn: me.onWindowClose,
+                    scope: me
                 }
             }
         });
@@ -164,6 +168,8 @@ Ext.define('RegistrationApp.view.WindowSession', {
         // update the grid panel with the tags.
         Ext.getCmp("SessionTagsGridPanelId").getStore().sync();
 
+
+        // this updates the form with session info in it
         var sessionForm = Ext.getCmp("sessionFormPanelEditorId").getForm();
         sessionForm.updateRecord();     // with no parameters, this pushes the data from the form to the fields
         var rec = sessionForm.getRecord();
@@ -239,41 +245,53 @@ Ext.define('RegistrationApp.view.WindowSession', {
         var speakerProfilePanel =  Ext.getCmp('speakerAfterLoginProfileId');
         var retData = speakerProfilePanel.getForm().getValues();
 
-        //debugger;
+        debugger;
 
+
+
+        /*
         var tagList = Ext.getCmp("SessionTagsGridPanelId");
         var tagListStore = tagList.store;
         tagListStore.load({
-            params: {
-                sessionId: retData.attendeesId
-            },
-            callback: function(records,operation,success) {
-                var sm = tagList.getSelectionModel();
-                var recs = [];
-                Ext.each(records,function(rec) {
-                    if (rec.get("taggedInSession") === true) {
-                        recs.push(rec);
-                    }
-                });
-                sm.select(recs);
-                tagList.getView().focusRow(0);
-            }
+        params: {
+        sessionId: retData.attendeesId
+        },
+        callback: function(records,operation,success) {
+        var sm = tagList.getSelectionModel();
+        var recs = [];
+        Ext.each(records,function(rec) {
+        if (rec.get("taggedInSession") === true) {
+        recs.push(rec);
+        }
         });
+        sm.select(recs);
+        tagList.getView().focusRow(0);
+        }
+        });
+        */
+
+
+
+
         //debugger;
 
+        var sessionEditForm = Ext.getCmp("sessionFormPanelEditorId").getForm();
+        //if (!this.newRecordFlag) {
         // get data from SpeakerSessions Panel on previous page (get selected row and data associated, use that to set values in this form)
         var sessionList = Ext.getCmp("sessionsBySpeakerGridPanelId").getSelectionModel().getSelection();
         if (sessionList.length > 0) {
-
-            var sessionEditForm = Ext.getCmp("sessionFormPanelEditorId").getForm();
             sessionEditForm.loadRecord(sessionList[0]);
-
-
-
-            //var data = sessionList[0].getData();   
-            //var sessionEditForm = Ext.getCmp("sessionFormPanelEditorId").getForm();
-            //sessionEditForm.setValues(data);
         }
+        //} else {
+        //    var newRecord = Ext.create('RegistrationApp.model.Session',{
+        //
+        //    });
+        //    sessionEditForm.loadRecord(newRecord);
+        //}
+
+    },
+
+    onWindowClose: function(panel, eOpts) {
 
     }
 

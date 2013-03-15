@@ -164,12 +164,39 @@ Ext.define('RegistrationApp.view.WindowSession', {
         // update the grid panel with the tags.
         Ext.getCmp("SessionTagsGridPanelId").getStore().sync();
 
-
         var sessionForm = Ext.getCmp("sessionFormPanelEditorId").getForm();
+        sessionForm.updateRecord();     // with no parameters, this pushes the data from the form to the fields
+        var rec = sessionForm.getRecord();
+        rec.save({ 
+            success: function(record, operation)
+            {   
+                //record is the updated record, except for collections
+                //this collection will have the full records:
+                //operation.resultSet.records
+                //operation.resultSet.records[i] for each one if you are batching
+                rec.commit();
+            },
+            failure: function(record, operation)
+            {
+                //handle failure(s) here
+            }
+        });
+
+
+
+
+
+
+        /*
+        debugger;
+        var sessionForm = button.up("sessionFormPanelEditorId").getForm();
         sessionForm.updateRecord();     // with no parameters, this pushes the data from the form to the fields
         var rec = sessionForm.getRecord();
         rec.save();
         rec.commit();
+        */
+
+
 
         // now we need to clear the red dirty markes from the underlying grid because we took care of the save here
         //var sessionPresenterGridPanel = Ext.getCmp('SessionTagsGridPanelId');

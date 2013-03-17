@@ -37,6 +37,31 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                     items: [
                         {
                             xtype: 'button',
+                            id: 'sessionButtonSaveChangesId',
+                            text: 'Save Changes',
+                            listeners: {
+                                click: {
+                                    fn: me.onSessionButtonSaveChangesIdClick,
+                                    scope: me
+                                }
+                            }
+                        },
+                        {
+                            xtype: 'button',
+                            id: 'sessionButtonAddNewId',
+                            text: 'Add New Session',
+                            listeners: {
+                                click: {
+                                    fn: me.onSessionButtonAddNewIdClick,
+                                    scope: me
+                                }
+                            }
+                        },
+                        {
+                            xtype: 'tbfill'
+                        },
+                        {
+                            xtype: 'button',
                             itemId: 'speakerSessionsBackButtonItemId',
                             iconAlign: 'right',
                             text: 'Back'
@@ -128,10 +153,6 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                     listeners: {
                         selectionchange: {
                             fn: me.onSessionsBySpeakerGridPanelIdSelectionChange,
-                            scope: me
-                        },
-                        afterrender: {
-                            fn: me.onSessionsBySpeakerGridPanelIdAfterRender,
                             scope: me
                         }
                     }
@@ -249,6 +270,14 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
         me.callParent(arguments);
     },
 
+    onSessionButtonSaveChangesIdClick: function(button, e, eOpts) {
+
+    },
+
+    onSessionButtonAddNewIdClick: function(button, e, eOpts) {
+
+    },
+
     onAddNewSessionItemIdButtonClick: function(button, e, eOpts) {
         var sessionsSpeakerPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
         var store = sessionsSpeakerPanel.getStore();
@@ -265,50 +294,49 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
     },
 
     onSessionsBySpeakerGridPanelIdSelectionChange: function(model, selected, eOpts) {
-        debugger;
+        var sessionData = selected[0].getData();
 
-
+        // get handle to bottom window containing form and tags to enable
         var sessionDetailPanel = Ext.getCmp('sessionDetailPanelId');
         sessionDetailPanel.setDisabled(false);
 
+
+        // fill data into form for session info
         var panelForm = Ext.getCmp('sessionFormPanelEditorId').getForm();
-        panelForm.setValues(selected[0].getData());
+        panelForm.setValues(sessionData);
+
+        // fill data in for tags
+        var tagList = Ext.getCmp("SessionTagsGridPanelId")
+        var tagListStore = tagList.store;
+        tagListStore.load({
+            params: {
+                sessionId: sessionData.id
+            },
+            callback: function(records,operation,success) {
+                // get selection model of grid
+
+
+                var sm = tagList.getSelectionModel();
+                //sm.bindStore(tagListStore);
+
+
+                var recs = [];
+                Ext.each(records,function(rec) {
+                    if (rec.get("taggedInSession") === true) {
+                        recs.push(rec);
+                    }
+                });
+                sm.select(recs);
+
+                sm.select(0);
+
+
+            }
+        });
 
 
 
-        /*debugger;
-        var panel = Ext.getCmp('sessionFormPanelEditorId');
 
-        var panelCount = panel.getStore().getCount() 
-        if (panelCount == 0) {
-
-        } else {
-
-        panel.getForm().setValues(selected[0].getData());
-
-        }
-        */
-
-
-    },
-
-    onSessionsBySpeakerGridPanelIdAfterRender: function(component, eOpts) {
-        var panelForm = Ext.getCmp('sessionFormPanelEditorId');
-        var panelGrid = Ext.getCmp('sessionsBySpeakerGridPanelId');
-        var sessionDetailPanel = Ext.getCmp('sessionDetailPanelId');
-
-        debugger;
-        var panelCount = panelGrid.getStore().getCount() 
-        if (panelCount == 0) {
-
-        } else {
-            //sessionDetailPanel.disabled = false;
-            //panelGrid.getSelectionModel().selectFirstRow();
-
-
-            //panel.getForm().setValues(selected[0].getData());
-
-        }
 
     },
 

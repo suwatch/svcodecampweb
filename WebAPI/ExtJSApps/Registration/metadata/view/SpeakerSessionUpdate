@@ -39,6 +39,83 @@
                     "codeClass": null,
                     "userConfig": {
                         "layout|flex": null,
+                        "id": "sessionButtonSaveChangesId",
+                        "designer|userClassName": "MyButton20",
+                        "text": "Save Changes"
+                    },
+                    "designerId": "ed670dd6-cac7-4f8a-9ed2-faf8b44759f6",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "onSessionButtonSaveChangesIdClick",
+                                "fn": "onSessionButtonSaveChangesIdClick",
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "designerId": "c5eaecd1-39e9-4549-8870-11be26b4bd6e"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "id": "sessionButtonAddNewId",
+                        "designer|userClassName": "MyButton20",
+                        "text": "Add New Session"
+                    },
+                    "designerId": "7ea9dd20-a952-48a8-b799-95516f0d15cf",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "onSessionButtonAddNewIdClick",
+                                "fn": "onSessionButtonAddNewIdClick",
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "designerId": "c1965b97-8eb0-4e59-809a-9910bdb1e680"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.toolbar.Fill",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MyFill"
+                    },
+                    "designerId": "42288fc1-f8ab-46f6-ae6d-0402d8cf7cb5"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
                         "id": null,
                         "itemId": "speakerSessionsBackButtonItemId",
                         "designer|userClassName": "MyButton",
@@ -286,29 +363,48 @@
                         "designer|userClassName": "onSessionsBySpeakerGridPanelIdSelectionChange",
                         "fn": "onSessionsBySpeakerGridPanelIdSelectionChange",
                         "implHandler": [
-                            "debugger;\r",
+                            "var sessionData = selected[0].getData();\r",
                             "\r",
-                            "\r",
+                            "// get handle to bottom window containing form and tags to enable\r",
                             "var sessionDetailPanel = Ext.getCmp('sessionDetailPanelId');\r",
                             "sessionDetailPanel.setDisabled(false);\r",
                             "\r",
+                            "\r",
+                            "// fill data into form for session info\r",
                             "var panelForm = Ext.getCmp('sessionFormPanelEditorId').getForm();\r",
-                            "panelForm.setValues(selected[0].getData());\r",
+                            "panelForm.setValues(sessionData);\r",
+                            "\r",
+                            "// fill data in for tags\r",
+                            "var tagList = Ext.getCmp(\"SessionTagsGridPanelId\")\r",
+                            "var tagListStore = tagList.store;\r",
+                            "tagListStore.load({\r",
+                            "    params: {\r",
+                            "        sessionId: sessionData.id\r",
+                            "    },\r",
+                            "    callback: function(records,operation,success) {\r",
+                            "        // get selection model of grid\r",
+                            "\r",
+                            "\r",
+                            "        var sm = tagList.getSelectionModel();\r",
+                            "        //sm.bindStore(tagListStore);\r",
+                            "\r",
+                            "\r",
+                            "        var recs = [];\r",
+                            "        Ext.each(records,function(rec) {\r",
+                            "            if (rec.get(\"taggedInSession\") === true) {\r",
+                            "                recs.push(rec);\r",
+                            "            }\r",
+                            "        });\r",
+                            "        sm.select(recs);\r",
+                            "\r",
+                            "        sm.select(0);\r",
+                            "\r",
+                            "\r",
+                            "    }\r",
+                            "});\r",
                             "\r",
                             "\r",
                             "\r",
-                            "/*debugger;\r",
-                            "var panel = Ext.getCmp('sessionFormPanelEditorId');\r",
-                            "\r",
-                            "var panelCount = panel.getStore().getCount() \r",
-                            "if (panelCount == 0) {\r",
-                            "    \r",
-                            "} else {\r",
-                            "    \r",
-                            "    panel.getForm().setValues(selected[0].getData());\r",
-                            "    \r",
-                            "}\r",
-                            "*/\r",
                             "\r",
                             ""
                         ],
@@ -316,40 +412,6 @@
                         "scope": "me"
                     },
                     "designerId": "d58de540-994f-4c99-9054-86b62daba536"
-                },
-                {
-                    "type": "basiceventbinding",
-                    "reference": {
-                        "name": "listeners",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "designer|userClassName": "onSessionsBySpeakerGridPanelIdAfterRender",
-                        "fn": "onSessionsBySpeakerGridPanelIdAfterRender",
-                        "implHandler": [
-                            "var panelForm = Ext.getCmp('sessionFormPanelEditorId');\r",
-                            "var panelGrid = Ext.getCmp('sessionsBySpeakerGridPanelId');\r",
-                            "var sessionDetailPanel = Ext.getCmp('sessionDetailPanelId');\r",
-                            "\r",
-                            "debugger;\r",
-                            "var panelCount = panelGrid.getStore().getCount() \r",
-                            "if (panelCount == 0) {\r",
-                            "    \r",
-                            "} else {\r",
-                            "     //sessionDetailPanel.disabled = false;\r",
-                            "     //panelGrid.getSelectionModel().selectFirstRow();\r",
-                            "    \r",
-                            "    \r",
-                            "    //panel.getForm().setValues(selected[0].getData());\r",
-                            "    \r",
-                            "}\r",
-                            ""
-                        ],
-                        "name": "afterrender",
-                        "scope": "me"
-                    },
-                    "designerId": "e778e696-dcfc-4f41-9efa-bdb03d68be70"
                 }
             ]
         },

@@ -115,6 +115,28 @@
                 "designer|controlQuery": "SpeakerSessionUpdateAlias #continueButtonId"
             },
             "designerId": "d8f3c9dd-5306-4b18-ab9f-a121d2cb6766"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onSpeakerSessionsBackButtonItemIdClick",
+                "fn": "onSpeakerSessionsBackButtonItemIdClick",
+                "implHandler": [
+                    "var tabWizardPanel = Ext.getCmp('TabWizardId');\r",
+                    "tabWizardPanel.setActiveTab(Ext.getCmp('TabWizardId').getTabIdByName('SpeakerAfterLogin'));\r",
+                    ""
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#speakerSessionsBackButtonItemId"
+            },
+            "designerId": "e5fa2c98-a02c-461c-b7f8-093d4e57d63a"
         }
     ]
 }

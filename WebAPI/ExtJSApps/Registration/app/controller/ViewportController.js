@@ -26,6 +26,11 @@ Ext.define('RegistrationApp.controller.ViewportController', {
         myMask.show();
         // first check to see if person is already logged in.  If they are, then go edit details page as if attendee
         var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];
+
+        tabPanel.getTabBar().hide();
+        tabPanel.componentLayout.childrenChanged = true;
+        tabPanel.doComponentLayout();
+
         Ext.Ajax.request({ 
             url:'/rpc/Account/IsLoggedIn', 
             actionMethods:'POST', 
@@ -65,10 +70,6 @@ Ext.define('RegistrationApp.controller.ViewportController', {
                     tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeAfterLogin'));
                     myMask.hide();
                 }
-
-
-
-
             },
             failure: function(r,o) {
                 console.log('is NOT logged in from viewportafterrender');

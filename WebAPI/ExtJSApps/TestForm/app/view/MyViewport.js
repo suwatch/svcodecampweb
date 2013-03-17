@@ -27,31 +27,23 @@ Ext.define('MyApp.view.MyViewport', {
             items: [
                 {
                     xtype: 'panel',
-                    flex: 2,
                     region: 'center',
+                    layout: {
+                        type: 'border'
+                    },
                     title: 'My Panel',
-                    dockedItems: [
-                        {
-                            xtype: 'toolbar',
-                            dock: 'top',
-                            items: [
-                                {
-                                    xtype: 'button',
-                                    text: 'MyButton',
-                                    listeners: {
-                                        click: {
-                                            fn: me.onButtonClick,
-                                            scope: me
-                                        }
-                                    }
-                                }
-                            ]
-                        }
-                    ],
                     items: [
                         {
-                            xtype: 'component',
-                            html: '<b>my component</b>'
+                            xtype: 'panel',
+                            region: 'west',
+                            width: 150,
+                            title: 'pan1'
+                        },
+                        {
+                            xtype: 'panel',
+                            region: 'west',
+                            width: 150,
+                            title: 'pan2'
                         }
                     ]
                 }
@@ -59,61 +51,6 @@ Ext.define('MyApp.view.MyViewport', {
         });
 
         me.callParent(arguments);
-    },
-
-    onButtonClick: function(button, e, eOpts) {
-
-        Ext.define('MyApp.view.MyWindow', {
-            extend: 'Ext.window.Window',
-
-            height: 250,
-            width: 400,
-            title: 'My Window',
-
-            initComponent: function() {
-                var me = this;
-
-                Ext.applyIf(me, {
-                    items: [
-                    {
-                        xtype: 'button',
-                        text: 'Want to get link to my component in window that opened this',
-                        listeners: {
-                            click: {
-                                fn: me.onButtonClick,
-                                scope: me
-                            }
-                        }
-                    }
-                    ]
-                });
-
-                me.callParent(arguments);
-            },
-
-            onButtonClick: function(button, e, eOpts) {
-
-                // I would like to set the html property of the 
-                //   component in the window below
-                //   I would like to do this efficintly
-                //   user itemId?
-                //   use componentquery?
-                //   use up/down/etc.
-                //   
-                //   Need help with componentquery, extjs help is not helpful for me
-                //   I need more basics I think.
-
-
-                this.up('panel').up('panel').down('component').html = '<i>set from button</i>';
-                console.log(this.up('panel').up('panel').down('component'));
-            }
-
-        });
-
-        var win = Ext.create('MyApp1.view.MyWindow',{});
-        win.show();
-
-
     }
 
 });

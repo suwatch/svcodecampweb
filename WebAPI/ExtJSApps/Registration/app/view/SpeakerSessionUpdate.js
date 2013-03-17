@@ -18,9 +18,8 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
     alias: 'widget.SpeakerSessionUpdateAlias',
 
     layout: {
-        type: 'fit'
+        type: 'border'
     },
-    title: 'My Panel',
 
     initComponent: function() {
         var me = this;
@@ -40,7 +39,7 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                             xtype: 'button',
                             itemId: 'speakerSessionsBackButtonItemId',
                             iconAlign: 'right',
-                            text: 'Logout'
+                            text: 'Back'
                         },
                         {
                             xtype: 'tbseparator'
@@ -56,85 +55,90 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
             ],
             items: [
                 {
-                    xtype: 'form',
-                    autoShow: true,
-                    itemId: 'speakerSessionsId',
+                    xtype: 'gridpanel',
+                    flex: 2,
+                    region: 'north',
+                    split: true,
+                    height: 200,
+                    id: 'sessionsBySpeakerGridPanelId',
+                    padding: 5,
+                    autoScroll: true,
+                    animCollapse: true,
+                    collapseDirection: 'top',
+                    collapsible: false,
+                    store: 'SessionStore',
+                    viewConfig: {
+                        border: 1
+                    },
+                    columns: [
+                        {
+                            xtype: 'gridcolumn',
+                            dataIndex: 'title',
+                            text: 'Title',
+                            flex: 1
+                        },
+                        {
+                            xtype: 'gridcolumn',
+                            width: 50,
+                            dataIndex: 'id',
+                            text: 'Id'
+                        },
+                        {
+                            xtype: 'gridcolumn',
+                            width: 50,
+                            dataIndex: 'attendeeId',
+                            text: 'attendeesId'
+                        },
+                        {
+                            xtype: 'gridcolumn',
+                            width: 50,
+                            dataIndex: 'sessionId',
+                            text: 'sessionsId'
+                        }
+                    ],
+                    dockedItems: [
+                        {
+                            xtype: 'toolbar',
+                            dock: 'top',
+                            items: [
+                                {
+                                    xtype: 'button',
+                                    id: 'editSelectedSessionButtonId',
+                                    text: 'Edit Selected Session'
+                                },
+                                {
+                                    xtype: 'button',
+                                    id: 'AddNewSessionButtonId',
+                                    text: 'Add New Session'
+                                },
+                                {
+                                    xtype: 'button',
+                                    itemId: 'AddNewSessionItemIdButton',
+                                    text: 'MyButton',
+                                    listeners: {
+                                        click: {
+                                            fn: me.onAddNewSessionItemIdButtonClick,
+                                            scope: me
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    xtype: 'panel',
+                    flex: 7,
+                    region: 'center',
                     layout: {
                         type: 'border'
                     },
                     items: [
                         {
-                            xtype: 'gridpanel',
-                            flex: 1,
-                            region: 'north',
-                            height: 150,
-                            id: 'sessionsBySpeakerGridPanelId',
-                            padding: 5,
-                            autoScroll: true,
-                            store: 'SessionStore',
-                            viewConfig: {
-                                border: 1
-                            },
-                            columns: [
-                                {
-                                    xtype: 'gridcolumn',
-                                    dataIndex: 'title',
-                                    text: 'Title',
-                                    flex: 1
-                                },
-                                {
-                                    xtype: 'gridcolumn',
-                                    width: 50,
-                                    dataIndex: 'id',
-                                    text: 'Id'
-                                },
-                                {
-                                    xtype: 'gridcolumn',
-                                    width: 50,
-                                    dataIndex: 'attendeeId',
-                                    text: 'attendeesId'
-                                },
-                                {
-                                    xtype: 'gridcolumn',
-                                    width: 50,
-                                    dataIndex: 'sessionId',
-                                    text: 'sessionsId'
-                                }
-                            ],
-                            dockedItems: [
-                                {
-                                    xtype: 'toolbar',
-                                    dock: 'top',
-                                    items: [
-                                        {
-                                            xtype: 'button',
-                                            id: 'editSelectedSessionButtonId',
-                                            text: 'Edit Selected Session'
-                                        },
-                                        {
-                                            xtype: 'button',
-                                            id: 'AddNewSessionButtonId',
-                                            text: 'Add New Session'
-                                        },
-                                        {
-                                            xtype: 'button',
-                                            itemId: 'AddNewSessionItemIdButton',
-                                            text: 'MyButton',
-                                            listeners: {
-                                                click: {
-                                                    fn: me.onAddNewSessionItemIdButtonClick,
-                                                    scope: me
-                                                }
-                                            }
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
                             xtype: 'form',
-                            flex: 6,
+                            flex: 5,
                             region: 'west',
+                            split: true,
                             id: 'sessionFormPanelEditorId',
                             width: 150,
                             autoScroll: true,

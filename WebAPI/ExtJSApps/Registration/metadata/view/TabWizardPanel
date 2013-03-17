@@ -32,9 +32,9 @@
                 "designer|userClassName": "hideTabTitles",
                 "fn": "hideTabTitles",
                 "implHandler": [
-                    "this.getTabBar().hide();\r",
-                    "this.componentLayout.childrenChanged = true;\r",
-                    "this.doComponentLayout();"
+                    "//this.getTabBar().hide();\r",
+                    "//this.componentLayout.childrenChanged = true;\r",
+                    "//this.doComponentLayout();"
                 ]
             },
             "designerId": "cd19273b-8f0c-4df9-be5a-887e816184ac"
@@ -226,7 +226,7 @@
             "codeClass": null,
             "userConfig": {
                 "layout": null,
-                "title": "Speaker After Login"
+                "title": null
             },
             "designerId": "af3426cb-f9d7-4f43-b79d-627519c76647",
             "masterInstanceId": "1a1e24e7-e981-4728-b958-9dcf746faf54",

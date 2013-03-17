@@ -20,127 +20,42 @@
             },
             "codeClass": null,
             "userConfig": {
-                "layout|flex": 2,
                 "layout|region": "center",
                 "designer|userClassName": "MyPanel",
+                "layout": "border",
                 "title": "My Panel"
             },
-            "designerId": "9ba87c2e-0f3b-436c-bc55-03785f3e3ce9",
+            "designerId": "bbdb68c3-034e-4936-a7d2-e93b7a73e15a",
             "cn": [
                 {
-                    "type": "Ext.toolbar.Toolbar",
-                    "reference": {
-                        "name": "dockedItems",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "dock": "top",
-                        "designer|userClassName": "MyToolbar"
-                    },
-                    "designerId": "99a13e0b-1c42-4730-8b1a-3f499acae738",
-                    "cn": [
-                        {
-                            "type": "Ext.button.Button",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "layout|flex": null,
-                                "designer|userClassName": "MyButton",
-                                "text": "MyButton"
-                            },
-                            "designerId": "a82e1700-91ff-41b9-a7a9-584e972fedfd",
-                            "cn": [
-                                {
-                                    "type": "basiceventbinding",
-                                    "reference": {
-                                        "name": "listeners",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "designer|userClassName": "onButtonClick",
-                                        "fn": "onButtonClick",
-                                        "implHandler": [
-                                            "\r",
-                                            "Ext.define('MyApp.view.MyWindow', {\r",
-                                            "    extend: 'Ext.window.Window',\r",
-                                            "\r",
-                                            "    height: 250,\r",
-                                            "    width: 400,\r",
-                                            "    title: 'My Window',\r",
-                                            "\r",
-                                            "    initComponent: function() {\r",
-                                            "        var me = this;\r",
-                                            "\r",
-                                            "        Ext.applyIf(me, {\r",
-                                            "            items: [\r",
-                                            "                {\r",
-                                            "                    xtype: 'button',\r",
-                                            "                    text: 'Want to get link to my component in window that opened this',\r",
-                                            "                    listeners: {\r",
-                                            "                        click: {\r",
-                                            "                            fn: me.onButtonClick,\r",
-                                            "                            scope: me\r",
-                                            "                        }\r",
-                                            "                    }\r",
-                                            "                }\r",
-                                            "            ]\r",
-                                            "        });\r",
-                                            "\r",
-                                            "        me.callParent(arguments);\r",
-                                            "    },\r",
-                                            "\r",
-                                            "    onButtonClick: function(button, e, eOpts) {\r",
-                                            "\r",
-                                            "        // I would like to set the html property of the \r",
-                                            "        //   component in the window below\r",
-                                            "        //   I would like to do this efficintly\r",
-                                            "        //   user itemId?\r",
-                                            "        //   use componentquery?\r",
-                                            "        //   use up/down/etc.\r",
-                                            "        //   \r",
-                                            "        //   Need help with componentquery, extjs help is not helpful for me\r",
-                                            "        //   I need more basics I think.\r",
-                                            "\r",
-                                            "\r",
-                                            "        this.up('panel').up('panel').down('component').html = '<i>set from button</i>';\r",
-                                            "        console.log(this.up('panel').up('panel').down('component'));\r",
-                                            "    }\r",
-                                            "\r",
-                                            "});\r",
-                                            "\r",
-                                            "var win = Ext.create('MyApp1.view.MyWindow',{});\r",
-                                            "win.show();\r",
-                                            "\r",
-                                            ""
-                                        ],
-                                        "name": "click",
-                                        "scope": "me"
-                                    },
-                                    "designerId": "3b616fa9-b0fc-4182-9879-2622bb410607"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "type": "Ext.Component",
+                    "type": "Ext.panel.Panel",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "html": [
-                            "<b>my component</b>"
-                        ],
-                        "designer|userClassName": "MyComponent"
+                        "layout|region": "west",
+                        "width": 150,
+                        "designer|userClassName": "MyPanel1",
+                        "title": "pan1"
                     },
-                    "designerId": "d5f929f7-d3f9-4c7c-8ad7-7c36336413dd"
+                    "designerId": "6d8278bd-42b2-4025-87a7-504a90a16c82"
+                },
+                {
+                    "type": "Ext.panel.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|region": "west",
+                        "width": 150,
+                        "designer|userClassName": "MyPanel1",
+                        "title": "pan2"
+                    },
+                    "designerId": "4726bfb4-0e65-44a7-a225-93b47501147a"
                 }
             ]
         }

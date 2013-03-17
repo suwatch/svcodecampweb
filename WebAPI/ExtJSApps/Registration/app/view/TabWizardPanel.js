@@ -58,8 +58,7 @@ Ext.define('RegistrationApp.view.TabWizardPanel', {
                     xtype: 'AttendeeAfterLoginAlias'
                 },
                 {
-                    xtype: 'SpeakerAfterLoginAlias2',
-                    title: 'Speaker After Login'
+                    xtype: 'SpeakerAfterLoginAlias2'
                 },
                 {
                     xtype: 'SpeakerSessionUpdateAlias',
@@ -78,9 +77,9 @@ Ext.define('RegistrationApp.view.TabWizardPanel', {
     },
 
     hideTabTitles: function() {
-        this.getTabBar().hide();
-        this.componentLayout.childrenChanged = true;
-        this.doComponentLayout();
+        //this.getTabBar().hide();
+        //this.componentLayout.childrenChanged = true;
+        //this.doComponentLayout();
     },
 
     getTabIdByName: function(stepName) {

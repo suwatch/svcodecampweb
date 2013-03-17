@@ -20,12 +20,11 @@ Ext.Loader.setConfig({
 Ext.application({
 
     requires: [
-        'MyApp.view.MyViewport',
-        'MyApp.view.MyWindow'
+        'MyApp.view.MyViewport'
     ],
     views: [
         'MyViewport',
-        'MyWindow'
+        null
     ],
     autoCreateViewport: true,
     controllers: [

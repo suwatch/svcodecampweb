@@ -11,12 +11,79 @@
         "designer|userClassName": "SpeakerAfterLoginNotDup",
         "designer|userAlias": "SpeakerAfterLoginAlias2",
         "layout": "border",
-        "title": null
+        "title": "Speaker After Login"
     },
     "designerId": "1a1e24e7-e981-4728-b958-9dcf746faf54",
     "cn": [
         {
-            "type": "Ext.panel.Panel",
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|flex": 2,
+                "layout|region": null,
+                "dock": "top",
+                "container|pack": "end",
+                "container|padding": null,
+                "itemId": "ToolBarAttendeeSpeaker",
+                "designer|userClassName": "MyToolbar"
+            },
+            "designerId": "4f80e654-3b0c-4ee5-8384-eef99a99fb49",
+            "cn": [
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "id": null,
+                        "itemId": "logoutButtonId",
+                        "designer|userClassName": "MyButton",
+                        "iconAlign": "right",
+                        "text": "Logout"
+                    },
+                    "designerId": "f578004a-b4e1-4fe7-8fd5-5855a9ece36f"
+                },
+                {
+                    "type": "Ext.toolbar.Separator",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MySeparator"
+                    },
+                    "designerId": "23d33a4f-182b-4708-a6c1-dfdc962c6874"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "id": null,
+                        "itemId": "continueButtonId",
+                        "designer|userClassName": "MyButton",
+                        "iconAlign": "right",
+                        "text": "Continue"
+                    },
+                    "designerId": "10bea561-1c0b-4256-85c9-4125243149a6"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.Panel",
             "reference": {
                 "name": "items",
                 "type": "array"
@@ -26,639 +93,555 @@
                 "layout|flex": 5,
                 "layout|region": "west",
                 "layout|split": true,
-                "container|align": "stretch",
-                "id": "SpeakerPanelDetailProfPictId",
-                "width": 150,
-                "designer|userClassName": "MyPanel4",
-                "layout": "hbox",
-                "title": null
+                "id": "speakerAfterLoginProfileId",
+                "itemId": "",
+                "width": null,
+                "designer|userClassName": "SpeakerAfterLogin",
+                "designer|userAlias": "SpeakerAfterLoginAlias",
+                "autoScroll": true,
+                "defaults": [
+                    "{\r",
+                    "    anchor: '95%'\r",
+                    "}"
+                ],
+                "bodyPadding": 15,
+                "title": "Speaker After Login",
+                "url": "/api/Register"
             },
-            "designerId": "66609cca-2ff2-4e41-ac56-d44caf901ef0",
+            "configAlternates": {
+                "anchorSize": "object"
+            },
+            "designerId": "aa4df78b-1bc6-4d4b-8239-fd98a9dd6d5f",
             "cn": [
                 {
-                    "type": "Ext.form.Panel",
+                    "type": "Ext.form.RadioGroup",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "layout|flex": 5,
-                        "id": "speakerAfterLoginProfileId",
-                        "itemId": "",
-                        "designer|userClassName": "SpeakerAfterLogin",
-                        "designer|userAlias": "SpeakerAfterLoginAlias",
-                        "autoScroll": true,
-                        "defaults": [
-                            "{\r",
-                            "    anchor: '95%'\r",
-                            "}"
-                        ],
-                        "bodyPadding": 15,
-                        "title": "Speaker After Login",
-                        "url": "/api/Register"
+                        "name": "CanSpeakDate",
+                        "id": "CanSpeakRbGroupId",
+                        "padding": 5,
+                        "designer|userClassName": "MyRadioGroup3",
+                        "fieldLabel": "",
+                        "allowBlank": false,
+                        "blankText": "You must choose which day(s) you can speak",
+                        "columns": [
+                            "1\t"
+                        ]
                     },
-                    "configAlternates": {
-                        "anchorSize": "object"
-                    },
-                    "designerId": "aa4df78b-1bc6-4d4b-8239-fd98a9dd6d5f",
-                    "cn": [
-                        {
-                            "type": "Ext.form.RadioGroup",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "name": "CanSpeakDate",
-                                "id": "CanSpeakRbGroupId",
-                                "padding": 5,
-                                "designer|userClassName": "MyRadioGroup3",
-                                "fieldLabel": "",
-                                "allowBlank": false,
-                                "blankText": "You must choose which day(s) you can speak",
-                                "columns": [
-                                    "1\t"
-                                ]
-                            },
-                            "designerId": "99fdff3e-d293-484d-85b3-88cac0451b31",
-                            "customConfigs": [
-                                {
-                                    "group": "(Custom Properties)",
-                                    "name": "name",
-                                    "type": "string"
-                                }
-                            ],
-                            "cn": [
-                                {
-                                    "type": "Ext.form.field.Radio",
-                                    "reference": {
-                                        "name": "items",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "itemId": "speakSaturdayAndSundayId",
-                                        "designer|userClassName": "MyRadio12",
-                                        "fieldLabel": null,
-                                        "name": "attendingDaysChoiceCurrentYear",
-                                        "boxLabel": "Can Speak Saturday Or Sunday",
-                                        "checked": true,
-                                        "inputValue": "AttendingSaturdaySunday"
-                                    },
-                                    "designerId": "b84cf7b3-ee27-4587-9335-54802d59d919"
-                                },
-                                {
-                                    "type": "Ext.form.field.Radio",
-                                    "reference": {
-                                        "name": "items",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "itemId": "speakSaturdayId",
-                                        "designer|userClassName": "MyRadio11",
-                                        "fieldLabel": null,
-                                        "name": "attendingDaysChoiceCurrentYear",
-                                        "inputId": "speakSaturday",
-                                        "boxLabel": "Can Speak Saturday",
-                                        "inputValue": "AttendingSaturday"
-                                    },
-                                    "designerId": "52c1186f-d28f-4d59-88c0-3c18834ed7bb"
-                                },
-                                {
-                                    "type": "Ext.form.field.Radio",
-                                    "reference": {
-                                        "name": "items",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "itemId": "speakSundayId",
-                                        "designer|userClassName": "MyRadio12",
-                                        "fieldLabel": null,
-                                        "name": "attendingDaysChoiceCurrentYear",
-                                        "boxLabel": "Can Speak Sunday",
-                                        "inputValue": "AttendingSunday"
-                                    },
-                                    "designerId": "80c9b63b-00ce-424c-873a-eb0dea2b19cc"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "Ext.form.field.Text",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "itemId": null,
-                                "width": null,
-                                "designer|userClassName": "MyTextField15",
-                                "fieldLabel": "FirstName",
-                                "name": "userFirstName",
-                                "inputId": null,
-                                "allowBlank": false
-                            },
-                            "designerId": "8dbe4adb-3bbe-45d3-bc4b-402ba240ca73"
-                        },
-                        {
-                            "type": "Ext.form.field.Text",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "itemId": null,
-                                "designer|userClassName": "MyTextField16",
-                                "fieldLabel": "Last Name",
-                                "name": "userLastName",
-                                "inputId": null,
-                                "allowBlank": false
-                            },
-                            "designerId": "179dba88-d8f4-4f9c-8a30-03ed531f81d3"
-                        },
-                        {
-                            "type": "Ext.form.field.Text",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "itemId": null,
-                                "designer|userClassName": "MyTextField16",
-                                "fieldLabel": "Email",
-                                "name": "email",
-                                "allowBlank": false
-                            },
-                            "designerId": "925da65e-3e90-4cb2-b9e4-0f35a249d36d"
-                        },
-                        {
-                            "type": "Ext.form.field.Text",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "designer|userClassName": "MyTextField10",
-                                "fieldLabel": "Phone Number",
-                                "name": "phoneNumber"
-                            },
-                            "designerId": "8f132c75-7b59-46fc-bd08-2ccc7bcb95f4"
-                        },
-                        {
-                            "type": "Ext.form.field.ComboBox",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "designer|userClassName": "MyComboBox",
-                                "fieldLabel": "Speaker Shirt Size",
-                                "name": "shirtSize",
-                                "allowBlank": false,
-                                "displayField": "shirtSize",
-                                "store": "ShirtSizeStore",
-                                "valueField": "shirtSize"
-                            },
-                            "designerId": "0c80dfe1-929d-4f41-aa99-a5b4d8ab977c"
-                        },
-                        {
-                            "type": "Ext.form.field.Text",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "itemId": null,
-                                "designer|userClassName": "MyTextField14",
-                                "fieldLabel": "Web Site",
-                                "name": "userWebsite"
-                            },
-                            "designerId": "847b470e-df9a-4e5d-a34b-ddddf8481c15"
-                        },
-                        {
-                            "type": "Ext.form.field.Text",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "itemId": null,
-                                "designer|userClassName": "MyTextField17",
-                                "fieldLabel": "Twitter Handle",
-                                "name": "twitterHandle"
-                            },
-                            "designerId": "9e745a75-0d25-4392-90b9-d03be050f2f9"
-                        },
-                        {
-                            "type": "Ext.form.field.Text",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "itemId": null,
-                                "designer|userClassName": "MyTextField17",
-                                "fieldLabel": "Facebook",
-                                "name": "facebookId"
-                            },
-                            "designerId": "e3d926e9-11ec-441b-a8f3-d6873d4a5958"
-                        },
-                        {
-                            "type": "Ext.form.field.Text",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "itemId": null,
-                                "designer|userClassName": "MyTextField17",
-                                "fieldLabel": "Google Plus",
-                                "name": "googlePlusId"
-                            },
-                            "designerId": "3500ac35-b207-4362-aa6f-e53f80e64454"
-                        },
-                        {
-                            "type": "Ext.form.field.Text",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "itemId": null,
-                                "designer|userClassName": "MyTextField17",
-                                "fieldLabel": "LinkedIn",
-                                "name": "linkedInId"
-                            },
-                            "designerId": "d2ebb2cd-a99f-4b4a-86cf-d5c5278a49c6"
-                        },
-                        {
-                            "type": "Ext.form.field.Text",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "designer|userClassName": "MyTextField10",
-                                "fieldLabel": "Eventboard Email",
-                                "name": "emailEventBoard"
-                            },
-                            "designerId": "403c9953-2f17-4f07-b613-f4074f26a06b"
-                        },
-                        {
-                            "type": "Ext.form.field.Text",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "itemId": null,
-                                "designer|userClassName": "MyTextField18",
-                                "fieldLabel": "City",
-                                "name": "city",
-                                "allowBlank": false
-                            },
-                            "designerId": "3ee3c6a4-0422-48af-8624-ee65429ae9d8"
-                        },
-                        {
-                            "type": "Ext.form.field.Text",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "itemId": null,
-                                "designer|userClassName": "MyTextField19",
-                                "fieldLabel": "State",
-                                "name": "state",
-                                "allowBlank": false
-                            },
-                            "designerId": "2e0bfa3a-ad66-4549-b095-d1c605450ee6"
-                        },
-                        {
-                            "type": "Ext.form.field.Text",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "itemId": null,
-                                "designer|userClassName": "MyTextField20",
-                                "fieldLabel": "Zipcode",
-                                "name": "userZipCode",
-                                "allowBlank": false
-                            },
-                            "designerId": "13900f6a-85b6-475f-a45d-05d13551da5b"
-                        },
-                        {
-                            "type": "Ext.form.field.Text",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "hidden": true,
-                                "itemId": null,
-                                "designer|userClassName": "MyTextField20",
-                                "fieldLabel": "Attendees Id",
-                                "name": "attendeesId",
-                                "allowBlank": false
-                            },
-                            "designerId": "ce0513e4-2ead-4abe-8ba5-066be0917433"
-                        },
-                        {
-                            "type": "Ext.form.field.Checkbox",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "designer|userClassName": "MyCheckbox4",
-                                "fieldLabel": "Volunteer",
-                                "name": "volunteeredCurrentYear",
-                                "boxLabel": "(Volunteer To Help Day Of)",
-                                "inputValue": "true",
-                                "uncheckedValue": "false"
-                            },
-                            "designerId": "69ecc8f8-fd7f-484f-9946-687d3046ff78"
-                        },
-                        {
-                            "type": "Ext.form.field.TextArea",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "designer|userClassName": "MyTextArea1",
-                                "designer|displayName": "BioId",
-                                "fieldLabel": "Bio",
-                                "name": "userBio",
-                                "allowBlank": false,
-                                "enforceMaxLength": true,
-                                "maxLength": 500,
-                                "minLength": 30
-                            },
-                            "designerId": "9e24799e-fa8f-40db-9ae8-9951a456ae34"
-                        },
-                        {
-                            "type": "Ext.toolbar.Toolbar",
-                            "reference": {
-                                "name": "dockedItems",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "dock": "top",
-                                "container|pack": "end",
-                                "container|padding": null,
-                                "height": null,
-                                "itemId": "ToolBarAttendeeSpeaker",
-                                "designer|userClassName": "MyToolbar"
-                            },
-                            "designerId": "4f80e654-3b0c-4ee5-8384-eef99a99fb49",
-                            "cn": [
-                                {
-                                    "type": "Ext.button.Button",
-                                    "reference": {
-                                        "name": "items",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "layout|flex": null,
-                                        "id": null,
-                                        "itemId": "logoutButtonId",
-                                        "designer|userClassName": "MyButton",
-                                        "iconAlign": "right",
-                                        "text": "Logout"
-                                    },
-                                    "designerId": "f578004a-b4e1-4fe7-8fd5-5855a9ece36f"
-                                },
-                                {
-                                    "type": "Ext.toolbar.Separator",
-                                    "reference": {
-                                        "name": "items",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "layout|flex": null,
-                                        "designer|userClassName": "MySeparator"
-                                    },
-                                    "designerId": "23d33a4f-182b-4708-a6c1-dfdc962c6874"
-                                },
-                                {
-                                    "type": "Ext.button.Button",
-                                    "reference": {
-                                        "name": "items",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "layout|flex": null,
-                                        "formBind": true,
-                                        "id": null,
-                                        "itemId": "continueButtonId",
-                                        "designer|userClassName": "MyButton",
-                                        "iconAlign": "right",
-                                        "text": "Continue"
-                                    },
-                                    "designerId": "10bea561-1c0b-4256-85c9-4125243149a6"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "Ext.form.Label",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "height": 14,
-                                "html": "<i>Press Continue on top right to submit sessions for approval</i>",
-                                "designer|userClassName": "MyLabel1",
-                                "text": ""
-                            },
-                            "designerId": "ca95624b-5e10-42b3-b625-9041f0a06717"
-                        }
-                    ]
-                },
-                {
-                    "type": "Ext.form.Panel",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "buttons": null,
-                        "layout|flex": 2,
-                        "id": "speakerPictureUploadFormId",
-                        "padding": null,
-                        "designer|userClassName": "SpeakerPicture",
-                        "designer|userAlias": "SpeakerPictureAlias",
-                        "bodyPadding": 20,
-                        "title": "Speaker Picture Upload",
-                        "url": "/api/Account/FormData"
-                    },
-                    "designerId": "99ab335f-8e80-451e-a2c6-ac4d92811303",
+                    "designerId": "99fdff3e-d293-484d-85b3-88cac0451b31",
                     "customConfigs": [
                         {
                             "group": "(Custom Properties)",
-                            "name": "buttons",
+                            "name": "name",
                             "type": "string"
                         }
                     ],
                     "cn": [
                         {
-                            "type": "Ext.form.FieldSet",
+                            "type": "Ext.form.field.Radio",
                             "reference": {
                                 "name": "items",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "container|align": "stretch",
-                                "designer|userClassName": "MyFieldSet",
-                                "layout": "vbox",
-                                "title": "Picture Required Before Submitting Sessions"
+                                "itemId": "speakSaturdayAndSundayId",
+                                "designer|userClassName": "MyRadio12",
+                                "fieldLabel": null,
+                                "name": "attendingDaysChoiceCurrentYear",
+                                "boxLabel": "Can Speak Saturday Or Sunday",
+                                "checked": true,
+                                "inputValue": "AttendingSaturdaySunday"
                             },
-                            "designerId": "5163df38-67e0-4dda-aa34-dacda022b5f7",
+                            "designerId": "b84cf7b3-ee27-4587-9335-54802d59d919"
+                        },
+                        {
+                            "type": "Ext.form.field.Radio",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "speakSaturdayId",
+                                "designer|userClassName": "MyRadio11",
+                                "fieldLabel": null,
+                                "name": "attendingDaysChoiceCurrentYear",
+                                "inputId": "speakSaturday",
+                                "boxLabel": "Can Speak Saturday",
+                                "inputValue": "AttendingSaturday"
+                            },
+                            "designerId": "52c1186f-d28f-4d59-88c0-3c18834ed7bb"
+                        },
+                        {
+                            "type": "Ext.form.field.Radio",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "speakSundayId",
+                                "designer|userClassName": "MyRadio12",
+                                "fieldLabel": null,
+                                "name": "attendingDaysChoiceCurrentYear",
+                                "boxLabel": "Can Speak Sunday",
+                                "inputValue": "AttendingSunday"
+                            },
+                            "designerId": "80c9b63b-00ce-424c-873a-eb0dea2b19cc"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": null,
+                        "width": null,
+                        "designer|userClassName": "MyTextField15",
+                        "fieldLabel": "FirstName",
+                        "name": "userFirstName",
+                        "inputId": null,
+                        "allowBlank": false
+                    },
+                    "designerId": "8dbe4adb-3bbe-45d3-bc4b-402ba240ca73"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": null,
+                        "designer|userClassName": "MyTextField16",
+                        "fieldLabel": "Last Name",
+                        "name": "userLastName",
+                        "inputId": null,
+                        "allowBlank": false
+                    },
+                    "designerId": "179dba88-d8f4-4f9c-8a30-03ed531f81d3"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": null,
+                        "designer|userClassName": "MyTextField16",
+                        "fieldLabel": "Email",
+                        "name": "email",
+                        "allowBlank": false
+                    },
+                    "designerId": "925da65e-3e90-4cb2-b9e4-0f35a249d36d"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyTextField10",
+                        "fieldLabel": "Phone Number",
+                        "name": "phoneNumber"
+                    },
+                    "designerId": "8f132c75-7b59-46fc-bd08-2ccc7bcb95f4"
+                },
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyComboBox",
+                        "fieldLabel": "Speaker Shirt Size",
+                        "name": "shirtSize",
+                        "allowBlank": false,
+                        "displayField": "shirtSize",
+                        "store": "ShirtSizeStore",
+                        "valueField": "shirtSize"
+                    },
+                    "designerId": "0c80dfe1-929d-4f41-aa99-a5b4d8ab977c"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": null,
+                        "designer|userClassName": "MyTextField14",
+                        "fieldLabel": "Web Site",
+                        "name": "userWebsite"
+                    },
+                    "designerId": "847b470e-df9a-4e5d-a34b-ddddf8481c15"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": null,
+                        "designer|userClassName": "MyTextField17",
+                        "fieldLabel": "Twitter Handle",
+                        "name": "twitterHandle"
+                    },
+                    "designerId": "9e745a75-0d25-4392-90b9-d03be050f2f9"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": null,
+                        "designer|userClassName": "MyTextField17",
+                        "fieldLabel": "Facebook",
+                        "name": "facebookId"
+                    },
+                    "designerId": "e3d926e9-11ec-441b-a8f3-d6873d4a5958"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": null,
+                        "designer|userClassName": "MyTextField17",
+                        "fieldLabel": "Google Plus",
+                        "name": "googlePlusId"
+                    },
+                    "designerId": "3500ac35-b207-4362-aa6f-e53f80e64454"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": null,
+                        "designer|userClassName": "MyTextField17",
+                        "fieldLabel": "LinkedIn",
+                        "name": "linkedInId"
+                    },
+                    "designerId": "d2ebb2cd-a99f-4b4a-86cf-d5c5278a49c6"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyTextField10",
+                        "fieldLabel": "Eventboard Email",
+                        "name": "emailEventBoard"
+                    },
+                    "designerId": "403c9953-2f17-4f07-b613-f4074f26a06b"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": null,
+                        "designer|userClassName": "MyTextField18",
+                        "fieldLabel": "City",
+                        "name": "city",
+                        "allowBlank": false
+                    },
+                    "designerId": "3ee3c6a4-0422-48af-8624-ee65429ae9d8"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": null,
+                        "designer|userClassName": "MyTextField19",
+                        "fieldLabel": "State",
+                        "name": "state",
+                        "allowBlank": false
+                    },
+                    "designerId": "2e0bfa3a-ad66-4549-b095-d1c605450ee6"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": null,
+                        "designer|userClassName": "MyTextField20",
+                        "fieldLabel": "Zipcode",
+                        "name": "userZipCode",
+                        "allowBlank": false
+                    },
+                    "designerId": "13900f6a-85b6-475f-a45d-05d13551da5b"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "hidden": true,
+                        "itemId": null,
+                        "designer|userClassName": "MyTextField20",
+                        "fieldLabel": "Attendees Id",
+                        "name": "attendeesId",
+                        "allowBlank": false
+                    },
+                    "designerId": "ce0513e4-2ead-4abe-8ba5-066be0917433"
+                },
+                {
+                    "type": "Ext.form.field.Checkbox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyCheckbox4",
+                        "fieldLabel": "Volunteer",
+                        "name": "volunteeredCurrentYear",
+                        "boxLabel": "(Volunteer To Help Day Of)",
+                        "inputValue": "true",
+                        "uncheckedValue": "false"
+                    },
+                    "designerId": "69ecc8f8-fd7f-484f-9946-687d3046ff78"
+                },
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyTextArea1",
+                        "designer|displayName": "BioId",
+                        "fieldLabel": "Bio",
+                        "name": "userBio",
+                        "allowBlank": false,
+                        "enforceMaxLength": true,
+                        "maxLength": 500,
+                        "minLength": 30
+                    },
+                    "designerId": "9e24799e-fa8f-40db-9ae8-9951a456ae34"
+                },
+                {
+                    "type": "Ext.form.Label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": 14,
+                        "html": "<i>Press Continue on top right to submit sessions for approval</i>",
+                        "designer|userClassName": "MyLabel1",
+                        "text": ""
+                    },
+                    "designerId": "ca95624b-5e10-42b3-b625-9041f0a06717"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "buttons": null,
+                "layout|flex": 2,
+                "layout|region": "center",
+                "layout|split": true,
+                "id": "speakerPictureUploadFormId",
+                "padding": null,
+                "designer|userClassName": "SpeakerPicture",
+                "designer|userAlias": "SpeakerPictureAlias",
+                "bodyPadding": 20,
+                "title": "Speaker Picture Upload",
+                "url": "/api/Account/FormData"
+            },
+            "designerId": "99ab335f-8e80-451e-a2c6-ac4d92811303",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "buttons",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|align": "stretch",
+                        "designer|userClassName": "MyFieldSet",
+                        "layout": "vbox",
+                        "title": "Picture Required Before Submitting Sessions"
+                    },
+                    "designerId": "5163df38-67e0-4dda-aa34-dacda022b5f7",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.File",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": 1,
+                                "border": false,
+                                "height": 50,
+                                "id": "SpeakerPictureUploadXId",
+                                "itemId": "SpeakerPictureUploadId",
+                                "minWidth": 150,
+                                "padding": 10,
+                                "width": null,
+                                "designer|userClassName": "MyFileUpload",
+                                "fieldLabel": "",
+                                "hideLabel": true,
+                                "labelAlign": "top",
+                                "labelPad": 0,
+                                "labelWidth": null
+                            },
+                            "designerId": "6cd5b015-a5fd-4559-92fd-de5d67368104",
                             "cn": [
                                 {
-                                    "type": "Ext.form.field.File",
+                                    "type": "basiceventbinding",
                                     "reference": {
-                                        "name": "items",
+                                        "name": "listeners",
                                         "type": "array"
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "layout|flex": 1,
-                                        "border": false,
-                                        "height": 50,
-                                        "id": "SpeakerPictureUploadXId",
-                                        "itemId": "SpeakerPictureUploadId",
-                                        "minWidth": 150,
-                                        "padding": 10,
-                                        "width": null,
-                                        "designer|userClassName": "MyFileUpload",
-                                        "fieldLabel": "",
-                                        "hideLabel": true,
-                                        "labelAlign": "top",
-                                        "labelPad": 0,
-                                        "labelWidth": null
+                                        "designer|userClassName": "onSpeakerPictureUploadXIdChange",
+                                        "fn": "onSpeakerPictureUploadXIdChange",
+                                        "implHandler": [
+                                            "// FOR SOME REASON THIS WILL NOT GET CALLED IN CONTROLLER\r",
+                                            "\r",
+                                            "var speakerForm = Ext.getCmp('speakerPictureUploadFormId');\r",
+                                            "var imgId = Ext.getCmp('SpeakerImageId');\r",
+                                            "if(speakerForm.isValid()){\r",
+                                            "    speakerForm.submit({\r",
+                                            "        url: '/rpc/Account/FormData',\r",
+                                            "        waitMsg: 'Uploading your photo...',\r",
+                                            "        success: function(fp, o) {\r",
+                                            "            var attendeesId = o.result.attendeeId;\r",
+                                            "            var imageLocation = '/attendeeimage/' + attendeesId + '.jpg?width=280&height=280&borderWidth=1&borderColor=black&scale=both';\r",
+                                            "            var antiCachePart = (new Date()).getTime();\r",
+                                            "            var newSrc = imageLocation + '&dc=' + antiCachePart;\r",
+                                            "            imgId.setSrc(newSrc); \r",
+                                            "            \r",
+                                            "        },\r",
+                                            "        failure: function(form, action){\r",
+                                            "            //debugger;\r",
+                                            "            if (action.failureType === Ext.form.action.Action.CONNECT_FAILURE) {\r",
+                                            "                Ext.Msg.alert('Error',\r",
+                                            "                'Status:'+action.response.status+': '+\r",
+                                            "                action.response.statusText);\r",
+                                            "            }\r",
+                                            "            if (action.failureType === Ext.form.action.Action.SERVER_INVALID){\r",
+                                            "                // server responded with success = false\r",
+                                            "                Ext.Msg.alert('Invalid', action.result.errormsg);\r",
+                                            "            }\r",
+                                            "        }\r",
+                                            "    });\r",
+                                            "}"
+                                        ],
+                                        "name": "change",
+                                        "scope": "me"
                                     },
-                                    "designerId": "6cd5b015-a5fd-4559-92fd-de5d67368104",
-                                    "cn": [
-                                        {
-                                            "type": "basiceventbinding",
-                                            "reference": {
-                                                "name": "listeners",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "designer|userClassName": "onSpeakerPictureUploadXIdChange",
-                                                "fn": "onSpeakerPictureUploadXIdChange",
-                                                "implHandler": [
-                                                    "// FOR SOME REASON THIS WILL NOT GET CALLED IN CONTROLLER\r",
-                                                    "\r",
-                                                    "var speakerForm = Ext.getCmp('speakerPictureUploadFormId');\r",
-                                                    "var imgId = Ext.getCmp('SpeakerImageId');\r",
-                                                    "if(speakerForm.isValid()){\r",
-                                                    "    speakerForm.submit({\r",
-                                                    "        url: '/rpc/Account/FormData',\r",
-                                                    "        waitMsg: 'Uploading your photo...',\r",
-                                                    "        success: function(fp, o) {\r",
-                                                    "            var attendeesId = o.result.attendeeId;\r",
-                                                    "            var imageLocation = '/attendeeimage/' + attendeesId + '.jpg?width=280&height=280&borderWidth=1&borderColor=black&scale=both';\r",
-                                                    "            var antiCachePart = (new Date()).getTime();\r",
-                                                    "            var newSrc = imageLocation + '&dc=' + antiCachePart;\r",
-                                                    "            imgId.setSrc(newSrc); \r",
-                                                    "            \r",
-                                                    "        },\r",
-                                                    "        failure: function(form, action){\r",
-                                                    "            //debugger;\r",
-                                                    "            if (action.failureType === Ext.form.action.Action.CONNECT_FAILURE) {\r",
-                                                    "                Ext.Msg.alert('Error',\r",
-                                                    "                'Status:'+action.response.status+': '+\r",
-                                                    "                action.response.statusText);\r",
-                                                    "            }\r",
-                                                    "            if (action.failureType === Ext.form.action.Action.SERVER_INVALID){\r",
-                                                    "                // server responded with success = false\r",
-                                                    "                Ext.Msg.alert('Invalid', action.result.errormsg);\r",
-                                                    "            }\r",
-                                                    "        }\r",
-                                                    "    });\r",
-                                                    "}"
-                                                ],
-                                                "name": "change",
-                                                "scope": "me"
-                                            },
-                                            "designerId": "b7ee6e6b-6112-40e4-a7d9-2d54fcb1897f"
-                                        }
-                                    ]
-                                },
+                                    "designerId": "b7ee6e6b-6112-40e4-a7d9-2d54fcb1897f"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.panel.Panel",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": 7,
+                                "border": false,
+                                "height": 300,
+                                "itemId": "PicturePanelId",
+                                "minWidth": null,
+                                "padding": 5,
+                                "width": 300,
+                                "designer|userClassName": "MyPanel",
+                                "title": null
+                            },
+                            "designerId": "0100e99f-c88c-4569-b9f5-76731275d87e",
+                            "cn": [
                                 {
-                                    "type": "Ext.panel.Panel",
+                                    "type": "Ext.Img",
                                     "reference": {
                                         "name": "items",
                                         "type": "array"
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "layout|flex": 7,
-                                        "border": false,
-                                        "height": 300,
-                                        "itemId": "PicturePanelId",
-                                        "minWidth": null,
-                                        "padding": 5,
-                                        "width": 300,
-                                        "designer|userClassName": "MyPanel",
-                                        "title": null
+                                        "border": 1,
+                                        "height": null,
+                                        "id": "SpeakerImageId",
+                                        "itemId": "SpeakerImgId",
+                                        "ui": null,
+                                        "width": null,
+                                        "designer|userClassName": "MyImg",
+                                        "src": "/image/none.jpg"
                                     },
-                                    "designerId": "0100e99f-c88c-4569-b9f5-76731275d87e",
-                                    "cn": [
-                                        {
-                                            "type": "Ext.Img",
-                                            "reference": {
-                                                "name": "items",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "border": 1,
-                                                "height": null,
-                                                "id": "SpeakerImageId",
-                                                "itemId": "SpeakerImgId",
-                                                "ui": null,
-                                                "width": null,
-                                                "designer|userClassName": "MyImg",
-                                                "src": "/image/none.jpg"
-                                            },
-                                            "designerId": "6b917543-ebf1-4f54-9080-a8ab971a050a"
-                                        }
-                                    ]
+                                    "designerId": "6b917543-ebf1-4f54-9080-a8ab971a050a"
                                 }
                             ]
                         }

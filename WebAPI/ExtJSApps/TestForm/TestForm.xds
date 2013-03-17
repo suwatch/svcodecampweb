@@ -45,20 +45,11 @@
                 "app/controller/MyController.js"
             ],
             "className": "MyController"
-        },
-        "89c61820-14a6-4e0f-816b-6e62cd14fec8": {
-            "paths": [
-                "metadata/view/MyWindow",
-                "app/view/override/MyWindow.js",
-                "app/view/MyWindow.js"
-            ],
-            "className": "MyWindow"
         }
     },
     "viewOrderMap": {
         "view": [
-            "4b402cb5-ec70-412b-8a97-3fc3d37d65e9",
-            "89c61820-14a6-4e0f-816b-6e62cd14fec8"
+            "4b402cb5-ec70-412b-8a97-3fc3d37d65e9"
         ],
         "store": [],
         "controller": [

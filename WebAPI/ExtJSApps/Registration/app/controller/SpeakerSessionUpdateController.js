@@ -90,6 +90,12 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
         tabPanel.setActiveTab(tabPanel.getTabIdByName('optIn'));
     },
 
+    onSpeakerSessionsBackButtonItemIdClick: function(button, e, eOpts) {
+        var tabWizardPanel = Ext.getCmp('TabWizardId');
+        tabWizardPanel.setActiveTab(Ext.getCmp('TabWizardId').getTabIdByName('SpeakerAfterLogin'));
+
+    },
+
     init: function(application) {
         this.control({
             "SpeakerSessionUpdateAlias #sessionsBySpeakerGridPanelId": {
@@ -97,6 +103,9 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
             },
             "SpeakerSessionUpdateAlias #continueButtonId": {
                 click: this.onContinueButtonIdClick
+            },
+            "#speakerSessionsBackButtonItemId": {
+                click: this.onSpeakerSessionsBackButtonItemIdClick
             }
         });
     }

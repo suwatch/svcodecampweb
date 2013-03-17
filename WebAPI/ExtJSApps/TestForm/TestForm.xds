@@ -45,13 +45,23 @@
                 "app/controller/MyController.js"
             ],
             "className": "MyController"
+        },
+        "453939b2-2c1f-4d90-ba33-6556f477e39a": {
+            "paths": [
+                "metadata/store/MyArrayStore",
+                "app/store/override/MyArrayStore.js",
+                "app/store/MyArrayStore.js"
+            ],
+            "className": "MyArrayStore"
         }
     },
     "viewOrderMap": {
         "view": [
             "4b402cb5-ec70-412b-8a97-3fc3d37d65e9"
         ],
-        "store": [],
+        "store": [
+            "453939b2-2c1f-4d90-ba33-6556f477e39a"
+        ],
         "controller": [
             "14aca3fc-7cf7-4f19-9476-2d509748084d",
             "c4ad7786-870f-464f-a6af-467f1ed79057"

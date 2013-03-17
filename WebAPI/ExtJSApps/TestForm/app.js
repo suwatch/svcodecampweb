@@ -22,9 +22,12 @@ Ext.application({
     requires: [
         'MyApp.view.MyViewport'
     ],
+    stores: [
+        'MyArrayStore'
+    ],
     views: [
         'MyViewport',
-        null
+        'MyWindow'
     ],
     autoCreateViewport: true,
     controllers: [

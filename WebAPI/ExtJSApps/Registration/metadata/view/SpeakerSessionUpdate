@@ -55,6 +55,11 @@
                             "userConfig": {
                                 "designer|userClassName": "onSessionButtonSaveChangesIdClick",
                                 "fn": "onSessionButtonSaveChangesIdClick",
+                                "implHandler": [
+                                    "var tagList = Ext.getCmp(\"SessionTagsGridPanelId\");\r",
+                                    "var tagListStore = tagList.store;\r",
+                                    "tagListStore.save();"
+                                ],
                                 "name": "click",
                                 "scope": "me"
                             },
@@ -204,7 +209,7 @@
                     "userConfig": {
                         "designer|userClassName": "MyColumn2",
                         "dataIndex": "title",
-                        "text": "Title",
+                        "text": "Session Title",
                         "flex": 1
                     },
                     "designerId": "94486bf6-8df9-4590-b007-d0cb49e04fca"
@@ -217,6 +222,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "hidden": true,
                         "width": 50,
                         "designer|userClassName": "MyColumn1",
                         "dataIndex": "id",
@@ -232,6 +238,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "hidden": true,
                         "width": 50,
                         "designer|userClassName": "MyColumn1",
                         "dataIndex": "attendeeId",
@@ -247,6 +254,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "hidden": true,
                         "width": 50,
                         "designer|userClassName": "MyColumn1",
                         "dataIndex": "sessionId",
@@ -375,7 +383,7 @@
                             "panelForm.setValues(sessionData);\r",
                             "\r",
                             "// fill data in for tags\r",
-                            "var tagList = Ext.getCmp(\"SessionTagsGridPanelId\")\r",
+                            "var tagList = Ext.getCmp(\"SessionTagsGridPanelId\");\r",
                             "var tagListStore = tagList.store;\r",
                             "tagListStore.load({\r",
                             "    params: {\r",
@@ -383,12 +391,7 @@
                             "    },\r",
                             "    callback: function(records,operation,success) {\r",
                             "        // get selection model of grid\r",
-                            "\r",
-                            "\r",
                             "        var sm = tagList.getSelectionModel();\r",
-                            "        //sm.bindStore(tagListStore);\r",
-                            "\r",
-                            "\r",
                             "        var recs = [];\r",
                             "        Ext.each(records,function(rec) {\r",
                             "            if (rec.get(\"taggedInSession\") === true) {\r",
@@ -396,8 +399,13 @@
                             "            }\r",
                             "        });\r",
                             "        sm.select(recs);\r",
+                            "        \r",
+                            "       \r",
                             "\r",
-                            "        sm.select(0);\r",
+                            "        tagList.getView().scrollBy(0, -10000);\r",
+                            "\r",
+                            "        //tagList.scrollBy(0, -10000);\r",
+                            "        // sm.select(0);\r",
                             "\r",
                             "\r",
                             "    }\r",

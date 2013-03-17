@@ -99,23 +99,26 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                         {
                             xtype: 'gridcolumn',
                             dataIndex: 'title',
-                            text: 'Title',
+                            text: 'Session Title',
                             flex: 1
                         },
                         {
                             xtype: 'gridcolumn',
+                            hidden: true,
                             width: 50,
                             dataIndex: 'id',
                             text: 'Id'
                         },
                         {
                             xtype: 'gridcolumn',
+                            hidden: true,
                             width: 50,
                             dataIndex: 'attendeeId',
                             text: 'attendeesId'
                         },
                         {
                             xtype: 'gridcolumn',
+                            hidden: true,
                             width: 50,
                             dataIndex: 'sessionId',
                             text: 'sessionsId'
@@ -271,7 +274,9 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
     },
 
     onSessionButtonSaveChangesIdClick: function(button, e, eOpts) {
-
+        var tagList = Ext.getCmp("SessionTagsGridPanelId");
+        var tagListStore = tagList.store;
+        tagListStore.save();
     },
 
     onSessionButtonAddNewIdClick: function(button, e, eOpts) {
@@ -306,7 +311,7 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
         panelForm.setValues(sessionData);
 
         // fill data in for tags
-        var tagList = Ext.getCmp("SessionTagsGridPanelId")
+        var tagList = Ext.getCmp("SessionTagsGridPanelId");
         var tagListStore = tagList.store;
         tagListStore.load({
             params: {
@@ -314,12 +319,7 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
             },
             callback: function(records,operation,success) {
                 // get selection model of grid
-
-
                 var sm = tagList.getSelectionModel();
-                //sm.bindStore(tagListStore);
-
-
                 var recs = [];
                 Ext.each(records,function(rec) {
                     if (rec.get("taggedInSession") === true) {
@@ -328,7 +328,12 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                 });
                 sm.select(recs);
 
-                sm.select(0);
+
+
+                tagList.getView().scrollBy(0, -10000);
+
+                //tagList.scrollBy(0, -10000);
+                // sm.select(0);
 
 
             }

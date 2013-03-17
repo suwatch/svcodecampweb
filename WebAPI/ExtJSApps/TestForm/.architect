@@ -9,15 +9,43 @@
             "id": "4b402cb5-ec70-412b-8a97-3fc3d37d65e9",
             "cn": [
                 {
-                    "id": "bbdb68c3-034e-4936-a7d2-e93b7a73e15a",
+                    "id": "69b5ee18-abd7-411f-a790-5305121c2c54",
                     "cn": [
                         {
-                            "id": "6d8278bd-42b2-4025-87a7-504a90a16c82"
+                            "id": "91099f42-e5c1-4eb6-9a5b-505eb8c41520"
                         },
                         {
-                            "id": "4726bfb4-0e65-44a7-a225-93b47501147a"
+                            "id": "124f3616-2a5d-4e87-8e56-12e86645c87c"
+                        },
+                        {
+                            "id": "f77797b0-ad1d-48d5-b113-f1eb8fd65260"
+                        },
+                        {
+                            "id": "230b9a5e-c85e-4302-a7fd-13202193aef4"
+                        },
+                        {
+                            "id": "b721965e-0e7f-48fa-9427-7c2696a482b1"
                         }
                     ]
+                }
+            ]
+        },
+        "453939b2-2c1f-4d90-ba33-6556f477e39a": {
+            "id": "453939b2-2c1f-4d90-ba33-6556f477e39a",
+            "cn": [
+                {
+                    "id": "1ffd9a60-559e-4c00-ae28-94ec3e237b45",
+                    "cn": [
+                        {
+                            "id": "c59af35a-862e-49b7-b490-c06fd418296f"
+                        }
+                    ]
+                },
+                {
+                    "id": "a843c99c-4dcf-4bd0-9de9-7af4bdc82a8d"
+                },
+                {
+                    "id": "c4643b4c-8f33-40b5-b332-1e85f3beac66"
                 }
             ]
         },
@@ -43,18 +71,19 @@
     },
     "tabState": {
         "openTabs": [
-            "4b402cb5-ec70-412b-8a97-3fc3d37d65e9"
+            "4b402cb5-ec70-412b-8a97-3fc3d37d65e9",
+            "453939b2-2c1f-4d90-ba33-6556f477e39a"
         ]
     },
     "canvasState": {
-        "topInstance": "4b402cb5-ec70-412b-8a97-3fc3d37d65e9"
+        "topInstance": null
     },
     "inspectorState": {
         "topInstance": "4b402cb5-ec70-412b-8a97-3fc3d37d65e9",
-        "selectedInstance": "6d8278bd-42b2-4025-87a7-504a90a16c82"
+        "selectedInstance": "230b9a5e-c85e-4302-a7fd-13202193aef4"
     },
     "codeState": {
         "topInstance": "4b402cb5-ec70-412b-8a97-3fc3d37d65e9"
     },
-    "editMode": "design"
+    "editMode": "code"
 }

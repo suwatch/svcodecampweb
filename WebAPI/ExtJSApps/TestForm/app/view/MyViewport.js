@@ -26,31 +26,70 @@ Ext.define('MyApp.view.MyViewport', {
         Ext.applyIf(me, {
             items: [
                 {
-                    xtype: 'panel',
+                    xtype: 'gridpanel',
                     region: 'center',
-                    layout: {
-                        type: 'border'
-                    },
-                    title: 'My Panel',
-                    items: [
+                    title: 'My Grid Panel',
+                    store: 'MyArrayStore',
+                    columns: [
                         {
-                            xtype: 'panel',
-                            region: 'west',
-                            width: 150,
-                            title: 'pan1'
+                            xtype: 'gridcolumn',
+                            dataIndex: 'col1',
+                            text: 'Col1'
                         },
                         {
-                            xtype: 'panel',
-                            region: 'west',
-                            width: 150,
-                            title: 'pan2'
+                            xtype: 'gridcolumn',
+                            dataIndex: 'col2',
+                            text: 'Col2'
                         }
-                    ]
+                    ],
+                    listeners: {
+                        afterrender: {
+                            fn: me.onGridpanelAfterRender,
+                            scope: me
+                        }
+                    },
+                    selModel: Ext.create('Ext.selection.RowModel', {
+
+                    })
                 }
             ]
         });
 
         me.callParent(arguments);
+    },
+
+    onGridpanelAfterRender: function(component, eOpts) {
+        var store = component.getStore();
+        var data = [
+
+        {col1: 'a'},
+        {col1: 'b'},
+        {col1: 'c'},
+        {col1: 'd'},
+        {col1: 'e'},
+        {col1: 'f'},
+        {col1: 'g'},
+        {col1: 'h'},
+        {col1: 'i'},
+        {col1: '1'},
+        {col1: '2'},
+        {col1: '3'},
+        {col1: '4'},
+        {col1: '5'},
+        {col1: '6'},
+        {col1: '7'},
+        {col1: '8'},
+        {col1: '9'}
+        ];
+
+        store.loadData(data);
+        var selectionModel = component.getSelectionModel();
+        var rec = store.getAt(15);
+        selectionModel.select([rec]);
+
+
+
+
     }
 
 });

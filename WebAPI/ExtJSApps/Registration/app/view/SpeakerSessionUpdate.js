@@ -124,12 +124,24 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                                 }
                             ]
                         }
-                    ]
+                    ],
+                    listeners: {
+                        selectionchange: {
+                            fn: me.onSessionsBySpeakerGridPanelIdSelectionChange,
+                            scope: me
+                        },
+                        afterrender: {
+                            fn: me.onSessionsBySpeakerGridPanelIdAfterRender,
+                            scope: me
+                        }
+                    }
                 },
                 {
                     xtype: 'panel',
                     flex: 7,
                     region: 'center',
+                    disabled: true,
+                    id: 'sessionDetailPanelId',
                     layout: {
                         type: 'border'
                     },
@@ -140,6 +152,7 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                             region: 'west',
                             split: true,
                             id: 'sessionFormPanelEditorId',
+                            itemId: 'sessionFormPanelEditorItemId',
                             width: 150,
                             autoScroll: true,
                             bodyPadding: 10,
@@ -249,6 +262,54 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
 
         Ext.create('RegistrationApp.view.WindowSession',{
         }).show();
+    },
+
+    onSessionsBySpeakerGridPanelIdSelectionChange: function(model, selected, eOpts) {
+        debugger;
+
+
+        var sessionDetailPanel = Ext.getCmp('sessionDetailPanelId');
+        sessionDetailPanel.setDisabled(false);
+
+        var panelForm = Ext.getCmp('sessionFormPanelEditorId').getForm();
+        panelForm.setValues(selected[0].getData());
+
+
+
+        /*debugger;
+        var panel = Ext.getCmp('sessionFormPanelEditorId');
+
+        var panelCount = panel.getStore().getCount() 
+        if (panelCount == 0) {
+
+        } else {
+
+        panel.getForm().setValues(selected[0].getData());
+
+        }
+        */
+
+
+    },
+
+    onSessionsBySpeakerGridPanelIdAfterRender: function(component, eOpts) {
+        var panelForm = Ext.getCmp('sessionFormPanelEditorId');
+        var panelGrid = Ext.getCmp('sessionsBySpeakerGridPanelId');
+        var sessionDetailPanel = Ext.getCmp('sessionDetailPanelId');
+
+        debugger;
+        var panelCount = panelGrid.getStore().getCount() 
+        if (panelCount == 0) {
+
+        } else {
+            //sessionDetailPanel.disabled = false;
+            //panelGrid.getSelectionModel().selectFirstRow();
+
+
+            //panel.getForm().setValues(selected[0].getData());
+
+        }
+
     },
 
     onCheckboxselectionmodelSelectionChange: function(model, selected, eOpts) {

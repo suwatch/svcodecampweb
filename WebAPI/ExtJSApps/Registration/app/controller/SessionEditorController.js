@@ -59,25 +59,10 @@ Ext.define('RegistrationApp.controller.SessionEditorController', {
         */
     },
 
-    onButtonClick: function(button, e, eOpts) {
-
-        Ext.create('RegistrationApp.view.WindowSession',{
-
-        }).show();
-
-
-        //SessionTagsGridPanelId
-
-
-    },
-
     init: function(application) {
         this.control({
             "#SessionEditorPanelId": {
                 afterrender: this.onSessionEditorPanelIdAfterRender
-            },
-            "#AddNewSessionButtonId": {
-                click: this.onButtonClick
             }
         });
     }

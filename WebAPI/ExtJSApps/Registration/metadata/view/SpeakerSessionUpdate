@@ -274,6 +274,82 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "onSessionsBySpeakerGridPanelIdSelectionChange",
+                        "fn": "onSessionsBySpeakerGridPanelIdSelectionChange",
+                        "implHandler": [
+                            "debugger;\r",
+                            "\r",
+                            "\r",
+                            "var sessionDetailPanel = Ext.getCmp('sessionDetailPanelId');\r",
+                            "sessionDetailPanel.setDisabled(false);\r",
+                            "\r",
+                            "var panelForm = Ext.getCmp('sessionFormPanelEditorId').getForm();\r",
+                            "panelForm.setValues(selected[0].getData());\r",
+                            "\r",
+                            "\r",
+                            "\r",
+                            "/*debugger;\r",
+                            "var panel = Ext.getCmp('sessionFormPanelEditorId');\r",
+                            "\r",
+                            "var panelCount = panel.getStore().getCount() \r",
+                            "if (panelCount == 0) {\r",
+                            "    \r",
+                            "} else {\r",
+                            "    \r",
+                            "    panel.getForm().setValues(selected[0].getData());\r",
+                            "    \r",
+                            "}\r",
+                            "*/\r",
+                            "\r",
+                            ""
+                        ],
+                        "name": "selectionchange",
+                        "scope": "me"
+                    },
+                    "designerId": "d58de540-994f-4c99-9054-86b62daba536"
+                },
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "onSessionsBySpeakerGridPanelIdAfterRender",
+                        "fn": "onSessionsBySpeakerGridPanelIdAfterRender",
+                        "implHandler": [
+                            "var panelForm = Ext.getCmp('sessionFormPanelEditorId');\r",
+                            "var panelGrid = Ext.getCmp('sessionsBySpeakerGridPanelId');\r",
+                            "var sessionDetailPanel = Ext.getCmp('sessionDetailPanelId');\r",
+                            "\r",
+                            "debugger;\r",
+                            "var panelCount = panelGrid.getStore().getCount() \r",
+                            "if (panelCount == 0) {\r",
+                            "    \r",
+                            "} else {\r",
+                            "     //sessionDetailPanel.disabled = false;\r",
+                            "     //panelGrid.getSelectionModel().selectFirstRow();\r",
+                            "    \r",
+                            "    \r",
+                            "    //panel.getForm().setValues(selected[0].getData());\r",
+                            "    \r",
+                            "}\r",
+                            ""
+                        ],
+                        "name": "afterrender",
+                        "scope": "me"
+                    },
+                    "designerId": "e778e696-dcfc-4f41-9efa-bdb03d68be70"
                 }
             ]
         },
@@ -287,6 +363,8 @@
             "userConfig": {
                 "layout|flex": 7,
                 "layout|region": "center",
+                "disabled": true,
+                "id": "sessionDetailPanelId",
                 "designer|userClassName": "MyPanel5",
                 "designer|createAlias": null,
                 "layout": "border",
@@ -306,6 +384,7 @@
                         "layout|region": "west",
                         "layout|split": true,
                         "id": "sessionFormPanelEditorId",
+                        "itemId": "sessionFormPanelEditorItemId",
                         "width": 150,
                         "designer|userClassName": "MyForm11",
                         "autoScroll": true,

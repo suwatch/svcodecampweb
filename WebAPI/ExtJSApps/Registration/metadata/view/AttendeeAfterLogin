@@ -22,10 +22,14 @@
             },
             "codeClass": null,
             "userConfig": {
+                "padding": 5,
                 "width": 400,
                 "designer|userClassName": "MyRadioGroup2",
                 "fieldLabel": "",
-                "allowBlank": false
+                "allowBlank": false,
+                "columns": [
+                    "1\t"
+                ]
             },
             "designerId": "9ebdfb0b-7592-48b9-9b67-75622defc0dc",
             "cn": [

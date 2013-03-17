@@ -110,10 +110,10 @@ Ext.define('RegistrationApp.controller.SpeakerAfterLoginController', {
             "SpeakerAfterLoginAlias2 #logoutButtonId": {
                 click: this.onLogoutButtonIdClick
             },
-            "#editSelectedSessionButtonId": {
+            "SpeakerAfterLoginAlias2 #editSelectedSessionButtonId": {
                 click: this.onEditSelectedSessionButtonIdClick
             },
-            "#AddNewSessionButtonId": {
+            "SpeakerAfterLoginAlias2 #AddNewSessionButtonId": {
                 click: this.onAddNewSessionButtonIdClick
             }
         });

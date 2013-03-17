@@ -17,7 +17,7 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
     extend: 'Ext.app.Controller',
 
     onSessionsBySpeakerGridPanelIdAfterRender: function(component, eOpts) {
-        debugger;
+        //debugger;
         var sessionSpeakerPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
 
 
@@ -43,6 +43,7 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
             },
             success: function(r, o) {
                 var retData = Ext.JSON.decode(r.responseText);
+                debugger;
                 //tabPanel.updateAllPanelsWithData(retData);
                 if (retData.hasSessionsCurrentYear === true) {
                     speakerFromFirstPage.checked = true;
@@ -60,29 +61,31 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
                             param3: '-1'
                         },
                         callback: function(records,operation,success) {
-                            tabPanel.setActiveTab(tabPanel.getTabIdByName('SpeakerAfterLogin'));  
+                            // this is after render, we don't change panels here
+                            //tabPanel.setActiveTab(tabPanel.getTabIdByName('SpeakerAfterLogin'));  
                         }
                     });
-                } else {
-                    attendeeFromFirstPage.checked = true;
-                    tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeAfterLogin'));
-                }
+                } //else {
+                    //  attendeeFromFirstPage.checked = true;
+                    // tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeAfterLogin'));
+                    //}
+                    /*
+                    var imgId = Ext.ComponentQuery.query('#SpeakerImgId')[0];
+                    var imageLocation = '/attendeeimage/' + retData.attendeesId + '.jpg?width=175';
+                    var antiCachePart = (new Date()).getTime();
+                    var newSrc = imageLocation + '?dc=' + antiCachePart;
+                    imgId.setSrc(newSrc); 
+                    */
 
-                var imgId = Ext.ComponentQuery.query('#SpeakerImgId')[0];
-                var imageLocation = '/attendeeimage/' + retData.attendeesId + '.jpg?width=175';
-                var antiCachePart = (new Date()).getTime();
-                var newSrc = imageLocation + '?dc=' + antiCachePart;
-                imgId.setSrc(newSrc); 
-
-                myMask.hide();
-            },
-            failure: function(r,o) {
-                console.log('is NOT logged in from launch');
-                // not logged in so take them to opening page
-                tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeSpeakerSponsorId'));
-                myMask.hide();
-            } 
-        });  
+                    myMask.hide();
+                },
+                failure: function(r,o) {
+                    console.log('is NOT logged in from launch');
+                    // not logged in so take them to opening page
+                    tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeSpeakerSponsorId'));
+                    myMask.hide();
+                } 
+            });  
     },
 
     onContinueButtonIdClick: function(button, e, eOpts) {
@@ -92,10 +95,10 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
 
     init: function(application) {
         this.control({
-            "#sessionsBySpeakerGridPanelId": {
+            "SpeakerSessionUpdateAlias #sessionsBySpeakerGridPanelId": {
                 afterrender: this.onSessionsBySpeakerGridPanelIdAfterRender
             },
-            "#continueButtonId": {
+            "SpeakerSessionUpdateAlias #continueButtonId": {
                 click: this.onContinueButtonIdClick
             }
         });

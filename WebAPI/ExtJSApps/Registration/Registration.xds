@@ -254,14 +254,6 @@
             ],
             "className": "SessionLevelModel"
         },
-        "c7bd1fe0-b7af-4c95-8de1-312d7f17e4c8": {
-            "paths": [
-                "metadata/view/SpeakerSessionUpdatexxx",
-                "app/view/override/SpeakerSessionUpdatexxx.js",
-                "app/view/SpeakerSessionUpdatexxx.js"
-            ],
-            "className": "SpeakerSessionUpdatexxx"
-        },
         "10d32f9d-c428-4cbd-bacc-7eb9c0e9c677": {
             "paths": [
                 "metadata/controller/ViewportController",
@@ -300,7 +292,6 @@
             "2ae7e189-6c5e-4718-b828-ca560f5c3fdc",
             "dfdac70e-88ed-4f47-8052-2b4e87dc2118",
             "1a1e24e7-e981-4728-b958-9dcf746faf54",
-            "c7bd1fe0-b7af-4c95-8de1-312d7f17e4c8",
             "4b96b1f9-5681-4344-91f3-31dd99619539"
         ],
         "store": [

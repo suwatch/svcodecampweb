@@ -8,7 +8,545 @@
     "userConfig": {
         "designer|userClassName": "SpeakerSessionUpdate",
         "designer|userAlias": "SpeakerSessionUpdateAlias",
+        "layout": "fit",
         "title": "My Panel"
     },
-    "designerId": "4b96b1f9-5681-4344-91f3-31dd99619539"
+    "designerId": "4b96b1f9-5681-4344-91f3-31dd99619539",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "container|pack": "end",
+                "container|padding": null,
+                "height": null,
+                "itemId": "ToolBarAttendeeSpeaker",
+                "designer|userClassName": "MyToolbar"
+            },
+            "designerId": "af054a46-190e-48a8-b93c-d33a99218824",
+            "cn": [
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "id": null,
+                        "itemId": "speakerSessionsBackButtonItemId",
+                        "designer|userClassName": "MyButton",
+                        "iconAlign": "right",
+                        "text": "Logout"
+                    },
+                    "designerId": "ee0c2b92-d25d-447c-b37b-5a98ee5b5cf7"
+                },
+                {
+                    "type": "Ext.toolbar.Separator",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MySeparator"
+                    },
+                    "designerId": "fe8213b7-07d5-40eb-9e2b-de6cfe4b1cbf"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "formBind": true,
+                        "disabled": true,
+                        "id": null,
+                        "itemId": "continueButtonId",
+                        "designer|userClassName": "MyButton",
+                        "iconAlign": "right",
+                        "text": "Continue"
+                    },
+                    "designerId": "4405224d-7e18-475b-a09e-f0f03cda3edf"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "autoShow": true,
+                "html": null,
+                "itemId": "speakerSessionsId",
+                "designer|userClassName": "MyForm10",
+                "layout": "border",
+                "bodyPadding": null,
+                "title": null
+            },
+            "designerId": "713eba74-a931-4916-b42d-6fa35da3585a",
+            "cn": [
+                {
+                    "type": "Ext.grid.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": 1,
+                        "layout|region": "north",
+                        "height": 150,
+                        "id": "sessionsBySpeakerGridPanelId",
+                        "padding": 5,
+                        "designer|userClassName": "MyGridPanel",
+                        "autoScroll": true,
+                        "bodyPadding": null,
+                        "title": null,
+                        "store": "SessionStore"
+                    },
+                    "designerId": "165343d6-0697-44d4-a45f-b97ad0c09c1b",
+                    "cn": [
+                        {
+                            "type": "Ext.grid.View",
+                            "reference": {
+                                "name": "viewConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "border": 1,
+                                "designer|userClassName": "MyGridView"
+                            },
+                            "designerId": "0e95ce2b-480a-4f3c-99cf-4422e06e22be"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyColumn2",
+                                "dataIndex": "title",
+                                "text": "Title",
+                                "flex": 1
+                            },
+                            "designerId": "94486bf6-8df9-4590-b007-d0cb49e04fca"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "width": 50,
+                                "designer|userClassName": "MyColumn1",
+                                "dataIndex": "id",
+                                "text": "Id"
+                            },
+                            "designerId": "1ba61b6a-127f-4329-ad2d-94d1f24fa21a"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "width": 50,
+                                "designer|userClassName": "MyColumn1",
+                                "dataIndex": "attendeeId",
+                                "text": "attendeesId"
+                            },
+                            "designerId": "b4852e59-d96e-41fb-99ee-ed43d55179c5"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "width": 50,
+                                "designer|userClassName": "MyColumn1",
+                                "dataIndex": "sessionId",
+                                "text": "sessionsId"
+                            },
+                            "designerId": "73570d59-01cb-4bdf-8020-4c7c7b1bb663"
+                        },
+                        {
+                            "type": "Ext.toolbar.Toolbar",
+                            "reference": {
+                                "name": "dockedItems",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dock": "top",
+                                "designer|userClassName": "MyToolbar10"
+                            },
+                            "designerId": "cf3ecd81-a330-4b6a-94f8-ba2e66a79fe2",
+                            "cn": [
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|flex": null,
+                                        "id": "editSelectedSessionButtonId",
+                                        "designer|userClassName": "MyButton19",
+                                        "text": "Edit Selected Session"
+                                    },
+                                    "designerId": "49e6224b-dda2-4ea4-8a2e-77bafcb20042"
+                                },
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|flex": null,
+                                        "id": "AddNewSessionButtonId",
+                                        "designer|userClassName": "MyButton19",
+                                        "text": "Add New Session"
+                                    },
+                                    "designerId": "c491f9f3-be04-4c42-8dcc-8f7c514ff89d"
+                                },
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|flex": null,
+                                        "itemId": "AddNewSessionItemIdButton",
+                                        "designer|userClassName": "MyButton6",
+                                        "text": "MyButton"
+                                    },
+                                    "designerId": "2d94baf2-5ee2-4611-8fa5-c5dcdde3dbf6",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "click",
+                                            "type": "string"
+                                        }
+                                    ],
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|userClassName": "onAddNewSessionItemIdButtonClick",
+                                                "fn": "onAddNewSessionItemIdButtonClick",
+                                                "implHandler": [
+                                                    "var sessionsSpeakerPanel = Ext.getCmp(\"sessionsBySpeakerGridPanelId\");\r",
+                                                    "var store = sessionsSpeakerPanel.getStore();\r",
+                                                    "var newRecord = Ext.create('RegistrationApp.model.Session',{\r",
+                                                    "    title: 'my title',\r",
+                                                    "    description: 'my descr'\r",
+                                                    "});\r",
+                                                    "store.add(newRecord);\r",
+                                                    "\r",
+                                                    "//debugger;\r",
+                                                    "\r",
+                                                    "Ext.create('RegistrationApp.view.WindowSession',{\r",
+                                                    "}).show();"
+                                                ],
+                                                "name": "click",
+                                                "scope": "me"
+                                            },
+                                            "designerId": "f351bada-070c-4595-9fb1-c9c31c5f9bd2"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": 6,
+                        "layout|region": "west",
+                        "id": "sessionFormPanelEditorId",
+                        "width": 150,
+                        "designer|userClassName": "MyForm11",
+                        "autoScroll": true,
+                        "bodyPadding": 10,
+                        "title": null
+                    },
+                    "designerId": "a82a998b-950d-420a-ad4d-8781ae866929",
+                    "cn": [
+                        {
+                            "type": "Ext.form.FieldSet",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "height": null,
+                                "itemId": "FieldSetSessionEditorItemId",
+                                "width": null,
+                                "designer|userClassName": "MyFieldSet1",
+                                "title": "Basic Session Information"
+                            },
+                            "designerId": "0f9ad0fb-ea3e-4758-b1c9-93b83fede49b",
+                            "cn": [
+                                {
+                                    "type": "Ext.form.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|anchor": "100%",
+                                        "width": 150,
+                                        "designer|userClassName": "MyTextField48",
+                                        "fieldLabel": "Title",
+                                        "name": "title"
+                                    },
+                                    "designerId": "4427f98e-f8d0-4527-9085-7a2239bce9d7"
+                                },
+                                {
+                                    "type": "Ext.form.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|anchor": "100%",
+                                        "width": 150,
+                                        "designer|userClassName": "MyTextField48",
+                                        "fieldLabel": "Hash Tags For Twitter",
+                                        "name": "twitterHashTags"
+                                    },
+                                    "designerId": "a5a3c928-4eec-4e4c-bc69-b290d3d12ffb"
+                                },
+                                {
+                                    "type": "Ext.form.field.ComboBox",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|anchor": "100%",
+                                        "designer|userClassName": "MyComboBox2",
+                                        "fieldLabel": "Session Level",
+                                        "name": "sessionLevel",
+                                        "displayField": "description",
+                                        "store": "SessionLevelStore",
+                                        "valueField": "id"
+                                    },
+                                    "designerId": "32a579d1-1f56-4d67-b829-2225d16f603f"
+                                },
+                                {
+                                    "type": "Ext.form.field.TextArea",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|anchor": "100%",
+                                        "height": 100,
+                                        "designer|userClassName": "MyTextArea3",
+                                        "fieldLabel": "Session Description (just text, no html please)",
+                                        "name": "description"
+                                    },
+                                    "designerId": "48434577-15b0-48ea-b8af-af92b2991aa0"
+                                },
+                                {
+                                    "type": "Ext.form.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|anchor": "100%",
+                                        "id": null,
+                                        "designer|userClassName": "MyTextField37",
+                                        "fieldLabel": "sessionId",
+                                        "name": "sessionId"
+                                    },
+                                    "designerId": "fc929937-0657-4b86-a738-c7af38fa9259"
+                                },
+                                {
+                                    "type": "Ext.form.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|anchor": "100%",
+                                        "id": null,
+                                        "designer|userClassName": "MyTextField37",
+                                        "fieldLabel": "attendeesId",
+                                        "name": "id"
+                                    },
+                                    "designerId": "6c2097d4-f255-49a9-a6db-fdc6054671cc"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": 2,
+                        "layout|region": "center",
+                        "id": "SessionTagsGridPanelId",
+                        "designer|userClassName": "MyGridPanel1",
+                        "autoScroll": true,
+                        "title": "Session Tags For Selected Session",
+                        "store": "TagStore"
+                    },
+                    "designerId": "289ebbac-ec7d-4bdf-9f9e-3f82d6335527",
+                    "cn": [
+                        {
+                            "type": "Ext.grid.View",
+                            "reference": {
+                                "name": "viewConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyGridView1"
+                            },
+                            "designerId": "a1bed852-5aa1-484f-bf3f-5e09d5be71f7"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "width": 160,
+                                "designer|userClassName": "MyColumn3",
+                                "dataIndex": "tagName",
+                                "text": "TagName",
+                                "flex": 1
+                            },
+                            "designerId": "a0dfdef7-f83d-48ab-ab18-262d1f361d8a"
+                        },
+                        {
+                            "type": "Ext.grid.column.Boolean",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "width": 60,
+                                "designer|userClassName": "MyBooleanColumn1",
+                                "dataIndex": "taggedInSession",
+                                "text": "Tagged"
+                            },
+                            "designerId": "934ec198-c70c-4e8d-b3bf-54f28040a2d8"
+                        },
+                        {
+                            "type": "Ext.selection.CheckboxModel",
+                            "reference": {
+                                "name": "selModel",
+                                "type": "object"
+                            },
+                            "codeClass": "Ext.selection.CheckboxModel",
+                            "userConfig": {
+                                "designer|userClassName": "MyCheckboxSelectionModel"
+                            },
+                            "designerId": "2dfde0c2-ff85-4c1c-88ff-8eeead7f9524",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|userClassName": "onCheckboxselectionmodelSelectionChange",
+                                        "fn": "onCheckboxselectionmodelSelectionChange",
+                                        "implHandler": [
+                                            "// all records that are selected are passed in here.  we need to run through the store\r",
+                                            "// itself and verify that is what we think we should have.\r",
+                                            "var tagsSelected1 = [];\r",
+                                            "Ext.each(selected,function(rec) {\r",
+                                            "    tagsSelected1.push(rec.getData().tagName); \r",
+                                            "});\r",
+                                            "\r",
+                                            "\r",
+                                            "// find record in store and update it\r",
+                                            "var tagList = Ext.getCmp(\"SessionTagsGridPanelId\");\r",
+                                            "var tagListStore = tagList.store;\r",
+                                            "\r",
+                                            "tagListStore.each(function(storeRec) {\r",
+                                            "    var storeRecTagName = storeRec.getData().tagName;\r",
+                                            "    var storeRecTaggedInSession = storeRec.getData().taggedInSession;\r",
+                                            "    var gridPanelTagged = Ext.Array.contains(tagsSelected1,storeRecTagName);\r",
+                                            "\r",
+                                            "    if (storeRecTaggedInSession != gridPanelTagged) {\r",
+                                            "        storeRec.set(\"taggedInSession\",gridPanelTagged);\r",
+                                            "    }\r",
+                                            "});\r",
+                                            ""
+                                        ],
+                                        "name": "selectionchange",
+                                        "scope": "me"
+                                    },
+                                    "designerId": "dcd514e2-7c4f-4dd4-a191-1ef07a2e38be"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
 }

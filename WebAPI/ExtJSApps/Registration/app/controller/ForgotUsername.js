@@ -88,7 +88,7 @@ Ext.define('RegistrationApp.controller.ForgotUsername', {
             "ForgotUsernameAlias #username": {
                 change: this.onUsernameChange
             },
-            "#emailId": {
+            "ForgotUsernameAlias #emailId": {
                 change: this.onEmailChange
             }
         });

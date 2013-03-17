@@ -27,9 +27,11 @@ Ext.define('RegistrationApp.view.AttendeeAfterLogin', {
             items: [
                 {
                     xtype: 'radiogroup',
+                    padding: 5,
                     width: 400,
                     fieldLabel: '',
                     allowBlank: false,
+                    columns: 1,
                     items: [
                         {
                             xtype: 'radiofield',

@@ -34,7 +34,7 @@
                     "    scope:this, \r",
                     "    params: thisPanel.getForm().getValues(),\r",
                     "    success: function(r, o) {  \r",
-                    "       // debugger;\r",
+                    "        // debugger;\r",
                     "        tabPanel.setActiveTab(tabPanel.getTabIdByName('SpeakerSessionUpdate'));\r",
                     "        myMask.hide();\r",
                     "    },\r",
@@ -124,7 +124,7 @@
                 "name": "click",
                 "scope": "me",
                 "designer|targetType": "Ext.button.Button",
-                "designer|controlQuery": "#editSelectedSessionButtonId"
+                "designer|controlQuery": "SpeakerAfterLoginAlias2 #editSelectedSessionButtonId"
             },
             "designerId": "43fade13-265e-4a9e-bd34-944d753cecdf"
         },
@@ -156,7 +156,7 @@
                 "name": "click",
                 "scope": "me",
                 "designer|targetType": "Ext.button.Button",
-                "designer|controlQuery": "#AddNewSessionButtonId"
+                "designer|controlQuery": "SpeakerAfterLoginAlias2 #AddNewSessionButtonId"
             },
             "designerId": "30e66e36-8a86-488b-96c7-866c2a374624"
         }

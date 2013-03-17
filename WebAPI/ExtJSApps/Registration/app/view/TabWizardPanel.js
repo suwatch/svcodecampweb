@@ -85,6 +85,9 @@ Ext.define('RegistrationApp.view.TabWizardPanel', {
 
     getTabIdByName: function(stepName) {
         console.log('getTabIdByName:stepName(top): ' + stepName);
+
+
+
         var tabId = -1;
         if (stepName === 'AttendeeSpeakerSponsorId') {
             tabId = 0;

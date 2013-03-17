@@ -156,7 +156,7 @@
                 "name": "change",
                 "scope": "me",
                 "designer|targetType": "Ext.form.field.Text",
-                "designer|controlQuery": "#emailId"
+                "designer|controlQuery": "ForgotUsernameAlias #emailId"
             },
             "designerId": "46d7c637-0d91-420d-915b-b3c8188ef959"
         }

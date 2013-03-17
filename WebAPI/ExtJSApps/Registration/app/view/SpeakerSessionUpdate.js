@@ -17,12 +17,260 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
     extend: 'Ext.panel.Panel',
     alias: 'widget.SpeakerSessionUpdateAlias',
 
+    layout: {
+        type: 'fit'
+    },
     title: 'My Panel',
 
     initComponent: function() {
         var me = this;
 
+        Ext.applyIf(me, {
+            dockedItems: [
+                {
+                    xtype: 'toolbar',
+                    dock: 'top',
+                    itemId: 'ToolBarAttendeeSpeaker',
+                    layout: {
+                        pack: 'end',
+                        type: 'hbox'
+                    },
+                    items: [
+                        {
+                            xtype: 'button',
+                            itemId: 'speakerSessionsBackButtonItemId',
+                            iconAlign: 'right',
+                            text: 'Logout'
+                        },
+                        {
+                            xtype: 'tbseparator'
+                        },
+                        {
+                            xtype: 'button',
+                            formBind: true,
+                            disabled: true,
+                            itemId: 'continueButtonId',
+                            iconAlign: 'right',
+                            text: 'Continue'
+                        }
+                    ]
+                }
+            ],
+            items: [
+                {
+                    xtype: 'form',
+                    autoShow: true,
+                    itemId: 'speakerSessionsId',
+                    layout: {
+                        type: 'border'
+                    },
+                    items: [
+                        {
+                            xtype: 'gridpanel',
+                            flex: 1,
+                            region: 'north',
+                            height: 150,
+                            id: 'sessionsBySpeakerGridPanelId',
+                            padding: 5,
+                            autoScroll: true,
+                            store: 'SessionStore',
+                            viewConfig: {
+                                border: 1
+                            },
+                            columns: [
+                                {
+                                    xtype: 'gridcolumn',
+                                    dataIndex: 'title',
+                                    text: 'Title',
+                                    flex: 1
+                                },
+                                {
+                                    xtype: 'gridcolumn',
+                                    width: 50,
+                                    dataIndex: 'id',
+                                    text: 'Id'
+                                },
+                                {
+                                    xtype: 'gridcolumn',
+                                    width: 50,
+                                    dataIndex: 'attendeeId',
+                                    text: 'attendeesId'
+                                },
+                                {
+                                    xtype: 'gridcolumn',
+                                    width: 50,
+                                    dataIndex: 'sessionId',
+                                    text: 'sessionsId'
+                                }
+                            ],
+                            dockedItems: [
+                                {
+                                    xtype: 'toolbar',
+                                    dock: 'top',
+                                    items: [
+                                        {
+                                            xtype: 'button',
+                                            id: 'editSelectedSessionButtonId',
+                                            text: 'Edit Selected Session'
+                                        },
+                                        {
+                                            xtype: 'button',
+                                            id: 'AddNewSessionButtonId',
+                                            text: 'Add New Session'
+                                        },
+                                        {
+                                            xtype: 'button',
+                                            itemId: 'AddNewSessionItemIdButton',
+                                            text: 'MyButton',
+                                            listeners: {
+                                                click: {
+                                                    fn: me.onAddNewSessionItemIdButtonClick,
+                                                    scope: me
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            xtype: 'form',
+                            flex: 6,
+                            region: 'west',
+                            id: 'sessionFormPanelEditorId',
+                            width: 150,
+                            autoScroll: true,
+                            bodyPadding: 10,
+                            items: [
+                                {
+                                    xtype: 'fieldset',
+                                    itemId: 'FieldSetSessionEditorItemId',
+                                    title: 'Basic Session Information',
+                                    items: [
+                                        {
+                                            xtype: 'textfield',
+                                            anchor: '100%',
+                                            width: 150,
+                                            fieldLabel: 'Title',
+                                            name: 'title'
+                                        },
+                                        {
+                                            xtype: 'textfield',
+                                            anchor: '100%',
+                                            width: 150,
+                                            fieldLabel: 'Hash Tags For Twitter',
+                                            name: 'twitterHashTags'
+                                        },
+                                        {
+                                            xtype: 'combobox',
+                                            anchor: '100%',
+                                            fieldLabel: 'Session Level',
+                                            name: 'sessionLevel',
+                                            displayField: 'description',
+                                            store: 'SessionLevelStore',
+                                            valueField: 'id'
+                                        },
+                                        {
+                                            xtype: 'textareafield',
+                                            anchor: '100%',
+                                            height: 100,
+                                            fieldLabel: 'Session Description (just text, no html please)',
+                                            name: 'description'
+                                        },
+                                        {
+                                            xtype: 'textfield',
+                                            anchor: '100%',
+                                            fieldLabel: 'sessionId',
+                                            name: 'sessionId'
+                                        },
+                                        {
+                                            xtype: 'textfield',
+                                            anchor: '100%',
+                                            fieldLabel: 'attendeesId',
+                                            name: 'id'
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            xtype: 'gridpanel',
+                            flex: 2,
+                            region: 'center',
+                            id: 'SessionTagsGridPanelId',
+                            autoScroll: true,
+                            title: 'Session Tags For Selected Session',
+                            store: 'TagStore',
+                            columns: [
+                                {
+                                    xtype: 'gridcolumn',
+                                    width: 160,
+                                    dataIndex: 'tagName',
+                                    text: 'TagName',
+                                    flex: 1
+                                },
+                                {
+                                    xtype: 'booleancolumn',
+                                    width: 60,
+                                    dataIndex: 'taggedInSession',
+                                    text: 'Tagged'
+                                }
+                            ],
+                            selModel: Ext.create('Ext.selection.CheckboxModel', {
+                                listeners: {
+                                    selectionchange: {
+                                        fn: me.onCheckboxselectionmodelSelectionChange,
+                                        scope: me
+                                    }
+                                }
+                            })
+                        }
+                    ]
+                }
+            ]
+        });
+
         me.callParent(arguments);
+    },
+
+    onAddNewSessionItemIdButtonClick: function(button, e, eOpts) {
+        var sessionsSpeakerPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
+        var store = sessionsSpeakerPanel.getStore();
+        var newRecord = Ext.create('RegistrationApp.model.Session',{
+            title: 'my title',
+            description: 'my descr'
+        });
+        store.add(newRecord);
+
+        //debugger;
+
+        Ext.create('RegistrationApp.view.WindowSession',{
+        }).show();
+    },
+
+    onCheckboxselectionmodelSelectionChange: function(model, selected, eOpts) {
+        // all records that are selected are passed in here.  we need to run through the store
+        // itself and verify that is what we think we should have.
+        var tagsSelected1 = [];
+        Ext.each(selected,function(rec) {
+            tagsSelected1.push(rec.getData().tagName); 
+        });
+
+
+        // find record in store and update it
+        var tagList = Ext.getCmp("SessionTagsGridPanelId");
+        var tagListStore = tagList.store;
+
+        tagListStore.each(function(storeRec) {
+            var storeRecTagName = storeRec.getData().tagName;
+            var storeRecTaggedInSession = storeRec.getData().taggedInSession;
+            var gridPanelTagged = Ext.Array.contains(tagsSelected1,storeRecTagName);
+
+            if (storeRecTaggedInSession != gridPanelTagged) {
+                storeRec.set("taggedInSession",gridPanelTagged);
+            }
+        });
+
     }
 
 });

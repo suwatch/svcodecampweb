@@ -104,7 +104,7 @@ Ext.define('RegistrationApp.controller.RegisterSpeakerAttendee', {
                             // now, this says they checked attendee, but might want to be speaker.
                             // at this point, we need to check and see if they have any sessions registered. If they do,
                             // then we need to make there first choice "speaker" and send them to the speaker page regardless of what they said
-                            var sessionStore = Ext.StoreMgr.lookup("StoreSessions");
+                            var sessionStore = Ext.StoreMgr.lookup("SessionStore");
                             sessionStore.load({
                                 params: {
                                     codeCampYearId: -1,

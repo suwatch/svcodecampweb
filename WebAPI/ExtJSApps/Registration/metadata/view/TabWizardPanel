@@ -54,6 +54,9 @@
                 ],
                 "implHandler": [
                     "console.log('getTabIdByName:stepName(top): ' + stepName);\r",
+                    "\r",
+                    "\r",
+                    "\r",
                     "var tabId = -1;\r",
                     "if (stepName === 'AttendeeSpeakerSponsorId') {\r",
                     "    tabId = 0;\r",

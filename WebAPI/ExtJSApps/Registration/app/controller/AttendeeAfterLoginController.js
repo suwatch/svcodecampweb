@@ -78,7 +78,7 @@ Ext.define('RegistrationApp.controller.AttendeeAfterLoginController', {
             "AttendeeAfterLoginAlias #continueButtonId": {
                 click: this.onContinueButtonIdClick
             },
-            "#logoutButtonId": {
+            "AttendeeAfterLoginAlias #logoutButtonId": {
                 click: this.onLogoutButtonIdClick
             }
         });

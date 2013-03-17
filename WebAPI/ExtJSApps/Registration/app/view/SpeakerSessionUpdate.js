@@ -47,8 +47,6 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                         },
                         {
                             xtype: 'button',
-                            formBind: true,
-                            disabled: true,
                             itemId: 'continueButtonId',
                             iconAlign: 'right',
                             text: 'Continue'
@@ -144,6 +142,7 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                             items: [
                                 {
                                     xtype: 'fieldset',
+                                    formBind: true,
                                     itemId: 'FieldSetSessionEditorItemId',
                                     title: 'Basic Session Information',
                                     items: [

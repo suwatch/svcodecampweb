@@ -241,7 +241,7 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
                                     xtype: 'fieldset',
                                     layout: {
                                         align: 'stretch',
-                                        type: 'hbox'
+                                        type: 'vbox'
                                     },
                                     title: 'Picture Required Before Submitting Sessions',
                                     items: [
@@ -269,16 +269,16 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
                                             xtype: 'panel',
                                             flex: 7,
                                             border: false,
+                                            height: 300,
                                             itemId: 'PicturePanelId',
-                                            padding: 10,
+                                            padding: 5,
+                                            width: 300,
                                             items: [
                                                 {
                                                     xtype: 'image',
                                                     border: 1,
-                                                    height: 150,
                                                     id: 'SpeakerImageId',
                                                     itemId: 'SpeakerImgId',
-                                                    width: 150,
                                                     src: '/image/none.jpg'
                                                 }
                                             ]
@@ -306,10 +306,11 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
                 waitMsg: 'Uploading your photo...',
                 success: function(fp, o) {
                     var attendeesId = o.result.attendeeId;
-                    var imageLocation = '/attendeeimage/' + attendeesId + '.jpg?width=175&height=175&scale=both&anchor=topleft&bgcolor=black';
+                    var imageLocation = '/attendeeimage/' + attendeesId + '.jpg?width=280&height=280&borderWidth=1&borderColor=black&scale=both';
                     var antiCachePart = (new Date()).getTime();
-                    var newSrc = imageLocation + '?dc=' + antiCachePart;
+                    var newSrc = imageLocation + '&dc=' + antiCachePart;
                     imgId.setSrc(newSrc); 
+
                 },
                 failure: function(form, action){
                     //debugger;

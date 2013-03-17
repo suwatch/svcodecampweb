@@ -17,9 +17,6 @@ Ext.define('RegistrationApp.controller.ViewportController', {
     extend: 'Ext.app.Controller',
 
     onViewportAfterRender: function(component, eOpts) {
-        /*
-        console.log('checking log in status from constructor of RegistrationApp.view.override.TabWizardPanel');
-
         var attendeeFromFirstPage = Ext.ComponentQuery.query('AttendeeSpeakerOrSponsorAlias #rbAttendee')[0];
         var speakerFromFirstPage = Ext.ComponentQuery.query('AttendeeSpeakerOrSponsorAlias #rbSpeaker')[0];
 
@@ -38,15 +35,12 @@ Ext.define('RegistrationApp.controller.ViewportController', {
                 Password: '',
                 RememberMe: true
             },
-            success: function(r, o) {
+            success: function(r, o) { 
                 var retData = Ext.JSON.decode(r.responseText);
                 tabPanel.updateAllPanelsWithData(retData);
                 if (retData.hasSessionsCurrentYear === true) {
                     speakerFromFirstPage.checked = true;
-                    // need to load sessions also for this attendee (who is speaker)
-
-
-
+                    // need to load sessions also for this attendee, the current attendee is the spaker
 
                     var sessionsBySpeakerStore = Ext.getCmp("sessionsBySpeakerGridPanelId").getStore();
                     sessionsBySpeakerStore.load({
@@ -57,30 +51,33 @@ Ext.define('RegistrationApp.controller.ViewportController', {
                             param3: '-1'
                         },
                         callback: function(records,operation,success) {
+                            var imgId = Ext.ComponentQuery.query('#SpeakerImgId')[0];
+                            var imageLocation = '/attendeeimage/' + retData.attendeesId + '.jpg?width=280&height=280&borderWidth=1&borderColor=black&scale=both';
+                            var antiCachePart = (new Date()).getTime();
+                            var newSrc = imageLocation + '&dc=' + antiCachePart;
+                            imgId.setSrc(newSrc); 
                             tabPanel.setActiveTab(tabPanel.getTabIdByName('SpeakerAfterLogin'));  
+                            myMask.hide();
                         }
                     });
                 } else {
                     attendeeFromFirstPage.checked = true;
                     tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeAfterLogin'));
+                    myMask.hide();
                 }
 
-                var imgId = Ext.ComponentQuery.query('#SpeakerImgId')[0];
-                var imageLocation = '/attendeeimage/' + retData.attendeesId + '.jpg?width=175';
-                var antiCachePart = (new Date()).getTime();
-                var newSrc = imageLocation + '?dc=' + antiCachePart;
-                imgId.setSrc(newSrc); 
 
-                myMask.hide();
+
+
             },
             failure: function(r,o) {
-                console.log('is NOT logged in from launch');
+                console.log('is NOT logged in from viewportafterrender');
                 // not logged in so take them to opening page
                 tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeSpeakerSponsorId'));
                 myMask.hide();
             } 
         });  
-        */
+
 
     },
 

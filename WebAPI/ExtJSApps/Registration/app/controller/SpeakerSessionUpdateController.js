@@ -17,7 +17,7 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
     extend: 'Ext.app.Controller',
 
     onSessionsBySpeakerGridPanelIdAfterRender: function(component, eOpts) {
-        //debugger;
+        /*
         var sessionSpeakerPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
 
 
@@ -62,30 +62,27 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
                         },
                         callback: function(records,operation,success) {
                             // this is after render, we don't change panels here
-                            //tabPanel.setActiveTab(tabPanel.getTabIdByName('SpeakerAfterLogin'));  
+                            tabPanel.setActiveTab(tabPanel.getTabIdByName('SpeakerSessionUpdate'));  
+                            var imgId = Ext.ComponentQuery.query('#SpeakerImgId')[0];
+                            var imageLocation = '/attendeeimage/' + retData.attendeesId + '.jpg?width=175';
+                            var antiCachePart = (new Date()).getTime();
+                            var newSrc = imageLocation + '?dc=' + antiCachePart;
+                            imgId.setSrc(newSrc); 
+                            myMask.hide();
                         }
                     });
-                } //else {
-                    //  attendeeFromFirstPage.checked = true;
-                    // tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeAfterLogin'));
-                    //}
-                    /*
-                    var imgId = Ext.ComponentQuery.query('#SpeakerImgId')[0];
-                    var imageLocation = '/attendeeimage/' + retData.attendeesId + '.jpg?width=175';
-                    var antiCachePart = (new Date()).getTime();
-                    var newSrc = imageLocation + '?dc=' + antiCachePart;
-                    imgId.setSrc(newSrc); 
-                    */
+                }
 
-                    myMask.hide();
-                },
-                failure: function(r,o) {
-                    console.log('is NOT logged in from launch');
-                    // not logged in so take them to opening page
-                    tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeSpeakerSponsorId'));
-                    myMask.hide();
-                } 
-            });  
+
+            },
+            failure: function(r,o) {
+                console.log('is NOT logged in from onSessionBySpeakerGridPanelIdAfterRender');
+                // not logged in so take them to opening page
+                tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeSpeakerSponsorId'));
+                myMask.hide();
+            } 
+        });  
+        */
     },
 
     onContinueButtonIdClick: function(button, e, eOpts) {

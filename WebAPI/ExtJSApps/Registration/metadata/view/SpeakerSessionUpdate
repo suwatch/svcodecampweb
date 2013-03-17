@@ -69,8 +69,6 @@
                     "codeClass": null,
                     "userConfig": {
                         "layout|flex": null,
-                        "formBind": true,
-                        "disabled": true,
                         "id": null,
                         "itemId": "continueButtonId",
                         "designer|userClassName": "MyButton",
@@ -320,6 +318,7 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "formBind": true,
                                 "height": null,
                                 "itemId": "FieldSetSessionEditorItemId",
                                 "width": null,

@@ -540,7 +540,7 @@
                             "userConfig": {
                                 "container|align": "stretch",
                                 "designer|userClassName": "MyFieldSet",
-                                "layout": "hbox",
+                                "layout": "vbox",
                                 "title": "Picture Required Before Submitting Sessions"
                             },
                             "designerId": "5163df38-67e0-4dda-aa34-dacda022b5f7",
@@ -591,10 +591,11 @@
                                                     "        waitMsg: 'Uploading your photo...',\r",
                                                     "        success: function(fp, o) {\r",
                                                     "            var attendeesId = o.result.attendeeId;\r",
-                                                    "            var imageLocation = '/attendeeimage/' + attendeesId + '.jpg?width=175&height=175&scale=both&anchor=topleft&bgcolor=black';\r",
+                                                    "            var imageLocation = '/attendeeimage/' + attendeesId + '.jpg?width=280&height=280&borderWidth=1&borderColor=black&scale=both';\r",
                                                     "            var antiCachePart = (new Date()).getTime();\r",
-                                                    "            var newSrc = imageLocation + '?dc=' + antiCachePart;\r",
+                                                    "            var newSrc = imageLocation + '&dc=' + antiCachePart;\r",
                                                     "            imgId.setSrc(newSrc); \r",
+                                                    "            \r",
                                                     "        },\r",
                                                     "        failure: function(form, action){\r",
                                                     "            //debugger;\r",
@@ -628,10 +629,11 @@
                                     "userConfig": {
                                         "layout|flex": 7,
                                         "border": false,
-                                        "height": null,
+                                        "height": 300,
                                         "itemId": "PicturePanelId",
                                         "minWidth": null,
-                                        "padding": 10,
+                                        "padding": 5,
+                                        "width": 300,
                                         "designer|userClassName": "MyPanel",
                                         "title": null
                                     },
@@ -646,11 +648,11 @@
                                             "codeClass": null,
                                             "userConfig": {
                                                 "border": 1,
-                                                "height": 150,
+                                                "height": null,
                                                 "id": "SpeakerImageId",
                                                 "itemId": "SpeakerImgId",
                                                 "ui": null,
-                                                "width": 150,
+                                                "width": null,
                                                 "designer|userClassName": "MyImg",
                                                 "src": "/image/none.jpg"
                                             },

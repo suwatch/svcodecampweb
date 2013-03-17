@@ -137,7 +137,10 @@
                 "width": 400,
                 "designer|userClassName": "MyRadioGroup1",
                 "fieldLabel": "Actions",
-                "allowBlank": false
+                "allowBlank": false,
+                "columns": [
+                    "1\t"
+                ]
             },
             "designerId": "b0e83847-6175-43d7-98f2-171fb6886342",
             "cn": [

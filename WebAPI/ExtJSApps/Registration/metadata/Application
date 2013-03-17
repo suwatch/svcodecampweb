@@ -31,8 +31,7 @@
             "OptIn",
             "PasswordConfirm",
             "SpeakerAfterLoginNotDup",
-            "WindowSession",
-            "MyButton5"
+            "SpeakerSessionUpdate"
         ],
         "requires": [
             "Ext.data.proxy.Rest"
@@ -48,7 +47,8 @@
             "CreateAccountController",
             "OptInController",
             "SessionEditorController",
-            "WindowSessionController"
+            "ViewportController",
+            "SpeakerSessionUpdateController"
         ],
         "name": "RegistrationApp"
     },

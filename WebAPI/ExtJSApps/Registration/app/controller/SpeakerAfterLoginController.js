@@ -23,16 +23,19 @@ Ext.define('RegistrationApp.controller.SpeakerAfterLoginController', {
         var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];
         var thisPanel = Ext.getCmp("speakerAfterLoginProfileId");
 
+        //debugger;
         Ext.Ajax.request({ 
             url:'/rpc/Account/UpdateSpeaker', 
             actionMethods:'POST', 
             scope:this, 
             params: thisPanel.getForm().getValues(),
             success: function(r, o) {  
-                tabPanel.setActiveTab(tabPanel.getTabIdByName('optIn'));
+                // debugger;
+                tabPanel.setActiveTab(tabPanel.getTabIdByName('SpeakerSessionUpdate'));
                 myMask.hide();
             },
             failure: function(r,o) {
+                //debugger;
                 tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeSpeakerSponsorId'));
                 myMask.hide();
             } 
@@ -70,7 +73,7 @@ Ext.define('RegistrationApp.controller.SpeakerAfterLoginController', {
     },
 
     onEditSelectedSessionButtonIdClick: function(button, e, eOpts) {
-        debugger;
+        //debugger;
 
         var sessionsSpeakerPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
         var selectedRecs = sessionsSpeakerPanel.getSelectionModel().getSelection();
@@ -93,7 +96,7 @@ Ext.define('RegistrationApp.controller.SpeakerAfterLoginController', {
         });
         store.add(newRecord);
 
-        debugger;
+        //debugger;
 
         Ext.create('RegistrationApp.view.WindowSession',{
         }).show();

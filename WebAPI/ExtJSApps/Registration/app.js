@@ -47,8 +47,7 @@ Ext.application({
         'OptIn',
         'PasswordConfirm',
         'SpeakerAfterLoginNotDup',
-        'WindowSession',
-        'MyButton5'
+        'SpeakerSessionUpdate'
     ],
     autoCreateViewport: true,
     controllers: [
@@ -61,7 +60,8 @@ Ext.application({
         'CreateAccountController',
         'OptInController',
         'SessionEditorController',
-        'WindowSessionController'
+        'ViewportController',
+        'SpeakerSessionUpdateController'
     ],
     name: 'RegistrationApp',
 

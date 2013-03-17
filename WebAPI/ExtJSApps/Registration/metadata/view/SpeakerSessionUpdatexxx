@@ -1,19 +1,20 @@
 {
-    "type": "Ext.window.Window",
+    "type": "Ext.form.Panel",
     "reference": {
         "name": "items",
         "type": "array"
     },
     "codeClass": null,
     "userConfig": {
-        "height": 630,
-        "padding": 5,
-        "width": 836,
-        "designer|userClassName": "WindowSession",
-        "layout": "fit",
-        "title": "Session Editor"
+        "id": "speakerSessionUpdateId",
+        "itemId": "speakerSessionUpdate",
+        "designer|userClassName": "SpeakerSessionUpdatexxx",
+        "designer|userAlias": "SpeakerSessionUpdateAlias",
+        "layout": "border",
+        "bodyPadding": 10,
+        "title": "Sessions You Have Submitted"
     },
-    "designerId": "dba1adeb-4f72-49c6-a8d3-c3143110e49c",
+    "designerId": "c7bd1fe0-b7af-4c95-8de1-312d7f17e4c8",
     "cn": [
         {
             "type": "Ext.toolbar.Toolbar",
@@ -24,9 +25,13 @@
             "codeClass": null,
             "userConfig": {
                 "dock": "top",
-                "designer|userClassName": "MyToolbar5"
+                "container|pack": "end",
+                "container|padding": null,
+                "height": null,
+                "itemId": "ToolBarAttendeeSpeaker",
+                "designer|userClassName": "MyToolbar"
             },
-            "designerId": "2e559b97-3001-465f-9317-38da3d4936ea",
+            "designerId": "6b2a282d-2b10-46f6-be5f-838a5b4bf889",
             "cn": [
                 {
                     "type": "Ext.button.Button",
@@ -37,91 +42,262 @@
                     "codeClass": null,
                     "userConfig": {
                         "layout|flex": null,
-                        "id": "WindowSessionSaveButtonId",
-                        "designer|userClassName": "MyButton9",
-                        "text": "Save"
+                        "id": null,
+                        "itemId": "speakerSessionsBackButtonItemId",
+                        "designer|userClassName": "MyButton",
+                        "iconAlign": "right",
+                        "text": "Logout"
                     },
-                    "designerId": "1cd3c844-ffa0-438f-ad3a-1e5056ff63b6",
-                    "cn": [
-                        {
-                            "type": "basiceventbinding",
-                            "reference": {
-                                "name": "listeners",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "designer|userClassName": "onButtonClick",
-                                "fn": "onButtonClick",
-                                "implHandler": [
-                                    "// update the grid panel with the tags.\r",
-                                    "Ext.getCmp(\"SessionTagsGridPanelId\").getStore().sync();\r",
-                                    "\r",
-                                    "\r",
-                                    "// this updates the form with session info in it\r",
-                                    "var sessionForm = Ext.getCmp(\"sessionFormPanelEditorId\").getForm();\r",
-                                    "sessionForm.updateRecord();     // with no parameters, this pushes the data from the form to the fields\r",
-                                    "var rec = sessionForm.getRecord();\r",
-                                    "rec.save({ \r",
-                                    "    success: function(record, operation)\r",
-                                    "    {   \r",
-                                    "        //record is the updated record, except for collections\r",
-                                    "        //this collection will have the full records:\r",
-                                    "        //operation.resultSet.records\r",
-                                    "        //operation.resultSet.records[i] for each one if you are batching\r",
-                                    "        rec.commit();\r",
-                                    "    },\r",
-                                    "    failure: function(record, operation)\r",
-                                    "    {\r",
-                                    "        //handle failure(s) here\r",
-                                    "    }\r",
-                                    "});\r",
-                                    "\r",
-                                    "\r",
-                                    "\r",
-                                    "\r",
-                                    "\r",
-                                    "\r",
-                                    "/*\r",
-                                    "debugger;\r",
-                                    "var sessionForm = button.up(\"sessionFormPanelEditorId\").getForm();\r",
-                                    "sessionForm.updateRecord();     // with no parameters, this pushes the data from the form to the fields\r",
-                                    "var rec = sessionForm.getRecord();\r",
-                                    "rec.save();\r",
-                                    "rec.commit();\r",
-                                    "*/\r",
-                                    "\r",
-                                    "\r",
-                                    "\r",
-                                    "// now we need to clear the red dirty markes from the underlying grid because we took care of the save here\r",
-                                    "//var sessionPresenterGridPanel = Ext.getCmp('SessionTagsGridPanelId');\r",
-                                    "\r",
-                                    ""
-                                ],
-                                "name": "click",
-                                "scope": "me"
-                            },
-                            "designerId": "96168842-8ed5-4499-ba9f-e61779816be7"
-                        }
-                    ]
+                    "designerId": "ee0c2b92-d25d-447c-b37b-5a98ee5b5cf7"
+                },
+                {
+                    "type": "Ext.toolbar.Separator",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MySeparator"
+                    },
+                    "designerId": "fe8213b7-07d5-40eb-9e2b-de6cfe4b1cbf"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "formBind": true,
+                        "disabled": true,
+                        "id": null,
+                        "itemId": "continueButtonId",
+                        "designer|userClassName": "MyButton",
+                        "iconAlign": "right",
+                        "text": "Continue"
+                    },
+                    "designerId": "4405224d-7e18-475b-a09e-f0f03cda3edf"
                 }
             ]
         },
         {
-            "type": "Ext.panel.Panel",
+            "type": "Ext.form.Panel",
             "reference": {
                 "name": "items",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "id": "SessionEditorPanelId",
-                "designer|userClassName": "MyPanel5",
+                "layout|flex": 1,
+                "layout|region": "center",
+                "autoShow": true,
+                "html": null,
+                "itemId": "speakerSessionsId",
+                "designer|userClassName": "MyForm10",
                 "layout": "border",
+                "bodyPadding": null,
                 "title": null
             },
-            "designerId": "49da3cfc-de72-4613-a17b-56a502a515fe",
+            "designerId": "a9988c5f-3d61-48c2-a74d-8d9207550604",
             "cn": [
+                {
+                    "type": "Ext.grid.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": 2,
+                        "layout|region": "north",
+                        "height": 150,
+                        "id": "sessionsBySpeakerGridPanelId",
+                        "padding": 5,
+                        "designer|userClassName": "MyGridPanel",
+                        "autoScroll": true,
+                        "bodyPadding": null,
+                        "title": null,
+                        "store": "SessionStore"
+                    },
+                    "designerId": "165343d6-0697-44d4-a45f-b97ad0c09c1b",
+                    "cn": [
+                        {
+                            "type": "Ext.grid.View",
+                            "reference": {
+                                "name": "viewConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "border": 1,
+                                "designer|userClassName": "MyGridView"
+                            },
+                            "designerId": "0e95ce2b-480a-4f3c-99cf-4422e06e22be"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyColumn2",
+                                "dataIndex": "title",
+                                "text": "Title",
+                                "flex": 1
+                            },
+                            "designerId": "94486bf6-8df9-4590-b007-d0cb49e04fca"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "width": 50,
+                                "designer|userClassName": "MyColumn1",
+                                "dataIndex": "id",
+                                "text": "Id"
+                            },
+                            "designerId": "1ba61b6a-127f-4329-ad2d-94d1f24fa21a"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "width": 50,
+                                "designer|userClassName": "MyColumn1",
+                                "dataIndex": "attendeeId",
+                                "text": "attendeesId"
+                            },
+                            "designerId": "b4852e59-d96e-41fb-99ee-ed43d55179c5"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "width": 50,
+                                "designer|userClassName": "MyColumn1",
+                                "dataIndex": "sessionId",
+                                "text": "sessionsId"
+                            },
+                            "designerId": "73570d59-01cb-4bdf-8020-4c7c7b1bb663"
+                        },
+                        {
+                            "type": "Ext.toolbar.Toolbar",
+                            "reference": {
+                                "name": "dockedItems",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dock": "top",
+                                "designer|userClassName": "MyToolbar10"
+                            },
+                            "designerId": "cf3ecd81-a330-4b6a-94f8-ba2e66a79fe2",
+                            "cn": [
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|flex": null,
+                                        "id": "editSelectedSessionButtonId",
+                                        "designer|userClassName": "MyButton19",
+                                        "text": "Edit Selected Session"
+                                    },
+                                    "designerId": "49e6224b-dda2-4ea4-8a2e-77bafcb20042"
+                                },
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|flex": null,
+                                        "id": "AddNewSessionButtonId",
+                                        "designer|userClassName": "MyButton19",
+                                        "text": "Add New Session"
+                                    },
+                                    "designerId": "c491f9f3-be04-4c42-8dcc-8f7c514ff89d"
+                                },
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|flex": null,
+                                        "itemId": "AddNewSessionItemIdButton",
+                                        "designer|userClassName": "MyButton6",
+                                        "text": "MyButton"
+                                    },
+                                    "designerId": "2d94baf2-5ee2-4611-8fa5-c5dcdde3dbf6",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "click",
+                                            "type": "string"
+                                        }
+                                    ],
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|userClassName": "onAddNewSessionItemIdButtonClick",
+                                                "fn": "onAddNewSessionItemIdButtonClick",
+                                                "implHandler": [
+                                                    "var sessionsSpeakerPanel = Ext.getCmp(\"sessionsBySpeakerGridPanelId\");\r",
+                                                    "var store = sessionsSpeakerPanel.getStore();\r",
+                                                    "var newRecord = Ext.create('RegistrationApp.model.Session',{\r",
+                                                    "    title: 'my title',\r",
+                                                    "    description: 'my descr'\r",
+                                                    "});\r",
+                                                    "store.add(newRecord);\r",
+                                                    "\r",
+                                                    "//debugger;\r",
+                                                    "\r",
+                                                    "Ext.create('RegistrationApp.view.WindowSession',{\r",
+                                                    "}).show();"
+                                                ],
+                                                "name": "click",
+                                                "scope": "me"
+                                            },
+                                            "designerId": "f351bada-070c-4595-9fb1-c9c31c5f9bd2"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
                 {
                     "type": "Ext.form.Panel",
                     "reference": {
@@ -131,13 +307,15 @@
                     "codeClass": null,
                     "userConfig": {
                         "layout|flex": 6,
-                        "layout|region": "center",
+                        "layout|region": "west",
                         "id": "sessionFormPanelEditorId",
+                        "width": 150,
                         "designer|userClassName": "MyForm11",
+                        "autoScroll": true,
                         "bodyPadding": 10,
                         "title": null
                     },
-                    "designerId": "2634b1e3-90d4-4f6f-bfcc-ecc8258421ce",
+                    "designerId": "a82a998b-950d-420a-ad4d-8781ae866929",
                     "cn": [
                         {
                             "type": "Ext.form.FieldSet",
@@ -266,15 +444,14 @@
                     "codeClass": null,
                     "userConfig": {
                         "layout|flex": 2,
-                        "layout|region": "east",
+                        "layout|region": "center",
                         "id": "SessionTagsGridPanelId",
-                        "width": 150,
                         "designer|userClassName": "MyGridPanel1",
                         "autoScroll": true,
-                        "title": "Session Tags",
+                        "title": "Session Tags For Selected Session",
                         "store": "TagStore"
                     },
-                    "designerId": "3c327de4-3d32-47e0-8c62-627f60585318",
+                    "designerId": "289ebbac-ec7d-4bdf-9f9e-3f82d6335527",
                     "cn": [
                         {
                             "type": "Ext.grid.View",
@@ -375,94 +552,6 @@
                     ]
                 }
             ]
-        },
-        {
-            "type": "basiceventbinding",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|userClassName": "onWindowAfterRender",
-                "fn": "onWindowAfterRender",
-                "implHandler": [
-                    "/*\r",
-                    "var sessionEditForm = Ext.getCmp(\"sessionFormPanelEditorId\").getForm();\r",
-                    "\r",
-                    "sessionEditForm.setValues(this.sessionData);\r",
-                    "*/\r",
-                    "\r",
-                    "var speakerProfilePanel =  Ext.getCmp('speakerAfterLoginProfileId');\r",
-                    "var retData = speakerProfilePanel.getForm().getValues();\r",
-                    "\r",
-                    "debugger;\r",
-                    "\r",
-                    "\r",
-                    "\r",
-                    "/*\r",
-                    "var tagList = Ext.getCmp(\"SessionTagsGridPanelId\");\r",
-                    "var tagListStore = tagList.store;\r",
-                    "tagListStore.load({\r",
-                    "params: {\r",
-                    "sessionId: retData.attendeesId\r",
-                    "},\r",
-                    "callback: function(records,operation,success) {\r",
-                    "var sm = tagList.getSelectionModel();\r",
-                    "var recs = [];\r",
-                    "Ext.each(records,function(rec) {\r",
-                    "if (rec.get(\"taggedInSession\") === true) {\r",
-                    "recs.push(rec);\r",
-                    "}\r",
-                    "});\r",
-                    "sm.select(recs);\r",
-                    "tagList.getView().focusRow(0);\r",
-                    "}\r",
-                    "});\r",
-                    "*/\r",
-                    "\r",
-                    "\r",
-                    "\r",
-                    "\r",
-                    "//debugger;\r",
-                    "\r",
-                    "var sessionEditForm = Ext.getCmp(\"sessionFormPanelEditorId\").getForm();\r",
-                    "//if (!this.newRecordFlag) {\r",
-                    "    // get data from SpeakerSessions Panel on previous page (get selected row and data associated, use that to set values in this form)\r",
-                    "    var sessionList = Ext.getCmp(\"sessionsBySpeakerGridPanelId\").getSelectionModel().getSelection();\r",
-                    "    if (sessionList.length > 0) {\r",
-                    "        sessionEditForm.loadRecord(sessionList[0]);\r",
-                    "    }\r",
-                    "//} else {\r",
-                    "//    var newRecord = Ext.create('RegistrationApp.model.Session',{\r",
-                    "//\r",
-                    "//    });\r",
-                    "//    sessionEditForm.loadRecord(newRecord);\r",
-                    "//}\r",
-                    ""
-                ],
-                "name": "afterrender",
-                "scope": "me"
-            },
-            "designerId": "ffae8ddf-e1f0-4b8c-aeb8-804425e5f27d"
-        },
-        {
-            "type": "basiceventbinding",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|userClassName": "onWindowClose",
-                "fn": "onWindowClose",
-                "implHandler": [
-                    ""
-                ],
-                "name": "close",
-                "scope": "me"
-            },
-            "designerId": "4faaf0f9-29f2-49c5-a42a-2939056ebba0"
         }
     ]
 }

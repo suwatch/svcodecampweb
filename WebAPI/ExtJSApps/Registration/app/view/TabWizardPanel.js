@@ -24,9 +24,9 @@ Ext.define('RegistrationApp.view.TabWizardPanel', {
         'RegistrationApp.view.sponsor',
         'RegistrationApp.view.AttendeeAfterLogin',
         'RegistrationApp.view.SpeakerAfterLoginNotDup',
+        'RegistrationApp.view.SpeakerSessionUpdate',
         'RegistrationApp.view.createAccount',
         'RegistrationApp.view.OptIn',
-        'RegistrationApp.view.override.TabWizardPanel',
         'Ext.form.RadioGroup',
         'Ext.form.field.Radio',
         'Ext.form.Label'
@@ -62,6 +62,10 @@ Ext.define('RegistrationApp.view.TabWizardPanel', {
                     title: 'Speaker After Login'
                 },
                 {
+                    xtype: 'SpeakerSessionUpdateAlias',
+                    title: 'Speaker Session Update'
+                },
+                {
                     xtype: 'createAccountAlias'
                 },
                 {
@@ -80,7 +84,7 @@ Ext.define('RegistrationApp.view.TabWizardPanel', {
     },
 
     getTabIdByName: function(stepName) {
-
+        console.log('getTabIdByName:stepName(top): ' + stepName);
         var tabId = -1;
         if (stepName === 'AttendeeSpeakerSponsorId') {
             tabId = 0;
@@ -97,16 +101,20 @@ Ext.define('RegistrationApp.view.TabWizardPanel', {
         else if (stepName === 'SpeakerAfterLogin') {
             tabId = 5;
         }
-        else if (stepName === 'createAccount') {
+        else if (stepName === 'SpeakerSessionUpdate') {
             tabId = 6;
         }
-        else if (stepName === 'optIn') {
+        else if (stepName === 'createAccount') {
             tabId = 7;
+        }
+        else if (stepName === 'optIn') {
+            tabId = 8;
         }
         else {
             console.log('getTabIdByName called with no match ' + stepName);
         }
 
+        console.log('getTabIdByName:stepName(bottom): ' + tabId);
 
 
         return tabId;

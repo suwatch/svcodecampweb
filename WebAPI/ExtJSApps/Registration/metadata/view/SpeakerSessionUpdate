@@ -1,0 +1,14 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "SpeakerSessionUpdate",
+        "designer|userAlias": "SpeakerSessionUpdateAlias",
+        "title": "My Panel"
+    },
+    "designerId": "4b96b1f9-5681-4344-91f3-31dd99619539"
+}

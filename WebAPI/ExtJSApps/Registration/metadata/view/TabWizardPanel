@@ -53,7 +53,7 @@
                     "stepName"
                 ],
                 "implHandler": [
-                    "\r",
+                    "console.log('getTabIdByName:stepName(top): ' + stepName);\r",
                     "var tabId = -1;\r",
                     "if (stepName === 'AttendeeSpeakerSponsorId') {\r",
                     "    tabId = 0;\r",
@@ -70,16 +70,20 @@
                     "else if (stepName === 'SpeakerAfterLogin') {\r",
                     "    tabId = 5;\r",
                     "}\r",
-                    "else if (stepName === 'createAccount') {\r",
+                    "else if (stepName === 'SpeakerSessionUpdate') {\r",
                     "    tabId = 6;\r",
                     "}\r",
-                    "else if (stepName === 'optIn') {\r",
+                    "else if (stepName === 'createAccount') {\r",
                     "    tabId = 7;\r",
+                    "}\r",
+                    "else if (stepName === 'optIn') {\r",
+                    "    tabId = 8;\r",
                     "}\r",
                     "else {\r",
                     "    console.log('getTabIdByName called with no match ' + stepName);\r",
                     "}\r",
                     "\r",
+                    "console.log('getTabIdByName:stepName(bottom): ' + tabId);\r",
                     "\r",
                     "\r",
                     "return tabId;"
@@ -235,6 +239,33 @@
                         "designer|userClassName": "TabConfig5"
                     },
                     "designerId": "9df95789-3a32-4d07-89ac-28d4a7245b8a"
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "title": "Speaker Session Update"
+            },
+            "designerId": "2d71ae87-6039-4285-a691-7b12839ddebe",
+            "masterInstanceId": "4b96b1f9-5681-4344-91f3-31dd99619539",
+            "cn": [
+                {
+                    "type": "Ext.tab.Tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "TabConfig8"
+                    },
+                    "designerId": "453021b8-ae40-46c9-a5eb-f6f962f72258"
                 }
             ]
         },

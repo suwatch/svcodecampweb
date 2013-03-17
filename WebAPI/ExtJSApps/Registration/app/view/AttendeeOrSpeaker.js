@@ -78,6 +78,7 @@ Ext.define('RegistrationApp.view.AttendeeOrSpeaker', {
                     width: 400,
                     fieldLabel: 'Actions',
                     allowBlank: false,
+                    columns: 1,
                     items: [
                         {
                             xtype: 'radiofield',

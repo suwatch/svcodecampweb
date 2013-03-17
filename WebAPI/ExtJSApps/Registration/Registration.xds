@@ -198,14 +198,6 @@
             ],
             "className": "SessionStore"
         },
-        "dba1adeb-4f72-49c6-a8d3-c3143110e49c": {
-            "paths": [
-                "metadata/view/WindowSession",
-                "app/view/override/WindowSession.js",
-                "app/view/WindowSession.js"
-            ],
-            "className": "WindowSession"
-        },
         "e6e2035e-259d-4233-95b4-291a5a6a41a6": {
             "paths": [
                 "metadata/store/TagStore",
@@ -229,14 +221,6 @@
                 "app/controller/SessionEditorController.js"
             ],
             "className": "SessionEditorController"
-        },
-        "8cee7ab8-2ea4-4ef9-8572-8eb6340b5e67": {
-            "paths": [
-                "metadata/controller/WindowSessionController",
-                "app/controller/override/WindowSessionController.js",
-                "app/controller/WindowSessionController.js"
-            ],
-            "className": "WindowSessionController"
         },
         "d318c215-0d99-4497-acc5-54d15da0bc5f": {
             "paths": [
@@ -270,13 +254,37 @@
             ],
             "className": "SessionLevelModel"
         },
-        "4f837ad4-57a8-4eef-8dd7-88faa0b3a8b3": {
+        "c7bd1fe0-b7af-4c95-8de1-312d7f17e4c8": {
             "paths": [
-                "metadata/view/MyButton5",
-                "app/view/override/MyButton5.js",
-                "app/view/MyButton5.js"
+                "metadata/view/SpeakerSessionUpdatexxx",
+                "app/view/override/SpeakerSessionUpdatexxx.js",
+                "app/view/SpeakerSessionUpdatexxx.js"
             ],
-            "className": "MyButton5"
+            "className": "SpeakerSessionUpdatexxx"
+        },
+        "10d32f9d-c428-4cbd-bacc-7eb9c0e9c677": {
+            "paths": [
+                "metadata/controller/ViewportController",
+                "app/controller/override/ViewportController.js",
+                "app/controller/ViewportController.js"
+            ],
+            "className": "ViewportController"
+        },
+        "478a9dd3-a843-49b5-b02e-1e5e4d2fc6d1": {
+            "paths": [
+                "metadata/controller/SpeakerSessionUpdateController",
+                "app/controller/override/SpeakerSessionUpdateController.js",
+                "app/controller/SpeakerSessionUpdateController.js"
+            ],
+            "className": "SpeakerSessionUpdateController"
+        },
+        "4b96b1f9-5681-4344-91f3-31dd99619539": {
+            "paths": [
+                "metadata/view/SpeakerSessionUpdate",
+                "app/view/override/SpeakerSessionUpdate.js",
+                "app/view/SpeakerSessionUpdate.js"
+            ],
+            "className": "SpeakerSessionUpdate"
         }
     },
     "viewOrderMap": {
@@ -292,8 +300,8 @@
             "2ae7e189-6c5e-4718-b828-ca560f5c3fdc",
             "dfdac70e-88ed-4f47-8052-2b4e87dc2118",
             "1a1e24e7-e981-4728-b958-9dcf746faf54",
-            "dba1adeb-4f72-49c6-a8d3-c3143110e49c",
-            "4f837ad4-57a8-4eef-8dd7-88faa0b3a8b3"
+            "c7bd1fe0-b7af-4c95-8de1-312d7f17e4c8",
+            "4b96b1f9-5681-4344-91f3-31dd99619539"
         ],
         "store": [
             "126b70a4-920e-49ef-8117-21150f082f6d",
@@ -312,7 +320,8 @@
             "65a4b174-5ba2-4812-ba07-d9ff918ccf6e",
             "acfeeb68-33a2-44a2-a3be-6a2cfba48df6",
             "5662fda6-ed94-4bbb-ac24-9d3977b18139",
-            "8cee7ab8-2ea4-4ef9-8572-8eb6340b5e67"
+            "10d32f9d-c428-4cbd-bacc-7eb9c0e9c677",
+            "478a9dd3-a843-49b5-b02e-1e5e4d2fc6d1"
         ],
         "model": [
             "f78b581d-7971-41d4-8de5-81fee1e696fe",

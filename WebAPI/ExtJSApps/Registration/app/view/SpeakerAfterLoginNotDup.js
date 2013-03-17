@@ -37,12 +37,12 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
                     width: 150,
                     layout: {
                         align: 'stretch',
-                        type: 'vbox'
+                        type: 'hbox'
                     },
                     items: [
                         {
                             xtype: 'form',
-                            flex: 4,
+                            flex: 5,
                             id: 'speakerAfterLoginProfileId',
                             itemId: '',
                             autoScroll: true,
@@ -191,6 +191,12 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
                                     enforceMaxLength: true,
                                     maxLength: 500,
                                     minLength: 30
+                                },
+                                {
+                                    xtype: 'label',
+                                    height: 14,
+                                    html: '<i>Press Continue on top right to submit sessions for approval</i>',
+                                    text: ''
                                 }
                             ],
                             dockedItems: [
@@ -222,85 +228,10 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
                                     ]
                                 }
                             ]
-                        }
-                    ]
-                },
-                {
-                    xtype: 'form',
-                    flex: 3,
-                    region: 'center',
-                    autoShow: true,
-                    itemId: 'speakerSessionsId',
-                    layout: {
-                        align: 'stretch',
-                        type: 'vbox'
-                    },
-                    title: 'Speaker Sessions',
-                    dockedItems: [
-                        {
-                            xtype: 'toolbar',
-                            dock: 'top',
-                            items: [
-                                {
-                                    xtype: 'button',
-                                    id: 'editSelectedSessionButtonId',
-                                    text: 'Edit Selected Session'
-                                },
-                                {
-                                    xtype: 'button',
-                                    id: 'AddNewSessionButtonId',
-                                    text: 'Add New Session'
-                                },
-                                {
-                                    xtype: 'button',
-                                    itemId: 'AddNewSessionItemIdButton',
-                                    text: 'MyButton',
-                                    listeners: {
-                                        click: {
-                                            fn: me.onAddNewSessionItemIdButtonClick,
-                                            scope: me
-                                        }
-                                    }
-                                }
-                            ]
-                        }
-                    ],
-                    items: [
-                        {
-                            xtype: 'gridpanel',
-                            flex: 2,
-                            id: 'sessionsBySpeakerGridPanelId',
-                            store: 'SessionStore',
-                            columns: [
-                                {
-                                    xtype: 'gridcolumn',
-                                    dataIndex: 'title',
-                                    text: 'Title',
-                                    flex: 1
-                                },
-                                {
-                                    xtype: 'gridcolumn',
-                                    width: 50,
-                                    dataIndex: 'id',
-                                    text: 'Id'
-                                },
-                                {
-                                    xtype: 'gridcolumn',
-                                    width: 50,
-                                    dataIndex: 'attendeeId',
-                                    text: 'attendeesId'
-                                },
-                                {
-                                    xtype: 'gridcolumn',
-                                    width: 50,
-                                    dataIndex: 'sessionId',
-                                    text: 'sessionsId'
-                                }
-                            ]
                         },
                         {
                             xtype: 'form',
-                            flex: 9,
+                            flex: 2,
                             id: 'speakerPictureUploadFormId',
                             bodyPadding: 20,
                             title: 'Speaker Picture Upload',
@@ -325,6 +256,7 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
                                             padding: 10,
                                             fieldLabel: '',
                                             hideLabel: true,
+                                            labelAlign: 'top',
                                             labelPad: 0,
                                             listeners: {
                                                 change: {
@@ -361,21 +293,6 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
         });
 
         me.callParent(arguments);
-    },
-
-    onAddNewSessionItemIdButtonClick: function(button, e, eOpts) {
-        var sessionsSpeakerPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
-        var store = sessionsSpeakerPanel.getStore();
-        var newRecord = Ext.create('RegistrationApp.model.Session',{
-            title: 'my title',
-            description: 'my descr'
-        });
-        store.add(newRecord);
-
-        //debugger;
-
-        Ext.create('RegistrationApp.view.WindowSession',{
-        }).show();
     },
 
     onSpeakerPictureUploadXIdChange: function(filefield, value, eOpts) {

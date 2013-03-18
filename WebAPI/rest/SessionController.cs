@@ -90,10 +90,8 @@ namespace WebAPI.REST
         // POST api/session
         public HttpResponseMessage Post(SessionsResult sessionsResult)
         {
-            if (!sessionsResult.SessionLevel_id.HasValue || sessionsResult.SessionLevel_id.Value <= 0)
-            {
-                sessionsResult.SessionLevel_id = 1;
-            }
+            UpdateSessionResultForSessionLevel(sessionsResult);
+               
 
             var session = new SessionsResult()
             {
@@ -115,6 +113,26 @@ namespace WebAPI.REST
 
         }
 
+        private static void UpdateSessionResultForSessionLevel(SessionsResult sessionsResult)
+        {
+            if (sessionsResult.SessionLevel.Equals("Beginner"))
+            {
+                sessionsResult.SessionLevel_id = 1;
+            }
+            else if (sessionsResult.SessionLevel.Equals("Intermediate"))
+            {
+                sessionsResult.SessionLevel_id = 2;
+            }
+            else if (sessionsResult.SessionLevel.Equals("Advanced"))
+            {
+                sessionsResult.SessionLevel_id = 3;
+            }
+            else
+            {
+                sessionsResult.SessionLevel_id = 1;
+            }
+        }
+
         /// <summary>
         ///  only let this update some safe fields.
         /// </summary>
@@ -131,14 +149,13 @@ namespace WebAPI.REST
             HttpResponseMessage response;
             if (session != null)
             {
-                int newLevel;
-                Int32.TryParse(sessionsResult.SessionLevel, out newLevel);
+                UpdateSessionResultForSessionLevel(sessionsResult);
 
 
                 session.Title = sessionsResult.Title;
                 session.Description = sessionsResult.Description;
                 session.TwitterHashTags = sessionsResult.TwitterHashTags;
-                session.SessionLevel_id = newLevel;
+                session.SessionLevel_id = sessionsResult.SessionLevel_id;
 
                 SessionsManager.I.Update(session);
                
@@ -152,9 +169,38 @@ namespace WebAPI.REST
             return response;
         }
 
-        //// DELETE api/session/5
-        //public void Delete(int id)
-        //{
-        //}
+        // DELETE api/session/5
+        public HttpResponseMessage Delete(int id)
+        {
+            // need to make sure session is not accepted and/or admin rights
+            var session =
+             SessionsManager.I.Get(new SessionsQuery
+             {
+                 WithTags = true,
+                 WithEvaluations = true,
+                 WithInterestOrPlanToAttend = true,
+                 WithLectureRoom = true,
+                 Id = id
+             }).FirstOrDefault();
+
+            var sessionPresenters = SessionPresenterManager.I.Get(new SessionPresenterQuery() { SessionId = id });
+            List<int> spIds = sessionPresenters.Select(a => a.Id).ToList();
+            foreach (var spid in spIds)
+            {
+                SessionPresenterManager.I.Delete(spid);
+            }
+
+            List<int> tagIds = session.TagsResults.Select(a => a.Id).ToList();
+            foreach (var tagId in tagIds)
+            {
+                SessionTagsManager.I.Delete(tagId);
+            }
+
+            SessionsManager.I.Delete(id);
+
+            return Request.CreateResponse(HttpStatusCode.OK);
+
+
+        }
     }
 }

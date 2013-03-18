@@ -57,11 +57,7 @@ namespace WebAPI.rest
                 AttendeeId = sessionPresenterResult.AttendeeId,
                 SessionId = sessionPresenterResult.SessionId
             };
-
-            var session = SessionsManager.I.Get(new SessionsQuery()
-            {
-                Id = sessionPresenterResult.SessionId,
-            }).FirstOrDefault();
+            SessionPresenterManager.I.Insert(spr);
 
             var rec = SessionPresenterManager.I.Get(new SessionPresenterQuery()
             {
@@ -69,20 +65,35 @@ namespace WebAPI.rest
                 WithTitle = true
             });
 
-            SessionPresenterManager.I.Insert(rec);
 
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, spr);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, rec);
             return response;
         }
 
         // PUT api/sessionpresenter/5
-        public void Put(int id, [FromBody]string value)
+        public HttpResponseMessage Put(SessionPresenterResult sessionPresenterResult)
         {
+            var spr = new SessionPresenterResult()
+            {
+                SessionId = sessionPresenterResult.SessionId,
+                AttendeeId = sessionPresenterResult.AttendeeId
+            };
+            SessionPresenterManager.I.Insert(spr);
+
+
+            HttpResponseMessage response;
+            response = Request.CreateResponse(HttpStatusCode.OK, spr);
+            return response;
+
+
         }
 
         // DELETE api/sessionpresenter/5
-        public void Delete(int id)
+        public HttpResponseMessage Delete(int id)
         {
+            HttpResponseMessage response;
+            response = Request.CreateResponse(HttpStatusCode.NotImplemented);
+            return response;
         }
     }
 }

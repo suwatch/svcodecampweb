@@ -140,5 +140,7 @@ namespace CodeCampSV
         public string City { get; set; }
         [AutoGenColumn]
         public string State { get; set; }
+        [AutoGenColumn]
+        public int? MaxPresentationsPerYear { get; set; }
     }
 }

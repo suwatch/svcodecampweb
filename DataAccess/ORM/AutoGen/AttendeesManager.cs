@@ -80,6 +80,7 @@ namespace CodeCampSV
             record.OptInSponsorSpecialsLevel = result.OptInSponsorSpecialsLevel;
             record.City = result.City;
             record.State = result.State;
+            record.MaxPresentationsPerYear = result.MaxPresentationsPerYear;
             // 
             //  Used by Default in Update and Insert Methods.
         }
@@ -152,7 +153,8 @@ namespace CodeCampSV
             OptInSponsoredMailingsLevel = myData.OptInSponsoredMailingsLevel,
             OptInSponsorSpecialsLevel = myData.OptInSponsorSpecialsLevel,
             City = myData.City,
-            State = myData.State
+            State = myData.State,
+            MaxPresentationsPerYear = myData.MaxPresentationsPerYear
       });
 		    return results;
         }
@@ -241,7 +243,8 @@ namespace CodeCampSV
                         OptInSponsoredMailingsLevel = myData.OptInSponsoredMailingsLevel,
                         OptInSponsorSpecialsLevel = myData.OptInSponsorSpecialsLevel,
                         City = myData.City,
-                        State = myData.State
+                        State = myData.State,
+                        MaxPresentationsPerYear = myData.MaxPresentationsPerYear
             });
             
             List<AttendeesResult> resultList = GetFinalResults(results, query);
@@ -317,6 +320,7 @@ namespace CodeCampSV
             if (query.OptInSponsorSpecialsLevel != null) baseQuery = baseQuery.Where(a => a.OptInSponsorSpecialsLevel == query.OptInSponsorSpecialsLevel);
             if (query.City != null) baseQuery = baseQuery.Where(a => a.City.ToLower().Equals(query.City.ToLower()));
             if (query.State != null) baseQuery = baseQuery.Where(a => a.State.ToLower().Equals(query.State.ToLower()));
+            if (query.MaxPresentationsPerYear != null) baseQuery = baseQuery.Where(a => a.MaxPresentationsPerYear == query.MaxPresentationsPerYear);
 
             return baseQuery;
         }

@@ -233,6 +233,7 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                                 },
                                 {
                                     xtype: 'booleancolumn',
+                                    hidden: true,
                                     width: 60,
                                     dataIndex: 'taggedInSession',
                                     text: 'Tagged'

@@ -1128,6 +1128,8 @@ namespace CodeCampSV
 		
 		private string _State;
 		
+		private System.Nullable<int> _MaxPresentationsPerYear;
+		
 		private EntitySet<AttendeesCodeCampYear> _AttendeesCodeCampYear;
 		
 		private EntitySet<AttendeesTagList> _AttendeesTagList;
@@ -1270,6 +1272,8 @@ namespace CodeCampSV
     partial void OnCityChanged();
     partial void OnStateChanging(string value);
     partial void OnStateChanged();
+    partial void OnMaxPresentationsPerYearChanging(System.Nullable<int> value);
+    partial void OnMaxPresentationsPerYearChanged();
     #endregion
 		
 		public Attendees()
@@ -2520,6 +2524,26 @@ namespace CodeCampSV
 					this._State = value;
 					this.SendPropertyChanged("State");
 					this.OnStateChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_MaxPresentationsPerYear", DbType="Int")]
+		public System.Nullable<int> MaxPresentationsPerYear
+		{
+			get
+			{
+				return this._MaxPresentationsPerYear;
+			}
+			set
+			{
+				if ((this._MaxPresentationsPerYear != value))
+				{
+					this.OnMaxPresentationsPerYearChanging(value);
+					this.SendPropertyChanging();
+					this._MaxPresentationsPerYear = value;
+					this.SendPropertyChanged("MaxPresentationsPerYear");
+					this.OnMaxPresentationsPerYearChanged();
 				}
 			}
 		}

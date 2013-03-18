@@ -27,7 +27,7 @@ Ext.define('RegistrationApp.model.Session', {
             name: 'description'
         },
         {
-            name: 'level'
+            name: 'sessionLevel_id'
         },
         {
             name: 'twitterHashTags'

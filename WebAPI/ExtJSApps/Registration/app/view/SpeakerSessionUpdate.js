@@ -184,20 +184,18 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                                             name: 'twitterHashTags'
                                         },
                                         {
-                                            xtype: 'combobox',
-                                            anchor: '100%',
-                                            fieldLabel: 'Session Level',
-                                            name: 'sessionLevel',
-                                            displayField: 'description',
-                                            store: 'SessionLevelStore',
-                                            valueField: 'id'
-                                        },
-                                        {
                                             xtype: 'textareafield',
                                             anchor: '100%',
                                             height: 100,
                                             fieldLabel: 'Session Description (just text, no html please)',
                                             name: 'description'
+                                        },
+                                        {
+                                            xtype: 'textareafield',
+                                            anchor: '100%',
+                                            height: 100,
+                                            fieldLabel: 'Session Level (Beginner, Intermediate or Advanced)',
+                                            name: 'sessionLevel'
                                         },
                                         {
                                             xtype: 'textfield',
@@ -310,7 +308,7 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                     attendeeId: parseInt(attendeesId),
                     sessionId: record.getData().id
                 });
-                debugger;
+                //debugger;
                 newSessionPresenterRecord.save({
                     success: function(record) {
                         var sessionsBySpeakerStore = Ext.getCmp("sessionsBySpeakerGridPanelId").getStore();
@@ -372,6 +370,9 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                     sessionsBySpeakerStore.sync({
                         success: function(){
 
+                            var sessionDetailPanel = Ext.getCmp('sessionDetailPanelId');
+                            sessionDetailPanel.setDisabled(true);
+
                             var attendeesId = Ext.getCmp('speakerAfterLoginProfileId').getForm().getValues().attendeesId;
 
                             sessionsBySpeakerStore.load({
@@ -382,7 +383,9 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                                     param3: '-1'
                                 },
                                 success: function(records,operation,success) {
-                                    //Ext.Msg.alert("Error Retrieving Sessions/Speaker Info",success); 
+
+                                    // now sure why this does not fire.
+
                                 },
                                 failure: function(records,operation,success) {
                                     Ext.Msg.alert("Failure Retrieving Sessions/Speaker Info",success); 

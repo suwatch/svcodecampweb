@@ -139,7 +139,7 @@
                                     "            attendeeId: parseInt(attendeesId),\r",
                                     "            sessionId: record.getData().id\r",
                                     "        });\r",
-                                    "        debugger;\r",
+                                    "        //debugger;\r",
                                     "        newSessionPresenterRecord.save({\r",
                                     "            success: function(record) {\r",
                                     "                var sessionsBySpeakerStore = Ext.getCmp(\"sessionsBySpeakerGridPanelId\").getStore();\r",
@@ -231,6 +231,9 @@
                                     "            sessionsBySpeakerStore.remove(recordModel);\r",
                                     "            sessionsBySpeakerStore.sync({\r",
                                     "                success: function(){\r",
+                                    "                    \r",
+                                    "                    var sessionDetailPanel = Ext.getCmp('sessionDetailPanelId');\r",
+                                    "   \t\t\t\t    sessionDetailPanel.setDisabled(true);\r",
                                     "                \t\r",
                                     "                    var attendeesId = Ext.getCmp('speakerAfterLoginProfileId').getForm().getValues().attendeesId;\r",
                                     "                    \r",
@@ -242,7 +245,9 @@
                                     "                            param3: '-1'\r",
                                     "                        },\r",
                                     "                        success: function(records,operation,success) {\r",
-                                    "                           //Ext.Msg.alert(\"Error Retrieving Sessions/Speaker Info\",success); \r",
+                                    "                            \r",
+                                    "                            // now sure why this does not fire.\r",
+                                    "                            \r",
                                     "                        },\r",
                                     "                         failure: function(records,operation,success) {\r",
                                     "                           Ext.Msg.alert(\"Failure Retrieving Sessions/Speaker Info\",success); \r",
@@ -594,24 +599,6 @@
                                     "designerId": "a5a3c928-4eec-4e4c-bc69-b290d3d12ffb"
                                 },
                                 {
-                                    "type": "Ext.form.field.ComboBox",
-                                    "reference": {
-                                        "name": "items",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "layout|anchor": "100%",
-                                        "designer|userClassName": "MyComboBox2",
-                                        "fieldLabel": "Session Level",
-                                        "name": "sessionLevel",
-                                        "displayField": "description",
-                                        "store": "SessionLevelStore",
-                                        "valueField": "id"
-                                    },
-                                    "designerId": "32a579d1-1f56-4d67-b829-2225d16f603f"
-                                },
-                                {
                                     "type": "Ext.form.field.TextArea",
                                     "reference": {
                                         "name": "items",
@@ -626,6 +613,22 @@
                                         "name": "description"
                                     },
                                     "designerId": "48434577-15b0-48ea-b8af-af92b2991aa0"
+                                },
+                                {
+                                    "type": "Ext.form.field.TextArea",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|anchor": "100%",
+                                        "height": 100,
+                                        "designer|userClassName": "MyTextArea3",
+                                        "fieldLabel": "Session Level (Beginner, Intermediate or Advanced)",
+                                        "name": "sessionLevel"
+                                    },
+                                    "designerId": "39698f55-0c2f-4a04-9d48-6929026f7fc0"
                                 },
                                 {
                                     "type": "Ext.form.field.Text",

@@ -57,7 +57,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "level",
+                "name": "sessionLevel_id",
                 "designer|userClassName": "MyField6"
             },
             "designerId": "7fa405f5-a7c2-4ff9-bc71-e31d5727b1fe"

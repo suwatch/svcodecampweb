@@ -761,6 +761,9 @@
                 },
                 {
                     "id": "9896b2d6-63c0-4db3-8d4b-c5addf68660e"
+                },
+                {
+                    "id": "0235e5e4-aa73-4d85-8158-5eb4a12f40d2"
                 }
             ]
         },
@@ -940,7 +943,8 @@
         "openTabs": [
             "4b96b1f9-5681-4344-91f3-31dd99619539",
             "application",
-            "fea6a3af-2d7e-4daa-9f97-09e2da9e54c8"
+            "fea6a3af-2d7e-4daa-9f97-09e2da9e54c8",
+            "35c2c130-f748-41b2-b618-119063231972"
         ]
     },
     "canvasState": {

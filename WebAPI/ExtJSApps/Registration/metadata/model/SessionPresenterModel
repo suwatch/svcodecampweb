@@ -74,6 +74,19 @@
                 "designer|userClassName": "MyField19"
             },
             "designerId": "9896b2d6-63c0-4db3-8d4b-c5addf68660e"
+        },
+        {
+            "type": "Ext.data.proxy.Rest",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyRestProxy3",
+                "url": "/rest/SessionPresenter/"
+            },
+            "designerId": "0235e5e4-aa73-4d85-8158-5eb4a12f40d2"
         }
     ]
 }

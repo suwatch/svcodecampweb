@@ -57,7 +57,19 @@ namespace WebAPI.rest
                 AttendeeId = sessionPresenterResult.AttendeeId,
                 SessionId = sessionPresenterResult.SessionId
             };
-            SessionPresenterManager.I.Insert(spr);
+
+            var session = SessionsManager.I.Get(new SessionsQuery()
+            {
+                Id = sessionPresenterResult.SessionId,
+            }).FirstOrDefault();
+
+            var rec = SessionPresenterManager.I.Get(new SessionPresenterQuery()
+            {
+                Id = spr.Id,
+                WithTitle = true
+            });
+
+            SessionPresenterManager.I.Insert(rec);
 
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, spr);
             return response;

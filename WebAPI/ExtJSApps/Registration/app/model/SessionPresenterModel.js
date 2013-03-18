@@ -32,5 +32,10 @@ Ext.define('RegistrationApp.model.SessionPresenterModel', {
         {
             name: 'description'
         }
-    ]
+    ],
+
+    proxy: {
+        type: 'rest',
+        url: '/rest/SessionPresenter/'
+    }
 });

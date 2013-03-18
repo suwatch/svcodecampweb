@@ -287,9 +287,8 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
     },
 
     onSessionButtonAddNewIdClick: function(button, e, eOpts) {
-        //debugger;
         var newSessionRecord = Ext.create('RegistrationApp.model.Session',{
-            title: '<New Session, Update Your Title and other Session Info>',
+            title: 'New Session, Update Your Title and other Session Info.',
             description: 'Description Required Here',
         });
         newSessionRecord.save({
@@ -297,13 +296,11 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                 debugger;
                 var attendeesId = Ext.getCmp('speakerAfterLoginProfileId').getForm().getValues().attendeesId;
                 var newSessionPresenterRecord = Ext.create('RegistrationApp.model.SessionPresenterModel',{
-                    attendeeId: attendeesId,
+                    attendeeId: parseInt(attendeesId),
                     sessionId: record.getData().id
                 });
                 newSessionPresenterRecord.save({
                     success: function(record) {
-                        debugger;
-
                         var sessionsBySpeakerStore = Ext.getCmp("sessionsBySpeakerGridPanelId").getStore();
                         debugger;
                         sessionsBySpeakerStore.load({

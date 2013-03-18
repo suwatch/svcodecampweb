@@ -90,6 +90,11 @@ namespace WebAPI.REST
         // POST api/session
         public HttpResponseMessage Post(SessionsResult sessionsResult)
         {
+            if (!sessionsResult.SessionLevel_id.HasValue || sessionsResult.SessionLevel_id.Value <= 0)
+            {
+                sessionsResult.SessionLevel_id = 1;
+            }
+
             var session = new SessionsResult()
             {
                 Createdate = DateTime.UtcNow,

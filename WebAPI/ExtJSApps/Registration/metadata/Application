@@ -65,7 +65,7 @@
                 "designer|userClassName": "launch",
                 "fn": "launch",
                 "implHandler": [
-                    "console.log('top of launch event in Application object');"
+                    ""
                 ]
             },
             "designerId": "38862b41-1650-45f5-9800-ee081b97eaa2"

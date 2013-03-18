@@ -247,19 +247,8 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
     },
 
     onSessionButtonSaveChangesIdClick: function(button, e, eOpts) {
-        var tagList = Ext.getCmp("SessionTagsGridPanelId");
-        var tagListStore = tagList.store;
-        tagListStore.save();
-
-
-
-
-
 
         var formPanel = Ext.getCmp("sessionFormPanelEditorId").getForm();
-
-
-
         var sessionGridPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
 
         formPanel.updateRecord();
@@ -279,6 +268,11 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
 
         store.sync();
 
+        var tagList = Ext.getCmp("SessionTagsGridPanelId");
+        var tagListStore = tagList.store;
+        tagListStore.save();
+
+
 
 
 
@@ -293,6 +287,62 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
     },
 
     onSessionButtonAddNewIdClick: function(button, e, eOpts) {
+        //debugger;
+        var newSessionRecord = Ext.create('RegistrationApp.model.Session',{
+            title: '<New Session, Update Your Title and other Session Info>',
+            description: 'Description Required Here',
+        });
+        newSessionRecord.save({
+            success: function(record,operation) {
+                debugger;
+                var attendeesId = Ext.getCmp('speakerAfterLoginProfileId').getForm().getValues().attendeesId;
+                var newSessionPresenterRecord = Ext.create('RegistrationApp.model.SessionPresenterModel',{
+                    attendeeId: attendeesId,
+                    sessionId: record.getData().id
+                });
+                newSessionPresenterRecord.save({
+                    success: function(record) {
+                        debugger;
+
+                        var sessionsBySpeakerStore = Ext.getCmp("sessionsBySpeakerGridPanelId").getStore();
+                        debugger;
+                        sessionsBySpeakerStore.load({
+                            params: {
+                                option: 'byspeaker',
+                                param1: attendeesId,
+                                param2: '-1',
+                                param3: '-1'
+                            },
+                            callback: function(records,operation,success) {
+                                debugger;
+                            }
+                        });
+                    },
+                    failure: function(rec) {
+                        Ext.Msg.alert("Failed To Add Record to SessionPresenter");
+                    },
+                });
+            },
+            failure: function(rec) {
+                Ext.Msg.alert("Failed To Add Record to Session");
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     },
 

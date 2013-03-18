@@ -66,7 +66,7 @@ Ext.application({
     name: 'RegistrationApp',
 
     launch: function() {
-        console.log('top of launch event in Application object');
+
     }
 
 });

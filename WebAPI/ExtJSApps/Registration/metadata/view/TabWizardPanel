@@ -29,31 +29,13 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|userClassName": "hideTabTitles",
-                "fn": "hideTabTitles",
-                "implHandler": [
-                    "//this.getTabBar().hide();\r",
-                    "//this.componentLayout.childrenChanged = true;\r",
-                    "//this.doComponentLayout();"
-                ]
-            },
-            "designerId": "cd19273b-8f0c-4df9-be5a-887e816184ac"
-        },
-        {
-            "type": "basicfunction",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
                 "designer|userClassName": "getTabIdByName",
                 "fn": "getTabIdByName",
                 "designer|params": [
                     "stepName"
                 ],
                 "implHandler": [
-                    "console.log('getTabIdByName:stepName(top): ' + stepName);\r",
+                    "//console.log('getTabIdByName:stepName(top): ' + stepName);\r",
                     "\r",
                     "\r",
                     "\r",
@@ -86,7 +68,7 @@
                     "    console.log('getTabIdByName called with no match ' + stepName);\r",
                     "}\r",
                     "\r",
-                    "console.log('getTabIdByName:stepName(bottom): ' + tabId);\r",
+                    "//console.log('getTabIdByName:stepName(bottom): ' + tabId);\r",
                     "\r",
                     "\r",
                     "return tabId;"

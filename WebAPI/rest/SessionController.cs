@@ -88,8 +88,26 @@ namespace WebAPI.REST
         }
 
         // POST api/session
-        public void Post(SessionsResult sessionsResult)
+        public HttpResponseMessage Post(SessionsResult sessionsResult)
         {
+            var session = new SessionsResult()
+            {
+                Createdate = DateTime.UtcNow,
+                CodeCampYearId = Utils.CurrentCodeCampYear,
+                Title = sessionsResult.Title,
+                Description = sessionsResult.Description,
+                SessionLevel_id = sessionsResult.SessionLevel_id,
+                TwitterHashTags = sessionsResult.TwitterHashTags,
+                Approved = false
+            };
+            SessionsManager.I.Insert(session);
+
+
+            HttpResponseMessage response;
+            response = Request.CreateResponse(HttpStatusCode.OK, session);
+            return response;
+
+
         }
 
         /// <summary>

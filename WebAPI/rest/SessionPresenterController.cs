@@ -50,8 +50,17 @@ namespace WebAPI.rest
         }
 
         // POST api/sessionpresenter
-        public void Post([FromBody]string value)
+        public HttpResponseMessage Post(SessionPresenterResult sessionPresenterResult)
         {
+            SessionPresenterResult spr = new SessionPresenterResult()
+            {
+                AttendeeId = sessionPresenterResult.AttendeeId,
+                SessionId = sessionPresenterResult.SessionId
+            };
+            SessionPresenterManager.I.Insert(spr);
+
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, spr);
+            return response;
         }
 
         // PUT api/sessionpresenter/5

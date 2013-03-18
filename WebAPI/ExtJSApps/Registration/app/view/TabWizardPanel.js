@@ -76,14 +76,8 @@ Ext.define('RegistrationApp.view.TabWizardPanel', {
         me.callParent(arguments);
     },
 
-    hideTabTitles: function() {
-        //this.getTabBar().hide();
-        //this.componentLayout.childrenChanged = true;
-        //this.doComponentLayout();
-    },
-
     getTabIdByName: function(stepName) {
-        console.log('getTabIdByName:stepName(top): ' + stepName);
+        //console.log('getTabIdByName:stepName(top): ' + stepName);
 
 
 
@@ -116,7 +110,7 @@ Ext.define('RegistrationApp.view.TabWizardPanel', {
             console.log('getTabIdByName called with no match ' + stepName);
         }
 
-        console.log('getTabIdByName:stepName(bottom): ' + tabId);
+        //console.log('getTabIdByName:stepName(bottom): ' + tabId);
 
 
         return tabId;

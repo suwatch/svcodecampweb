@@ -21,6 +21,7 @@
                 "designer|userClassName": "onContinueButtonIdClick",
                 "fn": "onContinueButtonIdClick",
                 "implHandler": [
+                    "\r",
                     "var myMask = new Ext.LoadMask(Ext.getBody(), {msg:\"Updating...\"});\r",
                     "myMask.show();\r",
                     "\r",
@@ -44,6 +45,7 @@
                     "        myMask.hide();\r",
                     "    } \r",
                     "});\r",
+                    "\r",
                     ""
                 ],
                 "name": "click",
@@ -109,7 +111,7 @@
                 "designer|userClassName": "onEditSelectedSessionButtonIdClick",
                 "fn": "onEditSelectedSessionButtonIdClick",
                 "implHandler": [
-                    "//debugger;\r",
+                    "/*\r",
                     "\r",
                     "var sessionsSpeakerPanel = Ext.getCmp(\"sessionsBySpeakerGridPanelId\");\r",
                     "var selectedRecs = sessionsSpeakerPanel.getSelectionModel().getSelection();\r",
@@ -119,7 +121,8 @@
                     "}\r",
                     "else {\r",
                     "    Ext.Msg.alert('Must Have Current Sessions and Select One In Order To Edit');   \r",
-                    "}"
+                    "}\r",
+                    "*/"
                 ],
                 "name": "click",
                 "scope": "me",
@@ -139,7 +142,7 @@
                 "designer|userClassName": "onAddNewSessionButtonIdClick",
                 "fn": "onAddNewSessionButtonIdClick",
                 "implHandler": [
-                    "\r",
+                    "/*\r",
                     "var sessionsSpeakerPanel = Ext.getCmp(\"sessionsBySpeakerGridPanelId\");\r",
                     "var store = sessionsSpeakerPanel.getStore();\r",
                     "var newRecord = Ext.create('RegistrationApp.model.Session',{\r",
@@ -151,7 +154,8 @@
                     "//debugger;\r",
                     "\r",
                     "Ext.create('RegistrationApp.view.WindowSession',{\r",
-                    "}).show();"
+                    "}).show();\r",
+                    "*/"
                 ],
                 "name": "click",
                 "scope": "me",

@@ -17,6 +17,7 @@ Ext.define('RegistrationApp.controller.SpeakerAfterLoginController', {
     extend: 'Ext.app.Controller',
 
     onContinueButtonIdClick: function(button, e, eOpts) {
+
         var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Updating..."});
         myMask.show();
 
@@ -40,6 +41,7 @@ Ext.define('RegistrationApp.controller.SpeakerAfterLoginController', {
                 myMask.hide();
             } 
         });
+
 
     },
 
@@ -73,26 +75,27 @@ Ext.define('RegistrationApp.controller.SpeakerAfterLoginController', {
     },
 
     onEditSelectedSessionButtonIdClick: function(button, e, eOpts) {
-        //debugger;
+        /*
 
         var sessionsSpeakerPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
         var selectedRecs = sessionsSpeakerPanel.getSelectionModel().getSelection();
         if (selectedRecs.length > 0) {
-            Ext.create('RegistrationApp.view.WindowSession',{
-            }).show();
+        Ext.create('RegistrationApp.view.WindowSession',{
+        }).show();
         }
         else {
-            Ext.Msg.alert('Must Have Current Sessions and Select One In Order To Edit');   
+        Ext.Msg.alert('Must Have Current Sessions and Select One In Order To Edit');   
         }
+        */
     },
 
     onAddNewSessionButtonIdClick: function(button, e, eOpts) {
-
+        /*
         var sessionsSpeakerPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
         var store = sessionsSpeakerPanel.getStore();
         var newRecord = Ext.create('RegistrationApp.model.Session',{
-            title: 'my title',
-            description: 'my descr'
+        title: 'my title',
+        description: 'my descr'
         });
         store.add(newRecord);
 
@@ -100,6 +103,7 @@ Ext.define('RegistrationApp.controller.SpeakerAfterLoginController', {
 
         Ext.create('RegistrationApp.view.WindowSession',{
         }).show();
+        */
     },
 
     init: function(application) {

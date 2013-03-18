@@ -257,23 +257,30 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
 
 
         var formPanel = Ext.getCmp("sessionFormPanelEditorId").getForm();
-        formPanel.updateRecord();
-        var modelRecord = formPanel.getRecord();
-        modelRecord.save();
+
+
 
         var sessionGridPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
-        var store = sessionGridPanel.getStore();
-        //store.sync();
-        //store.reload()
 
+        formPanel.updateRecord();
+        var modelRecord = formPanel.getRecord();
+
+        var store = sessionGridPanel.getStore();
         var sessionId = modelRecord.getId()
         var index = store.findExact("id", parseInt(sessionId));
 
         var modelRecordFromGrid = store.getAt(index);
-        //debugger;
+
         modelRecordFromGrid.set("title",modelRecord.getData().title);
-        //store.sync();
-        modelRecordFromGrid.commit();
+        modelRecordFromGrid.set("description",modelRecord.getData().description);
+        modelRecordFromGrid.set("sessionLevel",modelRecord.getData().sessionLevel);
+        modelRecordFromGrid.set("twitterHashTags",modelRecord.getData().twitterHashTags);
+        modelRecordFromGrid.set("description",modelRecord.getData().description);
+
+        store.sync();
+
+
+
 
 
 

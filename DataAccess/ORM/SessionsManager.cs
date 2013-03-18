@@ -246,8 +246,26 @@ namespace CodeCampSV
                      select data).ToDictionary(k => k.Id, v => v);
             }
 
+            var sessionLevelsDict = new Dictionary<int, string>();
+            if (query.WithLevel.HasValue && query.WithLevel.Value)
+            {
+               
+                sessionLevelsDict = (from data in meta.SessionLevels
+                                 select data).ToDictionary(k => k.Id, v => v.Description);
+            }
+
             foreach (var session in resultList)
             {
+                
+                if (query.WithLevel.HasValue && query.WithLevel.Value)
+                {
+                    if (session.SessionLevel_id.HasValue && sessionLevelsDict.ContainsKey(session.SessionLevel_id.Value))
+                    {
+                        session.SessionLevel = sessionLevelsDict[session.SessionLevel_id.Value];
+                    }
+                }
+
+
                 session.SessionUrl =
                     String.Format("/Session/{0}/{1}",
                                   Utils.ConvertCodeCampYearToActualYear(

@@ -58,7 +58,40 @@
                                 "implHandler": [
                                     "var tagList = Ext.getCmp(\"SessionTagsGridPanelId\");\r",
                                     "var tagListStore = tagList.store;\r",
-                                    "tagListStore.save();"
+                                    "tagListStore.save();\r",
+                                    "\r",
+                                    "\r",
+                                    "\r",
+                                    "\r",
+                                    "\r",
+                                    "\r",
+                                    "var formPanel = Ext.getCmp(\"sessionFormPanelEditorId\").getForm();\r",
+                                    "formPanel.updateRecord();\r",
+                                    "var modelRecord = formPanel.getRecord();\r",
+                                    "modelRecord.save();\r",
+                                    "\r",
+                                    "var sessionGridPanel = Ext.getCmp(\"sessionsBySpeakerGridPanelId\");\r",
+                                    "var store = sessionGridPanel.getStore();\r",
+                                    "//store.sync();\r",
+                                    "//store.reload()\r",
+                                    "\r",
+                                    "var sessionId = modelRecord.getId()\r",
+                                    "var index = store.findExact(\"id\", parseInt(sessionId));\r",
+                                    "\r",
+                                    "var modelRecordFromGrid = store.getAt(index);\r",
+                                    "//debugger;\r",
+                                    "modelRecordFromGrid.set(\"title\",modelRecord.getData().title);\r",
+                                    "//store.sync();\r",
+                                    "modelRecordFromGrid.commit();\r",
+                                    "\r",
+                                    "\r",
+                                    "\r",
+                                    "\r",
+                                    "\r",
+                                    "\r",
+                                    "\r",
+                                    "\r",
+                                    ""
                                 ],
                                 "name": "click",
                                 "scope": "me"
@@ -263,104 +296,6 @@
                     "designerId": "73570d59-01cb-4bdf-8020-4c7c7b1bb663"
                 },
                 {
-                    "type": "Ext.toolbar.Toolbar",
-                    "reference": {
-                        "name": "dockedItems",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "dock": "top",
-                        "designer|userClassName": "MyToolbar10"
-                    },
-                    "designerId": "cf3ecd81-a330-4b6a-94f8-ba2e66a79fe2",
-                    "cn": [
-                        {
-                            "type": "Ext.button.Button",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "layout|flex": null,
-                                "id": "editSelectedSessionButtonId",
-                                "designer|userClassName": "MyButton19",
-                                "text": "Edit Selected Session"
-                            },
-                            "designerId": "49e6224b-dda2-4ea4-8a2e-77bafcb20042"
-                        },
-                        {
-                            "type": "Ext.button.Button",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "layout|flex": null,
-                                "id": "AddNewSessionButtonId",
-                                "designer|userClassName": "MyButton19",
-                                "text": "Add New Session"
-                            },
-                            "designerId": "c491f9f3-be04-4c42-8dcc-8f7c514ff89d"
-                        },
-                        {
-                            "type": "Ext.button.Button",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "layout|flex": null,
-                                "itemId": "AddNewSessionItemIdButton",
-                                "designer|userClassName": "MyButton6",
-                                "text": "MyButton"
-                            },
-                            "designerId": "2d94baf2-5ee2-4611-8fa5-c5dcdde3dbf6",
-                            "customConfigs": [
-                                {
-                                    "group": "(Custom Properties)",
-                                    "name": "click",
-                                    "type": "string"
-                                }
-                            ],
-                            "cn": [
-                                {
-                                    "type": "basiceventbinding",
-                                    "reference": {
-                                        "name": "listeners",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "designer|userClassName": "onAddNewSessionItemIdButtonClick",
-                                        "fn": "onAddNewSessionItemIdButtonClick",
-                                        "implHandler": [
-                                            "var sessionsSpeakerPanel = Ext.getCmp(\"sessionsBySpeakerGridPanelId\");\r",
-                                            "var store = sessionsSpeakerPanel.getStore();\r",
-                                            "var newRecord = Ext.create('RegistrationApp.model.Session',{\r",
-                                            "    title: 'my title',\r",
-                                            "    description: 'my descr'\r",
-                                            "});\r",
-                                            "store.add(newRecord);\r",
-                                            "\r",
-                                            "//debugger;\r",
-                                            "\r",
-                                            "Ext.create('RegistrationApp.view.WindowSession',{\r",
-                                            "}).show();"
-                                        ],
-                                        "name": "click",
-                                        "scope": "me"
-                                    },
-                                    "designerId": "f351bada-070c-4595-9fb1-c9c31c5f9bd2"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
                     "type": "basiceventbinding",
                     "reference": {
                         "name": "listeners",
@@ -380,7 +315,12 @@
                             "\r",
                             "// fill data into form for session info\r",
                             "var panelForm = Ext.getCmp('sessionFormPanelEditorId').getForm();\r",
-                            "panelForm.setValues(sessionData);\r",
+                            "\r",
+                            "var myRec = Ext.create(\"RegistrationApp.model.Session\",sessionData);\r",
+                            "panelForm.loadRecord(myRec);\r",
+                            "\r",
+                            "\r",
+                            "//panelForm.setValues(sessionData);\r",
                             "\r",
                             "// fill data in for tags\r",
                             "var tagList = Ext.getCmp(\"SessionTagsGridPanelId\");\r",
@@ -399,8 +339,8 @@
                             "            }\r",
                             "        });\r",
                             "        sm.select(recs);\r",
-                            "        \r",
-                            "       \r",
+                            "\r",
+                            "\r",
                             "\r",
                             "        tagList.getView().scrollBy(0, -10000);\r",
                             "\r",
@@ -555,6 +495,7 @@
                                     "codeClass": null,
                                     "userConfig": {
                                         "layout|anchor": "100%",
+                                        "hidden": true,
                                         "id": null,
                                         "designer|userClassName": "MyTextField37",
                                         "fieldLabel": "sessionId",
@@ -571,6 +512,7 @@
                                     "codeClass": null,
                                     "userConfig": {
                                         "layout|anchor": "100%",
+                                        "hidden": true,
                                         "id": null,
                                         "designer|userClassName": "MyTextField37",
                                         "fieldLabel": "attendeesId",

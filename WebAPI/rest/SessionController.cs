@@ -57,7 +57,8 @@ namespace WebAPI.REST
 
                 sessionQuery = new SessionsQuery
                                    {
-                                      Ids = sessionIds
+                                      Ids = sessionIds,
+                                      WithLevel = true
                                    };
 
 
@@ -107,8 +108,15 @@ namespace WebAPI.REST
             HttpResponseMessage response;
             if (session != null)
             {
+                int newLevel;
+                Int32.TryParse(sessionsResult.SessionLevel, out newLevel);
+
+
                 session.Title = sessionsResult.Title;
                 session.Description = sessionsResult.Description;
+                session.TwitterHashTags = sessionsResult.TwitterHashTags;
+                session.SessionLevel_id = newLevel;
+
                 SessionsManager.I.Update(session);
                
                 response = Request.CreateResponse(HttpStatusCode.OK, sessionsResult);

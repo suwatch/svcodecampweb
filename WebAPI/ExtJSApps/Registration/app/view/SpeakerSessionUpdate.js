@@ -124,35 +124,6 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                             text: 'sessionsId'
                         }
                     ],
-                    dockedItems: [
-                        {
-                            xtype: 'toolbar',
-                            dock: 'top',
-                            items: [
-                                {
-                                    xtype: 'button',
-                                    id: 'editSelectedSessionButtonId',
-                                    text: 'Edit Selected Session'
-                                },
-                                {
-                                    xtype: 'button',
-                                    id: 'AddNewSessionButtonId',
-                                    text: 'Add New Session'
-                                },
-                                {
-                                    xtype: 'button',
-                                    itemId: 'AddNewSessionItemIdButton',
-                                    text: 'MyButton',
-                                    listeners: {
-                                        click: {
-                                            fn: me.onAddNewSessionItemIdButtonClick,
-                                            scope: me
-                                        }
-                                    }
-                                }
-                            ]
-                        }
-                    ],
                     listeners: {
                         selectionchange: {
                             fn: me.onSessionsBySpeakerGridPanelIdSelectionChange,
@@ -220,12 +191,14 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                                         {
                                             xtype: 'textfield',
                                             anchor: '100%',
+                                            hidden: true,
                                             fieldLabel: 'sessionId',
                                             name: 'sessionId'
                                         },
                                         {
                                             xtype: 'textfield',
                                             anchor: '100%',
+                                            hidden: true,
                                             fieldLabel: 'attendeesId',
                                             name: 'id'
                                         }
@@ -277,25 +250,43 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
         var tagList = Ext.getCmp("SessionTagsGridPanelId");
         var tagListStore = tagList.store;
         tagListStore.save();
+
+
+
+
+
+
+        var formPanel = Ext.getCmp("sessionFormPanelEditorId").getForm();
+        formPanel.updateRecord();
+        var modelRecord = formPanel.getRecord();
+        modelRecord.save();
+
+        var sessionGridPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
+        var store = sessionGridPanel.getStore();
+        //store.sync();
+        //store.reload()
+
+        var sessionId = modelRecord.getId()
+        var index = store.findExact("id", parseInt(sessionId));
+
+        var modelRecordFromGrid = store.getAt(index);
+        //debugger;
+        modelRecordFromGrid.set("title",modelRecord.getData().title);
+        //store.sync();
+        modelRecordFromGrid.commit();
+
+
+
+
+
+
+
+
+
     },
 
     onSessionButtonAddNewIdClick: function(button, e, eOpts) {
 
-    },
-
-    onAddNewSessionItemIdButtonClick: function(button, e, eOpts) {
-        var sessionsSpeakerPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
-        var store = sessionsSpeakerPanel.getStore();
-        var newRecord = Ext.create('RegistrationApp.model.Session',{
-            title: 'my title',
-            description: 'my descr'
-        });
-        store.add(newRecord);
-
-        //debugger;
-
-        Ext.create('RegistrationApp.view.WindowSession',{
-        }).show();
     },
 
     onSessionsBySpeakerGridPanelIdSelectionChange: function(model, selected, eOpts) {
@@ -308,7 +299,12 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
 
         // fill data into form for session info
         var panelForm = Ext.getCmp('sessionFormPanelEditorId').getForm();
-        panelForm.setValues(sessionData);
+
+        var myRec = Ext.create("RegistrationApp.model.Session",sessionData);
+        panelForm.loadRecord(myRec);
+
+
+        //panelForm.setValues(sessionData);
 
         // fill data in for tags
         var tagList = Ext.getCmp("SessionTagsGridPanelId");

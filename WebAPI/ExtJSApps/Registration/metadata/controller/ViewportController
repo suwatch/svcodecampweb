@@ -61,7 +61,7 @@
                     "                },\r",
                     "                callback: function(records,operation,success) {\r",
                     "                    var imgId = Ext.ComponentQuery.query('#SpeakerImgId')[0];\r",
-                    "                    var imageLocation = '/attendeeimage/' + retData.attendeesId + '.jpg?width=280&height=280&borderWidth=1&borderColor=black&scale=both';\r",
+                    "                    var imageLocation = '/attendeeimage/' + retData.attendeesId + '.jpg?width=260&height=260&borderWidth=1&borderColor=black&scale=both';\r",
                     "                    var antiCachePart = (new Date()).getTime();\r",
                     "                    var newSrc = imageLocation + '&dc=' + antiCachePart;\r",
                     "                    imgId.setSrc(newSrc); \r",

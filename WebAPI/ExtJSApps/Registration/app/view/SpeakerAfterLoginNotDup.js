@@ -60,9 +60,10 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
             items: [
                 {
                     xtype: 'form',
-                    flex: 5,
-                    region: 'west',
+                    flex: 3,
+                    region: 'north',
                     split: true,
+                    height: 150,
                     id: 'speakerAfterLoginProfileId',
                     itemId: '',
                     autoScroll: true,
@@ -222,59 +223,43 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
                 },
                 {
                     xtype: 'form',
-                    flex: 2,
+                    flex: 3,
                     region: 'center',
                     split: true,
                     id: 'speakerPictureUploadFormId',
-                    bodyPadding: 20,
-                    title: 'Speaker Picture Upload',
+                    bodyPadding: 5,
+                    animCollapse: true,
+                    collapseDirection: 'bottom',
+                    collapsible: true,
+                    title: 'Speaker Picture Upload (Required For All Speakers Before Submitting Sessions)',
                     url: '/api/Account/FormData',
                     items: [
                         {
-                            xtype: 'fieldset',
-                            layout: {
-                                align: 'stretch',
-                                type: 'vbox'
-                            },
-                            title: 'Picture Required Before Submitting Sessions',
+                            xtype: 'filefield',
+                            border: false,
+                            id: 'SpeakerPictureUploadXId',
+                            itemId: 'SpeakerPictureUploadId',
+                            fieldLabel: '',
+                            hideLabel: true,
+                            listeners: {
+                                change: {
+                                    fn: me.onSpeakerPictureUploadXIdChange,
+                                    scope: me
+                                }
+                            }
+                        },
+                        {
+                            xtype: 'panel',
+                            border: false,
+                            height: 300,
+                            itemId: 'PicturePanelId',
                             items: [
                                 {
-                                    xtype: 'filefield',
-                                    flex: 1,
-                                    border: false,
-                                    height: 50,
-                                    id: 'SpeakerPictureUploadXId',
-                                    itemId: 'SpeakerPictureUploadId',
-                                    minWidth: 150,
-                                    padding: 10,
-                                    fieldLabel: '',
-                                    hideLabel: true,
-                                    labelAlign: 'top',
-                                    labelPad: 0,
-                                    listeners: {
-                                        change: {
-                                            fn: me.onSpeakerPictureUploadXIdChange,
-                                            scope: me
-                                        }
-                                    }
-                                },
-                                {
-                                    xtype: 'panel',
-                                    flex: 7,
-                                    border: false,
-                                    height: 300,
-                                    itemId: 'PicturePanelId',
-                                    padding: 5,
-                                    width: 300,
-                                    items: [
-                                        {
-                                            xtype: 'image',
-                                            border: 1,
-                                            id: 'SpeakerImageId',
-                                            itemId: 'SpeakerImgId',
-                                            src: '/image/none.jpg'
-                                        }
-                                    ]
+                                    xtype: 'image',
+                                    border: 1,
+                                    id: 'SpeakerImageId',
+                                    itemId: 'SpeakerImgId',
+                                    src: '/image/none.jpg'
                                 }
                             ]
                         }
@@ -297,7 +282,7 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
                 waitMsg: 'Uploading your photo...',
                 success: function(fp, o) {
                     var attendeesId = o.result.attendeeId;
-                    var imageLocation = '/attendeeimage/' + attendeesId + '.jpg?width=280&height=280&borderWidth=1&borderColor=black&scale=both';
+                    var imageLocation = '/attendeeimage/' + attendeesId + '.jpg?width=260&height=260&borderWidth=1&borderColor=black&scale=both';
                     var antiCachePart = (new Date()).getTime();
                     var newSrc = imageLocation + '&dc=' + antiCachePart;
                     imgId.setSrc(newSrc); 

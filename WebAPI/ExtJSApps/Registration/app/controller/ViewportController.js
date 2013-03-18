@@ -57,7 +57,7 @@ Ext.define('RegistrationApp.controller.ViewportController', {
                         },
                         callback: function(records,operation,success) {
                             var imgId = Ext.ComponentQuery.query('#SpeakerImgId')[0];
-                            var imageLocation = '/attendeeimage/' + retData.attendeesId + '.jpg?width=280&height=280&borderWidth=1&borderColor=black&scale=both';
+                            var imageLocation = '/attendeeimage/' + retData.attendeesId + '.jpg?width=260&height=260&borderWidth=1&borderColor=black&scale=both';
                             var antiCachePart = (new Date()).getTime();
                             var newSrc = imageLocation + '&dc=' + antiCachePart;
                             imgId.setSrc(newSrc); 

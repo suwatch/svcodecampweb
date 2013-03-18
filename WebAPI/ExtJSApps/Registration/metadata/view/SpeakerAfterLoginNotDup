@@ -90,12 +90,12 @@
             },
             "codeClass": null,
             "userConfig": {
-                "layout|flex": 5,
-                "layout|region": "west",
+                "layout|flex": 3,
+                "layout|region": "north",
                 "layout|split": true,
+                "height": 150,
                 "id": "speakerAfterLoginProfileId",
                 "itemId": "",
-                "width": null,
                 "designer|userClassName": "SpeakerAfterLogin",
                 "designer|userAlias": "SpeakerAfterLoginAlias",
                 "autoScroll": true,
@@ -495,15 +495,18 @@
             "codeClass": null,
             "userConfig": {
                 "buttons": null,
-                "layout|flex": 2,
+                "layout|flex": 3,
                 "layout|region": "center",
                 "layout|split": true,
                 "id": "speakerPictureUploadFormId",
                 "padding": null,
                 "designer|userClassName": "SpeakerPicture",
                 "designer|userAlias": "SpeakerPictureAlias",
-                "bodyPadding": 20,
-                "title": "Speaker Picture Upload",
+                "bodyPadding": 5,
+                "animCollapse": true,
+                "collapseDirection": "bottom",
+                "collapsible": true,
+                "title": "Speaker Picture Upload (Required For All Speakers Before Submitting Sessions)",
                 "url": "/api/Account/FormData"
             },
             "designerId": "99ab335f-8e80-451e-a2c6-ac4d92811303",
@@ -516,134 +519,112 @@
             ],
             "cn": [
                 {
-                    "type": "Ext.form.FieldSet",
+                    "type": "Ext.form.field.File",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "container|align": "stretch",
-                        "designer|userClassName": "MyFieldSet",
-                        "layout": "vbox",
-                        "title": "Picture Required Before Submitting Sessions"
+                        "border": false,
+                        "id": "SpeakerPictureUploadXId",
+                        "itemId": "SpeakerPictureUploadId",
+                        "minWidth": null,
+                        "padding": null,
+                        "designer|userClassName": "MyFileUpload",
+                        "fieldLabel": "",
+                        "hideLabel": true,
+                        "labelAlign": null,
+                        "labelPad": null,
+                        "labelWidth": null
                     },
-                    "designerId": "5163df38-67e0-4dda-aa34-dacda022b5f7",
+                    "designerId": "6cd5b015-a5fd-4559-92fd-de5d67368104",
                     "cn": [
                         {
-                            "type": "Ext.form.field.File",
+                            "type": "basiceventbinding",
                             "reference": {
-                                "name": "items",
+                                "name": "listeners",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "layout|flex": 1,
-                                "border": false,
-                                "height": 50,
-                                "id": "SpeakerPictureUploadXId",
-                                "itemId": "SpeakerPictureUploadId",
-                                "minWidth": 150,
-                                "padding": 10,
-                                "width": null,
-                                "designer|userClassName": "MyFileUpload",
-                                "fieldLabel": "",
-                                "hideLabel": true,
-                                "labelAlign": "top",
-                                "labelPad": 0,
-                                "labelWidth": null
+                                "designer|userClassName": "onSpeakerPictureUploadXIdChange",
+                                "fn": "onSpeakerPictureUploadXIdChange",
+                                "implHandler": [
+                                    "// FOR SOME REASON THIS WILL NOT GET CALLED IN CONTROLLER\r",
+                                    "\r",
+                                    "var speakerForm = Ext.getCmp('speakerPictureUploadFormId');\r",
+                                    "var imgId = Ext.getCmp('SpeakerImageId');\r",
+                                    "if(speakerForm.isValid()){\r",
+                                    "    speakerForm.submit({\r",
+                                    "        url: '/rpc/Account/FormData',\r",
+                                    "        waitMsg: 'Uploading your photo...',\r",
+                                    "        success: function(fp, o) {\r",
+                                    "            var attendeesId = o.result.attendeeId;\r",
+                                    "            var imageLocation = '/attendeeimage/' + attendeesId + '.jpg?width=260&height=260&borderWidth=1&borderColor=black&scale=both';\r",
+                                    "            var antiCachePart = (new Date()).getTime();\r",
+                                    "            var newSrc = imageLocation + '&dc=' + antiCachePart;\r",
+                                    "            imgId.setSrc(newSrc); \r",
+                                    "\r",
+                                    "        },\r",
+                                    "        failure: function(form, action){\r",
+                                    "            //debugger;\r",
+                                    "            if (action.failureType === Ext.form.action.Action.CONNECT_FAILURE) {\r",
+                                    "                Ext.Msg.alert('Error',\r",
+                                    "                'Status:'+action.response.status+': '+\r",
+                                    "                action.response.statusText);\r",
+                                    "            }\r",
+                                    "            if (action.failureType === Ext.form.action.Action.SERVER_INVALID){\r",
+                                    "                // server responded with success = false\r",
+                                    "                Ext.Msg.alert('Invalid', action.result.errormsg);\r",
+                                    "            }\r",
+                                    "        }\r",
+                                    "    });\r",
+                                    "}"
+                                ],
+                                "name": "change",
+                                "scope": "me"
                             },
-                            "designerId": "6cd5b015-a5fd-4559-92fd-de5d67368104",
-                            "cn": [
-                                {
-                                    "type": "basiceventbinding",
-                                    "reference": {
-                                        "name": "listeners",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "designer|userClassName": "onSpeakerPictureUploadXIdChange",
-                                        "fn": "onSpeakerPictureUploadXIdChange",
-                                        "implHandler": [
-                                            "// FOR SOME REASON THIS WILL NOT GET CALLED IN CONTROLLER\r",
-                                            "\r",
-                                            "var speakerForm = Ext.getCmp('speakerPictureUploadFormId');\r",
-                                            "var imgId = Ext.getCmp('SpeakerImageId');\r",
-                                            "if(speakerForm.isValid()){\r",
-                                            "    speakerForm.submit({\r",
-                                            "        url: '/rpc/Account/FormData',\r",
-                                            "        waitMsg: 'Uploading your photo...',\r",
-                                            "        success: function(fp, o) {\r",
-                                            "            var attendeesId = o.result.attendeeId;\r",
-                                            "            var imageLocation = '/attendeeimage/' + attendeesId + '.jpg?width=280&height=280&borderWidth=1&borderColor=black&scale=both';\r",
-                                            "            var antiCachePart = (new Date()).getTime();\r",
-                                            "            var newSrc = imageLocation + '&dc=' + antiCachePart;\r",
-                                            "            imgId.setSrc(newSrc); \r",
-                                            "            \r",
-                                            "        },\r",
-                                            "        failure: function(form, action){\r",
-                                            "            //debugger;\r",
-                                            "            if (action.failureType === Ext.form.action.Action.CONNECT_FAILURE) {\r",
-                                            "                Ext.Msg.alert('Error',\r",
-                                            "                'Status:'+action.response.status+': '+\r",
-                                            "                action.response.statusText);\r",
-                                            "            }\r",
-                                            "            if (action.failureType === Ext.form.action.Action.SERVER_INVALID){\r",
-                                            "                // server responded with success = false\r",
-                                            "                Ext.Msg.alert('Invalid', action.result.errormsg);\r",
-                                            "            }\r",
-                                            "        }\r",
-                                            "    });\r",
-                                            "}"
-                                        ],
-                                        "name": "change",
-                                        "scope": "me"
-                                    },
-                                    "designerId": "b7ee6e6b-6112-40e4-a7d9-2d54fcb1897f"
-                                }
-                            ]
-                        },
+                            "designerId": "b7ee6e6b-6112-40e4-a7d9-2d54fcb1897f"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.panel.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "border": false,
+                        "height": 300,
+                        "itemId": "PicturePanelId",
+                        "minWidth": null,
+                        "padding": null,
+                        "designer|userClassName": "MyPanel",
+                        "title": null
+                    },
+                    "designerId": "0100e99f-c88c-4569-b9f5-76731275d87e",
+                    "cn": [
                         {
-                            "type": "Ext.panel.Panel",
+                            "type": "Ext.Img",
                             "reference": {
                                 "name": "items",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "layout|flex": 7,
-                                "border": false,
-                                "height": 300,
-                                "itemId": "PicturePanelId",
-                                "minWidth": null,
-                                "padding": 5,
-                                "width": 300,
-                                "designer|userClassName": "MyPanel",
-                                "title": null
+                                "border": 1,
+                                "height": null,
+                                "id": "SpeakerImageId",
+                                "itemId": "SpeakerImgId",
+                                "ui": null,
+                                "width": null,
+                                "designer|userClassName": "MyImg",
+                                "src": "/image/none.jpg"
                             },
-                            "designerId": "0100e99f-c88c-4569-b9f5-76731275d87e",
-                            "cn": [
-                                {
-                                    "type": "Ext.Img",
-                                    "reference": {
-                                        "name": "items",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "border": 1,
-                                        "height": null,
-                                        "id": "SpeakerImageId",
-                                        "itemId": "SpeakerImgId",
-                                        "ui": null,
-                                        "width": null,
-                                        "designer|userClassName": "MyImg",
-                                        "src": "/image/none.jpg"
-                                    },
-                                    "designerId": "6b917543-ebf1-4f54-9080-a8ab971a050a"
-                                }
-                            ]
+                            "designerId": "6b917543-ebf1-4f54-9080-a8ab971a050a"
                         }
                     ]
                 }

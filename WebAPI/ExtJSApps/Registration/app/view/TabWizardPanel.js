@@ -32,7 +32,7 @@ Ext.define('RegistrationApp.view.TabWizardPanel', {
         'Ext.form.Label'
     ],
 
-    height: 450,
+    height: 500,
     id: 'TabWizardId',
     itemId: '',
     activeTab: 0,

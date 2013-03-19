@@ -544,9 +544,9 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "hidden": true,
                         "width": 50,
                         "designer|userClassName": "MyColumn1",
+                        "defaultWidth": 200,
                         "dataIndex": "approved",
                         "text": null
                     },
@@ -560,8 +560,8 @@
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "designer|userClassName": "editRenderer",
-                                "fn": "editRenderer",
+                                "designer|userClassName": "renderer",
+                                "fn": "renderer",
                                 "designer|params": [
                                     "value",
                                     "metaData",
@@ -573,14 +573,14 @@
                                 ],
                                 "implHandler": [
                                     "if (value == true) {\r",
-                                    "\treturn 'approved';\r",
+                                    "    return 'approved';\r",
                                     "} else {\r",
                                     "    return 'pending approval';\r",
                                     "}\r",
-                                    "    "
+                                    ""
                                 ]
                             },
-                            "designerId": "20c59dde-a4ab-41f9-ba8f-42b99ee7c441"
+                            "designerId": "e08fea03-182f-4547-8eb0-d5c4f1afe141"
                         }
                     ]
                 }

@@ -5046,7 +5046,6 @@ namespace CodeCampSV
                     }).Count();
 
                 bool userIsAdmin = CheckUserIsAdmin();
-                userIsAdmin = false;
                 if (numberSessionsThisYear < numberSessionsAllowed || userIsAdmin)
                 {
                     return true;

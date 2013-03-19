@@ -120,6 +120,23 @@ namespace WebAPI.REST
         public HttpResponseMessage Post(SessionsResult sessionsResult)
         {
             HttpResponseMessage response;
+            bool sessionAccepted = false;
+            if (sessionsResult.LoggedInUserAttendeeId.HasValue)
+            {
+                var attendeeRec =
+                    AttendeesManager.I.Get(new AttendeesQuery() {Id = sessionsResult.LoggedInUserAttendeeId})
+                                    .FirstOrDefault();
+                if (attendeeRec != null)
+                {
+                    if ((attendeeRec.PresentationApprovalRequired.HasValue &&
+                         !attendeeRec.PresentationApprovalRequired.Value) || Utils.CheckUserIsAdmin())
+                    {
+                        sessionAccepted = true;
+                    }
+                }
+            }
+
+
             string message;
             bool canPresent = Utils.GetSpeakerCanPresent(sessionsResult.LoggedInUserAttendeeId ?? 0, out message);
             if (canPresent)
@@ -133,7 +150,7 @@ namespace WebAPI.REST
                         Description = sessionsResult.Description,
                         SessionLevel_id = sessionsResult.SessionLevel_id,
                         TwitterHashTags = sessionsResult.TwitterHashTags,
-                        Approved = false
+                        Approved = sessionAccepted
                     };
                 SessionsManager.I.Insert(session);
                 response = Request.CreateResponse(HttpStatusCode.OK, session);

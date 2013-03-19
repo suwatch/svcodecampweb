@@ -420,8 +420,11 @@ namespace WebAPI.Api
 
                     if (mStatus.Equals(MembershipCreateStatus.Success))
                     {
+                      
+
+
                         FormsAuthentication.SetAuthCookie(attendee.Username, true);
-                        response = Request.CreateResponse(HttpStatusCode.OK, "");
+                        response = Request.CreateResponse(HttpStatusCode.OK, attendee);
 
                     }
                     else

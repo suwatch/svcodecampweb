@@ -45,11 +45,12 @@ Ext.define('RegistrationApp.controller.CreateAccountController', {
             scope:this, 
             params: localValues,
             success: function(r, o) { 
+                debugger;
                 var retData = Ext.JSON.decode(r.responseText);
                 tabPanel.updateAllPanelsWithData(retData);
 
                 // need to figure out if speaker or attendee selected
-                //var attendeeFromFirstPage = Ext.ComponentQuery.query('AttendeeSpeakerOrSponsorAlias #rbAttendee')[0].checked;
+                // var attendeeFromFirstPage = Ext.ComponentQuery.query('AttendeeSpeakerOrSponsorAlias #rbAttendee')[0].checked;
                 var speakerFromFirstPage = Ext.ComponentQuery.query('AttendeeSpeakerOrSponsorAlias #rbSpeaker')[0].checked;
                 if (speakerFromFirstPage === true) {
                     tabPanel.setActiveTab(tabPanel.getTabIdByName('SpeakerAfterLogin'));

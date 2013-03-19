@@ -136,7 +136,7 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                         },
                         {
                             xtype: 'gridcolumn',
-                            editRenderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+                            renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
                                 if (value == true) {
                                     return 'approved';
                                 } else {
@@ -144,8 +144,8 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                                 }
 
                             },
-                            hidden: true,
                             width: 50,
+                            defaultWidth: 200,
                             dataIndex: 'approved'
                         }
                     ],

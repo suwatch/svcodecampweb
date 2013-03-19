@@ -1132,6 +1132,8 @@ namespace CodeCampSV
 		
 		private System.Nullable<bool> _PresentationApprovalRequired;
 		
+		private string _OptInTechJobKeyWords;
+		
 		private EntitySet<AttendeesCodeCampYear> _AttendeesCodeCampYear;
 		
 		private EntitySet<AttendeesTagList> _AttendeesTagList;
@@ -1278,6 +1280,8 @@ namespace CodeCampSV
     partial void OnPresentationLimitChanged();
     partial void OnPresentationApprovalRequiredChanging(System.Nullable<bool> value);
     partial void OnPresentationApprovalRequiredChanged();
+    partial void OnOptInTechJobKeyWordsChanging(string value);
+    partial void OnOptInTechJobKeyWordsChanged();
     #endregion
 		
 		public Attendees()
@@ -2568,6 +2572,26 @@ namespace CodeCampSV
 					this._PresentationApprovalRequired = value;
 					this.SendPropertyChanged("PresentationApprovalRequired");
 					this.OnPresentationApprovalRequiredChanged();
+				}
+			}
+		}
+		
+		[Column(Name="optInTechJobKeyWords", Storage="_OptInTechJobKeyWords", DbType="VarChar(1024)")]
+		public string OptInTechJobKeyWords
+		{
+			get
+			{
+				return this._OptInTechJobKeyWords;
+			}
+			set
+			{
+				if ((this._OptInTechJobKeyWords != value))
+				{
+					this.OnOptInTechJobKeyWordsChanging(value);
+					this.SendPropertyChanging();
+					this._OptInTechJobKeyWords = value;
+					this.SendPropertyChanged("OptInTechJobKeyWords");
+					this.OnOptInTechJobKeyWordsChanged();
 				}
 			}
 		}
@@ -9007,6 +9031,8 @@ namespace CodeCampSV
 		
 		private string _BoxFolderPublicUrl;
 		
+		private string _OptInTechJobKeyWords;
+		
 		private EntitySet<SessionPictures> _SessionPictures;
 		
 		private EntitySet<SessionPresenter> _SessionPresenter;
@@ -9085,6 +9111,8 @@ namespace CodeCampSV
     partial void OnBoxFolderEmailInAddressChanged();
     partial void OnBoxFolderPublicUrlChanging(string value);
     partial void OnBoxFolderPublicUrlChanged();
+    partial void OnOptInTechJobKeyWordsChanging(string value);
+    partial void OnOptInTechJobKeyWordsChanged();
     #endregion
 		
 		public Sessions()
@@ -9703,6 +9731,26 @@ namespace CodeCampSV
 					this._BoxFolderPublicUrl = value;
 					this.SendPropertyChanged("BoxFolderPublicUrl");
 					this.OnBoxFolderPublicUrlChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_OptInTechJobKeyWords", DbType="VarChar(1024)")]
+		public string OptInTechJobKeyWords
+		{
+			get
+			{
+				return this._OptInTechJobKeyWords;
+			}
+			set
+			{
+				if ((this._OptInTechJobKeyWords != value))
+				{
+					this.OnOptInTechJobKeyWordsChanging(value);
+					this.SendPropertyChanging();
+					this._OptInTechJobKeyWords = value;
+					this.SendPropertyChanged("OptInTechJobKeyWords");
+					this.OnOptInTechJobKeyWordsChanged();
 				}
 			}
 		}

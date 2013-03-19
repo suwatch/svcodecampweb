@@ -39,6 +39,7 @@ namespace CodeCampSV
         [DataMember] public string BoxFolderIdString { get; set; }
         [DataMember] public string BoxFolderEmailInAddress { get; set; }
         [DataMember] public string BoxFolderPublicUrl { get; set; }
+        [DataMember] public string OptInTechJobKeyWords { get; set; }
         
         //  
         //  Do not put Id here since it is in ResultBase already

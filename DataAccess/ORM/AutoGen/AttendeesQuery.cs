@@ -144,5 +144,7 @@ namespace CodeCampSV
         public int? PresentationLimit { get; set; }
         [AutoGenColumn]
         public bool? PresentationApprovalRequired { get; set; }
+        [AutoGenColumn]
+        public string optInTechJobKeyWords { get; set; }
     }
 }

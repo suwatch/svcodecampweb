@@ -93,6 +93,25 @@ Ext.define('RegistrationApp.view.OptIn', {
                             checked: true,
                             inputValue: '1',
                             uncheckedValue: '0'
+                        },
+                        {
+                            xtype: 'fieldset',
+                            padding: 5,
+                            title: 'Job Opportunities From Our Sponsor Companies',
+                            items: [
+                                {
+                                    xtype: 'label',
+                                    text: 'Interested in hearing about tech jobs from our sponsors?  If so enter a couple keywords that they might contact you about'
+                                },
+                                {
+                                    xtype: 'textfield',
+                                    margin: '5 0 5 0',
+                                    width: 300,
+                                    fieldLabel: '',
+                                    name: 'optInTechJobKeyWords',
+                                    maxLength: 60
+                                }
+                            ]
                         }
                     ]
                 }

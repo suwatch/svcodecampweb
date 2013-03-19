@@ -95,7 +95,6 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                     flex: 2,
                     region: 'north',
                     split: true,
-                    height: 200,
                     id: 'sessionsBySpeakerGridPanelId',
                     padding: 5,
                     autoScroll: true,

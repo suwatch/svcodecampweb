@@ -48,6 +48,7 @@ namespace CodeCampSV
             record.BoxFolderIdString = result.BoxFolderIdString;
             record.BoxFolderEmailInAddress = result.BoxFolderEmailInAddress;
             record.BoxFolderPublicUrl = result.BoxFolderPublicUrl;
+            record.OptInTechJobKeyWords = result.OptInTechJobKeyWords;
             // 
             //  Used by Default in Update and Insert Methods.
         }
@@ -88,7 +89,8 @@ namespace CodeCampSV
             ShortUrl = myData.ShortUrl,
             BoxFolderIdString = myData.BoxFolderIdString,
             BoxFolderEmailInAddress = myData.BoxFolderEmailInAddress,
-            BoxFolderPublicUrl = myData.BoxFolderPublicUrl
+            BoxFolderPublicUrl = myData.BoxFolderPublicUrl,
+            OptInTechJobKeyWords = myData.OptInTechJobKeyWords
       });
 		    return results;
         }
@@ -145,7 +147,8 @@ namespace CodeCampSV
                         ShortUrl = myData.ShortUrl,
                         BoxFolderIdString = myData.BoxFolderIdString,
                         BoxFolderEmailInAddress = myData.BoxFolderEmailInAddress,
-                        BoxFolderPublicUrl = myData.BoxFolderPublicUrl
+                        BoxFolderPublicUrl = myData.BoxFolderPublicUrl,
+                        OptInTechJobKeyWords = myData.OptInTechJobKeyWords
             });
             
             List<SessionsResult> resultList = GetFinalResults(results, query);
@@ -192,6 +195,7 @@ namespace CodeCampSV
             if (query.BoxFolderIdString != null) baseQuery = baseQuery.Where(a => a.BoxFolderIdString.ToLower().Equals(query.BoxFolderIdString.ToLower()));
             if (query.BoxFolderEmailInAddress != null) baseQuery = baseQuery.Where(a => a.BoxFolderEmailInAddress.ToLower().Equals(query.BoxFolderEmailInAddress.ToLower()));
             if (query.BoxFolderPublicUrl != null) baseQuery = baseQuery.Where(a => a.BoxFolderPublicUrl.ToLower().Equals(query.BoxFolderPublicUrl.ToLower()));
+            if (query.OptInTechJobKeyWords != null) baseQuery = baseQuery.Where(a => a.OptInTechJobKeyWords.ToLower().Equals(query.OptInTechJobKeyWords.ToLower()));
 
             return baseQuery;
         }

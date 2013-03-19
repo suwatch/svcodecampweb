@@ -76,5 +76,7 @@ namespace CodeCampSV
         public string BoxFolderEmailInAddress { get; set; }
         [AutoGenColumn]
         public string BoxFolderPublicUrl { get; set; }
+        [AutoGenColumn]
+        public string OptInTechJobKeyWords { get; set; }
     }
 }

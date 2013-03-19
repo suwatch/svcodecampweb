@@ -170,6 +170,53 @@
                         "uncheckedValue": "0"
                     },
                     "designerId": "fb771aec-24f9-4f55-9865-37f73ca5f56e"
+                },
+                {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "padding": 5,
+                        "designer|userClassName": "MyFieldSet1",
+                        "title": "Job Opportunities From Our Sponsor Companies"
+                    },
+                    "designerId": "bcc58a7e-e97e-4752-842f-8a94b5d3ee1d",
+                    "cn": [
+                        {
+                            "type": "Ext.form.Label",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "width": null,
+                                "designer|userClassName": "MyLabel5",
+                                "text": "Interested in hearing about tech jobs from our sponsors?  If so enter a couple keywords that they might contact you about"
+                            },
+                            "designerId": "725f2da9-b4ce-492a-9f20-60e92c4fcbaf"
+                        },
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "margin": "5 0 5 0",
+                                "width": 300,
+                                "designer|userClassName": "MyTextField40",
+                                "fieldLabel": "",
+                                "name": "optInTechJobKeyWords",
+                                "maxLength": 60
+                            },
+                            "designerId": "44d926f7-d8dd-44c6-8cf9-b2a7a7caa289"
+                        }
+                    ]
                 }
             ]
         }

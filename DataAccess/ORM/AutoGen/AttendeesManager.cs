@@ -82,6 +82,7 @@ namespace CodeCampSV
             record.State = result.State;
             record.PresentationLimit = result.PresentationLimit;
             record.PresentationApprovalRequired = result.PresentationApprovalRequired;
+            record.OptInTechJobKeyWords = result.OptInTechJobKeyWords;
             // 
             //  Used by Default in Update and Insert Methods.
         }
@@ -156,7 +157,8 @@ namespace CodeCampSV
             City = myData.City,
             State = myData.State,
             PresentationLimit = myData.PresentationLimit,
-            PresentationApprovalRequired = myData.PresentationApprovalRequired
+            PresentationApprovalRequired = myData.PresentationApprovalRequired,
+            OptInTechJobKeyWords = myData.OptInTechJobKeyWords
       });
 		    return results;
         }
@@ -247,7 +249,8 @@ namespace CodeCampSV
                         City = myData.City,
                         State = myData.State,
                         PresentationLimit = myData.PresentationLimit,
-                        PresentationApprovalRequired = myData.PresentationApprovalRequired
+                        PresentationApprovalRequired = myData.PresentationApprovalRequired,
+                        OptInTechJobKeyWords = myData.OptInTechJobKeyWords
             });
             
             List<AttendeesResult> resultList = GetFinalResults(results, query);
@@ -325,6 +328,7 @@ namespace CodeCampSV
             if (query.State != null) baseQuery = baseQuery.Where(a => a.State.ToLower().Equals(query.State.ToLower()));
             if (query.PresentationLimit != null) baseQuery = baseQuery.Where(a => a.PresentationLimit == query.PresentationLimit);
             if (query.PresentationApprovalRequired != null) baseQuery = baseQuery.Where(a => a.PresentationApprovalRequired == query.PresentationApprovalRequired);
+            if (query.optInTechJobKeyWords != null) baseQuery = baseQuery.Where(a => a.OptInTechJobKeyWords.ToLower().Equals(query.optInTechJobKeyWords.ToLower()));
 
             return baseQuery;
         }

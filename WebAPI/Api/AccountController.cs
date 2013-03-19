@@ -206,6 +206,29 @@ namespace WebAPI.Api
             return response;
         }
 
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.ActionName("CheckPictureExists")]
+        public HttpResponseMessage PostCheckPictureExists(AttendeesResult attendeeRecord)
+        {
+            Thread.Sleep(300); // try to defend a little against denial of service attack or username searching attack
+
+            var errorMessage = new StringBuilder();
+
+            if (attendeeRecord == null || attendeeRecord.Id <= 0)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.Forbidden,
+                                                     "PostCheckPictureExists: attendeeRecord no passed in populated");
+
+            }
+
+            var pictureLen = Utils.GetPictureLengthByAttendee(attendeeRecord.Id);
+           
+            return pictureLen > 0
+                       ? Request.CreateResponse(HttpStatusCode.OK, "")
+                       : Request.CreateErrorResponse(HttpStatusCode.Forbidden,
+                                                     "picture length for attendee zero");
+        }
+
 
         [System.Web.Http.HttpPost]
         [System.Web.Http.ActionName("CheckUsernameEmailExists")]
@@ -328,6 +351,7 @@ namespace WebAPI.Api
                     {
                         attendeesResult.OptInSponsorSpecialsLevel = attendeeRecord.OptInSponsorSpecialsLevel;
                         attendeesResult.OptInSponsoredMailingsLevel = attendeeRecord.OptInSponsoredMailingsLevel;
+                        attendeesResult.OptInTechJobKeyWords = attendeeRecord.OptInTechJobKeyWords;
                     }
                     else
                     {

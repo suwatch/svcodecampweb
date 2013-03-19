@@ -33,6 +33,9 @@ Ext.define('RegistrationApp.model.Session', {
             name: 'twitterHashTags'
         },
         {
+            name: 'optInTechJobKeyWords'
+        },
+        {
             name: 'BoxFolderIdString'
         },
         {

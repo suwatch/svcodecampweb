@@ -17,32 +17,48 @@ Ext.define('RegistrationApp.controller.SpeakerAfterLoginController', {
     extend: 'Ext.app.Controller',
 
     onContinueButtonIdClick: function(button, e, eOpts) {
-
         var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Updating..."});
         myMask.show();
 
         var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];
         var thisPanel = Ext.getCmp("speakerAfterLoginProfileId");
+        var attendeesId = parseInt(thisPanel.getForm().getValues().attendeesId);
 
-        //debugger;
         Ext.Ajax.request({ 
-            url:'/rpc/Account/UpdateSpeaker', 
+            url:'/rpc/Account/CheckPictureExists', 
             actionMethods:'POST', 
             scope:this, 
-            params: thisPanel.getForm().getValues(),
+            params: {
+                id: attendeesId  
+            },
             success: function(r, o) {  
-                // debugger;
-                tabPanel.setActiveTab(tabPanel.getTabIdByName('SpeakerSessionUpdate'));
-                myMask.hide();
+
+                // picture exists so now check for valid form
+                if (thisPanel.getForm().isValid()) {
+                    Ext.Ajax.request({ 
+                        url:'/rpc/Account/UpdateSpeaker', 
+                        actionMethods:'POST', 
+                        scope:this, 
+                        params: thisPanel.getForm().getValues(),
+                        success: function(r, o) {
+                            myMask.hide();
+                            tabPanel.setActiveTab(tabPanel.getTabIdByName('SpeakerSessionUpdate'));
+                        },
+                        failure: function(r,o) {
+                            myMask.hide();
+                            Ext.Msg.alert("Speaker Update Failed");
+                        } 
+                    });
+                } else {
+                    myMask.hide();         
+                    Ext.Msg.alert("Form with Speaker Info is not valid.  Required fields include short size, first, last, city, state, zip, bio, etc.");
+                }  
             },
             failure: function(r,o) {
-                //debugger;
-                tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeSpeakerSponsorId'));
                 myMask.hide();
+                Ext.Msg.alert("No picture assigned.  Because you indicated you are a speaker or already have sessions associated with your login, you need to assign a picture at the bottom of this page.");      
             } 
         });
-
-
     },
 
     onLogoutButtonIdClick: function(button, e, eOpts) {

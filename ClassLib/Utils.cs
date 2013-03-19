@@ -5055,6 +5055,24 @@ namespace CodeCampSV
             return false;
         }
 
+        public static int GetPictureLengthByAttendee(int id)
+        {
+            int pictureLength = 0;
+            using (
+              var sqlConnection =
+                  new SqlConnection(ConfigurationManager.ConnectionStrings["CodeCampSV06"].ConnectionString))
+            {
+                sqlConnection.Open();
+                string sqlSelect = string.Format(@"select datalength(UserImage) from Attendees where id = {0}",
+                                                 id.ToString(CultureInfo.InvariantCulture));
+
+                using (var sqlCommand = new SqlCommand(sqlSelect, sqlConnection))
+                {
+                    pictureLength = (int) sqlCommand.ExecuteScalar();
+                }
+            }
+            return pictureLength;
+        }
     }
 
     public class AttendeesShortForEmail

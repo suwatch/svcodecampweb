@@ -378,7 +378,7 @@
                 "layout|flex": 2,
                 "layout|region": "north",
                 "layout|split": true,
-                "height": 200,
+                "height": null,
                 "id": "sessionsBySpeakerGridPanelId",
                 "padding": 5,
                 "designer|userClassName": "MyGridPanel",

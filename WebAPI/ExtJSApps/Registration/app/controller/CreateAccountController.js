@@ -45,7 +45,7 @@ Ext.define('RegistrationApp.controller.CreateAccountController', {
             scope:this, 
             params: localValues,
             success: function(r, o) { 
-                debugger;
+                //debugger;
                 var retData = Ext.JSON.decode(r.responseText);
                 tabPanel.updateAllPanelsWithData(retData);
 

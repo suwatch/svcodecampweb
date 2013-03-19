@@ -65,7 +65,7 @@
                     "    scope:this, \r",
                     "    params: localValues,\r",
                     "    success: function(r, o) { \r",
-                    "        debugger;\r",
+                    "        //debugger;\r",
                     "        var retData = Ext.JSON.decode(r.responseText);\r",
                     "        tabPanel.updateAllPanelsWithData(retData);\r",
                     "\r",

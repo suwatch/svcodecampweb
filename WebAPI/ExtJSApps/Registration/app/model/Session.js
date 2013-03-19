@@ -49,6 +49,9 @@ Ext.define('RegistrationApp.model.Session', {
         },
         {
             name: 'sessionLevel'
+        },
+        {
+            name: 'loggedInUserAttendeeId'
         }
     ],
 

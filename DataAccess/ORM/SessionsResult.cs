@@ -66,6 +66,9 @@ namespace CodeCampSV
         public bool LoggedInUserPlanToAttend { get; set; }
 
         [DataMember]
+        public int? LoggedInUserAttendeeId { get; set; }
+
+        [DataMember]
         public string SpeakerPictureUrl { get; set; }
         [DataMember] 
         public List<TagsResult> TagsResults { get; set; }

@@ -205,9 +205,8 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                                             name: 'description'
                                         },
                                         {
-                                            xtype: 'textareafield',
+                                            xtype: 'textfield',
                                             anchor: '100%',
-                                            height: 100,
                                             fieldLabel: 'Session Level (Beginner, Intermediate or Advanced)',
                                             name: 'sessionLevel'
                                         },
@@ -311,14 +310,41 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
     },
 
     onSessionButtonAddNewIdClick: function(button, e, eOpts) {
+        /*
+
+        var attendeesId = Ext.getCmp('speakerAfterLoginProfileId').getForm().getValues().attendeesId;
+
+        Ext.Ajax.request({ 
+        url:'/rest/Session', 
+        actionMethods:'GET', 
+        scope:this, 
+        params:{
+        option: 'submitsessioncheck',
+        param1: parseInt(attendeesId)
+        },
+        success: function(r, o) { 
+        debugger;
+        },
+        failure: function(r,o) {
+        debugger;
+        } 
+        });  
+
+
+        debugger;
+
+        */
+        var attendeesId = Ext.getCmp('speakerAfterLoginProfileId').getForm().getValues().attendeesId;
+
         var newSessionRecord = Ext.create('RegistrationApp.model.Session',{
             title: 'New Session, Update Your Title and other Session Info.',
             description: 'Description Required Here',
+            loggedInUserAttendeeId: parseInt(attendeesId)
         });
         newSessionRecord.save({
             success: function(record,operation) {
                 //debugger;
-                var attendeesId = Ext.getCmp('speakerAfterLoginProfileId').getForm().getValues().attendeesId;
+
                 var newSessionPresenterRecord = Ext.create('RegistrationApp.model.SessionPresenterModel',{
                     attendeeId: parseInt(attendeesId),
                     sessionId: record.getData().id
@@ -340,14 +366,15 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                             }
                         });
                     },
-                    failure: function(rec) {
-                        debugger;
-                        Ext.Msg.alert("Failed To Add Record to SessionPresenter");
+                    failure: function(records,operation,success) {
+                        //debugger;
+                        var message = operation.getError(); // this does not work
+                        Ext.Msg.alert("Session adding restricted.   Either over limit or sessions closed");
                     },
                 });
             },
             failure: function(rec) {
-                Ext.Msg.alert("Failed To Add Record to Session");
+                Ext.Msg.alert("Session adding restricted.   Either over limit or sessions closed.");
             }
         });
 

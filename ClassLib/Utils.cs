@@ -143,7 +143,7 @@ namespace CodeCampSV
             }
         }
 
-        
+
 
         public static int GetNumberVolunteersNeededYear()
         {
@@ -155,7 +155,9 @@ namespace CodeCampSV
             {
                 try
                 {
-                    using (var sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["CodeCampSV06"].ConnectionString))
+                    using (
+                        var sqlConnection =
+                            new SqlConnection(ConfigurationManager.ConnectionStrings["CodeCampSV06"].ConnectionString))
                     {
                         sqlConnection.Open();
 
@@ -163,7 +165,7 @@ namespace CodeCampSV
                                            Utils.CurrentCodeCampYear.ToString(CultureInfo.InvariantCulture);
                         using (var sqlCommand = new SqlCommand(sqlSelect, sqlConnection))
                         {
-                            total = (int)sqlCommand.ExecuteScalar();
+                            total = (int) sqlCommand.ExecuteScalar();
                         }
                     }
                 }
@@ -180,7 +182,7 @@ namespace CodeCampSV
             }
             else
             {
-                total = (int)HttpContext.Current.Cache[cache];
+                total = (int) HttpContext.Current.Cache[cache];
             }
             return total;
         }
@@ -234,7 +236,7 @@ namespace CodeCampSV
         }
 
 
-    
+
 
 
         /// <summary>
@@ -299,7 +301,7 @@ namespace CodeCampSV
 
                 if (hashTags.Count > 0)
                 {
-                    for (int index = 0; index < Math.Min(hashTags.Count,maxHandleCnt); index++)
+                    for (int index = 0; index < Math.Min(hashTags.Count, maxHandleCnt); index++)
                     {
                         var hashTag = hashTags[index];
                         if (hashTag.Length > 1 && !hashTag.ToLower().Equals("svcc") &&
@@ -413,27 +415,27 @@ namespace CodeCampSV
             // all tags for this year.
             var sessionTagsList =
                 ManagerBase<SessionTagsManager, SessionTagsResult, SessionTags, CodeCampDataContext>.I.Get(new SessionTagsQuery
-                                                                                                               {
-                                                                                                                   CodeCampYearId
-                                                                                                                       =
-                                                                                                                       currentCodeCampYearId
+                    {
+                        CodeCampYearId
+                            =
+                            currentCodeCampYearId
 
-                                                                                                               });
+                    });
 
             var tagDict = ManagerBase<TagsManager, TagsResult, Tags, CodeCampDataContext>.I.Get(new TagsQuery()
-                                                                                                    {
+                {
 
-                                                                                                    }).ToDictionary(
-                                                                                                        k => k.Id,
-                                                                                                        v => v.TagName);
+                }).ToDictionary(
+                    k => k.Id,
+                    v => v.TagName);
 
             var sessions =
                 ManagerBase<SessionsManager, SessionsResult, Sessions, CodeCampDataContext>.I.Get(new SessionsQuery()
-                                                                                                      {
-                                                                                                          CodeCampYearId
-                                                                                                              =
-                                                                                                              codeCampYearId
-                                                                                                      });
+                    {
+                        CodeCampYearId
+                            =
+                            codeCampYearId
+                    });
             foreach (var session in sessions)
             {
                 int sessionId = session.Id;
@@ -689,10 +691,11 @@ namespace CodeCampSV
             {
                 listCodeCampYear =
                     ManagerBase<CodeCampYearManager, CodeCampYearResult, CodeCampYear, CodeCampDataContext>.I.
-                        GetJustBaseTableColumns(new CodeCampYearQuery
-                                                    {
-                                                        Id = yearId
-                                                    });
+                                                                                                            GetJustBaseTableColumns
+                        (new CodeCampYearQuery
+                            {
+                                Id = yearId
+                            });
                 HttpContext.Current.Cache.Insert(cacheListCodeCampYearResults, listCodeCampYear,
                                                  null,
                                                  DateTime.Now.Add(new TimeSpan(0, 0,
@@ -1051,10 +1054,10 @@ namespace CodeCampSV
             AttendeesResult attendeesResult =
                 (ManagerBase<AttendeesManager, AttendeesResult, Attendees, CodeCampDataContext>.I.Get(new AttendeesQuery
                                                                                                           ()
-                                                                                                          {
-                                                                                                              Id =
-                                                                                                                  attendeeId
-                                                                                                          })).
+                    {
+                        Id =
+                            attendeeId
+                    })).
                     SingleOrDefault();
             string retUsername = String.Empty;
             if (attendeesResult != null)
@@ -1069,10 +1072,10 @@ namespace CodeCampSV
             AttendeesResult attendeesResult =
                 (ManagerBase<AttendeesManager, AttendeesResult, Attendees, CodeCampDataContext>.I.Get(new AttendeesQuery
                                                                                                           ()
-                                                                                                          {
-                                                                                                              Id =
-                                                                                                                  attendeeId
-                                                                                                          })).
+                    {
+                        Id =
+                            attendeeId
+                    })).
                     SingleOrDefault();
             string retUsername = String.Empty;
             if (attendeesResult != null)
@@ -1274,7 +1277,7 @@ namespace CodeCampSV
             return listAttendees.Count == 0 ? null : listAttendees[0];
         }
 
-      
+
         public static bool CheckUserIsAllowRegistration()
         {
             return Roles.IsUserInRole(AllowRegistrationRoleName);
@@ -1826,13 +1829,13 @@ namespace CodeCampSV
                         int roomId = reader3.IsDBNull(4) ? -1 : reader3.GetInt32(4);
                         int sessionTimesId = reader3.IsDBNull(5) ? -1 : reader3.GetInt32(5);
                         var dataObject = new DataObjectAgendaUpdateInfo
-                                             {
-                                                 SessionAuthor = (firstName + " " + lastName),
-                                                 SessionTitle = title,
-                                                 SessionId = sessionId,
-                                                 LectureRoomId = roomId,
-                                                 SessionTimesId = sessionTimesId
-                                             };
+                            {
+                                SessionAuthor = (firstName + " " + lastName),
+                                SessionTitle = title,
+                                SessionId = sessionId,
+                                LectureRoomId = roomId,
+                                SessionTimesId = sessionTimesId
+                            };
                         if (interestedDictionary.ContainsKey(sessionId))
                         {
                             dataObject.Interested = interestedDictionary[sessionId];
@@ -3034,14 +3037,14 @@ namespace CodeCampSV
                                                     bool attendSunday)
         {
             AttendeesCodeCampYearResult attendeesCodeCampYearResult = new AttendeesCodeCampYearResult()
-                                                                          {
-                                                                              CodeCampYearId = currentCodeCampYear,
-                                                                              AttendeesId =
-                                                                                  GetAttendeesIdFromUsername(
-                                                                                      userName),
-                                                                              AttendSaturday = attendSaturday,
-                                                                              AttendSunday = attendSunday
-                                                                          };
+                {
+                    CodeCampYearId = currentCodeCampYear,
+                    AttendeesId =
+                        GetAttendeesIdFromUsername(
+                            userName),
+                    AttendSaturday = attendSaturday,
+                    AttendSunday = attendSunday
+                };
             ManagerBase
                 <AttendeesCodeCampYearManager, AttendeesCodeCampYearResult, AttendeesCodeCampYear, CodeCampDataContext>.
                 I.Upsert(attendeesCodeCampYearResult);
@@ -3083,10 +3086,11 @@ namespace CodeCampSV
             {
                 var attendee =
                     (ManagerBase<AttendeesManager, AttendeesResult, Attendees, CodeCampDataContext>.I.
-                        GetJustBaseTableColumns(new AttendeesQuery()
-                                                    {
-                                                        Email = email
-                                                    })).FirstOrDefault();
+                                                                                                    GetJustBaseTableColumns
+                        (new AttendeesQuery()
+                            {
+                                Email = email
+                            })).FirstOrDefault();
                 if (attendee != null)
                 {
                     retUsername = attendee.Username;
@@ -3102,10 +3106,10 @@ namespace CodeCampSV
                 (ManagerBase
                     <AttendeesCodeCampYearManager, AttendeesCodeCampYearResult, AttendeesCodeCampYear,
                         CodeCampDataContext>.I.GetJustBaseTableColumns(new AttendeesCodeCampYearQuery()
-                                                                           {
-                                                                               CodeCampYearId = codeCampYearId,
-                                                                               AttendeesId = attendeesId
-                                                                           })).FirstOrDefault();
+                            {
+                                CodeCampYearId = codeCampYearId,
+                                AttendeesId = attendeesId
+                            })).FirstOrDefault();
             return attendeesCodeCampYear != null;
         }
 
@@ -3351,7 +3355,10 @@ namespace CodeCampSV
             {
                 listCodeCampYear =
                     ManagerBase<CodeCampYearManager, CodeCampYearResult, CodeCampYear, CodeCampDataContext>.I.GetAll().
-                        OrderBy(a => a.Id).ToList();
+                                                                                                            OrderBy(
+                                                                                                                a =>
+                                                                                                                a.Id)
+                                                                                                           .ToList();
 
                 HttpContext.Current.Cache.Insert(defaultNoColumnMasterCacheCodeCampYearAllCache, listCodeCampYear,
                                                  null,
@@ -3447,10 +3454,10 @@ namespace CodeCampSV
             int attendeeId = GetAttendeesIdFromUsername(HttpContext.Current.User.Identity.Name);
 
             int cnt = SessionPresenterManager.I.Get(new SessionPresenterQuery()
-                                                        {
-                                                            CodeCampYearId = currentYear,
-                                                            AttendeeId = attendeeId
-                                                        }).Count;
+                {
+                    CodeCampYearId = currentYear,
+                    AttendeeId = attendeeId
+                }).Count;
 
 
 
@@ -3782,13 +3789,13 @@ namespace CodeCampSV
                     {
                         var videoResult =
                             ManagerBase<VideoManager, VideoResult, Video, CodeCampDataContext>.I.Get(new VideoQuery()
-                                                                                                         {
-                                                                                                             Id =
-                                                                                                                 sessionVideoResult
-                                                                                                                 .
-                                                                                                                 VideoId
-                                                                                                         }).
-                                FirstOrDefault();
+                                {
+                                    Id =
+                                        sessionVideoResult
+                                                                                                         .
+                                                                                                         VideoId
+                                }).
+                                                                                               FirstOrDefault();
 
                         const string urlTemplate =
                             "<a href=\"{0}\" title=\"{1}\" rel=\"prettyPhoto\" class=\"video\"><img src=\"{2}\" /><br />{1}</a>";
@@ -3969,13 +3976,13 @@ namespace CodeCampSV
                     while (reader.Read())
                     {
                         var jobData = new JobData
-                                          {
-                                              JobTitle = reader.IsDBNull(1) ? String.Empty : reader.GetString(1),
-                                              Company = reader.IsDBNull(2) ? String.Empty : reader.GetString(2),
-                                              JobLocation = reader.IsDBNull(3) ? String.Empty : reader.GetString(3),
-                                              JobDescription = reader.IsDBNull(5) ? String.Empty : reader.GetString(5),
-                                              JobDatePosted = reader.IsDBNull(6) ? DateTime.Now : reader.GetDateTime(6)
-                                          };
+                            {
+                                JobTitle = reader.IsDBNull(1) ? String.Empty : reader.GetString(1),
+                                Company = reader.IsDBNull(2) ? String.Empty : reader.GetString(2),
+                                JobLocation = reader.IsDBNull(3) ? String.Empty : reader.GetString(3),
+                                JobDescription = reader.IsDBNull(5) ? String.Empty : reader.GetString(5),
+                                JobDatePosted = reader.IsDBNull(6) ? DateTime.Now : reader.GetDateTime(6)
+                            };
                         jobDatas.Add(jobData);
                     }
                 }
@@ -4026,11 +4033,11 @@ namespace CodeCampSV
 
 
                         results.Add(new AttendeesShort()
-                                        {
-                                            EmailAddress = email,
-                                            FirstName = firstName,
-                                            LastName = lastName
-                                        });
+                            {
+                                EmailAddress = email,
+                                FirstName = firstName,
+                                LastName = lastName
+                            });
                     }
                 }
                 catch (Exception eee)
@@ -4092,11 +4099,11 @@ namespace CodeCampSV
                 {
                     var sessionResults =
                         ManagerBase<SessionsManager, SessionsResult, Sessions, CodeCampDataContext>.I.Get(new SessionsQuery
-                                                                                                              {
-                                                                                                                  CodeCampYearId
-                                                                                                                      =
-                                                                                                                      codeCampYearId
-                                                                                                              });
+                            {
+                                CodeCampYearId
+                                    =
+                                    codeCampYearId
+                            });
 
 
                     o = new Dictionary<int, bool>();
@@ -4137,22 +4144,22 @@ namespace CodeCampSV
                 {
                     var sessionResults =
                         ManagerBase<SessionsManager, SessionsResult, Sessions, CodeCampDataContext>.I.Get(new SessionsQuery
-                                                                                                              {
-                                                                                                                  CodeCampYearId
-                                                                                                                      =
-                                                                                                                      codeCampYearId,
-                                                                                                                  JustActiveJobListings
-                                                                                                                      =
-                                                                                                                      true
-                                                                                                              });
+                            {
+                                CodeCampYearId
+                                    =
+                                    codeCampYearId,
+                                JustActiveJobListings
+                                    =
+                                    true
+                            });
 
                     // get them all (not that many)
                     var sponsorListResults =
                         ManagerBase<SponsorListManager, SponsorListResult, SponsorList, CodeCampDataContext>.I.Get(new SponsorListQuery
                                                                                                                        ()
-                                                                                                                       {
+                            {
 
-                                                                                                                       });
+                            });
 
                     o = new Dictionary<int, SponsorListResult>();
                     foreach (var rec in sessionResults)
@@ -4295,16 +4302,16 @@ namespace CodeCampSV
                                 int cnt = dict.ContainsKey(referringUrlName) ? dict[referringUrlName] : 0;
 
                                 recs.Add(new ReferringUrlAttendeeInfo()
-                                             {
-                                                 FirstName = firstName,
-                                                 LastName = lastName,
-                                                 ArticleName = articleName,
-                                                 ReferringUrlName = referringUrlName,
-                                                 UserGroup = userGroup,
-                                                 ReferralCountAllTime = cnt,
-                                                 ReferralCountPast30Days = 0,
-                                                 UserWebSite = webSite
-                                             });
+                                    {
+                                        FirstName = firstName,
+                                        LastName = lastName,
+                                        ArticleName = articleName,
+                                        ReferringUrlName = referringUrlName,
+                                        UserGroup = userGroup,
+                                        ReferralCountAllTime = cnt,
+                                        ReferralCountPast30Days = 0,
+                                        UserWebSite = webSite
+                                    });
                             }
                         }
                         catch (Exception eee1)
@@ -4518,8 +4525,10 @@ namespace CodeCampSV
                 var rec =
                     ManagerBase
                         <SponsorListContactManager, SponsorListContactResult, SponsorListContact, CodeCampDataContext>.I
-                        .Get(new SponsorListContactQuery() {EmailAddress = email}).
-                        FirstOrDefault();
+                                                                                                                      .Get
+                        (new SponsorListContactQuery() {EmailAddress = email}).
+                                                                                                                       FirstOrDefault
+                        ();
                 if (rec != null && rec.SponsorListId.HasValue)
                 {
                     sponsorListId = rec.SponsorListId.Value;
@@ -4557,8 +4566,8 @@ namespace CodeCampSV
                     ManagerBase
                         <AttendeesCodeCampYearManager, AttendeesCodeCampYearResult, AttendeesCodeCampYear,
                             CodeCampDataContext>.I.Get(new AttendeesCodeCampYearQuery() {AttendeesId = attendeesId}).
-                        Select(
-                            a => a.CodeCampYearId).OrderBy(a => a).ToList();
+                                                 Select(
+                                                     a => a.CodeCampYearId).OrderBy(a => a).ToList();
 
 
 
@@ -4740,8 +4749,8 @@ namespace CodeCampSV
         public static void UpdateSessionMaterialUrl(int sessionsId, string url)
         {
             using (
-               var sqlConnection =
-                   new SqlConnection(ConfigurationManager.ConnectionStrings["CodeCampSV06"].ConnectionString))
+                var sqlConnection =
+                    new SqlConnection(ConfigurationManager.ConnectionStrings["CodeCampSV06"].ConnectionString))
             {
                 sqlConnection.Open();
                 const string sqlSelect = "UPDATE Sessions SET SessionsMaterialUrl = @Url WHERE Id = @Id";
@@ -4816,17 +4825,17 @@ namespace CodeCampSV
                     }
                 }
                 HttpContext.Current.Cache.Insert(cache, dict,
-                                                null,
-                                                DateTime.Now.Add(new TimeSpan(0, 0,
-                                                                              Utils.
-                                                                                  RetrieveSecondsForSessionCacheTimeout
-                                                                                  ())),
-                                                TimeSpan.Zero);
+                                                 null,
+                                                 DateTime.Now.Add(new TimeSpan(0, 0,
+                                                                               Utils.
+                                                                                   RetrieveSecondsForSessionCacheTimeout
+                                                                                   ())),
+                                                 TimeSpan.Zero);
 
             }
             else
             {
-                dict = (Dictionary<int, string>)HttpContext.Current.Cache[cache];
+                dict = (Dictionary<int, string>) HttpContext.Current.Cache[cache];
             }
             return dict;
         }
@@ -4876,16 +4885,16 @@ namespace CodeCampSV
                     }
                 }
                 HttpContext.Current.Cache.Insert(cache, dict,
-                                               null,
-                                               DateTime.Now.Add(new TimeSpan(0, 0,
-                                                                             Utils.
-                                                                                 RetrieveSecondsForSessionCacheTimeout
-                                                                                 ())),
-                                               TimeSpan.Zero);
+                                                 null,
+                                                 DateTime.Now.Add(new TimeSpan(0, 0,
+                                                                               Utils.
+                                                                                   RetrieveSecondsForSessionCacheTimeout
+                                                                                   ())),
+                                                 TimeSpan.Zero);
             }
             else
             {
-                dict = (Dictionary<int, string>)HttpContext.Current.Cache[cache];
+                dict = (Dictionary<int, string>) HttpContext.Current.Cache[cache];
             }
             return dict;
         }
@@ -4951,8 +4960,8 @@ namespace CodeCampSV
         {
             var recs = new List<AttendeesShortForEmail>();
             using (
-                    var sqlConnection =
-                        new SqlConnection(ConfigurationManager.ConnectionStrings["CodeCampSV06"].ConnectionString))
+                var sqlConnection =
+                    new SqlConnection(ConfigurationManager.ConnectionStrings["CodeCampSV06"].ConnectionString))
             {
                 sqlConnection.Open();
                 string sqlSelect = String.Format(@"
@@ -4997,8 +5006,8 @@ namespace CodeCampSV
         {
             //UPDATE TheTable SET RevisionId = RevisionId + 1 WHERE Id=@id
             using (
-                    var sqlConnection =
-                        new SqlConnection(ConfigurationManager.ConnectionStrings["CodeCampSV06"].ConnectionString))
+                var sqlConnection =
+                    new SqlConnection(ConfigurationManager.ConnectionStrings["CodeCampSV06"].ConnectionString))
             {
                 sqlConnection.Open();
                 const string sqlSelect = @"
@@ -5012,6 +5021,41 @@ namespace CodeCampSV
                 }
             }
         }
+
+        /// <summary>
+        /// return true if speaker can present
+        /// </summary>
+        /// <param name="attendeesId"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        public static bool GetSpeakerCanPresent(int attendeesId, out string message)
+        {
+            message = "";
+            // block sessions that are over limit
+            var attendeeRec = AttendeesManager.I.Get(new AttendeesQuery()
+                {
+                    Id = attendeesId
+                }).FirstOrDefault();
+            if (attendeeRec != null)
+            {
+                var numberSessionsAllowed = attendeeRec.PresentationLimit;
+                var numberSessionsThisYear = SessionPresenterManager.I.Get(new SessionPresenterQuery()
+                    {
+                        AttendeeId = attendeesId,
+                        CodeCampYearId = Utils.GetCurrentCodeCampYear()
+                    }).Count();
+
+                bool userIsAdmin = CheckUserIsAdmin();
+                userIsAdmin = false;
+                if (numberSessionsThisYear < numberSessionsAllowed || userIsAdmin)
+                {
+                    return true;
+                }
+            }
+            message = "Attendee is over limit of sessions submitted for this year";
+            return false;
+        }
+
     }
 
     public class AttendeesShortForEmail

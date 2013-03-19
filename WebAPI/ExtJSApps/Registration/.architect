@@ -742,6 +742,9 @@
                     "id": "e0b9a70d-17b9-44ea-97d9-33b0c1e32108"
                 },
                 {
+                    "id": "3c289d5e-52e0-461a-910a-cd3a079badda"
+                },
+                {
                     "id": "60c0a9eb-9b11-45d2-ad15-115cf0affc9b"
                 }
             ]
@@ -970,7 +973,7 @@
     },
     "inspectorState": {
         "topInstance": "4b96b1f9-5681-4344-91f3-31dd99619539",
-        "selectedInstance": "c1965b97-8eb0-4e59-809a-9910bdb1e680"
+        "selectedInstance": "39698f55-0c2f-4a04-9d48-6929026f7fc0"
     },
     "codeState": {
         "topInstance": "4b96b1f9-5681-4344-91f3-31dd99619539"

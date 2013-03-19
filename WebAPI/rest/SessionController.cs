@@ -22,13 +22,46 @@ namespace WebAPI.REST
         /// <returns></returns>
         public HttpResponseMessage Get(string option,string param1,string param2,string param3)
         {
+            HttpResponseMessage response = null;
+
             SessionsQuery sessionQuery = null;
            
 
             if (String.IsNullOrEmpty(option))
             {
                 sessionQuery = new SessionsQuery();
+                response = Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed, "Did not pass in option variable");
             }
+            //else if (option.ToLower().Equals("submitsessioncheck") && !string.IsNullOrEmpty(param1))
+            //{
+            //    // check if can submit session this year or not
+            //    int attendeesId;
+            //    if (!Int32.TryParse(param1, out attendeesId))
+            //    {
+            //        attendeesId = -2;
+            //    }
+
+            //    int codeCampYearId = Utils.GetCurrentCodeCampYear();
+
+            //    int sessionsThisYear = SessionPresenterManager.I.Get(new SessionPresenterQuery
+            //        {
+            //            AttendeeId = attendeesId,
+            //            CodeCampYearId = codeCampYearId
+            //        }).Count();
+
+            //    var numberSessionsAllowed = AttendeesManager.I.Get(new AttendeesQuery()
+            //    {
+            //        Id = attendeesId
+            //    }).Count;
+
+            //    bool allowSubmit = sessionsThisYear < numberSessionsAllowed;
+            //    return response = allowSubmit
+            //                          ? Request.CreateResponse(HttpStatusCode.OK)
+            //                          : Request.CreateErrorResponse(HttpStatusCode.Forbidden, "Not Allowed To Submit Sessions");
+
+
+
+            //}
             else if (option.ToLower().Equals("byspeaker") && !String.IsNullOrEmpty(param1))
             {
                 int attendeesId;
@@ -61,16 +94,12 @@ namespace WebAPI.REST
                                       WithLevel = true
                                    };
 
-
+                List<SessionsResult> session = SessionsManager.I.Get(sessionQuery);
+                response = Request.CreateResponse(HttpStatusCode.OK, session);
             }
 
-            var session = new List<SessionsResult>();
-            if (sessionQuery != null)
-            {
-                session = SessionsManager.I.Get(sessionQuery);
-            }
+         
 
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, session);
             return response;
         }
        
@@ -90,40 +119,43 @@ namespace WebAPI.REST
         // POST api/session
         public HttpResponseMessage Post(SessionsResult sessionsResult)
         {
-            UpdateSessionResultForSessionLevel(sessionsResult);
-               
-
-            var session = new SessionsResult()
-            {
-                Createdate = DateTime.UtcNow,
-                CodeCampYearId = Utils.CurrentCodeCampYear,
-                Title = sessionsResult.Title,
-                Description = sessionsResult.Description,
-                SessionLevel_id = sessionsResult.SessionLevel_id,
-                TwitterHashTags = sessionsResult.TwitterHashTags,
-                Approved = false
-            };
-            SessionsManager.I.Insert(session);
-
-
             HttpResponseMessage response;
-            response = Request.CreateResponse(HttpStatusCode.OK, session);
+            string message;
+            bool canPresent = Utils.GetSpeakerCanPresent(sessionsResult.LoggedInUserAttendeeId ?? 0, out message);
+            if (canPresent)
+            {
+                UpdateSessionResultForSessionLevel(sessionsResult);
+                var session = new SessionsResult()
+                    {
+                        Createdate = DateTime.UtcNow,
+                        CodeCampYearId = Utils.CurrentCodeCampYear,
+                        Title = sessionsResult.Title,
+                        Description = sessionsResult.Description,
+                        SessionLevel_id = sessionsResult.SessionLevel_id,
+                        TwitterHashTags = sessionsResult.TwitterHashTags,
+                        Approved = false
+                    };
+                SessionsManager.I.Insert(session);
+                response = Request.CreateResponse(HttpStatusCode.OK, session);
+            }
+            else
+            {
+                response = Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "session submission not allowed");
+            }
             return response;
-
-
         }
 
         private static void UpdateSessionResultForSessionLevel(SessionsResult sessionsResult)
         {
-            if (sessionsResult.SessionLevel.Equals("Beginner"))
+            if (sessionsResult.SessionLevel.ToLower().StartsWith("beg"))
             {
                 sessionsResult.SessionLevel_id = 1;
             }
-            else if (sessionsResult.SessionLevel.Equals("Intermediate"))
+            else if (sessionsResult.SessionLevel.ToLower().StartsWith("int"))
             {
                 sessionsResult.SessionLevel_id = 2;
             }
-            else if (sessionsResult.SessionLevel.Equals("Advanced"))
+            else if (sessionsResult.SessionLevel.ToLower().StartsWith("adv"))
             {
                 sessionsResult.SessionLevel_id = 3;
             }

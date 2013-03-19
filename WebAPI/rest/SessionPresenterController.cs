@@ -62,22 +62,12 @@ namespace WebAPI.rest
         public HttpResponseMessage Post(SessionPresenterResult sessionPresenterResult)
         {
             HttpResponseMessage response;
-            
-            // block sessions that are over limit
-            var numberSessionsAllowed = AttendeesManager.I.Get(new AttendeesQuery()
-                {
-                    Id = sessionPresenterResult.AttendeeId
-                }).Count;
 
-            var numberSessionsApprovedThisYear = SessionPresenterManager.I.Get(new SessionPresenterQuery()
-                {
-                    AttendeeId = sessionPresenterResult.AttendeeId,
-                    CodeCampYearId = Utils.GetCurrentCodeCampYear()
-                }).Count();
-
-            if (numberSessionsApprovedThisYear < numberSessionsAllowed && !Utils.CheckUserIsAdmin())
+             string message;
+            bool canPresent = Utils.GetSpeakerCanPresent(sessionPresenterResult.AttendeeId, out message);
+            if (canPresent)
             {
-                var spr = new SessionPresenterResult()
+                var spr = new SessionPresenterResult
                     {
                         AttendeeId = sessionPresenterResult.AttendeeId,
                         SessionId = sessionPresenterResult.SessionId
@@ -94,7 +84,7 @@ namespace WebAPI.rest
             else
             {
 
-                response = Request.CreateResponse(HttpStatusCode.ExpectationFailed,
+                response = Request.CreateErrorResponse(HttpStatusCode.NotAcceptable,
                                                   "Over Session Submit Limit or Session Submission closed");
             }
             return response;

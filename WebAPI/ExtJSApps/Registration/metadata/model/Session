@@ -154,6 +154,19 @@
             "designerId": "e0b9a70d-17b9-44ea-97d9-33b0c1e32108"
         },
         {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "loggedInUserAttendeeId",
+                "designer|userClassName": "MyField13"
+            },
+            "designerId": "3c289d5e-52e0-461a-910a-cd3a079badda"
+        },
+        {
             "type": "Ext.data.proxy.Rest",
             "reference": {
                 "name": "proxy",

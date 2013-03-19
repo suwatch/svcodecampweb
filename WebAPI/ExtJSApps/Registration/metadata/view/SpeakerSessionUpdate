@@ -157,12 +157,13 @@
                                     "                });\r",
                                     "            },\r",
                                     "            failure: function(rec) {\r",
+                                    "                debugger;\r",
                                     "                Ext.Msg.alert(\"Failed To Add Record to SessionPresenter\");\r",
                                     "            },\r",
                                     "        });\r",
                                     "    },\r",
                                     "    failure: function(rec) {\r",
-                                    "                Ext.Msg.alert(\"Failed To Add Record to Session\");\r",
+                                    "        Ext.Msg.alert(\"Failed To Add Record to Session\");\r",
                                     "    }\r",
                                     "});\r",
                                     "\r",
@@ -452,21 +453,21 @@
                         "implHandler": [
                             "if (selected.length > 0) {  // on delete, this fires and then there is nothing selected\r",
                             "    var sessionData = selected[0].getData();\r",
-                            "    \r",
+                            "\r",
                             "    // get handle to bottom window containing form and tags to enable\r",
                             "    var sessionDetailPanel = Ext.getCmp('sessionDetailPanelId');\r",
                             "    sessionDetailPanel.setDisabled(false);\r",
-                            "    \r",
-                            "    \r",
+                            "\r",
+                            "\r",
                             "    // fill data into form for session info\r",
                             "    var panelForm = Ext.getCmp('sessionFormPanelEditorId').getForm();\r",
-                            "    \r",
+                            "\r",
                             "    var myRec = Ext.create(\"RegistrationApp.model.Session\",sessionData);\r",
                             "    panelForm.loadRecord(myRec);\r",
-                            "    \r",
-                            "    \r",
+                            "\r",
+                            "\r",
                             "    //panelForm.setValues(sessionData);\r",
-                            "    \r",
+                            "\r",
                             "    // fill data in for tags\r",
                             "    var tagList = Ext.getCmp(\"SessionTagsGridPanelId\");\r",
                             "    var tagListStore = tagList.store;\r",
@@ -484,15 +485,15 @@
                             "                }\r",
                             "            });\r",
                             "            sm.select(recs);\r",
-                            "    \r",
-                            "    \r",
-                            "    \r",
+                            "\r",
+                            "\r",
+                            "\r",
                             "            tagList.getView().scrollBy(0, -10000);\r",
-                            "    \r",
+                            "\r",
                             "            //tagList.scrollBy(0, -10000);\r",
                             "            // sm.select(0);\r",
-                            "    \r",
-                            "    \r",
+                            "\r",
+                            "\r",
                             "        }\r",
                             "    });\r",
                             "}\r",
@@ -506,6 +507,54 @@
                         "scope": "me"
                     },
                     "designerId": "d58de540-994f-4c99-9054-86b62daba536"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "hidden": true,
+                        "width": 50,
+                        "designer|userClassName": "MyColumn1",
+                        "dataIndex": "approved",
+                        "text": null
+                    },
+                    "designerId": "31bb0ca7-6d2a-4d15-896a-42d883d6e774",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "editRenderer",
+                                "fn": "editRenderer",
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "implHandler": [
+                                    "if (value == true) {\r",
+                                    "\treturn 'approved';\r",
+                                    "} else {\r",
+                                    "    return 'pending approval';\r",
+                                    "}\r",
+                                    "    "
+                                ]
+                            },
+                            "designerId": "20c59dde-a4ab-41f9-ba8f-42b99ee7c441"
+                        }
+                    ]
                 }
             ]
         },

@@ -1128,7 +1128,9 @@ namespace CodeCampSV
 		
 		private string _State;
 		
-		private System.Nullable<int> _MaxPresentationsPerYear;
+		private System.Nullable<int> _PresentationLimit;
+		
+		private System.Nullable<bool> _PresentationApprovalRequired;
 		
 		private EntitySet<AttendeesCodeCampYear> _AttendeesCodeCampYear;
 		
@@ -1272,8 +1274,10 @@ namespace CodeCampSV
     partial void OnCityChanged();
     partial void OnStateChanging(string value);
     partial void OnStateChanged();
-    partial void OnMaxPresentationsPerYearChanging(System.Nullable<int> value);
-    partial void OnMaxPresentationsPerYearChanged();
+    partial void OnPresentationLimitChanging(System.Nullable<int> value);
+    partial void OnPresentationLimitChanged();
+    partial void OnPresentationApprovalRequiredChanging(System.Nullable<bool> value);
+    partial void OnPresentationApprovalRequiredChanged();
     #endregion
 		
 		public Attendees()
@@ -2528,22 +2532,42 @@ namespace CodeCampSV
 			}
 		}
 		
-		[Column(Storage="_MaxPresentationsPerYear", DbType="Int")]
-		public System.Nullable<int> MaxPresentationsPerYear
+		[Column(Storage="_PresentationLimit", DbType="Int")]
+		public System.Nullable<int> PresentationLimit
 		{
 			get
 			{
-				return this._MaxPresentationsPerYear;
+				return this._PresentationLimit;
 			}
 			set
 			{
-				if ((this._MaxPresentationsPerYear != value))
+				if ((this._PresentationLimit != value))
 				{
-					this.OnMaxPresentationsPerYearChanging(value);
+					this.OnPresentationLimitChanging(value);
 					this.SendPropertyChanging();
-					this._MaxPresentationsPerYear = value;
-					this.SendPropertyChanged("MaxPresentationsPerYear");
-					this.OnMaxPresentationsPerYearChanged();
+					this._PresentationLimit = value;
+					this.SendPropertyChanged("PresentationLimit");
+					this.OnPresentationLimitChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_PresentationApprovalRequired", DbType="Bit")]
+		public System.Nullable<bool> PresentationApprovalRequired
+		{
+			get
+			{
+				return this._PresentationApprovalRequired;
+			}
+			set
+			{
+				if ((this._PresentationApprovalRequired != value))
+				{
+					this.OnPresentationApprovalRequiredChanging(value);
+					this.SendPropertyChanging();
+					this._PresentationApprovalRequired = value;
+					this.SendPropertyChanged("PresentationApprovalRequired");
+					this.OnPresentationApprovalRequiredChanged();
 				}
 			}
 		}

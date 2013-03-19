@@ -133,6 +133,20 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                             width: 50,
                             dataIndex: 'sessionId',
                             text: 'sessionsId'
+                        },
+                        {
+                            xtype: 'gridcolumn',
+                            editRenderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+                                if (value == true) {
+                                    return 'approved';
+                                } else {
+                                    return 'pending approval';
+                                }
+
+                            },
+                            hidden: true,
+                            width: 50,
+                            dataIndex: 'approved'
                         }
                     ],
                     listeners: {
@@ -327,6 +341,7 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                         });
                     },
                     failure: function(rec) {
+                        debugger;
                         Ext.Msg.alert("Failed To Add Record to SessionPresenter");
                     },
                 });

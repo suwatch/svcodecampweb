@@ -80,7 +80,8 @@ namespace CodeCampSV
             record.OptInSponsorSpecialsLevel = result.OptInSponsorSpecialsLevel;
             record.City = result.City;
             record.State = result.State;
-            record.MaxPresentationsPerYear = result.MaxPresentationsPerYear;
+            record.PresentationLimit = result.PresentationLimit;
+            record.PresentationApprovalRequired = result.PresentationApprovalRequired;
             // 
             //  Used by Default in Update and Insert Methods.
         }
@@ -154,7 +155,8 @@ namespace CodeCampSV
             OptInSponsorSpecialsLevel = myData.OptInSponsorSpecialsLevel,
             City = myData.City,
             State = myData.State,
-            MaxPresentationsPerYear = myData.MaxPresentationsPerYear
+            PresentationLimit = myData.PresentationLimit,
+            PresentationApprovalRequired = myData.PresentationApprovalRequired
       });
 		    return results;
         }
@@ -244,7 +246,8 @@ namespace CodeCampSV
                         OptInSponsorSpecialsLevel = myData.OptInSponsorSpecialsLevel,
                         City = myData.City,
                         State = myData.State,
-                        MaxPresentationsPerYear = myData.MaxPresentationsPerYear
+                        PresentationLimit = myData.PresentationLimit,
+                        PresentationApprovalRequired = myData.PresentationApprovalRequired
             });
             
             List<AttendeesResult> resultList = GetFinalResults(results, query);
@@ -320,7 +323,8 @@ namespace CodeCampSV
             if (query.OptInSponsorSpecialsLevel != null) baseQuery = baseQuery.Where(a => a.OptInSponsorSpecialsLevel == query.OptInSponsorSpecialsLevel);
             if (query.City != null) baseQuery = baseQuery.Where(a => a.City.ToLower().Equals(query.City.ToLower()));
             if (query.State != null) baseQuery = baseQuery.Where(a => a.State.ToLower().Equals(query.State.ToLower()));
-            if (query.MaxPresentationsPerYear != null) baseQuery = baseQuery.Where(a => a.MaxPresentationsPerYear == query.MaxPresentationsPerYear);
+            if (query.PresentationLimit != null) baseQuery = baseQuery.Where(a => a.PresentationLimit == query.PresentationLimit);
+            if (query.PresentationApprovalRequired != null) baseQuery = baseQuery.Where(a => a.PresentationApprovalRequired == query.PresentationApprovalRequired);
 
             return baseQuery;
         }

@@ -183,17 +183,20 @@ namespace WebAPI.REST
                  Id = id
              }).FirstOrDefault();
 
-            var sessionPresenters = SessionPresenterManager.I.Get(new SessionPresenterQuery() { SessionId = id });
+            var sessionPresenters = SessionPresenterManager.I.Get(new SessionPresenterQuery() {SessionId = id});
             List<int> spIds = sessionPresenters.Select(a => a.Id).ToList();
             foreach (var spid in spIds)
             {
                 SessionPresenterManager.I.Delete(spid);
             }
 
-            List<int> tagIds = session.TagsResults.Select(a => a.Id).ToList();
-            foreach (var tagId in tagIds)
+            if (session != null)
             {
-                SessionTagsManager.I.Delete(tagId);
+                List<int> tagIds = session.TagsResults.Select(a => a.Id).ToList();
+                foreach (var tagId in tagIds)
+                {
+                    SessionTagsManager.I.Delete(tagId);
+                }
             }
 
             SessionsManager.I.Delete(id);

@@ -27,5 +27,10 @@ namespace CodeCampSV
         public bool? WithTitle { get; set; }
 
         public bool? WithSpeaker { get; set; }
+
+        /// <summary>
+        /// if the associated session is approved (this is 3 state, true,false,null where null is all
+        /// </summary>
+        public bool? IsApproved { get; set; } 
     }
 }

@@ -141,6 +141,8 @@ namespace CodeCampSV
         [AutoGenColumn]
         public string State { get; set; }
         [AutoGenColumn]
-        public int? MaxPresentationsPerYear { get; set; }
+        public int? PresentationLimit { get; set; }
+        [AutoGenColumn]
+        public bool? PresentationApprovalRequired { get; set; }
     }
 }

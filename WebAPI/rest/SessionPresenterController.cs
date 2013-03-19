@@ -8,6 +8,15 @@ using System.Web.Http;
 
 namespace WebAPI.rest
 {
+    public class ReturnMessage
+    {
+        public string Message { get; set; }
+
+        
+    }
+
+
+
     public class SessionPresenterController : ApiController
     {
        
@@ -43,50 +52,90 @@ namespace WebAPI.rest
             
         }
 
-        // GET api/sessionpresenter/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
+     
         // POST api/sessionpresenter
+        /// <summary>
+        /// insert
+        /// </summary>
+        /// <param name="sessionPresenterResult"></param>
+        /// <returns></returns>
         public HttpResponseMessage Post(SessionPresenterResult sessionPresenterResult)
         {
-            SessionPresenterResult spr = new SessionPresenterResult()
-            {
-                AttendeeId = sessionPresenterResult.AttendeeId,
-                SessionId = sessionPresenterResult.SessionId
-            };
-            SessionPresenterManager.I.Insert(spr);
-
-            var rec = SessionPresenterManager.I.Get(new SessionPresenterQuery()
-            {
-                Id = spr.Id,
-                WithTitle = true
-            });
-
-
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, rec);
-            return response;
-        }
-
-        // PUT api/sessionpresenter/5
-        public HttpResponseMessage Put(SessionPresenterResult sessionPresenterResult)
-        {
-            var spr = new SessionPresenterResult()
-            {
-                SessionId = sessionPresenterResult.SessionId,
-                AttendeeId = sessionPresenterResult.AttendeeId
-            };
-            SessionPresenterManager.I.Insert(spr);
-
-
             HttpResponseMessage response;
-            response = Request.CreateResponse(HttpStatusCode.OK, spr);
+            
+            // block sessions that are over limit
+            var numberSessionsAllowed = AttendeesManager.I.Get(new AttendeesQuery()
+                {
+                    Id = sessionPresenterResult.AttendeeId
+                }).Count;
+
+            var numberSessionsApprovedThisYear = SessionPresenterManager.I.Get(new SessionPresenterQuery()
+                {
+                    AttendeeId = sessionPresenterResult.AttendeeId,
+                    CodeCampYearId = Utils.GetCurrentCodeCampYear()
+                }).Count();
+
+            if (numberSessionsApprovedThisYear < numberSessionsAllowed && !Utils.CheckUserIsAdmin())
+            {
+                var spr = new SessionPresenterResult()
+                    {
+                        AttendeeId = sessionPresenterResult.AttendeeId,
+                        SessionId = sessionPresenterResult.SessionId
+                    };
+                SessionPresenterManager.I.Insert(spr);
+
+                var rec = SessionPresenterManager.I.Get(new SessionPresenterQuery()
+                    {
+                        Id = spr.Id,
+                        WithTitle = true
+                    });
+                response = Request.CreateResponse(HttpStatusCode.OK, rec);
+            }
+            else
+            {
+
+                response = Request.CreateResponse(HttpStatusCode.ExpectationFailed,
+                                                  "Over Session Submit Limit or Session Submission closed");
+            }
             return response;
-
-
         }
+
+
+        // THIS TABLE WE DO NOT UPDATE THAT I KNOW OF
+        //// PUT api/sessionpresenter/5
+        ///// <summary>
+        ///// update
+        ///// </summary>
+        ///// <param name="sessionPresenterResult"></param>
+        ///// <returns></returns>
+        //public HttpResponseMessage Put(SessionPresenterResult sessionPresenterResult)
+        //{
+        //    // block sessions that are over limit
+        //    var numberSessionsAllowed =  AttendeesManager.I.Get(new AttendeesQuery()
+        //        {
+        //            Id = sessionPresenterResult.AttendeeId
+        //        }).Count;
+
+        //    var rec = SessionPresenterManager.I.Get(new SessionPresenterQuery()
+        //    {
+
+        //       // Id = spr.Id
+        //    });
+
+
+        //    var spr = new SessionPresenterResult
+        //        {
+        //            SessionId = sessionPresenterResult.SessionId,
+        //            AttendeeId = sessionPresenterResult.AttendeeId
+        //        };
+        //    SessionPresenterManager.I.Insert(spr);
+
+
+        //    HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, spr);
+        //    return response;
+
+
+        //}
 
         // DELETE api/sessionpresenter/5
         public HttpResponseMessage Delete(int id)

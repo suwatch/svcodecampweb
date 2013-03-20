@@ -6,126 +6,167 @@
     },
     "codeClass": null,
     "userConfig": {
+        "id": "myViewPortId",
         "designer|userClassName": "MyViewport",
-        "designer|initialView": true,
-        "layout": "border"
+        "designer|initialView": true
     },
-    "designerId": "4b402cb5-ec70-412b-8a97-3fc3d37d65e9",
+    "designerId": "062e7b6f-7a36-45f6-8b28-491df7adccfd",
     "cn": [
         {
-            "type": "Ext.grid.Panel",
+            "type": "Ext.form.Panel",
             "reference": {
                 "name": "items",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "layout|region": "center",
-                "designer|userClassName": "MyGridPanel",
-                "title": "My Grid Panel",
-                "store": "MyArrayStore"
+                "buttons": null,
+                "id": "myFormId",
+                "designer|userClassName": "MyForm",
+                "title": "My Panel",
+                "url": "/api/account/verify"
             },
-            "designerId": "69b5ee18-abd7-411f-a790-5305121c2c54",
+            "designerId": "aea65d19-b690-4185-acf1-5b4051c30482",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "buttons",
+                    "type": "string"
+                }
+            ],
             "cn": [
                 {
-                    "type": "Ext.grid.View",
+                    "type": "Ext.form.field.Text",
                     "reference": {
-                        "name": "viewConfig",
-                        "type": "object"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "designer|userClassName": "MyGridView"
-                    },
-                    "designerId": "91099f42-e5c1-4eb6-9a5b-505eb8c41520"
-                },
-                {
-                    "type": "Ext.grid.column.Column",
-                    "reference": {
-                        "name": "columns",
+                        "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "MyColumn1",
-                        "dataIndex": "col1",
-                        "text": "Col1"
+                        "designer|userClassName": "MyTextField",
+                        "fieldLabel": "Label",
+                        "name": "username"
                     },
-                    "designerId": "124f3616-2a5d-4e87-8e56-12e86645c87c"
+                    "designerId": "5e89c041-68cf-4856-b0b0-8cf846bae170"
                 },
                 {
-                    "type": "Ext.grid.column.Column",
+                    "type": "Ext.form.field.Text",
                     "reference": {
-                        "name": "columns",
+                        "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "MyColumn2",
-                        "dataIndex": "col2",
-                        "text": "Col2"
+                        "designer|userClassName": "MyTextField1",
+                        "fieldLabel": "Label",
+                        "name": "password"
                     },
-                    "designerId": "f77797b0-ad1d-48d5-b113-f1eb8fd65260"
+                    "designerId": "35bb0ff1-1684-4b14-8a4e-0528129f0356"
                 },
                 {
-                    "type": "basiceventbinding",
+                    "type": "Ext.panel.Panel",
                     "reference": {
-                        "name": "listeners",
+                        "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "onGridpanelAfterRender",
-                        "fn": "onGridpanelAfterRender",
-                        "implHandler": [
-                            "var store = component.getStore();\r",
-                            "var data = [\r",
-                            "\r",
-                            "{col1: 'a'},\r",
-                            "{col1: 'b'},\r",
-                            "{col1: 'c'},\r",
-                            "{col1: 'd'},\r",
-                            "{col1: 'e'},\r",
-                            "{col1: 'f'},\r",
-                            "{col1: 'g'},\r",
-                            "{col1: 'h'},\r",
-                            "{col1: 'i'},\r",
-                            "{col1: '1'},\r",
-                            "{col1: '2'},\r",
-                            "{col1: '3'},\r",
-                            "{col1: '4'},\r",
-                            "{col1: '5'},\r",
-                            "{col1: '6'},\r",
-                            "{col1: '7'},\r",
-                            "{col1: '8'},\r",
-                            "{col1: '9'}\r",
-                            "];\r",
-                            "\r",
-                            "store.loadData(data);\r",
-                            "var selectionModel = component.getSelectionModel();\r",
-                            "var rec = store.getAt(15);\r",
-                            "selectionModel.select([rec]);\r",
-                            "\r",
-                            "\r",
-                            "\r",
-                            ""
+                        "border": false,
+                        "height": 150,
+                        "html": [
+                            "<div id=\"recaptcha\">adsf</div>"
                         ],
-                        "name": "afterrender",
-                        "scope": "me"
+                        "itemId": "reCaptcha",
+                        "designer|userClassName": "MyPanel1",
+                        "title": "My Panel"
                     },
-                    "designerId": "230b9a5e-c85e-4302-a7fd-13202193aef4"
+                    "designerId": "e9345aee-2d28-47d1-a972-ff2d27cfa83c",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "onReCaptchaAfterRender",
+                                "fn": "onReCaptchaAfterRender",
+                                "implHandler": [
+                                    "\r",
+                                    "Recaptcha.create(\"6LcrXN4SAAAAAG4gTUSUCzyfaFE4-yJOIXq86PdW\",\r",
+                                    "                 \r",
+                                    "    Ext.getDom('recaptcha'),\r",
+                                    "    {\r",
+                                    "        theme: \"clean\",\r",
+                                    "        callback: Recaptcha.focus_response_field\r",
+                                    "    }\r",
+                                    "    \r",
+                                    ");\r",
+                                    "\r",
+                                    "\r",
+                                    ""
+                                ],
+                                "name": "afterrender",
+                                "scope": "me"
+                            },
+                            "designerId": "47caaa7a-144a-4045-a5c8-9c9645683496"
+                        }
+                    ]
                 },
                 {
-                    "type": "Ext.selection.RowModel",
+                    "type": "Ext.button.Button",
                     "reference": {
-                        "name": "selModel",
-                        "type": "object"
+                        "name": "items",
+                        "type": "array"
                     },
-                    "codeClass": "Ext.selection.RowModel",
+                    "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "MyRowSelectionModel"
+                        "designer|userClassName": "MyButton1",
+                        "text": "MyButton"
                     },
-                    "designerId": "b721965e-0e7f-48fa-9427-7c2696a482b1"
+                    "designerId": "d7eea206-6f0b-497b-9c8c-575961197ecf",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "onButtonClick",
+                                "fn": "onButtonClick",
+                                "implHandler": [
+                                    "\r",
+                                    "var challenge = Recaptcha.get_challenge();\r",
+                                    "var response = Recaptcha.get_response();\r",
+                                    "\r",
+                                    "var form = button.up().getForm();\r",
+                                    "\r",
+                                    "if (form.isValid()) {    \r",
+                                    "    form.submit({\r",
+                                    "        params: {\r",
+                                    "            challenge: challenge,\r",
+                                    "            response: response\r",
+                                    "        },\r",
+                                    "        \r",
+                                    "        url: 'login.php',\r",
+                                    "        success: function(form, action) {\r",
+                                    "            Ext.Msg.alert('Login Successful!');\r",
+                                    "        },\r",
+                                    "        failure: function(form, action) {\r",
+                                    "            Ext.Msg.alert('Login Failed!');\r",
+                                    "        }\r",
+                                    "    });\r",
+                                    "}"
+                                ],
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "designerId": "77b33fbb-83f7-4172-8670-86956e993fba"
+                        }
+                    ]
                 }
             ]
         }

@@ -6,18 +6,10 @@
     },
     "codeClass": null,
     "userConfig": {
-        "stores": [
-            "MyArrayStore"
-        ],
         "views": [
-            "MyViewport",
-            "MyWindow"
+            "MyViewport"
         ],
         "autoCreateViewport": true,
-        "controllers": [
-            "MyController1",
-            "MyController"
-        ],
         "name": "MyApp"
     },
     "designerId": "application"

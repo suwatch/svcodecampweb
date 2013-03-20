@@ -1,0 +1,12 @@
+{
+    "type": "jsresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "url": "http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"
+    },
+    "designerId": "5bf4765f-bc8a-4e4d-88cb-4af730c9ed11"
+}

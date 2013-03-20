@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<!-- Auto Generated with Sencha Architect -->
+<!-- Modifications to this file will be overwritten. -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Registration</title>
+    <script src="../../ext-4.2.0.663/ext-all-debug.js"></script>
+    <link rel="stylesheet" href="../../ext-4.2.0.663/resources/ext-theme-gray/ext-theme-gray-all.css">
+   
+    <script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+
+
+
+     <script type="text/javascript">
+
+         Ext.define('Login.view.Login', {
+             extend: 'Ext.form.Panel',
+             alias: 'widget.Login.view.Login',
+
+             border: false,
+             bodyPadding: 5,
+
+             initComponent: function () {
+
+                 var config = {
+                     layout: 'anchor',
+                     defaultType: 'textfield',
+                     defaults: {
+                         anchor: '100%',
+                         allowBlank: false
+                     },
+                     items: [{
+                         fieldLabel: 'Company Id',
+                         name: 'companyId'
+                     }, {
+                         fieldLabel: 'Username',
+                         name: 'username'
+                     }, {
+                         fieldLabel: 'Password',
+                         name: 'password',
+                         inputType: 'password'
+                     }, {
+                         xtype: 'panel',
+                         itemId: 'reCaptcha',
+                         border: true,
+                         html: '<div id="recaptcha">ABCDEFG</div>'
+                         , listeners: {
+                             afterrender: function () {
+                                 //console.log(Ext.getDom(this.body));
+                                 Recaptcha.create("6LcrXN4SAAAAAG4gTUSUCzyfaFE4-yJOIXq86PdW",
+                                     'captcha'
+                                 );
+                             }
+                         }
+                     }],
+                     buttons: [{
+                         text: 'Login',
+                         listeners: {
+                             click: {
+                                 fn: function (rec) {
+                                     debugger;
+                                 }
+                             }
+                         }
+                     }]
+                 };
+
+
+                 Ext.apply(this, config);
+
+                 this.callParent();
+             },
+        afterRender: function() {
+            var captchaEl = Ext.get('recaptcha');
+            console.log(captchaEl);
+            Recaptcha.create("6LcrXN4SAAAAAG4gTUSUCzyfaFE4-yJOIXq86PdW",
+                document.getElementById('recaptcha'),
+                {
+                    theme: "clean",
+                    callback: Recaptcha.focus_response_field
+                }
+            );
+            this.callParent();
+        }
+         });
+
+         // entry point
+         Ext.onReady(function () {
+             var l = Ext.create('Login.view.Login', { renderTo: Ext.getBody() });
+         }); // eo onReady
+
+    </script>
+
+
+</head>
+<body>
+
+
+    <div id="captcha" ></div>
+
+
+</body>
+</html>

@@ -16,77 +16,8 @@
 Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
     extend: 'Ext.app.Controller',
 
-    onSessionsBySpeakerGridPanelIdAfterRender: function(component, eOpts) {
-        /*
-        var sessionSpeakerPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
-
-
-        console.log('checking log in status from constructor of RegistrationApp.view.override.TabWizardPanel');
-
-        var attendeeFromFirstPage = Ext.ComponentQuery.query('AttendeeSpeakerOrSponsorAlias #rbAttendee')[0];
-        var speakerFromFirstPage = Ext.ComponentQuery.query('AttendeeSpeakerOrSponsorAlias #rbSpeaker')[0];
-
-        var nextPanel;
-        var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Checking Logged In Status..."});
-        // always check logged in status when get here
-        myMask.show();
-        // first check to see if person is already logged in.  If they are, then go edit details page as if attendee
-        var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];
-        Ext.Ajax.request({ 
-            url:'/rpc/Account/IsLoggedIn', 
-            actionMethods:'POST', 
-            scope:this, 
-            params:{
-                Username: '',
-                Password: '',
-                RememberMe: true
-            },
-            success: function(r, o) {
-                var retData = Ext.JSON.decode(r.responseText);
-                debugger;
-                //tabPanel.updateAllPanelsWithData(retData);
-                if (retData.hasSessionsCurrentYear === true) {
-                    speakerFromFirstPage.checked = true;
-                    // need to load sessions also for this attendee (who is speaker)
-
-
-
-
-                    var sessionsBySpeakerStore = Ext.getCmp("sessionsBySpeakerGridPanelId").getStore();
-                    sessionsBySpeakerStore.load({
-                        params: {
-                            option: 'byspeaker',
-                            param1: retData.attendeesId,
-                            param2: '-1',
-                            param3: '-1'
-                        },
-                        callback: function(records,operation,success) {
-                            // this is after render, we don't change panels here
-                            tabPanel.setActiveTab(tabPanel.getTabIdByName('SpeakerSessionUpdate'));  
-                            var imgId = Ext.ComponentQuery.query('#SpeakerImgId')[0];
-                            var imageLocation = '/attendeeimage/' + retData.attendeesId + '.jpg?width=175';
-                            var antiCachePart = (new Date()).getTime();
-                            var newSrc = imageLocation + '?dc=' + antiCachePart;
-                            imgId.setSrc(newSrc); 
-                            myMask.hide();
-                        }
-                    });
-                }
-
-
-            },
-            failure: function(r,o) {
-                console.log('is NOT logged in from onSessionBySpeakerGridPanelIdAfterRender');
-                // not logged in so take them to opening page
-                tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeSpeakerSponsorId'));
-                myMask.hide();
-            } 
-        });  
-        */
-    },
-
     onContinueButtonIdClick: function(button, e, eOpts) {
-        debugger;
+
         this.saveSessions();
 
 
@@ -101,16 +32,229 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
 
     },
 
+    onButtonClick: function(button, e, eOpts) {
+        var sessionGridPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
+        var sessionsBySpeakerStore = Ext.getCmp("sessionsBySpeakerGridPanelId").getStore();
+
+        var sm = sessionGridPanel.getSelectionModel();
+        if (sm.getCount() === 0) {
+            Ext.Msg.alert("Must select a session first"); 
+        } else {
+
+            Ext.Msg.confirm('Delete Selected Session?', 'Are you sure you want to delete the selected session?', function (id, value) {
+
+                if (id === 'yes') {
+                    var recordModel = sm.getSelection();
+                    sessionsBySpeakerStore.remove(recordModel);
+                    sessionsBySpeakerStore.sync({
+                        success: function(){
+
+                            var sessionDetailPanel = Ext.getCmp('sessionDetailPanelId');
+                            sessionDetailPanel.setDisabled(true);
+
+                            var attendeesId = Ext.getCmp('speakerAfterLoginProfileId').getForm().getValues().attendeesId;
+
+                            sessionsBySpeakerStore.load({
+                                params: {
+                                    option: 'byspeaker',
+                                    param1: attendeesId,
+                                    param2: '-1',
+                                    param3: '-1'
+                                },
+                                success: function(records,operation,success) {
+
+                                    // now sure why this does not fire.
+
+                                },
+                                failure: function(records,operation,success) {
+                                    Ext.Msg.alert("Failure Retrieving Sessions/Speaker Info",success); 
+                                }
+                            });
+                        },
+                        failure: function(rec){
+                            Ext.Msg.alert("Error Removing Session Info",rec); 
+                        },
+                        scope: this
+                    });
+                }
+            }, this);  
+
+
+        }
+    },
+
+    onSessionButtonAddNewIdClick: function(button, e, eOpts) {
+        /*
+
+        var attendeesId = Ext.getCmp('speakerAfterLoginProfileId').getForm().getValues().attendeesId;
+
+        Ext.Ajax.request({ 
+        url:'/rest/Session', 
+        actionMethods:'GET', 
+        scope:this, 
+        params:{
+        option: 'submitsessioncheck',
+        param1: parseInt(attendeesId)
+        },
+        success: function(r, o) { 
+        debugger;
+        },
+        failure: function(r,o) {
+        debugger;
+        } 
+        });  
+
+
+        debugger;
+
+        */
+        var attendeesId = Ext.getCmp('speakerAfterLoginProfileId').getForm().getValues().attendeesId;
+
+        var newSessionRecord = Ext.create('RegistrationApp.model.Session',{
+            title: 'New Session, Update Your Title and other Session Info.',
+            description: 'Description Required Here',
+            loggedInUserAttendeeId: parseInt(attendeesId)
+        });
+        newSessionRecord.save({
+            success: function(record,operation) {
+                //debugger;
+
+                var newSessionPresenterRecord = Ext.create('RegistrationApp.model.SessionPresenterModel',{
+                    attendeeId: parseInt(attendeesId),
+                    sessionId: record.getData().id
+                });
+                //debugger;
+                newSessionPresenterRecord.save({
+                    success: function(record) {
+                        var sessionsBySpeakerStore = Ext.getCmp("sessionsBySpeakerGridPanelId").getStore();
+                        //debugger;
+                        sessionsBySpeakerStore.load({
+                            params: {
+                                option: 'byspeaker',
+                                param1: attendeesId,
+                                param2: '-1',
+                                param3: '-1'
+                            },
+                            callback: function(records,operation,success) {
+                                //debugger;
+                            }
+                        });
+                    },
+                    failure: function(records,operation,success) {
+                        //debugger;
+                        var message = operation.getError(); // this does not work
+                        Ext.Msg.alert("Session adding restricted.   Either over limit or sessions closed");
+                    }
+                });
+            },
+            failure: function(rec) {
+                Ext.Msg.alert("Session adding restricted.   Either over limit or sessions closed.");
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    },
+
+    onSessionButtonSaveChangesIdClick: function(button, e, eOpts) {
+        this.saveSessions();
+
+        /*
+        var formPanel = Ext.getCmp("sessionFormPanelEditorId").getForm();
+        var sessionGridPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
+
+        formPanel.updateRecord();
+        var modelRecord = formPanel.getRecord();
+
+        var store = sessionGridPanel.getStore();
+        var sessionId = modelRecord.getId();
+        var index = store.findExact("id", parseInt(sessionId));
+
+        var modelRecordFromGrid = store.getAt(index);
+
+        modelRecordFromGrid.set("title",modelRecord.getData().title);
+        modelRecordFromGrid.set("description",modelRecord.getData().description);
+        modelRecordFromGrid.set("sessionLevel",modelRecord.getData().sessionLevel);
+        modelRecordFromGrid.set("twitterHashTags",modelRecord.getData().twitterHashTags);
+        modelRecordFromGrid.set("description",modelRecord.getData().description);
+
+        store.sync();
+
+        var tagList = Ext.getCmp("SessionTagsGridPanelId");
+        var tagListStore = tagList.store;
+        tagListStore.save();
+
+
+        */
+
+
+
+
+
+
+
+
+
+
+    },
+
+    saveSessions: function() {
+        var formPanel = Ext.getCmp("sessionFormPanelEditorId").getForm();
+        var sessionGridPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
+
+        formPanel.updateRecord();
+        var modelRecord = formPanel.getRecord();
+
+        var store = sessionGridPanel.getStore();
+        var sessionId = modelRecord.getId();
+        var index1 = store.findExact("id", parseInt(sessionId));
+
+        var modelRecordFromGrid = store.getAt(index1);
+
+        modelRecordFromGrid.set("title",modelRecord.getData().title);
+        modelRecordFromGrid.set("description",modelRecord.getData().description);
+        modelRecordFromGrid.set("sessionLevel",modelRecord.getData().sessionLevel);
+        modelRecordFromGrid.set("twitterHashTags",modelRecord.getData().twitterHashTags);
+        modelRecordFromGrid.set("description",modelRecord.getData().description);
+
+        store.sync();
+
+        var tagList = Ext.getCmp("SessionTagsGridPanelId");
+        var tagListStore = tagList.store;
+        tagListStore.save();
+
+    },
+
     init: function(application) {
         this.control({
-            "SpeakerSessionUpdateAlias #sessionsBySpeakerGridPanelId": {
-                afterrender: this.onSessionsBySpeakerGridPanelIdAfterRender
-            },
             "SpeakerSessionUpdateAlias #continueButtonId": {
                 click: this.onContinueButtonIdClick
             },
             "#speakerSessionsBackButtonItemId": {
                 click: this.onSpeakerSessionsBackButtonItemIdClick
+            },
+            "#SessionButtonDelete": {
+                click: this.onButtonClick
+            },
+            "#sessionButtonAddNewId": {
+                click: this.onSessionButtonAddNewIdClick
+            },
+            "#sessionButtonSaveChangesId": {
+                click: this.onSessionButtonSaveChangesIdClick
             }
         });
     }

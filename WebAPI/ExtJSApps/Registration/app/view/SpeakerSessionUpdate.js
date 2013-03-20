@@ -29,6 +29,7 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                 {
                     xtype: 'toolbar',
                     saveSessions: function() {
+                        /*
                         var formPanel = Ext.getCmp("sessionFormPanelEditorId").getForm();
                         var sessionGridPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
 
@@ -52,6 +53,7 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                         var tagList = Ext.getCmp("SessionTagsGridPanelId");
                         var tagListStore = tagList.store;
                         tagListStore.save();
+                        */
 
                     },
                     dock: 'top',
@@ -64,35 +66,17 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                         {
                             xtype: 'button',
                             id: 'sessionButtonSaveChangesId',
-                            text: 'Save Changes',
-                            listeners: {
-                                click: {
-                                    fn: me.onSessionButtonSaveChangesIdClick,
-                                    scope: me
-                                }
-                            }
+                            text: 'Save Changes'
                         },
                         {
                             xtype: 'button',
                             id: 'sessionButtonAddNewId',
-                            text: 'Add New Session',
-                            listeners: {
-                                click: {
-                                    fn: me.onSessionButtonAddNewIdClick,
-                                    scope: me
-                                }
-                            }
+                            text: 'Add New Session'
                         },
                         {
                             xtype: 'button',
                             id: 'SessionButtonDelete',
-                            text: 'Delete Session',
-                            listeners: {
-                                click: {
-                                    fn: me.onButtonClick,
-                                    scope: me
-                                }
-                            }
+                            text: 'Delete Session'
                         },
                         {
                             xtype: 'tbfill'
@@ -169,8 +153,7 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                                 }
 
                             },
-                            width: 50,
-                            defaultWidth: 200,
+                            width: 200,
                             dataIndex: 'approved'
                         }
                     ],
@@ -292,186 +275,6 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
         });
 
         me.callParent(arguments);
-    },
-
-    onSessionButtonSaveChangesIdClick: function(button, e, eOpts) {
-        this.saveSessions();
-
-        /*
-        var formPanel = Ext.getCmp("sessionFormPanelEditorId").getForm();
-        var sessionGridPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
-
-        formPanel.updateRecord();
-        var modelRecord = formPanel.getRecord();
-
-        var store = sessionGridPanel.getStore();
-        var sessionId = modelRecord.getId();
-        var index = store.findExact("id", parseInt(sessionId));
-
-        var modelRecordFromGrid = store.getAt(index);
-
-        modelRecordFromGrid.set("title",modelRecord.getData().title);
-        modelRecordFromGrid.set("description",modelRecord.getData().description);
-        modelRecordFromGrid.set("sessionLevel",modelRecord.getData().sessionLevel);
-        modelRecordFromGrid.set("twitterHashTags",modelRecord.getData().twitterHashTags);
-        modelRecordFromGrid.set("description",modelRecord.getData().description);
-
-        store.sync();
-
-        var tagList = Ext.getCmp("SessionTagsGridPanelId");
-        var tagListStore = tagList.store;
-        tagListStore.save();
-
-
-        */
-
-
-
-
-
-
-
-
-
-
-    },
-
-    onSessionButtonAddNewIdClick: function(button, e, eOpts) {
-        /*
-
-        var attendeesId = Ext.getCmp('speakerAfterLoginProfileId').getForm().getValues().attendeesId;
-
-        Ext.Ajax.request({ 
-        url:'/rest/Session', 
-        actionMethods:'GET', 
-        scope:this, 
-        params:{
-        option: 'submitsessioncheck',
-        param1: parseInt(attendeesId)
-        },
-        success: function(r, o) { 
-        debugger;
-        },
-        failure: function(r,o) {
-        debugger;
-        } 
-        });  
-
-
-        debugger;
-
-        */
-        var attendeesId = Ext.getCmp('speakerAfterLoginProfileId').getForm().getValues().attendeesId;
-
-        var newSessionRecord = Ext.create('RegistrationApp.model.Session',{
-            title: 'New Session, Update Your Title and other Session Info.',
-            description: 'Description Required Here',
-            loggedInUserAttendeeId: parseInt(attendeesId)
-        });
-        newSessionRecord.save({
-            success: function(record,operation) {
-                //debugger;
-
-                var newSessionPresenterRecord = Ext.create('RegistrationApp.model.SessionPresenterModel',{
-                    attendeeId: parseInt(attendeesId),
-                    sessionId: record.getData().id
-                });
-                //debugger;
-                newSessionPresenterRecord.save({
-                    success: function(record) {
-                        var sessionsBySpeakerStore = Ext.getCmp("sessionsBySpeakerGridPanelId").getStore();
-                        //debugger;
-                        sessionsBySpeakerStore.load({
-                            params: {
-                                option: 'byspeaker',
-                                param1: attendeesId,
-                                param2: '-1',
-                                param3: '-1'
-                            },
-                            callback: function(records,operation,success) {
-                                //debugger;
-                            }
-                        });
-                    },
-                    failure: function(records,operation,success) {
-                        //debugger;
-                        var message = operation.getError(); // this does not work
-                        Ext.Msg.alert("Session adding restricted.   Either over limit or sessions closed");
-                    }
-                });
-            },
-            failure: function(rec) {
-                Ext.Msg.alert("Session adding restricted.   Either over limit or sessions closed.");
-            }
-        });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    },
-
-    onButtonClick: function(button, e, eOpts) {
-        var sessionGridPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
-        var sessionsBySpeakerStore = Ext.getCmp("sessionsBySpeakerGridPanelId").getStore();
-
-        var sm = sessionGridPanel.getSelectionModel();
-        if (sm.getCount() === 0) {
-            Ext.Msg.alert("Must select a session first"); 
-        } else {
-
-            Ext.Msg.confirm('Delete Selected Session?', 'Are you sure you want to delete the selected session?', function (id, value) {
-
-                if (id === 'yes') {
-                    var recordModel = sm.getSelection();
-                    sessionsBySpeakerStore.remove(recordModel);
-                    sessionsBySpeakerStore.sync({
-                        success: function(){
-
-                            var sessionDetailPanel = Ext.getCmp('sessionDetailPanelId');
-                            sessionDetailPanel.setDisabled(true);
-
-                            var attendeesId = Ext.getCmp('speakerAfterLoginProfileId').getForm().getValues().attendeesId;
-
-                            sessionsBySpeakerStore.load({
-                                params: {
-                                    option: 'byspeaker',
-                                    param1: attendeesId,
-                                    param2: '-1',
-                                    param3: '-1'
-                                },
-                                success: function(records,operation,success) {
-
-                                    // now sure why this does not fire.
-
-                                },
-                                failure: function(records,operation,success) {
-                                    Ext.Msg.alert("Failure Retrieving Sessions/Speaker Info",success); 
-                                }
-                            });
-                        },
-                        failure: function(rec){
-                            Ext.Msg.alert("Error Removing Session Info",rec); 
-                        },
-                        scope: this
-                    });
-                }
-            }, this);  
-
-
-        }
     },
 
     onSessionsBySpeakerGridPanelIdSelectionChange: function(model, selected, eOpts) {

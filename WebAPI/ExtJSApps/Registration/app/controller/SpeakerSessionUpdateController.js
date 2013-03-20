@@ -87,8 +87,8 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
         var attendeesId = Ext.getCmp('speakerAfterLoginProfileId').getForm().getValues().attendeesId;
 
         var newSessionRecord = Ext.create('RegistrationApp.model.Session',{
-            title: 'New Session, Update Your Title and other Session Info. (' + (new Date()).getTime() + ')' ,
-            description: 'Description Required Here',
+            title: '(' + (new Date()).getTime() + ')' + ' Unique New Session Title (UPDATE).',
+            description: '(Enter the description of your session here)',
             loggedInUserAttendeeId: parseInt(attendeesId)
         });
         newSessionRecord.save({

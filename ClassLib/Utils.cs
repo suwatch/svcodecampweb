@@ -16,6 +16,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI.WebControls;
 using System.Xml.Serialization;
+using CodeCampSV;
 using Encoder = System.Drawing.Imaging.Encoder;
 using Image = System.Drawing.Image;
 
@@ -104,6 +105,8 @@ namespace CodeCampSV
         public static double MinSponsorLevelPlatinum = 4500.00;
         public static double MinSponsorLevelSilver = 1000.00;
         public static double MinSponsorLevelBronze = 500.00;
+
+        public static int SessionSlugLengthMax = 50;
 
 
         //public static double MinSponsorLevel1 = 1500.00;
@@ -5059,8 +5062,8 @@ namespace CodeCampSV
         {
             int pictureLength = 0;
             using (
-              var sqlConnection =
-                  new SqlConnection(ConfigurationManager.ConnectionStrings["CodeCampSV06"].ConnectionString))
+                var sqlConnection =
+                    new SqlConnection(ConfigurationManager.ConnectionStrings["CodeCampSV06"].ConnectionString))
             {
                 sqlConnection.Open();
                 string sqlSelect = string.Format(@"select datalength(UserImage) from Attendees where id = {0}",
@@ -5089,8 +5092,8 @@ namespace CodeCampSV
     public class AttendeesShort
     {
         public string EmailAddress { set; get; }
-        public string FirstName {set;get;}
-        public string LastName {set;get;}
+        public string FirstName { set; get; }
+        public string LastName { set; get; }
     }
 
 
@@ -5327,7 +5330,7 @@ namespace CodeCampSV
         }
     }
 
-   
+
 
     public class CodeCampCount
     {
@@ -5367,16 +5370,16 @@ namespace CodeCampSV
             for (int i = 0; i < numDaysToGoBack; i++)
             {
                 var r = new CodeCampCount()
-                {
-                    daysBeforeCamp = numDaysToGoBack - i,
-                    CountYear0 = year0recs[i],
-                    CountYearMinus1 = yearMinus1recs[i],
-                    CountYearMinus2 = yearMinus2recs[i],
-                    CountYearMinus3 = yearMinus3recs[i],
-                    CountYearMinus4 = yearMinus4recs[i],
-                    CountYearMinus5 = yearMinus5recs[i],
-                    CountYearMinus6 = yearMinus6recs[i]
-                };
+                    {
+                        daysBeforeCamp = numDaysToGoBack - i,
+                        CountYear0 = year0recs[i],
+                        CountYearMinus1 = yearMinus1recs[i],
+                        CountYearMinus2 = yearMinus2recs[i],
+                        CountYearMinus3 = yearMinus3recs[i],
+                        CountYearMinus4 = yearMinus4recs[i],
+                        CountYearMinus5 = yearMinus5recs[i],
+                        CountYearMinus6 = yearMinus6recs[i]
+                    };
                 results.Add(r);
             }
             return results;
@@ -5384,8 +5387,14 @@ namespace CodeCampSV
         }
 
 
+        public static int GetSessionSlugLength()
+        {
+            return Utils.SessionSlugLengthMax;
+        }
 
     }
+
+
 
     public class RegistrationTracker
     {

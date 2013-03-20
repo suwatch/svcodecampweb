@@ -9,6 +9,8 @@ namespace DataAccess.Code
 {
     public static class Utils
     {
+        internal static int SlugLength = 75;
+
         public static string GenerateSlug(string phrase)
         {
             string str = RemoveAccent(phrase).ToLower();
@@ -17,7 +19,7 @@ namespace DataAccess.Code
             // convert multiple spaces into one space   
             str = Regex.Replace(str, @"\s+", " ").Trim();
             // cut and trim 
-            str = str.Substring(0, str.Length <= 45 ? str.Length : 45).Trim();
+            str = str.Substring(0, str.Length <= SlugLength ? str.Length : SlugLength).Trim();
             str = Regex.Replace(str, @"\s", "-"); // hyphens   
             return str;
         }
@@ -70,6 +72,8 @@ namespace DataAccess.Code
             return new string(arr);
         }
 
+
+      
     }
 
 

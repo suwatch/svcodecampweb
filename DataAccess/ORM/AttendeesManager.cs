@@ -262,6 +262,8 @@ namespace CodeCampSV
             var sessionsBySpeakerdict = new Dictionary<int, List<SessionPresentResultSmall>>();
             if (query.IncludeSessions.HasValue && query.IncludeSessions.Value)
             {
+
+
                 IQueryable<SessionPresentResultSmall> sessionPresentResultSmalls =
                     from sessionPresenter in meta.SessionPresenter
                     join session in meta.Sessions on sessionPresenter.SessionId equals session.Id

@@ -256,7 +256,7 @@ namespace CodeCampSV
 
             foreach (var session in resultList)
             {
-                
+
                 if (query.WithLevel.HasValue && query.WithLevel.Value)
                 {
                     if (session.SessionLevel_id.HasValue && sessionLevelsDict.ContainsKey(session.SessionLevel_id.Value))
@@ -266,11 +266,14 @@ namespace CodeCampSV
                 }
 
 
+
+
                 session.SessionUrl =
                     String.Format("/Session/{0}/{1}",
                                   Utils.ConvertCodeCampYearToActualYear(
                                       session.CodeCampYearId.ToString(CultureInfo.InvariantCulture)),
                                   Utils.GenerateSlug(session.Title));
+
 
 
                 if (query.WithSchedule != null && session.SessionTimesId.HasValue)
@@ -279,14 +282,14 @@ namespace CodeCampSV
                     {
                         var st = sessionTimesFullDict[session.SessionTimesId.Value];
                         session.SessionTimesResult = new SessionTimesResult()
-                        {
-                            // no doing all the parameters, not necessary
-                            CodeCampYearId = st.CodeCampYearId,
-                            StartTime = st.StartTime,
-                            EndTime = st.EndTime,
-                            Id = st.Id,
-                            Description = st.Description
-                        };
+                            {
+                                // no doing all the parameters, not necessary
+                                CodeCampYearId = st.CodeCampYearId,
+                                StartTime = st.StartTime,
+                                EndTime = st.EndTime,
+                                Id = st.Id,
+                                Description = st.Description
+                            };
                     }
                 }
 
@@ -329,11 +332,14 @@ namespace CodeCampSV
                 {
                     SessionsResult session1 = session;
                     var speakerIdsForList =
-                        sessionPresenterResults.Where(a => a.SessionId == session1.Id).Select(a => a.AttendeeId).ToList();
+                        sessionPresenterResults.Where(a => a.SessionId == session1.Id)
+                                               .Select(a => a.AttendeeId)
+                                               .ToList();
 
                     // quick and dirty cleansing of speaker data so just public data will be shown
                     var tempSpeakerResults =
-                        Enumerable.OrderBy(speakerResults.Where(a => speakerIdsForList.Contains(a.Id)), a => a.UserLastName == null ? string.Empty : a.UserLastName.ToUpper());
+                        Enumerable.OrderBy(speakerResults.Where(a => speakerIdsForList.Contains(a.Id)),
+                                           a => a.UserLastName == null ? string.Empty : a.UserLastName.ToUpper());
                     session.SpeakersList = new List<SpeakerResult>();
                     foreach (var rec in tempSpeakerResults)
                     {
@@ -374,41 +380,42 @@ namespace CodeCampSV
                         //else
                         //{
                         var attendeeResult = new SpeakerResult()
-                                                 {
-                                                     AttendeeId = rec.Id,
-                                                     Email = rec.Email,
-                                                     TwitterHandle = rec.TwitterHandle,
-                                                     Username = rec.Username,
-                                                     City = "",
-                                                     State = rec.State,
-                                                     UserBio = rec.UserBio,
-                                                     UserBioEllipsized = Utils.GetEllipsized(rec.UserBio, 90, "..."),
-                                                     UserFirstName = rec.UserFirstName,
-                                                     UserLastName = rec.UserLastName,
-                                                     UserZipCode = rec.UserZipCode,
-                                                     UserWebsite = rec.UserWebsite,
-                                                     SpeakerLocalUrl = String.Format("/Presenter/{0}/{1}-{2}-{3}",
-                                                                                     Utils
-                                                                                         .ConvertCodeCampYearToActualYear
-                                                                                         (session.CodeCampYearId.ToString(CultureInfo.InvariantCulture)),
-                                                                                     Utils.AlphaNumericOnly(
-                                                                                         rec.UserFirstName),
-                                                                                     Utils.AlphaNumericOnly(
-                                                                                         rec.UserLastName),
-                                                                                     rec.Id),
-                                                     ImageUrl =
-                                                         String.Format(
-                                                             String.Format("/attendeeimage/{0}.jpg", rec.Id),
-                                                             rec.PKID)
+                            {
+                                AttendeeId = rec.Id,
+                                Email = rec.Email,
+                                TwitterHandle = rec.TwitterHandle,
+                                Username = rec.Username,
+                                City = "",
+                                State = rec.State,
+                                UserBio = rec.UserBio,
+                                UserBioEllipsized = Utils.GetEllipsized(rec.UserBio, 90, "..."),
+                                UserFirstName = rec.UserFirstName,
+                                UserLastName = rec.UserLastName,
+                                UserZipCode = rec.UserZipCode,
+                                UserWebsite = rec.UserWebsite,
+                                SpeakerLocalUrl = String.Format("/Presenter/{0}/{1}-{2}-{3}",
+                                                                Utils
+                                                                    .ConvertCodeCampYearToActualYear
+                                                                    (session.CodeCampYearId.ToString(
+                                                                        CultureInfo.InvariantCulture)),
+                                                                Utils.AlphaNumericOnly(
+                                                                    rec.UserFirstName),
+                                                                Utils.AlphaNumericOnly(
+                                                                    rec.UserLastName),
+                                                                rec.Id),
+                                ImageUrl =
+                                    String.Format(
+                                        String.Format("/attendeeimage/{0}.jpg", rec.Id),
+                                        rec.PKID)
 
-                                                 };
+                            };
 
-                            session.SpeakersList.Add(attendeeResult);
+                        session.SpeakersList.Add(attendeeResult);
                         //}
                     }
 
                     // need to update speakersshort
-                    
+
                     var sbSpeakersShort = new StringBuilder();
                     if (session.SpeakersList.Count > 0 && session.SpeakersList.Count <= 1)
                     {
@@ -478,14 +485,23 @@ namespace CodeCampSV
 
                 if (query.WithTags != null && query.WithTags.Value)
                 {
-                    List<int> tagIds = sessionTagsManagers.Where(a=>a.SessionId == session.Id).Select(a => a.TagId).ToList();
+                    List<int> tagIds =
+                        sessionTagsManagers.Where(a => a.SessionId == session.Id).Select(a => a.TagId).ToList();
                     session.TagsResults = (tagsResults.Where(data => tagIds.Contains(data.Id))).ToList();
+                    foreach (var r in session.TagsResults)
+                    {
+                        r.SessionId = session.Id;
+                    }
                 }
 
-                session.SessionSlug = Utils.GenerateSlug(session.Title); // ORM has no access to this function so need to do it here
+
+                session.SessionSlug = Utils.GenerateSlug(session.Title);
+
+
+
                 session.TitleEllipsized = Utils.GetEllipsized(session.Title, 48, "...");
                 session.DescriptionEllipsized = Utils.GetEllipsized(session.Description, 90, "...");
-              
+
 
             }
 

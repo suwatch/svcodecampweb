@@ -2931,6 +2931,7 @@
     <Content Include="ExtJSApps\tests\SiestaLite\tests\senchatouch\701_sencha_touch_form.t.js" />
     <Content Include="Images\Featured.png" />
     <Content Include="Images\loadingAnimation.gif" />
+    <Content Include="Images\spring_svcc_banner1b.png" />
     <Content Include="Register.aspx" />
     <Content Include="Views\Register\Login.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
@@ -4398,6 +4399,7 @@
     <Content Include="WebDataServiceVolunteerTest.htm" />
     <Content Include="WebStats.htm" />
     <Content Include="Wiki.aspx" />
+    <Content Include="_html.html" />
     <Content Include="_PROBLEMS\README.TXT" />
     <Content Include="_Register.aspx" />
     <Content Include="_test.html" />

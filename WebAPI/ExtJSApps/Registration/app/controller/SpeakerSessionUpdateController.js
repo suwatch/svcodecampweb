@@ -84,34 +84,10 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
     },
 
     onSessionButtonAddNewIdClick: function(button, e, eOpts) {
-        /*
-
-        var attendeesId = Ext.getCmp('speakerAfterLoginProfileId').getForm().getValues().attendeesId;
-
-        Ext.Ajax.request({ 
-        url:'/rest/Session', 
-        actionMethods:'GET', 
-        scope:this, 
-        params:{
-        option: 'submitsessioncheck',
-        param1: parseInt(attendeesId)
-        },
-        success: function(r, o) { 
-        debugger;
-        },
-        failure: function(r,o) {
-        debugger;
-        } 
-        });  
-
-
-        debugger;
-
-        */
         var attendeesId = Ext.getCmp('speakerAfterLoginProfileId').getForm().getValues().attendeesId;
 
         var newSessionRecord = Ext.create('RegistrationApp.model.Session',{
-            title: 'New Session, Update Your Title and other Session Info.',
+            title: 'New Session, Update Your Title and other Session Info. (' + (new Date()).getTime() + ')' ,
             description: 'Description Required Here',
             loggedInUserAttendeeId: parseInt(attendeesId)
         });
@@ -172,44 +148,6 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
 
     onSessionButtonSaveChangesIdClick: function(button, e, eOpts) {
         this.saveSessions();
-
-        /*
-        var formPanel = Ext.getCmp("sessionFormPanelEditorId").getForm();
-        var sessionGridPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
-
-        formPanel.updateRecord();
-        var modelRecord = formPanel.getRecord();
-
-        var store = sessionGridPanel.getStore();
-        var sessionId = modelRecord.getId();
-        var index = store.findExact("id", parseInt(sessionId));
-
-        var modelRecordFromGrid = store.getAt(index);
-
-        modelRecordFromGrid.set("title",modelRecord.getData().title);
-        modelRecordFromGrid.set("description",modelRecord.getData().description);
-        modelRecordFromGrid.set("sessionLevel",modelRecord.getData().sessionLevel);
-        modelRecordFromGrid.set("twitterHashTags",modelRecord.getData().twitterHashTags);
-        modelRecordFromGrid.set("description",modelRecord.getData().description);
-
-        store.sync();
-
-        var tagList = Ext.getCmp("SessionTagsGridPanelId");
-        var tagListStore = tagList.store;
-        tagListStore.save();
-
-
-        */
-
-
-
-
-
-
-
-
-
-
     },
 
     saveSessions: function() {

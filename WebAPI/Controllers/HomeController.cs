@@ -15,6 +15,8 @@ namespace WebAPI.Controllers
     {
         public ActionResult Index()
         {
+            Response.Redirect("~/Default.aspx");
+
             string year =
                Utils.ConvertCodeCampYearToActualYear(
                    Utils.GetCurrentCodeCampYear().ToString(CultureInfo.InvariantCulture));

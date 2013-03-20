@@ -451,7 +451,10 @@
       <DependentUpon>DataSetVistaInstall.xsd</DependentUpon>
     </Compile>
     <Compile Include="Code\GuidTracker.cs" />
+    <Compile Include="Code\PostSubmitter.cs" />
     <Compile Include="Code\RadioButtonListWithArg.cs" />
+    <Compile Include="Code\RecaptchaResponse.cs" />
+    <Compile Include="Code\RecaptchaValidator.cs" />
     <Compile Include="Code\RSSFeed.cs" />
     <Compile Include="Code\SessionInterestAnalysis.cs" />
     <Compile Include="Code\ValidationSummaryCustom.cs" />

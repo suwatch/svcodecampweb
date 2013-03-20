@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Formatting;
+using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ using System.Web.Security;
 using System.Web.UI.WebControls;
 using CodeCampSV;
 using System.ComponentModel.DataAnnotations;
+using WebAPI.Code;
 
 namespace WebAPI.Api
 {
@@ -27,6 +29,7 @@ namespace WebAPI.Api
         {
             [StringLength(15)]
             public string Username { get; set; }
+
             public string Password { get; set; }
             public bool RememberMe { get; set; }
         }
@@ -119,8 +122,8 @@ namespace WebAPI.Api
                             {
                                 //Convert Stream to Bytes or something
                                 var bytes = new byte[stream.Length];
-                                stream.Read(bytes, 0, (int)stream.Length);
-                                memoryStream.Write(bytes, 0, (int)stream.Length);
+                                stream.Read(bytes, 0, (int) stream.Length);
+                                memoryStream.Write(bytes, 0, (int) stream.Length);
                             }
                         }
                     }
@@ -132,15 +135,15 @@ namespace WebAPI.Api
                     memoryStream.Position = 0;
 
                     //Read the entire stream
-                    memoryStream.Read(byteArray, 0, (int)memoryStream.Length);
+                    memoryStream.Read(byteArray, 0, (int) memoryStream.Length);
 
                     if (User.Identity.IsAuthenticated)
                     {
                         var attendeesResult =
                             AttendeesManager.I.Get(new AttendeesQuery
-                            {
-                                Username = User.Identity.Name
-                            }).FirstOrDefault();
+                                {
+                                    Username = User.Identity.Name
+                                }).FirstOrDefault();
 
                         if (attendeesResult != null)
                         {
@@ -154,24 +157,24 @@ namespace WebAPI.Api
                 }
 
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, new LoginReturnStatus()
-                {
-                    AttendeeId = attendeesId,
-                    Success = true,
-                    Status = "success",
-                    File = "speaker.jpg"
-                });
+                    {
+                        AttendeeId = attendeesId,
+                        Success = true,
+                        Status = "success",
+                        File = "speaker.jpg"
+                    });
                 return response;
             }
             catch (System.Exception e)
             {
 
                 var ret = new LoginReturnStatus()
-                {
-                    Success = false,
-                    Status = "Failure",
-                    File = "speaker.jpg",
-                    Message = e.ToString()
-                };
+                    {
+                        Success = false,
+                        Status = "Failure",
+                        File = "speaker.jpg",
+                        Message = e.ToString()
+                    };
 
                 return Request.CreateResponse(HttpStatusCode.Forbidden, ret);
             }
@@ -188,7 +191,7 @@ namespace WebAPI.Api
             if (ConfigurationManager.AppSettings["SpeakerShirtSizes"] != null)
             {
                 string list = ConfigurationManager.AppSettings["SpeakerShirtSizes"];
-                char[] splitchar = { ',' };
+                char[] splitchar = {','};
                 shirtSizes.AddRange(list.Split(splitchar).ToList());
                 foreach (var item in shirtSizes.ToList())
                 {
@@ -196,13 +199,13 @@ namespace WebAPI.Api
                 }
             }
 
-            List<ShirtSizeRec> shirtSizeRecs = shirtSizes.Select(recx => new ShirtSizeRec() { ShirtSize = recx }).ToList();
+            List<ShirtSizeRec> shirtSizeRecs = shirtSizes.Select(recx => new ShirtSizeRec() {ShirtSize = recx}).ToList();
 
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, new ShirtSizeReturn()
-            {
-                Success = true,
-                Data = shirtSizeRecs
-            });
+                {
+                    Success = true,
+                    Data = shirtSizeRecs
+                });
             return response;
         }
 
@@ -217,12 +220,12 @@ namespace WebAPI.Api
             if (attendeeRecord == null || attendeeRecord.Id <= 0)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.Forbidden,
-                                                     "PostCheckPictureExists: attendeeRecord no passed in populated");
+                                                   "PostCheckPictureExists: attendeeRecord no passed in populated");
 
             }
 
             var pictureLen = Utils.GetPictureLengthByAttendee(attendeeRecord.Id);
-           
+
             return pictureLen > 0
                        ? Request.CreateResponse(HttpStatusCode.OK, "")
                        : Request.CreateErrorResponse(HttpStatusCode.Forbidden,
@@ -340,11 +343,11 @@ namespace WebAPI.Api
             {
                 var attendeesResult =
                     AttendeesManager.I.Get(new AttendeesQuery
-                    {
-                        Username = User.Identity.Name,
-                        CodeCampYearId = Utils.CurrentCodeCampYear,
-                        IncludeAttendeesCodeCampYearResult = true
-                    }).FirstOrDefault();
+                        {
+                            Username = User.Identity.Name,
+                            CodeCampYearId = Utils.CurrentCodeCampYear,
+                            IncludeAttendeesCodeCampYearResult = true
+                        }).FirstOrDefault();
                 if (attendeesResult != null)
                 {
                     if (attendeeSaveOption.ToLower().Equals("optin"))
@@ -398,18 +401,62 @@ namespace WebAPI.Api
             return response;
         }
 
+
+
+        /// <summary>
+        /// http://stackoverflow.com/questions/9565889/get-the-ip-address-of-the-remote-host
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        private string GetClientIp(HttpRequestMessage request)
+        {
+            if (request.Properties.ContainsKey("MS_HttpContext"))
+            {
+                return ((HttpContextWrapper) request.Properties["MS_HttpContext"]).Request.UserHostAddress;
+            }
+            else if (request.Properties.ContainsKey(RemoteEndpointMessageProperty.Name))
+            {
+                RemoteEndpointMessageProperty prop;
+                prop = (RemoteEndpointMessageProperty) this.Request.Properties[RemoteEndpointMessageProperty.Name];
+                return prop.Address;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
         [System.Web.Http.HttpPost]
         [System.Web.Http.ActionName("CreateUser")]
         public HttpResponseMessage PostCreateUser(AttendeesResult attendee)
         {
             HttpResponseMessage response;
+            if (!ConfigurationManager.AppSettings["OverrideCaptcha"].ToLower().Equals("true") &&
+                !HttpContext.Current.Request.IsAuthenticated)
+            {
+                // First, verif captcha
+                string clientAddress = HttpContext.Current.Request.UserHostAddress;
+                string message;
+                if (
+                    !VerifyRecaptcha(attendee.RecaptchaChallengeField, attendee.RecaptchaResponseField, clientAddress,
+                                     out message))
+                {
+                    response =
+                        Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed,
+                                                    message);
+                    return response;
+
+                }
+            }
+
             if (String.IsNullOrEmpty(attendee.Username) ||
                 String.IsNullOrEmpty(attendee.Password) ||
                 String.IsNullOrEmpty(attendee.Email))
             {
                 response =
-                           Request.CreateErrorResponse(HttpStatusCode.Forbidden,
-                                                       "CreateUser requires non blank Username,Password and Email");
+                    Request.CreateErrorResponse(HttpStatusCode.Forbidden,
+                                                "CreateUser requires non blank Username,Password and Email");
             }
             else if (attendee.Password.Length < 4)
             {
@@ -437,14 +484,14 @@ namespace WebAPI.Api
                     Membership.CreateUser(
                         attendee.Username,
                         attendee.Password,
-                       attendee.Email,
+                        attendee.Email,
                         "Question", "Answer",
                         true,
                         out mStatus);
 
                     if (mStatus.Equals(MembershipCreateStatus.Success))
                     {
-                      
+
 
 
                         FormsAuthentication.SetAuthCookie(attendee.Username, true);
@@ -461,6 +508,67 @@ namespace WebAPI.Api
             }
             return response;
         }
+
+        ///// <summary>
+        ///// http://localhost:17138/rpc/Account/Get?challenge=5VJ6BUWbaWse_UJUhN8qFpNbSderffhOwXtrZQOIJFskAOoNJadD8zm1NclkxZppipMuSPysE7ydUM&response=Saltat Horster
+        ///// </summary>
+        ///// <param name="challenge"></param>
+        ///// <param name="response"></param>
+        ///// <returns></returns>
+        //[System.Web.Http.HttpGet]
+        //public HttpResponseMessage Get(string challenge, string response)
+        //{
+        //    string message;
+        //    bool verified = VerifyRecaptcha(challenge, response, HttpContext.Current.Request.UserHostAddress,out message);
+
+        //    return verified
+        //               ? Request.CreateResponse(HttpStatusCode.OK)
+        //               : Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed, message);
+        //}
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="recaptchaChallengeField"></param>
+        /// <param name="recaptchaResponseField"></param>
+        /// <param name="clientIp"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        private bool VerifyRecaptcha(string recaptchaChallengeField, string recaptchaResponseField, string clientIp,out string message)
+        {
+          
+            var recaptchaValidator = new RecaptchaValidator
+                {
+                    PrivateKey = "6LcrXN4SAAAAALfMoSWjxx5GGH1B8koKXRj4czvA",
+                    Challenge = recaptchaChallengeField,
+                    //RemoteIP =  clientIp
+                    RemoteIP = "71.202.162.255",
+                    Response = recaptchaResponseField
+                };
+            var recaptchaResponse = recaptchaValidator.Validate();
+
+            message = recaptchaResponse.ErrorMessage;
+            return recaptchaResponse.IsValid;
+        }
+
+        private void EncodeAndAddItem(ref StringBuilder baseRequest, string key, string dataItem)
+        {
+            if (baseRequest == null)
+            {
+                baseRequest = new StringBuilder();
+            }
+            if (baseRequest.Length != 0)
+            {
+                baseRequest.Append("&");
+            }
+            baseRequest.Append(key);
+            baseRequest.Append("=");
+            baseRequest.Append(System.Web.HttpUtility.UrlEncode(dataItem));
+        }
+
+
+
 
         [System.Web.Http.HttpPost]
         [System.Web.Http.ActionName("Login")]

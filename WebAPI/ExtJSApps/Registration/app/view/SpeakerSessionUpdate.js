@@ -277,7 +277,7 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
         var modelRecord = formPanel.getRecord();
 
         var store = sessionGridPanel.getStore();
-        var sessionId = modelRecord.getId()
+        var sessionId = modelRecord.getId();
         var index = store.findExact("id", parseInt(sessionId));
 
         var modelRecordFromGrid = store.getAt(index);
@@ -369,7 +369,7 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                         //debugger;
                         var message = operation.getError(); // this does not work
                         Ext.Msg.alert("Session adding restricted.   Either over limit or sessions closed");
-                    },
+                    }
                 });
             },
             failure: function(rec) {
@@ -435,14 +435,10 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                             });
                         },
                         failure: function(rec){
-                            debugger;
                             Ext.Msg.alert("Error Removing Session Info",rec); 
                         },
                         scope: this
                     });
-
-
-
                 }
             }, this);  
 

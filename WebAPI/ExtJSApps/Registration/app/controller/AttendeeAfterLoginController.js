@@ -24,12 +24,15 @@ Ext.define('RegistrationApp.controller.AttendeeAfterLoginController', {
         myMask.show();
         // first check to see if person is already logged in.  If they are, then go edit details page as if attendee
         var tabPanel = Ext.ComponentQuery.query('AttendeeAfterLoginAlias')[0];
+        var values = tabPanel.getValues();
+
+        debugger;
 
         Ext.Ajax.request({ 
             url:'/rpc/Account/UpdateAttendee', 
             actionMethods:'POST', 
             scope:this, 
-            params: tabPanel.getForm().getValues(),
+            params: values,
             success: function(r, o) {  
 
                 var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];

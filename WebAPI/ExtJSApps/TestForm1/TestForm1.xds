@@ -1,0 +1,40 @@
+{
+    "name": "TestForm1",
+    "settings": {},
+    "xdsVersion": "2.2.0",
+    "xdsBuild": 894,
+    "schemaVersion": 1,
+    "upgradeVersion": 210000000499,
+    "framework": "ext42",
+    "topInstanceFileMap": {
+        "062e7b6f-7a36-45f6-8b28-491df7adccfd": {
+            "paths": [
+                "metadata/view/MyViewport",
+                "app/view/override/MyViewport.js",
+                "app/view/MyViewport.js",
+                "app/view/Viewport.js"
+            ],
+            "className": "MyViewport"
+        },
+        "bf1241a3-b9e0-4642-9254-b39f27d06a6f": {
+            "paths": [
+                "metadata/resource/Library"
+            ],
+            "className": "Library"
+        }
+    },
+    "viewOrderMap": {
+        "view": [
+            "062e7b6f-7a36-45f6-8b28-491df7adccfd"
+        ],
+        "store": [],
+        "controller": [],
+        "model": [],
+        "resource": [
+            "bf1241a3-b9e0-4642-9254-b39f27d06a6f"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

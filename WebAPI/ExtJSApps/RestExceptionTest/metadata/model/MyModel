@@ -1,0 +1,66 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "MyModel"
+    },
+    "designerId": "17dcd3a1-2e73-435e-b5c4-47ba10195444",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "col1",
+                "designer|userClassName": "MyField"
+            },
+            "designerId": "5e06eec4-dc15-478e-8848-09081caa6f8c"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "col2",
+                "designer|userClassName": "MyField1"
+            },
+            "designerId": "a48c6fea-91cf-43f3-a5eb-47ddf68e3016"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "col3",
+                "designer|userClassName": "MyField2"
+            },
+            "designerId": "ff3dc80c-a5cb-4a13-8c9e-819d5c43d80b"
+        },
+        {
+            "type": "Ext.data.proxy.Rest",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyRestProxy",
+                "url": "customers"
+            },
+            "designerId": "d45fa9c2-1dfd-4f66-b669-39adf564abe0"
+        }
+    ]
+}

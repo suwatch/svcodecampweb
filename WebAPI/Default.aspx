@@ -46,7 +46,7 @@
         </div>
         
         
-            <div runat="server" visible="true" id="ShowTwitterSessionLinksId" class="pad ShowTwitterSessionLinksId">
+            <div runat="server" visible="false" id="ShowTwitterSessionLinksId" class="pad ShowTwitterSessionLinksId">
 
                 <div class="title">
                     <h1>Retweet Sessions You Plan On Attending or Have Interest In*</h1><div class="twitter"></div>

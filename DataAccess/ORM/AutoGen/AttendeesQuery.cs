@@ -145,6 +145,10 @@ namespace CodeCampSV
         [AutoGenColumn]
         public bool? PresentationApprovalRequired { get; set; }
         [AutoGenColumn]
-        public string optInTechJobKeyWords { get; set; }
+        public string OptInTechJobKeyWords { get; set; }
+        [AutoGenColumn]
+        public string Company { get; set; }
+        [AutoGenColumn]
+        public string PrincipleJob { get; set; }
     }
 }

@@ -123,6 +123,16 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
                         },
                         {
                             xtype: 'textfield',
+                            fieldLabel: 'Company',
+                            name: 'company'
+                        },
+                        {
+                            xtype: 'textfield',
+                            fieldLabel: 'Principle Job',
+                            name: 'principleJob'
+                        },
+                        {
+                            xtype: 'textfield',
                             fieldLabel: 'Email',
                             name: 'email',
                             allowBlank: false

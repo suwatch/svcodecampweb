@@ -86,6 +86,11 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
     },
 
     onContinueButtonIdClick: function(button, e, eOpts) {
+        debugger;
+        this.saveSessions();
+
+
+
         var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];
         tabPanel.setActiveTab(tabPanel.getTabIdByName('optIn'));
     },

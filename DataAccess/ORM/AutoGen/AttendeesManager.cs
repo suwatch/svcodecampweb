@@ -83,6 +83,8 @@ namespace CodeCampSV
             record.PresentationLimit = result.PresentationLimit;
             record.PresentationApprovalRequired = result.PresentationApprovalRequired;
             record.OptInTechJobKeyWords = result.OptInTechJobKeyWords;
+            record.Company = result.Company;
+            record.PrincipleJob = result.PrincipleJob;
             // 
             //  Used by Default in Update and Insert Methods.
         }
@@ -158,7 +160,9 @@ namespace CodeCampSV
             State = myData.State,
             PresentationLimit = myData.PresentationLimit,
             PresentationApprovalRequired = myData.PresentationApprovalRequired,
-            OptInTechJobKeyWords = myData.OptInTechJobKeyWords
+            OptInTechJobKeyWords = myData.OptInTechJobKeyWords,
+            Company = myData.Company,
+            PrincipleJob = myData.PrincipleJob
       });
 		    return results;
         }
@@ -250,7 +254,9 @@ namespace CodeCampSV
                         State = myData.State,
                         PresentationLimit = myData.PresentationLimit,
                         PresentationApprovalRequired = myData.PresentationApprovalRequired,
-                        OptInTechJobKeyWords = myData.OptInTechJobKeyWords
+                        OptInTechJobKeyWords = myData.OptInTechJobKeyWords,
+                        Company = myData.Company,
+                        PrincipleJob = myData.PrincipleJob
             });
             
             List<AttendeesResult> resultList = GetFinalResults(results, query);
@@ -328,7 +334,9 @@ namespace CodeCampSV
             if (query.State != null) baseQuery = baseQuery.Where(a => a.State.ToLower().Equals(query.State.ToLower()));
             if (query.PresentationLimit != null) baseQuery = baseQuery.Where(a => a.PresentationLimit == query.PresentationLimit);
             if (query.PresentationApprovalRequired != null) baseQuery = baseQuery.Where(a => a.PresentationApprovalRequired == query.PresentationApprovalRequired);
-            if (query.optInTechJobKeyWords != null) baseQuery = baseQuery.Where(a => a.OptInTechJobKeyWords.ToLower().Equals(query.optInTechJobKeyWords.ToLower()));
+            if (query.OptInTechJobKeyWords != null) baseQuery = baseQuery.Where(a => a.OptInTechJobKeyWords.ToLower().Equals(query.OptInTechJobKeyWords.ToLower()));
+            if (query.Company != null) baseQuery = baseQuery.Where(a => a.Company.ToLower().Equals(query.Company.ToLower()));
+            if (query.PrincipleJob != null) baseQuery = baseQuery.Where(a => a.PrincipleJob.ToLower().Equals(query.PrincipleJob.ToLower()));
 
             return baseQuery;
         }

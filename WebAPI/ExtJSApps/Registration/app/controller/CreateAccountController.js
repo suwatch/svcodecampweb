@@ -40,12 +40,16 @@ Ext.define('RegistrationApp.controller.CreateAccountController', {
         var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Creating New Account..."});
         myMask.show();
 
-        var challenge = Recaptcha.get_challenge();
-        var response = Recaptcha.get_response();
+        localValues.recaptchaChallengeField = Recaptcha.get_challenge();
+        localValues.recaptchaResponseField =Recaptcha.get_response();
 
-
-        localValues.recaptchaChallengeField = challenge;
-        localValues.recaptchaResponseField = response;
+        Ext.Ajax.on('requestexception', function (conn, response, options) {
+            myMask.hide();
+            if (response.status != 200) {
+                var errorData = Ext.JSON.decode(response.responseText);
+                Ext.Msg.alert('Creating User Failed',errorData.message);
+            }
+        });
 
         Ext.Ajax.request({ 
             url:'/rpc/Account/CreateUser', 
@@ -68,10 +72,13 @@ Ext.define('RegistrationApp.controller.CreateAccountController', {
                 myMask.hide();
             },
             failure: function(r,o) {
-                Ext.Msg.alert('Creating User Failed','');
+                // handled in exception now
+                //debugger;
+                //Ext.Msg.alert('Creating User Failed','');
                 console.log('Creating User Failed ' + r);
-                myMask.hide();
-            } 
+                //myMask.hide();
+            }
+
 
         });
     },

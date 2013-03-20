@@ -65,7 +65,7 @@ namespace CodeCampSV
 
         public static string CacheAgendaUpdateInfo = "AgendaUpdateInfo";
 
-        public const int CurrentCodeCampYear = 7; // this is current year and never changes.  hence const
+        public const int CurrentCodeCampYear = 8; // this is current year and never changes.  hence const
         public static string CacheAttendeeByUserName = "DisplayImageWithParams";
         public static string CacheAttendeeBySessionId = "DisplayImageWithParamsBySessionId";
         public static string CacheBySessionTimesId = "SessionTimesId";
@@ -97,7 +97,7 @@ namespace CodeCampSV
 
         public static int DefaultCloudTagsToShow = 10;
         public static object MailLocker = new object();
-        public static int MaxSessionTagsToShow = 7;
+        public static int MaxSessionTagsToShow = 8;
         public static int MediumSize = 150;
 
         public static double MinSponsorLevelGold = 2500.00;

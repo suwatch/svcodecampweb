@@ -28,6 +28,32 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
             dockedItems: [
                 {
                     xtype: 'toolbar',
+                    saveSessions: function() {
+                        var formPanel = Ext.getCmp("sessionFormPanelEditorId").getForm();
+                        var sessionGridPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
+
+                        formPanel.updateRecord();
+                        var modelRecord = formPanel.getRecord();
+
+                        var store = sessionGridPanel.getStore();
+                        var sessionId = modelRecord.getId();
+                        var index1 = store.findExact("id", parseInt(sessionId));
+
+                        var modelRecordFromGrid = store.getAt(index1);
+
+                        modelRecordFromGrid.set("title",modelRecord.getData().title);
+                        modelRecordFromGrid.set("description",modelRecord.getData().description);
+                        modelRecordFromGrid.set("sessionLevel",modelRecord.getData().sessionLevel);
+                        modelRecordFromGrid.set("twitterHashTags",modelRecord.getData().twitterHashTags);
+                        modelRecordFromGrid.set("description",modelRecord.getData().description);
+
+                        store.sync();
+
+                        var tagList = Ext.getCmp("SessionTagsGridPanelId");
+                        var tagListStore = tagList.store;
+                        tagListStore.save();
+
+                    },
                     dock: 'top',
                     itemId: 'ToolBarAttendeeSpeaker',
                     layout: {
@@ -269,7 +295,9 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
     },
 
     onSessionButtonSaveChangesIdClick: function(button, e, eOpts) {
+        this.saveSessions();
 
+        /*
         var formPanel = Ext.getCmp("sessionFormPanelEditorId").getForm();
         var sessionGridPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
 
@@ -295,7 +323,7 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
         tagListStore.save();
 
 
-
+        */
 
 
 

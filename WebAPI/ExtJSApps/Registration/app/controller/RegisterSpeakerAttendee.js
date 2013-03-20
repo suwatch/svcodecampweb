@@ -42,7 +42,14 @@ Ext.define('RegistrationApp.controller.RegisterSpeakerAttendee', {
         else {
             var tabWizardPanel = Ext.getCmp('TabWizardId');
             if (forgot === true) {
+
+
+                // TEMP FIX TO IMPLEMENT THIS RIGHT
+                window.parent.location.href = '../../PasswordIssues.aspx'; 
                 tabWizardPanel.setActiveTab(tabWizardPanel.getTabIdByName('forgotusernameorpassword'));
+
+
+
             } else if (create === true) {
                 // verify user entered does not exist
                 if (username.length > 0) {

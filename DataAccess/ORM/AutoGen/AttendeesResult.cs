@@ -74,6 +74,8 @@ namespace CodeCampSV
         [DataMember] public int? PresentationLimit { get; set; }
         [DataMember] public bool? PresentationApprovalRequired { get; set; }
         [DataMember] public string OptInTechJobKeyWords { get; set; }
+        [DataMember] public string Company { get; set; }
+        [DataMember] public string PrincipleJob { get; set; }
         
         //  
         //  Do not put Id here since it is in ResultBase already

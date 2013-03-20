@@ -1,0 +1,102 @@
+{
+    "type": "Ext.container.Viewport",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "id": "myViewPortId",
+        "designer|userClassName": "MyViewport",
+        "designer|initialView": true
+    },
+    "designerId": "062e7b6f-7a36-45f6-8b28-491df7adccfd",
+    "cn": [
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "id": "formId",
+                "designer|userClassName": "MyForm",
+                "bodyPadding": 10,
+                "title": "My Form"
+            },
+            "designerId": "b3fb70ca-747f-4241-b4c0-c7f26bc8d385",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "designer|userClassName": "MyTextField",
+                        "fieldLabel": "Label",
+                        "name": "col1"
+                    },
+                    "designerId": "f9e850d8-efac-4e7b-a5a1-793b3789ad1d"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "designer|userClassName": "MyTextField1",
+                        "fieldLabel": "Label",
+                        "name": "col2"
+                    },
+                    "designerId": "1b024298-ad90-49f3-9f2a-9aabe5baeb84"
+                }
+            ]
+        },
+        {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyButton",
+                "text": "MyButton"
+            },
+            "designerId": "cec081dd-d130-493d-89aa-88824b1a75b0",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "onButtonClick",
+                        "fn": "onButtonClick",
+                        "implHandler": [
+                            "\r",
+                            "var form = Ext.getCmp(\"formId\").getForm();\r",
+                            "\r",
+                            "values = form.getValues();\r",
+                            "\r",
+                            "debugger;\r",
+                            ""
+                        ],
+                        "name": "click",
+                        "scope": "me"
+                    },
+                    "designerId": "cb5970e2-78d0-4524-b070-cd59b92cd75d"
+                }
+            ]
+        }
+    ]
+}

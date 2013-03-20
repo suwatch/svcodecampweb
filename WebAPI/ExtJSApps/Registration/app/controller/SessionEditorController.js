@@ -14,57 +14,5 @@
  */
 
 Ext.define('RegistrationApp.controller.SessionEditorController', {
-    extend: 'Ext.app.Controller',
-
-    onSessionEditorPanelIdAfterRender: function(component, eOpts) {
-        /*
-        var speakerProfilePanel =  Ext.getCmp('speakerAfterLoginProfileId');
-        var retData = speakerProfilePanel.getForm().getValues();
-
-        //debugger;
-
-        var tagList = Ext.getCmp("SessionTagsGridPanelId");
-        var tagListStore = tagList.store;
-        tagListStore.load({
-            params: {
-                sessionId: retData.attendeesId
-            },
-            callback: function(records,operation,success) {
-                // get selection model of grid
-
-
-                var sm = tagList.getSelectionModel();
-                //sm.bindStore(tagListStore);
-
-
-                var recs = [];
-                Ext.each(records,function(rec) {
-                    if (rec.get("taggedInSession") === true) {
-                        recs.push(rec);
-                    }
-                });
-                sm.select(recs);
-
-                // would like to scroll to top now
-
-
-            }
-        });
-
-
-        var sessionEditForm = Ext.getCmp("sessionFormPanelEditorId").getForm();
-        sessionEditForm.setValues(this.sessionData);
-
-
-        */
-    },
-
-    init: function(application) {
-        this.control({
-            "#SessionEditorPanelId": {
-                afterrender: this.onSessionEditorPanelIdAfterRender
-            }
-        });
-    }
-
+    extend: 'Ext.app.Controller'
 });

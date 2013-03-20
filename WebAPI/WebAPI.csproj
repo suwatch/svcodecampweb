@@ -451,7 +451,6 @@
       <DependentUpon>DataSetVistaInstall.xsd</DependentUpon>
     </Compile>
     <Compile Include="Code\GuidTracker.cs" />
-    <Compile Include="Code\PostSubmitter.cs" />
     <Compile Include="Code\RadioButtonListWithArg.cs" />
     <Compile Include="Code\RecaptchaResponse.cs" />
     <Compile Include="Code\RecaptchaValidator.cs" />
@@ -821,6 +820,13 @@
     </Compile>
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegisterOri.aspx.cs">
+      <DependentUpon>RegisterOri.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegisterOri.aspx.designer.cs">
+      <DependentUpon>RegisterOri.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegistrationConfirmation.aspx.cs">
       <DependentUpon>RegistrationConfirmation.aspx</DependentUpon>
@@ -1388,6 +1394,67 @@
     <Compile Include="_test\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
+    <Content Include="App_Themes\Gray2013\Images\attendBottom.gif" />
+    <Content Include="App_Themes\Gray2013\Images\bullet_orange.png" />
+    <Content Include="App_Themes\Gray2013\Images\bullet_yellow.png" />
+    <Content Include="App_Themes\Gray2013\Images\buttonAbout.gif" />
+    <Content Include="App_Themes\Gray2013\Images\buttonAssignVideo.gif" />
+    <Content Include="App_Themes\Gray2013\Images\buttonClear.gif" />
+    <Content Include="App_Themes\Gray2013\Images\buttonDeleteSession.gif" />
+    <Content Include="App_Themes\Gray2013\Images\buttonEditSession.gif" />
+    <Content Include="App_Themes\Gray2013\Images\buttonEmailAttendees.gif" />
+    <Content Include="App_Themes\Gray2013\Images\buttonEmailSpeaker.gif" />
+    <Content Include="App_Themes\Gray2013\Images\buttonLogin.gif" />
+    <Content Include="App_Themes\Gray2013\Images\buttonNews.gif" />
+    <Content Include="App_Themes\Gray2013\Images\buttonProgram.gif" />
+    <Content Include="App_Themes\Gray2013\Images\buttonRegister.gif" />
+    <Content Include="App_Themes\Gray2013\Images\buttonReview.gif" />
+    <Content Include="App_Themes\Gray2013\Images\buttonSubmit.gif" />
+    <Content Include="App_Themes\Gray2013\Images\buttonWiki.gif" />
+    <Content Include="App_Themes\Gray2013\Images\content-divider.png" />
+    <Content Include="App_Themes\Gray2013\Images\contentBullet.gif" />
+    <Content Include="App_Themes\Gray2013\Images\daysLeftArrow.gif" />
+    <Content Include="App_Themes\Gray2013\Images\dotted.gif" />
+    <Content Include="App_Themes\Gray2013\Images\dottedLight.gif" />
+    <Content Include="App_Themes\Gray2013\Images\ExclamationPoint_small1.jpg" />
+    <Content Include="App_Themes\Gray2013\Images\ExclamationPoint_small2.jpg" />
+    <Content Include="App_Themes\Gray2013\Images\facebook.png" />
+    <Content Include="App_Themes\Gray2013\Images\feed.png" />
+    <Content Include="App_Themes\Gray2013\Images\footerCurves.gif" />
+    <Content Include="App_Themes\Gray2013\Images\green-dot.png" />
+    <Content Include="App_Themes\Gray2013\Images\headBackground.jpg" />
+    <Content Include="App_Themes\Gray2013\Images\headCodeCamp.png" />
+    <Content Include="App_Themes\Gray2013\Images\headCodeCampFree.gif" />
+    <Content Include="App_Themes\Gray2013\Images\headCodeCamp_from08.gif" />
+    <Content Include="App_Themes\Gray2013\Images\hr-background.jpg" />
+    <Content Include="App_Themes\Gray2013\Images\hr-background.png" />
+    <Content Include="App_Themes\Gray2013\Images\leftBullet.gif" />
+    <Content Include="App_Themes\Gray2013\Images\linkedin.png" />
+    <Content Include="App_Themes\Gray2013\Images\login.gif" />
+    <Content Include="App_Themes\Gray2013\Images\Oct6th_img.png" />
+    <Content Include="App_Themes\Gray2013\Images\Oct7th_img.png" />
+    <Content Include="App_Themes\Gray2013\Images\Registration\numbers.gif" />
+    <Content Include="App_Themes\Gray2013\Images\Retweet\panel-title-bg.png" />
+    <Content Include="App_Themes\Gray2013\Images\Retweet\retweet-icon.png" />
+    <Content Include="App_Themes\Gray2013\Images\rightBackground.jpg" />
+    <Content Include="App_Themes\Gray2013\Images\rightBullet.gif" />
+    <Content Include="App_Themes\Gray2013\Images\scheduleArrow.gif" />
+    <Content Include="App_Themes\Gray2013\Images\session-search-btn.gif" />
+    <Content Include="App_Themes\Gray2013\Images\sessionsLine.gif" />
+    <Content Include="App_Themes\Gray2013\Images\slashBullet.gif" />
+    <Content Include="App_Themes\Gray2013\Images\sponsor-bar-center.gif" />
+    <Content Include="App_Themes\Gray2013\Images\sponsor-bar-left.gif" />
+    <Content Include="App_Themes\Gray2013\Images\sponsor-bar-right.gif" />
+    <Content Include="App_Themes\Gray2013\Images\SpreadTheWord\svcc_badge_150.png" />
+    <Content Include="App_Themes\Gray2013\Images\SpreadTheWord\svcc_badge_150_spacer.png" />
+    <Content Include="App_Themes\Gray2013\Images\SpreadTheWord\svcc_badge_450.png" />
+    <Content Include="App_Themes\Gray2013\Images\SpreadTheWord\svcc_badge_450_spacer.png" />
+    <Content Include="App_Themes\Gray2013\Images\tag.gif" />
+    <Content Include="App_Themes\Gray2013\Images\twitter-feed-left.png" />
+    <Content Include="App_Themes\Gray2013\Images\twitter-logo-small.png" />
+    <Content Include="App_Themes\Gray2013\Images\twitter.png" />
+    <Content Include="App_Themes\Gray2013\Style.css" />
+    <Content Include="App_Themes\Gray2013\svcc-style.css" />
     <Content Include="attachments\bg.png" />
     <Content Include="attachments\footer.png" />
     <Content Include="attachments\header.jpg" />
@@ -2864,6 +2931,7 @@
     <Content Include="ExtJSApps\tests\SiestaLite\tests\senchatouch\701_sencha_touch_form.t.js" />
     <Content Include="Images\Featured.png" />
     <Content Include="Images\loadingAnimation.gif" />
+    <Content Include="Register.aspx" />
     <Content Include="Views\Register\Login.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_SponsorsBottomBar.cshtml" />
@@ -4194,7 +4262,7 @@
     <Content Include="ReferralTracker.aspx" />
     <Content Include="ReferralUrlLinks.aspx" />
     <Content Include="ReferralUrls.aspx" />
-    <Content Include="Register.aspx" />
+    <Content Include="RegisterOri.aspx" />
     <Content Include="Register.htm" />
     <Content Include="RegistrationConfirmation.aspx" />
     <Content Include="RegistrationStatus.aspx" />
@@ -4237,6 +4305,10 @@
     <Content Include="ExtJSApps\tests\SiestaLite\resources\syntaxhighlighter_3.0.83\tests\webrick.rb" />
     <Content Include="ExtJSApps\tests\SiestaLite\resources\syntaxhighlighter_3.0.83\tests\webrick.sh" />
     <Content Include="ExtJSApps\tests\SiestaLite\Siesta Lite - End User License Agreement.pdf" />
+    <Content Include="App_Themes\Gray2013\config.rb" />
+    <Content Include="App_Themes\Gray2013\SkinFile.skin" />
+    <Content Include="App_Themes\Gray2013\Style.scss" />
+    <Content Include="App_Themes\Gray2013\svcc-style.scss" />
     <None Include="Properties\PublishProfiles\beta.siliconvalley-codecamp.com.pubxml" />
     <None Include="Properties\PublishProfiles\svcc.73rst.com.pubxml" />
     <None Include="Scripts\jquery-1.9.0.intellisense.js" />

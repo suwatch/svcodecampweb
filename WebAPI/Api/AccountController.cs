@@ -372,6 +372,8 @@ namespace WebAPI.Api
                         attendeesResult.PhoneNumber = attendeeRecord.PhoneNumber;
                         attendeesResult.EmailEventBoard = attendeeRecord.EmailEventBoard;
                         attendeesResult.VolunteeredCurrentYear = attendeeRecord.VolunteeredCurrentYear;
+                        attendeesResult.PrincipleJob = attendeeRecord.PrincipleJob;
+                        attendeesResult.Company = attendeeRecord.Company;
 
 
                         // speaker stuff below

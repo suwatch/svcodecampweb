@@ -56,7 +56,9 @@
                                 "designer|userClassName": "onSessionButtonSaveChangesIdClick",
                                 "fn": "onSessionButtonSaveChangesIdClick",
                                 "implHandler": [
+                                    "this.saveSessions();\r",
                                     "\r",
+                                    "/*\r",
                                     "var formPanel = Ext.getCmp(\"sessionFormPanelEditorId\").getForm();\r",
                                     "var sessionGridPanel = Ext.getCmp(\"sessionsBySpeakerGridPanelId\");\r",
                                     "\r",
@@ -82,7 +84,7 @@
                                     "tagListStore.save();\r",
                                     "\r",
                                     "\r",
-                                    "\r",
+                                    "*/\r",
                                     "\r",
                                     "\r",
                                     "\r",
@@ -360,6 +362,45 @@
                         "text": "Continue"
                     },
                     "designerId": "4405224d-7e18-475b-a09e-f0f03cda3edf"
+                },
+                {
+                    "type": "basicfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "saveSessions",
+                        "fn": "saveSessions",
+                        "implHandler": [
+                            "var formPanel = Ext.getCmp(\"sessionFormPanelEditorId\").getForm();\r",
+                            "var sessionGridPanel = Ext.getCmp(\"sessionsBySpeakerGridPanelId\");\r",
+                            "\r",
+                            "formPanel.updateRecord();\r",
+                            "var modelRecord = formPanel.getRecord();\r",
+                            "\r",
+                            "var store = sessionGridPanel.getStore();\r",
+                            "var sessionId = modelRecord.getId();\r",
+                            "var index1 = store.findExact(\"id\", parseInt(sessionId));\r",
+                            "\r",
+                            "var modelRecordFromGrid = store.getAt(index1);\r",
+                            "\r",
+                            "modelRecordFromGrid.set(\"title\",modelRecord.getData().title);\r",
+                            "modelRecordFromGrid.set(\"description\",modelRecord.getData().description);\r",
+                            "modelRecordFromGrid.set(\"sessionLevel\",modelRecord.getData().sessionLevel);\r",
+                            "modelRecordFromGrid.set(\"twitterHashTags\",modelRecord.getData().twitterHashTags);\r",
+                            "modelRecordFromGrid.set(\"description\",modelRecord.getData().description);\r",
+                            "\r",
+                            "store.sync();\r",
+                            "\r",
+                            "var tagList = Ext.getCmp(\"SessionTagsGridPanelId\");\r",
+                            "var tagListStore = tagList.store;\r",
+                            "tagListStore.save();\r",
+                            ""
+                        ]
+                    },
+                    "designerId": "6249b622-9c4d-407a-af25-fee7a28e3f41"
                 }
             ]
         },

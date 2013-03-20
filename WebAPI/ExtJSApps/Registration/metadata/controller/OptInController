@@ -61,7 +61,7 @@
                     "    success: function(r, o) {  \r",
                     "        var retData = Ext.JSON.decode(r.responseText);\r",
                     "        myMask.hide();\r",
-                    "        window.parent.location.href = '../../Session#';\r",
+                    "        window.parent.location.href = '../../Sessions.aspx'; \r",
                     "    },\r",
                     "    failure: function(r,o) {\r",
                     "        //tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeSpeakerSponsorId'));\r",

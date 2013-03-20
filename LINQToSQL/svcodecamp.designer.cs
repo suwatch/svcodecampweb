@@ -1134,6 +1134,10 @@ namespace CodeCampSV
 		
 		private string _OptInTechJobKeyWords;
 		
+		private string _Company;
+		
+		private string _PrincipleJob;
+		
 		private EntitySet<AttendeesCodeCampYear> _AttendeesCodeCampYear;
 		
 		private EntitySet<AttendeesTagList> _AttendeesTagList;
@@ -1282,6 +1286,10 @@ namespace CodeCampSV
     partial void OnPresentationApprovalRequiredChanged();
     partial void OnOptInTechJobKeyWordsChanging(string value);
     partial void OnOptInTechJobKeyWordsChanged();
+    partial void OnCompanyChanging(string value);
+    partial void OnCompanyChanged();
+    partial void OnPrincipleJobChanging(string value);
+    partial void OnPrincipleJobChanged();
     #endregion
 		
 		public Attendees()
@@ -2576,7 +2584,7 @@ namespace CodeCampSV
 			}
 		}
 		
-		[Column(Name="optInTechJobKeyWords", Storage="_OptInTechJobKeyWords", DbType="VarChar(1024)")]
+		[Column(Storage="_OptInTechJobKeyWords", DbType="VarChar(1024)")]
 		public string OptInTechJobKeyWords
 		{
 			get
@@ -2592,6 +2600,46 @@ namespace CodeCampSV
 					this._OptInTechJobKeyWords = value;
 					this.SendPropertyChanged("OptInTechJobKeyWords");
 					this.OnOptInTechJobKeyWordsChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Company", DbType="VarChar(64)")]
+		public string Company
+		{
+			get
+			{
+				return this._Company;
+			}
+			set
+			{
+				if ((this._Company != value))
+				{
+					this.OnCompanyChanging(value);
+					this.SendPropertyChanging();
+					this._Company = value;
+					this.SendPropertyChanged("Company");
+					this.OnCompanyChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_PrincipleJob", DbType="VarChar(128)")]
+		public string PrincipleJob
+		{
+			get
+			{
+				return this._PrincipleJob;
+			}
+			set
+			{
+				if ((this._PrincipleJob != value))
+				{
+					this.OnPrincipleJobChanging(value);
+					this.SendPropertyChanging();
+					this._PrincipleJob = value;
+					this.SendPropertyChanged("PrincipleJob");
+					this.OnPrincipleJobChanged();
 				}
 			}
 		}

@@ -241,6 +241,38 @@
                     "userConfig": {
                         "itemId": null,
                         "designer|userClassName": "MyTextField16",
+                        "fieldLabel": "Company",
+                        "name": "company",
+                        "inputId": null
+                    },
+                    "designerId": "544ba9a7-516a-426d-a38e-219d4e2a66fc"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": null,
+                        "designer|userClassName": "MyTextField16",
+                        "fieldLabel": "Principle Job",
+                        "name": "principleJob",
+                        "inputId": null
+                    },
+                    "designerId": "b015e0c9-f773-45b2-9645-fe4b9fe81ae9"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": null,
+                        "designer|userClassName": "MyTextField16",
                         "fieldLabel": "Email",
                         "name": "email",
                         "allowBlank": false

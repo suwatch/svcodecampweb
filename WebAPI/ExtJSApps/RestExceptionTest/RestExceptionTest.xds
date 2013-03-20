@@ -1,0 +1,50 @@
+{
+    "name": "RestExceptionTest",
+    "settings": {},
+    "xdsVersion": "2.2.0",
+    "xdsBuild": 894,
+    "schemaVersion": 1,
+    "upgradeVersion": 210000000499,
+    "framework": "ext42",
+    "topInstanceFileMap": {
+        "5514d7ca-d4aa-43ae-ad3e-d033bdc412be": {
+            "paths": [
+                "metadata/resource/Library"
+            ],
+            "className": "Library"
+        },
+        "434e0fc8-f043-46c7-ac56-96133168ad38": {
+            "paths": [
+                "metadata/view/MyViewport",
+                "app/view/override/MyViewport.js",
+                "app/view/MyViewport.js",
+                "app/view/Viewport.js"
+            ],
+            "className": "MyViewport"
+        },
+        "17dcd3a1-2e73-435e-b5c4-47ba10195444": {
+            "paths": [
+                "metadata/model/MyModel",
+                "app/model/override/MyModel.js",
+                "app/model/MyModel.js"
+            ],
+            "className": "MyModel"
+        }
+    },
+    "viewOrderMap": {
+        "view": [
+            "434e0fc8-f043-46c7-ac56-96133168ad38"
+        ],
+        "store": [],
+        "controller": [],
+        "model": [
+            "17dcd3a1-2e73-435e-b5c4-47ba10195444"
+        ],
+        "resource": [
+            "5514d7ca-d4aa-43ae-ad3e-d033bdc412be"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

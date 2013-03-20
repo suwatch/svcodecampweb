@@ -1,0 +1,1602 @@
+/* line 1, Style.scss */
+#content .twitterfeed {
+  float: left;
+  background-color: #fff;
+  width: 385px;
+  margin: 10px 0px 30px 10px;
+  border: 1px solid #d8d8d8;
+  padding: 5px 5px 15px 5px;
+}
+
+/* line 9, Style.scss */
+#content img {
+  margin: 5px 0px 0px 10px;
+}
+
+/* line 13, Style.scss */
+#tweet {
+  float: none;
+  clear: both;
+}
+
+/* line 17, Style.scss */
+#tweet p {
+  margin: 0px 15px 0px 15px;
+}
+
+/* line 20, Style.scss */
+#tweet .profile_icon {
+  float: left;
+  margin: 4px 10px 10px 0px;
+}
+
+/* line 26, Style.scss */
+#tweet img {
+  margin-top: 4px;
+}
+
+/* line 31, Style.scss */
+#tweet .post {
+  margin: 10px;
+}
+
+/* line 36, Style.scss */
+#tweet .content {
+  margin-left: 55px;
+  padding: 5px 10px;
+  background: #eff7ff url("Images/twitter-feed-left.png") no-repeat;
+  font-weight: bold;
+}
+
+/* line 44, Style.scss */
+#tweet .content a {
+  color: #cc0066;
+}
+
+/* line 49, Style.scss */
+#tweet .content .author {
+  font-weight: normal;
+  color: #1E3695;
+  text-decoration: none;
+}
+
+/* line 56, Style.scss */
+#tweet .web_intent {
+  margin-left: 16px;
+}
+
+/* line 61, Style.scss */
+#tweet .web_intent span {
+  font-size: 11px;
+}
+
+/* line 68, Style.scss */
+.JobImageOnSession {
+  margin-top: 7px;
+  width: 84px;
+  height: 23px;
+}
+
+/* line 75, Style.scss */
+.scheduleLine, .scheduleLine a {
+  text-decoration: none;
+  color: #666666;
+}
+
+/* line 80, Style.scss */
+.scheduleTime {
+  color: #333333;
+}
+
+/* line 85, Style.scss */
+.scheduleLine:hover .scheduleTitle {
+  color: #cc3300;
+}
+
+/* line 86, Style.scss */
+.scheduleLine:hover .scheduleSpeaker {
+  background-color: #ffe5bf;
+}
+
+/* line 87, Style.scss */
+.scheduleLine:hover .scheduleRoom {
+  background-image: url("Images/scheduleArrow.gif");
+  background-position: right center;
+  background-repeat: no-repeat;
+  padding-right: 20px;
+}
+
+/* Body and general layout styles */
+/* line 99, Style.scss */
+body, div, td, form {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* line 101, Style.scss */
+.pad {
+  color: #333333;
+  padding: 0px 13px 20px 13px;
+}
+
+/* line 102, Style.scss */
+.margin {
+  margin: 20px;
+}
+
+/* Common link styles */
+/* line 114, Style.scss */
+.pad a, .pad a:active, .pad a:visited,
+.slashBullet a, .slashBullet a:active, .slashBullet a:visited,
+.headLogin a, .headLogin a:active, .headLogin a:visited,
+.noWrap a, .noWrap a:active, .noWrap a:visited {
+  text-decoration: none;
+  color: #003399;
+  background-image: url("Images/dotted.gif");
+  background-position: bottom left;
+  background-repeat: repeat-x;
+}
+
+/* Styles used in the header of the design */
+/* line 129, Style.scss */
+.headBar {
+  font-family: Calibri, Arial, sans-serif;
+  font-size: smaller;
+  color: #b4b4b4;
+  background-color: #313131;
+  background-image: url("Images/headBackground.jpg");
+  background-position: top right;
+  background-repeat: no-repeat;
+  width: 100%;
+  border: 0px;
+}
+
+/* line 139, Style.scss */
+.headLogin {
+  padding: 10px;
+  margin: 0px;
+  font-family: Calibri, Arial, sans-serif;
+  font-size: small;
+  color: #cccccc;
+}
+
+/* line 146, Style.scss */
+.headLogin a, .headLogin a:active, .headLogin a:visited {
+  text-decoration: none;
+  color: #cccccc;
+  background-image: url("Images/dotted.gif");
+  background-position: bottom left;
+  background-repeat: repeat-x;
+}
+
+/* line 154, Style.scss */
+.headLogin a.headLoginButton {
+  margin-right: 10px;
+  border: none;
+  background: none;
+}
+
+/* line 160, Style.scss */
+a.headLoginButton img {
+  margin-bottom: -7px;
+}
+
+/* line 163, Style.scss */
+.headLogo {
+  padding-left: 10px;
+}
+
+/* line 168, Style.scss */
+.headDate {
+  font-size: large;
+  font-family: Cambria, Georgia, serif;
+  padding-left: 30px;
+  color: #fff;
+}
+
+/* line 174, Style.scss */
+.headLinksBar {
+  margin: 0px 10px 0px 10px;
+  padding: 0px;
+}
+
+/* line 179, Style.scss */
+.headSubLinksBar {
+  font-family: Calibri, Arial, sans-serif;
+  font-size: medium;
+  font-weight: bold;
+  color: #cccccc;
+  background-color: #333;
+  width: 100%;
+  padding-left: 10px;
+  height: 28px;
+}
+
+/* line 188, Style.scss */
+.headerRegisteredLine {
+  font-family: Calibri, Arial, sans-serif;
+  font-size: medium;
+  font-weight: bold;
+  color: Orange;
+  background-color: #7d7d7d;
+  width: 100%;
+  padding-left: 10px;
+  height: 28px;
+}
+
+/* line 197, Style.scss */
+.slogan {
+  font-family: Cambria, Georgia, serif;
+  font-size: 16px;
+  font-weight: normal;
+  color: White;
+}
+
+/* Styles used for main content, shared styles and page specific styles */
+/* line 210, Style.scss */
+.contentTable, div, td, span, body {
+  font: normal 14px Calibri, Arial, sans-serif;
+}
+
+/* line 215, Style.scss */
+.contentTable {
+  font-size: small;
+  color: Black;
+  width: 100%;
+  padding: 0px, 0px, 0px, 0px;
+  margin: 0px, 0px, 0px, 0px;
+}
+
+/* line 223, Style.scss */
+.contentMain {
+  height: 800px;
+}
+
+/* line 228, Style.scss */
+.contentWrap {
+  padding-left: 8px;
+}
+
+/* line 233, Style.scss */
+.mainHeading {
+  font-family: Cambria, Georgia, serif;
+  font-size: large;
+  font-weight: bold;
+  color: #333333;
+  margin: 20px 0px;
+  padding-left: 10px;
+  border-left: solid 3px #cc3300;
+}
+
+/* line 244, Style.scss */
+.mainHeading span {
+  font-weight: bold;
+}
+
+/* line 249, Style.scss */
+.contentRightBottom .mainHeading {
+  margin: 5px 0;
+}
+
+/* line 254, Style.scss */
+.subHeading {
+  font-family: Calibri, Arial, sans-serif;
+  font-size: large;
+  font-weight: bold;
+  color: #333333;
+}
+
+/* line 260, Style.scss */
+.subHeading2 {
+  font-family: Cambria, Georgia, serif;
+  font-size: small;
+  font-weight: bold;
+  color: #999999;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+/* line 267, Style.scss */
+.bold16 {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* line 273, Style.scss */
+.contentBullet {
+  padding-left: 15px;
+  margin-bottom: 15px;
+  background-image: url("Images/contentBullet.gif");
+  background-repeat: no-repeat;
+}
+
+/* line 280, Style.scss */
+.pad ul {
+  margin: 20px 40px;
+}
+
+/* line 285, Style.scss */
+.slashBullet {
+  padding-left: 20px;
+  text-align: left;
+  background-image: url("Images/slashBullet.gif");
+  background-repeat: no-repeat;
+  font-size: 12px;
+}
+
+/* line 296, Style.scss */
+.required {
+  font-family: Calibri, Arial, sans-serif;
+  font-size: small;
+  color: Red;
+}
+
+/* line 302, Style.scss */
+.registerTable {
+  border-top: solid 1px #f0f0f0;
+  margin-bottom: 20px;
+  width: 670px;
+}
+
+/* line 309, Style.scss */
+.registerLeft {
+  padding-right: 8px;
+}
+
+/* line 313, Style.scss */
+.grayBackground {
+  background-color: #f0f0f0;
+  padding: 5px;
+}
+
+/* line 316, Style.scss */
+.sessionsPanel {
+  width: 100%;
+  height: 116px;
+  padding-bottom: 10px;
+  background-image: url("Images/sessionsLine.gif");
+}
+
+/* line 321, Style.scss */
+.sessionsButton {
+  margin: 0px 0px 0px 20px;
+}
+
+/* line 325, Style.scss */
+.sessionContent {
+  padding-right: 10px;
+}
+
+/* line 327, Style.scss */
+.sessionTags {
+  width: 140px;
+  border-left: 1px solid #cccccc;
+  padding: 10px;
+}
+
+/* line 329, Style.scss */
+.sessionLevel {
+  font-family: Cambria, Georgia, serif;
+  color: #666666;
+}
+
+/* line 332, Style.scss */
+.sessionDetails {
+  white-space: nowrap;
+}
+
+/* line 337, Style.scss */
+.sessionButtons {
+  width: 94%;
+  display: block;
+  padding-left: 10px;
+  line-height: 32px;
+}
+
+/* line 344, Style.scss */
+.sessionButtons input {
+  margin-left: 6px;
+}
+
+/* line 354, Style.scss */
+.sessionDescription {
+  padding: 15px 15px 0px 0px;
+}
+
+/* line 356, Style.scss */
+.sessionEvaluation {
+  padding: 7px 0px 7px 7px;
+  text-align: left;
+}
+
+/* line 358, Style.scss */
+.sessionRoomPhoto {
+  padding-top: 15px;
+}
+
+/* line 361, Style.scss */
+.tagBullet {
+  font-family: Cambria, Georgia, serif;
+  padding-left: 25px;
+  height: 17px;
+  margin-bottom: 3px;
+  background-image: url("Images/tag.gif");
+  background-repeat: no-repeat;
+  background-position: top-left;
+}
+
+/* line 372, Style.scss */
+.tagBullet a, .tagBullet a:active, .tagBullet a:visited {
+  background-image: none;
+  white-space: nowrap;
+}
+
+/* line 377, Style.scss */
+.scheduleTime {
+  font-weight: bold;
+}
+
+/* line 379, Style.scss */
+.scheduleSessions {
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+/* line 381, Style.scss */
+.scheduleLine {
+  padding-bottom: 7px;
+}
+
+/* line 387, Style.scss */
+.newsPad {
+  padding: 0px 13px 0px 13px;
+}
+
+/* line 389, Style.scss */
+.newsPosted {
+  font-family: Cambria, Georgia, serif;
+  padding-right: 15px;
+  color: #666666;
+}
+
+/* line 391, Style.scss */
+.padLeft {
+  padding: 0px 30px 5px 13px;
+}
+
+/* line 393, Style.scss */
+.marginLeft {
+  margin: 0px 30px 5px 13px;
+}
+
+/* line 396, Style.scss */
+.cloudControl a, .cloudControl a:active, .cloudControl a:visited {
+  text-decoration: none;
+  color: #003399;
+  background-image: none;
+}
+
+/* line 401, Style.scss */
+.cloudControl {
+  color: #999999;
+}
+
+/* line 403, Style.scss */
+.cloudItem {
+  white-space: nowrap;
+  display: inline;
+}
+
+/* line 405, Style.scss */
+.noWrap {
+  white-space: nowrap;
+}
+
+/* Styles used in the left column */
+/* line 414, Style.scss */
+.contentLeft {
+  font-family: Calibri, Arial, sans-serif;
+  font-size: small;
+  color: #666666;
+  width: 150px;
+  border-right: 1px solid #d2d2d2;
+  padding: 20px 10px 10px 0;
+}
+
+/* line 423, Style.scss */
+.contentLeft .slashBullet {
+  padding-bottom: 5px;
+}
+
+/* line 428, Style.scss */
+.contentLeft h3 {
+  border-left: 3px solid #CC3300;
+  font: bold 16px Cambria,Georgia,serif;
+  padding: 3px 3px 3px 6px;
+  margin: 5px 0px;
+}
+
+/* line 436, Style.scss */
+.contentSmallGray {
+  font-family: Cambria, Georgia, serif;
+  font-size: small;
+  color: #999999;
+  padding-left: 30px;
+  margin-bottom: 30px;
+  width: 200px;
+}
+
+/* Styles used in the right column */
+/* line 451, Style.scss */
+.contentRight {
+  font-family: Calibri, Arial, sans-serif;
+  font-size: medium;
+  color: #cccccc;
+  border-bottom: solid 3px black;
+  background-color: #313131;
+  background-image: url("Images/rightBackground.jpg");
+  background-position: top left;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 180px;
+  margin-bottom: 20px;
+}
+
+/* line 462, Style.scss */
+.rightNote {
+  font-size: 15px;
+  font-weight: bold;
+  color: White;
+  padding: 15px;
+}
+
+/* line 468, Style.scss */
+.rightRegister {
+  color: #eee;
+  font-size: 16px;
+  font-weight: bold;
+  padding-left: 15px;
+}
+
+/* line 476, Style.scss */
+.contentRightBottom {
+  font-family: Calibri, Arial, sans-serif;
+  font-size: small;
+  color: #333333;
+  border-left: 1px solid #d2d2d2;
+  background-color: #f0f0f0;
+  width: 300px;
+}
+
+/* line 485, Style.scss */
+.contentRight a, .contentRight a:visited, .contentRight a:active {
+  text-decoration: none;
+}
+
+/* line 490, Style.scss */
+.mainHeadingBlack {
+  font-family: Calibri, Arial, sans-serif;
+  font-size: large;
+  font-weight: bold;
+  color: White;
+  background-color: Black;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  border-left: solid 3px #cc3300;
+  background-image: url("Images/daysLeftArrow.gif");
+  background-position: top right;
+  background-repeat: no-repeat;
+  max-width: 100%;
+}
+
+/* line 502, Style.scss */
+.mainHeadingBlack a:visited, .mainHeadingBlack a:active, .mainHeadingBlack a {
+  text-decoration: none;
+  color: white;
+}
+
+/* line 508, Style.scss */
+.headingLink {
+  float: right;
+}
+
+/* line 514, Style.scss */
+.daysLeft {
+  font-family: Calibri, Arial, sans-serif;
+  font-size: small;
+  font-weight: bold;
+  color: #999999;
+  padding-left: 10px;
+}
+
+/* line 521, Style.scss */
+.rightBullet {
+  margin: 0 10px 10px 5px;
+  padding-left: 35px;
+  background-image: url("Images/rightBullet.gif");
+  background-repeat: no-repeat;
+}
+
+/* line 528, Style.scss */
+.rightButton1 {
+  padding: 10px 10px 10px 0px;
+}
+
+/* line 529, Style.scss */
+.rightButton2 {
+  padding: 10px 0px 10px 0px;
+}
+
+/* line 532, Style.scss */
+.socialMediaIconWrap {
+  height: 38px;
+  width: 200px;
+  padding-left: 8px;
+}
+
+/* line 537, Style.scss */
+.socialMediaIcon {
+  float: left;
+  height: 34px;
+  margin: 0 4px;
+  width: 32px;
+}
+
+/* line 544, Style.scss */
+.socialMediaIconWrap img {
+  border: none;
+}
+
+/* Styles used in the footer */
+/* line 552, Style.scss */
+.footLeft {
+  padding-left: 10px;
+  color: #383838;
+  background-color: #7d7d7d;
+}
+
+/* line 559, Style.scss */
+.footMiddle {
+  padding-left: 10px;
+  color: #383838;
+  background-color: #7d7d7d;
+}
+
+/* line 566, Style.scss */
+.footMiddle a, .footMiddle a:active, .footMiddle a:visited {
+  text-decoration: underline;
+  color: #383838;
+}
+
+/* line 571, Style.scss */
+.footMiddle1 {
+  padding-left: 10px;
+  color: #383838;
+  background-color: #7d7d7d;
+}
+
+/* line 578, Style.scss */
+.footMiddle1 a, .footMiddle a:active, .footMiddle a:visited {
+  text-decoration: underline;
+  color: White;
+}
+
+/* line 588, Style.scss */
+.footRight {
+  padding: 5px 0px 5px 10px;
+  color: #7d7d7d;
+  background-color: #383838;
+}
+
+/* line 603, Style.scss */
+.AspNet-Menu {
+  margin: 0px;
+  padding: 0px;
+  border-collapse: collapse;
+}
+
+/* line 610, Style.scss */
+.headLinksBar .AspNet-Menu-Horizontal .AspNet-Menu {
+  border-right: 1px solid #666666;
+}
+
+/* line 614, Style.scss */
+.AspNet-Menu-TopLevel-register:hover, .AspNet-Menu-TopLevel-register:hover a {
+  background-color: #254b32;
+  color: White;
+}
+
+/* line 615, Style.scss */
+.AspNet-Menu-TopLevel-program:hover, .AspNet-Menu-TopLevel-program:hover a {
+  background-color: #583225;
+  color: White;
+}
+
+/* line 616, Style.scss */
+.AspNet-Menu-TopLevel-news:hover, .AspNet-Menu-TopLevel-news:hover a {
+  background-color: #254b65;
+  color: White;
+}
+
+/* line 617, Style.scss */
+.AspNet-Menu-TopLevel-about:hover, .AspNet-Menu-TopLevel-about:hover a {
+  background-color: #3e3e58;
+  color: White;
+}
+
+/* line 618, Style.scss */
+.AspNet-Menu-TopLevel-wiki:hover, .AspNet-Menu-TopLevel-wiki:hover a {
+  background-color: #4b4b4b;
+  color: White;
+}
+
+/* line 619, Style.scss */
+.AspNet-Menu-TopLevel-jobs:hover, .AspNet-Menu-TopLevel-jobs:hover a {
+  background-color: #4b4b4b;
+  color: White;
+}
+
+/* line 622, Style.scss */
+.AspNet-Menu a, AspNet-Menu a:visited, AspNet-Menu a:active {
+  margin: 5px 20px 5px 0px;
+  text-decoration: none;
+  color: #b4b4b4;
+}
+
+/* line 629, Style.scss */
+.headLinksBar .AspNet-Menu a, .headLinksBar AspNet-Menu a:visited, .headLinksBar AspNet-Menu a:active {
+  color: #cccccc;
+  margin: 0px;
+  text-decoration: none;
+  color: #b4b4b4;
+  width: 115px;
+  height: 40px;
+  display: block;
+  padding-left: 5px;
+  line-height: 50px;
+}
+
+/* line 651, Style.scss */
+.AspNet-Menu-Selected a, .AspNet-Menu-Selected a:visited, .AspNet-Menu-Selected a:active,
+.AspNet-Menu-TopLevel-about-Selected a, .AspNet-Menu-TopLevel-about-Selected a:visited, .AspNet-Menu-TopLevel-about-Selected a:active,
+.AspNet-Menu-TopLevel-wiki-Selected a, .AspNet-Menu-TopLevel-wiki-Selected a:visited, .AspNet-Menu-TopLevel-wiki-Selected a:active,
+.AspNet-Menu-TopLevel-jobs-Selected a, .AspNet-Menu-TopLevel-jobs-Selected a:visited, .AspNet-Menu-TopLevel-jobs-Selected a:active,
+.AspNet-Menu-TopLevel-news-Selected a, .AspNet-Menu-TopLevel-news-Selected a:visited, .AspNet-Menu-TopLevel-news-Selected a:active,
+.AspNet-Menu-TopLevel-program-Selected a, .AspNet-Menu-TopLevel-program-Selected a:visited, .AspNet-Menu-TopLevel-program-Selected a:active,
+.AspNet-Menu-TopLevel-register-Selected a, .AspNet-Menu-TopLevel-register-Selected a:visited, .AspNet-Menu-TopLevel-register-Selected a:active,
+.headLinksBar .AspNet-Menu td.AspNet-Menu-TopLevel-register-Selected a, .headLinksBar .AspNet-Menu td.AspNet-Menu-TopLevel-program-Selected a,
+.headLinksBar .AspNet-Menu td.AspNet-Menu-TopLevel-news-Selected a, .headLinksBar .AspNet-Menu td.AspNet-Menu-TopLevel-about-Selected a,
+.headLinksBar .AspNet-Menu td.AspNet-Menu-TopLevel-wiki-Selected a,
+.headLinksBar .AspNet-Menu td.AspNet-Menu-TopLevel-jobs-Selected a {
+  color: white;
+}
+
+/* line 661, Style.scss */
+.AspNet-Menu-TopLevel-about-Selected, .AspNet-Menu-TopLevel-about,
+.AspNet-Menu-TopLevel-register, .AspNet-Menu-TopLevel-register-Selected,
+.AspNet-Menu-TopLevel-program, .AspNet-Menu-TopLevel-program-Selected,
+.AspNet-Menu-TopLevel-news, .AspNet-Menu-TopLevel-news-Selected,
+.AspNet-Menu-TopLevel-wiki, .AspNet-Menu-TopLevel-wiki-Selected,
+.AspNet-Menu-TopLevel-jobs, .AspNet-Menu-TopLevel-jobs-Selected {
+  border-left: 1px solid #666666;
+  font-size: 15px;
+  font-weight: bold;
+  margin: 0px;
+}
+
+/* line 668, Style.scss */
+.AspNet-Menu-TopLevel-about-Selected, .AspNet-Menu-TopLevel-about {
+  border-bottom: 5px solid #9966cc;
+}
+
+/* line 672, Style.scss */
+.AspNet-Menu-TopLevel-about-Selected {
+  background-color: #6666cc;
+}
+
+/* line 677, Style.scss */
+.AspNet-Menu-TopLevel-register, .AspNet-Menu-TopLevel-register-Selected {
+  border-bottom: 5px solid #00ff00;
+}
+
+/* line 682, Style.scss */
+.AspNet-Menu-TopLevel-register-Selected, .AspNet-Menu-TopLevel-register-Selected {
+  background-color: #009933;
+}
+
+/* line 687, Style.scss */
+.AspNet-Menu-TopLevel-program, .AspNet-Menu-TopLevel-program-Selected {
+  border-bottom: 5px solid #ff9900;
+}
+
+/* line 692, Style.scss */
+.AspNet-Menu-TopLevel-program-Selected, .AspNet-Menu-TopLevel-program-Selected {
+  background-color: #cc3300;
+}
+
+/* line 697, Style.scss */
+.AspNet-Menu-TopLevel-news, .AspNet-Menu-TopLevel-news-Selected {
+  border-bottom: 5px solid #33ccff;
+}
+
+/* line 702, Style.scss */
+.AspNet-Menu-TopLevel-news-Selected, .AspNet-Menu-TopLevel-news-Selected {
+  background-color: #0099ff;
+}
+
+/* line 707, Style.scss */
+.AspNet-Menu-TopLevel-wiki, .AspNet-Menu-TopLevel-wiki-Selected {
+  border-bottom: 5px solid #ffffff;
+}
+
+/* line 712, Style.scss */
+.AspNet-Menu-TopLevel-wiki-Selected, .AspNet-Menu-TopLevel-wiki-Selected {
+  background-color: #999999;
+}
+
+/* line 717, Style.scss */
+.AspNet-Menu-TopLevel-jobs, .AspNet-Menu-TopLevel-jobs-Selected {
+  border-bottom: 5px solid #ffffff;
+}
+
+/* line 722, Style.scss */
+.AspNet-Menu-TopLevel-jobs-Selected, .AspNet-Menu-TopLevel-jobs-Selected {
+  background-color: #999999;
+}
+
+/* Common settings for controls */
+/* line 729, Style.scss */
+select, label {
+  font-family: Calibri, Arial, sans-serif;
+  font-size: small;
+}
+
+/* line 730, Style.scss */
+label {
+  padding-right: 30px;
+}
+
+/* line 737, Style.scss */
+.AspNet-Menu-Item:hover a {
+  text-decoration: none;
+  background-image: url("Images/dottedLight.gif");
+  background-position: bottom left;
+  background-repeat: repeat-x;
+}
+
+/* Registration */
+/* line 747, Style.scss */
+h3.regHeader {
+  font: bold 16px Calibri, Georgia, Helvetica, Arial, Verdana;
+}
+
+/* line 751, Style.scss */
+.regNumber1 div, .regNumber2 div, .regNumber3 div {
+  display: block;
+  width: 27px;
+  height: 27px;
+  float: left;
+  margin-right: 8px;
+  margin-top: -5px;
+  background: transparent url("Images/Registration/numbers.gif") no-repeat left top;
+}
+
+/* line 760, Style.scss */
+.regNumber2 div {
+  background: transparent url("Images/Registration/numbers.gif") no-repeat -27px 0;
+}
+
+/* line 763, Style.scss */
+.regNumber3 div {
+  background: transparent url("Images/Registration/numbers.gif") no-repeat -54px 0;
+}
+
+/* line 768, Style.scss */
+.subHeading3 {
+  font: small bold Cambria, Georgia, serif;
+  color: #000000;
+  padding: 5px 0;
+}
+
+/* line 773, Style.scss */
+.regCaptcha {
+  border: solid 1px #d3d3d3;
+  background-color: #f9f9f9;
+  width: 190px;
+  margin-left: 15px;
+  padding: 4px 8px;
+}
+
+/* line 781, Style.scss */
+.regCaptcha input {
+  margin: 4px 0;
+}
+
+/* line 785, Style.scss */
+.ValidationErrorClass {
+  border: 2px solid red;
+  color: red;
+  margin: 5px 0px;
+  padding: 5px 15px 10px 70px;
+  background: #fffecb url(Images/ExclamationPoint_small1.jpg) no-repeat 7px 50%;
+  font-weight: bold;
+}
+
+/* line 793, Style.scss */
+.ValidationErrorClass ul {
+  margin: 0;
+  padding: 0;
+  margin-left: 25px;
+  list-style: square;
+  font-weight: normal;
+}
+
+/* Code Camp Attendance */
+/* line 802, Style.scss */
+.tablePreviousAttendance {
+  font: normal 13px Verdana, Arial, Tahoma;
+}
+
+/* line 806, Style.scss */
+.tablePreviousAttendance thead td {
+  font-weight: bold;
+  padding: 4px 5px;
+  border-left: solid 1px #CFCFCF;
+  border-bottom: solid 3px #3F3F3F;
+}
+
+/* line 814, Style.scss */
+.tablePreviousAttendance td {
+  border-bottom: solid 1px #3F3F3F;
+  padding: 2px 5px;
+}
+
+/* line 819, Style.scss */
+.tablePreviousAttendance td.year {
+  font-weight: bold;
+}
+
+/* Sponsors */
+/* line 824, Style.scss */
+.sponsorBar {
+  clear: both;
+  height: 29px;
+  background: transparent url("Images/sponsor-bar-center.gif") repeat-x 0 0;
+  margin-top: 5px;
+}
+
+/* line 831, Style.scss */
+.sponsorBar .left {
+  float: left;
+  width: 5px;
+  height: 29px;
+  background: transparent url("Images/sponsor-bar-left.gif") no-repeat 0 0;
+}
+
+/* line 838, Style.scss */
+.sponsorBar .right {
+  float: right;
+  width: 5px;
+  height: 29px;
+  background: transparent url("Images/sponsor-bar-right.gif") no-repeat 0 0;
+}
+
+/* line 845, Style.scss */
+.sponsorBar h3 {
+  padding: 3px 0 0 10px;
+  font: bold 18px Tahoma, Arial, Verdana;
+}
+
+/* line 851, Style.scss */
+.sponsors a + a {
+  padding: 10px 0;
+  display: inline-block;
+  font-weight: bold;
+}
+
+/* line 857, Style.scss */
+.sponsors img {
+  width: 160px;
+  height: 160px;
+}
+
+/* line 862, Style.scss */
+.sponsors a.imgLink:visited, .sponsors a.imgLink {
+  background: none;
+}
+
+/* line 866, Style.scss */
+.sponsors ul {
+  padding: 0 10px;
+}
+
+/* line 870, Style.scss */
+.sponsors li {
+  float: left;
+  text-align: center;
+  list-style: none;
+  margin: 0 8px 8px 8px;
+}
+
+/* line 878, Style.scss */
+div.pad div.sponsors li {
+  height: 190px;
+  width: 190px;
+}
+
+/* line 884, Style.scss */
+.sponsorSide {
+  padding: 0 3px;
+}
+
+/* line 888, Style.scss */
+.sponsorSide ul {
+  margin-top: 0;
+  clear: both;
+  padding-bottom: 8px;
+}
+
+/* line 894, Style.scss */
+.sponsorSide li {
+  text-align: left;
+  float: none;
+  margin: 0;
+  padding: 0;
+  clear: both;
+}
+
+/* line 902, Style.scss */
+.sponsorSide a {
+  color: #3B4DB9;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0;
+  margin: 6px 0 0 0;
+}
+
+/* line 910, Style.scss */
+.sponsorSide a:hover {
+  text-decoration: underline;
+}
+
+/* line 914, Style.scss */
+.imgSmall img {
+  width: 130px;
+  height: 130px;
+}
+
+/* Sessions Page */
+/* line 922, Style.scss */
+#MainHeadingDivSatOrSunday {
+  padding: 0 0 4px 15px;
+}
+
+/* line 926, Style.scss */
+#MainHeadingDivSatOrSunday table + table {
+  padding-top: 6px;
+}
+
+/* line 930, Style.scss */
+#MainHeadingDivSatOrSunday label {
+  font: bold 14px Verdana, Arial;
+  cursor: pointer;
+  color: #FFF;
+  background-color: #7F7F7F;
+  padding: 5px 12px 5px 10px;
+  margin-left: -20px;
+}
+
+/* line 939, Style.scss */
+#MainHeadingDivSatOrSunday input[checked="checked"] + label, #MainHeadingDivSatOrSunday input[CHECKED="checked"] + label {
+  background-color: #AF1D00;
+}
+
+/* line 944, Style.scss */
+.sessionsList .title h2 {
+  margin: 0;
+  font: bold 18px Cambria, Georgia, Arial, Verdana, Tahoma;
+  color: #AF1D00;
+}
+
+/* line 949, Style.scss */
+.sessionsList .itemTitle {
+  font: normal 12px Arial, Verdanan, Tahoma;
+}
+
+/* line 953, Style.scss */
+.sessionsList .sessionButtons {
+  padding: 8px 0 0 0;
+}
+
+/* line 958, Style.scss */
+.sessionsList .tagBullet {
+  font-family: Cambria, Georgia, serif;
+  padding-left: 25px;
+  width: 130px;
+  height: auto;
+  margin-bottom: 3px;
+  background: transparent url("Images/tag.gif") no-repeat top-left;
+}
+
+/* line 968, Style.scss */
+.sessionsList .tagBullet a {
+  white-space: normal;
+}
+
+/* line 973, Style.scss */
+.sessionsList .attendBottom {
+  background-color: #F3F3F3;
+  padding: 5px;
+}
+
+/* line 978, Style.scss */
+.sessionsList .attendBottom label {
+  font-weight: bold;
+  color: #000000;
+}
+
+/* line 984, Style.scss */
+.sessionsList .sessionDescription span {
+  font-size: 14px;
+  padding: 5px 5px 5px 14px;
+  color: #000000;
+}
+
+/* line 991, Style.scss */
+.sessionsList .pad {
+  padding: 0 0 8px 0;
+  margin: 0 10px 12px 10px;
+  border-bottom: solid 1px #DFDFDF;
+}
+
+/* line 998, Style.scss */
+.sessionOverview ul {
+  padding-left: 30px;
+}
+
+/* line 1002, Style.scss */
+.sessionOverview li {
+  padding: 1px 0;
+  color: #222;
+}
+
+/* line 1007, Style.scss */
+.sessionOverview a.sessionTitle {
+  font: normal 13px Arial, Verdana;
+  color: #3B4D94;
+  padding-right: 10px;
+  background: none;
+}
+
+/* line 1014, Style.scss */
+.SessionInterestText, .SessionPlanOnAttendText, SessionSuggestedText {
+  font: normal 12px Verdana, Arial;
+  color: #008F06;
+  padding-left: 4px;
+}
+
+/* line 1021, Style.scss */
+#sessionsTopChart {
+  margin-left: 8px;
+}
+
+/* line 1025, Style.scss */
+#sessionsChartSchedule {
+  height: 45px;
+  padding-left: 10px;
+}
+
+/* line 1030, Style.scss */
+#sessionsChartSchedule ul.hide li {
+  display: none;
+  visibility: hidden;
+}
+
+/* line 1035, Style.scss */
+#sessionsChartSchedule li {
+  float: left;
+  font: bold 14px Verdana, Arial;
+  cursor: pointer;
+  color: #FFF;
+  background-color: #7F7F7F;
+  padding: 5px 12px 5px 10px;
+  position: relative;
+}
+
+/* line 1045, Style.scss */
+#sessionsChartSchedule li.selected {
+  background-color: #AF1D00;
+}
+
+/* line 1050, Style.scss */
+.SessionPlanOnAttendText {
+  font-weight: bold;
+  color: #AF1D00;
+}
+
+/* line 1055, Style.scss */
+.SessionSuggestedText {
+  font-weight: bold;
+  color: #7D11F9;
+}
+
+/* line 1060, Style.scss */
+.sessionOverview a.sessionTitle:hover {
+  text-decoration: underline;
+}
+
+/* line 1065, Style.scss */
+.sessionOverview a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #333;
+  background: transparent url("Images/dotted.gif") repeat-x bottom left;
+  padding-right: 4px;
+}
+
+/* line 1074, Style.scss */
+.sessionOverview a:hover {
+  text-decoration: none;
+}
+
+/* Session Charts
+ -------------------------- */
+/* line 1080, Style.scss */
+span#interestButton + span {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* line 1085, Style.scss */
+#sessionDetails div.status {
+  text-align: left;
+}
+
+/* Recent Posts
+--------------------------- */
+/* line 1092, Style.scss */
+.recentPosts {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* line 1097, Style.scss */
+.recentPosts li {
+  background: transparent url(Images/bullet_orange.png) no-repeat top left;
+  padding-left: 16px;
+  margin: 4px 2px;
+}
+
+/* line 1103, Style.scss */
+.recentPosts li a {
+  text-decoration: none;
+  font-size: 14px;
+  color: #1E3695;
+}
+
+/* line 1109, Style.scss */
+.recentPosts li a:hover {
+  text-decoration: underline;
+}
+
+/* Search Sessions */
+/* line 1116, Style.scss */
+.searchSessions {
+  float: right;
+  width: 350;
+  height: 22px;
+  text-align: left;
+  margin: -26px 0 0 0;
+}
+
+/* line 1124, Style.scss */
+.searchSessions span {
+  font: bold 18px Cambria,Georgia,serif;
+  color: #333;
+  padding-right: 5px;
+}
+
+/* line 1130, Style.scss */
+.searchSessions input[type="text"] {
+  border: solid 1px #333333;
+  height: 22px;
+  width: 200px;
+  padding: 1px;
+  vertical-align: top;
+}
+
+/* line 1138, Style.scss */
+.searchSessions input[type="submit"] {
+  color: #fff;
+  background: transparent url(Images/session-search-btn.gif) no-repeat left 1px;
+  border: none;
+  width: 27px;
+  height: 25px;
+  vertical-align: top;
+  margin-left: -4px;
+  cursor: pointer;
+}
+
+/* line 1149, Style.scss */
+.ext-ie .searchSessions input[type="text"] {
+  line-height: 18px;
+}
+
+/*
+.searchSessions input[type="submit"]:hover
+{
+    background: transparent url(Images/session-search-btn.gif) no-repeat top -123px;
+}
+*/
+/* line 1160, Style.scss */
+.dataGrid table {
+  padding: 0 10px;
+  width: 100%;
+}
+
+/* line 1166, Style.scss */
+.dataGrid th {
+  padding: 2px 4px;
+  background-color: #F7F7F7;
+  border-bottom: solid 1px #999;
+}
+
+/* line 1172, Style.scss */
+.dataGrid td {
+  padding: 2px 5px;
+}
+
+/* line 1176, Style.scss */
+.dataGrid td.Description {
+  width: 35%;
+  white-space: normal;
+}
+
+/* line 1181, Style.scss */
+.dataGrid td + td + td + td + td {
+  text-align: right;
+}
+
+/* line 1185, Style.scss */
+.dataGrid tr:hover {
+  background-color: #EFEFEF;
+}
+
+/* line 1189, Style.scss */
+.dataGrid a {
+  color: #1E3695;
+  font-weight: bold;
+}
+
+/* line 1194, Style.scss */
+.dataGrid a:hover {
+  text-decoration: none;
+}
+
+/* Jobs
+-------------------- */
+/* line 1201, Style.scss */
+.jobListWrap {
+  padding-left: 12px;
+}
+
+/* line 1205, Style.scss */
+.jobListWrap .listItem {
+  border-bottom: 1px solid #E9E9E9;
+  clear: both;
+  float: left;
+  font: normal 12px Helvetica,Arial,sans-serif;
+  padding: 10px;
+  width: 95%;
+}
+
+/* line 1214, Style.scss */
+.jobListWrap .listItem .jobTitleLink {
+  margin: 0 5px 0 0;
+  padding: 0 5px 0 0;
+  font-size: 15px;
+  color: #07c;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+}
+
+/* line 1224, Style.scss */
+.jobListWrap .listItem .jobTitleLink:hover {
+  color: #1E3695;
+  text-decoration: underline;
+}
+
+/* line 1229, Style.scss */
+.listItem .company {
+  color: #444;
+  font-weight: bold;
+}
+
+/* line 1234, Style.scss */
+.listItem .location {
+  margin: 0;
+  padding: 0;
+  color: #444;
+  margin-bottom: 4px;
+  font: italic 11px Arial, Verdana;
+}
+
+/* line 1242, Style.scss */
+.listItem .description {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  background: transparent;
+  clear: both;
+  color: #333;
+}
+
+/* line 1251, Style.scss */
+.listItem .postTime {
+  float: right;
+  text-align: right;
+  font-size: 11px;
+}
+
+/* line 1257, Style.scss */
+.listItem .postTime p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Speakers Page
+-------------------------------------------- */
+/* line 1266, Style.scss */
+.speakersList {
+  margin: 0 20px;
+}
+
+/* line 1271, Style.scss */
+.speakersList td {
+  padding: 15px 0 5px 0;
+  border-bottom: 1px solid #E9E9E9;
+}
+
+/* line 1277, Style.scss */
+.speakersList a {
+  color: #1E3695;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+/* line 1283, Style.scss */
+.speakersList p {
+  padding: 5px 0;
+}
+
+/* line 1287, Style.scss */
+.speakersList a:hover {
+  text-decoration: underline;
+}
+
+/* line 1292, Style.scss */
+.speakersList td.speakerPic {
+  vertical-align: top;
+  text-align: center;
+  width: 115px;
+}
+
+/* line 1299, Style.scss */
+.speakersList td.speakerPic image {
+  vertical-align: top;
+}
+
+/* line 1304, Style.scss */
+.speakersList h4 {
+  background-color: #F3F3F3;
+  padding: 4px 10px;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+/* line 1312, Style.scss */
+.speakersList h4 a.speakerUrl {
+  float: right;
+  font-weight: normal;
+  display: block;
+  font-size: 12px;
+  margin: 4px 5px;
+}
+
+/* line 1321, Style.scss */
+.speakersList .contentWrap {
+  padding-left: 10px;
+}
+
+/* line 1326, Style.scss */
+.speakersList .videoWrap {
+  padding: 5px 0;
+}
+
+/* line 1331, Style.scss */
+.speakersList td div.videoWrap a {
+  background-image: url("Images/dotted.gif");
+  background-position: left bottom;
+  background-repeat: repeat-x;
+  color: #333333;
+  text-decoration: none;
+}
+
+/* line 1339, Style.scss */
+.speakersList td div a:hover {
+  text-decoration: none;
+}
+
+/* line 1344, Style.scss */
+.page-break {
+  display: none;
+}
+
+/* line 1349, Style.scss */
+.contentDivider {
+  float: right;
+  width: 265px;
+  height: 200px;
+  margin-left: 15px;
+  padding: 0 0 8px 15px;
+  background: white url("Images/content-divider.png") no-repeat;
+}
+
+/* line 1359, Style.scss */
+table.contentTable a img {
+  border: none;
+}
+
+/* line 1364, Style.scss */
+table.contentTable .horizontalDivider {
+  background: white url("Images/hr-background.png") repeat-x;
+  height: 3px;
+  margin: 8px 0;
+  clear: both;
+}
+
+@media print {
+  /* line 1374, Style.scss */
+  .page-break {
+    display: block;
+    page-break-before: always;
+  }
+
+  /* line 1378, Style.scss */
+  body {
+    font-size: 12pt;
+  }
+
+  /* line 1382, Style.scss */
+  .hidePrint {
+    display: none;
+  }
+
+  /* line 1386, Style.scss */
+  .contentLeft, .footLeft {
+    width: 0px;
+    display: none;
+  }
+
+  /* line 1391, Style.scss */
+  .contentRightBottom {
+    display: none;
+  }
+
+  /* line 1395, Style.scss */
+  .contentRightBottom .sponsorSide a {
+    text-decoration: none;
+    margin-top: 2px;
+    display: block;
+    color: #07366F;
+  }
+
+  /* line 1402, Style.scss */
+  .contentRightBottom .sponsorSide .sponsors .sponsorBar h3 {
+    font-size: 10pt;
+    color: #333;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+  }
+}

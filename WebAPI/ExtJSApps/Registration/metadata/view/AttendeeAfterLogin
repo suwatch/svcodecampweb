@@ -6,6 +6,7 @@
     },
     "codeClass": null,
     "userConfig": {
+        "id": "attendeeAfterLoginProfileId",
         "itemId": null,
         "designer|userClassName": "AttendeeAfterLogin",
         "designer|userAlias": "AttendeeAfterLoginAlias",
@@ -222,6 +223,36 @@
                 "allowBlank": false
             },
             "designerId": "f23fce8c-9f1f-43b5-a590-80282a45565a"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyTextField9",
+                "fieldLabel": "Company",
+                "name": "company",
+                "inputId": null
+            },
+            "designerId": "b15fb06d-33f4-466b-b9e0-ea10fde36d49"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyTextField9",
+                "fieldLabel": "Principle Job",
+                "name": "principleJob",
+                "inputId": null
+            },
+            "designerId": "bf410115-3647-482c-aa3f-996c475edd34"
         },
         {
             "type": "Ext.form.field.Text",

@@ -41,7 +41,7 @@ Ext.define('RegistrationApp.controller.OptInController', {
             success: function(r, o) {  
                 var retData = Ext.JSON.decode(r.responseText);
                 myMask.hide();
-                window.parent.location.href = '../../Session#';
+                window.parent.location.href = '../../Sessions.aspx'; 
             },
             failure: function(r,o) {
                 //tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeSpeakerSponsorId'));

@@ -45,87 +45,71 @@ public partial class Default : BaseContentPage
             var testMode = ConfigurationManager.AppSettings["TestingDataOnly"] != null &&
                        ConfigurationManager.AppSettings["TestingDataOnly"].ToLower().Equals("true");
 
-            if (testMode)
-            {
-                Response.Redirect("~/Session");
-            }
+
+            NormalPageId.Visible = true;
+            ShowChartWithAttendeesCountsID.Visible = false;
+            SteveJobsMemorialId.Visible = false;
+            CodeCampAnnounceID.Visible = true;
+            TwitterFeed1.Visible = false;
+            TwitterFeed2.Visible = false;
+            jobsMemorialLogin.Visible = false;
+            jobsMemorialLogout.Visible = false;
+            horizontalDivider.Visible = false;
+            ShowTwitterSessionLinksId.Visible = false;
+
+           
+
+            //if (!Context.User.Identity.IsAuthenticated)
+            //{
+            //    // not logged in
+            //    CodeCampAnnounceID.Visible = true;
+            //    TwitterFeed1.Visible = false;
+            //    TwitterFeed2.Visible = false;
+            //    jobsMemorialLogin.Visible = false;
+            //    jobsMemorialLogout.Visible = false;
+            //    horizontalDivider.Visible = false;
+            //    ShowTwitterSessionLinksId.Visible = false;
+            //}
+            //else
+            //{
+            //    // logged in
+
+            //    if (!testMode)
+            //    {
+            //        if (ConfigurationManager.AppSettings["SpeakerShirtSizeForce"] != null &&
+            //            ConfigurationManager.AppSettings["SpeakerShirtSizeForce"].Equals("true"))
+            //        {
+            //            int attendeesId = Utils.GetAttendeesIdFromUsername(Context.User.Identity.Name);
+            //            if (Utils.CheckAttendeeIdIsSpeaker(attendeesId))
+            //            {
+            //                bool hasShirtSize = Utils.CheckHasShirtSize(attendeesId);
+            //                if (!hasShirtSize)
+            //                {
+            //                    Response.Redirect("~/ShirtSizeSet.aspx");
+            //                }
+            //            }
+            //        }
+            //    }
+
+            //    if (ConfigurationManager.AppSettings["ShowTwitterLinksOnHomePage"] != null &&
+            //       ConfigurationManager.AppSettings["ShowTwitterLinksOnHomePage"].Equals("true"))
+            //    {
+            //        ShowTwitterSessionLinksId.Visible = true;
+            //    }
+            //    else
+            //    {
+            //        ShowTwitterSessionLinksId.Visible = false;
+            //    }
 
 
-            if (ConfigurationManager.AppSettings["ChartAttendanceComparedLastYear"] != null &&
-                ConfigurationManager.AppSettings["ChartAttendanceComparedLastYear"].Equals("true"))
-            {
-                ShowChartWithAttendeesCountsID.Visible = true;
-            }
-            else
-            {
-                ShowChartWithAttendeesCountsID.Visible = false;
-            }
+            //    CodeCampAnnounceID.Visible = false;
+            //    TwitterFeed1.Visible = false;
+            //    TwitterFeed2.Visible = false;
+            //    jobsMemorialLogin.Visible = false;
+            //    jobsMemorialLogout.Visible = false;
+            //    horizontalDivider.Visible = false;
 
-            if (ConfigurationManager.AppSettings["SteveJobsMemory"] != null &&
-                ConfigurationManager.AppSettings["SteveJobsMemory"].Equals("true"))
-            {
-                SteveJobsMemorialId.Visible = true;
-                NormalPageId.Visible = false;
-            }
-            else
-            {
-                SteveJobsMemorialId.Visible = false;
-                NormalPageId.Visible = true;
-            }
-
-
-
-            if (!Context.User.Identity.IsAuthenticated)
-            {
-                // not logged in
-                CodeCampAnnounceID.Visible = true;
-                TwitterFeed1.Visible = false;
-                TwitterFeed2.Visible = false;
-                jobsMemorialLogin.Visible = false;
-                jobsMemorialLogout.Visible = false;
-                horizontalDivider.Visible = false;
-                ShowTwitterSessionLinksId.Visible = false;
-            }
-            else
-            {
-                // logged in
-
-                if (!testMode)
-                {
-                    if (ConfigurationManager.AppSettings["SpeakerShirtSizeForce"] != null &&
-                        ConfigurationManager.AppSettings["SpeakerShirtSizeForce"].Equals("true"))
-                    {
-                        int attendeesId = Utils.GetAttendeesIdFromUsername(Context.User.Identity.Name);
-                        if (Utils.CheckAttendeeIdIsSpeaker(attendeesId))
-                        {
-                            bool hasShirtSize = Utils.CheckHasShirtSize(attendeesId);
-                            if (!hasShirtSize)
-                            {
-                                Response.Redirect("~/ShirtSizeSet.aspx");
-                            }
-                        }
-                    }
-                }
-
-                if (ConfigurationManager.AppSettings["ShowTwitterLinksOnHomePage"] != null &&
-                   ConfigurationManager.AppSettings["ShowTwitterLinksOnHomePage"].Equals("true"))
-                {
-                    ShowTwitterSessionLinksId.Visible = true;
-                }
-                else
-                {
-                    ShowTwitterSessionLinksId.Visible = false;
-                }
-
-
-                CodeCampAnnounceID.Visible = false;
-                TwitterFeed1.Visible = false;
-                TwitterFeed2.Visible = false;
-                jobsMemorialLogin.Visible = false;
-                jobsMemorialLogout.Visible = false;
-                horizontalDivider.Visible = false;
-
-            }
+            //}
         }
 
         string threshHoldString = ConfigurationManager.AppSettings["ShowRegThreshHold"];

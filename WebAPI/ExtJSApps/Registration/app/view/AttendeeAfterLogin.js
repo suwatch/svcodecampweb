@@ -17,6 +17,7 @@ Ext.define('RegistrationApp.view.AttendeeAfterLogin', {
     extend: 'Ext.form.Panel',
     alias: 'widget.AttendeeAfterLoginAlias',
 
+    id: 'attendeeAfterLoginProfileId',
     bodyPadding: 10,
     title: 'Attendee After Login',
 
@@ -84,6 +85,16 @@ Ext.define('RegistrationApp.view.AttendeeAfterLogin', {
                     fieldLabel: 'Last Name',
                     name: 'userLastName',
                     allowBlank: false
+                },
+                {
+                    xtype: 'textfield',
+                    fieldLabel: 'Company',
+                    name: 'company'
+                },
+                {
+                    xtype: 'textfield',
+                    fieldLabel: 'Principle Job',
+                    name: 'principleJob'
                 },
                 {
                     xtype: 'textfield',

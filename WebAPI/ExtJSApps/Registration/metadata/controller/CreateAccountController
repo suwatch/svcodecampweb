@@ -49,6 +49,7 @@
                     "\r",
                     "var localValues =  Ext.ComponentQuery.query('createAccountAlias')[0].getForm().getValues();\r",
                     "\r",
+                    "\r",
                     "//if (localValues.password === localValues.passwordConfirm) {\r",
                     "\r",
                     "// hopefully will get validation to work on form for this later (matching passwords)\r",
@@ -58,6 +59,13 @@
                     "\r",
                     "var myMask = new Ext.LoadMask(Ext.getBody(), {msg:\"Creating New Account...\"});\r",
                     "myMask.show();\r",
+                    "\r",
+                    "var challenge = Recaptcha.get_challenge();\r",
+                    "var response = Recaptcha.get_response();\r",
+                    "\r",
+                    "\r",
+                    "localValues.recaptchaChallengeField = challenge;\r",
+                    "localValues.recaptchaResponseField = response;\r",
                     "\r",
                     "Ext.Ajax.request({ \r",
                     "    url:'/rpc/Account/CreateUser', \r",
@@ -93,6 +101,32 @@
                 "designer|controlQuery": "createAccountAlias #continueButtonId"
             },
             "designerId": "69df807a-afe1-455f-9086-38335fa2f200"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onPanelAfterRender",
+                "fn": "onPanelAfterRender",
+                "implHandler": [
+                    "Recaptcha.create(\"6LcrXN4SAAAAAG4gTUSUCzyfaFE4-yJOIXq86PdW\",\r",
+                    "Ext.getDom('recaptcha'),\r",
+                    "{\r",
+                    "    theme: \"clean\",\r",
+                    "    callback: Recaptcha.focus_response_field\r",
+                    "}\r",
+                    ");"
+                ],
+                "name": "afterrender",
+                "scope": "me",
+                "designer|targetType": "Ext.panel.Panel",
+                "designer|controlQuery": "createAccountAlias #reCaptcha"
+            },
+            "designerId": "8e567277-a2b8-4e84-a2bf-128e3d4b8af3"
         }
     ]
 }

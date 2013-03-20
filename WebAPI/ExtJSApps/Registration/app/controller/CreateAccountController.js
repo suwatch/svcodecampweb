@@ -29,6 +29,7 @@ Ext.define('RegistrationApp.controller.CreateAccountController', {
 
         var localValues =  Ext.ComponentQuery.query('createAccountAlias')[0].getForm().getValues();
 
+
         //if (localValues.password === localValues.passwordConfirm) {
 
         // hopefully will get validation to work on form for this later (matching passwords)
@@ -38,6 +39,13 @@ Ext.define('RegistrationApp.controller.CreateAccountController', {
 
         var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Creating New Account..."});
         myMask.show();
+
+        var challenge = Recaptcha.get_challenge();
+        var response = Recaptcha.get_response();
+
+
+        localValues.recaptchaChallengeField = challenge;
+        localValues.recaptchaResponseField = response;
 
         Ext.Ajax.request({ 
             url:'/rpc/Account/CreateUser', 
@@ -68,6 +76,16 @@ Ext.define('RegistrationApp.controller.CreateAccountController', {
         });
     },
 
+    onPanelAfterRender: function(component, eOpts) {
+        Recaptcha.create("6LcrXN4SAAAAAG4gTUSUCzyfaFE4-yJOIXq86PdW",
+        Ext.getDom('recaptcha'),
+        {
+            theme: "clean",
+            callback: Recaptcha.focus_response_field
+        }
+        );
+    },
+
     init: function(application) {
         this.control({
             "createAccountAlias #backButtonId": {
@@ -75,6 +93,9 @@ Ext.define('RegistrationApp.controller.CreateAccountController', {
             },
             "createAccountAlias #continueButtonId": {
                 click: this.onContinueButtonIdClick
+            },
+            "createAccountAlias #reCaptcha": {
+                afterrender: this.onPanelAfterRender
             }
         });
     }

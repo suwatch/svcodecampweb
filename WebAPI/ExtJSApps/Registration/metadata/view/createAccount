@@ -131,6 +131,26 @@
                 "vtype": "email"
             },
             "designerId": "3cefac3f-73dc-4a9d-8fc0-ee78b335e661"
+        },
+        {
+            "type": "Ext.panel.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "border": false,
+                "height": 150,
+                "html": [
+                    "<div id=\"recaptcha\">Captcha Control From Google. This should be replaced by image by google</div>"
+                ],
+                "itemId": "reCaptcha",
+                "margin": "0 0 0 105",
+                "designer|userClassName": "MyPanel6",
+                "title": null
+            },
+            "designerId": "27b1d5ab-16d8-4bed-b316-edf65ad2e20f"
         }
     ]
 }

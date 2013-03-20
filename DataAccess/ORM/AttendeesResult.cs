@@ -61,5 +61,11 @@ namespace CodeCampSV
         [DataMember]
         public int AttendeesId { get; set; }
 
+        [DataMember]
+        public string RecaptchaChallengeField { get; set; }
+
+        [DataMember]
+        public string RecaptchaResponseField { get; set; }
+
     }
 }

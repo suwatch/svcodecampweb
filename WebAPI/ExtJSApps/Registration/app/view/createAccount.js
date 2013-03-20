@@ -78,6 +78,14 @@ Ext.define('RegistrationApp.view.createAccount', {
                     name: 'email',
                     allowBlank: false,
                     vtype: 'email'
+                },
+                {
+                    xtype: 'panel',
+                    border: false,
+                    height: 150,
+                    html: '<div id="recaptcha">Captcha Control From Google. This should be replaced by image by google</div>',
+                    itemId: 'reCaptcha',
+                    margin: '0 0 0 105'
                 }
             ]
         });

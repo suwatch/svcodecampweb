@@ -4310,6 +4310,8 @@
     <Content Include="App_Themes\Gray2013\svcc-style.scss" />
     <None Include="Properties\PublishProfiles\beta.siliconvalley-codecamp.com.pubxml" />
     <None Include="Properties\PublishProfiles\svcc.73rst.com.pubxml" />
+    <None Include="Properties\PublishProfiles\svcc3 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\svcc3 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.9.0.intellisense.js" />
     <Content Include="Scripts\jquery-1.9.0.js" />
     <Content Include="Scripts\jquery-1.9.0.min.js" />

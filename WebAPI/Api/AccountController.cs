@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -100,20 +101,9 @@ namespace WebAPI.Api
                 await Request.Content.ReadAsMultipartAsync(provider);
 
                 /* THIS WORKS WITH MultipartMemoryStreamProvider UNCOMMENTED ABOVE */
-
+                int bytesUpoaded = -1;
                 using (var memoryStream = new MemoryStream())
                 {
-                    //// You could also just use StreamWriter to do "writer.Write(bytes)"
-                    //ms.Write(bytes, 0, bytes.Length);
-
-                    //using (StreamWriter writer = new StreamWriter(ms))
-                    //{
-                    //    writer.Write("Some Data");
-                    //}
-
-                    //File.WriteAllBytes(outFilePath, ms.ToArray());
-
-
                     foreach (var item in provider.Contents)
                     {
                         using (Stream stream = item.ReadAsStreamAsync().Result)
@@ -129,6 +119,21 @@ namespace WebAPI.Api
                     }
 
                     //create new Bite Array
+
+                    Log4NetAllManager.I.Insert(new Log4NetAllResult()
+                    {
+                        Date = DateTime.Now.AddHours(-3),
+                        EllapsedTime = 0,
+                        ExceptionMessage = "",
+                        ExceptionStackTrace = "",
+                        Level = "",
+                        Logger = "",
+                        Message = "AccountController:PostFormData length: " + memoryStream.Length,
+                        MessageLine1 = "",
+                        Thread = "",
+                        
+                    });
+
                     var byteArray = new byte[memoryStream.Length];
 
                     //Set pointer to the beginning of the stream
@@ -149,6 +154,7 @@ namespace WebAPI.Api
                         {
                             attendeesId = attendeesResult.Id;
                             attendeesResult.UserImage = new System.Data.Linq.Binary(byteArray);
+                            bytesUpoaded = byteArray.Count();
 
                             AttendeesManager.I.Update(attendeesResult);
                         }
@@ -161,7 +167,8 @@ namespace WebAPI.Api
                         AttendeeId = attendeesId,
                         Success = true,
                         Status = "success",
-                        File = "speaker.jpg"
+                        File = "speaker.jpg"                    ,
+                        Message = "bytes uploaded: " +  bytesUpoaded.ToString()
                     });
                 return response;
             }

@@ -87,6 +87,8 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
     },
 
     onSessionButtonAddNewIdClick: function(button, e, eOpts) {
+        console.log('add session pressed');
+
         var that = this;
         var attendeesId = Ext.getCmp('speakerAfterLoginProfileId').getForm().getValues().attendeesId;
 
@@ -98,7 +100,8 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
         newSessionRecord.save({
             success: function(record,operation) {
                 //debugger;
-                that.refreshTitleList();
+
+
 
                 var newSessionPresenterRecord = Ext.create('RegistrationApp.model.SessionPresenterModel',{
                     attendeeId: parseInt(attendeesId),
@@ -120,6 +123,8 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
                                 //debugger;
                             }
                         });
+                        console.log('add session, calling that.refreshTitleList');
+                        that.refreshTitleList();
                     },
                     failure: function(records,operation,success) {
                         //debugger;

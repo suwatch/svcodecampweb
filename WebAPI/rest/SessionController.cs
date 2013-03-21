@@ -64,7 +64,13 @@ namespace WebAPI.REST
                                       WithLevel = true
                                    };
 
+               
+
                 List<SessionsResult> session = SessionsManager.I.Get(sessionQuery);
+                foreach (var rec in session)
+                {
+                    rec.Title = rec.Title.Trim(); // just making sure because we use this for unique stuff
+                }
                 response = Request.CreateResponse(HttpStatusCode.OK, session);
             }
             else if (option.ToLower().Equals("justlowercasetitle"))
@@ -77,7 +83,7 @@ namespace WebAPI.REST
                 List<SessionsResult>  sessionTitles = sessionsFull.Select(rec => new SessionsResult()
                     {
                         Id = rec.Id,
-                        Title = rec.Title.ToLower()
+                        Title = rec.Title.ToLower().Trim()
                     }).ToList();
 
 
@@ -104,6 +110,11 @@ namespace WebAPI.REST
         // POST api/session
         public HttpResponseMessage Post(SessionsResult sessionsResult)
         {
+            if (sessionsResult != null)
+            {
+                sessionsResult.Title = sessionsResult.Title.Trim();
+            }
+
             HttpResponseMessage response;
             bool sessionAccepted = false;
             if (sessionsResult.LoggedInUserAttendeeId.HasValue)
@@ -174,6 +185,11 @@ namespace WebAPI.REST
         /// <returns></returns>
         public HttpResponseMessage Put(SessionsResult sessionsResult)
         {
+            if (sessionsResult != null)
+            {
+                sessionsResult.Title = sessionsResult.Title.Trim();
+            }
+
             var session =
               SessionsManager.I.Get(new SessionsQuery
               {

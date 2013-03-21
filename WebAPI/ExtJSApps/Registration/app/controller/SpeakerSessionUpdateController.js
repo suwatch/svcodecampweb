@@ -25,7 +25,6 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
     },
 
     onSpeakerSessionsBackButtonItemIdClick: function(button, e, eOpts) {
-
         var moveOn = this.saveSessions();
 
         if (moveOn === true) {
@@ -51,6 +50,7 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
                     sessionsBySpeakerStore.remove(recordModel); // this is really sessionsStore
                     sessionsBySpeakerStore.sync({
                         success: function(){
+                            this.refreshTitleList();
 
                             var sessionDetailPanel = Ext.getCmp('sessionDetailPanelId');
                             sessionDetailPanel.setDisabled(true);
@@ -97,6 +97,7 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
         newSessionRecord.save({
             success: function(record,operation) {
                 //debugger;
+                this.refreshTitleList();
 
                 var newSessionPresenterRecord = Ext.create('RegistrationApp.model.SessionPresenterModel',{
                     attendeeId: parseInt(attendeesId),
@@ -156,24 +157,31 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
     saveSessions: function() {
         var formPanel = Ext.getCmp("sessionFormPanelEditorId").getForm();
         var sessionGridPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
+        var selectedSessionInGrid = sessionGridPanel.getSelectionModel().getSelection();
+
+        var oldTitle = '';
+        if (selectedSessionInGrid.length > 0) {
+            oldTitle = selectedSessionInGrid[0].get("title");
+        }
 
         formPanel.updateRecord();
         var modelRecord = formPanel.getRecord();
 
 
         var value = modelRecord.get('title');
-        var notFound = true;
         var store = Ext.data.StoreManager.lookup('SessionTitlesStore');
         var titleNoTrim = Ext.util.Format.lowercase(value);
         var title = Ext.util.Format.trim(titleNoTrim);
 
-        store.each(function(rec) {
-            // need to not check against line we are on
-
-            if (rec.get('title') === title) {
-                notFound = false;
-            }
-        });
+        var notFound = true;
+        // only check if title changed, otherwise, person could just be modifying existing title
+        if (oldTitle.length > 0 && oldTitle !== title) {
+            store.each(function(rec) {
+                if (rec.get('title') === title) {
+                    notFound = false;
+                }
+            });
+        }
 
         if (notFound) {
             var store = sessionGridPanel.getStore();
@@ -188,16 +196,49 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
             modelRecordFromGrid.set("twitterHashTags",modelRecord.getData().twitterHashTags);
             modelRecordFromGrid.set("description",modelRecord.getData().description);
 
-            store.sync();
+            store.sync(
+            {
+                success : function(){
 
-            var tagList = Ext.getCmp("SessionTagsGridPanelId");
-            var tagListStore = tagList.store;
-            tagListStore.save();
+                    this.refreshTitleList();
+
+
+                    // because this could be an insert, it's important not to add new taglist stuff
+                    // until the session itself inserts.  thought, I think this is problematic as 
+                    // designed.  now, the insert happens and no tags are added, then, tags are
+                    // only added on updates (that is how the UI currently works)
+                    var tagList = Ext.getCmp("SessionTagsGridPanelId");
+                    var tagListStore = tagList.store;
+                    tagListStore.save();
+
+
+
+
+                },
+                failure : function(response, options){
+                    Ext.Msg.alert("Session Save Error","Failed trying to save Base Session Record.");
+                }  
+            });        
             return true;
         } else {
             Ext.Msg.alert("Session Title Problem","Another session has been entered with the same title.  Please make your title unique while keeping it under 75 characters");
         }
 
+    },
+
+    refreshTitleList: function() {
+        var storeJustTitles = Ext.data.StoreManager.lookup('SessionTitlesStore');
+        storeJustTitles.load({
+            params: {
+                option: 'justlowercasetitle',
+                param1: '-1',
+                param2: '-1',
+                param3: '-1'
+            },
+            callback: function(records,operation,success) {
+                console.log('lowercase titles found in refreshTitleList function: ' + records.length);
+            }
+        });
     },
 
     init: function(application) {

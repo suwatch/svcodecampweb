@@ -1,0 +1,40 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "SessionTitleModel"
+    },
+    "designerId": "507a64e9-1b15-4ac2-be89-e1875883d32a",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "title",
+                "designer|userClassName": "MyField17"
+            },
+            "designerId": "d9d9a2b6-2bf3-4f41-9195-101f3710f504"
+        },
+        {
+            "type": "Ext.data.proxy.Rest",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyRestProxy2",
+                "url": "/rest/Session/"
+            },
+            "designerId": "baba724a-28c4-438d-8b12-982431c34194"
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "model": "SessionTitleModel",
+        "storeId": "MyStore4",
+        "designer|userClassName": "SessionTitlesStore"
+    },
+    "designerId": "58a97b99-d1d6-4d40-98f3-bcfd550f8999"
+}

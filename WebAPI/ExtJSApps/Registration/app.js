@@ -26,14 +26,16 @@ Ext.application({
         'Session',
         'TagsModel',
         'SessionPresenterModel',
-        'SessionLevelModel'
+        'SessionLevelModel',
+        'SessionTitleModel'
     ],
     stores: [
         'ShirtSizeStore',
         'SessionStore',
         'TagStore',
         'SessionPresenterStore',
-        'SessionLevelStore'
+        'SessionLevelStore',
+        'SessionTitlesStore'
     ],
     views: [
         'ViewportMain',

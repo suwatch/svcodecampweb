@@ -66,6 +66,9 @@ namespace CodeCampSV
 
         public static string CacheAgendaUpdateInfo = "AgendaUpdateInfo";
 
+        /// <summary>
+        /// this is the year that is current (does not change when person views another year)
+        /// </summary>
         public const int CurrentCodeCampYear = 8; // this is current year and never changes.  hence const
         public static string CacheAttendeeByUserName = "DisplayImageWithParams";
         public static string CacheAttendeeBySessionId = "DisplayImageWithParamsBySessionId";

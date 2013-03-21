@@ -28,34 +28,6 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
             dockedItems: [
                 {
                     xtype: 'toolbar',
-                    saveSessions: function() {
-                        /*
-                        var formPanel = Ext.getCmp("sessionFormPanelEditorId").getForm();
-                        var sessionGridPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
-
-                        formPanel.updateRecord();
-                        var modelRecord = formPanel.getRecord();
-
-                        var store = sessionGridPanel.getStore();
-                        var sessionId = modelRecord.getId();
-                        var index1 = store.findExact("id", parseInt(sessionId));
-
-                        var modelRecordFromGrid = store.getAt(index1);
-
-                        modelRecordFromGrid.set("title",modelRecord.getData().title);
-                        modelRecordFromGrid.set("description",modelRecord.getData().description);
-                        modelRecordFromGrid.set("sessionLevel",modelRecord.getData().sessionLevel);
-                        modelRecordFromGrid.set("twitterHashTags",modelRecord.getData().twitterHashTags);
-                        modelRecordFromGrid.set("description",modelRecord.getData().description);
-
-                        store.sync();
-
-                        var tagList = Ext.getCmp("SessionTagsGridPanelId");
-                        var tagListStore = tagList.store;
-                        tagListStore.save();
-                        */
-
-                    },
                     dock: 'top',
                     itemId: 'ToolBarAttendeeSpeaker',
                     layout: {
@@ -193,10 +165,22 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                                     items: [
                                         {
                                             xtype: 'textfield',
+                                            validator: function(value) {
+                                                // need to check against server list of sessions to make sure this is unique for the year
+                                                //return value.indexOf('a') == 0;
+                                                if (value.length > 10) {
+                                                    return 'problem string';
+                                                }
+                                                else {
+                                                    return true;
+                                                }
+                                            },
                                             anchor: '100%',
                                             width: 150,
                                             fieldLabel: 'Title',
-                                            name: 'title'
+                                            name: 'title',
+                                            maxLength: 75,
+                                            minLength: 3
                                         },
                                         {
                                             xtype: 'textfield',

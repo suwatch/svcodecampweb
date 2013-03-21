@@ -283,6 +283,22 @@
                 "metadata/resource/js"
             ],
             "className": "js"
+        },
+        "58a97b99-d1d6-4d40-98f3-bcfd550f8999": {
+            "paths": [
+                "metadata/store/SessionTitlesStore",
+                "app/store/override/SessionTitlesStore.js",
+                "app/store/SessionTitlesStore.js"
+            ],
+            "className": "SessionTitlesStore"
+        },
+        "507a64e9-1b15-4ac2-be89-e1875883d32a": {
+            "paths": [
+                "metadata/model/SessionTitleModel",
+                "app/model/override/SessionTitleModel.js",
+                "app/model/SessionTitleModel.js"
+            ],
+            "className": "SessionTitleModel"
         }
     },
     "viewOrderMap": {
@@ -305,7 +321,8 @@
             "d5a9bf2f-3afa-48c4-abf2-d72af15e4cfb",
             "e6e2035e-259d-4233-95b4-291a5a6a41a6",
             "d318c215-0d99-4497-acc5-54d15da0bc5f",
-            "918ac3fc-a06d-4cab-88ae-dc2cd95e24b4"
+            "918ac3fc-a06d-4cab-88ae-dc2cd95e24b4",
+            "58a97b99-d1d6-4d40-98f3-bcfd550f8999"
         ],
         "controller": [
             "c1e28fd8-26ea-4392-a260-b19d1915f1d8",
@@ -324,7 +341,8 @@
             "f78b581d-7971-41d4-8de5-81fee1e696fe",
             "09f95399-73c3-48fc-988b-99bac7d316f9",
             "35c2c130-f748-41b2-b618-119063231972",
-            "87d65cd4-8a0d-4e58-a7d1-2c716e744478"
+            "87d65cd4-8a0d-4e58-a7d1-2c716e744478",
+            "507a64e9-1b15-4ac2-be89-e1875883d32a"
         ],
         "resource": [
             "01e8660b-7ed7-40e5-b0b9-55c1a36bf025",

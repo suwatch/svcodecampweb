@@ -32,36 +32,7 @@ namespace WebAPI.REST
                 sessionQuery = new SessionsQuery();
                 response = Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed, "Did not pass in option variable");
             }
-            //else if (option.ToLower().Equals("submitsessioncheck") && !string.IsNullOrEmpty(param1))
-            //{
-            //    // check if can submit session this year or not
-            //    int attendeesId;
-            //    if (!Int32.TryParse(param1, out attendeesId))
-            //    {
-            //        attendeesId = -2;
-            //    }
-
-            //    int codeCampYearId = Utils.GetCurrentCodeCampYear();
-
-            //    int sessionsThisYear = SessionPresenterManager.I.Get(new SessionPresenterQuery
-            //        {
-            //            AttendeeId = attendeesId,
-            //            CodeCampYearId = codeCampYearId
-            //        }).Count();
-
-            //    var numberSessionsAllowed = AttendeesManager.I.Get(new AttendeesQuery()
-            //    {
-            //        Id = attendeesId
-            //    }).Count;
-
-            //    bool allowSubmit = sessionsThisYear < numberSessionsAllowed;
-            //    return response = allowSubmit
-            //                          ? Request.CreateResponse(HttpStatusCode.OK)
-            //                          : Request.CreateErrorResponse(HttpStatusCode.Forbidden, "Not Allowed To Submit Sessions");
-
-
-
-            //}
+          
             else if (option.ToLower().Equals("byspeaker") && !String.IsNullOrEmpty(param1))
             {
                 int attendeesId;
@@ -87,7 +58,6 @@ namespace WebAPI.REST
                                                                                     AttendeeId = attendeesId,
                                                                                     CodeCampYearId = codeCampYearId
                                                                                 }).Select(a => a.SessionId).ToList();
-
                 sessionQuery = new SessionsQuery
                                    {
                                       Ids = sessionIds,
@@ -97,9 +67,24 @@ namespace WebAPI.REST
                 List<SessionsResult> session = SessionsManager.I.Get(sessionQuery);
                 response = Request.CreateResponse(HttpStatusCode.OK, session);
             }
+            else if (option.ToLower().Equals("justlowercasetitle"))
+            {
+                List<SessionsResult> sessionsFull = SessionsManager.I.Get(new SessionsQuery()
+                    {
+                        CodeCampYearId = Utils.CurrentCodeCampYear
+                    });
+
+                List<SessionsResult>  sessionTitles = sessionsFull.Select(rec => new SessionsResult()
+                    {
+                        Id = rec.Id,
+                        Title = rec.Title.ToLower()
+                    }).ToList();
+
+
+                response = Request.CreateResponse(HttpStatusCode.OK, sessionTitles);
+            }
 
          
-
             return response;
         }
        

@@ -79,6 +79,30 @@ Ext.define('RegistrationApp.controller.ViewportController', {
             } 
         });  
 
+        // create an array of titles so we can make sure the title the person enters is unique on validation
+
+
+
+        debugger;
+
+
+        var store = Ext.data.StoreManager.lookup('SessionTitlesStore');
+        store.load({
+            params: {
+                option: 'justlowercasetitle',
+                param1: '-1',
+                param2: '-1',
+                param3: '-1'
+            },
+            callback: function(records,operation,success) {
+                debugger;
+                console.log(records.length);
+            }
+        });
+
+
+
+
 
     },
 

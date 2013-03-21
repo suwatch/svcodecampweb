@@ -500,11 +500,24 @@ namespace WebAPI.Api
 
                     if (mStatus.Equals(MembershipCreateStatus.Success))
                     {
-
-
-
                         FormsAuthentication.SetAuthCookie(attendee.Username, true);
                         response = Request.CreateResponse(HttpStatusCode.OK, attendee);
+
+
+                        // for now update counts
+                        var attendeeNew = AttendeesManager.I.Get(new AttendeesQuery()
+                            {
+                                Username = attendee.Username
+                            }).FirstOrDefault();
+
+                        if (attendeeNew != null)
+                        {
+                            attendeeNew.PresentationLimit = 3;
+                            attendeeNew.PresentationApprovalRequired = false;
+                            AttendeesManager.I.Update(attendeeNew);
+                        }
+
+
 
                     }
                     else

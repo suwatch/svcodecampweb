@@ -26,8 +26,8 @@ namespace WebAPI
             routes.IgnoreRoute("ExtJSApps/SessionViewer");
 
             // ImageResizer Diag page
-            //routes.IgnoreRoute("resizer.debug");
-            //routes.IgnoreRoute("resizer.debug.ashx");
+            routes.IgnoreRoute("resizer.debug");
+            routes.IgnoreRoute("resizer.debug.ashx");
 
 
 

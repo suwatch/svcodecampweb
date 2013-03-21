@@ -165,22 +165,11 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                                     items: [
                                         {
                                             xtype: 'textfield',
-                                            validator: function(value) {
-                                                // need to check against server list of sessions to make sure this is unique for the year
-                                                //return value.indexOf('a') == 0;
-                                                if (value.length > 10) {
-                                                    return 'problem string';
-                                                }
-                                                else {
-                                                    return true;
-                                                }
-                                            },
                                             anchor: '100%',
                                             width: 150,
                                             fieldLabel: 'Title',
                                             name: 'title',
-                                            maxLength: 75,
-                                            minLength: 3
+                                            maxLength: 75
                                         },
                                         {
                                             xtype: 'textfield',

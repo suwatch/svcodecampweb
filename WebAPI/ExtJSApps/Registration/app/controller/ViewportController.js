@@ -80,12 +80,6 @@ Ext.define('RegistrationApp.controller.ViewportController', {
         });  
 
         // create an array of titles so we can make sure the title the person enters is unique on validation
-
-
-
-        debugger;
-
-
         var store = Ext.data.StoreManager.lookup('SessionTitlesStore');
         store.load({
             params: {
@@ -95,8 +89,7 @@ Ext.define('RegistrationApp.controller.ViewportController', {
                 param3: '-1'
             },
             callback: function(records,operation,success) {
-                debugger;
-                console.log(records.length);
+                console.log('lowercase titles found: ' + records.length);
             }
         });
 

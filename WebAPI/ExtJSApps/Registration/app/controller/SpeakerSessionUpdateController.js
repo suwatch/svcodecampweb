@@ -17,22 +17,25 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
     extend: 'Ext.app.Controller',
 
     onContinueButtonIdClick: function(button, e, eOpts) {
-
-        this.saveSessions();
-
-
-
-        var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];
-        tabPanel.setActiveTab(tabPanel.getTabIdByName('optIn'));
+        var moveOn = this.saveSessions();
+        if (moveOn === true) {
+            var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];
+            tabPanel.setActiveTab(tabPanel.getTabIdByName('optIn'));
+        }
     },
 
     onSpeakerSessionsBackButtonItemIdClick: function(button, e, eOpts) {
-        var tabWizardPanel = Ext.getCmp('TabWizardId');
-        tabWizardPanel.setActiveTab(Ext.getCmp('TabWizardId').getTabIdByName('SpeakerAfterLogin'));
+
+        var moveOn = this.saveSessions();
+
+        if (moveOn === true) {
+            var tabWizardPanel = Ext.getCmp('TabWizardId');
+            tabWizardPanel.setActiveTab(Ext.getCmp('TabWizardId').getTabIdByName('SpeakerAfterLogin'));
+        }
 
     },
 
-    onButtonClick: function(button, e, eOpts) {
+    onSessionButtonDeleteClick: function(button, e, eOpts) {
         var sessionGridPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
         var sessionsBySpeakerStore = Ext.getCmp("sessionsBySpeakerGridPanelId").getStore();
 
@@ -45,7 +48,7 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
 
                 if (id === 'yes') {
                     var recordModel = sm.getSelection();
-                    sessionsBySpeakerStore.remove(recordModel);
+                    sessionsBySpeakerStore.remove(recordModel); // this is really sessionsStore
                     sessionsBySpeakerStore.sync({
                         success: function(){
 
@@ -157,23 +160,43 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
         formPanel.updateRecord();
         var modelRecord = formPanel.getRecord();
 
-        var store = sessionGridPanel.getStore();
-        var sessionId = modelRecord.getId();
-        var index1 = store.findExact("id", parseInt(sessionId));
 
-        var modelRecordFromGrid = store.getAt(index1);
+        var value = modelRecord.get('title');
+        var notFound = true;
+        var store = Ext.data.StoreManager.lookup('SessionTitlesStore');
+        var titleNoTrim = Ext.util.Format.lowercase(value);
+        var title = Ext.util.Format.trim(titleNoTrim);
 
-        modelRecordFromGrid.set("title",modelRecord.getData().title);
-        modelRecordFromGrid.set("description",modelRecord.getData().description);
-        modelRecordFromGrid.set("sessionLevel",modelRecord.getData().sessionLevel);
-        modelRecordFromGrid.set("twitterHashTags",modelRecord.getData().twitterHashTags);
-        modelRecordFromGrid.set("description",modelRecord.getData().description);
+        store.each(function(rec) {
+            // need to not check against line we are on
 
-        store.sync();
+            if (rec.get('title') === title) {
+                notFound = false;
+            }
+        });
 
-        var tagList = Ext.getCmp("SessionTagsGridPanelId");
-        var tagListStore = tagList.store;
-        tagListStore.save();
+        if (notFound) {
+            var store = sessionGridPanel.getStore();
+            var sessionId = modelRecord.getId();
+            var index1 = store.findExact("id", parseInt(sessionId));
+
+            var modelRecordFromGrid = store.getAt(index1);
+
+            modelRecordFromGrid.set("title",modelRecord.getData().title);
+            modelRecordFromGrid.set("description",modelRecord.getData().description);
+            modelRecordFromGrid.set("sessionLevel",modelRecord.getData().sessionLevel);
+            modelRecordFromGrid.set("twitterHashTags",modelRecord.getData().twitterHashTags);
+            modelRecordFromGrid.set("description",modelRecord.getData().description);
+
+            store.sync();
+
+            var tagList = Ext.getCmp("SessionTagsGridPanelId");
+            var tagListStore = tagList.store;
+            tagListStore.save();
+            return true;
+        } else {
+            Ext.Msg.alert("Session Title Problem","Another session has been entered with the same title.  Please make your title unique while keeping it under 75 characters");
+        }
 
     },
 
@@ -186,7 +209,7 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
                 click: this.onSpeakerSessionsBackButtonItemIdClick
             },
             "#SessionButtonDelete": {
-                click: this.onButtonClick
+                click: this.onSessionButtonDeleteClick
             },
             "#sessionButtonAddNewId": {
                 click: this.onSessionButtonAddNewIdClick

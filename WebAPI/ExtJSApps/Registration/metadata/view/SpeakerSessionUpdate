@@ -427,37 +427,9 @@
                                         "fieldLabel": "Title",
                                         "name": "title",
                                         "maxLength": 75,
-                                        "minLength": 3
+                                        "minLength": null
                                     },
-                                    "designerId": "4427f98e-f8d0-4527-9085-7a2239bce9d7",
-                                    "cn": [
-                                        {
-                                            "type": "fixedfunction",
-                                            "reference": {
-                                                "name": "items",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "designer|userClassName": "validator",
-                                                "fn": "validator",
-                                                "designer|params": [
-                                                    "value"
-                                                ],
-                                                "implHandler": [
-                                                    "  // need to check against server list of sessions to make sure this is unique for the year\r",
-                                                    "  //return value.indexOf('a') == 0;\r",
-                                                    "if (value.length > 10) {\r",
-                                                    "    return 'problem string';\r",
-                                                    "}\r",
-                                                    "else {\r",
-                                                    "    return true;\r",
-                                                    "}"
-                                                ]
-                                            },
-                                            "designerId": "67d44dcf-040f-4e6e-91bf-eda8ca49475b"
-                                        }
-                                    ]
+                                    "designerId": "4427f98e-f8d0-4527-9085-7a2239bce9d7"
                                 },
                                 {
                                     "type": "Ext.form.field.Text",

@@ -2927,6 +2927,7 @@
     <Content Include="ExtJSApps\tests\SiestaLite\tests\senchatouch\010_performsetup.js" />
     <Content Include="ExtJSApps\tests\SiestaLite\tests\senchatouch\010_performsetup.t.js" />
     <Content Include="ExtJSApps\tests\SiestaLite\tests\senchatouch\701_sencha_touch_form.t.js" />
+    <Content Include="imagecache\00\02ed0736b9aaffa74ac6ce220d69bce6581e67a7e53478bf2356298da2bddb07.jpg" />
     <Content Include="Images\Featured.png" />
     <Content Include="Images\loadingAnimation.gif" />
     <Content Include="Images\spring_svcc_banner1b.png" />

@@ -57,8 +57,9 @@ Ext.define('RegistrationApp.controller.CreateAccountController', {
             scope:this, 
             params: localValues,
             success: function(r, o) { 
-                //debugger;
                 var retData = Ext.JSON.decode(r.responseText);
+
+                //console.log("CreateAccountController:AfterCreateUser:retData: " + Ext.JSON.encode(retData));
                 tabPanel.updateAllPanelsWithData(retData);
 
                 // need to figure out if speaker or attendee selected

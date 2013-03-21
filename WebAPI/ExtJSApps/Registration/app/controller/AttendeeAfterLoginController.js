@@ -26,7 +26,7 @@ Ext.define('RegistrationApp.controller.AttendeeAfterLoginController', {
         var tabPanel = Ext.ComponentQuery.query('AttendeeAfterLoginAlias')[0];
         var values = tabPanel.getValues();
 
-        debugger;
+        //debugger;
 
         Ext.Ajax.request({ 
             url:'/rpc/Account/UpdateAttendee', 

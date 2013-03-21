@@ -30,7 +30,7 @@
                     "var tabPanel = Ext.ComponentQuery.query('AttendeeAfterLoginAlias')[0];\r",
                     "var values = tabPanel.getValues();\r",
                     "\r",
-                    "debugger;\r",
+                    "//debugger;\r",
                     "\r",
                     "Ext.Ajax.request({ \r",
                     "    url:'/rpc/Account/UpdateAttendee', \r",

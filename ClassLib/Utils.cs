@@ -1988,7 +1988,11 @@ namespace CodeCampSV
                         using (var sqlCommand = new SqlCommand(sqlSelect, sqlConnection))
                         {
                             sqlCommand.Parameters.Add("@id", SqlDbType.Int).Value = sessionsId;
-                            username = (string) sqlCommand.ExecuteScalar();
+                            var usernameObject = (object) sqlCommand.ExecuteScalar();
+                            if (usernameObject != null)
+                            {
+                                username = usernameObject.ToString();
+                            }
                         }
                     }
                 }

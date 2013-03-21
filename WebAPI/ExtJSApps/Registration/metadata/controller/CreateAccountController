@@ -98,7 +98,7 @@
                     "        console.log('Creating User Failed ' + r);\r",
                     "        //myMask.hide();\r",
                     "    }\r",
-                    "   \r",
+                    "\r",
                     "\r",
                     "});"
                 ],

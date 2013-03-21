@@ -35,9 +35,9 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
     },
 
     onSessionButtonDeleteClick: function(button, e, eOpts) {
+        var that = this;
         var sessionGridPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
         var sessionsBySpeakerStore = Ext.getCmp("sessionsBySpeakerGridPanelId").getStore();
-
         var sm = sessionGridPanel.getSelectionModel();
         if (sm.getCount() === 0) {
             Ext.Msg.alert("Must select a session first"); 
@@ -50,7 +50,7 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
                     sessionsBySpeakerStore.remove(recordModel); // this is really sessionsStore
                     sessionsBySpeakerStore.sync({
                         success: function(){
-                            this.refreshTitleList();
+                            that.refreshTitleList();
 
                             var sessionDetailPanel = Ext.getCmp('sessionDetailPanelId');
                             sessionDetailPanel.setDisabled(true);
@@ -87,6 +87,7 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
     },
 
     onSessionButtonAddNewIdClick: function(button, e, eOpts) {
+        var that = this;
         var attendeesId = Ext.getCmp('speakerAfterLoginProfileId').getForm().getValues().attendeesId;
 
         var newSessionRecord = Ext.create('RegistrationApp.model.Session',{
@@ -97,7 +98,7 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
         newSessionRecord.save({
             success: function(record,operation) {
                 //debugger;
-                this.refreshTitleList();
+                that.refreshTitleList();
 
                 var newSessionPresenterRecord = Ext.create('RegistrationApp.model.SessionPresenterModel',{
                     attendeeId: parseInt(attendeesId),
@@ -183,6 +184,8 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
             });
         }
 
+        var that = this;
+
         if (notFound) {
             var store = sessionGridPanel.getStore();
             var sessionId = modelRecord.getId();
@@ -200,7 +203,7 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
             {
                 success : function(){
 
-                    this.refreshTitleList();
+                    that.refreshTitleList();
 
 
                     // because this could be an insert, it's important not to add new taglist stuff

@@ -146,7 +146,9 @@ namespace WebAPI.REST
                         Description = sessionsResult.Description,
                         SessionLevel_id = sessionsResult.SessionLevel_id,
                         TwitterHashTags = sessionsResult.TwitterHashTags,
-                        Approved = sessionAccepted
+                        Approved = sessionAccepted,
+                        LectureRoomsId = Utils.RoomNotAssigned,
+                        SessionTimesId = Utils.TimeSessionUnassigned,
                     };
                 SessionsManager.I.Insert(session);
                 response = Request.CreateResponse(HttpStatusCode.OK, session);

@@ -29,10 +29,10 @@
         <tr>
             <td>
                 <div class="headLogo  hideOnScreenLessthan800px">
-                <asp:HyperLink ID="HomeLink" runat="server" NavigateUrl="Default.aspx">
+              <%--  <asp:HyperLink ID="HomeLink" runat="server" NavigateUrl="Default.aspx">
                     <asp:Image ID="HeadLogo" SkinID="ImageLogo" alt="Silicon Valley Code Camp"
                         runat="server" />
-                </asp:HyperLink>
+                </asp:HyperLink>--%>
                 
                
                 

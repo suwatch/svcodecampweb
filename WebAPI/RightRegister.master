@@ -17,9 +17,13 @@
        
     <div class="rightRegister">
     <asp:Label runat="server" ID="LabelDaysLeftID"></asp:Label><br />
-    <asp:Image ID="R1" SkinID="RightDay1" runat="server"/>
-    <asp:Image ID="R2" SkinID="RightDay2" runat="server"/><br />
-    @ Foothill College, Los Altos CA
+<%--    <asp:Image ID="R1" SkinID="RightDay1" runat="server"/>
+    <asp:Image ID="R2" SkinID="RightDay2" runat="server"/>--%>
+        <br />
+    @ Foothill College<br/>
+    12345 El Monte Rd.<br/>
+        Los Altos California<br/>
+
     </div>             
     
 </asp:Content>

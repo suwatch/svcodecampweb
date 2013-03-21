@@ -24,9 +24,9 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
     private Dictionary<int, string> _boxFolderIdDictionary;
     private Dictionary<int, string> _materialsDictionary;
 
-   
 
-   
+
+
 
     //private Dictionary<int, SessionsJobListingResult> _sessionJobListingDictionary;
     private Dictionary<int, SponsorListResult> _sessionSponsorListDictionary;
@@ -38,28 +38,19 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
 
     protected Dictionary<int, string> TrackNameAssignedToSession
     {
-        get
-        {
-            return (Dictionary<int, string>)ViewState["TrackNameAssignedToSession"];
-        }
-        set
-        {
-            ViewState["TrackNameAssignedToSession"] = value;
-        }
+        get { return (Dictionary<int, string>) ViewState["TrackNameAssignedToSession"]; }
+        set { ViewState["TrackNameAssignedToSession"] = value; }
     }
 
-    
+
     protected bool RadioButtonSatSunPressed
     {
         get
         {
-            return ViewState["RadioButtonSatSunPressed"] != null 
-                && (bool) ViewState["RadioButtonSatSunPressed"];
+            return ViewState["RadioButtonSatSunPressed"] != null
+                   && (bool) ViewState["RadioButtonSatSunPressed"];
         }
-        set
-        {
-            ViewState["RadioButtonSatSunPressed"] = value;
-        }
+        set { ViewState["RadioButtonSatSunPressed"] = value; }
     }
 
     protected bool SearchButtonPressed
@@ -67,24 +58,15 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
         get
         {
             return ViewState["SearchButtonPressed"] != null
-                && (bool)ViewState["SearchButtonPressed"];
+                   && (bool) ViewState["SearchButtonPressed"];
         }
-        set
-        {
-            ViewState["SearchButtonPressed"] = value;
-        }
+        set { ViewState["SearchButtonPressed"] = value; }
     }
 
     protected string SearchText
     {
-        get
-        {
-            return (string) ViewState["SearchText"];
-        }
-        set
-        {
-            ViewState["SearchText"] = value;
-        }
+        get { return (string) ViewState["SearchText"]; }
+        set { ViewState["SearchText"] = value; }
     }
 
     protected bool RadioButtonTimesListPressed
@@ -92,114 +74,63 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
         get
         {
             return ViewState["RadioButtonTimesListPressed"] != null
-                && (bool)ViewState["RadioButtonTimesListPressed"];
+                   && (bool) ViewState["RadioButtonTimesListPressed"];
         }
-        set
-        {
-            ViewState["RadioButtonTimesListPressed"] = value;
-        }
+        set { ViewState["RadioButtonTimesListPressed"] = value; }
     }
 
-    
+
     protected List<TrackResult> TrackResults
     {
-        get
-        {
-            return (List<TrackResult>) ViewState["TrackResults"];
-        }
-        set
-        {
-            ViewState["TrackResults"] = value;
-        }
+        get { return (List<TrackResult>) ViewState["TrackResults"]; }
+        set { ViewState["TrackResults"] = value; }
     }
 
     protected List<TrackSessionResult> TrackSessionResults
     {
-        get
-        {
-            return (List<TrackSessionResult>)ViewState["TrackSessionResults"];
-        }
-        set
-        {
-            ViewState["TrackSessionResults"] = value;
-        }
+        get { return (List<TrackSessionResult>) ViewState["TrackSessionResults"]; }
+        set { ViewState["TrackSessionResults"] = value; }
     }
 
     protected DateTime SaturdayDate
     {
-        get
-        {
-            return (DateTime)ViewState["SaturdayDate"];
-        }
-        set
-        {
-            ViewState["SaturdayDate"] = value;
-        }
+        get { return (DateTime) ViewState["SaturdayDate"]; }
+        set { ViewState["SaturdayDate"] = value; }
     }
 
     protected DateTime SundayDate
     {
-        get
-        {
-            return (DateTime)ViewState["SundayDate"];
-        }
-        set
-        {
-            ViewState["SundayDate"] = value;
-        }
+        get { return (DateTime) ViewState["SundayDate"]; }
+        set { ViewState["SundayDate"] = value; }
     }
 
     protected List<DateTime> SaturdaySessionTimesList
     {
-        get
-        {
-            return (List<DateTime>)ViewState["SaturdaySessionTimesList"];
-        }
-        set
-        {
-            ViewState["SaturdaySessionTimesList"] = value;
-        }
+        get { return (List<DateTime>) ViewState["SaturdaySessionTimesList"]; }
+        set { ViewState["SaturdaySessionTimesList"] = value; }
     }
 
     protected bool RegisteredForCurrentYear
     {
-        get
-        {
-            return (bool)ViewState["RegisteredForCurrentYear"];
-        }
-        set
-        {
-            ViewState["RegisteredForCurrentYear"] = value;
-        }
+        get { return (bool) ViewState["RegisteredForCurrentYear"]; }
+        set { ViewState["RegisteredForCurrentYear"] = value; }
     }
 
-  
+
 
     protected List<DateTime> SundaySessionTimesList
     {
-        get
-        {
-            return (List<DateTime>)ViewState["SundaySessionTimesList"];
-        }
-        set
-        {
-            ViewState["SundaySessionTimesList"] = value;
-        }
+        get { return (List<DateTime>) ViewState["SundaySessionTimesList"]; }
+        set { ViewState["SundaySessionTimesList"] = value; }
     }
 
     protected DateTime? SelectedSessionTimeSlot
     {
-        get
-        {
-            return (DateTime?)ViewState["SelectedSessionTimeSlot"];
-        }
-        set
-        {
-            ViewState["SelectedSessionTimeSlot"] = value;
-        }
+        get { return (DateTime?) ViewState["SelectedSessionTimeSlot"]; }
+        set { ViewState["SelectedSessionTimeSlot"] = value; }
     }
 
-   
+
 
 
 
@@ -210,7 +141,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
         if (ddl.SelectedItem.Text.StartsWith("--Remove"))
         {
             int sessionId = Convert.ToInt32(ddl.SelectedItem.Value);
-            var recs = TrackSessionManager.I.Get(new TrackSessionQuery() { SessionId = sessionId });
+            var recs = TrackSessionManager.I.Get(new TrackSessionQuery() {SessionId = sessionId});
             foreach (var rec in recs)
             {
                 TrackSessionManager.I.Delete(rec.Id);
@@ -223,9 +154,9 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
             string sessionIdStr = ddl.ToolTip;
 
             var tracs = TrackSessionManager.I.Get(new TrackSessionQuery()
-                                                      {
-                                                          SessionId = Convert.ToInt32(sessionIdStr)
-                                                      });
+                {
+                    SessionId = Convert.ToInt32(sessionIdStr)
+                });
             foreach (var trac in tracs)
             {
                 TrackSessionManager.I.Delete(trac.Id);
@@ -234,10 +165,10 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
             if (Convert.ToInt32(trackId) >= 0)
             {
                 TrackSessionManager.I.Insert(new TrackSessionResult()
-                                                 {
-                                                     TrackId = Convert.ToInt32(trackId),
-                                                     SessionId = Convert.ToInt32(sessionIdStr)
-                                                 });
+                    {
+                        TrackId = Convert.ToInt32(trackId),
+                        SessionId = Convert.ToInt32(sessionIdStr)
+                    });
             }
         }
     }
@@ -253,7 +184,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
         LabelSessionListToShow.Visible = false;
         LabelSessionListFromSearch.Visible = LabelSessionListToShow.Visible;
         LabelSessionListFinalToShow.Visible = LabelSessionListToShow.Visible;
-        
+
 
         if (ConfigurationManager.AppSettings["SessionsPageUsingExtJS"] != null &&
             ConfigurationManager.AppSettings["SessionsPageUsingExtJS"].ToLower().Equals("true"))
@@ -266,10 +197,10 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
             SessionsUsingExtJSFromDOMId.Visible = true;
         }
 
-      
+
         InitializeViewStateForTimeLists();
 
-        
+
     }
 
     /// <summary>
@@ -287,13 +218,19 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
         var sessionTimesList = sessionTimesODS.GetAllSessionTimes();
         SaturdaySessionTimesList = new List<DateTime>();
         foreach (var rec in
-            sessionTimesList.Where(rec => rec.Starttime.Year == SaturdayDate.Year && rec.Starttime.Month == SaturdayDate.Month && rec.Starttime.Day == SaturdayDate.Day))
+            sessionTimesList.Where(
+                rec =>
+                rec.Starttime.Year == SaturdayDate.Year && rec.Starttime.Month == SaturdayDate.Month &&
+                rec.Starttime.Day == SaturdayDate.Day))
         {
             SaturdaySessionTimesList.Add(rec.Starttime);
         }
         SundaySessionTimesList = new List<DateTime>();
         foreach (var rec in
-            sessionTimesList.Where(rec => rec.Starttime.Year == SundayDate.Year && rec.Starttime.Month == SundayDate.Month && rec.Starttime.Day == SundayDate.Day))
+            sessionTimesList.Where(
+                rec =>
+                rec.Starttime.Year == SundayDate.Year && rec.Starttime.Month == SundayDate.Month &&
+                rec.Starttime.Day == SundayDate.Day))
         {
             SundaySessionTimesList.Add(rec.Starttime);
         }
@@ -325,7 +262,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
                 }
             }
         }
-            
+
         if (RadioButtonSatOrSundayList.SelectedValue.Equals("Sunday"))
         {
             if (SundaySessionTimesList != null)
@@ -360,7 +297,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
                 {
                     RadioButtonListTimes.SelectedValue = listItem.Value;
                 }
-                SessionTimesRadioBoxListUpdate(false);  // puts times in radiobox for correct day.
+                SessionTimesRadioBoxListUpdate(false); // puts times in radiobox for correct day.
 
                 // set bottom label with sessions.
                 LabelSessionListToShow.Text =
@@ -374,7 +311,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
             LabelSessionListToShow.Text =
                 Utils.GetSessionsJustWithVideoIdList();
 
-            
+
 
         }
         else if (!IsPostBack && !String.IsNullOrEmpty(SearchText))
@@ -383,7 +320,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
             RadioButtonSatOrSundayList.SelectedValue = "All";
             RadioButtonListTimes.Visible = false;
             LabelSessionListToShow.Text =
-               Utils.GetSessionsIdList("All", string.Empty);
+                Utils.GetSessionsIdList("All", string.Empty);
         }
         else if (IsPostBack && SearchButtonPressed)
         {
@@ -391,7 +328,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
             RadioButtonSatOrSundayList.SelectedValue = "All";
             RadioButtonListTimes.Visible = false;
             LabelSessionListToShow.Text =
-               Utils.GetSessionsIdList("All", string.Empty);
+                Utils.GetSessionsIdList("All", string.Empty);
         }
         else if (IsPostBack && !SearchButtonPressed)
         {
@@ -409,7 +346,8 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
                 RadioButtonListTimes.Visible = true;
                 if (!RadioButtonTimesListPressed)
                 {
-                    RadioButtonListTimes.SelectedIndex = RadioButtonListTimes.Items.Count - 1; // we know last item is all times
+                    RadioButtonListTimes.SelectedIndex = RadioButtonListTimes.Items.Count - 1;
+                        // we know last item is all times
                 }
 
                 if (RadioButtonSatSunPressed)
@@ -464,7 +402,8 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
                                               : LabelSessionListToShow.Text.Split(',').ToList().Select(
                                                   rec => Convert.ToInt32(rec)).ToList();
 
-            List<int> sessionListFromSearchInt = LabelSessionListFromSearch.Text.Split(',').ToList().Select(rec => Convert.ToInt32(rec)).ToList();
+            List<int> sessionListFromSearchInt =
+                LabelSessionListFromSearch.Text.Split(',').ToList().Select(rec => Convert.ToInt32(rec)).ToList();
 
             List<int> sessionListFinal = sessionListToShow.Intersect(sessionListFromSearchInt).ToList();
 
@@ -486,7 +425,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
             LabelSessionListFinalToShow.Text = stringBuilder1.ToString();
         }
 
-       
+
         // if all session showing show title bar with sort stuff.  otherwise, always sort by title
         // todo: BUG WITH GOING FROM SPEAKERS TO SESSIONS PAGE
         //if (RadioButtonSatOrSundayList.SelectedValue.Equals("All"))
@@ -510,7 +449,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
         //_sessionJobListingDictionary = Utils.GetSessionsJobListingDictionary(Utils.GetCurrentCodeCampYear(),true);
 
         _sessionSponsorListDictionary = Utils.GetSessionJobDictionary(Utils.GetCurrentCodeCampYear(), true);
- //       _sessionListPbWikiShow = Utils.GetSessionListPbWikiShow(Utils.GetCurrentCodeCampYear(), true);
+        //       _sessionListPbWikiShow = Utils.GetSessionListPbWikiShow(Utils.GetCurrentCodeCampYear(), true);
 
         // these are cached
         _boxFolderIdDictionary = Utils.GetBoxFolderIdsBySessionDict(Utils.GetCurrentCodeCampYear());
@@ -518,16 +457,12 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
 
         if (!IsPostBack)
         {
-          
-
-
-
-             if ((ConfigurationManager.AppSettings["ShowVideoOnSessionIfExists"] != null &&
+            if ((ConfigurationManager.AppSettings["ShowVideoOnSessionIfExists"] != null &&
                  ConfigurationManager.AppSettings["ShowVideoOnSessionIfExists"].ToLower().Equals("true")) ||
                 Utils.CheckUserIsAdmin() || Utils.CheckUserIsVideoEditor())
-             {
-                 CheckBoxJustSessionsWithVideo.Visible = true;
-             }
+            {
+                CheckBoxJustSessionsWithVideo.Visible = true;
+            }
 
             RegisteredForCurrentYear = Utils.IsRegisteredForCurrentCodeCampYear(Context.User.Identity.Name,
                                                                                 Utils.CurrentCodeCampYear);
@@ -570,12 +505,12 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
             // always get this because if person logs out, it goes away
             _listSessionAttendees = new SessionAttendeeODS().GetByUsername(Context.User.Identity.Name);
 
-            
+
 
             //FormsAuthentication.SetAuthCookie("pkellner",true);
             if (!IsPostBack)
             {
-               
+
 
                 //RadioButtonSatSunPressed = true; // on first time, force prerender event to fire
                 //RadioButtonTimesListPressed = true;
@@ -588,7 +523,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
                 }
                 else
                 {
-                    RadioButtonSatOrSundayList.Visible = false; 
+                    RadioButtonSatOrSundayList.Visible = false;
                     RadioButtonListTimes.Visible = false;
                 }
 
@@ -597,7 +532,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
                     IdSortBy.Visible = false;
                     IdTrackDescription.Visible = true;
                     // Get Track Description
-                    var recs = TrackManager.I.Get(new TrackQuery { Id = Convert.ToInt32(Request.QueryString["track"]) });
+                    var recs = TrackManager.I.Get(new TrackQuery {Id = Convert.ToInt32(Request.QueryString["track"])});
                     if (recs != null && recs.Count > 0)
                     {
                         LiteralTitle.Text = String.Format("{0} Track Sessions", recs[0].Named);
@@ -618,31 +553,37 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
 
                 // Get List of Tracks sorted by 
                 const string cacheSessionsTrackSessionsResults = "CacheSessionsTrackSessionResults";
-                TrackSessionResults = (List<TrackSessionResult>)HttpContext.Current.Cache[cacheSessionsTrackSessionsResults];
+                TrackSessionResults =
+                    (List<TrackSessionResult>) HttpContext.Current.Cache[cacheSessionsTrackSessionsResults];
                 if (TrackSessionResults == null)
                 {
                     TrackSessionResults = (from mydata in TrackSessionManager.I.GetAll()
                                            select mydata).ToList();
                     HttpContext.Current.Cache.Insert(cacheSessionsTrackSessionsResults,
-                        TrackSessionResults, null, DateTime.Now.Add(new TimeSpan(0, 0, Utils.RetrieveSecondsForSessionCacheTimeout())), TimeSpan.Zero);
+                                                     TrackSessionResults, null,
+                                                     DateTime.Now.Add(new TimeSpan(0, 0,
+                                                                                   Utils
+                                                                                       .RetrieveSecondsForSessionCacheTimeout
+                                                                                       ())), TimeSpan.Zero);
                 }
 
                 // Get List of Tracks sorted by Name
-                string cacheSessionsTrackResults = String.Format("CacheSessionsTrackResults-{0}", Utils.GetCurrentCodeCampYear());
-                TrackResults = (List<TrackResult>)HttpContext.Current.Cache[cacheSessionsTrackResults];
+                string cacheSessionsTrackResults = String.Format("CacheSessionsTrackResults-{0}",
+                                                                 Utils.GetCurrentCodeCampYear());
+                TrackResults = (List<TrackResult>) HttpContext.Current.Cache[cacheSessionsTrackResults];
                 if (TrackResults == null)
                 {
                     TrackResults =
-                    (from mydata in TrackManager.I.Get(new TrackQuery()
-                    {
-                        CodeCampYearId =
-                            Utils.GetCurrentCodeCampYear(),
-                        Visible = true
+                        (from mydata in TrackManager.I.Get(new TrackQuery()
+                            {
+                                CodeCampYearId =
+                                    Utils.GetCurrentCodeCampYear(),
+                                Visible = true
 
-                    })
-                    where mydata.Named != null
-                     orderby mydata.Named.ToLower()
-                     select mydata).ToList();
+                            })
+                         where mydata.Named != null
+                         orderby mydata.Named.ToLower()
+                         select mydata).ToList();
 
                     HttpContext.Current.Cache.Insert(cacheSessionsTrackResults, TrackResults,
                                                      null,
@@ -750,7 +691,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
                     //}
                     //else
                     //{
-                        Repeater1.DataSourceID = "ObjectDataSourceSessions";
+                    Repeater1.DataSourceID = "ObjectDataSourceSessions";
                     //}
                 }
                 else if (DropDownListSessionSortBy.SelectedValue.Equals("Speaker"))
@@ -899,7 +840,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
                 "<h4 class=\"CC_WikiAddress\"><a  href=\"ViewWikiPage?SessionId={0}\">Wiki Here</a></h2>",
                 session.Id));
 
-            sb.AppendLine(String.Format("<br/><h3><a  href=\"Speakers.aspx?id={0}\">Presenter(s)</a></h3>",session.Id));
+            sb.AppendLine(String.Format("<br/><h3><a  href=\"Speakers.aspx?id={0}\">Presenter(s)</a></h3>", session.Id));
             sb.AppendLine("<ul class=\"CC_SessionPresenters\">");
             foreach (var attendeeSpeaker in GetSessionPresenters(codeCampDataContext, session.Id))
             {
@@ -965,11 +906,12 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
     //    return url;
     //}
 
-    private static IEnumerable<Tags> GetSessionTags(List<CodeCampSV.SessionTags> allSessionTags, List<CodeCampSV.Tags> allTags, int sessionId)
+    private static IEnumerable<Tags> GetSessionTags(List<CodeCampSV.SessionTags> allSessionTags,
+                                                    List<CodeCampSV.Tags> allTags, int sessionId)
     {
         List<int> sessionTagIds = (from data in allSessionTags
-                                  where data.SessionId == sessionId
-                                  select data.TagId).ToList();
+                                   where data.SessionId == sessionId
+                                   select data.TagId).ToList();
 
         List<Tags> tags = (from data in allTags
                            where sessionTagIds.Contains(data.Id)
@@ -982,9 +924,9 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
     {
         // make sure primary presenter is first
         List<int> attendeeIds = (from data in codeCampDataContext.SessionPresenter
-                                                    where data.SessionId == sessionId
-                                                    orderby data.Id
-                                                    select data.AttendeeId).ToList();
+                                 where data.SessionId == sessionId
+                                 orderby data.Id
+                                 select data.AttendeeId).ToList();
         // going through one at a time to make sure list stays sorted the way we want it
         // rather than doing a .Contains type statement.  Most sessions are one speaker so it's
         // not that important.
@@ -1001,7 +943,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
         return attendeesList;
     }
 
-   
+
 
     private string GetSessionTimeFromSessionTimeId(int? nullable)
     {
@@ -1041,7 +983,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
 
             sessionIds =
                 codeCampDataContext.Sessions.Where(a => a.CodeCampYearId == Utils.CurrentCodeCampYear).Select(a => a.Id)
-                    .ToList();
+                                   .ToList();
         }
 
         return sessionIds;
@@ -1049,7 +991,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
 
     protected void Repeater1_ItemDataBound(object sender, RepeaterItemEventArgs e)
     {
-       
+
 
         if (e.Item.ItemType == ListItemType.Item ||
             e.Item.ItemType == ListItemType.AlternatingItem)
@@ -1059,9 +1001,9 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
             // make better later, but for now, admin gets page break.
             divControl.Visible = Utils.CheckUserIsAdmin();
 
-            int sessionID = ((SessionsODS.DataObjectSessions)e.Item.DataItem).Id;
+            int sessionID = ((SessionsODS.DataObjectSessions) e.Item.DataItem).Id;
 
-            var dropDownListTracks = (DropDownList)e.Item.FindControl("DropDownListTracks");
+            var dropDownListTracks = (DropDownList) e.Item.FindControl("DropDownListTracks");
             dropDownListTracks.Items.Add(new ListItem("--Choose Track", "-1"));
             dropDownListTracks.Items.Add(new ListItem("--Remove From Track", sessionID.ToString()));
             foreach (var trackResult in TrackResults)
@@ -1092,7 +1034,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
 
             var categoryRepeater = (Repeater) e.Item.FindControl("RepeaterTagNamesBySession");
             //DataRowView drv = (DataRowView)e.Item.DataItem;
-          
+
             //int sessionID =  (int)drv.Row.ItemArray[0];
 
             // SELECT SessionTags.tagid, Tags.TagName
@@ -1112,14 +1054,14 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
             //categoryRepeater.DataSource = ods;
             //categoryRepeater.DataBind();
 
-            var ods = new ObjectDataSource 
-            { 
-                DataObjectTypeName = "DataObjectTags", 
-                TypeName = "CodeCampSV.SessionsODS", 
-                SelectMethod = "GetTagsBySession",
-                CacheDuration = Utils.RetrieveSecondsForSessionCacheTimeout(),
-                EnableCaching = true
-            };
+            var ods = new ObjectDataSource
+                {
+                    DataObjectTypeName = "DataObjectTags",
+                    TypeName = "CodeCampSV.SessionsODS",
+                    SelectMethod = "GetTagsBySession",
+                    CacheDuration = Utils.RetrieveSecondsForSessionCacheTimeout(),
+                    EnableCaching = true
+                };
 
             ods.SelectParameters.Add("sessionID", sessionID.ToString());
             ods.SelectParameters.Add("maxReturn", Utils.MaxSessionTagsToShow.ToString());
@@ -1136,21 +1078,22 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
             SessionsODS.DataObjectSessions frame = e.Item.DataItem as SessionsODS.DataObjectSessions;
 
 
-            
+
 
             List<string> labels = new List<string> {"Not Interested", "Interested", "Plan On Attending"};
 
             int cnt = 0;
             foreach (string rbName in labels)
             {
-                RadioButton rbClick = (RadioButton)e.Item.FindControl(string.Format("rbClick{0}", (cnt+1)));
-                string str = string.Format("javascript:return MakeExclusiveCheck('{0}',{1},'{2}','{3}',{4})", rbClick.ClientID, frame.Id, userName, labels[cnt],cnt);
+                RadioButton rbClick = (RadioButton) e.Item.FindControl(string.Format("rbClick{0}", (cnt + 1)));
+                string str = string.Format("javascript:return MakeExclusiveCheck('{0}',{1},'{2}','{3}',{4})",
+                                           rbClick.ClientID, frame.Id, userName, labels[cnt], cnt);
                 rbClick.Attributes.Add("onclick", str);
                 //rbClick.Attributes.Add("time", frame.Sessiontimesid.ToString());
 
                 rbClick.CssClass = string.Format("SessionTime{0}", frame.Sessiontimesid);
 
-                cnt++;                
+                cnt++;
             }
         }
     }
@@ -1161,7 +1104,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
         string retString = string.Empty;
         if (!String.IsNullOrEmpty(userName))
         {
-            retString = Utils.GetAttendeeNameByUsername((string) userNameObject,Utils.CheckUserIsAdmin());
+            retString = Utils.GetAttendeeNameByUsername((string) userNameObject, Utils.CheckUserIsAdmin());
         }
         return retString;
     }
@@ -1189,9 +1132,9 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
         return Utils.GetAllSpeakersHtml(sessionId);
     }
 
-    
 
-   
+
+
 
     protected string GetAttendeeAnySessionIdByUsername(string username)
     {
@@ -1263,7 +1206,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
 
             if (_boxFolderIdDictionary.ContainsKey(sessionId))
             {
-                var sessionRec = SessionsManager.I.Get(new SessionsQuery() { Id = sessionId }).FirstOrDefault();
+                var sessionRec = SessionsManager.I.Get(new SessionsQuery() {Id = sessionId}).FirstOrDefault();
                 if (sessionRec != null)
                 {
                     Response.Redirect(sessionRec.BoxFolderPublicUrl, true);
@@ -1378,7 +1321,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
             showDeleteButton = false;
         }
         else if (Context.User.Identity.IsAuthenticated &&
-             Context.User.Identity.Name.ToLower().Equals(userNameOfSession.ToLower()) )
+                 Context.User.Identity.Name.ToLower().Equals(userNameOfSession.ToLower()))
         {
             if (ConfigurationManager.AppSettings["ShowSessionDeleteToSpeaker"] != null &&
                 ConfigurationManager.AppSettings["ShowSessionDeleteToSpeaker"].ToLower().Equals("true"))
@@ -1406,7 +1349,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
             showEditButton = false;
         }
         else if ((Context.User.Identity.IsAuthenticated &&
-             Context.User.Identity.Name.ToLower().Equals(userNameOfSession.ToLower())) || Utils.CheckUserIsAdmin())
+                  Context.User.Identity.Name.ToLower().Equals(userNameOfSession.ToLower())) || Utils.CheckUserIsAdmin())
         {
             showEditButton = true;
         }
@@ -1423,14 +1366,14 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
             EmailPlannedAndInterested = false;
         }
         else if ((Context.User.Identity.IsAuthenticated &&
-             Context.User.Identity.Name.ToLower().Equals(userNameOfSession.ToLower())) && !Utils.CheckUserIsAdmin())
+                  Context.User.Identity.Name.ToLower().Equals(userNameOfSession.ToLower())) && !Utils.CheckUserIsAdmin())
         {
             if (ConfigurationManager.AppSettings["ShowSpeakerToAttendeeEmail"].ToLower().Equals("true"))
             {
                 EmailPlannedAndInterested = true;
             }
         }
-        
+
         if (Utils.CheckUserIsAdmin())
         {
             EmailPlannedAndInterested = true;
@@ -1447,14 +1390,14 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
             ReviewEvals = false;
         }
         else if ((Context.User.Identity.IsAuthenticated &&
-             Context.User.Identity.Name.ToLower().Equals(userNameOfSession.ToLower())) && !Utils.CheckUserIsAdmin())
+                  Context.User.Identity.Name.ToLower().Equals(userNameOfSession.ToLower())) && !Utils.CheckUserIsAdmin())
         {
             if (ConfigurationManager.AppSettings["ShowEvalsToPresenters"].ToLower().Equals("true"))
             {
                 ReviewEvals = true;
             }
         }
-        
+
         if (Utils.CheckUserIsAdmin())
         {
             ReviewEvals = true;
@@ -1470,7 +1413,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
 
         //string responseReturn;
         //String sessionNameWithYear = sessionNameIn + "-" + ccYear;
-                                     
+
         //string wikiPageName = Regex.Replace(sessionNameWithYear, @"[^\w@-]", "");
 
         //// this try loop is bad. need to reorganize error when page exists.
@@ -1522,7 +1465,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
         return showIt;
     }
 
-    
+
 
     private string SessionPageContent(string sessionName, string speakerName, string description, string sessionURL,
                                       string speakerURL)
@@ -1595,7 +1538,8 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
         else
         {
 
-            if (Utils.CheckUserIsAdmin() || ConfigurationManager.AppSettings["ShowAgendaOnSchedule"].ToLower().Equals("true")
+            if (Utils.CheckUserIsAdmin() ||
+                ConfigurationManager.AppSettings["ShowAgendaOnSchedule"].ToLower().Equals("true")
                 || Utils.CheckUserIsScheduler() ||
                 (ConfigurationManager.AppSettings["ShowRoomOnScheduleForPresenter"].ToLower().Equals("true")) &&
                 Utils.CheckUserIsPresenter())
@@ -1722,8 +1666,8 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
     protected bool IsPictureHyperlinkForSessionVisible()
     {
         bool showit = !ConfigurationManager.AppSettings["ShowRoomPictureOnSchedule"].ToLower().Equals("true")
-                 && ConfigurationManager.AppSettings["ShowSessionPictureOnSchedule"].ToLower().Equals("true")
-                 && CheckBoxHideDescriptions.Checked == false;
+                      && ConfigurationManager.AppSettings["ShowSessionPictureOnSchedule"].ToLower().Equals("true")
+                      && CheckBoxHideDescriptions.Checked == false;
         return showit;
     }
 
@@ -1825,7 +1769,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
 
     protected bool IsPlanToAttendInterestedEnabled()
     {
-        return RegisteredForCurrentYear && 
+        return RegisteredForCurrentYear &&
                Context.User.Identity.IsAuthenticated &&
                ConfigurationManager.AppSettings["ScheduleAllowCheckAttend"] != null &&
                ConfigurationManager.AppSettings["ScheduleAllowCheckAttend"].ToLower().Equals("true");
@@ -1850,14 +1794,14 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
     protected string GetInterestedText(int sessionId)
     {
         var sessionAttendeeOds = new SessionAttendeeODS();
-        int numInterested =  sessionAttendeeOds.GetCountBySessionIdAndInterest(sessionId, 2);
+        int numInterested = sessionAttendeeOds.GetCountBySessionIdAndInterest(sessionId, 2);
 
         string showValue = "Interested(-)";
 
         // !Utils.CheckUserIsAdmin())
 
-        if ( (ConfigurationManager.AppSettings["ShowSessionInterest"] != null && 
-            ConfigurationManager.AppSettings["ShowSessionInterest"].ToLower().Equals("true")) ||
+        if ((ConfigurationManager.AppSettings["ShowSessionInterest"] != null &&
+             ConfigurationManager.AppSettings["ShowSessionInterest"].ToLower().Equals("true")) ||
             Utils.CheckUserIsAdmin())
         {
             if (ConfigurationManager.AppSettings["ShowSessionInterestCount"] != null &&
@@ -1872,7 +1816,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
         }
         return showValue;
         // ShowSessionInterest  ScheduleAllowCheckAttend
-        
+
     }
 
 
@@ -1886,8 +1830,8 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
     {
         string retString = string.Empty;
 
-         // only set this data if you are speaker or admin
-         // (should really just let speaker look at their own session and not others) todo:
+        // only set this data if you are speaker or admin
+        // (should really just let speaker look at their own session and not others) todo:
         if (Utils.CheckUserIsPresenterOrAdmin())
         {
 
@@ -1955,8 +1899,8 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
         string showValue = "Will Attend (-)";
 
         if ((ConfigurationManager.AppSettings["ScheduleAllowCheckAttend"] != null &&
-           ConfigurationManager.AppSettings["ScheduleAllowCheckAttend"].ToLower().Equals("true")) ||
-           Utils.CheckUserIsAdmin())
+             ConfigurationManager.AppSettings["ScheduleAllowCheckAttend"].ToLower().Equals("true")) ||
+            Utils.CheckUserIsAdmin())
         {
             var sessionAttendeeOds = new SessionAttendeeODS();
             int numInterested = sessionAttendeeOds.GetCountBySessionIdAndInterest(sessionId, 3);
@@ -1974,7 +1918,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
     protected bool IsAuthenticatedByNotRegisteredForCurrentYear()
     {
         return (!RegisteredForCurrentYear &&
-                 Context.User.Identity.IsAuthenticated);
+                Context.User.Identity.IsAuthenticated);
     }
 
     protected bool IsCheckedNotInterested(int sessionId)
@@ -1987,8 +1931,9 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
             from data in _listSessionAttendees
             where data.Sessions_id == sessionId
             select data.Id;
-       return q.Count() <= 0;
+        return q.Count() <= 0;
     }
+
     protected bool IsCheckedInterested(int sessionId)
     {
         if (!Context.User.Identity.IsAuthenticated)
@@ -2000,12 +1945,13 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
             from data in _listSessionAttendees
             where data.Sessions_id == sessionId && (int) data.Interestlevel == 2
             select data.Id;
-        
+
         return q.Count() > 0;
 
 
 
     }
+
     protected bool IsCheckedPlanToAttend(int sessionId)
     {
         if (!Context.User.Identity.IsAuthenticated)
@@ -2015,7 +1961,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
 
         var q =
             from data in _listSessionAttendees
-            where data.Sessions_id == sessionId && (int)data.Interestlevel == 3
+            where data.Sessions_id == sessionId && (int) data.Interestlevel == 3
             select data.Id;
 
         return q.Count() > 0;
@@ -2067,8 +2013,8 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
     protected bool GetHideTrackInfo()
     {
         return Utils.CheckUserIsTrackLeadOrAdmin() || ConfigurationManager.AppSettings["ShowTrackOnSession"] != null &
-                                                      ConfigurationManager.AppSettings["ShowTrackOnSession"].ToLower().
-                                                          Equals("true");
+               ConfigurationManager.AppSettings["ShowTrackOnSession"].ToLower().
+                                                                      Equals("true");
     }
 
 
@@ -2076,10 +2022,12 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
     {
 
     }
+
     protected void Repeater1_ItemCreated(object sender, RepeaterItemEventArgs e)
     {
-        
+
     }
+
     protected void RadioButtonSatOrSundayList_SelectedIndexChanged(object sender, EventArgs e)
     {
         TextBox1.Text = string.Empty; // clear search box
@@ -2098,6 +2046,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
             SelectedSessionTimeSlot = Convert.ToDateTime(RadioButtonListTimes.SelectedValue);
         }
     }
+
     protected void ButtonSearch_Click(object sender, EventArgs e)
     {
         SearchButtonCode(TextBox1.Text);
@@ -2113,7 +2062,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
         if (searchTextOriginal.Contains("\"") || searchTextOriginal.Contains("\'"))
         {
             // if any quotes in there, make them use commas
-            searchText = searchTextOriginal;  
+            searchText = searchTextOriginal;
         }
         else
         {
@@ -2122,7 +2071,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
             for (var index = 0; index < tokens.Count; index++)
             {
                 stringBuilder1.Append(tokens[index]);
-                if (index < tokens.Count-1)
+                if (index < tokens.Count - 1)
                 {
                     stringBuilder1.Append(",");
                 }
@@ -2189,7 +2138,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
         {
             var sessionReturn = sessionsReturnedFromSearch[index];
             stringBuilder.Append(sessionReturn.ToString());
-            if (index < sessionsReturnedFromSearch.Count-1)
+            if (index < sessionsReturnedFromSearch.Count - 1)
             {
                 stringBuilder.Append(",");
             }
@@ -2197,7 +2146,8 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
         LabelSessionListFromSearch.Text = stringBuilder.ToString();
     }
 
-    private static List<int> GetSessionsFromSearchData(List<List<int>> sessionListIdsForOr, List<List<List<int>>> sessionListIdsForAndList)
+    private static List<int> GetSessionsFromSearchData(List<List<int>> sessionListIdsForOr,
+                                                       List<List<List<int>>> sessionListIdsForAndList)
     {
         // for now, simply return just one list of numbers which is first word they typed in
         return sessionListIdsForOr.Count > 0 ? sessionListIdsForOr[0] : new List<int> {-999};
@@ -2207,7 +2157,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
     {
         // http://omegacoder.com/?p=542
         var listOfSearch = new List<string>();
-       
+
         string pattern = @"
                             (?xm)                        # Tell the compiler we are commenting (x = IgnorePatternWhitespace)
                                                          # and tell the compiler this is multiline (m),
@@ -2231,16 +2181,17 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
         //string text = /* Note the ,, as a null situation */
         //@"'Alpha',,'01000000043','2','4',Regex Space 'Beta',333,444,""Other, Space"",No Quote Space,'555'";
 
-       
+
 
         // We specified the Regex options in teh pattern, but we can also specify them here.
         // Both are redundant, decide which you prefer and use one.
-        var CSVData = from Match m in Regex.Matches(text, pattern, RegexOptions.IgnorePatternWhitespace | RegexOptions.Multiline)
-                      select new
-                                 {
-                                     Data = from Capture cp in m.Groups["Column"].Captures
-                                            select cp.Value,
-                                 };
+        var CSVData =
+            from Match m in Regex.Matches(text, pattern, RegexOptions.IgnorePatternWhitespace | RegexOptions.Multiline)
+            select new
+                {
+                    Data = from Capture cp in m.Groups["Column"].Captures
+                           select cp.Value,
+                };
 
         foreach (var line1 in CSVData)
         {
@@ -2276,7 +2227,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
 
     protected bool GetJobsButtonVisible(int sessionId)
     {
-       
+
         return _sessionSponsorListDictionary.ContainsKey(sessionId);
         //if (_sessionJobListingDictionary.ContainsKey(sessionId))
         //{
@@ -2292,10 +2243,10 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
         if (_sessionSponsorListDictionary.ContainsKey(sessionId))
         {
             var rec = _sessionSponsorListDictionary[sessionId];
-            textToShow = String.Format("Click Here For A List of Jobs Available From {0}",rec.SponsorName);
+            textToShow = String.Format("Click Here For A List of Jobs Available From {0}", rec.SponsorName);
         }
         return textToShow;
-    
+
     }
 
     protected bool GetJobsLabelVisible(int sessionId)
@@ -2314,7 +2265,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
 
 
 
-  // '<%# (string) GetJobsLabelVisible((int) Eval("Id")) %>' GetJobsLabelText
+    // '<%# (string) GetJobsLabelVisible((int) Eval("Id")) %>' GetJobsLabelText
 
 
     protected string GetJobsPostbackURL(int sessionId)
@@ -2332,7 +2283,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
     {
         string videoURL = Utils.GetSessionVideoURL(sessionId);
 
-       
+
         return videoURL;
     }
 
@@ -2354,7 +2305,7 @@ public partial class Sessions : BaseContentPage // BasePage {BasePage tracks vie
 
     protected void CheckBoxSessionsWithVideo_CheckedChanged(object sender, EventArgs e)
     {
-      
+
     }
 
     protected bool ShowPBWiki(int sessionId)

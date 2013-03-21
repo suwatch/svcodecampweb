@@ -157,9 +157,10 @@ public partial class SubmitSession : BaseContentPage
                                                        Createdate = DateTime.Now,
                                                        Description = TextBoxDescription.Text.Trim(),
                                                        InterentAccessRequired = CheckBoxInternetAccess.Checked,
-                                                       LectureRoomsId = Utils.RoomNotAssigned,
+                                                       
                                                        SessionLevel_id =
                                                            Convert.ToInt32(DropDownListLevel.SelectedValue),
+                                                       LectureRoomsId = Utils.RoomNotAssigned,
                                                        SessionTimesId = Utils.TimeSessionUnassigned,
                                                        Title = TextBoxTitle.Text.Trim(),
                                                        Username = HttpContext.Current.User.Identity.Name,

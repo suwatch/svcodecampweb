@@ -206,37 +206,88 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
                 modelRecordFromGrid.set("twitterHashTags",modelRecord.getData().twitterHashTags);
                 modelRecordFromGrid.set("description",modelRecord.getData().description);
 
+                var exceptionHandler = function(conn, response, options) {
+                    var errorMessage = Ext.JSON.decode(response.responseText).message;
+                    Ext.MessageBox.show({
+                        title: 'Error Message',
+                        msg: errorMessage,
+                        icon: Ext.MessageBox.ERROR,
+                        buttons: Ext.Msg.OK
+                    });
+                };
+                Ext.Ajax.on('requestexception',exceptionHandler);
+
+
                 store.sync(
                 {
                     failure : function(response, options){
-                        // debugger;
 
-                        if (this.errorString) {
-                            Ext.Msg.alert(this.errorString);
-                        } else {
-                            Ext.Msg.alert("Error Saving Session Record");
-                        }
-                    },
-                    success : function(){
-                        that.refreshTitleList();
-                        // because this could be an insert, it's important not to add new taglist stuff
-                        // until the session itself inserts.  thought, I think this is problematic as 
-                        // designed.  now, the insert happens and no tags are added, then, tags are
-                        // only added on updates (that is how the UI currently works)
-                        var tagList = Ext.getCmp("SessionTagsGridPanelId");
-                        var tagListStore = tagList.store;
-                        tagListStore.save();
+                        Ext.Ajax.un('requestexception',exceptionHandler);
 
-                    }
+                        /*
 
-                });        
-                return true;
+
+                        HERE IS MODEL OVERRIDE CODE WHEN WE GET THIS TO BUILD
+                        OVERRIDES CURRENTLY BROKEN AND DO NOT BUILD
+                        Ext.define('RegistrationApp.model.override.Session', {
+                        override: 'RegistrationApp.model.Session',
+
+                        constructor:function() {
+
+                        var that = this;
+                        this.getProxy().on('exception', function(proxy, response, operation) {
+                        //debugger;RegistrationApp.model.override.Session on exception
+                        console.log('RegistrationApp.model.override.Session on exception');
+                        var errorMessage = Ext.JSON.decode(response.responseText).message;
+                        that.getProxy().errorString = errorMessage;
+                    });
+
+                    this.callParent(arguments);
+
+
+                }
+
+            });
+
+
+
+            if (this.errorString) {
+                Ext.Msg.alert(this.errorString);
             } else {
-                Ext.Msg.alert("Session Title Problem","Another session has been entered with the same title.  Please make your title unique while keeping it under 75 characters");
+                Ext.Msg.alert("Error Saving Session Record");
             }
-        } else {
-            return true; // no sessions here
+            */
+        },
+        success : function(){
+
+            that.refreshTitleList();
+            // because this could be an insert, it's important not to add new taglist stuff
+            // until the session itself inserts.  thought, I think this is problematic as 
+            // designed.  now, the insert happens and no tags are added, then, tags are
+            // only added on updates (that is how the UI currently works)
+            var tagList = Ext.getCmp("SessionTagsGridPanelId");
+            var tagListStore = tagList.store;
+            tagListStore.save({
+                success: function() {
+                    debugger;
+                    Ext.Ajax.un('requestexception',exceptionHandler);
+                },
+                failure: function() {
+                    debugger;
+                    Ext.Ajax.un('requestexception',exceptionHandler);
+                }
+            });
+
         }
+
+    });        
+    return true;
+} else {
+    Ext.Msg.alert("Session Title Problem","Another session has been entered with the same title.  Please make your title unique while keeping it under 75 characters");
+}
+} else {
+return true; // no sessions here
+}
 
     },
 

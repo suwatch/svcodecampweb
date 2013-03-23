@@ -24,49 +24,32 @@ Ext.define('MyApp.view.MyViewport', {
         Ext.applyIf(me, {
             items: [
                 {
-                    xtype: 'form',
-                    id: 'formId',
-                    bodyPadding: 10,
-                    title: 'My Form',
+                    xtype: 'tabpanel',
+                    activeTab: 0,
                     items: [
                         {
-                            xtype: 'textfield',
-                            anchor: '100%',
-                            fieldLabel: 'Label',
-                            name: 'col1'
+                            xtype: 'panel',
+                            title: 'Tab 1'
                         },
                         {
-                            xtype: 'textfield',
-                            anchor: '100%',
-                            fieldLabel: 'Label',
-                            name: 'col2'
+                            xtype: 'panel',
+                            title: 'Tab 2'
+                        },
+                        {
+                            xtype: 'panel',
+                            title: 'Tab 3'
+                        },
+                        {
+                            xtype: 'panel',
+                            html: '<div id=\'fieldId\' ></div>',
+                            title: 'My Panel'
                         }
                     ]
-                },
-                {
-                    xtype: 'button',
-                    text: 'MyButton',
-                    listeners: {
-                        click: {
-                            fn: me.onButtonClick,
-                            scope: me
-                        }
-                    }
                 }
             ]
         });
 
         me.callParent(arguments);
-    },
-
-    onButtonClick: function(button, e, eOpts) {
-
-        var form = Ext.getCmp("formId").getForm();
-
-        values = form.getValues();
-
-        debugger;
-
     }
 
 });

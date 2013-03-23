@@ -17,81 +17,109 @@ Ext.define('RegistrationApp.controller.ViewportController', {
     extend: 'Ext.app.Controller',
 
     onViewportAfterRender: function(component, eOpts) {
-        var attendeeFromFirstPage = Ext.ComponentQuery.query('AttendeeSpeakerOrSponsorAlias #rbAttendee')[0];
-        var speakerFromFirstPage = Ext.ComponentQuery.query('AttendeeSpeakerOrSponsorAlias #rbSpeaker')[0];
 
-        var nextPanel;
-        var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Checking Logged In Status..."});
-        // always check logged in status when get here
-        myMask.show();
-        // first check to see if person is already logged in.  If they are, then go edit details page as if attendee
-        var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];
 
-        tabPanel.getTabBar().hide();
-        tabPanel.componentLayout.childrenChanged = true;
-        tabPanel.doComponentLayout();
-
-        Ext.Ajax.request({ 
-            url:'/rpc/Account/IsLoggedIn', 
-            actionMethods:'POST', 
-            scope:this, 
-            params:{
-                Username: '',
-                Password: '',
-                RememberMe: true
-            },
-            success: function(r, o) { 
-                var retData = Ext.JSON.decode(r.responseText);
-                tabPanel.updateAllPanelsWithData(retData);
-                if (retData.hasSessionsCurrentYear === true) {
-                    speakerFromFirstPage.checked = true;
-                    // need to load sessions also for this attendee, the current attendee is the spaker
-
-                    var sessionsBySpeakerStore = Ext.getCmp("sessionsBySpeakerGridPanelId").getStore();
-                    sessionsBySpeakerStore.load({
-                        params: {
-                            option: 'byspeaker',
-                            param1: retData.attendeesId,
-                            param2: '-1',
-                            param3: '-1'
-                        },
-                        callback: function(records,operation,success) {
-                            var imgId = Ext.ComponentQuery.query('#SpeakerImgId')[0];
-                            var imageLocation = '/attendeeimage/' + retData.attendeesId + '.jpg?width=260&height=260&borderWidth=1&borderColor=black&scale=both';
-                            var antiCachePart = (new Date()).getTime();
-                            var newSrc = imageLocation + '&dc=' + antiCachePart;
-                            imgId.setSrc(newSrc); 
-                            tabPanel.setActiveTab(tabPanel.getTabIdByName('SpeakerAfterLogin'));  
-                            myMask.hide();
-                        }
-                    });
-                } else {
-                    attendeeFromFirstPage.checked = true;
-                    tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeAfterLogin'));
-                    myMask.hide();
-                }
-            },
-            failure: function(r,o) {
-                console.log('is NOT logged in from viewportafterrender');
-                // not logged in so take them to opening page
-                tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeSpeakerSponsorId'));
-                myMask.hide();
-            } 
-        });  
-
-        // create an array of titles so we can make sure the title the person enters is unique on validation
-        var store = Ext.data.StoreManager.lookup('SessionTitlesStore');
-        store.load({
-            params: {
-                option: 'justlowercasetitle',
-                param1: '-1',
-                param2: '-1',
-                param3: '-1'
-            },
-            callback: function(records,operation,success) {
-                console.log('lowercase titles found: ' + records.length);
+        // check for hash tag in URL (not sure if this is iframe only or will take from top window
+        var token = window.location.hash.substr(1);
+        if ( token ) {
+            if (token === 'peter1') {
+                Ext.Msg.alert("hash tag peter1 found");
             }
-        });
+            /*
+            var tab = tabPanel.get(token);
+
+            if ( ! tab ) {
+            // Create tab or error as necessary.
+            tab = new Ext.Panel({
+                itemId: token,
+                title: 'Tab: '+ token
+            });
+
+            tabPanel.add(tab);
+        }
+
+        tabPanel.setActiveTab(tab);
+        */
+    }
+
+
+
+
+    var attendeeFromFirstPage = Ext.ComponentQuery.query('AttendeeSpeakerOrSponsorAlias #rbAttendee')[0];
+    var speakerFromFirstPage = Ext.ComponentQuery.query('AttendeeSpeakerOrSponsorAlias #rbSpeaker')[0];
+
+    var nextPanel;
+    var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Checking Logged In Status..."});
+    // always check logged in status when get here
+    myMask.show();
+    // first check to see if person is already logged in.  If they are, then go edit details page as if attendee
+    var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];
+
+    tabPanel.getTabBar().hide();
+    tabPanel.componentLayout.childrenChanged = true;
+    tabPanel.doComponentLayout();
+
+    Ext.Ajax.request({ 
+        url:'/rpc/Account/IsLoggedIn', 
+        actionMethods:'POST', 
+        scope:this, 
+        params:{
+            Username: '',
+            Password: '',
+            RememberMe: true
+        },
+        success: function(r, o) { 
+            var retData = Ext.JSON.decode(r.responseText);
+            tabPanel.updateAllPanelsWithData(retData);
+            if (retData.hasSessionsCurrentYear === true) {
+                speakerFromFirstPage.checked = true;
+                // need to load sessions also for this attendee, the current attendee is the spaker
+
+                var sessionsBySpeakerStore = Ext.getCmp("sessionsBySpeakerGridPanelId").getStore();
+                sessionsBySpeakerStore.load({
+                    params: {
+                        option: 'byspeaker',
+                        param1: retData.attendeesId,
+                        param2: '-1',
+                        param3: '-1'
+                    },
+                    callback: function(records,operation,success) {
+                        var imgId = Ext.ComponentQuery.query('#SpeakerImgId')[0];
+                        var imageLocation = '/attendeeimage/' + retData.attendeesId + '.jpg?width=260&height=260&borderWidth=1&borderColor=black&scale=both';
+                        var antiCachePart = (new Date()).getTime();
+                        var newSrc = imageLocation + '&dc=' + antiCachePart;
+                        imgId.setSrc(newSrc); 
+                        tabPanel.setActiveTab(tabPanel.getTabIdByName('SpeakerAfterLogin'));  
+                        myMask.hide();
+                    }
+                });
+            } else {
+                attendeeFromFirstPage.checked = true;
+                tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeAfterLogin'));
+                myMask.hide();
+            }
+        },
+        failure: function(r,o) {
+            console.log('is NOT logged in from viewportafterrender');
+            // not logged in so take them to opening page
+            tabPanel.setActiveTab(tabPanel.getTabIdByName('AttendeeSpeakerSponsorId'));
+            myMask.hide();
+        } 
+    });  
+
+    // create an array of titles so we can make sure the title the person enters is unique on validation
+    var store = Ext.data.StoreManager.lookup('SessionTitlesStore');
+    store.load({
+        params: {
+            option: 'justlowercasetitle',
+            param1: '-1',
+            param2: '-1',
+            param3: '-1'
+        },
+        callback: function(records,operation,success) {
+            console.log('lowercase titles found: ' + records.length);
+        }
+    });
 
 
 

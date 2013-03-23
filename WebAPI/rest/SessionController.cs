@@ -192,39 +192,40 @@ namespace WebAPI.REST
             {
                 sessionsResult.Title = sessionsResult.Title.Trim();
 
-                if (sessionsResult.Title.StartsWith("bad"))
+                //if (sessionsResult.Title.StartsWith("bad"))
+                //{
+                //    response = Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed, "session started with bad so erroring!");
+                //    return response;
+                //}
+
+                var session =
+                    SessionsManager.I.Get(new SessionsQuery
+                        {
+                            Id = sessionsResult.Id
+                        }).FirstOrDefault();
+
+                if (session != null)
                 {
-                    response = Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed, "session started with bad so erroring!");
-                    return response;
+                    UpdateSessionResultForSessionLevel(sessionsResult);
+                    session.Title = sessionsResult.Title;
+                    session.Description = sessionsResult.Description;
+                    session.TwitterHashTags = sessionsResult.TwitterHashTags;
+                    session.SessionLevel_id = sessionsResult.SessionLevel_id;
+
+                    SessionsManager.I.Update(session);
+
+                    response = Request.CreateResponse(HttpStatusCode.OK, sessionsResult);
                 }
-
-
-            }
-
-            var session =
-              SessionsManager.I.Get(new SessionsQuery
-              {
-                  Id = sessionsResult.Id
-              }).FirstOrDefault();
-
-           
-            if (session != null)
-            {
-                UpdateSessionResultForSessionLevel(sessionsResult);
-
-
-                session.Title = sessionsResult.Title;
-                session.Description = sessionsResult.Description;
-                session.TwitterHashTags = sessionsResult.TwitterHashTags;
-                session.SessionLevel_id = sessionsResult.SessionLevel_id;
-
-                SessionsManager.I.Update(session);
-               
-                response = Request.CreateResponse(HttpStatusCode.OK, sessionsResult);
+                else
+                {
+                    response = Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed,
+                                                           "No SessionId Found For Update");
+                }
             }
             else
             {
-                response = Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed, "No SessionId Found For Update");
+                response = Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed, "SessionResult passed in is null.  Not continuing");
+                //    return response;
             }
 
             return response;

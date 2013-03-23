@@ -209,7 +209,7 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
                 store.sync(
                 {
                     failure : function(response, options){
-                        debugger;
+                        // debugger;
 
                         if (this.errorString) {
                             Ext.Msg.alert(this.errorString);

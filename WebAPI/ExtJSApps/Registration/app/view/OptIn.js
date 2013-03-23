@@ -65,7 +65,7 @@ Ext.define('RegistrationApp.view.OptIn', {
                         {
                             xtype: 'label',
                             style: 'font-weight:bold;font-size:120%',
-                            text: 'Help keep Silicon Valley Code Camp free for attendees by support our sponsors and Opting.  Please Consider NOT opting out'
+                            text: 'Opt In Choices.  Here from our sponsors (this helps keep code camp free) and SVCC Kids Info'
                         }
                     ]
                 },
@@ -73,6 +73,16 @@ Ext.define('RegistrationApp.view.OptIn', {
                     xtype: 'panel',
                     border: false,
                     items: [
+                        {
+                            xtype: 'checkboxfield',
+                            fieldLabel: 'Interested in bring your kid to Code Camp\'s special classes for them?  Check here and you will be contacted about details and special confirmation requirements',
+                            labelWidth: 300,
+                            name: 'optInSvccKids',
+                            boxLabel: '',
+                            checked: true,
+                            inputValue: '1',
+                            uncheckedValue: '0'
+                        },
                         {
                             xtype: 'checkboxfield',
                             fieldLabel: 'Accept Emails From Sponsors Offering Specials Only Available To Code Camp Attendees.  <br/>All email to you include in the subjects <i>[Sponsored Specials]</i>',

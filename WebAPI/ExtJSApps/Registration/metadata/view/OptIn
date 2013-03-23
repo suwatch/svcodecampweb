@@ -112,7 +112,7 @@
                         ],
                         "width": null,
                         "designer|userClassName": "MyLabel3",
-                        "text": "Help keep Silicon Valley Code Camp free for attendees by support our sponsors and Opting.  Please Consider NOT opting out"
+                        "text": "Opt In Choices.  Here from our sponsors (this helps keep code camp free) and SVCC Kids Info"
                     },
                     "designerId": "b5c4aa0f-362f-4b17-bdf5-0ecc028833de"
                 }
@@ -141,6 +141,25 @@
                     "codeClass": null,
                     "userConfig": {
                         "designer|userClassName": "MyCheckbox6",
+                        "fieldLabel": "Interested in bring your kid to Code Camp's special classes for them?  Check here and you will be contacted about details and special confirmation requirements",
+                        "labelWidth": 300,
+                        "name": "optInSvccKids",
+                        "boxLabel": "",
+                        "checked": true,
+                        "inputValue": "1",
+                        "uncheckedValue": "0"
+                    },
+                    "designerId": "9f035b99-672f-4d8e-94c8-accfae68e0b9"
+                },
+                {
+                    "type": "Ext.form.field.Checkbox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyCheckbox6",
                         "fieldLabel": "Accept Emails From Sponsors Offering Specials Only Available To Code Camp Attendees.  <br/>All email to you include in the subjects <i>[Sponsored Specials]</i>",
                         "labelWidth": 300,
                         "name": "optInSponsoredMailingsLevel",
@@ -149,7 +168,7 @@
                         "inputValue": "1",
                         "uncheckedValue": "0"
                     },
-                    "designerId": "9f035b99-672f-4d8e-94c8-accfae68e0b9"
+                    "designerId": "fb93cedf-4e58-43ab-b71a-5af94ba394dd"
                 },
                 {
                     "type": "Ext.form.field.Checkbox",

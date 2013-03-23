@@ -16,6 +16,10 @@
 Ext.define('RegistrationApp.model.Session', {
     extend: 'Ext.data.Model',
 
+    requires: [
+        'RegistrationApp.model.override.Session'
+    ],
+
     fields: [
         {
             name: 'id'

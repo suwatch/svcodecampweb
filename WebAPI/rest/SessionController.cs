@@ -187,9 +187,18 @@ namespace WebAPI.REST
         /// <returns></returns>
         public HttpResponseMessage Put(SessionsResult sessionsResult)
         {
+            HttpResponseMessage response;
             if (sessionsResult != null)
             {
                 sessionsResult.Title = sessionsResult.Title.Trim();
+
+                if (sessionsResult.Title.StartsWith("bad"))
+                {
+                    response = Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed, "session started with bad so erroring!");
+                    return response;
+                }
+
+
             }
 
             var session =
@@ -198,7 +207,7 @@ namespace WebAPI.REST
                   Id = sessionsResult.Id
               }).FirstOrDefault();
 
-            HttpResponseMessage response;
+           
             if (session != null)
             {
                 UpdateSessionResultForSessionLevel(sessionsResult);
@@ -215,7 +224,7 @@ namespace WebAPI.REST
             }
             else
             {
-                response = Request.CreateResponse(HttpStatusCode.ExpectationFailed, "No SessionId Found For Update");
+                response = Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed, "No SessionId Found For Update");
             }
 
             return response;

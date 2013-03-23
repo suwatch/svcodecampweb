@@ -165,71 +165,77 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
         var sessionGridPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
         var selectedSessionInGrid = sessionGridPanel.getSelectionModel().getSelection();
 
-        var oldTitle = '';
         if (selectedSessionInGrid.length > 0) {
-            oldTitle = selectedSessionInGrid[0].get("title");
-        }
 
-        formPanel.updateRecord();
-        var modelRecord = formPanel.getRecord();
+            var oldTitle = '';
+            if (selectedSessionInGrid.length > 0) {
+                oldTitle = selectedSessionInGrid[0].get("title");
+            }
 
-
-        var value = modelRecord.get('title');
-        var store = Ext.data.StoreManager.lookup('SessionTitlesStore');
-        var titleNoTrim = Ext.util.Format.lowercase(value);
-        var title = Ext.util.Format.trim(titleNoTrim);
-
-        var notFound = true;
-        // only check if title changed, otherwise, person could just be modifying existing title
-        if (oldTitle.length > 0 && oldTitle !== title) {
-            store.each(function(rec) {
-                if (rec.get('title') === title) {
-                    notFound = false;
-                }
-            });
-        }
-
-        var that = this;
-
-        if (notFound) {
-            var store = sessionGridPanel.getStore();
-            var sessionId = modelRecord.getId();
-            var index1 = store.findExact("id", parseInt(sessionId));
-
-            var modelRecordFromGrid = store.getAt(index1);
-
-            modelRecordFromGrid.set("title",modelRecord.getData().title);
-            modelRecordFromGrid.set("description",modelRecord.getData().description);
-            modelRecordFromGrid.set("sessionLevel",modelRecord.getData().sessionLevel);
-            modelRecordFromGrid.set("twitterHashTags",modelRecord.getData().twitterHashTags);
-            modelRecordFromGrid.set("description",modelRecord.getData().description);
-
-            store.sync(
-            {
-                success : function(){
-
-                    that.refreshTitleList();
+            formPanel.updateRecord();
+            var modelRecord = formPanel.getRecord();
 
 
-                    // because this could be an insert, it's important not to add new taglist stuff
-                    // until the session itself inserts.  thought, I think this is problematic as 
-                    // designed.  now, the insert happens and no tags are added, then, tags are
-                    // only added on updates (that is how the UI currently works)
-                    var tagList = Ext.getCmp("SessionTagsGridPanelId");
-                    var tagListStore = tagList.store;
-                    tagListStore.save();
+            var value = modelRecord.get('title');
+            var store = Ext.data.StoreManager.lookup('SessionTitlesStore');
+            var titleNoTrim = Ext.util.Format.lowercase(value);
+            var title = Ext.util.Format.trim(titleNoTrim);
 
+            var notFound = true;
+            // only check if title changed, otherwise, person could just be modifying existing title
+            if (oldTitle.length > 0 && oldTitle !== title) {
+                store.each(function(rec) {
+                    if (rec.get('title') === title) {
+                        notFound = false;
+                    }
+                });
+            }
 
+            var that = this;
 
+            if (notFound) {
+                var store = sessionGridPanel.getStore();
+                var sessionId = modelRecord.getId();
+                var index1 = store.findExact("id", parseInt(sessionId));
 
-                },
-                failure : function(response, options){
-                    Ext.Msg.alert("Session Save Error","Failed trying to save Base Session Record.");
-                }  
-            });        
-            return true;
+                var modelRecordFromGrid = store.getAt(index1);
+
+                modelRecordFromGrid.set("title",modelRecord.getData().title);
+                modelRecordFromGrid.set("description",modelRecord.getData().description);
+                modelRecordFromGrid.set("sessionLevel",modelRecord.getData().sessionLevel);
+                modelRecordFromGrid.set("twitterHashTags",modelRecord.getData().twitterHashTags);
+                modelRecordFromGrid.set("description",modelRecord.getData().description);
+
+                store.sync(
+                {
+                    failure : function(response, options){
+                        debugger;
+
+                        if (this.errorString) {
+                            Ext.Msg.alert(this.errorString);
+                        } else {
+                            Ext.Msg.alert("Error Saving Session Record");
+                        }
+                    },
+                    success : function(){
+                        that.refreshTitleList();
+                        // because this could be an insert, it's important not to add new taglist stuff
+                        // until the session itself inserts.  thought, I think this is problematic as 
+                        // designed.  now, the insert happens and no tags are added, then, tags are
+                        // only added on updates (that is how the UI currently works)
+                        var tagList = Ext.getCmp("SessionTagsGridPanelId");
+                        var tagListStore = tagList.store;
+                        tagListStore.save();
+
+                    }
+
+                });        
+                return true;
+            } else {
+                Ext.Msg.alert("Session Title Problem","Another session has been entered with the same title.  Please make your title unique while keeping it under 75 characters");
+            }
         } else {
-            Ext.Msg.alert("Session Title Problem","Another session has been entered with the same title.  Please make your title unique while keeping it under 75 characters");
+            return true; // no sessions here
         }
 
     },

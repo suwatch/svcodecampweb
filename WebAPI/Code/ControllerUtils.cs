@@ -99,7 +99,7 @@ namespace WebAPI.Code
                 var allSessionIds = sessions.Select(a => a.Id).ToList();
 
                 var unAssignedIds = allSessionIds.Except(sessionsAssignedToTime);
-                if (unAssignedIds.Any())
+                if (unAssignedIds.Any() && sessionTimesResults.Count > 0)
                 {
                     var sessionTimeResultUnassigned = new SessionTimesResult
                                                           {

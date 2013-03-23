@@ -1010,11 +1010,11 @@
         "topInstance": null
     },
     "inspectorState": {
-        "topInstance": "f78b581d-7971-41d4-8de5-81fee1e696fe",
-        "selectedInstance": "f78b581d-7971-41d4-8de5-81fee1e696fe"
+        "topInstance": "0c4f878b-eeff-417b-97aa-d7d05129ec73",
+        "selectedInstance": "5ed0eb2a-89a6-4f0f-8323-3301fe89fee9"
     },
     "codeState": {
-        "topInstance": "f78b581d-7971-41d4-8de5-81fee1e696fe"
+        "topInstance": "0c4f878b-eeff-417b-97aa-d7d05129ec73"
     },
     "editMode": "code"
 }

@@ -27,9 +27,7 @@ Ext.define('RegistrationApp.controller.AttendeeAfterLoginController', {
         var values = tabPanel.getValues();
 
 
-
-        Ext.Ajax.on('requestexception', function(conn, response, options) {
-            //debugger;
+        var exceptionHandler = function(conn, response, options) {
             var errorMessage = Ext.JSON.decode(response.responseText).message;
             Ext.MessageBox.show({
                 title: 'Error Message',
@@ -37,8 +35,8 @@ Ext.define('RegistrationApp.controller.AttendeeAfterLoginController', {
                 icon: Ext.MessageBox.ERROR,
                 buttons: Ext.Msg.OK
             });
-
-        }, this);
+        };
+        Ext.Ajax.on('requestexception',exceptionHandler);
 
 
         Ext.Ajax.request({ 
@@ -46,27 +44,12 @@ Ext.define('RegistrationApp.controller.AttendeeAfterLoginController', {
             actionMethods:'POST', 
             scope:this, 
             params: values,
-
-            /* DOES NOT APPEAR TO WORK SO USING GLOBAL ABOVE
-            listeners: {
-            exception: function(proxy, response, operation){
-            debugger;
-            Ext.MessageBox.show({
-            title: 'REMOTE EXCEPTION',
-            msg: operation.getError(),
-            icon: Ext.MessageBox.ERROR,
-            buttons: Ext.Msg.OK
-            });
-            }
-            },
-            */
-
             success: function(r, o) {  
 
                 var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];
                 tabPanel.setActiveTab(tabPanel.getTabIdByName('optIn'));
                 myMask.hide();
-                //Ext.Ajax.remove('requestexception');
+                Ext.Ajax.un('requestexception',exceptionHandler);
             },
             failure: function(r,o) {
                 /*
@@ -77,7 +60,7 @@ Ext.define('RegistrationApp.controller.AttendeeAfterLoginController', {
                 }
                 */
                 myMask.hide();
-                //Ext.Ajax.remove('requestexception');
+                Ext.Ajax.un('requestexception',exceptionHandler);
             } 
         });
 

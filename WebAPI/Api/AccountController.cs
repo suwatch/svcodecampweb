@@ -333,8 +333,8 @@ namespace WebAPI.Api
         [System.Web.Http.ActionName("UpdateAttendee")]
         public HttpResponseMessage PostUpdateAttendee(AttendeesResult attendeeRecord)
         {
-            //return  Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed,"test bad responose from PostUpdateAttendee");
-            return UpdateAttendeeRecordParts(attendeeRecord, "attendee");
+            return  Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed,"test bad responose from PostUpdateAttendee");
+            //return UpdateAttendeeRecordParts(attendeeRecord, "attendee");
         }
 
         private HttpResponseMessage UpdateAttendeeRecordParts(AttendeesResult attendeeRecord, string attendeeSaveOption)

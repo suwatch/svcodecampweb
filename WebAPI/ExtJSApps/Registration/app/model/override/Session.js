@@ -5,7 +5,8 @@ Ext.define('RegistrationApp.model.override.Session', {
         
         var that = this;
         this.getProxy().on('exception', function(proxy, response, operation) {
-            debugger;
+            //debugger;RegistrationApp.model.override.Session on exception
+            console.log('RegistrationApp.model.override.Session on exception');
             var errorMessage = Ext.JSON.decode(response.responseText).message;
             that.getProxy().errorString = errorMessage;
         });

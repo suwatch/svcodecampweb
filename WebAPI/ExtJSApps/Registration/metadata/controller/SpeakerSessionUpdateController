@@ -293,7 +293,7 @@
                     "        store.sync(\r",
                     "        {\r",
                     "            failure : function(response, options){\r",
-                    "               // debugger;\r",
+                    "                // debugger;\r",
                     "\r",
                     "                if (this.errorString) {\r",
                     "                    Ext.Msg.alert(this.errorString);\r",

@@ -65,7 +65,7 @@ Ext.define('RegistrationApp.view.OptIn', {
                         {
                             xtype: 'label',
                             style: 'font-weight:bold;font-size:120%',
-                            text: 'Opt In Choices.  Here from our sponsors (this helps keep code camp free) and SVCC Kids Info'
+                            text: 'Opt In Choices.  Hear from our sponsors (this helps keep code camp free) and SVCC Kids Info'
                         }
                     ]
                 },

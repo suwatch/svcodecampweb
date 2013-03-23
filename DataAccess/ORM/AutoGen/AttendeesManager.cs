@@ -85,6 +85,7 @@ namespace CodeCampSV
             record.OptInTechJobKeyWords = result.OptInTechJobKeyWords;
             record.Company = result.Company;
             record.PrincipleJob = result.PrincipleJob;
+            record.OptInSvccKids = result.OptInSvccKids;
             // 
             //  Used by Default in Update and Insert Methods.
         }
@@ -162,7 +163,8 @@ namespace CodeCampSV
             PresentationApprovalRequired = myData.PresentationApprovalRequired,
             OptInTechJobKeyWords = myData.OptInTechJobKeyWords,
             Company = myData.Company,
-            PrincipleJob = myData.PrincipleJob
+            PrincipleJob = myData.PrincipleJob,
+            OptInSvccKids = myData.OptInSvccKids
       });
 		    return results;
         }
@@ -256,7 +258,8 @@ namespace CodeCampSV
                         PresentationApprovalRequired = myData.PresentationApprovalRequired,
                         OptInTechJobKeyWords = myData.OptInTechJobKeyWords,
                         Company = myData.Company,
-                        PrincipleJob = myData.PrincipleJob
+                        PrincipleJob = myData.PrincipleJob,
+                        OptInSvccKids = myData.OptInSvccKids
             });
             
             List<AttendeesResult> resultList = GetFinalResults(results, query);
@@ -337,6 +340,7 @@ namespace CodeCampSV
             if (query.OptInTechJobKeyWords != null) baseQuery = baseQuery.Where(a => a.OptInTechJobKeyWords.ToLower().Equals(query.OptInTechJobKeyWords.ToLower()));
             if (query.Company != null) baseQuery = baseQuery.Where(a => a.Company.ToLower().Equals(query.Company.ToLower()));
             if (query.PrincipleJob != null) baseQuery = baseQuery.Where(a => a.PrincipleJob.ToLower().Equals(query.PrincipleJob.ToLower()));
+            if (query.OptInSvccKids != null) baseQuery = baseQuery.Where(a => a.OptInSvccKids.ToLower().Equals(query.OptInSvccKids.ToLower()));
 
             return baseQuery;
         }

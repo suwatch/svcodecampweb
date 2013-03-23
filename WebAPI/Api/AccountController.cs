@@ -333,6 +333,7 @@ namespace WebAPI.Api
         [System.Web.Http.ActionName("UpdateAttendee")]
         public HttpResponseMessage PostUpdateAttendee(AttendeesResult attendeeRecord)
         {
+            //return  Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed,"test bad responose from PostUpdateAttendee");
             return UpdateAttendeeRecordParts(attendeeRecord, "attendee");
         }
 
@@ -362,6 +363,7 @@ namespace WebAPI.Api
                         attendeesResult.OptInSponsorSpecialsLevel = attendeeRecord.OptInSponsorSpecialsLevel;
                         attendeesResult.OptInSponsoredMailingsLevel = attendeeRecord.OptInSponsoredMailingsLevel;
                         attendeesResult.OptInTechJobKeyWords = attendeeRecord.OptInTechJobKeyWords;
+                        attendeesResult.OptInSvccKids = attendeeRecord.OptInSvccKids;
                     }
                     else
                     {

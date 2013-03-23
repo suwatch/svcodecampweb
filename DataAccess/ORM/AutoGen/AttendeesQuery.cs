@@ -150,5 +150,7 @@ namespace CodeCampSV
         public string Company { get; set; }
         [AutoGenColumn]
         public string PrincipleJob { get; set; }
+        [AutoGenColumn]
+        public string OptInSvccKids { get; set; }
     }
 }

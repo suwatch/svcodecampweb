@@ -22,7 +22,7 @@ namespace CodeCampSV
 	using System;
 	
 	
-	[System.Data.Linq.Mapping.DatabaseAttribute(Name="svcodecamp")]
+	[System.Data.Linq.Mapping.DatabaseAttribute(Name="svcodecamptest")]
 	public partial class CodeCampDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -1138,6 +1138,8 @@ namespace CodeCampSV
 		
 		private string _PrincipleJob;
 		
+		private string _OptInSvccKids;
+		
 		private EntitySet<AttendeesCodeCampYear> _AttendeesCodeCampYear;
 		
 		private EntitySet<AttendeesTagList> _AttendeesTagList;
@@ -1290,6 +1292,8 @@ namespace CodeCampSV
     partial void OnCompanyChanged();
     partial void OnPrincipleJobChanging(string value);
     partial void OnPrincipleJobChanged();
+    partial void OnOptInSvccKidsChanging(string value);
+    partial void OnOptInSvccKidsChanged();
     #endregion
 		
 		public Attendees()
@@ -2640,6 +2644,26 @@ namespace CodeCampSV
 					this._PrincipleJob = value;
 					this.SendPropertyChanged("PrincipleJob");
 					this.OnPrincipleJobChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_OptInSvccKids", DbType="VarChar(1)")]
+		public string OptInSvccKids
+		{
+			get
+			{
+				return this._OptInSvccKids;
+			}
+			set
+			{
+				if ((this._OptInSvccKids != value))
+				{
+					this.OnOptInSvccKidsChanging(value);
+					this.SendPropertyChanging();
+					this._OptInSvccKids = value;
+					this.SendPropertyChanged("OptInSvccKids");
+					this.OnOptInSvccKidsChanged();
 				}
 			}
 		}

@@ -76,6 +76,7 @@ namespace CodeCampSV
         [DataMember] public string OptInTechJobKeyWords { get; set; }
         [DataMember] public string Company { get; set; }
         [DataMember] public string PrincipleJob { get; set; }
+        [DataMember] public string OptInSvccKids { get; set; }
         
         //  
         //  Do not put Id here since it is in ResultBase already

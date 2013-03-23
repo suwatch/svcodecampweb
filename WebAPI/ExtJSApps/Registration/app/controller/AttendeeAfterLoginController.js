@@ -26,22 +26,58 @@ Ext.define('RegistrationApp.controller.AttendeeAfterLoginController', {
         var tabPanel = Ext.ComponentQuery.query('AttendeeAfterLoginAlias')[0];
         var values = tabPanel.getValues();
 
-        //debugger;
+
+
+        Ext.Ajax.on('requestexception', function(conn, response, options) {
+            //debugger;
+            var errorMessage = Ext.JSON.decode(response.responseText).message;
+            Ext.MessageBox.show({
+                title: 'Error Message',
+                msg: errorMessage,
+                icon: Ext.MessageBox.ERROR,
+                buttons: Ext.Msg.OK
+            });
+
+        }, this);
+
 
         Ext.Ajax.request({ 
             url:'/rpc/Account/UpdateAttendee', 
             actionMethods:'POST', 
             scope:this, 
             params: values,
+
+            /* DOES NOT APPEAR TO WORK SO USING GLOBAL ABOVE
+            listeners: {
+            exception: function(proxy, response, operation){
+            debugger;
+            Ext.MessageBox.show({
+            title: 'REMOTE EXCEPTION',
+            msg: operation.getError(),
+            icon: Ext.MessageBox.ERROR,
+            buttons: Ext.Msg.OK
+            });
+            }
+            },
+            */
+
             success: function(r, o) {  
 
                 var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];
                 tabPanel.setActiveTab(tabPanel.getTabIdByName('optIn'));
                 myMask.hide();
+                //Ext.Ajax.remove('requestexception');
             },
             failure: function(r,o) {
-                Ext.Msg.alert("Update Record Failed");
+                /*
+                if (this.errorString) {
+                Ext.Msg.alert(this.errorString);
+                } else {
+                Ext.Msg.alert("Error Saving Attendee Record.");
+                }
+                */
                 myMask.hide();
+                //Ext.Ajax.remove('requestexception');
             } 
         });
 

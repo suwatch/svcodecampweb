@@ -83,19 +83,6 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "optInTechJobKeyWords",
-                "designer|userClassName": "MyField7"
-            },
-            "designerId": "42b3ff65-6caa-4cf6-a21b-69d7a83307f2"
-        },
-        {
-            "type": "Ext.data.Field",
-            "reference": {
-                "name": "fields",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
                 "name": "BoxFolderIdString",
                 "designer|userClassName": "MyField8"
             },

@@ -17,6 +17,7 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
     extend: 'Ext.app.Controller',
 
     onContinueButtonIdClick: function(button, e, eOpts) {
+
         var moveOn = this.saveSessions();
         if (moveOn === true) {
             var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];
@@ -161,6 +162,8 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
     },
 
     saveSessions: function() {
+        console.log("SpeakerSessionUpdateController:saveSessions");
+
         var formPanel = Ext.getCmp("sessionFormPanelEditorId").getForm();
         var sessionGridPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
         var selectedSessionInGrid = sessionGridPanel.getSelectionModel().getSelection();
@@ -220,8 +223,10 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
 
                 store.sync(
                 {
+                    success: function() {
+                        Ext.Ajax.un('requestexception',exceptionHandler);
+                    },
                     failure : function(response, options){
-
                         Ext.Ajax.un('requestexception',exceptionHandler);
 
                         /*
@@ -242,6 +247,7 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
                         that.getProxy().errorString = errorMessage;
                     });
 
+
                     this.callParent(arguments);
 
 
@@ -260,6 +266,19 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
         },
         success : function(){
 
+
+            var exceptionHandlerTags = function(conn, response, options) {
+                var errorMessage = Ext.JSON.decode(response.responseText).message;
+                Ext.MessageBox.show({
+                    title: 'Error Message Tag Save',
+                    msg: errorMessage,
+                    icon: Ext.MessageBox.ERROR,
+                    buttons: Ext.Msg.OK
+                });
+            };
+            Ext.Ajax.on('requestexception',exceptionHandlerTags);
+
+
             that.refreshTitleList();
             // because this could be an insert, it's important not to add new taglist stuff
             // until the session itself inserts.  thought, I think this is problematic as 
@@ -269,24 +288,25 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
             var tagListStore = tagList.store;
             tagListStore.save({
                 success: function() {
-                    debugger;
-                    Ext.Ajax.un('requestexception',exceptionHandler);
+
+                    Ext.Ajax.un('requestexception',exceptionHandlerTags);
                 },
                 failure: function() {
-                    debugger;
-                    Ext.Ajax.un('requestexception',exceptionHandler);
+
+                    Ext.Ajax.un('requestexception',exceptionHandlerTags);
                 }
             });
 
         }
 
-    });        
+    });
+
     return true;
 } else {
     Ext.Msg.alert("Session Title Problem","Another session has been entered with the same title.  Please make your title unique while keeping it under 75 characters");
 }
 } else {
-return true; // no sessions here
+return true; // no sessions selected so nothing to save (could be sessions though
 }
 
     },

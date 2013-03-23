@@ -68,7 +68,10 @@ namespace WebAPI.rest
        /// <param name="tagItem"></param>
        /// <returns></returns>
         public HttpResponseMessage Put(TagsResult tagItem)
-        {
+       {
+           //return Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed, "error here!!! in tags");
+
+
             if (tagItem.SessionId.HasValue && tagItem.SessionId != -1)
             {
                 SessionTagsResult sessionTagsResult =

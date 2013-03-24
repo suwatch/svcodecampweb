@@ -18,7 +18,38 @@ Ext.define('RegistrationApp.controller.SponsorController', {
 
     onContinueButtonIdClick: function(button, e, eOpts) {
         var form =  Ext.ComponentQuery.query('sponsorAlias')[0].getForm();
-        form.submit();
+
+        //debugger;
+        if (form.isValid())
+        {
+
+            form.submit({
+                success: function(form, action) {
+                    Ext.Msg.alert('Success', action.result.msg);
+                },
+                failure: function(form, action) {
+                    //debugger;
+                    Ext.Msg.alert('Failed', action.result.msg);
+                }
+            });
+        }
+
+
+        /*
+        form.submit({
+
+        success: function(a,b,c) {
+        Ext.Msg.alert("Thanks! we will get back to you asap.");   
+        //  window.parent.location.href = '../../Register.aspx'; 
+    },
+    failure: function(a,b,c) {
+        debugger;
+        Ext.Msg.alert("hmm.  Something seems to have gone wrong.  Please email sponsorship@siliconvalley-codecamp.com for information.");   
+        // window.parent.location.href = '../../Register.aspx'; 
+    }
+
+});
+*/
     },
 
     onBackButtonIdClick: function(button, e, eOpts) {

@@ -24,13 +24,13 @@ Ext.define('RegistrationApp.view.sponsor', {
     },
     bodyBorder: true,
     title: 'Sponsor',
-    url: '/api/Account/SponsorRequest',
+    url: '/rest/SponsorRequest/',
 
     initComponent: function() {
         var me = this;
 
         me.initialConfig = Ext.apply({
-            url: '/api/Account/SponsorRequest'
+            url: '/rest/SponsorRequest/'
         }, me.initialConfig);
 
         Ext.applyIf(me, {

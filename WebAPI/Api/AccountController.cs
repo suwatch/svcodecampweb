@@ -321,15 +321,15 @@ namespace WebAPI.Api
 
         //}
 
-        [System.Web.Http.HttpPost]
-        [System.Web.Http.ActionName("SponsorRequest")]
-        public HttpResponseMessage PostSponsorRequest(FormDataCollection formItems)
-        {
+        //[System.Web.Http.HttpPost]
+        //[System.Web.Http.ActionName("SponsorRequest")]
+        //public HttpResponseMessage PostSponsorRequest(FormDataCollection formItems)
+        //{
 
 
-            return Request.CreateResponse(HttpStatusCode.OK,
-                                               "");
-        }
+        //    return Request.CreateResponse(HttpStatusCode.OK,
+        //                                       "");
+        //}
 
         [System.Web.Http.HttpPost]
         [System.Web.Http.ActionName("UpdateAttendee")]

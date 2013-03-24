@@ -119,6 +119,7 @@ namespace CodeCampSV
             if (query.ContactMeByPhone != null) baseQuery = baseQuery.Where(a => a.ContactMeByPhone == query.ContactMeByPhone);
             if (query.AlsoAttending != null) baseQuery = baseQuery.Where(a => a.AlsoAttending == query.AlsoAttending);
             if (query.PastSponsor != null) baseQuery = baseQuery.Where(a => a.PastSponsor == query.PastSponsor);
+            if (query.SponsorSpecialNotes != null) baseQuery = baseQuery.Where(a => a.SponsorSpecialNotes.ToLower().Equals(query.SponsorSpecialNotes.ToLower()));
             if (query.SvccNotes != null) baseQuery = baseQuery.Where(a => a.SvccNotes.ToLower().Equals(query.SvccNotes.ToLower()));
             if (query.SvccRespondedTo != null) baseQuery = baseQuery.Where(a => a.SvccRespondedTo == query.SvccRespondedTo);
             if (query.SvccEnteredInSystem != null) baseQuery = baseQuery.Where(a => a.SvccEnteredInSystem == query.SvccEnteredInSystem);

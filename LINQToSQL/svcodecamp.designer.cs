@@ -13839,7 +13839,7 @@ namespace CodeCampSV
 		
 		private System.Nullable<bool> _PastSponsor;
 		
-		private System.Data.Linq.Binary _SponsorSpecialNotes;
+		private string _SponsorSpecialNotes;
 		
 		private string _SvccNotes;
 		
@@ -13869,7 +13869,7 @@ namespace CodeCampSV
     partial void OnAlsoAttendingChanged();
     partial void OnPastSponsorChanging(System.Nullable<bool> value);
     partial void OnPastSponsorChanged();
-    partial void OnSponsorSpecialNotesChanging(System.Data.Linq.Binary value);
+    partial void OnSponsorSpecialNotesChanging(string value);
     partial void OnSponsorSpecialNotesChanged();
     partial void OnSvccNotesChanging(string value);
     partial void OnSvccNotesChanged();
@@ -14046,8 +14046,8 @@ namespace CodeCampSV
 			}
 		}
 		
-		[Column(Storage="_SponsorSpecialNotes", DbType="VarBinary(2048)", CanBeNull=true)]
-		public System.Data.Linq.Binary SponsorSpecialNotes
+		[Column(Storage="_SponsorSpecialNotes", DbType="VarChar(2048)")]
+		public string SponsorSpecialNotes
 		{
 			get
 			{

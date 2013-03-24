@@ -17,7 +17,7 @@ namespace CodeCampSV
         [DataMember] public bool? ContactMeByPhone { get; set; }
         [DataMember] public bool? AlsoAttending { get; set; }
         [DataMember] public bool? PastSponsor { get; set; }
-        [DataMember][XmlIgnore()] public System.Data.Linq.Binary SponsorSpecialNotes { get; set; }
+        [DataMember] public string SponsorSpecialNotes { get; set; }
         [DataMember] public string SvccNotes { get; set; }
         [DataMember] public bool? SvccRespondedTo { get; set; }
         [DataMember] public bool? SvccEnteredInSystem { get; set; }

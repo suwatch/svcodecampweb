@@ -14,7 +14,7 @@
         "bodyBorder": true,
         "bodyPadding": null,
         "title": "Sponsor",
-        "url": "/api/Account/SponsorRequest"
+        "url": "/rest/SponsorRequest/"
     },
     "designerId": "fd7d5df9-3fda-46f2-82cb-9cfeb17ff1e9",
     "cn": [

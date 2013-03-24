@@ -846,6 +846,7 @@
     <Compile Include="Repositories\Presenter.cs" />
     <Compile Include="Repositories\SponsorTest.cs" />
     <Compile Include="Repositories\Sponsor.cs" />
+    <Compile Include="rest\SponsorRequestController.cs" />
     <Compile Include="rest\SessionLevelController.cs" />
     <Compile Include="rest\SessionController.cs" />
     <Compile Include="rest\SessionPresenterController.cs" />

@@ -33,7 +33,7 @@ namespace CodeCampSV
         [AutoGenColumn]
         public bool? PastSponsor { get; set; }
         [AutoGenColumn]
-        public System.Data.Linq.Binary SponsorSpecialNotes { get; set; }
+        public string SponsorSpecialNotes { get; set; }
         [AutoGenColumn]
         public string SvccNotes { get; set; }
         [AutoGenColumn]

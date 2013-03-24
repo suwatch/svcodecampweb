@@ -603,6 +603,8 @@
                                         "designer|userClassName": "onCheckboxselectionmodelSelectionChange",
                                         "fn": "onCheckboxselectionmodelSelectionChange",
                                         "implHandler": [
+                                            "var tagListStore = model.getStore();\r",
+                                            "\r",
                                             "// all records that are selected are passed in here.  we need to run through the store\r",
                                             "// itself and verify that is what we think we should have.\r",
                                             "var tagsSelected1 = [];\r",
@@ -612,24 +614,48 @@
                                             "\r",
                                             "\r",
                                             "// find record in store and update it\r",
-                                            "var tagList = Ext.getCmp(\"SessionTagsGridPanelId\");\r",
-                                            "var tagListStore = tagList.store;\r",
+                                            "\r",
                                             "\r",
                                             "tagListStore.each(function(storeRec) {\r",
                                             "    var storeRecTagName = storeRec.getData().tagName;\r",
                                             "    var storeRecTaggedInSession = storeRec.getData().taggedInSession;\r",
                                             "    var gridPanelTagged = Ext.Array.contains(tagsSelected1,storeRecTagName);\r",
-                                            "\r",
+                                            "    \r",
                                             "    if (storeRecTaggedInSession != gridPanelTagged) {\r",
                                             "        storeRec.set(\"taggedInSession\",gridPanelTagged);\r",
                                             "    }\r",
                                             "});\r",
+                                            "\r",
                                             ""
                                         ],
                                         "name": "selectionchange",
                                         "scope": "me"
                                     },
                                     "designerId": "dcd514e2-7c4f-4dd4-a191-1ef07a2e38be"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|userClassName": "onCheckboxModelSelect",
+                                        "fn": "onCheckboxModelSelect",
+                                        "implHandler": [
+                                            "\r",
+                                            "var cnt = rowmodel.getSelection().length;\r",
+                                            "if (cnt > 7) {\r",
+                                            "    Ext.Msg.alert(\"7 tags limit per session.  Please uncheck other tags before checking new ones (careful not to click on tagname, delects all, sorry)\");\r",
+                                            "    var modelRec = rowmodel.getLastSelected();\r",
+                                            "    rowmodel.deselect(modelRec);\r",
+                                            "}"
+                                        ],
+                                        "name": "select",
+                                        "scope": "me"
+                                    },
+                                    "designerId": "b47c78e0-d0aa-4683-899f-73dd969b4643"
                                 }
                             ]
                         }

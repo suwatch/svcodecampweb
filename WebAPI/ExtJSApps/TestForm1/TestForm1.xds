@@ -21,15 +21,35 @@
                 "metadata/resource/Library"
             ],
             "className": "Library"
+        },
+        "a61d888c-b461-4a79-b140-e3c834338824": {
+            "paths": [
+                "metadata/store/MyStore",
+                "app/store/override/MyStore.js",
+                "app/store/MyStore.js"
+            ],
+            "className": "MyStore"
+        },
+        "00cf5924-86d9-4430-859a-9f204eb28f45": {
+            "paths": [
+                "metadata/model/MyModel",
+                "app/model/override/MyModel.js",
+                "app/model/MyModel.js"
+            ],
+            "className": "MyModel"
         }
     },
     "viewOrderMap": {
         "view": [
             "062e7b6f-7a36-45f6-8b28-491df7adccfd"
         ],
-        "store": [],
+        "store": [
+            "a61d888c-b461-4a79-b140-e3c834338824"
+        ],
         "controller": [],
-        "model": [],
+        "model": [
+            "00cf5924-86d9-4430-859a-9f204eb28f45"
+        ],
         "resource": [
             "bf1241a3-b9e0-4642-9254-b39f27d06a6f"
         ],

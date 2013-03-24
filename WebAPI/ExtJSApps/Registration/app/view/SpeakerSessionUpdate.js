@@ -239,6 +239,10 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                                     selectionchange: {
                                         fn: me.onCheckboxselectionmodelSelectionChange,
                                         scope: me
+                                    },
+                                    select: {
+                                        fn: me.onCheckboxModelSelect,
+                                        scope: me
                                     }
                                 }
                             })
@@ -306,6 +310,8 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
     },
 
     onCheckboxselectionmodelSelectionChange: function(model, selected, eOpts) {
+        var tagListStore = model.getStore();
+
         // all records that are selected are passed in here.  we need to run through the store
         // itself and verify that is what we think we should have.
         var tagsSelected1 = [];
@@ -315,8 +321,7 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
 
 
         // find record in store and update it
-        var tagList = Ext.getCmp("SessionTagsGridPanelId");
-        var tagListStore = tagList.store;
+
 
         tagListStore.each(function(storeRec) {
             var storeRecTagName = storeRec.getData().tagName;
@@ -328,6 +333,17 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
             }
         });
 
+
+    },
+
+    onCheckboxModelSelect: function(rowmodel, record, index, eOpts) {
+
+        var cnt = rowmodel.getSelection().length;
+        if (cnt > 7) {
+            Ext.Msg.alert("7 tags limit per session.  Please uncheck other tags before checking new ones (careful not to click on tagname, delects all, sorry)");
+            var modelRec = rowmodel.getLastSelected();
+            rowmodel.deselect(modelRec);
+        }
     }
 
 });

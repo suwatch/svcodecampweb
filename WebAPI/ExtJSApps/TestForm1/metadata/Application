@@ -6,6 +6,12 @@
     },
     "codeClass": null,
     "userConfig": {
+        "models": [
+            "MyModel"
+        ],
+        "stores": [
+            "MyStore"
+        ],
         "views": [
             "MyViewport"
         ],

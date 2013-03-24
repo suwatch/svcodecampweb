@@ -24,32 +24,46 @@ Ext.define('MyApp.view.MyViewport', {
         Ext.applyIf(me, {
             items: [
                 {
-                    xtype: 'tabpanel',
-                    activeTab: 0,
-                    items: [
+                    xtype: 'gridpanel',
+                    title: 'My Grid Panel',
+                    store: 'MyStore',
+                    columns: [
                         {
-                            xtype: 'panel',
-                            title: 'Tab 1'
+                            xtype: 'gridcolumn',
+                            dataIndex: 'tagName',
+                            text: 'TagName'
                         },
                         {
-                            xtype: 'panel',
-                            title: 'Tab 2'
-                        },
-                        {
-                            xtype: 'panel',
-                            title: 'Tab 3'
-                        },
-                        {
-                            xtype: 'panel',
-                            html: '<div id=\'fieldId\' ></div>',
-                            title: 'My Panel'
+                            xtype: 'gridcolumn',
+                            dataIndex: 'tagSelected',
+                            text: 'TagSelected'
                         }
-                    ]
+                    ],
+                    listeners: {
+                        afterrender: {
+                            fn: me.onGridpanelAfterRender,
+                            scope: me
+                        }
+                    },
+                    selModel: Ext.create('Ext.selection.CheckboxModel', {
+
+                    })
                 }
             ]
         });
 
         me.callParent(arguments);
+    },
+
+    onGridpanelAfterRender: function(component, eOpts) {
+
+        component.getStore().loadData(
+        [
+        { tagName: 'tag1',tagSelected: true },
+        { tagName: 'tag2',tagSelected: false },
+        { tagName: 'tag3',tagSelected: true }
+        ]
+        );
     }
 
 });

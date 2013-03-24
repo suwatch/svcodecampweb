@@ -1,0 +1,40 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "MyModel"
+    },
+    "designerId": "00cf5924-86d9-4430-859a-9f204eb28f45",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "tagName",
+                "designer|userClassName": "MyField"
+            },
+            "designerId": "2d0ef5a3-743c-46a4-bb87-8d534d0e04a4"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "tagSelected",
+                "designer|userClassName": "MyField1"
+            },
+            "designerId": "0596dce8-e11b-4a44-8a8b-a0a97e87564c"
+        }
+    ]
+}

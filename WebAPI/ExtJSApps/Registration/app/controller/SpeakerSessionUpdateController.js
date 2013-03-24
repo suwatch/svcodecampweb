@@ -199,13 +199,12 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
                 else {
                     console.log("NO dupe: |||" +recTitle + "|||" + title);
                 }
-
-
-
             });
             //}
 
-            var that = this;
+            var that1 = this;
+            //debugger;
+            that1.saveTags();
 
             if (notFound) {
                 var store = sessionGridPanel.getStore();
@@ -229,97 +228,69 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
                         buttons: Ext.Msg.OK
                     });
                 };
+
                 Ext.Ajax.on('requestexception',exceptionHandler);
-
-
+                //debugger;
+                var that2 = that1;
+                // store has the tags in it.
                 store.sync(
                 {
                     success: function() {
+                        //debugger;
+                        that2.refreshTitleList();
+                        that2.saveTags();
                         Ext.Ajax.un('requestexception',exceptionHandler);
                     },
                     failure : function(response, options){
                         Ext.Ajax.un('requestexception',exceptionHandler);
-
-                        /*
-
-
-                        HERE IS MODEL OVERRIDE CODE WHEN WE GET THIS TO BUILD
-                        OVERRIDES CURRENTLY BROKEN AND DO NOT BUILD
-                        Ext.define('RegistrationApp.model.override.Session', {
-                        override: 'RegistrationApp.model.Session',
-
-                        constructor:function() {
-
-                        var that = this;
-                        this.getProxy().on('exception', function(proxy, response, operation) {
-                        //debugger;RegistrationApp.model.override.Session on exception
-                        console.log('RegistrationApp.model.override.Session on exception');
-                        var errorMessage = Ext.JSON.decode(response.responseText).message;
-                        that.getProxy().errorString = errorMessage;
-                    });
-
-
-                    this.callParent(arguments);
-
-
-                }
-
-            });
-
-
-
-            if (this.errorString) {
-                Ext.Msg.alert(this.errorString);
-            } else {
-                Ext.Msg.alert("Error Saving Session Record");
-            }
-            */
-        },
-        success : function(){
-
-
-            var exceptionHandlerTags = function(conn, response, options) {
-                var errorMessage = Ext.JSON.decode(response.responseText).message;
-                Ext.MessageBox.show({
-                    title: 'Error Message Tag Save',
-                    msg: errorMessage,
-                    icon: Ext.MessageBox.ERROR,
-                    buttons: Ext.Msg.OK
+                    }
                 });
-            };
-            Ext.Ajax.on('requestexception',exceptionHandlerTags);
+                return true;
+            } else {
+                Ext.Msg.alert("Session Title Problem","Another session has been entered with the same title.  Please make your title unique while keeping it under 75 characters");
+            }
 
+        } else {
 
-            that.refreshTitleList();
-            // because this could be an insert, it's important not to add new taglist stuff
-            // until the session itself inserts.  thought, I think this is problematic as 
-            // designed.  now, the insert happens and no tags are added, then, tags are
-            // only added on updates (that is how the UI currently works)
-            var tagList = Ext.getCmp("SessionTagsGridPanelId");
-            var tagListStore = tagList.store;
-            tagListStore.save({
-                success: function() {
-
-                    Ext.Ajax.un('requestexception',exceptionHandlerTags);
-                },
-                failure: function() {
-
-                    Ext.Ajax.un('requestexception',exceptionHandlerTags);
-                }
-            });
-
+            return true; // no sessions selected so nothing to save (could be sessions though
         }
 
+
+
+
+
+        /*
+        HERE IS MODEL OVERRIDE CODE WHEN WE GET THIS TO BUILD
+        OVERRIDES CURRENTLY BROKEN AND DO NOT BUILD
+        Ext.define('RegistrationApp.model.override.Session', {
+        override: 'RegistrationApp.model.Session',
+
+        constructor:function() {
+
+        var that = this;
+        this.getProxy().on('exception', function(proxy, response, operation) {
+        //debugger;RegistrationApp.model.override.Session on exception
+        console.log('RegistrationApp.model.override.Session on exception');
+        var errorMessage = Ext.JSON.decode(response.responseText).message;
+        that.getProxy().errorString = errorMessage;
     });
 
-    return true;
-} else {
-    Ext.Msg.alert("Session Title Problem","Another session has been entered with the same title.  Please make your title unique while keeping it under 75 characters");
-}
-} else {
-return true; // no sessions selected so nothing to save (could be sessions though
+
+    this.callParent(arguments);
+
+
 }
 
+});
+
+
+
+if (this.errorString) {
+Ext.Msg.alert(this.errorString);
+} else {
+Ext.Msg.alert("Error Saving Session Record");
+}
+*/
     },
 
     refreshTitleList: function() {
@@ -335,6 +306,36 @@ return true; // no sessions selected so nothing to save (could be sessions thoug
                 console.log('lowercase titles found in refreshTitleList function: ' + records.length);
             }
         });
+    },
+
+    saveTags: function() {
+        var exceptionHandlerTags = function(conn, response, options) {
+            var errorMessage = Ext.JSON.decode(response.responseText).message;
+            Ext.MessageBox.show({
+                title: 'Error Message Tag Save',
+                msg: errorMessage,
+                icon: Ext.MessageBox.ERROR,
+                buttons: Ext.Msg.OK
+            });
+        };
+        Ext.Ajax.on('requestexception',exceptionHandlerTags);
+
+        // because this could be an insert, it's important not to add new taglist stuff
+        // until the session itself inserts.  thought, I think this is problematic as 
+        // designed.  now, the insert happens and no tags are added, then, tags are
+        // only added on updates (that is how the UI currently works)
+        var tagList = Ext.getCmp("SessionTagsGridPanelId");
+        var tagListStore = tagList.store;
+        tagListStore.save({
+            success: function() {
+                Ext.Ajax.un('requestexception',exceptionHandlerTags);
+            },
+            failure: function() {
+
+                Ext.Ajax.un('requestexception',exceptionHandlerTags);
+            }
+        });
+
     },
 
     init: function(application) {

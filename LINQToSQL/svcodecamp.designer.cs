@@ -135,6 +135,9 @@ namespace CodeCampSV
     partial void InsertSponsorListNote(SponsorListNote instance);
     partial void UpdateSponsorListNote(SponsorListNote instance);
     partial void DeleteSponsorListNote(SponsorListNote instance);
+    partial void InsertSponsorRequest(SponsorRequest instance);
+    partial void UpdateSponsorRequest(SponsorRequest instance);
+    partial void DeleteSponsorRequest(SponsorRequest instance);
     partial void InsertTags(Tags instance);
     partial void UpdateTags(Tags instance);
     partial void DeleteTags(Tags instance);
@@ -516,6 +519,14 @@ namespace CodeCampSV
 			get
 			{
 				return this.GetTable<SponsorListNote>();
+			}
+		}
+		
+		public System.Data.Linq.Table<SponsorRequest> SponsorRequest
+		{
+			get
+			{
+				return this.GetTable<SponsorRequest>();
 			}
 		}
 		
@@ -13781,6 +13792,356 @@ namespace CodeCampSV
 						this._SponsorListId = default(int);
 					}
 					this.SendPropertyChanged("SponsorList");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.SponsorRequest")]
+	public partial class SponsorRequest : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _ContactEmail;
+		
+		private string _Company;
+		
+		private string _PhoneNumber;
+		
+		private System.Nullable<bool> _EmailMe;
+		
+		private System.Nullable<bool> _ContactMeByPhone;
+		
+		private System.Nullable<bool> _AlsoAttending;
+		
+		private System.Nullable<bool> _PastSponsor;
+		
+		private System.Data.Linq.Binary _SponsorSpecialNotes;
+		
+		private string _SvccNotes;
+		
+		private System.Nullable<bool> _SvccRespondedTo;
+		
+		private System.Nullable<bool> _SvccEnteredInSystem;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnContactEmailChanging(string value);
+    partial void OnContactEmailChanged();
+    partial void OnCompanyChanging(string value);
+    partial void OnCompanyChanged();
+    partial void OnPhoneNumberChanging(string value);
+    partial void OnPhoneNumberChanged();
+    partial void OnEmailMeChanging(System.Nullable<bool> value);
+    partial void OnEmailMeChanged();
+    partial void OnContactMeByPhoneChanging(System.Nullable<bool> value);
+    partial void OnContactMeByPhoneChanged();
+    partial void OnAlsoAttendingChanging(System.Nullable<bool> value);
+    partial void OnAlsoAttendingChanged();
+    partial void OnPastSponsorChanging(System.Nullable<bool> value);
+    partial void OnPastSponsorChanged();
+    partial void OnSponsorSpecialNotesChanging(System.Data.Linq.Binary value);
+    partial void OnSponsorSpecialNotesChanged();
+    partial void OnSvccNotesChanging(string value);
+    partial void OnSvccNotesChanged();
+    partial void OnSvccRespondedToChanging(System.Nullable<bool> value);
+    partial void OnSvccRespondedToChanged();
+    partial void OnSvccEnteredInSystemChanging(System.Nullable<bool> value);
+    partial void OnSvccEnteredInSystemChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    #endregion
+		
+		public SponsorRequest()
+		{
+			OnCreated();
+		}
+		
+		[Column(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_ContactEmail", DbType="VarChar(128)")]
+		public string ContactEmail
+		{
+			get
+			{
+				return this._ContactEmail;
+			}
+			set
+			{
+				if ((this._ContactEmail != value))
+				{
+					this.OnContactEmailChanging(value);
+					this.SendPropertyChanging();
+					this._ContactEmail = value;
+					this.SendPropertyChanged("ContactEmail");
+					this.OnContactEmailChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Company", DbType="VarChar(128)")]
+		public string Company
+		{
+			get
+			{
+				return this._Company;
+			}
+			set
+			{
+				if ((this._Company != value))
+				{
+					this.OnCompanyChanging(value);
+					this.SendPropertyChanging();
+					this._Company = value;
+					this.SendPropertyChanged("Company");
+					this.OnCompanyChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_PhoneNumber", DbType="VarChar(64)")]
+		public string PhoneNumber
+		{
+			get
+			{
+				return this._PhoneNumber;
+			}
+			set
+			{
+				if ((this._PhoneNumber != value))
+				{
+					this.OnPhoneNumberChanging(value);
+					this.SendPropertyChanging();
+					this._PhoneNumber = value;
+					this.SendPropertyChanged("PhoneNumber");
+					this.OnPhoneNumberChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_EmailMe", DbType="Bit")]
+		public System.Nullable<bool> EmailMe
+		{
+			get
+			{
+				return this._EmailMe;
+			}
+			set
+			{
+				if ((this._EmailMe != value))
+				{
+					this.OnEmailMeChanging(value);
+					this.SendPropertyChanging();
+					this._EmailMe = value;
+					this.SendPropertyChanged("EmailMe");
+					this.OnEmailMeChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_ContactMeByPhone", DbType="Bit")]
+		public System.Nullable<bool> ContactMeByPhone
+		{
+			get
+			{
+				return this._ContactMeByPhone;
+			}
+			set
+			{
+				if ((this._ContactMeByPhone != value))
+				{
+					this.OnContactMeByPhoneChanging(value);
+					this.SendPropertyChanging();
+					this._ContactMeByPhone = value;
+					this.SendPropertyChanged("ContactMeByPhone");
+					this.OnContactMeByPhoneChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_AlsoAttending", DbType="Bit")]
+		public System.Nullable<bool> AlsoAttending
+		{
+			get
+			{
+				return this._AlsoAttending;
+			}
+			set
+			{
+				if ((this._AlsoAttending != value))
+				{
+					this.OnAlsoAttendingChanging(value);
+					this.SendPropertyChanging();
+					this._AlsoAttending = value;
+					this.SendPropertyChanged("AlsoAttending");
+					this.OnAlsoAttendingChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_PastSponsor", DbType="Bit")]
+		public System.Nullable<bool> PastSponsor
+		{
+			get
+			{
+				return this._PastSponsor;
+			}
+			set
+			{
+				if ((this._PastSponsor != value))
+				{
+					this.OnPastSponsorChanging(value);
+					this.SendPropertyChanging();
+					this._PastSponsor = value;
+					this.SendPropertyChanged("PastSponsor");
+					this.OnPastSponsorChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_SponsorSpecialNotes", DbType="VarBinary(2048)", CanBeNull=true)]
+		public System.Data.Linq.Binary SponsorSpecialNotes
+		{
+			get
+			{
+				return this._SponsorSpecialNotes;
+			}
+			set
+			{
+				if ((this._SponsorSpecialNotes != value))
+				{
+					this.OnSponsorSpecialNotesChanging(value);
+					this.SendPropertyChanging();
+					this._SponsorSpecialNotes = value;
+					this.SendPropertyChanged("SponsorSpecialNotes");
+					this.OnSponsorSpecialNotesChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_SvccNotes", DbType="VarChar(2048)")]
+		public string SvccNotes
+		{
+			get
+			{
+				return this._SvccNotes;
+			}
+			set
+			{
+				if ((this._SvccNotes != value))
+				{
+					this.OnSvccNotesChanging(value);
+					this.SendPropertyChanging();
+					this._SvccNotes = value;
+					this.SendPropertyChanged("SvccNotes");
+					this.OnSvccNotesChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_SvccRespondedTo", DbType="Bit")]
+		public System.Nullable<bool> SvccRespondedTo
+		{
+			get
+			{
+				return this._SvccRespondedTo;
+			}
+			set
+			{
+				if ((this._SvccRespondedTo != value))
+				{
+					this.OnSvccRespondedToChanging(value);
+					this.SendPropertyChanging();
+					this._SvccRespondedTo = value;
+					this.SendPropertyChanged("SvccRespondedTo");
+					this.OnSvccRespondedToChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_SvccEnteredInSystem", DbType="Bit")]
+		public System.Nullable<bool> SvccEnteredInSystem
+		{
+			get
+			{
+				return this._SvccEnteredInSystem;
+			}
+			set
+			{
+				if ((this._SvccEnteredInSystem != value))
+				{
+					this.OnSvccEnteredInSystemChanging(value);
+					this.SendPropertyChanging();
+					this._SvccEnteredInSystem = value;
+					this.SendPropertyChanged("SvccEnteredInSystem");
+					this.OnSvccEnteredInSystemChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
 				}
 			}
 		}

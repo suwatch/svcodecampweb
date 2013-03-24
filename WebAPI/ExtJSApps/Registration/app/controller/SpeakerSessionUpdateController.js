@@ -172,7 +172,7 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
 
             var oldTitle = '';
             if (selectedSessionInGrid.length > 0) {
-                oldTitle = selectedSessionInGrid[0].get("title");
+                oldTitle = Ext.util.Format.lowercase(selectedSessionInGrid[0].get("title"));
             }
 
             formPanel.updateRecord();
@@ -186,13 +186,24 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
 
             var notFound = true;
             // only check if title changed, otherwise, person could just be modifying existing title
-            if (oldTitle.length > 0 && oldTitle !== title) {
-                store.each(function(rec) {
-                    if (rec.get('title') === title) {
-                        notFound = false;
-                    }
-                });
-            }
+            //if (oldTitle.length > 0 && oldTitle !== title) {
+            store.each(function(rec) {
+                var recTitle = rec.get('title');
+
+
+                if (recTitle.length > 0 && recTitle === title && recTitle != oldTitle) {
+                    console.log("Found dupe: |||" + recTitle + "|||" + title + "|||" + oldTitle);
+
+                    notFound = false;
+                }
+                else {
+                    console.log("NO dupe: |||" +recTitle + "|||" + title);
+                }
+
+
+
+            });
+            //}
 
             var that = this;
 

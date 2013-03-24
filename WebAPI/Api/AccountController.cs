@@ -325,7 +325,9 @@ namespace WebAPI.Api
         [System.Web.Http.ActionName("SponsorRequest")]
         public HttpResponseMessage PostSponsorRequest(FormDataCollection formItems)
         {
-            return Request.CreateErrorResponse(HttpStatusCode.OK,
+
+
+            return Request.CreateResponse(HttpStatusCode.OK,
                                                "");
         }
 

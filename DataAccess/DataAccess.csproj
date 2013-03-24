@@ -214,6 +214,9 @@
     <Compile Include="ORM\AutoGen\SponsorListNoteResult.cs" />
     <Compile Include="ORM\AutoGen\SponsorListQuery.cs" />
     <Compile Include="ORM\AutoGen\SponsorListResult.cs" />
+    <Compile Include="ORM\AutoGen\SponsorRequestManager.cs" />
+    <Compile Include="ORM\AutoGen\SponsorRequestQuery.cs" />
+    <Compile Include="ORM\AutoGen\SponsorRequestResult.cs" />
     <Compile Include="ORM\AutoGen\TagsManager.cs" />
     <Compile Include="ORM\AutoGen\TagsQuery.cs" />
     <Compile Include="ORM\AutoGen\TagsResult.cs" />
@@ -328,6 +331,9 @@
     <Compile Include="ORM\SponsorListNoteResult.cs" />
     <Compile Include="ORM\SponsorListQuery.cs" />
     <Compile Include="ORM\SponsorListResult.cs" />
+    <Compile Include="ORM\SponsorRequestManager.cs" />
+    <Compile Include="ORM\SponsorRequestQuery.cs" />
+    <Compile Include="ORM\SponsorRequestResult.cs" />
     <Compile Include="ORM\TagsManager.cs" />
     <Compile Include="ORM\TagsQuery.cs" />
     <Compile Include="ORM\TagsResult.cs" />

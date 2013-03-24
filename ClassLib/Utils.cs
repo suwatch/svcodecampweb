@@ -5083,6 +5083,16 @@ namespace CodeCampSV
             }
             return pictureLength;
         }
+
+        public static bool IsSessionIdCurrentYear(int value)
+        {
+            var rec = SessionsManager.I.Get(new SessionsQuery()
+                {
+                    Id = value,
+                    CodeCampYearId = CurrentCodeCampYear
+                }).FirstOrDefault();
+            return rec != null;
+        }
     }
 
     public class AttendeesShortForEmail

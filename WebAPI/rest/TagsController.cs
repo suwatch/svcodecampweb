@@ -56,8 +56,37 @@ namespace WebAPI.rest
         // POST api/tagsrest
         public HttpResponseMessage Post(TagsResult tagItem)
         {
-            TagsManager.I.Insert(tagItem);
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, tagItem);
+            HttpResponseMessage response;
+
+
+
+
+            // should really check to see if you own session here also
+
+            if (tagItem.SessionId.HasValue && Utils.IsSessionIdCurrentYear(tagItem.SessionId.Value))
+            {
+                var tags =
+                    TagsManager.I.Get(new TagsQuery
+                        {
+                            SessionId = tagItem.SessionId
+                        });
+                if (tags.Count <= 7)
+                {
+                    TagsManager.I.Insert(tagItem);
+                    response = Request.CreateResponse(HttpStatusCode.OK, tagItem);
+                }
+                else
+                {
+                    response = Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed,
+                                                           "no more than 7 tags allowed per session");
+                }
+            }
+            else
+            {
+                response = Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed,
+                                                       "sessionId passed in no good or not this year");
+
+            }
             return response;
         }
 

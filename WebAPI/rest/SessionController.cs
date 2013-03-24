@@ -107,56 +107,69 @@ namespace WebAPI.REST
             return response;
         }
 
-        // POST api/session
+        // POST INSERT rest/session
         public HttpResponseMessage Post(SessionsResult sessionsResult)
         {
-            if (sessionsResult != null)
-            {
-                sessionsResult.Title = sessionsResult.Title.Trim();
-            }
-
             HttpResponseMessage response;
+            //string loggedInUsername = "";
             bool sessionAccepted = false;
-            if (sessionsResult.LoggedInUserAttendeeId.HasValue)
+            int attendeesId = -1;
+            
+
+            if (!User.Identity.IsAuthenticated || String.IsNullOrEmpty(User.Identity.Name))
             {
+                response = Request.CreateErrorResponse(HttpStatusCode.Forbidden,
+                                                       "Can not create session without being logged in");
+            }
+            else if (sessionsResult == null)
+            {
+                response = Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed,
+                                                       "no session values passed in");
+            }
+            else
+            {
+                //loggedInUsername = User.Identity.Name;
+                sessionsResult.Title = sessionsResult.Title.Trim();
                 var attendeeRec =
                     AttendeesManager.I.Get(new AttendeesQuery() {Id = sessionsResult.LoggedInUserAttendeeId})
                                     .FirstOrDefault();
                 if (attendeeRec != null)
                 {
-                    if ((attendeeRec.PresentationApprovalRequired.HasValue &&
-                         !attendeeRec.PresentationApprovalRequired.Value) || Utils.CheckUserIsAdmin())
+                    attendeesId = attendeeRec.Id;
+                    // must have PresentationApprovalRequired set to false (not null) for preapproval
+                    if (attendeeRec.PresentationApprovalRequired.HasValue &&
+                        attendeeRec.PresentationApprovalRequired.Value == false)
                     {
                         sessionAccepted = true;
                     }
                 }
+
+                string message;
+                bool canPresent = Utils.GetSpeakerCanPresent(attendeesId, out message);
+                if (canPresent)
+                {
+                    UpdateSessionResultForSessionLevel(sessionsResult);
+                    var session = new SessionsResult()
+                        {
+                            Createdate = DateTime.UtcNow,
+                            CodeCampYearId = Utils.CurrentCodeCampYear,
+                            Title = sessionsResult.Title,
+                            Description = sessionsResult.Description,
+                            SessionLevel_id = sessionsResult.SessionLevel_id,
+                            TwitterHashTags = sessionsResult.TwitterHashTags,
+                            Approved = sessionAccepted,
+                            LectureRoomsId = Utils.RoomNotAssigned,
+                            SessionTimesId = Utils.TimeSessionUnassigned,
+                        };
+                    SessionsManager.I.Insert(session);
+                    response = Request.CreateResponse(HttpStatusCode.OK, session);
+                }
+                else
+                {
+                    response = Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "session submission not allowed");
+                }
             }
 
-
-            string message;
-            bool canPresent = Utils.GetSpeakerCanPresent(sessionsResult.LoggedInUserAttendeeId ?? 0, out message);
-            if (canPresent)
-            {
-                UpdateSessionResultForSessionLevel(sessionsResult);
-                var session = new SessionsResult()
-                    {
-                        Createdate = DateTime.UtcNow,
-                        CodeCampYearId = Utils.CurrentCodeCampYear,
-                        Title = sessionsResult.Title,
-                        Description = sessionsResult.Description,
-                        SessionLevel_id = sessionsResult.SessionLevel_id,
-                        TwitterHashTags = sessionsResult.TwitterHashTags,
-                        Approved = sessionAccepted,
-                        LectureRoomsId = Utils.RoomNotAssigned,
-                        SessionTimesId = Utils.TimeSessionUnassigned,
-                    };
-                SessionsManager.I.Insert(session);
-                response = Request.CreateResponse(HttpStatusCode.OK, session);
-            }
-            else
-            {
-                response = Request.CreateErrorResponse(HttpStatusCode.Unauthorized, "session submission not allowed");
-            }
             return response;
         }
 

@@ -5,10 +5,10 @@
     
     <div style="margin: 50px 50px 50px 50px;">
 
-   <%-- <iframe src="/ExtJSApps/RegistrationProd"  width="600" height="700">--%>
+    <iframe src="/ExtJSApps/RegistrationProd"  width="600" height="700">
         
-         <iframe src="/ExtJSApps/Registration/app.html"  width="600" height="700">
-    
+         <%--<iframe src="/ExtJSApps/Registration/app.html"  width="600" height="700">
+    --%>
     <h3>Registration Page Loading...</h3>
     <img src="Images/loadingAnimation.gif" alt="Registration Page Loading, Hold on..."/>
 

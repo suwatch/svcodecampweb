@@ -224,6 +224,23 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
                             minLength: 30
                         },
                         {
+                            xtype: 'fieldset',
+                            width: 150,
+                            title: 'Reset Password (Leave blank to not change password)',
+                            items: [
+                                {
+                                    xtype: 'textfield',
+                                    fieldLabel: 'Password',
+                                    name: 'password1'
+                                },
+                                {
+                                    xtype: 'textfield',
+                                    fieldLabel: 'Password Confirm',
+                                    name: 'password2'
+                                }
+                            ]
+                        },
+                        {
                             xtype: 'label',
                             height: 14,
                             html: '<i>Press Continue on top right to submit sessions for approval</i>',

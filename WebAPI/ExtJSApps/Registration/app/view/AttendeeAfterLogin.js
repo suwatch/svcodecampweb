@@ -141,6 +141,22 @@ Ext.define('RegistrationApp.view.AttendeeAfterLogin', {
                     xtype: 'textfield',
                     fieldLabel: 'Zipcode',
                     name: 'userZipCode'
+                },
+                {
+                    xtype: 'fieldset',
+                    title: 'Reset Password (Leave blank to not change password)',
+                    items: [
+                        {
+                            xtype: 'textfield',
+                            fieldLabel: 'Password',
+                            name: 'password1'
+                        },
+                        {
+                            xtype: 'textfield',
+                            fieldLabel: 'Password Confirm',
+                            name: 'password2'
+                        }
+                    ]
                 }
             ],
             dockedItems: [

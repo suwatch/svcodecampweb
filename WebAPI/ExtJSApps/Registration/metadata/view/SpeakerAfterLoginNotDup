@@ -502,6 +502,51 @@
                     "designerId": "9e24799e-fa8f-40db-9ae8-9951a456ae34"
                 },
                 {
+                    "type": "Ext.form.FieldSet",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "width": 150,
+                        "designer|userClassName": "MyFieldSet2",
+                        "designer|displayName": "Reset Password (Leave blank to not change password)",
+                        "title": "Reset Password (Leave blank to not change password)"
+                    },
+                    "designerId": "8c41cfdd-4f28-45df-93a4-37dbcdc1cad8",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyTextField13",
+                                "fieldLabel": "Password",
+                                "name": "password1"
+                            },
+                            "designerId": "6dc8e925-63bf-427b-a39d-82d5d3471fa2"
+                        },
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyTextField13",
+                                "fieldLabel": "Password Confirm",
+                                "name": "password2"
+                            },
+                            "designerId": "39cc9f8f-fb8d-454e-8888-9a20bca8bdc7"
+                        }
+                    ]
+                },
+                {
                     "type": "Ext.form.Label",
                     "reference": {
                         "name": "items",

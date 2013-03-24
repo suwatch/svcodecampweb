@@ -350,6 +350,7 @@ namespace WebAPI.Api
                     Request.CreateErrorResponse(HttpStatusCode.Forbidden,
                                                 "User Not Logged In So Update Forbidden");
             }
+            
             else
             {
                 var attendeesResult =
@@ -361,49 +362,61 @@ namespace WebAPI.Api
                         }).FirstOrDefault();
                 if (attendeesResult != null)
                 {
-                    if (attendeeSaveOption.ToLower().Equals("optin"))
+                    // if attempting to change password then stop them here if problem
+                    if (!String.IsNullOrEmpty(attendeesResult.Password1) &&
+                        (!attendeesResult.Password1.Equals(attendeesResult.Password2)))
                     {
-                        attendeesResult.OptInSponsorSpecialsLevel = attendeeRecord.OptInSponsorSpecialsLevel;
-                        attendeesResult.OptInSponsoredMailingsLevel = attendeeRecord.OptInSponsoredMailingsLevel;
-                        attendeesResult.OptInTechJobKeyWords = attendeeRecord.OptInTechJobKeyWords;
-                        attendeesResult.OptInSvccKids = attendeeRecord.OptInSvccKids;
+                        response =
+                            Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed,
+                                                        "If password entered, password and confirmation must be identical");
                     }
                     else
                     {
-                        // These are the only fields that can get updated by the caller (security)
-                        // (for both speaker and attendee)
-                        attendeesResult.Email = attendeeRecord.Email;
-                        attendeesResult.UserFirstName = attendeeRecord.UserFirstName;
-                        attendeesResult.UserLastName = attendeeRecord.UserLastName;
-                        attendeesResult.City = attendeeRecord.City;
-                        attendeesResult.State = attendeeRecord.State;
-                        attendeesResult.UserZipCode = attendeeRecord.UserZipCode;
-                        attendeesResult.TwitterHandle = attendeeRecord.TwitterHandle;
-                        attendeesResult.AttendingDaysChoiceCurrentYear = attendeeRecord.AttendingDaysChoiceCurrentYear;
-                        attendeesResult.RegisteredCurrentYear = attendeeRecord.RegisteredCurrentYear;
-                        attendeesResult.PhoneNumber = attendeeRecord.PhoneNumber;
-                        attendeesResult.EmailEventBoard = attendeeRecord.EmailEventBoard;
-                        attendeesResult.VolunteeredCurrentYear = attendeeRecord.VolunteeredCurrentYear;
-                        attendeesResult.PrincipleJob = attendeeRecord.PrincipleJob;
-                        attendeesResult.Company = attendeeRecord.Company;
-
-
-                        // speaker stuff below
-                        if (attendeeSaveOption.ToLower().Equals("speaker"))
+                        if (attendeeSaveOption.ToLower().Equals("optin"))
                         {
-                            attendeesResult.FacebookId = attendeeRecord.FacebookId;
-                            attendeesResult.GooglePlusId = attendeeRecord.GooglePlusId;
-                            attendeesResult.LinkedInId = attendeeRecord.LinkedInId;
-                            attendeesResult.ShirtSize = attendeeRecord.ShirtSize;
-                            attendeesResult.UserBio = attendeeRecord.UserBio;
+                            attendeesResult.OptInSponsorSpecialsLevel = attendeeRecord.OptInSponsorSpecialsLevel;
+                            attendeesResult.OptInSponsoredMailingsLevel = attendeeRecord.OptInSponsoredMailingsLevel;
+                            attendeesResult.OptInTechJobKeyWords = attendeeRecord.OptInTechJobKeyWords;
+                            attendeesResult.OptInSvccKids = attendeeRecord.OptInSvccKids;
                         }
+                        else
+                        {
+                            // These are the only fields that can get updated by the caller (security)
+                            // (for both speaker and attendee)
+                            attendeesResult.Email = attendeeRecord.Email;
+                            attendeesResult.UserFirstName = attendeeRecord.UserFirstName;
+                            attendeesResult.UserLastName = attendeeRecord.UserLastName;
+                            attendeesResult.City = attendeeRecord.City;
+                            attendeesResult.State = attendeeRecord.State;
+                            attendeesResult.UserZipCode = attendeeRecord.UserZipCode;
+                            attendeesResult.TwitterHandle = attendeeRecord.TwitterHandle;
+                            attendeesResult.AttendingDaysChoiceCurrentYear =
+                                attendeeRecord.AttendingDaysChoiceCurrentYear;
+                            attendeesResult.RegisteredCurrentYear = attendeeRecord.RegisteredCurrentYear;
+                            attendeesResult.PhoneNumber = attendeeRecord.PhoneNumber;
+                            attendeesResult.EmailEventBoard = attendeeRecord.EmailEventBoard;
+                            attendeesResult.VolunteeredCurrentYear = attendeeRecord.VolunteeredCurrentYear;
+                            attendeesResult.PrincipleJob = attendeeRecord.PrincipleJob;
+                            attendeesResult.Company = attendeeRecord.Company;
+
+
+                            // speaker stuff below
+                            if (attendeeSaveOption.ToLower().Equals("speaker"))
+                            {
+                                attendeesResult.FacebookId = attendeeRecord.FacebookId;
+                                attendeesResult.GooglePlusId = attendeeRecord.GooglePlusId;
+                                attendeesResult.LinkedInId = attendeeRecord.LinkedInId;
+                                attendeesResult.ShirtSize = attendeeRecord.ShirtSize;
+                                attendeesResult.UserBio = attendeeRecord.UserBio;
+                            }
+                        }
+
+
+                        attendeesResult.CurrentCodeCampYear = Utils.CurrentCodeCampYear;
+                        AttendeesManager.I.UpdateWithAttendeeCCY(attendeesResult);
+
+                        response = Request.CreateResponse(HttpStatusCode.OK, MakeSafeAttendee(attendeesResult));
                     }
-
-
-                    attendeesResult.CurrentCodeCampYear = Utils.CurrentCodeCampYear;
-                    AttendeesManager.I.UpdateWithAttendeeCCY(attendeesResult);
-
-                    response = Request.CreateResponse(HttpStatusCode.OK, MakeSafeAttendee(attendeesResult));
                 }
                 else
                 {
@@ -666,25 +679,23 @@ namespace WebAPI.Api
                 {
                     msg.Send();
                     response =
-                   Request.CreateResponse(HttpStatusCode.OK, new AttendeesResult()
-                   {
-                       Email = attendeeRec.Email,
-                       Username = attendeeRec.Username,
-                       Id = attendeeRec.Id
-                   });
+                        Request.CreateResponse(HttpStatusCode.OK, new AttendeesResult()
+                            {
+                                Email = attendeeRec.Email,
+                                Username = attendeeRec.Username,
+                                Id = attendeeRec.Id
+                            });
                 }
                 catch (Exception e)
                 {
                     response =
                         Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed,
                                                     "We found your account but email could not be delivered to " +
-                                                    attendeeRec.Email + " for account "+ attendeeRec.Username +
+                                                    attendeeRec.Email + " for account " + attendeeRec.Username +
                                                     ".  Please Make a new account or contact info@siliconvalley-codecamp.com and we will reset the password for you.");
                 }
-               
             }
             return response;
-
         }
 
 

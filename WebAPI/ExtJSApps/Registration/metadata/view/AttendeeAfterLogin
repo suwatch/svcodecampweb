@@ -371,6 +371,50 @@
                 "name": "userZipCode"
             },
             "designerId": "173e3391-7a97-455e-95e7-28a422208081"
+        },
+        {
+            "type": "Ext.form.FieldSet",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyFieldSet2",
+                "designer|displayName": "Reset Password (Leave blank to not change password)",
+                "title": "Reset Password (Leave blank to not change password)"
+            },
+            "designerId": "9afa9ed7-3a13-45f9-8c51-52d1962d93d3",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyTextField13",
+                        "fieldLabel": "Password",
+                        "name": "password1"
+                    },
+                    "designerId": "8aa71537-3288-487c-bba9-83617b7566ca"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyTextField13",
+                        "fieldLabel": "Password Confirm",
+                        "name": "password2"
+                    },
+                    "designerId": "f8d940a6-55a4-4609-bd0b-b696e2f09e07"
+                }
+            ]
         }
     ]
 }

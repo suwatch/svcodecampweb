@@ -668,9 +668,9 @@ namespace WebAPI.Api
                     response =
                    Request.CreateResponse(HttpStatusCode.OK, new AttendeesResult()
                    {
-                       Email = attendeesResult.Email,
-                       Username = attendeesResult.Username,
-                       Id = attendeesResult.Id
+                       Email = attendeeRec.Email,
+                       Username = attendeeRec.Username,
+                       Id = attendeeRec.Id
                    });
                 }
                 catch (Exception e)

@@ -3642,7 +3642,6 @@
     <Content Include="ExtJSApps\Registration\app\controller\OptInController.js" />
     <Content Include="ExtJSApps\Registration\app\controller\RegisterSpeakerAttendee.js" />
     <Content Include="ExtJSApps\Registration\app\controller\RegisterSpeakerAttendeeSponsorController.js" />
-    <Content Include="ExtJSApps\Registration\app\controller\SessionEditorController.js" />
     <Content Include="ExtJSApps\Registration\app\controller\SpeakerAfterLoginController.js" />
     <Content Include="ExtJSApps\Registration\app\controller\SpeakerSessionUpdateController.js" />
     <Content Include="ExtJSApps\Registration\app\controller\SponsorController.js" />

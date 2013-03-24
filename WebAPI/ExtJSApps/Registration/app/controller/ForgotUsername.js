@@ -38,33 +38,32 @@ Ext.define('RegistrationApp.controller.ForgotUsername', {
                 buttons: Ext.Msg.OK
             });
         };
+
         Ext.Ajax.on('requestexception',exceptionHandler);
-
-
         Ext.Ajax.request({ 
             url:'/rpc/Account/ForgotPassword', 
             actionMethods:'POST', 
             scope:this, 
             params: values,
             success: function(response, o) {  
-                var retData = Ext.JSON.decode(r.responseText);
+                myMask.hide();
+                var retData = Ext.JSON.decode(response.responseText);
                 Ext.Ajax.un('requestexception',exceptionHandler);
 
-                Ext.Msg.alert("We have sent a temporary password to your email address on file " + retData.email + " for username:" + retData.username);
+                var messageStr1 = 
+                "We have sent a temporary password to your email address on file: " + 
+                retData.email + " for username:" + retData.username;
+                Ext.MessageBox.show({
+                    title: '',
+                    msg: messageStr1,
+                    icon: Ext.MessageBox.INFO,
+                    buttons: Ext.Msg.OK
+                });
 
                 var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];
-                tabPanel.setActiveTab(tabPanel.getTabIdByName('optIn'));
-                myMask.hide();
-
+                tabPanel.setActiveTab(tabPanel.getTabIdByName('attendeeorspeaker'));
             },
             failure: function(r,o) {
-                /*
-                if (this.errorString) {
-                Ext.Msg.alert(this.errorString);
-                } else {
-                Ext.Msg.alert("Error Saving Attendee Record.");
-                }
-                */
                 myMask.hide();
                 Ext.Ajax.un('requestexception',exceptionHandler);
             } 

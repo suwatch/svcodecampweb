@@ -23,54 +23,52 @@ Ext.define('RegistrationApp.controller.ForgotUsername', {
     },
 
     onContinueButtonIdClick: function(button, e, eOpts) {
-        console.log('continue button on ForgotUsername');
-    },
+        var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Checking..."});
+        myMask.show();
 
-    onEmailChange: function(field, newValue, oldValue, eOpts) {
-        this.continueButtonCheck();
+        var values = button.up().up().getForm().getValues(); // really just username and email
 
-    },
+        // need to call ajax method to send themt here username and pwd
+        var exceptionHandler = function(conn, response, options) {
+            var errorMessage = Ext.JSON.decode(response.responseText).message;
+            Ext.MessageBox.show({
+                title: 'Error Message',
+                msg: errorMessage,
+                icon: Ext.MessageBox.ERROR,
+                buttons: Ext.Msg.OK
+            });
+        };
+        Ext.Ajax.on('requestexception',exceptionHandler);
 
-    onUsernameChange: function(field, newValue, oldValue, eOpts) {
-        this.continueButtonCheck();
-    },
 
-    onEmailChange: function(field, newValue, oldValue, eOpts) {
-        //////
-        console.log('onEmailchange NEW');
-    },
+        Ext.Ajax.request({ 
+            url:'/rpc/Account/ForgotPassword', 
+            actionMethods:'POST', 
+            scope:this, 
+            params: values,
+            success: function(response, o) {  
+                var retData = Ext.JSON.decode(r.responseText);
+                Ext.Ajax.un('requestexception',exceptionHandler);
 
-    continueButtonCheck: function() {
+                Ext.Msg.alert("We have sent a temporary password to your email address on file " + retData.email + " for username:" + retData.username);
 
-        // if email or username has data then continue
+                var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];
+                tabPanel.setActiveTab(tabPanel.getTabIdByName('optIn'));
+                myMask.hide();
 
-        console.log('continueButtonCheck in ForgotUsername controller');
-
-        var continuebutton;
-
-        var username = Ext.ComponentQuery.query('ForgotUsernameAlias #username')[0].getValue();
-        var email = Ext.ComponentQuery.query('ForgotUsernameAlias #email')[0].getValue();
-
-        console.log('username: ' + username + ' email: ' + email);
-
-        if (username.length > 0 || email.length > 0) {
-            continueButton = Ext.ComponentQuery.query('ForgotUsernameAlias #continueButtonId')[0];
-            if (continueButton.isDisabled()) {
-                continueButton.enable();
-            }
-        } else {
-            continueButton = Ext.ComponentQuery.query('ForgotUsernameAlias #continueButtonId')[0];
-            if (!continueButton.isDisabled()) {
-                continueButton.disable();
-            }
-        }
-
-        var continueEnabledNow = !continueButton.isDisabled();
-
-        //console.log('continueEnabled: ' + continueEnabledNow);
-
-        return continueEnabledNow;
-
+            },
+            failure: function(r,o) {
+                /*
+                if (this.errorString) {
+                Ext.Msg.alert(this.errorString);
+                } else {
+                Ext.Msg.alert("Error Saving Attendee Record.");
+                }
+                */
+                myMask.hide();
+                Ext.Ajax.un('requestexception',exceptionHandler);
+            } 
+        });
 
     },
 
@@ -81,15 +79,6 @@ Ext.define('RegistrationApp.controller.ForgotUsername', {
             },
             "ForgotUsernameAlias #continueButtonId": {
                 click: this.onContinueButtonIdClick
-            },
-            "ForgotUsernameAlias #email": {
-                change: this.onEmailChange
-            },
-            "ForgotUsernameAlias #username": {
-                change: this.onUsernameChange
-            },
-            "ForgotUsernameAlias #emailId": {
-                change: this.onEmailChange
             }
         });
     }

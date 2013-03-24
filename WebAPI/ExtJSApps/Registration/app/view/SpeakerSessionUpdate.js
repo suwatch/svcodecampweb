@@ -234,6 +234,7 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                                 }
                             ],
                             selModel: Ext.create('Ext.selection.CheckboxModel', {
+                                mode: 'SIMPLE',
                                 showHeaderCheckbox: false,
                                 listeners: {
                                     selectionchange: {

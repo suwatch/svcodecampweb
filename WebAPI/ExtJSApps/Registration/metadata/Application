@@ -48,7 +48,6 @@
             "SpeakerAfterLoginController",
             "CreateAccountController",
             "OptInController",
-            "SessionEditorController",
             "ViewportController",
             "SpeakerSessionUpdateController"
         ],

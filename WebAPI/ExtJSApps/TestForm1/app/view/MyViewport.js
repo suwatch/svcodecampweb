@@ -24,30 +24,28 @@ Ext.define('MyApp.view.MyViewport', {
         Ext.applyIf(me, {
             items: [
                 {
-                    xtype: 'gridpanel',
-                    title: 'My Grid Panel',
-                    store: 'MyStore',
-                    columns: [
+                    xtype: 'tabpanel',
+                    activeTab: 0,
+                    items: [
                         {
-                            xtype: 'gridcolumn',
-                            dataIndex: 'tagName',
-                            text: 'TagName'
+                            xtype: 'panel',
+                            title: 'Tab 1',
+                            listeners: {
+                                afterrender: {
+                                    fn: me.onPanelAfterRender,
+                                    scope: me
+                                }
+                            }
                         },
                         {
-                            xtype: 'gridcolumn',
-                            dataIndex: 'tagSelected',
-                            text: 'TagSelected'
+                            xtype: 'panel',
+                            title: 'Tab 2'
+                        },
+                        {
+                            xtype: 'panel',
+                            title: 'Tab 3'
                         }
-                    ],
-                    listeners: {
-                        afterrender: {
-                            fn: me.onGridpanelAfterRender,
-                            scope: me
-                        }
-                    },
-                    selModel: Ext.create('Ext.selection.CheckboxModel', {
-
-                    })
+                    ]
                 }
             ]
         });
@@ -55,15 +53,11 @@ Ext.define('MyApp.view.MyViewport', {
         me.callParent(arguments);
     },
 
-    onGridpanelAfterRender: function(component, eOpts) {
-
-        component.getStore().loadData(
-        [
-        { tagName: 'tag1',tagSelected: true },
-        { tagName: 'tag2',tagSelected: false },
-        { tagName: 'tag3',tagSelected: true }
-        ]
-        );
+    onPanelAfterRender: function(component, eOpts) {
+        this.keyNav = Ext.create('Ext.util.KeyNav', this.el, {                    
+            enter: function() { Ext.Msg.alert('hi');},
+            scope: this
+        });
     }
 
 });

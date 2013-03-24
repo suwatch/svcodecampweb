@@ -31,15 +31,10 @@ Ext.define('RegistrationApp.view.ForgotUsernameOrPassword', {
                     id: 'emailId',
                     itemId: 'email',
                     width: 300,
-                    fieldLabel: 'Email',
-                    emptyText: 'Email (optional)'
-                },
-                {
-                    xtype: 'textfield',
-                    itemId: 'username',
-                    width: 300,
-                    fieldLabel: 'Username',
-                    emptyText: 'Username (optional)'
+                    fieldLabel: 'Username or Email',
+                    name: 'username',
+                    allowBlank: false,
+                    emptyText: 'Enter Email or Username'
                 },
                 {
                     xtype: 'label',
@@ -67,6 +62,7 @@ Ext.define('RegistrationApp.view.ForgotUsernameOrPassword', {
                         },
                         {
                             xtype: 'button',
+                            formBind: true,
                             disabled: true,
                             itemId: 'continueButtonId',
                             iconAlign: 'right',

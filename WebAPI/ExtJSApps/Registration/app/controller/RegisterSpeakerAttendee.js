@@ -45,7 +45,7 @@ Ext.define('RegistrationApp.controller.RegisterSpeakerAttendee', {
 
 
                 // TEMP FIX TO IMPLEMENT THIS RIGHT
-                window.parent.location.href = '../../PasswordIssues.aspx'; 
+                //window.parent.location.href = '../../PasswordIssues.aspx'; 
                 tabWizardPanel.setActiveTab(tabWizardPanel.getTabIdByName('forgotusernameorpassword'));
 
 

@@ -174,10 +174,8 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
             if (selectedSessionInGrid.length > 0) {
                 oldTitle = Ext.util.Format.lowercase(selectedSessionInGrid[0].get("title"));
             }
-
             formPanel.updateRecord();
             var modelRecord = formPanel.getRecord();
-
 
             var value = modelRecord.get('title');
             var store = Ext.data.StoreManager.lookup('SessionTitlesStore');
@@ -200,7 +198,6 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
                     console.log("NO dupe: |||" +recTitle + "|||" + title);
                 }
             });
-            //}
 
             var that1 = this;
             //debugger;
@@ -237,8 +234,7 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
                 {
                     success: function() {
                         //debugger;
-                        that2.refreshTitleList();
-                        that2.saveTags();
+                        that2.refreshTitleList();// gets new title list from server
                         Ext.Ajax.un('requestexception',exceptionHandler);
                     },
                     failure : function(response, options){

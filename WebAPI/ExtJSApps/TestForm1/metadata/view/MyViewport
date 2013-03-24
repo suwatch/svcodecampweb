@@ -13,95 +13,119 @@
     "designerId": "062e7b6f-7a36-45f6-8b28-491df7adccfd",
     "cn": [
         {
-            "type": "Ext.grid.Panel",
+            "type": "Ext.tab.Panel",
             "reference": {
                 "name": "items",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "designer|userClassName": "MyGridPanel",
-                "title": "My Grid Panel",
-                "store": "MyStore"
+                "designer|userClassName": "MyTabPanel",
+                "activeTab": 0
             },
-            "designerId": "64339d1b-8515-48ac-9d39-333f285f7d7d",
+            "designerId": "a9a601dd-46cf-4718-ace0-8a34389a0055",
             "cn": [
                 {
-                    "type": "Ext.grid.View",
+                    "type": "Ext.panel.Panel",
                     "reference": {
-                        "name": "viewConfig",
-                        "type": "object"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "designer|userClassName": "MyGridView"
-                    },
-                    "designerId": "13c6f90c-4a7e-410e-b5fe-b6c5ccb258c2"
-                },
-                {
-                    "type": "Ext.grid.column.Column",
-                    "reference": {
-                        "name": "columns",
+                        "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "MyColumn1",
-                        "dataIndex": "tagName",
-                        "text": "TagName"
+                        "designer|userClassName": "MyPanel",
+                        "title": "Tab 1"
                     },
-                    "designerId": "38d41412-efbc-40bc-b1e8-c357d6a56561"
+                    "designerId": "aed6cadf-0aac-45e1-93d5-98e83b2ea70f",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "TabConfig"
+                            },
+                            "designerId": "bc989bf4-b195-4e23-b572-ca37263a3521"
+                        },
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "onPanelAfterRender",
+                                "fn": "onPanelAfterRender",
+                                "implHandler": [
+                                    "this.keyNav = Ext.create('Ext.util.KeyNav', this.el, {                    \r",
+                                    "    enter: function() { Ext.Msg.alert('hi');},\r",
+                                    "            scope: this\r",
+                                    "        });"
+                                ],
+                                "name": "afterrender",
+                                "scope": "me"
+                            },
+                            "designerId": "e54606ae-20a3-4170-99c4-26dd1bb05a5f"
+                        }
+                    ]
                 },
                 {
-                    "type": "Ext.grid.column.Column",
+                    "type": "Ext.panel.Panel",
                     "reference": {
-                        "name": "columns",
+                        "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "MyColumn2",
-                        "dataIndex": "tagSelected",
-                        "text": "TagSelected"
+                        "designer|userClassName": "MyPanel1",
+                        "title": "Tab 2"
                     },
-                    "designerId": "5a0d1930-f854-41a0-80d3-e5357ea06a13"
+                    "designerId": "2e252199-4f6a-45da-ac40-90314897851d",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "TabConfig1"
+                            },
+                            "designerId": "a699eca4-a894-445a-b9e9-dafec36f715b"
+                        }
+                    ]
                 },
                 {
-                    "type": "basiceventbinding",
+                    "type": "Ext.panel.Panel",
                     "reference": {
-                        "name": "listeners",
+                        "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "designer|userClassName": "onGridpanelAfterRender",
-                        "fn": "onGridpanelAfterRender",
-                        "implHandler": [
-                            "\r",
-                            "component.getStore().loadData(\r",
-                            "    [\r",
-                            "        { tagName: 'tag1',tagSelected: true },\r",
-                            "        { tagName: 'tag2',tagSelected: false },\r",
-                            "        { tagName: 'tag3',tagSelected: true }\r",
-                            "\t]\r",
-                            ");"
-                        ],
-                        "name": "afterrender",
-                        "scope": "me"
+                        "designer|userClassName": "MyPanel2",
+                        "title": "Tab 3"
                     },
-                    "designerId": "e0359086-8160-4aa1-9b38-18404821938b"
-                },
-                {
-                    "type": "Ext.selection.CheckboxModel",
-                    "reference": {
-                        "name": "selModel",
-                        "type": "object"
-                    },
-                    "codeClass": "Ext.selection.CheckboxModel",
-                    "userConfig": {
-                        "designer|userClassName": "MyCheckboxSelectionModel"
-                    },
-                    "designerId": "65041059-4fdf-4e58-8404-607e41d80466"
+                    "designerId": "3724528d-7a6b-46c8-b7b5-c7996e89b13b",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "TabConfig2"
+                            },
+                            "designerId": "cef6f128-343a-41c1-96b6-be5e3a481418"
+                        }
+                    ]
                 }
             ]
         }

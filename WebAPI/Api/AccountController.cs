@@ -20,6 +20,7 @@ using System.Web.UI.WebControls;
 using CodeCampSV;
 using System.ComponentModel.DataAnnotations;
 using WebAPI.Code;
+using aspNetEmail;
 
 namespace WebAPI.Api
 {
@@ -591,6 +592,100 @@ namespace WebAPI.Api
         }
 
 
+
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.ActionName("ForgotPassword")]
+        public HttpResponseMessage PostForgotPassword(AttendeesResult attendeesResult)
+        {
+            HttpResponseMessage response;
+
+            string usernameOrEmail = attendeesResult.Username;
+
+
+            string username = Utils.GetUsernameFromEmail(usernameOrEmail);
+            if (String.IsNullOrEmpty(username))
+            {
+                string goodEmail = Utils.GetEmailFromUsername(usernameOrEmail);
+                username = Utils.GetUsernameFromEmail(goodEmail);
+            }
+
+            if (String.IsNullOrEmpty(username))
+            {
+                response =
+                    Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed,
+                                                "Name not found as either username or email.  Please register as new attendee");
+            }
+            else
+            {
+                var attendeeRec = AttendeesManager.I.Get(new AttendeesQuery {Username = username}).FirstOrDefault();
+                if (attendeeRec == null)
+                {
+                    throw new ApplicationException("attendeeRec could not be loaded");
+                }
+                MembershipUser mu = Membership.GetUser(username);
+                if (mu == null)
+                {
+                    throw new ApplicationException("MembershipUser mu not found");
+                }
+                var newPassword = mu.ResetPassword();
+                var msg = new EmailMessage(true, false)
+                    {
+                        Logging = false,
+                        LogOverwrite = false,
+                        //LogPath = Context.Server.MapPath(String.Empty) + "\\App_Data\\EmailPasswordRecovery.log",
+                        FromAddress = Utils.GetServiceEmailAddress(),
+                        To = attendeeRec.Email,
+                        Subject = "Your New Password For http://www.siliconvalley-codecamp.com"
+                    };
+
+                if (msg.Server.Equals("smtp.gmail.com"))
+                {
+                    var ssl = new AdvancedIntellect.Ssl.SslSocket();
+                    msg.LoadSslSocket(ssl);
+                    msg.Port = 587;
+                }
+
+                var sb = new StringBuilder();
+                sb.AppendLine(
+                    String.Format("Please log in to your codecamp account ({0}) with the new password: {1}",
+                                  username, newPassword));
+                sb.AppendLine(" ");
+                sb.AppendLine("We suggest that after you log in, you change your password.");
+                sb.AppendLine("We store your password in an encrypted format which is");
+                sb.AppendLine("why we are unable to send you your original password.");
+                sb.AppendLine(" ");
+                sb.AppendLine("We are looking forward to seeing you at camp!");
+                sb.AppendLine(" ");
+                sb.AppendLine("Best Regards,");
+                sb.AppendLine("");
+                sb.AppendLine("http://www.siliconvalley-codecamp.com");
+
+                msg.Body = sb.ToString();
+
+                try
+                {
+                    msg.Send();
+                    response =
+                   Request.CreateResponse(HttpStatusCode.OK, new AttendeesResult()
+                   {
+                       Email = attendeesResult.Email,
+                       Username = attendeesResult.Username,
+                       Id = attendeesResult.Id
+                   });
+                }
+                catch (Exception e)
+                {
+                    response =
+                        Request.CreateErrorResponse(HttpStatusCode.ExpectationFailed,
+                                                    "We found your account but email could not be delivered to " +
+                                                    attendeeRec.Email + " for account "+ attendeeRec.Username +
+                                                    ".  Please Make a new account or contact info@siliconvalley-codecamp.com and we will reset the password for you.");
+                }
+               
+            }
+            return response;
+
+        }
 
 
         [System.Web.Http.HttpPost]

@@ -43,7 +43,53 @@
                 "designer|userClassName": "onContinueButtonIdClick",
                 "fn": "onContinueButtonIdClick",
                 "implHandler": [
-                    "console.log('continue button on ForgotUsername');"
+                    "var myMask = new Ext.LoadMask(Ext.getBody(), {msg:\"Checking...\"});\r",
+                    "myMask.show();\r",
+                    "\r",
+                    "var values = button.up().up().getForm().getValues(); // really just username and email\r",
+                    "\r",
+                    "// need to call ajax method to send themt here username and pwd\r",
+                    "var exceptionHandler = function(conn, response, options) {\r",
+                    "    var errorMessage = Ext.JSON.decode(response.responseText).message;\r",
+                    "    Ext.MessageBox.show({\r",
+                    "        title: 'Error Message',\r",
+                    "        msg: errorMessage,\r",
+                    "        icon: Ext.MessageBox.ERROR,\r",
+                    "        buttons: Ext.Msg.OK\r",
+                    "    });\r",
+                    "};\r",
+                    "Ext.Ajax.on('requestexception',exceptionHandler);\r",
+                    "\r",
+                    "\r",
+                    "Ext.Ajax.request({ \r",
+                    "    url:'/rpc/Account/ForgotPassword', \r",
+                    "    actionMethods:'POST', \r",
+                    "    scope:this, \r",
+                    "    params: values,\r",
+                    "    success: function(response, o) {  \r",
+                    "        var retData = Ext.JSON.decode(r.responseText);\r",
+                    "        Ext.Ajax.un('requestexception',exceptionHandler);\r",
+                    "        \r",
+                    "        Ext.Msg.alert(\"We have sent a temporary password to your email address on file \" + retData.email + \" for username:\" + retData.username);\r",
+                    "        \r",
+                    "        var tabPanel = Ext.ComponentQuery.query('tabWizardPanelAlias')[0];\r",
+                    "        tabPanel.setActiveTab(tabPanel.getTabIdByName('optIn'));\r",
+                    "        myMask.hide();\r",
+                    "       \r",
+                    "    },\r",
+                    "    failure: function(r,o) {\r",
+                    "        /*\r",
+                    "        if (this.errorString) {\r",
+                    "        Ext.Msg.alert(this.errorString);\r",
+                    "        } else {\r",
+                    "        Ext.Msg.alert(\"Error Saving Attendee Record.\");\r",
+                    "        }\r",
+                    "        */\r",
+                    "        myMask.hide();\r",
+                    "        Ext.Ajax.un('requestexception',exceptionHandler);\r",
+                    "    } \r",
+                    "});\r",
+                    ""
                 ],
                 "name": "click",
                 "scope": "me",
@@ -51,114 +97,6 @@
                 "designer|controlQuery": "ForgotUsernameAlias #continueButtonId"
             },
             "designerId": "0b4d2300-8349-47e3-83eb-965e3c076c07"
-        },
-        {
-            "type": "basicfunction",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|userClassName": "continueButtonCheck",
-                "fn": "continueButtonCheck",
-                "implHandler": [
-                    "\r",
-                    "// if email or username has data then continue\r",
-                    "\r",
-                    "console.log('continueButtonCheck in ForgotUsername controller');\r",
-                    "\r",
-                    "var continuebutton;\r",
-                    "\r",
-                    "var username = Ext.ComponentQuery.query('ForgotUsernameAlias #username')[0].getValue();\r",
-                    "var email = Ext.ComponentQuery.query('ForgotUsernameAlias #email')[0].getValue();\r",
-                    "\r",
-                    "console.log('username: ' + username + ' email: ' + email);\r",
-                    "\r",
-                    "if (username.length > 0 || email.length > 0) {\r",
-                    "    continueButton = Ext.ComponentQuery.query('ForgotUsernameAlias #continueButtonId')[0];\r",
-                    "    if (continueButton.isDisabled()) {\r",
-                    "        continueButton.enable();\r",
-                    "    }\r",
-                    "} else {\r",
-                    "    continueButton = Ext.ComponentQuery.query('ForgotUsernameAlias #continueButtonId')[0];\r",
-                    "    if (!continueButton.isDisabled()) {\r",
-                    "        continueButton.disable();\r",
-                    "    }\r",
-                    "}\r",
-                    "\r",
-                    "var continueEnabledNow = !continueButton.isDisabled();\r",
-                    "\r",
-                    "//console.log('continueEnabled: ' + continueEnabledNow);\r",
-                    "\r",
-                    "return continueEnabledNow;\r",
-                    "\r",
-                    ""
-                ]
-            },
-            "designerId": "11ae6b94-3a11-4176-94bb-a2eb70365ee9"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|userClassName": "onEmailChange",
-                "fn": "onEmailChange",
-                "implHandler": [
-                    "this.continueButtonCheck();\r",
-                    ""
-                ],
-                "name": "change",
-                "scope": "me",
-                "designer|targetType": "Ext.form.field.Text",
-                "designer|controlQuery": "ForgotUsernameAlias #email"
-            },
-            "designerId": "9fc9a250-88c8-447a-874c-9009b0e96f6a"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|userClassName": "onUsernameChange",
-                "fn": "onUsernameChange",
-                "implHandler": [
-                    "this.continueButtonCheck();"
-                ],
-                "name": "change",
-                "scope": "me",
-                "designer|targetType": "Ext.form.field.Text",
-                "designer|controlQuery": "ForgotUsernameAlias #username"
-            },
-            "designerId": "b03e94c0-a297-4760-a3d0-9c0c05f9c8a2"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|userClassName": "onEmailChange",
-                "fn": "onEmailChange",
-                "implHandler": [
-                    "//////\r",
-                    "console.log('onEmailchange NEW');"
-                ],
-                "name": "change",
-                "scope": "me",
-                "designer|targetType": "Ext.form.field.Text",
-                "designer|controlQuery": "ForgotUsernameAlias #emailId"
-            },
-            "designerId": "46d7c637-0d91-420d-915b-b3c8188ef959"
         }
     ]
 }

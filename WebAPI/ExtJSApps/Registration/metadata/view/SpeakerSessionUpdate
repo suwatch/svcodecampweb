@@ -587,6 +587,7 @@
                             },
                             "codeClass": "Ext.selection.CheckboxModel",
                             "userConfig": {
+                                "mode": "SIMPLE",
                                 "designer|userClassName": "MyCheckboxSelectionModel",
                                 "showHeaderCheckbox": false
                             },

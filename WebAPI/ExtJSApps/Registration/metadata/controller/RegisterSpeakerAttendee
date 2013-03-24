@@ -119,7 +119,7 @@
                     "\r",
                     "\r",
                     "        // TEMP FIX TO IMPLEMENT THIS RIGHT\r",
-                    "        window.parent.location.href = '../../PasswordIssues.aspx'; \r",
+                    "        //window.parent.location.href = '../../PasswordIssues.aspx'; \r",
                     "        tabWizardPanel.setActiveTab(tabWizardPanel.getTabIdByName('forgotusernameorpassword'));\r",
                     "\r",
                     "\r",

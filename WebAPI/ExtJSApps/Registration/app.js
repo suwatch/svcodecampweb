@@ -62,7 +62,6 @@ Ext.application({
         'SpeakerAfterLoginController',
         'CreateAccountController',
         'OptInController',
-        'SessionEditorController',
         'ViewportController',
         'SpeakerSessionUpdateController'
     ],

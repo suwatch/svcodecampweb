@@ -214,14 +214,6 @@
             ],
             "className": "TagsModel"
         },
-        "5662fda6-ed94-4bbb-ac24-9d3977b18139": {
-            "paths": [
-                "metadata/controller/SessionEditorController",
-                "app/controller/override/SessionEditorController.js",
-                "app/controller/SessionEditorController.js"
-            ],
-            "className": "SessionEditorController"
-        },
         "d318c215-0d99-4497-acc5-54d15da0bc5f": {
             "paths": [
                 "metadata/store/SessionPresenterStore",
@@ -333,7 +325,6 @@
             "fafbaf9d-46bc-4791-8e9a-7a91c69c6664",
             "65a4b174-5ba2-4812-ba07-d9ff918ccf6e",
             "acfeeb68-33a2-44a2-a3be-6a2cfba48df6",
-            "5662fda6-ed94-4bbb-ac24-9d3977b18139",
             "10d32f9d-c428-4cbd-bacc-7eb9c0e9c677",
             "478a9dd3-a843-49b5-b02e-1e5e4d2fc6d1"
         ],

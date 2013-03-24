@@ -119,7 +119,7 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                             xtype: 'gridcolumn',
                             renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
                                 if (value == true) {
-                                    return 'approved';
+                                    return ''; // don't show anything if approved, just like old days
                                 } else {
                                     return 'pending approval';
                                 }
@@ -234,6 +234,7 @@ Ext.define('RegistrationApp.view.SpeakerSessionUpdate', {
                                 }
                             ],
                             selModel: Ext.create('Ext.selection.CheckboxModel', {
+                                showHeaderCheckbox: false,
                                 listeners: {
                                     selectionchange: {
                                         fn: me.onCheckboxselectionmodelSelectionChange,

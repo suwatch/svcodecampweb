@@ -343,7 +343,7 @@
                                 ],
                                 "implHandler": [
                                     "if (value == true) {\r",
-                                    "    return 'approved';\r",
+                                    "    return ''; // don't show anything if approved, just like old days\r",
                                     "} else {\r",
                                     "    return 'pending approval';\r",
                                     "}\r",
@@ -587,7 +587,8 @@
                             },
                             "codeClass": "Ext.selection.CheckboxModel",
                             "userConfig": {
-                                "designer|userClassName": "MyCheckboxSelectionModel"
+                                "designer|userClassName": "MyCheckboxSelectionModel",
+                                "showHeaderCheckbox": false
                             },
                             "designerId": "2dfde0c2-ff85-4c1c-88ff-8eeead7f9524",
                             "cn": [

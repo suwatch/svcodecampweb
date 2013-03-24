@@ -123,6 +123,26 @@ Ext.define('RegistrationApp.view.TabWizardPanel', {
         var speakerProfilePanel =  Ext.getCmp('speakerAfterLoginProfileId');
         speakerProfilePanel.getForm().setValues(retData);
 
+        var imgId = Ext.ComponentQuery.query('#SpeakerImgId')[0];
+        var imageLocation = '/attendeeimage/' + retData.attendeesId + '.jpg?width=260&height=260&borderWidth=1&borderColor=black&scale=both';
+        var antiCachePart = (new Date()).getTime();
+        var newSrc = imageLocation + '&dc=' + antiCachePart;
+        imgId.setSrc(newSrc); 
+
+        var sessionsBySpeakerStore = Ext.getCmp("sessionsBySpeakerGridPanelId").getStore();
+        sessionsBySpeakerStore.load({
+            params: {
+                option: 'byspeaker',
+                param1: retData.attendeesId,
+                param2: '-1',
+                param3: '-1'
+            }
+        });
+
+
+
+
+
         var attendeePanel = Ext.ComponentQuery.query('AttendeeAfterLoginAlias')[0];
         attendeePanel.getForm().setValues(retData);
 

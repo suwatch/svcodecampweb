@@ -509,6 +509,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "hidden": true,
                         "width": 150,
                         "designer|userClassName": "MyFieldSet2",
                         "designer|displayName": "Reset Password (Leave blank to not change password)",

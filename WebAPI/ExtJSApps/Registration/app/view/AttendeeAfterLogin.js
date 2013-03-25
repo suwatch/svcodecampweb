@@ -144,6 +144,7 @@ Ext.define('RegistrationApp.view.AttendeeAfterLogin', {
                 },
                 {
                     xtype: 'fieldset',
+                    hidden: true,
                     title: 'Reset Password (Leave blank to not change password)',
                     items: [
                         {

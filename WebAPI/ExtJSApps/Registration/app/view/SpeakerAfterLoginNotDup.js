@@ -225,6 +225,7 @@ Ext.define('RegistrationApp.view.SpeakerAfterLoginNotDup', {
                         },
                         {
                             xtype: 'fieldset',
+                            hidden: true,
                             width: 150,
                             title: 'Reset Password (Leave blank to not change password)',
                             items: [

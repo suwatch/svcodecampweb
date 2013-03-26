@@ -201,7 +201,7 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
 
             var that1 = this;
             //debugger;
-            that1.saveTags();
+
 
             if (notFound) {
                 var store = sessionGridPanel.getStore();
@@ -216,15 +216,16 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
                 modelRecordFromGrid.set("twitterHashTags",modelRecord.getData().twitterHashTags);
                 modelRecordFromGrid.set("description",modelRecord.getData().description);
 
-                var exceptionHandler = function(conn, response, options) {
-                    var errorMessage = Ext.JSON.decode(response.responseText).message;
-                    Ext.MessageBox.show({
-                        title: 'Error Message',
-                        msg: errorMessage,
-                        icon: Ext.MessageBox.ERROR,
-                        buttons: Ext.Msg.OK
-                    });
+                /*var exceptionHandler = function(conn, response, options) {
+                var errorMessage = Ext.JSON.decode(response.responseText).message;
+                Ext.MessageBox.show({
+                title: 'Error Message',
+                msg: errorMessage,
+                icon: Ext.MessageBox.ERROR,
+                buttons: Ext.Msg.OK
+                });
                 };
+                */
 
                 Ext.Ajax.on('requestexception',exceptionHandler);
                 //debugger;
@@ -233,12 +234,14 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
                 store.sync(
                 {
                     success: function() {
-                        //debugger;
+                        debugger;
+                        that2.saveTags();
                         that2.refreshTitleList();// gets new title list from server
-                        Ext.Ajax.un('requestexception',exceptionHandler);
+                        //Ext.Ajax.un('requestexception',exceptionHandler);
                     },
                     failure : function(response, options){
-                        Ext.Ajax.un('requestexception',exceptionHandler);
+                        debugger;
+                        //Ext.Ajax.un('requestexception',exceptionHandler);
                     }
                 });
                 return true;

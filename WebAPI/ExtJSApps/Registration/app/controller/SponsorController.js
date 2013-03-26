@@ -29,7 +29,10 @@ Ext.define('RegistrationApp.controller.SponsorController', {
                 success: function(form, r) {
                     myMask.hide();
                     Ext.Msg.alert('Success', 'Thanks for filling out the info. We will be in touch soon.');
-                    window.parent.location.href = '../../Register.aspx'; 
+
+                    // this caused immediate redirect so taking out for now.
+                    // maybe should put in tab switch.
+                    //window.parent.location.href = '../../Register.aspx'; 
                 },
                 failure: function(form, r) {
                     myMask.hide();

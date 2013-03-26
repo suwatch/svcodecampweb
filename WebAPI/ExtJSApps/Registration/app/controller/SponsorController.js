@@ -23,33 +23,22 @@ Ext.define('RegistrationApp.controller.SponsorController', {
         if (form.isValid())
         {
 
+            var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Processing..."});
+            myMask.show();
             form.submit({
-                success: function(form, action) {
-                    Ext.Msg.alert('Success', action.result.msg);
+                success: function(form, r) {
+                    myMask.hide();
+                    Ext.Msg.alert('Success', 'Thanks for filling out the info. We will be in touch soon.');
+                    window.parent.location.href = '../../Register.aspx'; 
                 },
-                failure: function(form, action) {
-                    //debugger;
-                    Ext.Msg.alert('Failed', action.result.msg);
+                failure: function(form, r) {
+                    myMask.hide();
+                    var retData = Ext.JSON.decode(r.response.responseText);
+                    Ext.Msg.alert('Failed', retData.message);
                 }
             });
         }
 
-
-        /*
-        form.submit({
-
-        success: function(a,b,c) {
-        Ext.Msg.alert("Thanks! we will get back to you asap.");   
-        //  window.parent.location.href = '../../Register.aspx'; 
-    },
-    failure: function(a,b,c) {
-        debugger;
-        Ext.Msg.alert("hmm.  Something seems to have gone wrong.  Please email sponsorship@siliconvalley-codecamp.com for information.");   
-        // window.parent.location.href = '../../Register.aspx'; 
-    }
-
-});
-*/
     },
 
     onBackButtonIdClick: function(button, e, eOpts) {

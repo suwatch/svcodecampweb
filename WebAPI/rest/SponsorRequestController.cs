@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Globalization;
 using System.Net;
@@ -28,7 +29,13 @@ namespace WebAPI.rest
             var recs =
                 SponsorRequestManager.I.Get(new SponsorRequestQuery(){Id = id}).OrderByDescending(a => a.CreateDate).ToList();
 
-            response = Request.CreateResponse(HttpStatusCode.OK, recs);
+            //response = Request.CreateResponse(HttpStatusCode.OK, recs);
+
+            response = Request.CreateResponse(HttpStatusCode.OK, new
+                {
+                    success = true,
+                    data = recs
+                });
 
 
             return response;
@@ -45,7 +52,13 @@ namespace WebAPI.rest
             var recs =
                 SponsorRequestManager.I.Get(new SponsorRequestQuery()).OrderByDescending(a => a.CreateDate).ToList();
 
-            response = Request.CreateResponse(HttpStatusCode.OK, recs);
+            //response = Request.CreateResponse(HttpStatusCode.OK, recs);
+
+            response = Request.CreateResponse(HttpStatusCode.OK, new
+            {
+                success = true,
+                data = recs
+            });
 
 
             return response;
@@ -70,12 +83,22 @@ namespace WebAPI.rest
             SendMailConfirmation(sponsorRequestResult.ContactEmail, sponsorRequestResult.Company,
                                  sponsorRequestResult.Id);
 
-           
 
-            
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, new
+            {
+                success = true,
+                data = new List<SponsorRequestResult> { sponsorRequestResult }
+            });
+
+            //HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, new
+            //{
+            //    message = "problem here!",
+            //    success = false
+            //   // data = new List<SponsorRequestResult> { sponsorRequestResult }
+            //});
 
 
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, sponsorRequestResult);
+            //HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, sponsorRequestResult);
             return response;
         }
 
@@ -143,17 +166,33 @@ namespace WebAPI.rest
                 SponsorRequestManager.I.Update(sponsorRequestResult);
             }
 
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, sponsorRequestResult);
+
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, new
+            {
+                success = true,
+                data = new List<SponsorRequestResult> { sponsorRequestResult }
+            });
+
+            //HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, sponsorRequestResult);
             return response;
         }
 
         // DELETE api/tagsrest/5
         // [Authorize(RoleName = "Administrator")]
         [Authorize(Users = "pkellner")]
-        public HttpResponseMessage Delete(TagsResult tagItem)
+        public HttpResponseMessage Delete(int id)
         {
-            TagsManager.I.Delete(tagItem);
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, tagItem);
+            TagsManager.I.Delete(id);
+            //HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, tagItem);
+
+
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, new
+            {
+                success = true
+               // data = new List<SponsorRequestResult> { sponsorRequestResult }
+            });
+
+         
             return response;
         }
     }

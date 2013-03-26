@@ -22,7 +22,21 @@ WebAPI/ExtJSApps/CompQBroke/build
 WebAPI/ExtJSApps/CompQBroke/ext
 WebAPI/ExtJSApps/CompQBroke/resources
 
-WebAPI/ext-4.2.0.663
+#WebAPI/ext-4.2.0.663
+WebAPI/ext-4.2.0.663/.sencha
+WebAPI/ext-4.2.0.663/builds
+WebAPI/ext-4.2.0.663/cmd
+WebAPI/ext-4.2.0.663/docs
+WebAPI/ext-4.2.0.663/examples
+WebAPI/ext-4.2.0.663/locale
+WebAPI/ext-4.2.0.663/packages
+WebAPI/ext-4.2.0.663/plugins
+WebAPI/ext-4.2.0.663/src
+WebAPI/ext-4.2.0.663/welcome
+
+
+
+
 WebAPI/extjs-4.1.3
 WebAPI/touch-2.1.1
 

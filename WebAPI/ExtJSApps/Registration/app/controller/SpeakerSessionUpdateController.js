@@ -168,6 +168,9 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
         var sessionGridPanel = Ext.getCmp("sessionsBySpeakerGridPanelId");
         var selectedSessionInGrid = sessionGridPanel.getSelectionModel().getSelection();
 
+        var tagList = Ext.getCmp("SessionTagsGridPanelId");
+        var tagListStore = tagList.store;
+
         if (selectedSessionInGrid.length > 0) {
 
             var oldTitle = '';
@@ -187,11 +190,8 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
             //if (oldTitle.length > 0 && oldTitle !== title) {
             store.each(function(rec) {
                 var recTitle = rec.get('title');
-
-
                 if (recTitle.length > 0 && recTitle === title && recTitle != oldTitle) {
                     console.log("Found dupe: |||" + recTitle + "|||" + title + "|||" + oldTitle);
-
                     notFound = false;
                 }
                 else {
@@ -200,8 +200,6 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
             });
 
             var that1 = this;
-            //debugger;
-
 
             if (notFound) {
                 var store = sessionGridPanel.getStore();
@@ -216,103 +214,73 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
                 modelRecordFromGrid.set("twitterHashTags",modelRecord.getData().twitterHashTags);
                 modelRecordFromGrid.set("description",modelRecord.getData().description);
 
-                /*var exceptionHandler = function(conn, response, options) {
-                var errorMessage = Ext.JSON.decode(response.responseText).message;
-                Ext.MessageBox.show({
-                title: 'Error Message',
-                msg: errorMessage,
-                icon: Ext.MessageBox.ERROR,
-                buttons: Ext.Msg.OK
-                });
-                };
-                */
 
-                //Ext.Ajax.on('requestexception',exceptionHandler);
-                //debugger;
                 var that2 = that1;
                 // store has the tags in it.
 
                 var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Saving..."});
                 myMask.show();
 
-                store.sync(
-                {
-                    success: function() {
-                        debugger;
-                        //that2.saveTags();
-                        that2.refreshTitleList();// gets new title list from server
-                        //Ext.Ajax.un('requestexception',exceptionHandler);
+                // because we modified the model record from the store, this store sync will
+                // take care of the upgrade correctly
 
+                var tagStoreUpdateCnt = tagListStore.getNewRecords().length + tagListStore.getUpdatedRecords().length + tagListStore.getRemovedRecords().length;
+                var sessionStoreUpdateCnt = store.getNewRecords().length + store.getUpdatedRecords().length + store.getRemovedRecords().length;
 
-                        var tagList = Ext.getCmp("SessionTagsGridPanelId");
-                        var tagListStore = tagList.store;
+                // if no session record to update then just do tag and turn off
+                if (sessionStoreUpdateCnt == 0) {
+                    if (tagStoreUpdateCnt == 0) {
+                        myMask.hide();
+                        Ext.Msg.alert("nothing to update");
+                    } else {
                         tagListStore.save({
                             success: function() {
                                 myMask.hide();
-                                Ext.Msg.alert("Session Information Updated");
-                                // Ext.Ajax.un('requestexception',exceptionHandlerTags);
+                                Ext.Msg.alert("Session Information Updated.");
                             },
                             failure: function() {
                                 myMask.hide();
-                                Ext.Msg.alert("Session Information Update Failed");
-
-                                // Ext.Ajax.un('requestexception',exceptionHandlerTags);
+                                Ext.Msg.alert("Session Information Update Failed.");
                             }
                         });
-
-
-                    },
-                    failure : function(response, options){
-                        debugger;
-                        //Ext.Ajax.un('requestexception',exceptionHandler);
                     }
-                });
+                } else {
+                    // need to update session first, then try to update tags if necessary
+                    store.sync(
+                    {
+                        success: function() {
+                            that2.refreshTitleList();// gets new title list from server
+                            if (tagStoreUpdateCnt == 0) {
+                                myMask.hide();
+                                Ext.Msg.alert("Session Information Updated..");
+
+                            } else {
+                                tagListStore.save({
+                                    success: function() {
+                                        myMask.hide();
+                                        Ext.Msg.alert("Session Information Updated...");
+                                    },
+                                    failure: function() {
+                                        myMask.hide();
+                                        Ext.Msg.alert("Session Information Update Failed...");
+                                    }
+                                }); 
+                            }
+                        },
+                        failure : function(response, options){
+                            myMask.hide();
+                            Ext.Msg.alert("Session Information Update Failed.");
+                        }
+                    });
+                }
                 return true;
             } else {
                 Ext.Msg.alert("Session Title Problem","Another session has been entered with the same title.  Please make your title unique while keeping it under 75 characters");
             }
-
         } else {
-
             return true; // no sessions selected so nothing to save (could be sessions though
         }
 
-
-
-
-
-        /*
-        HERE IS MODEL OVERRIDE CODE WHEN WE GET THIS TO BUILD
-        OVERRIDES CURRENTLY BROKEN AND DO NOT BUILD
-        Ext.define('RegistrationApp.model.override.Session', {
-        override: 'RegistrationApp.model.Session',
-
-        constructor:function() {
-
-        var that = this;
-        this.getProxy().on('exception', function(proxy, response, operation) {
-        //debugger;RegistrationApp.model.override.Session on exception
-        console.log('RegistrationApp.model.override.Session on exception');
-        var errorMessage = Ext.JSON.decode(response.responseText).message;
-        that.getProxy().errorString = errorMessage;
-    });
-
-
-    this.callParent(arguments);
-
-
-}
-
-});
-
-
-
-if (this.errorString) {
-Ext.Msg.alert(this.errorString);
-} else {
-Ext.Msg.alert("Error Saving Session Record");
-}
-*/
     },
 
     refreshTitleList: function() {

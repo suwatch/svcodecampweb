@@ -31,6 +31,7 @@ namespace CodeCampSV
             record.SvccRespondedTo = result.SvccRespondedTo;
             record.SvccEnteredInSystem = result.SvccEnteredInSystem;
             record.CreateDate = result.CreateDate;
+            record.FoothillWorkStudyCheckBox = result.FoothillWorkStudyCheckBox;
             // 
             //  Used by Default in Update and Insert Methods.
         }
@@ -54,7 +55,8 @@ namespace CodeCampSV
             SvccNotes = myData.SvccNotes,
             SvccRespondedTo = myData.SvccRespondedTo,
             SvccEnteredInSystem = myData.SvccEnteredInSystem,
-            CreateDate = myData.CreateDate == null ? null :  (DateTime?) new DateTime(myData.CreateDate.Value.Ticks,DateTimeKind.Utc)
+            CreateDate = myData.CreateDate == null ? null :  (DateTime?) new DateTime(myData.CreateDate.Value.Ticks,DateTimeKind.Utc),
+            FoothillWorkStudyCheckBox = myData.FoothillWorkStudyCheckBox
       });
 		    return results;
         }
@@ -94,7 +96,8 @@ namespace CodeCampSV
                         SvccNotes = myData.SvccNotes,
                         SvccRespondedTo = myData.SvccRespondedTo,
                         SvccEnteredInSystem = myData.SvccEnteredInSystem,
-                        CreateDate = myData.CreateDate == null ? null :  (DateTime?) new DateTime(myData.CreateDate.Value.Ticks,DateTimeKind.Utc)
+                        CreateDate = myData.CreateDate == null ? null :  (DateTime?) new DateTime(myData.CreateDate.Value.Ticks,DateTimeKind.Utc),
+                        FoothillWorkStudyCheckBox = myData.FoothillWorkStudyCheckBox
             });
             
             List<SponsorRequestResult> resultList = GetFinalResults(results, query);
@@ -124,6 +127,7 @@ namespace CodeCampSV
             if (query.SvccRespondedTo != null) baseQuery = baseQuery.Where(a => a.SvccRespondedTo == query.SvccRespondedTo);
             if (query.SvccEnteredInSystem != null) baseQuery = baseQuery.Where(a => a.SvccEnteredInSystem == query.SvccEnteredInSystem);
             if (query.CreateDate != null) baseQuery = baseQuery.Where(a => a.CreateDate.Value.CompareTo(query.CreateDate.Value) == 0);
+            if (query.FoothillWorkStudyCheckBox != null) baseQuery = baseQuery.Where(a => a.FoothillWorkStudyCheckBox == query.FoothillWorkStudyCheckBox);
 
             return baseQuery;
         }

@@ -42,5 +42,7 @@ namespace CodeCampSV
         public bool? SvccEnteredInSystem { get; set; }
         [AutoGenColumn]
         public DateTime? CreateDate { get; set; }
+        [AutoGenColumn]
+        public bool? FoothillWorkStudyCheckBox { get; set; }
     }
 }

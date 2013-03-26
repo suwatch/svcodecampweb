@@ -22,6 +22,7 @@ namespace CodeCampSV
         [DataMember] public bool? SvccRespondedTo { get; set; }
         [DataMember] public bool? SvccEnteredInSystem { get; set; }
         [DataMember] public DateTime? CreateDate { get; set; }
+        [DataMember] public bool? FoothillWorkStudyCheckBox { get; set; }
         
         //  
         //  Do not put Id here since it is in ResultBase already

@@ -13849,6 +13849,8 @@ namespace CodeCampSV
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
+		private System.Nullable<bool> _FoothillWorkStudyCheckBox;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -13879,6 +13881,8 @@ namespace CodeCampSV
     partial void OnSvccEnteredInSystemChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
+    partial void OnFoothillWorkStudyCheckBoxChanging(System.Nullable<bool> value);
+    partial void OnFoothillWorkStudyCheckBoxChanged();
     #endregion
 		
 		public SponsorRequest()
@@ -14142,6 +14146,26 @@ namespace CodeCampSV
 					this._CreateDate = value;
 					this.SendPropertyChanged("CreateDate");
 					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_FoothillWorkStudyCheckBox", DbType="Bit")]
+		public System.Nullable<bool> FoothillWorkStudyCheckBox
+		{
+			get
+			{
+				return this._FoothillWorkStudyCheckBox;
+			}
+			set
+			{
+				if ((this._FoothillWorkStudyCheckBox != value))
+				{
+					this.OnFoothillWorkStudyCheckBoxChanging(value);
+					this.SendPropertyChanging();
+					this._FoothillWorkStudyCheckBox = value;
+					this.SendPropertyChanged("FoothillWorkStudyCheckBox");
+					this.OnFoothillWorkStudyCheckBoxChanged();
 				}
 			}
 		}

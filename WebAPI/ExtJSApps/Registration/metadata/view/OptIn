@@ -127,7 +127,9 @@
             "codeClass": null,
             "userConfig": {
                 "border": false,
+                "padding": 5,
                 "designer|userClassName": "MyPanel2",
+                "bodyPadding": 5,
                 "title": null
             },
             "designerId": "333dac9c-46fa-44b8-99cb-681d64709a27",
@@ -140,6 +142,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "margin": "0 0 20 0",
                         "designer|userClassName": "MyCheckbox6",
                         "fieldLabel": "Interested in bring your kid to Code Camp's special classes for them?  Check here and you will be contacted about details and special confirmation requirements",
                         "labelWidth": 300,
@@ -159,6 +162,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "margin": "0 0 20 0",
                         "designer|userClassName": "MyCheckbox6",
                         "fieldLabel": "Accept Emails From Sponsors Offering Specials Only Available To Code Camp Attendees.  <br/>All email to you include in the subjects <i>[Sponsored Specials]</i>",
                         "labelWidth": 300,
@@ -178,7 +182,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "margin": "20 0 0 0 ",
+                        "margin": "0 0 20 0",
                         "designer|userClassName": "MyCheckbox6",
                         "fieldLabel": "Accept general emails From Sponsors<br/>All email to you include in the subject <i>[Sponsored Email]</i>",
                         "labelWidth": 300,

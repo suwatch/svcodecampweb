@@ -72,9 +72,12 @@ Ext.define('RegistrationApp.view.OptIn', {
                 {
                     xtype: 'panel',
                     border: false,
+                    padding: 5,
+                    bodyPadding: 5,
                     items: [
                         {
                             xtype: 'checkboxfield',
+                            margin: '0 0 20 0',
                             fieldLabel: 'Interested in bring your kid to Code Camp\'s special classes for them?  Check here and you will be contacted about details and special confirmation requirements',
                             labelWidth: 300,
                             name: 'optInSvccKids',
@@ -85,6 +88,7 @@ Ext.define('RegistrationApp.view.OptIn', {
                         },
                         {
                             xtype: 'checkboxfield',
+                            margin: '0 0 20 0',
                             fieldLabel: 'Accept Emails From Sponsors Offering Specials Only Available To Code Camp Attendees.  <br/>All email to you include in the subjects <i>[Sponsored Specials]</i>',
                             labelWidth: 300,
                             name: 'optInSponsoredMailingsLevel',
@@ -95,7 +99,7 @@ Ext.define('RegistrationApp.view.OptIn', {
                         },
                         {
                             xtype: 'checkboxfield',
-                            margin: '20 0 0 0 ',
+                            margin: '0 0 20 0',
                             fieldLabel: 'Accept general emails From Sponsors<br/>All email to you include in the subject <i>[Sponsored Email]</i>',
                             labelWidth: 300,
                             name: 'optInSponsorSpecialsLevel',

@@ -227,17 +227,40 @@ Ext.define('RegistrationApp.controller.SpeakerSessionUpdateController', {
                 };
                 */
 
-                Ext.Ajax.on('requestexception',exceptionHandler);
+                //Ext.Ajax.on('requestexception',exceptionHandler);
                 //debugger;
                 var that2 = that1;
                 // store has the tags in it.
+
+                var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Saving..."});
+                myMask.show();
+
                 store.sync(
                 {
                     success: function() {
                         debugger;
-                        that2.saveTags();
+                        //that2.saveTags();
                         that2.refreshTitleList();// gets new title list from server
                         //Ext.Ajax.un('requestexception',exceptionHandler);
+
+
+                        var tagList = Ext.getCmp("SessionTagsGridPanelId");
+                        var tagListStore = tagList.store;
+                        tagListStore.save({
+                            success: function() {
+                                myMask.hide();
+                                Ext.Msg.alert("Session Information Updated");
+                                // Ext.Ajax.un('requestexception',exceptionHandlerTags);
+                            },
+                            failure: function() {
+                                myMask.hide();
+                                Ext.Msg.alert("Session Information Update Failed");
+
+                                // Ext.Ajax.un('requestexception',exceptionHandlerTags);
+                            }
+                        });
+
+
                     },
                     failure : function(response, options){
                         debugger;
